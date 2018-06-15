@@ -46,6 +46,7 @@
 					<![endif]-->
 	<!-- 自定义css -->
 	<link rel="stylesheet" href="../assets/css/Customize_css/index.css">
+	<link rel="stylesheet" href="../assets/css/Customize_css/upLoadImg.css">
 </head>
 
 <body class="no-skin">
@@ -579,22 +580,14 @@
 
 	<!-- 本页js -->
 	<script language="javascript" src="../assets/js/Customize_js/Plugin/PCASClass.js"></script>
-	<script src="../assets/js/Customize_js/Plugin/uploadPreview.min.js"></script>
+	<script src="../assets/js/Customize_js/upLoadImg.js"></script>
 	<script>
 		//删除项目标签
 		$('.pro_label').on('click', '.closed', function (event) {
 			event.stopPropagation();
 			$(this).parent().remove();
 		})
-		//删除上传图片操作
-		$('.show_UpDiv').on({
-			mouseover: function () {
-				$('.del_UpImg').css('display', 'block');
-			},
-			mouseout: function () {
-				$('.del_UpImg').css('display', 'none');
-			}
-		});
+		
 		//添加项目标签
 		$('#label_Add').on('click', function (event) {
 			event.stopPropagation();

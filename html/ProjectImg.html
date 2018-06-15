@@ -65,7 +65,8 @@
         }
 
         .modal_all,
-        .modal_tishi {
+        .modal_tishi,
+        .modal_edit {
             display: none;
             background-color: rgba(0, 0, 0, .5);
             position: fixed;
@@ -478,7 +479,28 @@
             </div>
         </div>
     </div>
-
+    <div class="modal_edit">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="bootbox-close-button close closed">×</button>
+                        <h4 class="modal-title">修改</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="bootbox-body">
+                            <form class="bootbox-form">
+                                <label for="" style="float: left;">图片类别：</label>
+                                <input class="bootbox-input bootbox-input-text form-control" autocomplete="off" type="text">
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
+                        <button data-bb-handler="confirm" type="button" class="btn btn-primary">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     <div class="modal_tishi">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -567,6 +589,10 @@
         $('.del_leibie').on('click', function () {
             $('.modal_tishi').css('display', 'block');
             // $(this).parent().parent().parent().remove();
+        })
+        //编辑图片类别
+        $('#dynamic-table').on('click','.edit_leibie',function(){
+            $('.modal_edit').css('display', 'block');
         })
     </script>
 </body>
