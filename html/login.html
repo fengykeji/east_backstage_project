@@ -62,20 +62,51 @@
     <div class='title'>
         <div>欢迎使用！</div>
         <div class='input-row'>
-            <input  placeholder="请输入账号"></input>
+            <input  placeholder="请输入账号" id="account"></input>
         </div>
         <div class='input-row'>
-            <input  type='password' placeholder="请输入密码"></input>
+            <input  type='password' placeholder="请输入密码" id="paaword"></input>
         </div>
-        <a href="index.html" class='buttonSty' type="primary" >登 陆</a>
+        <div class='buttonSty' type="primary" id="login" >登 陆</div>
 
-        <div class='bottom-text'>
+        <!--<div class='bottom-text'>
             <span class='text'>忘记密码</span>
             <span class="text">&</span>
             <span class='text'>注册</span>
-        </div>
+        </div>-->
     </div>
 
 </body>
+<script src="../components/jquery/dist/jquery.js"></script>
+<script src="../components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../assets/js/jquery.cookie.js"></script>
+<script src="../assets/js/config.js"></script>
+<script>
+  window.onload=function(){
+        checkLogin();
+    }
 
+    $('#login').on('click',function(){
+        var data = {
+            'account':$('#account').val(),
+            'password':$('#paaword').val()
+        }
+        if(data.account==''){
+            alert('账号不能为空');
+            return;
+        }
+        if(data.password==''){
+            alert('密码不能为空');
+            return
+        }
+        ajax.publicInfo('project/user/login',data,function(res){
+            alert(res.msg);
+            if(res.code==config.responseSuccess){
+                $.cookie(config.cookiePrefix+'login_token',res.data.token)
+                window.location.href='index.html';
+            }
+        },'POST');
+    })
+
+</script>
 </html>
