@@ -319,7 +319,7 @@
 		})
 	</script>
 	<script>
-<<<<<<< HEAD
+
 		var data = {
 			regionList: '',
 			config: '',
@@ -330,28 +330,13 @@
 			$('#header').load('public/header.html');
 			$('#sidebar').load('public/menu.html');
 
-			//获取配置
-			$.ajax({
-				url: config.address + 'config',
-				type: 'GET',
-				dataType: "json",
-				success: function (res) {
-					getAddress();
-					data.config = res.data;
-					var property_start =
-						' <div class="checkbox checkSty_projectInfo"><label> <input name="form-field-checkbox" type="checkbox" class="ace"><span class="lbl">',
-						property_end = '</span></label> </div>',
-						property_dom = $('#property');
-					$.each(data.config[config.configList.PROPERTY_TYPE].param, function (k, v) {
-						property_dom.append(property_start + v.param + property_end);
-=======
         var data={
             regionList:'',
             config:'',
 			currentPointProvince:'',
 			currentPointCity:'',
         };
-        window.onload=function(){
+
             //获取配置
             $.ajax({
                 url: config.address+'config',
@@ -365,7 +350,7 @@
 						property_dom=$('#property');
 					$.each(data.config[config.configList.PROPERTY_TYPE].param,function(k,v){
 						property_dom.append(property_start+v.param+property_end);
->>>>>>> c8f06a61baa8722b108b35385aa58c2c8e44f890
+
 					})
 				},
 				error: function () {
@@ -430,35 +415,8 @@
 			}
 
 		}
-		$(document).on('change', 'select[name="province"]', function () {
 
-			var value = $('select[name="province"]').val(),
-				city = $('select[name="city"]');
-			city.children().remove();
-			$.each(data.regionList, function (k, v) {
-				if (v.code == value) {
-					data.currentPointProvince = v.city;
-					$.each(v.city, function (k, v) {
-						city.append('<option value="' + v.code + '">' + v.name + '</option>')
-					})
-				}
-			})
-		})
-		$(document).on('change', 'select[name="city"]', function () {
 
-			var value = $('select[name="city"]').val(),
-				area = $('select[name="area"]');
-			area.children().remove();
-			console.log(data.currentPointProvince);
-			$.each(data.currentPointProvince, function (k, v) {
-				if (v.code == value) {
-					data.currentPointCity = v.district;
-					$.each(v.district, function (k, v) {
-						area.append('<option value="' + v.code + '">' + v.name + '</option>')
-					})
-				}
-			})
-		})
 	</script>
 
 </body>
