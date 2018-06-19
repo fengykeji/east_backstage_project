@@ -397,12 +397,12 @@
 							'url': res.data.yunsuan_url
 						}, function (response) {
 							$.each(response.data[0].content[0].rows, function (k, v) {
-								yunsuan_project_dom.append('<option value="' + v.XMID + '">' + v.XMMC + '</option>')
+								yunsuan_project_dom.append('<option value="' + v.XMID + '">' + v.XMMC + '</option>');
 							})
 						})
 					}
 					if (res.data.yunsuan_id != '') {
-						yunsuan_project_dom.find("option[value=" + res.data.yunsuan_id + "]").attr('selected', 'selected')
+						yunsuan_project_dom.find("option[value=" + res.data.yunsuan_id + "]").attr('selected', 'selected');
 					}
 					if (res.data.province != '') {
 						$("select[name='province']").find("option[value=" + res.data.province + "]").attr('selected', 'selected');
