@@ -35,6 +35,24 @@ var config={
     }
 }
 
+
+
+function checkLogin(){
+
+    if(token=$.cookie(config.cookiePrefix+'login_token')){
+        var data={
+            'token':token
+        };
+        ajax.publicInfo('project/user/init',data,function(res){
+            if(res.code==config.responseSuccess){
+                $.cookie(config.cookiePrefix+'login_token',res.data.token)
+                window.location.href='index.html';
+            }
+        },'GET');
+    }
+}
+
+
 var ajax={
     submitting:false,
 
@@ -54,9 +72,9 @@ var ajax={
 
     //不需要token的
     publicInfo:function(url,data,func,type){
-       /* if(this.submitting==true){
-            return ;
-        }*/
+        /* if(this.submitting==true){
+             return ;
+         }*/
         if(func!=undefined){
             ajax.success=func;
         }
@@ -119,11 +137,11 @@ var ajax={
 
     //get方法
     get:function(url,data,func){
-       /* if(this.submitting==true){
-            return ;
-        }
+        /* if(this.submitting==true){
+             return ;
+         }
 
-        this.submitting=true;*/
+         this.submitting=true;*/
         if(func!=undefined){
             ajax.success=func;
         }
@@ -155,36 +173,6 @@ var ajax={
 
 }
 
-function checkLogin(){
 
-    if(token=$.cookie(config.cookiePrefix+'login_token')){
-        var data={
-            'token':token
-        };
-        ajax.publicInfo('project/user/init',data,function(res){
-            if(res.code==config.responseSuccess){
-                $.cookie(config.cookiePrefix+'login_token',res.data.token)
-                window.location.href='index.html';
-            }
-        },'GET');
-    }
-}
-
-function loginAuth()
-{
-    if(token=$.cookie(config.cookiePrefix+'login_token')){
-        var data={
-            'token':token
-        };
-        ajax.publicInfo('project/user/init',data,function(res){
-            if(res.code!=config.responseSuccess){
-                window.location.href='login.html';
-            }
-        },'GET');
-    }
-}
-
-$('#header').load('public/header.html');
-$('#menu').load('public/menu.html');
 
 
