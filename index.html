@@ -397,7 +397,7 @@
 							'url': res.data.yunsuan_url
 						}, function (response) {
 							$.each(response.data[0].content[0].rows, function (k, v) {
-								yunsuan_project_dom.append('<option value="' + v.XMID + '">' + v.XMMC + '</option>');
+								yunsuan_project_dom.append('<option value="' + v.XMID + '">' + v.XMMC + '</option>')
 							})
 						})
 					}
