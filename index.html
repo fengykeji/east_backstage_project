@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta charset="utf-8" />
+	<title>项目信息</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+	<!-- bootstrap & fontawesome -->
+	<link rel="stylesheet" href="assets/css/bootstrap.css" />
+	<link rel="stylesheet" href="components/font-awesome/css/font-awesome.css" />
+
+	<!-- text fonts -->
+	<link rel="stylesheet" href="assets/css/ace-fonts.css" />
+
+	<!-- ace styles -->
+	<link rel="stylesheet" href="assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
+
+
+	<link rel="stylesheet" href="assets/css/ace-skins.css" />
+	<link rel="stylesheet" href="assets/css/ace-rtl.css" />
+
+
+
+	<!-- ace settings handler -->
+	<script src="assets/js/ace-extra.js"></script>
+
+
+
+
+	<!-- 自定义css -->
+	<link rel="stylesheet" href="assets/css/Customize_css/index.css">
+	<link rel="stylesheet" href="assets/css/Customize_css/upLoadImg.css">
+
+</head>
+
+<body class="no-skin">
+	<div id="header">
+
+	</div>
+	<div class="main-content">
+		<script type="text/javascript">
+			try {
+				ace.settings.check('main-container', 'fixed')
+			} catch (e) {}
+		</script>
+		<!-- 菜单开始 -->
+		<div id="sidebar" class="sidebar responsive ace-save-state">
+
+		</div>
+		<div class="main-content">
+		<div class="main-content-inner">
+			<div class="breadcrumbs" id="breadcrumbs">
+				<script type="text/javascript">
+					try {
+						ace.settings.check('breadcrumbs', 'fixed')
+					} catch (e) {}
+				</script>
+				<ul class="breadcrumb">
+					<li>
+						<i class="ace-icon fa fa-home home-icon"></i>
+						<a href="#">楼盘字典>项目信息</a>
+					</li>
+				</ul>
+				<div class="operate_proInfo">
+					<button class="btn btn-primary">预览</button>
+					<button class="btn btn-danger">保存</button>
+				</div>
+			</div>
+			<!-- 内容开始 -->
+			<div class="page-content">
+				<div class="row">
+					<div class="col-xs-12">
+						<form class="form-horizontal" role="form">
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 项目名称：</label>
+
+								<div class="col-sm-9">
+									<p class="col-xs-10 col-sm-5 inputP" id="project_name"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 项目地址：</label>
+								<div class="col-sm-9">
+									<select name="province"></select>
+									<select name="city"></select>
+									<select name="area"></select>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right" for="form-field-2"></label>
+
+								<div class="col-sm-9">
+									<input type="text" class="col-xs-10 col-sm-5" id="absolute_address">
+									<a href="map.html" class="ace-icon fa fa-map-marker bigger-200" style="margin-left: 5px;margin-top: 3px;cursor: pointer;"></a>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-xs-12">
+									<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 项目主图：</label>
+									<label class="ace-file-input ace-file-multiple col-sm-3 fileUpLabel">
+										<img class="show_UpImg" src="" alt="项目主图" id="img_url">
+										<input multiple="" type="file">
+										<span class="ace-file-container" data-title="点击上传图片" id="no_pic">
+											<span class="ace-file-name" data-title="No File ...">
+												<i class=" ace-icon fa fa-picture-o">
+												</i>
+											</span>
+										</span>
+									</label>
+									<!--	<div class="show_UpDiv col-sm-3 ace-file-input ace-file-multiple">
+										<img class="show_UpImg" src="" alt="项目主图" id="img_url">
+										<div class="del_UpImg">
+											<i class="ace-icon fa fa-trash-o fa-2x icon-only"></i>
+										</div>
+									</div>-->
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 物业类型：</label>
+
+								<div class="col-sm-9" id="property"></div>
+
+
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right " for="form-field-2">项目标签：</label>
+								<div class="col-sm-9 tags pro_label">
+									<span class="tag">
+										学区房
+										<button type="button" class="close closed">×</button>
+									</span>
+									<span class="tag">
+										满五年
+										<button type="button" class="close closed">×</button>
+									</span>
+									<span class="tag">
+										地铁房
+										<button type="button" class="close closed">×</button>
+									</span>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right" for="form-field-2"></label>
+								<div class="col-sm-9">
+									<!-- <input id="label_Add_int" type="text"> -->
+									<span id="label_Add" class="btn btn-success ">添加标签</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 开发商：</label>
+								<div class="col-sm-9">
+									<p class="col-xs-10 col-sm-5 inputP" id="developer_name"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 项目状态：</label>
+
+								<div class="col-sm-9">
+									<select class="form-control" style="width: 150px;" name="sale_state">
+										<option value=""></option>
+										<option value="1">代售</option>
+										<option value="2">在售</option>
+										<option value="3">售罄</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right" for="form-field-2">云算地址：</label>
+								<div class="col-sm-9">
+									<input type="text" class="col-xs-10 col-sm-5" id="yunsuan_url">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 选择项目：</label>
+								<div class="col-sm-9">
+									<select class="form-control" style="width: 150px;" name="yunsuan_project">
+										<option value=""></option>
+
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-xs-12">
+									<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 楼栋信息主图：</label>
+									<label class="ace-file-input ace-file-multiple col-sm-3 fileUpLabel">
+										<input multiple="" type="file">
+										<span class="ace-file-container" data-title="点击上传图片">
+											<span class="ace-file-name" data-title="No File ...">
+												<i class=" ace-icon ace-icon fa fa-picture-o">
+
+												</i>
+											</span>
+										</span>
+									</label>
+									<div class="show_UpDiv col-sm-3 ace-file-input ace-file-multiple">
+										<img class="show_UpImg" src="assets/images/email1.png" alt="">
+										<div class="del_UpImg">
+											<i class="ace-icon fa fa-trash-o fa-2x icon-only"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+
+
+
+
+
+
+
+	<div class="modal_all">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="bootbox-close-button close closed">×</button>
+					<h4 class="modal-title">添加项目标签</h4>
+				</div>
+				<div class="modal-body">
+					<div class="bootbox-body">
+						<ul class="pro_lable_list">
+							<li class="pro_lable_def">学区房</li>
+							<li class="pro_lable_def">满五年</li>
+							<li class="pro_lable_def">地铁房</li>
+							<li>公寓房</li>
+							<li>公寓房
+								<i class=" fa fa-check icon-on-right bigger-90"></i>
+							</li>
+							<li>公寓房</li>
+							<li>公寓房</li>
+							<li>公寓房</li>
+							<li>公寓房公寓房</li>
+							<li>公寓房</li>
+							<li>公寓房
+								<i class=" fa fa-check icon-on-right bigger-90"></i>
+							</li>
+							<li>公寓房
+								<i class=" fa fa-check icon-on-right bigger-90"></i>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
+					<button data-bb-handler="confirm" type="button" class="btn btn-primary">确定</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- basic scripts -->
+
+	<!--[if !IE]> -->
+	<script src="components/jquery/dist/jquery.js"></script>
+
+	<script type="text/javascript">
+		if ('ontouchstart' in document.documentElement) document.write(
+			"<script src='components/_mod/jquery.mobile.custom/jquery.mobile.custom.js'>" + "<" + "/script>");
+	</script>
+	<script src="components/bootstrap/dist/js/bootstrap.js"></script>
+	<!-- ace scripts -->
+	<script src="assets/js/src/elements.scroller.js"></script>
+	<script src="assets/js/src/elements.colorpicker.js"></script>
+	<script src="assets/js/src/elements.fileinput.js"></script>
+	<script src="assets/js/src/elements.typeahead.js"></script>
+	<script src="assets/js/src/elements.wysiwyg.js"></script>
+	<script src="assets/js/src/elements.spinner.js"></script>
+	<script src="assets/js/src/elements.treeview.js"></script>
+	<script src="assets/js/src/elements.wizard.js"></script>
+	<script src="assets/js/src/elements.aside.js"></script>
+	<script src="assets/js/src/ace.js"></script>
+	<script src="assets/js/src/ace.basics.js"></script>
+	<script src="assets/js/src/ace.scrolltop.js"></script>
+	<script src="assets/js/src/ace.ajax-content.js"></script>
+	<script src="assets/js/src/ace.touch-drag.js"></script>
+	<script src="assets/js/src/ace.sidebar.js"></script>
+	<script src="assets/js/src/ace.sidebar-scroll-1.js"></script>
+	<script src="assets/js/src/ace.submenu-hover.js"></script>
+	<script src="assets/js/src/ace.widget-box.js"></script>
+	<script src="assets/js/src/ace.settings.js"></script>
+	<script src="assets/js/src/ace.settings-rtl.js"></script>
+	<script src="assets/js/src/ace.settings-skin.js"></script>
+	<script src="assets/js/src/ace.widget-on-reload.js"></script>
+	<script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
+	<!-- 本页js -->
+	<script src="assets/js/Customize_js/upLoadImg.js"></script>
+	<script src="assets/js/config.js"></script>
+	<script src="assets/js/jquery.cookie.js"></script>
+	<script>
+		//删除项目标签
+		$('.pro_label').on('click', '.closed', function (event) {
+			event.stopPropagation();
+			$(this).parent().remove();
+		})
+
+		//添加项目标签
+		$('#label_Add').on('click', function (event) {
+			event.stopPropagation();
+			$('.modal_all').css('display', 'block');
+			// let values = $('#label_Add_int').val();
+			// $('.pro_label').append(
+			// 	'<span class="tag">' +
+			// 	values +
+			// 	'<button type="button" class="close closed">×</button></span>');
+			// $('#label_Add_int').val('');
+		})
+
+		$('.closed').on('click', function () {
+			$(this).parent().parent().parent().parent().css('display', 'none');
+		})
+	</script>
+	<script>
+<<<<<<< HEAD
+		var data = {
+			regionList: '',
+			config: '',
+			currentPointProvince: '',
+			currentPointCity: '',
+		};
+		window.onload = function () {
+			$('#header').load('public/header.html');
+			$('#sidebar').load('public/menu.html');
+
+			//获取配置
+			$.ajax({
+				url: config.address + 'config',
+				type: 'GET',
+				dataType: "json",
+				success: function (res) {
+					getAddress();
+					data.config = res.data;
+					var property_start =
+						' <div class="checkbox checkSty_projectInfo"><label> <input name="form-field-checkbox" type="checkbox" class="ace"><span class="lbl">',
+						property_end = '</span></label> </div>',
+						property_dom = $('#property');
+					$.each(data.config[config.configList.PROPERTY_TYPE].param, function (k, v) {
+						property_dom.append(property_start + v.param + property_end);
+=======
+        var data={
+            regionList:'',
+            config:'',
+			currentPointProvince:'',
+			currentPointCity:'',
+        };
+        window.onload=function(){
+            //获取配置
+            $.ajax({
+                url: config.address+'config',
+                type:'GET',
+                dataType:"json",
+                success: function (res) {
+                    getAddress();
+                    data.config=res.data;
+					var property_start=' <div class="checkbox checkSty_projectInfo"><label> <input name="form-field-checkbox" type="checkbox" class="ace"><span class="lbl">',
+						property_end='</span></label> </div>',
+						property_dom=$('#property');
+					$.each(data.config[config.configList.PROPERTY_TYPE].param,function(k,v){
+						property_dom.append(property_start+v.param+property_end);
+>>>>>>> c8f06a61baa8722b108b35385aa58c2c8e44f890
+					})
+				},
+				error: function () {
+					ajax.error();
+				}
+			})
+			//获取所有地址
+			function getAddress() {
+				$.ajax({
+					url: config.address + 'getAll',
+					type: 'GET',
+					dataType: "json",
+					success: function (res) {
+						data.regionList = res.data;
+						var province = $("select[name='province']");
+						$.each(data.regionList, function (k, v) {
+							province.append('<option value="' + v.code + '">' + v.name + '</option>')
+						})
+						getProjectInfo();
+					},
+					error: function () {
+						ajax.error();
+					}
+				})
+			}
+
+			//获取项目信息
+			function getProjectInfo() {
+				ajax.get('provide/project/getProjectInfo', {}, function (res) {
+					var yunsuan_project_dom = $("select[name='yunsuan_project']");
+					$('#project_name').html(res.data.project_name);
+					$('#absolute_address').val(res.data.absolute_address);
+					$('#yunsuan_url').val(res.data.yunsuan_url);
+					$('#developer_name').html(res.data.developer_name);
+					$("select[name='sale_state']").find("option[value=" + res.data.sale_state + "]").attr('selected', 'selected');
+					if (res.data.img_url == '') {
+						$('#img_url').hide();
+					} else {
+						$('#img_url').attr('src', config.address + res.data.img_url);
+						$('#no_pic').hide();
+					}
+					if (res.data.yunsuan_url != '') {
+						ajax.get('project/build/getYsBuild', {
+							'url': res.data.yunsuan_url
+						}, function (response) {
+							$.each(response.data[0].content[0].rows, function (k, v) {
+								yunsuan_project_dom.append('<option value="' + v.XMID + '">' + v.XMMC + '</option>')
+							})
+						})
+					}
+					if (res.data.yunsuan_id != '') {
+						yunsuan_project_dom.find("option[value=" + res.data.yunsuan_id + "]").attr('selected', 'selected')
+					}
+					if (res.data.province != '') {
+						$("select[name='province']").find("option[value=" + res.data.province + "]").attr('selected', 'selected');
+					}
+					/*   if(res.data.city!=''){
+					       $("select[name='province']").find("option[value="+res.data.province+"]").attr('selected','selected');
+					   }*/
+
+				})
+			}
+
+		}
+		$(document).on('change', 'select[name="province"]', function () {
+
+			var value = $('select[name="province"]').val(),
+				city = $('select[name="city"]');
+			city.children().remove();
+			$.each(data.regionList, function (k, v) {
+				if (v.code == value) {
+					data.currentPointProvince = v.city;
+					$.each(v.city, function (k, v) {
+						city.append('<option value="' + v.code + '">' + v.name + '</option>')
+					})
+				}
+			})
+		})
+		$(document).on('change', 'select[name="city"]', function () {
+
+			var value = $('select[name="city"]').val(),
+				area = $('select[name="area"]');
+			area.children().remove();
+			console.log(data.currentPointProvince);
+			$.each(data.currentPointProvince, function (k, v) {
+				if (v.code == value) {
+					data.currentPointCity = v.district;
+					$.each(v.district, function (k, v) {
+						area.append('<option value="' + v.code + '">' + v.name + '</option>')
+					})
+				}
+			})
+		})
+	</script>
+
+</body>
+
+</html>
