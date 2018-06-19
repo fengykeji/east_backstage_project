@@ -1,86 +1,106 @@
+<script type="text/javascript">
+    try {
+        ace.settings.loadState('sidebar')
+    } catch (e) {}
+</script>
+<ul class="nav nav-list">
+    <li class="open">
+        <a href="#" class="dropdown-toggle">
+            <i class="menu-icon fa fa-list"></i>
+            <span class="menu-text">
+                楼盘字典
+            </span>
 
-    <!-- 菜单开始 -->
-    <div id="sidebar" class="sidebar responsive ace-save-state">
+            <b class="arrow fa fa-angle-down"></b>
+        </a>
 
-        <ul class="nav nav-list">
-            <li class="open">
-                <a href="#" class="dropdown-toggle">
-                    <i class="menu-icon fa fa-list"></i>
-                    <span class="menu-text">
-							楼盘字典
-						</span>
+        <b class="arrow"></b>
 
+        <ul class="submenu">
+            <li class="">
+                <a data-url="page/typography" href="index.html">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    项目信息
+                </a>
+
+                <b class="arrow"></b>
+            </li>
+
+            <li class="active">
+                <a data-url="page/buttons" href="ProjectImg.html">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    项目图片
+                </a>
+
+                <b class="arrow"></b>
+            </li>
+
+            <li class="">
+                <a data-url="page/elements" href="PropertyDetail.html">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    楼盘详情
+                </a>
+
+                <b class="arrow"></b>
+            </li>
+            <li class="">
+                <a data-url="page/content-slider" href="BuildInfo.html">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    楼栋信息
+                </a>
+
+                <b class="arrow"></b>
+            </li>
+            <li class="">
+                <a data-url="page/content-slider" href="HouseInfor.html">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    户型信息
+                </a>
+
+                <b class="arrow"></b>
+            </li>
+
+            <li class="">
+                <a data-url="page/treeview" href="ProjectAnalysis.html">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    项目分析
+                </a>
+
+                <b class="arrow"></b>
+            </li>
+
+            <li class="">
+                <a data-url="page/nestable-list" href="DynamicList.html">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    动态列表
+                </a>
+
+                <b class="arrow"></b>
+            </li>
+            <li class="">
+                <a href="" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-caret-right"></i>
+
+                    一体机设置
                     <b class="arrow fa fa-angle-down"></b>
                 </a>
 
                 <b class="arrow"></b>
 
-                <ul class="submenu">
-                    <li class="active">
-                        <a data-url="page/typography" href="index.html">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            项目信息
+                <ul class="submenu nav-hide" style="display: none;">
+                    <li class="">
+                        <a href="MachineSet.html">
+                            <i class="menu-icon fa fa-bolt"></i>
+                            主菜单管理
                         </a>
 
                         <b class="arrow"></b>
                     </li>
 
                     <li class="">
-                        <a data-url="page/buttons" href="ProjectImg.html">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            项目图片
-                        </a>
-
-                        <b class="arrow"></b>
-                    </li>
-
-                    <li class="">
-                        <a data-url="page/elements" href="PropertyDetail.html">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            楼盘详情
-                        </a>
-
-                        <b class="arrow"></b>
-                    </li>
-                    <li class="">
-                        <a data-url="page/content-slider" href="BuildInfo.html">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            楼栋信息
-                        </a>
-
-                        <b class="arrow"></b>
-                    </li>
-                    <li class="">
-                        <a data-url="page/content-slider" href="HouseInfor.html">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            户型信息
-                        </a>
-
-                        <b class="arrow"></b>
-                    </li>
-
-                    <li class="">
-                        <a data-url="page/treeview" href="ProjectAnalysis.html">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            项目分析
-                        </a>
-
-                        <b class="arrow"></b>
-                    </li>
-
-                    <li class="">
-                        <a data-url="page/nestable-list" href="DynamicList.html">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            动态列表
-                        </a>
-
-                        <b class="arrow"></b>
-                    </li>
-                    <li class="">
-                        <a href="" class="dropdown-toggle">
-                            <i class="menu-icon fa fa-caret-right"></i>
-
-                            一体机设置
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-bolt"></i>
+                            二级菜单展示
                             <b class="arrow fa fa-angle-down"></b>
                         </a>
 
@@ -88,126 +108,108 @@
 
                         <ul class="submenu nav-hide" style="display: none;">
                             <li class="">
-                                <a href="MachineSet.html">
-                                    <i class="menu-icon fa fa-bolt"></i>
-                                    主菜单管理
+                                <a href="#">
+                                    <i class="menu-icon fa fa-fighter-jet"></i>
+                                    品牌展示
                                 </a>
 
                                 <b class="arrow"></b>
                             </li>
 
                             <li class="">
-                                <a href="#" class="dropdown-toggle">
-                                    <i class="menu-icon fa fa-bolt"></i>
-                                    二级菜单展示
-                                    <b class="arrow fa fa-angle-down"></b>
+                                <a href="#">
+                                    <i class="menu-icon fa fa-fighter-jet"></i>
+                                    区域规划
                                 </a>
 
                                 <b class="arrow"></b>
+                            </li>
+                            <li class="">
+                                <a href="#">
+                                    <i class="menu-icon fa fa-fighter-jet"></i>
+                                    项目概况
+                                </a>
 
-                                <ul class="submenu nav-hide" style="display: none;">
-                                    <li class="">
-                                        <a href="#">
-                                            <i class="menu-icon fa fa-fighter-jet"></i>
-                                            品牌展示
-                                        </a>
+                                <b class="arrow"></b>
+                            </li>
+                            <li class="">
+                                <a href="#">
+                                    <i class="menu-icon fa fa-fighter-jet"></i>
+                                    项目配套
+                                </a>
 
-                                        <b class="arrow"></b>
-                                    </li>
+                                <b class="arrow"></b>
+                            </li>
+                            <li class="">
+                                <a href="#">
+                                    <i class="menu-icon fa fa-fighter-jet"></i>
+                                    自助选房
+                                </a>
 
-                                    <li class="">
-                                        <a href="#">
-                                            <i class="menu-icon fa fa-fighter-jet"></i>
-                                            区域规划
-                                        </a>
+                                <b class="arrow"></b>
+                            </li>
 
-                                        <b class="arrow"></b>
-                                    </li>
-                                    <li class="">
-                                        <a href="#">
-                                            <i class="menu-icon fa fa-fighter-jet"></i>
-                                            项目概况
-                                        </a>
+                            <li class="">
+                                <a href="#">
+                                    <i class="menu-icon fa fa-fighter-jet"></i>
+                                    户型鉴赏
+                                </a>
 
-                                        <b class="arrow"></b>
-                                    </li>
-                                    <li class="">
-                                        <a href="#">
-                                            <i class="menu-icon fa fa-fighter-jet"></i>
-                                            项目配套
-                                        </a>
+                                <b class="arrow"></b>
+                            </li>
+                            <li class="">
+                                <a href="#">
+                                    <i class="menu-icon fa fa-fighter-jet"></i>
+                                    置业顾问
+                                </a>
 
-                                        <b class="arrow"></b>
-                                    </li>
-                                    <li class="">
-                                        <a href="#">
-                                            <i class="menu-icon fa fa-fighter-jet"></i>
-                                            自助选房
-                                        </a>
-
-                                        <b class="arrow"></b>
-                                    </li>
-
-                                    <li class="">
-                                        <a href="#">
-                                            <i class="menu-icon fa fa-fighter-jet"></i>
-                                            户型鉴赏
-                                        </a>
-
-                                        <b class="arrow"></b>
-                                    </li>
-                                    <li class="">
-                                        <a href="#">
-                                            <i class="menu-icon fa fa-fighter-jet"></i>
-                                            置业顾问
-                                        </a>
-
-                                        <b class="arrow"></b>
-                                    </li>
-                                </ul>
+                                <b class="arrow"></b>
                             </li>
                         </ul>
                     </li>
                 </ul>
             </li>
-            <li class="">
-                <a data-url="page/gallery" href="CommissionRules.html">
-                    <i class="menu-icon fa fa-list"></i>
-                    <span class="menu-text"> 结佣规则 </span>
-                </a>
-
-                <b class="arrow"></b>
-            </li>
-            <li class="">
-                <a data-url="page/gallery" href="CommissionManagement.html">
-                    <i class="menu-icon fa fa-list"></i>
-                    <span class="menu-text"> 佣金管理 </span>
-                </a>
-
-                <b class="arrow"></b>
-            </li>
-            <li class="">
-                <a data-url="page/gallery" href="CustomerManagement.html">
-                    <i class="menu-icon fa fa-list"></i>
-                    <span class="menu-text"> 客户管理 </span>
-                </a>
-
-                <b class="arrow"></b>
-            </li>
-            <li class="">
-                <a data-url="page/gallery" href="BrokerManagement.html">
-                    <i class="menu-icon fa fa-list"></i>
-                    <span class="menu-text"> 经纪人管理 </span>
-                </a>
-
-                <b class="arrow"></b>
-            </li>
         </ul>
-        <!-- /.nav-list -->
+    </li>
+    <li class="">
+        <a data-url="page/gallery" href="CommissionRules.html">
+            <i class="menu-icon fa fa-list"></i>
+            <span class="menu-text"> 结佣规则 </span>
+        </a>
 
-        <!-- #section:basics/sidebar.layout.minimize -->
-        <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
-            <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left"
-               data-icon2="ace-icon fa fa-angle-double-right"></i>
-        </div>
-    </div>
+        <b class="arrow"></b>
+    </li>
+    <li class="">
+        <a data-url="page/gallery" href="CommissionManagement.html">
+            <i class="menu-icon fa fa-list"></i>
+            <span class="menu-text"> 佣金管理 </span>
+        </a>
+
+        <b class="arrow"></b>
+    </li>
+    <li class="">
+        <a data-url="page/gallery" href="CustomerManagement.html">
+            <i class="menu-icon fa fa-list"></i>
+            <span class="menu-text"> 客户管理 </span>
+        </a>
+
+        <b class="arrow"></b>
+    </li>
+    <li class="">
+        <a data-url="page/gallery" href="BrokerManagement.html">
+            <i class="menu-icon fa fa-list"></i>
+            <span class="menu-text"> 经纪人管理 </span>
+        </a>
+
+        <b class="arrow"></b>
+    </li>
+</ul>
+<!-- /.nav-list -->
+
+<!-- #section:basics/sidebar.layout.minimize -->
+<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+    <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left"
+        data-icon2="ace-icon fa fa-angle-double-right"></i>
+</div>
+
+<!-- /section:basics/sidebar.layout.minimize -->

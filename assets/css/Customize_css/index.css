@@ -40,4 +40,56 @@
     padding: 2px 5px;
     vertical-align: top;
 }
+.modal_all {
+    display: none;
+    background-color: rgba(0, 0, 0, .5);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.modal-dialog {
+    margin: 150px auto;
+}
+
+.bootbox-body {
+    font-size: 18px;
+    margin-top: 25px;
+    text-align: center;
+}
+
+.modal-content {
+    padding: 30px 50px;
+}
+
+.modal-footer {
+    margin-top: 20px;
+}
+
+.close {
+    font-size: 32px;
+}
+.pro_lable_list{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+.pro_lable_list li{
+    float: left;
+    background-color: #9ec897;
+    color: white;
+    padding: 10px 15px;
+    margin: 5px;
+   font-size: 16px;
+   cursor: pointer;
+}
+/* 已选中 */
+.pro_lable_def{
+    background-color: #eeeeee!important;
+    color: #999999!important;
+}
 
