@@ -184,4 +184,7 @@ function loginAuth()
     }
 }
 
+$('#header').load('public/header.html');
+$('#menu').load('public/menu.html');
+
 
