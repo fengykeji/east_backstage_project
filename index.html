@@ -319,6 +319,7 @@
 		})
 	</script>
 	<script>
+<<<<<<< HEAD
 		var data = {
 			regionList: '',
 			config: '',
@@ -343,6 +344,28 @@
 						property_dom = $('#property');
 					$.each(data.config[config.configList.PROPERTY_TYPE].param, function (k, v) {
 						property_dom.append(property_start + v.param + property_end);
+=======
+        var data={
+            regionList:'',
+            config:'',
+			currentPointProvince:'',
+			currentPointCity:'',
+        };
+        window.onload=function(){
+            //获取配置
+            $.ajax({
+                url: config.address+'config',
+                type:'GET',
+                dataType:"json",
+                success: function (res) {
+                    getAddress();
+                    data.config=res.data;
+					var property_start=' <div class="checkbox checkSty_projectInfo"><label> <input name="form-field-checkbox" type="checkbox" class="ace"><span class="lbl">',
+						property_end='</span></label> </div>',
+						property_dom=$('#property');
+					$.each(data.config[config.configList.PROPERTY_TYPE].param,function(k,v){
+						property_dom.append(property_start+v.param+property_end);
+>>>>>>> c8f06a61baa8722b108b35385aa58c2c8e44f890
 					})
 				},
 				error: function () {
