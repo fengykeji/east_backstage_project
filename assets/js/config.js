@@ -1,9 +1,11 @@
 var config={
-    address:'http://120.27.21.136:2798/',//'http://localhost/back/public/index.php/',
+    address:'http://120.27.21.136:2798/',
     responseError:400,
     responseSuccess:200,
     cookiePrefix:'yqd_',
     defaultRole:'project',
+    allowImgFileSize:2*1024*1024,
+    ImgSizeBeyondErrMes:'上传文件大小不能超过2m',
     configList:{
         'BANK_TYPE':1, //银行类型
         'CARD_TYPE':2, //证件类型
@@ -125,7 +127,6 @@ var ajax={
             },
             success: function (res) {
                 ajax.res=res;
-
                 ajax.success(ajax.res);
             },
             error: function () {
@@ -137,11 +138,7 @@ var ajax={
 
     //get方法
     get:function(url,data,func){
-        /* if(this.submitting==true){
-             return ;
-         }
 
-         this.submitting=true;*/
         if(func!=undefined){
             ajax.success=func;
         }
@@ -160,16 +157,46 @@ var ajax={
             },
             success: function (res) {
                 ajax.res=res;
-                ajax.is_success=true
+                ajax.success(ajax.res);
             },
             error: function () {
                 alert('当前网络状态不稳定，请稍后再试');
             }
         })
-        if(this.is_success==true){
-            this.success(ajax.res);
-        }
+
     },
+
+    //上传图片
+    file:function(formData,type,func){
+        if(this.submitting==true){
+            return ;
+        }
+        if(func!=undefined){
+            ajax.success=func;
+        }
+        this.submitting=true;
+        $.ajax({
+            url : config.address+'project/file/upload?file_name='+type,
+            type : 'POST',
+            data : formData,
+            headers: {
+                'ACCESS-ROLE':config.defaultRole,
+                'ACCESS-TOKEN':$.cookie(config.cookiePrefix+'login_token'),
+            },
+            processData : false,
+            contentType : false,
+            complete:function(){
+                ajax.submitting=false;
+            },
+            success : function(res) {
+                ajax.res=res;
+                ajax.success(ajax.res);
+            },
+            error : function(res) {
+                alert('当前网络状态不稳定，请稍后再试');
+            }
+        });
+    }
 
 }
 

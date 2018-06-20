@@ -8,13 +8,15 @@ function loginAuth()
         var data={
             'token':token
         };
-
         ajax.publicInfo('project/user/init',data,function(res){
             if(res.code!=config.responseSuccess){
                 window.location.href='login.html';
             }
         },'GET');
+    }else{
+        window.location.href='login.html';
     }
+
 }
 
 $.extend({

@@ -94,42 +94,9 @@
 
 <body class="no-skin">
     <!-- #section:basics/navbar.layout -->
-    <div id="navbar" class="navbar navbar-default  ace-save-state">
-        <div class="navbar-container ace-save-state" id="navbar-container">
-            <button type="button" class="navbar-toggle menu-toggler pull-left display" id="menu-toggler" data-target="#sidebar">
-                <span class="sr-only">Toggle sidebar</span>
+    <div id="header">
 
-                <span class="icon-bar"></span>
-
-                <span class="icon-bar"></span>
-
-                <span class="icon-bar"></span>
-            </button>
-            <div class="navbar-header pull-left">
-                <a href="#" class="navbar-brand">
-                    <small>
-                        云算系统后台
-                    </small>
-                </a>
-            </div>
-            <div class="navbar-buttons navbar-header pull-right" role="navigation">
-                <ul class="nav ace-nav">
-                    <li class="light-blue dropdown-modal">
-                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                            <img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo">
-                            <span class="user-info">
-                                Jason退出登录
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- /.navbar-container -->
     </div>
-
-
-
     <!-- /section:basics/navbar.layout -->
     <div class="main-container" id="main-container">
         <script type="text/javascript">
@@ -145,218 +112,12 @@
                     ace.settings.loadState('sidebar')
                 } catch (e) {}
             </script>
-            <ul class="nav nav-list">
-                <li class="open">
-                    <a href="#" class="dropdown-toggle">
-                        <i class="menu-icon fa fa-list"></i>
-                        <span class="menu-text">
-                            楼盘字典
-                        </span>
+            <div id="menu" style="position: absolute;height: 100%;z-index:100">
 
-                        <b class="arrow fa fa-angle-down"></b>
-                    </a>
-
-                    <b class="arrow"></b>
-
-                    <ul class="submenu">
-                        <li class="">
-                            <a data-url="page/typography" href="index.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                项目信息
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a data-url="page/buttons" href="ProjectImg.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                项目图片
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a data-url="page/elements" href="PropertyDetail.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                楼盘详情
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-                        <li class="">
-                            <a data-url="page/content-slider" href="BuildInfo.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                楼栋信息
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-                        <li class="">
-                            <a data-url="page/content-slider" href="HouseInfor.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                户型信息
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="active">
-                            <a data-url="page/treeview" href="ProjectAnalysis.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                项目分析
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a data-url="page/nestable-list" href="DynamicList.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                动态列表
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-                        <li class="">
-                            <a href="" class="dropdown-toggle">
-                                <i class="menu-icon fa fa-caret-right"></i>
-
-                                一体机设置
-                                <b class="arrow fa fa-angle-down"></b>
-                            </a>
-
-                            <b class="arrow"></b>
-
-                            <ul class="submenu nav-hide" style="display: none;">
-                                <li class="">
-                                    <a href="MachineSet.html">
-                                        <i class="menu-icon fa fa-bolt"></i>
-                                        主菜单管理
-                                    </a>
-
-                                    <b class="arrow"></b>
-                                </li>
-
-                                <li class="">
-                                    <a href="#" class="dropdown-toggle">
-                                        <i class="menu-icon fa fa-bolt"></i>
-                                        二级菜单展示
-                                        <b class="arrow fa fa-angle-down"></b>
-                                    </a>
-
-                                    <b class="arrow"></b>
-
-                                    <ul class="submenu nav-hide" style="display: none;">
-                                        <li class="">
-                                            <a href="#">
-                                                <i class="menu-icon fa fa-fighter-jet"></i>
-                                                品牌展示
-                                            </a>
-
-                                            <b class="arrow"></b>
-                                        </li>
-
-                                        <li class="">
-                                            <a href="#">
-                                                <i class="menu-icon fa fa-fighter-jet"></i>
-                                                区域规划
-                                            </a>
-
-                                            <b class="arrow"></b>
-                                        </li>
-                                        <li class="">
-                                            <a href="#">
-                                                <i class="menu-icon fa fa-fighter-jet"></i>
-                                                项目概况
-                                            </a>
-
-                                            <b class="arrow"></b>
-                                        </li>
-                                        <li class="">
-                                            <a href="#">
-                                                <i class="menu-icon fa fa-fighter-jet"></i>
-                                                项目配套
-                                            </a>
-
-                                            <b class="arrow"></b>
-                                        </li>
-                                        <li class="">
-                                            <a href="#">
-                                                <i class="menu-icon fa fa-fighter-jet"></i>
-                                                自助选房
-                                            </a>
-
-                                            <b class="arrow"></b>
-                                        </li>
-
-                                        <li class="">
-                                            <a href="#">
-                                                <i class="menu-icon fa fa-fighter-jet"></i>
-                                                户型鉴赏
-                                            </a>
-
-                                            <b class="arrow"></b>
-                                        </li>
-                                        <li class="">
-                                            <a href="#">
-                                                <i class="menu-icon fa fa-fighter-jet"></i>
-                                                置业顾问
-                                            </a>
-
-                                            <b class="arrow"></b>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li class="">
-                    <a data-url="page/gallery" href="CommissionRules.html">
-                        <i class="menu-icon fa fa-list"></i>
-                        <span class="menu-text"> 结佣规则 </span>
-                    </a>
-
-                    <b class="arrow"></b>
-                </li>
-                <li class="">
-                    <a data-url="page/gallery" href="CommissionManagement.html">
-                        <i class="menu-icon fa fa-list"></i>
-                        <span class="menu-text"> 佣金管理 </span>
-                    </a>
-
-                    <b class="arrow"></b>
-                </li>
-                <li class="">
-                    <a data-url="page/gallery" href="CustomerManagement.html">
-                        <i class="menu-icon fa fa-list"></i>
-                        <span class="menu-text"> 客户管理 </span>
-                    </a>
-
-                    <b class="arrow"></b>
-                </li>
-                <li class="">
-                    <a data-url="page/gallery" href="BrokerManagement.html">
-                        <i class="menu-icon fa fa-list"></i>
-                        <span class="menu-text"> 经纪人管理 </span>
-                    </a>
-
-                    <b class="arrow"></b>
-                </li>
-            </ul>
-            <!-- /.nav-list -->
-
-            <!-- #section:basics/sidebar.layout.minimize -->
-            <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
-                <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left"
-                    data-icon2="ace-icon fa fa-angle-double-right"></i>
             </div>
 
-            <!-- /section:basics/sidebar.layout.minimize -->
-        </div>
 
+        </div>
         <!-- /section:basics/sidebar -->
         <div class="main-content">
             <div class="main-content-inner">
@@ -374,7 +135,7 @@
                     </ul>
                     <div class="operate_proInfo">
                         <button class="btn btn-primary">预览</button>
-                        <button class="btn btn-danger">保存</button>
+                        <button class="btn btn-danger" id="save">保存</button>
                     </div>
                 </div>
                 <!-- 内容开始 -->
@@ -390,19 +151,19 @@
                                         <div class="widget-main" style="overflow: hidden;padding-left: 100px;">
                                             <div class="form-group">
                                                 <label style="vertical-align: top;">项目优势：</label>
-                                                <textarea cols="100" rows="4"></textarea>
+                                                <textarea cols="100" rows="4" id="advantage"></textarea>
                                             </div>
                                             <div class="form-group">
                                                 <label style="vertical-align: top;">周边分析：</label>
-                                                <textarea cols="100" rows="4"></textarea>
+                                                <textarea cols="100" rows="4" id="rim"></textarea>
                                             </div>
                                             <div class="form-group">
                                                 <label style="vertical-align: top;">升值空间：</label>
-                                                <textarea cols="100" rows="4"></textarea>
+                                                <textarea cols="100" rows="4" id="increase_value"></textarea>
                                             </div>
                                             <div class="form-group">
                                                 <label style="vertical-align: top;">适合人群：</label>
-                                                <textarea cols="100" rows="4"></textarea>
+                                                <textarea cols="100" rows="4" id="fetch"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -416,32 +177,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -481,6 +216,40 @@
     <script src="assets/js/src/ace.settings-skin.js"></script>
     <script src="assets/js/src/ace.widget-on-reload.js"></script>
     <script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
-</body>
 
+    <script src="assets/js/jquery.cookie.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/public.js"></script>
+</body>
+<script>
+
+    window.onload=function(){
+        getInfo()
+    }
+
+
+    function getInfo(){
+        ajax.get('project/analyse/get',{},function(res){
+            if(res.data.length!=0){
+                $('#advantage').val(res.data.advantage);
+                $('#fetch').val(res.data.fetch);
+                $('#rim').val(res.data.rim);
+                $('#increase_value').val(res.data.increase_value)
+            }
+
+        })
+    }
+    $('#save').click(function(){
+        var data={
+           'advamtage':$('#advantage').val(),
+            'fetch':  $('#fetch').val(),
+            'rim': $('#rim').val(),
+            'increase_value':$('#increase_value').val()
+        };
+        ajax.post('project/analyse/update',function(){
+            alter('修改成功');
+            window.location.reload();
+        })
+    })
+</script>
 </html>

@@ -4,14 +4,14 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta charset="utf-8" />
-    <title>顶部banner</title>
+    <title>项目图片</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 
     <!-- bootstrap & fontawesome -->
     <link rel="stylesheet" href="assets/css/bootstrap.css" />
     <link rel="stylesheet" href="components/font-awesome/css/font-awesome.css" />
-   
+
     <!-- text fonts -->
     <link rel="stylesheet" href="assets/css/ace-fonts.css" />
 
@@ -133,78 +133,84 @@
 </head>
 
 <body class="no-skin">
-    <!-- #section:basics/navbar.layout -->
-    <div id="header">
+<!-- #section:basics/navbar.layout -->
+<div id="header">
 
-    </div>
-    <!-- /section:basics/navbar.layout -->
-    <div class="main-container" id="main-container">
+</div>
+<!-- /section:basics/navbar.layout -->
+<div class="main-container" id="main-container">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('main-container', 'fixed')
+        } catch (e) {}
+    </script>
+
+    <!-- 菜单开始 -->
+    <div id="sidebar" class="sidebar responsive ace-save-state">
         <script type="text/javascript">
             try {
-                ace.settings.check('main-container', 'fixed')
+                ace.settings.loadState('sidebar')
             } catch (e) {}
         </script>
-
-        <!-- 菜单开始 -->
-        <div id="sidebar" class="sidebar responsive ace-save-state">
-           
-
+        <div id="menu" style="position: absolute;height: 100%;z-index:100">
 
         </div>
 
-        <!-- /section:basics/sidebar -->
-        <div class="main-content">
-            <div class="main-content-inner">
-                <div class="breadcrumbs" id="breadcrumbs">
-                    <script type="text/javascript">
-                        try {
-                            ace.settings.check('breadcrumbs', 'fixed')
-                        } catch (e) {}
-                    </script>
-                    <ul class="breadcrumb">
-                        <li>
-                            <i class="ace-icon fa fa-home home-icon"></i>
-                            <a href="ProjectImg.html">楼盘字典>顶部banner</a>
-                        </li>
-                    </ul>
-                    <div class="operate_proInfo">
-                        <button id="addImg" class="btn btn-danger">新增</button>
-                    </div>
+
+    </div>
+
+    <!-- /section:basics/sidebar -->
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs" id="breadcrumbs">
+                <script type="text/javascript">
+                    try {
+                        ace.settings.check('breadcrumbs', 'fixed')
+                    } catch (e) {}
+                </script>
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="ace-icon fa fa-home home-icon"></i>
+                        <a href="ProjectImg.html">楼盘字典>项目图片</a>
+                    </li>
+                </ul>
+                <div class="operate_proInfo">
+                    <button id="addImg" class="btn btn-danger">新增</button>
                 </div>
-                <!-- 内容开始 -->
-                <div class="page-content">
-                    <div class="row" style="margin-top: 50px;">
-                        <div class="col-xs-12">
-                            <div>
-                                <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
-                                    <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
-                                        <thead>
-                                            <tr role="row">
-                                                <th class="center">图片顺序</th>
-                                                <th class="center">图片</th>
-                                                <th class="center">备注</th>
-                                                <th class="center">更新人员</th>
-                                                <th class="center">更新时间</th>
-                                                <th class="center">操作</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="list">
+            </div>
+            <!-- 内容开始 -->
+            <div class="page-content">
+                <div class="row" style="margin-top: 50px;">
+                    <div class="col-xs-12">
+                        <div>
+                            <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
+                                <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+                                    <thead>
+                                    <tr role="row">
+                                        <th class="center">图片顺序</th>
+                                        <th class="center">图片</th>
+                                        <th class="center">备注</th>
+                                        <th class="center">更新人员</th>
+                                        <th class="center">更新时间</th>
+                                        <th class="center">操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="list">
 
-                                        </tbody>
-                                    </table>
-                                    <div class="row">
-                                        <div class="col-xs-12">
-                                            <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
-                                                <ul class="pagination" id="pagination">
-                                                    <li class="paginate_button previous disabled" id="prev" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_previous">
-                                                        <a href="#">上一页</a>
-                                                    </li>
+                                    </tbody>
+                                </table>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
+                                            <ul class="pagination" id="pagination">
+                                                <li class="paginate_button previous disabled" id="prev" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_previous">
+                                                    <a href="#">上一页</a>
+                                                </li>
 
-                                                    <li class="paginate_button next" id="next" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_next">
-                                                        <a href="#">下一页</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                                <li class="paginate_button next" id="next" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_next">
+                                                    <a href="#">下一页</a>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
@@ -215,221 +221,263 @@
             </div>
         </div>
     </div>
+</div>
 
-    <!-- 弹框 -->
-    <div class="modal_add">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="bootbox-close-button close closed">×</button>
-                    <h4 class="modal-title">新增</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="bootbox-body">
-                        <form class="bootbox-form">
-                            <div class="form-group">
-                                <label style="float: left; min-width: 100px;text-align: right">添加文件：</label>
-                                <label class="ace-file-input ace-file-multiple col-sm-5 fileUpLabel">
-                                    <input multiple="" type="file">
-                                    <span class="ace-file-container" data-title="点击上传图片">
-                                        <span class="ace-file-name" data-title="No File ...">
-                                            <i class=" ace-icon ace-icon fa fa-picture-o">
+<!-- 弹框 -->
+<div class="modal_add">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close closed">×</button>
+                <h4 class="modal-title">新增</h4>
+            </div>
+            <div class="modal-body">
+                <div class="bootbox-body">
+                    <form class="bootbox-form">
+                        <div class="form-group">
+                            <label style="float: left; min-width: 100px;text-align: right">添加文件：</label>
+                            <label class="ace-file-input ace-file-multiple col-sm-5 fileUpLabel">
+                                <img class="show_UpImg img_url" src="assets/images/null.jpg"  >
+                                <input multiple="" type="file" accept="image/*" id="img_add">
+                            </label>
 
-                                            </i>
-                                        </span>
-                                    </span>
-                                </label>
-                                <div class="show_UpDiv col-sm-3 ace-file-input ace-file-multiple">
-                                    <img class="show_UpImg" src="assets/images/email1.png" alt="">
-                                    <div class="del_UpImg">
-                                        <i class="ace-icon fa fa-trash-o fa-2x icon-only"></i>
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label style="float: left;min-width: 100px;text-align: right">备注：</label>
+                            <div style="float: left; width: 350px;text-align: left;">
+                                <textarea name="" id="comment_add" cols="45" rows="3"></textarea>
                             </div>
-                            <div class="form-group">
-                                <label style="float: left;min-width: 100px;text-align: right">备注：</label>
-                                <div style="float: left; width: 350px;text-align: left;">
-                                    <textarea name="" id="" cols="45" rows="3"></textarea>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="modal-footer">
-                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
-                    <button data-bb-handler="confirm" type="button" class="btn btn-primary">确定</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
+                <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="add">确定</button>
             </div>
         </div>
     </div>
-    <div class="modal_xiugai">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="bootbox-close-button close closed">×</button>
-                    <h4 class="modal-title">修改</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="bootbox-body">
-                        <form class="bootbox-form">
-                            <div class="form-group">
-                                <label style="float: left; min-width: 100px;text-align: right">添加文件：</label>
-                                <label class="ace-file-input ace-file-multiple col-sm-5 fileUpLabel">
-                                    <input multiple="" type="file">
-                                    <span class="ace-file-container" data-title="点击上传图片">
-                                        <span class="ace-file-name" data-title="No File ...">
-                                            <i class=" ace-icon ace-icon fa fa-picture-o">
+</div>
+<div class="modal_xiugai">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close closed">×</button>
+                <h4 class="modal-title">修改</h4>
+                <input multiple="" type="hidden" id="img_id_edit">
+            </div>
+            <div class="modal-body">
+                <div class="bootbox-body">
+                    <form class="bootbox-form">
+                        <div class="form-group">
+                            <label style="float: left; min-width: 100px;text-align: right">添加文件：</label>
+                            <label class="ace-file-input ace-file-multiple col-sm-5 fileUpLabel">
+                                <img class="show_UpImg img_url" src="assets/images/null.jpg"  >
+                                <input multiple="" type="file" accept="image/*" id="img_edit">
+                            </label>
 
-                                            </i>
-                                        </span>
-                                    </span>
-                                </label>
-                                <div class="show_UpDiv col-sm-3 ace-file-input ace-file-multiple">
-                                    <img class="show_UpImg" src="assets/images/email1.png" alt="">
-                                    <div class="del_UpImg">
-                                        <i class="ace-icon fa fa-trash-o fa-2x icon-only"></i>
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label style="float: left;min-width: 100px;text-align: right" >备注：</label>
+                            <div style="float: left; width: 350px;text-align: left;">
+                                <textarea name="" cols="45" rows="3" id="comment_edit"></textarea>
                             </div>
-                            <div class="form-group">
-                                <label style="float: left;min-width: 100px;text-align: right">备注：</label>
-                                <div style="float: left; width: 350px;text-align: left;">
-                                    <textarea name="" id="" cols="45" rows="3"></textarea>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="modal-footer">
-                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
-                    <button data-bb-handler="confirm" type="button" class="btn btn-primary">确定</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
+                <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="edit">确定</button>
             </div>
         </div>
     </div>
-    <div class="modal_tishi">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="bootbox-close-button close closed">×</button>
-                    <div class="bootbox-body">确认删除？</div>
-                </div>
-                <div class="modal-footer">
-                    <button data-bb-handler="cancel " type="button" class="btn btn-default closed">取消</button>
-                    <button data-bb-handler="confirm" type="button" class="btn btn-primary">确定</button>
-                </div>
+</div>
+<div class="modal_tishi">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="bootbox-close-button close closed">×</button>
+                <div class="bootbox-body">确认删除？</div>
+                <input multiple="" type="hidden" id="img_id_del">
+            </div>
+            <div class="modal-footer">
+                <button data-bb-handler="cancel " type="button" class="btn btn-default closed">取消</button>
+                <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="img_del">确定</button>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- basic scripts -->
+<!-- basic scripts -->
 
-    <!--[if !IE]> -->
-    <script src="components/jquery/dist/jquery.js"></script>
-    <script type="text/javascript">
-        if ('ontouchstart' in document.documentElement) document.write(
-            "<script src='components/_mod/jquery.mobile.custom/jquery.mobile.custom.js'>" + "<" + "/script>");
-    </script>
-    <script src="components/bootstrap/dist/js/bootstrap.js"></script>
+<!--[if !IE]> -->
+<script src="components/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+    if ('ontouchstart' in document.documentElement) document.write(
+        "<script src='components/_mod/jquery.mobile.custom/jquery.mobile.custom.js'>" + "<" + "/script>");
+</script>
+<script src="components/bootstrap/dist/js/bootstrap.js"></script>
 
-    <!-- ace scripts -->
-    <script src="assets/js/src/elements.scroller.js"></script>
-    <script src="assets/js/src/elements.colorpicker.js"></script>
-    <script src="assets/js/src/elements.fileinput.js"></script>
-    <script src="assets/js/src/elements.typeahead.js"></script>
-    <script src="assets/js/src/elements.wysiwyg.js"></script>
-    <script src="assets/js/src/elements.spinner.js"></script>
-    <script src="assets/js/src/elements.treeview.js"></script>
-    <script src="assets/js/src/elements.wizard.js"></script>
-    <script src="assets/js/src/elements.aside.js"></script>
-    <script src="assets/js/src/ace.js"></script>
-    <script src="assets/js/src/ace.basics.js"></script>
-    <script src="assets/js/src/ace.scrolltop.js"></script>
-    <script src="assets/js/src/ace.ajax-content.js"></script>
-    <script src="assets/js/src/ace.touch-drag.js"></script>
-    <script src="assets/js/src/ace.sidebar.js"></script>
-    <script src="assets/js/src/ace.sidebar-scroll-1.js"></script>
-    <script src="assets/js/src/ace.submenu-hover.js"></script>
-    <script src="assets/js/src/ace.widget-box.js"></script>
-    <script src="assets/js/src/ace.settings.js"></script>
-    <script src="assets/js/src/ace.settings-rtl.js"></script>
-    <script src="assets/js/src/ace.settings-skin.js"></script>
-    <script src="assets/js/src/ace.widget-on-reload.js"></script>
-    <script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
-    <!-- 本页js -->
-    <script src="components/jquery-colorbox/jquery.colorbox.js"></script>
+<!-- ace scripts -->
+<script src="assets/js/src/elements.scroller.js"></script>
+<script src="assets/js/src/elements.colorpicker.js"></script>
+<script src="assets/js/src/elements.fileinput.js"></script>
+<script src="assets/js/src/elements.typeahead.js"></script>
+<script src="assets/js/src/elements.wysiwyg.js"></script>
+<script src="assets/js/src/elements.spinner.js"></script>
+<script src="assets/js/src/elements.treeview.js"></script>
+<script src="assets/js/src/elements.wizard.js"></script>
+<script src="assets/js/src/elements.aside.js"></script>
+<script src="assets/js/src/ace.js"></script>
+<script src="assets/js/src/ace.basics.js"></script>
+<script src="assets/js/src/ace.scrolltop.js"></script>
+<script src="assets/js/src/ace.ajax-content.js"></script>
+<script src="assets/js/src/ace.touch-drag.js"></script>
+<script src="assets/js/src/ace.sidebar.js"></script>
+<script src="assets/js/src/ace.sidebar-scroll-1.js"></script>
+<script src="assets/js/src/ace.submenu-hover.js"></script>
+<script src="assets/js/src/ace.widget-box.js"></script>
+<script src="assets/js/src/ace.settings.js"></script>
+<script src="assets/js/src/ace.settings-rtl.js"></script>
+<script src="assets/js/src/ace.settings-skin.js"></script>
+<script src="assets/js/src/ace.widget-on-reload.js"></script>
+<script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
+<!-- 本页js -->
+<script src="components/jquery-colorbox/jquery.colorbox.js"></script>
 
-    <script src="assets/js/Customize_js/upLoadImg.js"></script>
-    <!-- 本页js -->
-    <script src="assets/js/jquery.cookie.js"></script>
-    <script src="assets/js/config.js"></script>
-    <script src="assets/js/public.js"></script>
-    <script>
-            window.onload = function () {
-                $('#header').load('public/header.html');
-                $('#sidebar').load('public/menu.html');
-            }
-        </script>
-    <script>
-        //新增图片
-        $('#addImg').on('click', function () {
-            $('.modal_add').css('display', 'block');
-        });
-        //关闭弹框
-        $('.closed').on('click', function () {
-            $(this).parent().parent().parent().parent().css('display', 'none');
-        })
-        //删除图片
-        $('#dynamic-table').on('click','.del_img', function () {
-            $('.modal_tishi').css('display', 'block');
-        })
-        //编辑图片
-        $('#dynamic-table').on('click','.edit_Img', function () {
-            $('.modal_xiugai').css('display', 'block');
-        });
-    </script>
-    <script>
-      /*
-            <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-            <a href="#">2</a>
-            </li>
-            <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-            <a href="#">3</a>
-            </li>*/
-        var type_id = $.getUrlVar('type_id'),
-            page=$.getUrlVar('page')?$.getUrlVar('page'):1;
-        function getList(){
-            ajax.get('project/img/getOneTypeImgList',{'type_id':type_id,'page':page},function(res){
-                var dom=$('#list'),
-                    list_id=1,
-                    model='<tr role="row" class="odd" value="{id}"> <td class="center">{list_id}</td> <td class="center"> <img class="proLook_img" src="{img_url}" alt=""> </td> <td class="center">{comment}</td> <td class="center">{uploader} </td> <td class="center">{create_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green edit_Img">编辑</a> <a class="red del_img" >删除</a> </div> </td> </tr>',
-                    page='<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>';
-                $.each(res.data.data,function(k,v){
-                    var str=model.replace('{id}',v.img_id).replace('{list_id}',list_id++).replace('{img_url}',config.address+v.img_url).replace('{comment}',v.comment).replace('{uploader}',v.uploader).replace('{create_time}',v.create_time);
-                    dom.append(str);
-                })
-                //分页
-                for(var i=1;i<=res.data.last_page;i++){
-                    var str = page.replace('{pageValue}',i).replace('{page}',i);
-                    if(i==res.data.current_page){
-                       str= str.replace('{avtive}','active');
-                    }else{
-                        str= str.replace('{avtive}','');
-                    }
-                    $('#next').before(str);
-                }
-            })
+<script src="assets/js/Customize_js/upLoadImg.js"></script>
+<!-- 本页js -->
+<script src="assets/js/jquery.cookie.js"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/public.js"></script>
+<script>
+    var oldData={};
+    //新增图片
+    $('#addImg').on('click', function () {
+        $('.modal_add').css('display', 'block');
+    });
+    //关闭弹框
+    $('.closed').on('click', function () {
+        $(this).parent().parent().parent().parent().css('display', 'none');
+    })
+    //删除图片
+    $('#dynamic-table').on('click','.del_img', function () {
+        $('#img_id_del').val($(this).parents('tr').attr('value'));
+        $('.modal_tishi').css('display', 'block');
+    })
+    //编辑图片
+    $('#dynamic-table').on('click','.edit_Img', function () {
+        oldData={
+            'img_id':$(this).parents('tr').attr('value'),
+            'img_url':$(this).parents('.center').siblings('.img').children('img').attr('src'),
+            'comment':$(this).parents('.center').siblings('.comment').html()
         }
+        $('#img_edit').siblings('.img_url').attr('src',oldData.img_url);
+        $('#comment_edit').html(oldData.comment);
+        $('#img_id_edit').val(oldData.img_id);
+        $('.modal_xiugai').css('display', 'block');
+    });
+    $('#img_edit').on('change',function(){
+        if($(this)[0].files[0].size>=config.allowImgFileSize){
+            alert(config.ImgSizeBeyondErrMes);
+        }
+        var formData = new FormData();
+        formData.append("img",$(this)[0].files[0]);
+        ajax.file(formData,'img',function(res){
+            $('#img_edit').siblings('.img_url').attr('src',config.address+res.data);
+            $('#img_edit').siblings('.img_url').attr('address',res.data);
+        })
+    })
+    $('#edit').click(function(){
+        var data = {
+            'img_url': $('#img_edit').siblings('.img_url').attr('address'),
+            'img_id':$('#img_id_edit').val(),
+            'comment':$('#comment_edit').val()
+        };
+
+        if(data.img_url==oldData.img_url && data.img_id==oldData.img_id && data.comment==oldData.comment){
+            alert('修改成功');
+            return;
+        }
+        ajax.post('project/img/update',data,function(res){
+            alert('修改成功');
+            window.location.reload();
+        })
+
+    })
+    $('#img_del').click(function(){
+        ajax.post('project/img/delete',{'img_id':$('#img_id_del').val()},function(){
+            alert('删除成功');
+            window.location.reload();
+        })
+    })
+
+    $('#img_add').on('change',function(){
+        if($(this)[0].files[0].size>=config.allowImgFileSize){
+            alert(config.ImgSizeBeyondErrMes);
+        }
+        var formData = new FormData();
+        formData.append("img",$(this)[0].files[0]);
+        ajax.file(formData,'img',function(res){
+            $('#img_add').siblings('.img_url').attr('src',config.address+res.data);
+            $('#img_add').siblings('.img_url').attr('address',res.data);
+        })
+    })
+
+    $('#add').click(function(){
+        var data = {
+            'type_id':type_id,
+            'img_url': $('#img_add').siblings('.img_url').attr('address'),
+            'comment':$('#comment_add').val()
+        };
+
+        if(data.img_url==oldData.img_url && data.img_id==oldData.img_id && data.comment==oldData.comment){
+            alert('新增成功');
+            return;
+        }
+        ajax.post('project/img/add',data,function(res){
+            alert('新增成功');
+            window.location.reload();
+        })
+
+    })
+</script>
+<script>
+    var type_id = $.getUrlVar('type_id'),
+        page=$.getUrlVar('page')?$.getUrlVar('page'):1;
+    function getList(){
+        ajax.get('project/img/getOneTypeImgList',{'type_id':type_id,'page':page},function(res){
+            var dom=$('#list'),
+                list_id=1,
+                model='<tr role="row" class="odd" value="{id}"> <td class="center">{list_id}</td> <td class="center img"> <img class="proLook_img" src="{img_url}" alt=""> </td> <td class="center comment">{comment}</td> <td class="center">{uploader} </td> <td class="center">{create_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green edit_Img" style="cursor: pointer">编辑</a> <a class="red del_img"  style="cursor: pointer">删除</a> </div> </td> </tr>',
+                page='<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>';
+            $.each(res.data.data,function(k,v){
+                var str=model.replace('{id}',v.img_id).replace('{list_id}',list_id++).replace('{img_url}',config.address+v.img_url).replace('{comment}',v.comment).replace('{uploader}',v.uploader).replace('{create_time}',v.create_time);
+                dom.append(str);
+            })
+            //分页
+            for(var i=1;i<=res.data.last_page;i++){
+                var str = page.replace('{pageValue}',i).replace('{page}',i);
+                if(i==res.data.current_page){
+                    str= str.replace('{avtive}','active');
+                }else{
+                    str= str.replace('{avtive}','');
+                }
+                $('#next').before(str);
+            }
+        })
+    }
     window.onload=function(){
-            getList();
+        getList();
     }
 
 
 
 
-    </script>
-    
-   
+</script>
+
+
 
 
 </body>
