@@ -92,4 +92,8 @@
     background-color: #eeeeee!important;
     color: #999999!important;
 }
-
+.map_sty{
+    margin-left: 5px;
+    margin-top: 3px;
+    cursor: pointer;
+}

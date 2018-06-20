@@ -51,166 +51,166 @@
 
 		</div>
 		<div class="main-content">
-		<div class="main-content-inner">
-			<div class="breadcrumbs" id="breadcrumbs">
-				<script type="text/javascript">
-					try {
-						ace.settings.check('breadcrumbs', 'fixed')
-					} catch (e) {}
-				</script>
-				<ul class="breadcrumb">
-					<li>
-						<i class="ace-icon fa fa-home home-icon"></i>
-						<a href="#">楼盘字典>项目信息</a>
-					</li>
-				</ul>
-				<div class="operate_proInfo">
-					<button class="btn btn-primary">预览</button>
-					<button class="btn btn-danger">保存</button>
+			<div class="main-content-inner">
+				<div class="breadcrumbs" id="breadcrumbs">
+					<script type="text/javascript">
+						try {
+							ace.settings.check('breadcrumbs', 'fixed')
+						} catch (e) {}
+					</script>
+					<ul class="breadcrumb">
+						<li>
+							<i class="ace-icon fa fa-home home-icon"></i>
+							<a href="#">楼盘字典>项目信息</a>
+						</li>
+					</ul>
+					<div class="operate_proInfo">
+						<button class="btn btn-primary">预览</button>
+						<button class="btn btn-danger">保存</button>
+					</div>
 				</div>
-			</div>
-			<!-- 内容开始 -->
-			<div class="page-content">
-				<div class="row">
-					<div class="col-xs-12">
-						<form class="form-horizontal" role="form">
-							<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 项目名称：</label>
+				<!-- 内容开始 -->
+				<div class="page-content">
+					<div class="row">
+						<div class="col-xs-12">
+							<form class="form-horizontal" role="form">
+								<div class="form-group">
+									<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 项目名称：</label>
 
-								<div class="col-sm-9">
-									<p class="col-xs-10 col-sm-5 inputP" id="project_name"></p>
+									<div class="col-sm-9">
+										<p class="col-xs-10 col-sm-5 inputP" id="project_name"></p>
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 项目地址：</label>
-								<div class="col-sm-9">
-									<select name="province"></select>
-									<select name="city"></select>
-									<select name="area"></select>
+								<div class="form-group">
+									<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 项目地址：</label>
+									<div class="col-sm-9">
+										<select name="province" class="pro_province"></select>
+										<select name="city" class="pro_city"></select>
+										<select name="area" class="pro_area"></select>
+									</div>
 								</div>
-							</div>
 
-							<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right" for="form-field-2"></label>
+								<div class="form-group">
+									<label class="col-sm-3 control-label no-padding-right" for="form-field-2"></label>
 
-								<div class="col-sm-9">
-									<input type="text" class="col-xs-10 col-sm-5" id="absolute_address">
-									<a href="map.html" class="ace-icon fa fa-map-marker bigger-200" style="margin-left: 5px;margin-top: 3px;cursor: pointer;"></a>
+									<div class="col-sm-9">
+										<input type="text" class="col-xs-10 col-sm-5" id="absolute_address">
+										<a href="map.html" class="ace-icon fa fa-map-marker bigger-200 map_sty"></a>
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-xs-12">
-									<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 项目主图：</label>
-									<label class="ace-file-input ace-file-multiple col-sm-3 fileUpLabel">
-										<img class="show_UpImg" src="" alt="项目主图" id="img_url">
-										<input multiple="" type="file">
-										<span class="ace-file-container" data-title="点击上传图片" id="no_pic">
-											<span class="ace-file-name" data-title="No File ...">
-												<i class=" ace-icon fa fa-picture-o">
-												</i>
+								<div class="form-group">
+									<div class="col-xs-12">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 项目主图：</label>
+										<label class="ace-file-input ace-file-multiple col-sm-3 fileUpLabel">
+											<img class="show_UpImg" src="" alt="项目主图" id="img_url">
+											<input multiple="" type="file">
+											<span class="ace-file-container" data-title="点击上传图片" id="no_pic">
+												<span class="ace-file-name" data-title="No File ...">
+													<i class=" ace-icon fa fa-picture-o">
+													</i>
+												</span>
 											</span>
-										</span>
-									</label>
-									<!--	<div class="show_UpDiv col-sm-3 ace-file-input ace-file-multiple">
+										</label>
+										<!--	<div class="show_UpDiv col-sm-3 ace-file-input ace-file-multiple">
 										<img class="show_UpImg" src="" alt="项目主图" id="img_url">
 										<div class="del_UpImg">
 											<i class="ace-icon fa fa-trash-o fa-2x icon-only"></i>
 										</div>
 									</div>-->
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 物业类型：</label>
+								<div class="form-group">
+									<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 物业类型：</label>
 
-								<div class="col-sm-9" id="property"></div>
+									<div class="col-sm-9" id="property"></div>
 
 
-							</div>
-							<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right " for="form-field-2">项目标签：</label>
-								<div class="col-sm-9 tags pro_label">
-									<span class="tag">
-										学区房
-										<button type="button" class="close closed">×</button>
-									</span>
-									<span class="tag">
-										满五年
-										<button type="button" class="close closed">×</button>
-									</span>
-									<span class="tag">
-										地铁房
-										<button type="button" class="close closed">×</button>
-									</span>
 								</div>
-							</div>
-
-							<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right" for="form-field-2"></label>
-								<div class="col-sm-9">
-									<!-- <input id="label_Add_int" type="text"> -->
-									<span id="label_Add" class="btn btn-success ">添加标签</span>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 开发商：</label>
-								<div class="col-sm-9">
-									<p class="col-xs-10 col-sm-5 inputP" id="developer_name"></p>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 项目状态：</label>
-
-								<div class="col-sm-9">
-									<select class="form-control" style="width: 150px;" name="sale_state">
-										<option value=""></option>
-										<option value="1">代售</option>
-										<option value="2">在售</option>
-										<option value="3">售罄</option>
-									</select>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right" for="form-field-2">云算地址：</label>
-								<div class="col-sm-9">
-									<input type="text" class="col-xs-10 col-sm-5" id="yunsuan_url">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 选择项目：</label>
-								<div class="col-sm-9">
-									<select class="form-control" style="width: 150px;" name="yunsuan_project">
-										<option value=""></option>
-
-									</select>
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-xs-12">
-									<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 楼栋信息主图：</label>
-									<label class="ace-file-input ace-file-multiple col-sm-3 fileUpLabel">
-										<input multiple="" type="file">
-										<span class="ace-file-container" data-title="点击上传图片">
-											<span class="ace-file-name" data-title="No File ...">
-												<i class=" ace-icon ace-icon fa fa-picture-o">
-
-												</i>
-											</span>
+								<div class="form-group">
+									<label class="col-sm-3 control-label no-padding-right " for="form-field-2">项目标签：</label>
+									<div class="col-sm-9 tags pro_label">
+										<span class="tag">
+											学区房
+											<button type="button" class="close closed">×</button>
 										</span>
-									</label>
-									<div class="show_UpDiv col-sm-3 ace-file-input ace-file-multiple">
-										<img class="show_UpImg" src="assets/images/email1.png" alt="">
-										<div class="del_UpImg">
-											<i class="ace-icon fa fa-trash-o fa-2x icon-only"></i>
+										<span class="tag">
+											满五年
+											<button type="button" class="close closed">×</button>
+										</span>
+										<span class="tag">
+											地铁房
+											<button type="button" class="close closed">×</button>
+										</span>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label no-padding-right" for="form-field-2"></label>
+									<div class="col-sm-9">
+										<!-- <input id="label_Add_int" type="text"> -->
+										<span id="label_Add" class="btn btn-success ">添加标签</span>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 开发商：</label>
+									<div class="col-sm-9">
+										<p class="col-xs-10 col-sm-5 inputP" id="developer_name"></p>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 项目状态：</label>
+
+									<div class="col-sm-9">
+										<select class="form-control" style="width: 150px;" name="sale_state">
+											<option value=""></option>
+											<option value="1">代售</option>
+											<option value="2">在售</option>
+											<option value="3">售罄</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label no-padding-right" for="form-field-2">云算地址：</label>
+									<div class="col-sm-9">
+										<input type="text" class="col-xs-10 col-sm-5" id="yunsuan_url">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 选择项目：</label>
+									<div class="col-sm-9">
+										<select class="form-control" style="width: 150px;" name="yunsuan_project">
+											<option value=""></option>
+
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-xs-12">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 楼栋信息主图：</label>
+										<label class="ace-file-input ace-file-multiple col-sm-3 fileUpLabel">
+											<input multiple="" type="file">
+											<span class="ace-file-container" data-title="点击上传图片">
+												<span class="ace-file-name" data-title="No File ...">
+													<i class=" ace-icon ace-icon fa fa-picture-o">
+
+													</i>
+												</span>
+											</span>
+										</label>
+										<div class="show_UpDiv col-sm-3 ace-file-input ace-file-multiple">
+											<img class="show_UpImg" src="assets/images/email1.png" alt="">
+											<div class="del_UpImg">
+												<i class="ace-icon fa fa-trash-o fa-2x icon-only"></i>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-						</form>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 	</div>
 
 
@@ -306,12 +306,6 @@
 		$('#label_Add').on('click', function (event) {
 			event.stopPropagation();
 			$('.modal_all').css('display', 'block');
-			// let values = $('#label_Add_int').val();
-			// $('.pro_label').append(
-			// 	'<span class="tag">' +
-			// 	values +
-			// 	'<button type="button" class="close closed">×</button></span>');
-			// $('#label_Add_int').val('');
 		})
 
 		$('.closed').on('click', function () {
@@ -319,7 +313,6 @@
 		})
 	</script>
 	<script>
-
 		var data = {
 			regionList: '',
 			config: '',
@@ -330,26 +323,27 @@
 			$('#header').load('public/header.html');
 			$('#sidebar').load('public/menu.html');
 
-        var data={
-            regionList:'',
-            config:'',
-			currentPointProvince:'',
-			currentPointCity:'',
-        };
+			var data = {
+				regionList: '',
+				config: '',
+				currentPointProvince: '',
+				currentPointCity: '',
+			};
 
-            //获取配置
-            $.ajax({
-                url: config.address+'config',
-                type:'GET',
-                dataType:"json",
-                success: function (res) {
-                    getAddress();
-                    data.config=res.data;
-					var property_start=' <div class="checkbox checkSty_projectInfo"><label> <input name="form-field-checkbox" type="checkbox" class="ace"><span class="lbl">',
-						property_end='</span></label> </div>',
-						property_dom=$('#property');
-					$.each(data.config[config.configList.PROPERTY_TYPE].param,function(k,v){
-						property_dom.append(property_start+v.param+property_end);
+			//获取配置
+			$.ajax({
+				url: config.address + 'config',
+				type: 'GET',
+				dataType: "json",
+				success: function (res) {
+					getAddress();
+					data.config = res.data;
+					var property_start =
+						' <div class="checkbox checkSty_projectInfo"><label> <input name="form-field-checkbox" type="checkbox" class="ace"><span class="lbl">',
+						property_end = '</span></label> </div>',
+						property_dom = $('#property');
+					$.each(data.config[config.configList.PROPERTY_TYPE].param, function (k, v) {
+						property_dom.append(property_start + v.param + property_end);
 
 					})
 				},
@@ -410,13 +404,23 @@
 					/*   if(res.data.city!=''){
 					       $("select[name='province']").find("option[value="+res.data.province+"]").attr('selected','selected');
 					   }*/
-
+					
+					//获取地址并传到map.html
+					$(".map_sty").on('click', function () {
+						let addr = $('#absolute_address').val();
+						let map_data={
+							addr:addr,
+							latitude:res.data.latitude,
+							longitude:res.data.longitude,
+						}
+						$.cookie('map_data', JSON.stringify(map_data), {
+							path: "/map.html"
+						});
+					})
 				})
 			}
 
 		}
-
-
 	</script>
 
 </body>

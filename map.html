@@ -136,12 +136,18 @@
     <script src="assets/js/jquery.cookie.js"></script>
 
     <script>
+        //获取地址
+        var map_data = JSON.parse($.cookie('map_data'));
         // 百度地图API功能
-        var map = new BMap.Map("allmap"); // 创建Map实例
-        //map.centerAndZoom(new BMap.Point(116.404, 39.915), 11); // 初始化地图,设置中心点坐标和地图级别
-
-        var point = new BMap.Point(116.404, 39.915);
+        var map = new BMap.Map("allmap",{minZoom:1,maxZoom:16}); // 创建Map实例
+        if(map_data.longitude&&map_data.latitude){
+            var point = new BMap.Point(map_data.longitude,map_data.latitude);
+        }else{
+            var point = new BMap.Point(116.404, 39.915);//默认北京 
+        }
+        
         map.centerAndZoom(point, 15);
+        alert(map_data.addr)
         //添加地图类型控件
         map.addControl(new BMap.MapTypeControl({
             mapTypes: [
@@ -149,30 +155,43 @@
                 BMAP_HYBRID_MAP
             ]
         }));
-        map.setCurrentCity("北京"); // 设置地图显示的城市 此项是必须设置的
+       
         map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放
 
 
         // 创建地址解析器实例     
         var myGeo = new BMap.Geocoder();
-        // 将地址解析结果显示在地图上，并调整地图视野    
-        myGeo.getPoint("北京市海淀区上地10街10号", function (point) {
+        //将地址解析结果显示在地图上，并调整地图视野    
+
+        if(map_data.addr){
+            myGeo.getPoint(map_data.addr, function (point) {
                 if (point) {
                     map.centerAndZoom(point, 16);
                     map.addOverlay(new BMap.Marker(point));
                 }
-            },
-            "北京市");
+            });
+        }else{
+            map.setCurrentCity("北京");
+        }
+        // myGeo.getPoint("北京市海淀区上地10街10号", function (point) {
+        //         if (point) {
+        //             map.centerAndZoom(point, 16);
+        //             map.addOverlay(new BMap.Marker(point));
+        //         }
+        //     },
+        //     "北京市");
 
         //鼠标点击地图获取地址
         var geoc = new BMap.Geocoder();
         map.addEventListener("click", function (e) {
-            // console.log('3333333');
             var pt = e.point;
             geoc.getLocation(pt, function (rs) {
                 var addComp = rs.addressComponents;
-                alert(addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp
-                    .street + ", " + addComp.streetNumber);
+                alert(addComp.province + ", " + addComp.city + ", " + addComp.district + ", " +
+                    addComp
+                    .street + ", " + addComp.streetNumber + ";" + pt.lng + "," + pt.lat);
+                // console.log(addComp);
+                // console.log(pt);
             });
         });
     </script>
@@ -180,6 +199,7 @@
         window.onload = function () {
             $('#header').load('public/header.html');
             $('#sidebar').load('public/menu.html');
+
         }
     </script>
 
