@@ -139,7 +139,7 @@
         //获取地址
         var map_data = JSON.parse($.cookie('map_data'));
         // 百度地图API功能
-        var map = new BMap.Map("allmap",{minZoom:1,maxZoom:16}); // 创建Map实例
+        var map = new BMap.Map("allmap",{minZoom:1,maxZoom:18}); // 创建Map实例
         if(map_data.longitude&&map_data.latitude){
             var point = new BMap.Point(map_data.longitude,map_data.latitude);
         }else{
@@ -147,7 +147,7 @@
         }
         
         map.centerAndZoom(point, 15);
-        alert(map_data.addr)
+        //alert(map_data.addr)
         //添加地图类型控件
         map.addControl(new BMap.MapTypeControl({
             mapTypes: [
