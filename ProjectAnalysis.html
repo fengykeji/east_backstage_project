@@ -241,14 +241,16 @@
     }
     $('#save').click(function(){
         var data={
-           'advamtage':$('#advantage').val(),
+            'advantage':$('#advantage').val(),
             'fetch':  $('#fetch').val(),
             'rim': $('#rim').val(),
             'increase_value':$('#increase_value').val()
         };
-        ajax.post('project/analyse/update',function(){
-            alter('修改成功');
-            window.location.reload();
+        ajax.post('project/analyse/update',data,function(res){
+            alert(res.msg)
+            if(res.code==config.responseSuccess){
+                window.location.reload();
+            }
         })
     })
 </script>
