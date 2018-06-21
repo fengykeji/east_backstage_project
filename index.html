@@ -33,7 +33,11 @@
 	<!-- 自定义css -->
 	<link rel="stylesheet" href="assets/css/Customize_css/index.css">
 	<link rel="stylesheet" href="assets/css/Customize_css/upLoadImg.css">
-
+	<style>
+		.point{
+			background-color: #91B8D0 !important;
+		}
+		</style>
 </head>
 
 <body class="no-skin">
@@ -102,21 +106,10 @@
 									<div class="col-xs-12">
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 项目主图：</label>
 										<label class="ace-file-input ace-file-multiple col-sm-3 fileUpLabel">
-											<img class="show_UpImg" src="" alt="项目主图" id="img_url">
-											<input multiple="" type="file">
-											<span class="ace-file-container" data-title="点击上传图片" id="no_pic">
-												<span class="ace-file-name" data-title="No File ...">
-													<i class=" ace-icon fa fa-picture-o">
-													</i>
-												</span>
-											</span>
+											<img class="show_UpImg img_url" src="assets/images/null.jpg" id="list_img" >
+											<input multiple="" type="file" accept="image/*" id="list_img_edit">
 										</label>
-										<!--	<div class="show_UpDiv col-sm-3 ace-file-input ace-file-multiple">
-										<img class="show_UpImg" src="" alt="项目主图" id="img_url">
-										<div class="del_UpImg">
-											<i class="ace-icon fa fa-trash-o fa-2x icon-only"></i>
-										</div>
-									</div>-->
+
 									</div>
 								</div>
 								<div class="form-group">
@@ -128,19 +121,9 @@
 								</div>
 								<div class="form-group">
 									<label class="col-sm-3 control-label no-padding-right " for="form-field-2">项目标签：</label>
-									<div class="col-sm-9 tags pro_label">
-										<span class="tag">
-											学区房
-											<button type="button" class="close closed">×</button>
-										</span>
-										<span class="tag">
-											满五年
-											<button type="button" class="close closed">×</button>
-										</span>
-										<span class="tag">
-											地铁房
-											<button type="button" class="close closed">×</button>
-										</span>
+									<div class="col-sm-9 tags pro_label" id="project_tag">
+
+
 									</div>
 								</div>
 
@@ -228,8 +211,8 @@
 				</div>
 				<div class="modal-body">
 					<div class="bootbox-body">
-						<ul class="pro_lable_list">
-							<li class="pro_lable_def">学区房</li>
+						<ul class="pro_lable_list" id="tag_list">
+							<!--<li class="pro_lable_def">学区房</li>
 							<li class="pro_lable_def">满五年</li>
 							<li class="pro_lable_def">地铁房</li>
 							<li>公寓房</li>
@@ -246,13 +229,13 @@
 							</li>
 							<li>公寓房
 								<i class=" fa fa-check icon-on-right bigger-90"></i>
-							</li>
+							</li>-->
 						</ul>
 					</div>
 				</div>
 				<div class="modal-footer">
 					<button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
-					<button data-bb-handler="confirm" type="button" class="btn btn-primary">确定</button>
+					<button data-bb-handler="confirm" type="button" class="btn btn-primary" id="tags_add">确定</button>
 				</div>
 			</div>
 		</div>
@@ -338,14 +321,14 @@
 				success: function (res) {
 					getAddress();
 					data.config = res.data;
-					var property_start =
-						' <div class="checkbox checkSty_projectInfo"><label> <input name="form-field-checkbox" type="checkbox" class="ace"><span class="lbl">',
-						property_end = '</span></label> </div>',
+					var property =
+						' <div class="checkbox checkSty_projectInfo"><label> <input name="form-field-checkbox" type="checkbox" class="ace" value="{id}"><span class="lbl">{name}</span></label> </div>',
+						str='',
 						property_dom = $('#property');
 					$.each(data.config[config.configList.PROPERTY_TYPE].param, function (k, v) {
-						property_dom.append(property_start + v.param + property_end);
-
+						str+=property.replace('{id}',v.id).replace('{name}',v.param);
 					})
+					property_dom.append(str);
 				},
 				error: function () {
 					ajax.error();
@@ -374,17 +357,18 @@
 			//获取项目信息
 			function getProjectInfo() {
 				ajax.get('provide/project/getProjectInfo', {}, function (res) {
-					var yunsuan_project_dom = $("select[name='yunsuan_project']");
+
+					var yunsuan_project_dom = $("select[name='yunsuan_project']"),
+						tag_list='',
+						tag_list_model='<li value="{id}">{name}</li>',
+                        extra_tags=[];
 					$('#project_name').html(res.data.project_name);
 					$('#absolute_address').val(res.data.absolute_address);
 					$('#yunsuan_url').val(res.data.yunsuan_url);
 					$('#developer_name').html(res.data.developer_name);
 					$("select[name='sale_state']").find("option[value=" + res.data.sale_state + "]").attr('selected', 'selected');
-					if (res.data.img_url == '') {
-						$('#img_url').hide();
-					} else {
-						$('#img_url').attr('src', config.address + res.data.img_url);
-						$('#no_pic').hide();
+					if (res.data.img_url != '') {
+                        $('#list_img').attr('src', config.address + res.data.img_url);
 					}
 					if (res.data.yunsuan_url != '') {
 						ajax.get('project/build/getYsBuild', {
@@ -401,10 +385,35 @@
 					if (res.data.province != '') {
 						$("select[name='province']").find("option[value=" + res.data.province + "]").attr('selected', 'selected');
 					}
-					/*   if(res.data.city!=''){
-					       $("select[name='province']").find("option[value="+res.data.province+"]").attr('selected','selected');
-					   }*/
-					
+					if(res.data.property.length!=0){
+					    var dom= $('input[name=form-field-checkbox]');
+                      	dom.each(function(){
+                      	    if($.inArray(parseInt($(this).val()),res.data.property)!=-1){
+                                $(this).attr('checked', true);
+							}
+						})
+					}
+
+					if(res.data.project_tags!=''){
+					    var project_tags=res.data.project_tags.split(','),
+							model='<span class="tag"><span class="tag_name"> {name}</span> <button type="button" class="close closed" value="{id}">×</button> </span>'
+							str='';
+					    $.each(data.config[config.configList.PROJECT_TAGS_DEFAULT].param,function(k,v){
+							if($.inArray(v.id.toString(),project_tags)!=-1){
+                                str+=model.replace('{id}',v.id).replace('{name}',v.param);
+							}else{
+                                extra_tags.push(v);
+							}
+						})
+						$('#project_tag').append(str);
+					}
+					if(extra_tags.length==0){
+					    extra_tags=data.config[config.configList.PROJECT_TAGS_DEFAULT].param;
+					}
+                    $.each(extra_tags,function(k,v){
+                        tag_list+=tag_list_model.replace('{id}',v.id).replace('{name}',v.param);
+                    })
+					$('#tag_list').append(tag_list);
 					//获取地址并传到map.html
 					$(".map_sty").on('click', function () {
 						let addr = $('#absolute_address').val();
@@ -421,6 +430,43 @@
 			}
 
 		}
+
+		$('#project_tag').on('click','.close',function(){
+            var tag='<li value="'+$(this).attr('value')+'">'+$(this).siblings('.tag_name').html()+'</li>';
+            $('#tag_list').append(tag);
+
+		})
+
+		$('#tag_list').on('click','li',function () {
+			if($(this).hasClass('point')){
+				$(this).removeClass('point');
+			}else{
+                $(this).addClass('point');
+			}
+        })
+
+		$('#tags_add').click(function(){
+		    var  model='<span class="tag"><span class="tag_name"> {name}</span> <button type="button" class="close closed" value="{id}">×</button> </span>',
+				str='';
+            $('.point').each(function(){
+                str+=model.replace('{id}',$(this).attr('value')).replace('{name}',$(this).html());
+                $(this).remove();
+			})
+            $('#project_tag').append(str);
+            $('.modal_all').css('display', 'none');
+		})
+        $('#list_img_edit').on('change',function(){
+            console.log(1);
+            if($(this)[0].files[0].size>=config.allowImgFileSize){
+                alert(config.ImgSizeBeyondErrMes);
+            }
+            var formData = new FormData();
+            formData.append("img",$(this)[0].files[0]);
+            ajax.file(formData,'img',function(res){
+                $('#list_img_edit').siblings('.img_url').attr('src',config.address+res.data);
+                $('#list_img_edit').siblings('.img_url').attr('address',res.data);
+            })
+        })
 	</script>
 
 </body>
