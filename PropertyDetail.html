@@ -87,283 +87,285 @@
         }
 
         .lab_width {
-            width: 100px;
+            width: 120px;
         }
     </style>
 </head>
 
 <body class="no-skin">
-<!-- #section:basics/navbar.layout -->
-<div id="header">
+    <!-- #section:basics/navbar.layout -->
+    <div id="header">
 
-</div>
-<!-- /section:basics/navbar.layout -->
-<div class="main-container" id="main-container">
-    <script type="text/javascript">
-        try {
-            ace.settings.check('main-container', 'fixed')
-        } catch (e) {}
-    </script>
-
-    <!-- 菜单开始 -->
-    <div id="sidebar" class="sidebar responsive ace-save-state">
+    </div>
+    <!-- /section:basics/navbar.layout -->
+    <div class="main-container" id="main-container">
         <script type="text/javascript">
             try {
-                ace.settings.loadState('sidebar')
+                ace.settings.check('main-container', 'fixed')
             } catch (e) {}
         </script>
-        <div id="menu" style="position: absolute;height: 100%;z-index:100">
+
+        <!-- 菜单开始 -->
+        <div id="sidebar" class="sidebar responsive ace-save-state">
+
+
 
         </div>
 
-
-    </div>
-
-    <!-- /section:basics/sidebar -->
-    <div class="main-content">
-        <div class="main-content-inner">
-            <div class="breadcrumbs" id="breadcrumbs">
-                <script type="text/javascript">
-                    try {
-                        ace.settings.check('breadcrumbs', 'fixed')
-                    } catch (e) {}
-                </script>
-                <ul class="breadcrumb">
-                    <li>
-                        <i class="ace-icon fa fa-home home-icon"></i>
-                        <a href="#">楼盘字典>楼盘详情</a>
-                    </li>
-                </ul>
-                <div class="operate_proInfo">
-                    <button class="btn btn-primary">预览</button>
-                    <button class="btn btn-danger" id="save">保存</button>
+        <!-- /section:basics/sidebar -->
+        <div class="main-content">
+            <div class="main-content-inner">
+                <div class="breadcrumbs" id="breadcrumbs">
+                    <script type="text/javascript">
+                        try {
+                            ace.settings.check('breadcrumbs', 'fixed')
+                        } catch (e) {}
+                    </script>
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                            <a href="#">楼盘字典>楼盘详情</a>
+                        </li>
+                    </ul>
+                    <div class="operate_proInfo">
+                        <button class="btn btn-primary">预览</button>
+                        <button class="btn btn-danger" id="save">保存</button>
+                    </div>
                 </div>
-            </div>
-            <!-- 内容开始 -->
-            <div class="page-content">
-                <div class="row" style="margin-top: 50px;">
-                    <div class="col-xs-12">
-                        <form class="form-horizontal" role="form">
-                            <div class="widget-box">
-                                <div class="widget-header">
-                                    <h4 class="smaller">楼盘详情</h4>
-                                </div>
-                                <div class="widget-body">
-                                    <div class="widget-main" style="overflow: hidden;">
-                                        <div class="col-xs-6" style="padding-left: 100px;">
-                                            <div class="form-group">
-                                                <label class="lab_width">*售楼处地址：</label>
-                                                <input class="inpt_width" type="text" id="sale_address">
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="lab_width">*建筑类型：</label>
-                                                <div class="inpt_width" style="display:inline-block;" id="build_type">
+                <!-- 内容开始 -->
+                <div class="page-content">
+                    <div class="row" style="margin-top: 50px;">
+                        <div class="col-xs-12">
+                            <form class="form-horizontal" role="form">
+                                <div class="widget-box">
+                                    <div class="widget-header">
+                                        <h4 class="smaller">楼盘详情</h4>
+                                    </div>
+                                    <div class="widget-body">
+                                        <div class="widget-main" style="overflow: hidden;">
+                                            <div class="col-xs-6" style="padding-left: 100px;">
+                                                <div class="form-group">
+                                                    <label class="lab_width">*售楼处地址：</label>
+                                                    <input class="inpt_width" type="text" id="sale_address">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">*建筑类型：</label>
+                                                    <div class="inpt_width" style="display:inline-block;vertical-align: top;" id="build_type">
 
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">*均价（㎡）：</label>
+                                                    <input class="inpt_width" type="text" id="average_price">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">*价格区间（万）：</label>
+                                                    <!-- <input class="inpt_width" type="text"> -->
+                                                    <input type="text" id="min_price">
+                                                    <span>----</span>
+                                                    <input type="text" id="max_price">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">占地面积（㎡）：</label>
+                                                    <input class="inpt_width" type="text" id="floor_space">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">规划户数（户）：</label>
+                                                    <input class="inpt_width" type="text" id="households_num">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">规划车位（个）：</label>
+                                                    <input class="inpt_width" type="text" id="parking_num">
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="lab_width">*均价（㎡）：</label>
-                                                <input class="inpt_width" type="text" id="average_price">
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="lab_width">*价格区间（万）：</label>
-                                                <!-- <input class="inpt_width" type="text"> -->
-                                                <input type="text" id="min_price">
-                                                <span>----</span>
-                                                <input type="text" id="max_price">
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="lab_width">占地面积（㎡）：</label>
-                                                <input class="inpt_width" type="text" id="floor_space">
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="lab_width">规划户数（户）：</label>
-                                                <input class="inpt_width" type="text" id="households_num">
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="lab_width">规划车位（个）：</label>
-                                                <input class="inpt_width" type="text" id="parking_num">
-                                            </div>
-                                        </div>
 
-                                        <div class="col-xs-6" style="padding-left: 50px;">
-                                            <div class="form-group">
-                                                <label class="lab_width">设计公司：</label>
-                                                <input class="inpt_width" type="text" id="decoration_company">
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="lab_width">建筑面积（㎡）：</label>
-                                                <input class="inpt_width" type="text"  id="covered_area">
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="lab_width">容积率：</label>
-                                                <input class="inpt_width" type="text" id="plot_retio">
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="lab_width">绿化率：</label>
-                                                <input class="inpt_width" type="text" id="greening_rate">
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="lab_width">装修标准：</label>
-                                                <input class="inpt_width" type="text" id="decoration_standard">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="widget-box" style="margin-top: 20px;">
-                                <div class="widget-header">
-                                    <h4 class="smaller">物业信息</h4>
-                                </div>
-                                <div class="widget-body">
-                                    <div class="widget-main" style="overflow: hidden;">
-                                        <div class="col-xs-6" style="padding-left: 100px;">
-                                            <div class="form-group">
-                                                <label class="lab_width">物业公司：</label>
-                                                <input class="inpt_width" type="text" id="property_company_name">
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="lab_width">物业费：</label>
-                                                <input class="inpt_width" type="text" id="property_cost">
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="lab_width">供电类型：</label>
-                                                <input class="inpt_width" type="text" id="power_supply">
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6" style="padding-left: 50px;">
-                                            <div class="form-group">
-                                                <label class="lab_width">供暖方式：</label>
-                                                <input class="inpt_width" type="text" id="heat_supply">
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="lab_width">供水类型：</label>
-                                                <input class="inpt_width" type="text" id="water_supply">
+                                            <div class="col-xs-6" style="padding-left: 50px;">
+                                                <div class="form-group">
+                                                    <label class="lab_width">设计公司：</label>
+                                                    <input class="inpt_width" type="text" id="decoration_company">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">建筑面积（㎡）：</label>
+                                                    <input class="inpt_width" type="text" id="covered_area">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">容积率：</label>
+                                                    <input class="inpt_width" type="text" id="plot_retio">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">绿化率：</label>
+                                                    <input class="inpt_width" type="text" id="greening_rate">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">装修标准：</label>
+                                                    <input class="inpt_width" type="text" id="decoration_standard">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
+                                <div class="widget-box" style="margin-top: 20px;">
+                                    <div class="widget-header">
+                                        <h4 class="smaller">物业信息</h4>
+                                    </div>
+                                    <div class="widget-body">
+                                        <div class="widget-main" style="overflow: hidden;">
+                                            <div class="col-xs-6" style="padding-left: 100px;">
+                                                <div class="form-group">
+                                                    <label class="lab_width">物业公司：</label>
+                                                    <input class="inpt_width" type="text" id="property_company_name">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">物业费：</label>
+                                                    <input class="inpt_width" type="text" id="property_cost">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">供电类型：</label>
+                                                    <input class="inpt_width" type="text" id="power_supply">
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6" style="padding-left: 50px;">
+                                                <div class="form-group">
+                                                    <label class="lab_width">供暖方式：</label>
+                                                    <input class="inpt_width" type="text" id="heat_supply">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">供水类型：</label>
+                                                    <input class="inpt_width" type="text" id="water_supply">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+
                     </div>
-
-
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
-<!-- basic scripts -->
+    <!-- basic scripts -->
 
-<!--[if !IE]> -->
-<script src="components/jquery/dist/jquery.js"></script>
-<script type="text/javascript">
-    if ('ontouchstart' in document.documentElement) document.write(
-        "<script src='components/_mod/jquery.mobile.custom/jquery.mobile.custom.js'>" + "<" + "/script>");
-</script>
-<script src="components/bootstrap/dist/js/bootstrap.js"></script>
+    <!--[if !IE]> -->
+    <script src="components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        if ('ontouchstart' in document.documentElement) document.write(
+            "<script src='components/_mod/jquery.mobile.custom/jquery.mobile.custom.js'>" + "<" + "/script>");
+    </script>
+    <script src="components/bootstrap/dist/js/bootstrap.js"></script>
 
-<!-- ace scripts -->
-<script src="assets/js/src/elements.scroller.js"></script>
-<script src="assets/js/src/elements.colorpicker.js"></script>
-<script src="assets/js/src/elements.fileinput.js"></script>
-<script src="assets/js/src/elements.typeahead.js"></script>
-<script src="assets/js/src/elements.wysiwyg.js"></script>
-<script src="assets/js/src/elements.spinner.js"></script>
-<script src="assets/js/src/elements.treeview.js"></script>
-<script src="assets/js/src/elements.wizard.js"></script>
-<script src="assets/js/src/elements.aside.js"></script>
-<script src="assets/js/src/ace.js"></script>
-<script src="assets/js/src/ace.basics.js"></script>
-<script src="assets/js/src/ace.scrolltop.js"></script>
-<script src="assets/js/src/ace.ajax-content.js"></script>
-<script src="assets/js/src/ace.touch-drag.js"></script>
-<script src="assets/js/src/ace.sidebar.js"></script>
-<script src="assets/js/src/ace.sidebar-scroll-1.js"></script>
-<script src="assets/js/src/ace.submenu-hover.js"></script>
-<script src="assets/js/src/ace.widget-box.js"></script>
-<script src="assets/js/src/ace.settings.js"></script>
-<script src="assets/js/src/ace.settings-rtl.js"></script>
-<script src="assets/js/src/ace.settings-skin.js"></script>
-<script src="assets/js/src/ace.widget-on-reload.js"></script>
-<script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
+    <!-- ace scripts -->
+    <script src="assets/js/src/elements.scroller.js"></script>
+    <script src="assets/js/src/elements.colorpicker.js"></script>
+    <script src="assets/js/src/elements.fileinput.js"></script>
+    <script src="assets/js/src/elements.typeahead.js"></script>
+    <script src="assets/js/src/elements.wysiwyg.js"></script>
+    <script src="assets/js/src/elements.spinner.js"></script>
+    <script src="assets/js/src/elements.treeview.js"></script>
+    <script src="assets/js/src/elements.wizard.js"></script>
+    <script src="assets/js/src/elements.aside.js"></script>
+    <script src="assets/js/src/ace.js"></script>
+    <script src="assets/js/src/ace.basics.js"></script>
+    <script src="assets/js/src/ace.scrolltop.js"></script>
+    <script src="assets/js/src/ace.ajax-content.js"></script>
+    <script src="assets/js/src/ace.touch-drag.js"></script>
+    <script src="assets/js/src/ace.sidebar.js"></script>
+    <script src="assets/js/src/ace.sidebar-scroll-1.js"></script>
+    <script src="assets/js/src/ace.submenu-hover.js"></script>
+    <script src="assets/js/src/ace.widget-box.js"></script>
+    <script src="assets/js/src/ace.settings.js"></script>
+    <script src="assets/js/src/ace.settings-rtl.js"></script>
+    <script src="assets/js/src/ace.settings-skin.js"></script>
+    <script src="assets/js/src/ace.widget-on-reload.js"></script>
+    <script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
 
-<script src="assets/js/jquery.cookie.js"></script>
-<script src="assets/js/config.js"></script>
-<script src="assets/js/public.js"></script>
-</body>
-<script>
-    window.onload=function(){
-        getConfig();
-    }
-    function getConfig(){
-        ajax.get('config', {'id':config.configList.BUILD_TYPE}, function (res) {
-            var model='<div class="checkbox checkSty_projectInfo"> <label> <input name="form-field-checkbox" type="checkbox" class="ace build_type{build_type_id} build_type" value="{id}" > <span class="lbl"> {name}</span> </label> </div>',
-                str='';
-            $.each(res.data[config.configList.BUILD_TYPE].param,function(k,v){
-                str += model.replace('{id}',v.id).replace('{name}',v.param).replace('{build_type_id}',v.id);
-            })
-            $('#build_type').append(str);
-            getProjectInfo();
-        })
-    }
-    function getProjectInfo(){
-        ajax.get('provide/project/getProjectInfo', {}, function (res) {
-            $('#sale_address').val(res.data.sale_address);
-            $('#average_price').val(res.data.average_price);
-            $('#min_price').val(res.data.min_price);
-            $('#max_price').val(res.data.max_price);
-            $('#households_num').val(res.data.households_num);
-            $('#parking_num').val(res.data.parking_num);
-            $('#decoration_company').val(res.data.decoration_company);
-            $('#covered_area').val(res.data.covered_area);
-            $('#plot_retio').val(res.data.plot_retio);
-            $('#greening_rate').val(res.data.greening_rate);
-            $('#decoration_standard').val(res.data.decoration_standard);
-            $('#floor_space').val(res.data.floor_space);
-            $('#property_company_name').val(res.data.property_company_name);
-            $('#property_cost').val(res.data.property_cost);
-            $('#heat_supply').val(res.data.heat_supply);
-            $('#power_supply').val(res.data.power_supply);
-            $('#water_supply').val(res.data.water_supply);
-            $.each(res.data.build_type,function(k,v){
-                $('.build_type'+v).attr('checked',true);
-            })
-        })
-    }
-    $('#save').click(function(){
-        var data={
-            'sale_address':$('#sale_address').val(),
-            'average_price':$('#average_price').val(),
-            'min_price':$('#min_price').val(),
-            'max_price':$('#max_price').val(),
-            'households_num':$('#households_num').val(),
-            'parking_num':$('#parking_num').val(),
-            'decoration_company':$('#decoration_company').val(),
-            'covered_area':$('#covered_area').val(),
-            'plot_retio':$('#plot_retio').val(),
-            'greening_rate':$('#greening_rate').val(),
-            'decoration_standard':$('#decoration_standard').val(),
-            'property_company_name':$('#property_company_name').val(),
-            'property_cost':$('#property_cost').val(),
-            'heat_supply':$('#heat_supply').val(),
-            'power_supply':$('#power_supply').val(),
-            'water_supply':$('#water_supply').val()
+    <script src="assets/js/jquery.cookie.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/public.js"></script>
+
+    <!-- 本页js -->
+    <script>
+        window.onload = function () {
+            getConfig();
+            $('#header').load('public/header.html');
+            $('#sidebar').load('public/menu.html');
         }
-        var checkBoxClass=$('.build_type'),
-            list='';
-        $('input[name=form-field-checkbox]:checked').each(function(){
-            list+=$(this).val()+',';
-        })
-        data.build_type=list.slice(0,-1);
-        ajax.post('project/update',data,function(res){
-            alert('修改成功');
-            window.location.reload();
-        })
-    })
 
-</script>
+        function getConfig() {
+            ajax.get('config', {
+                'id': config.configList.BUILD_TYPE
+            }, function (res) {
+                var model =
+                    '<div class="checkbox checkSty_projectInfo"> <label> <input name="form-field-checkbox" type="checkbox" class="ace build_type{build_type_id} build_type" value="{id}" > <span class="lbl"> {name}</span> </label> </div>',
+                    str = '';
+                $.each(res.data[config.configList.BUILD_TYPE].param, function (k, v) {
+                    str += model.replace('{id}', v.id).replace('{name}', v.param).replace(
+                        '{build_type_id}', v.id);
+                })
+                $('#build_type').append(str);
+                getProjectInfo();
+            })
+        }
+
+        function getProjectInfo() {
+            ajax.get('provide/project/getProjectInfo', {}, function (res) {
+                $('#sale_address').val(res.data.sale_address);
+                $('#average_price').val(res.data.average_price);
+                $('#min_price').val(res.data.min_price);
+                $('#max_price').val(res.data.max_price);
+                $('#households_num').val(res.data.households_num);
+                $('#parking_num').val(res.data.parking_num);
+                $('#decoration_company').val(res.data.decoration_company);
+                $('#covered_area').val(res.data.covered_area);
+                $('#plot_retio').val(res.data.plot_retio);
+                $('#greening_rate').val(res.data.greening_rate);
+                $('#decoration_standard').val(res.data.decoration_standard);
+                $('#floor_space').val(res.data.floor_space);
+                $('#property_company_name').val(res.data.property_company_name);
+                $('#property_cost').val(res.data.property_cost);
+                $('#heat_supply').val(res.data.heat_supply);
+                $('#power_supply').val(res.data.power_supply);
+                $('#water_supply').val(res.data.water_supply);
+                $.each(res.data.build_type, function (k, v) {
+                    $('.build_type' + v).attr('checked', true);
+                })
+            })
+        }
+        $('#save').click(function () {
+            var data = {
+                'sale_address': $('#sale_address').val(),
+                'average_price': $('#average_price').val(),
+                'min_price': $('#min_price').val(),
+                'max_price': $('#max_price').val(),
+                'households_num': $('#households_num').val(),
+                'parking_num': $('#parking_num').val(),
+                'decoration_company': $('#decoration_company').val(),
+                'covered_area': $('#covered_area').val(),
+                'plot_retio': $('#plot_retio').val(),
+                'greening_rate': $('#greening_rate').val(),
+                'decoration_standard': $('#decoration_standard').val(),
+                'property_company_name': $('#property_company_name').val(),
+                'property_cost': $('#property_cost').val(),
+                'heat_supply': $('#heat_supply').val(),
+                'power_supply': $('#power_supply').val(),
+                'water_supply': $('#water_supply').val()
+            }
+            var checkBoxClass = $('.build_type'),
+                list = '';
+            $('input[name=form-field-checkbox]:checked').each(function () {
+                list += $(this).val() + ',';
+            })
+            data.build_type = list.slice(0, -1);
+            ajax.post('project/update', data, function (res) {
+                alert('修改成功');
+                window.location.reload();
+            })
+        })
+    </script>
+</body>
 
 </html>
