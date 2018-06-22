@@ -115,14 +115,7 @@
 
         <!-- 菜单开始 -->
         <div id="sidebar" class="sidebar responsive ace-save-state">
-            <script type="text/javascript">
-                try {
-                    ace.settings.loadState('sidebar')
-                } catch (e) {}
-            </script>
-            <div id="menu" style="position: absolute;height: 100%;z-index:100">
-
-            </div>
+           
 
 
         </div>
@@ -195,29 +188,6 @@
         </div>
     </div>
 
-    <div class="modal_all">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="bootbox-close-button close closed">×</button>
-                    <h4 class="modal-title">新增</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="bootbox-body">
-                        <form class="bootbox-form">
-                            <label for="" style="float: left;">图片类别：</label>
-                            <input class="bootbox-input bootbox-input-text form-control" autocomplete="off" type="text">
-                        </form>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
-                    <button data-bb-handler="confirm" type="button" class="btn btn-primary">确定</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="modal_tishi">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -278,28 +248,28 @@
     <script src="assets/js/config.js"></script>
     <script src="assets/js/public.js"></script>
     <script>
-        $('#addleibie').on('click', function () {
-            $('.modal_all').css('display', 'block');
-        });
         $('.closed').on('click', function () {
-            // $('.modal_all').css('display', 'none');
             $(this).parent().parent().parent().parent().css('display', 'none');
         })
         $('.del_leibie').on('click', function () {
             $('.modal_tishi').css('display', 'block');
-            // $(this).parent().parent().parent().remove();
+        })
+        $('#addleibie').on('click',function(){
+            window.location.href="HouseInforAdd.html";
         })
     </script>
     <script>
 
         window.onload=function(){
-            getList()
+            getList();
+            $('#header').load('public/header.html');
+            $('#sidebar').load('public/menu.html');
         }
 
 
         function getList(){
             ajax.get('project/houseType/list',{},function(res){
-                var model='<tr role="row" class="odd" value="{house_id}"> <td class="center">{id}</td> <td class="center">{name}</td> <td class="center">{type}</td> <td class="center">{area_min}㎡--{area_max}㎡</td> <td class="center">{pm}</td> <td class="center">{3d}</td> <td class="center">{xg}</td> <td class="center">{sj}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="">查看</a> <a class="green edit_leibie" href="#">编辑</a> <a class="red del_leibie" href="#">删除</a> </div> </td> </tr>',
+                var model='<tr role="row" class="odd" value="{house_id}"> <td class="center">{id}</td> <td class="center">{name}</td> <td class="center">{type}</td> <td class="center">{area_min}㎡--{area_max}㎡</td> <td class="center">{pm}</td> <td class="center">{3d}</td> <td class="center">{xg}</td> <td class="center">{sj}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="HouseInforOperate.html">查看</a> <a class="green edit_leibie" href="#">编辑</a> <a class="red del_leibie" href="#">删除</a> </div> </td> </tr>',
                     dom=$('#list'),
                     id=1,
                     str='';

@@ -29,22 +29,20 @@
 
 
 
-
 	<!-- 自定义css -->
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=sfcUullGnAp1PzdsvmVWB5CrrIw0Vb19"></script>
+
 	<link rel="stylesheet" href="assets/css/Customize_css/index.css">
 	<link rel="stylesheet" href="assets/css/Customize_css/upLoadImg.css">
-	<style>
-		.point{
-			background-color: #91B8D0 !important;
-		}
-		</style>
+
+
 </head>
 
 <body class="no-skin">
 	<div id="header">
 
 	</div>
-	<div class="main-content">
+	<div class="main-content" id="main-container">
 		<script type="text/javascript">
 			try {
 				ace.settings.check('main-container', 'fixed')
@@ -99,19 +97,20 @@
 
 									<div class="col-sm-9">
 										<input type="text" class="col-xs-10 col-sm-5" id="absolute_address">
-										<a href="map.html" class="ace-icon fa fa-map-marker bigger-200 map_sty"></a>
+										<!-- <a href="map.html" class="ace-icon fa fa-map-marker bigger-200 map_sty"></a> -->
+										<a href="#" class="ace-icon fa fa-map-marker bigger-200 map_sty"></a>
 									</div>
 								</div>
-								<div class="form-group">
-									<div class="col-xs-12">
+								<!-- <div class="form-group"> -->
+								<!-- <div class="col-xs-12">
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 项目主图：</label>
 										<label class="ace-file-input ace-file-multiple col-sm-3 fileUpLabel">
-											<img class="show_UpImg img_url" src="assets/images/null.jpg" id="list_img" >
+											<img class="show_UpImg img_url" src="assets/images/null.jpg" id="list_img">
 											<input multiple="" type="file" accept="image/*" id="list_img_edit">
 										</label>
 
-									</div>
-								</div>
+									</div> -->
+								<!-- </div> -->
 								<div class="form-group">
 									<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 物业类型：</label>
 
@@ -196,12 +195,6 @@
 		</div>
 	</div>
 
-
-
-
-
-
-
 	<div class="modal_all">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -236,6 +229,17 @@
 				<div class="modal-footer">
 					<button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
 					<button data-bb-handler="confirm" type="button" class="btn btn-primary" id="tags_add">确定</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal_map">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-body">
+					<button type="button" class="bootbox-close-button close closed">×</button>
+					<div id="allmap"></div>
 				</div>
 			</div>
 		</div>
@@ -296,15 +300,98 @@
 		})
 	</script>
 	<script>
+		//打开地图 
+		$('.map_sty').on('click', function () {
+			event.stopPropagation();
+			$('.modal_map').css('display', 'block');
+			// 百度地图API功能
+			var map = new BMap.Map("allmap", {
+				minZoom: 1,
+				maxZoom: 18
+			});
+			// 创建Map实例
+			if (map_data.longitude && map_data.latitude) {
+				var point = new BMap.Point(map_data.longitude, map_data.latitude);
+			} else {
+				var point = new BMap.Point(116.404, 39.915); //默认北京 
+			}
+
+
+			map.centerAndZoom(point, 15);
+			//添加地图类型控件
+			map.addControl(new BMap.MapTypeControl({
+				mapTypes: [
+					BMAP_NORMAL_MAP,
+					BMAP_HYBRID_MAP
+				]
+			}));
+			map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放
+			// 创建地址解析器实例     
+			var myGeo = new BMap.Geocoder();
+			//将地址解析结果显示在地图上，并调整地图视野    
+
+			if (map_data.addr) {
+				myGeo.getPoint(map_data.addr, function (point) {
+					if (point) {
+						map.centerAndZoom(point, 16);
+						map.addOverlay(new BMap.Marker(point));
+					}
+				});
+			} else {
+				map.setCurrentCity("北京");
+			}
+			//鼠标点击地图获取地址
+			var geoc = new BMap.Geocoder();
+			map.addEventListener("click", function (e) {
+				var pt = e.point;
+				geoc.getLocation(pt, function (rs) {
+					var addComp = rs.addressComponents;
+					map_backData = {
+						province: addComp.province,
+						city: addComp.city,
+						district: addComp.district,
+						street: addComp.street,
+						streetNumber: addComp.streetNumber,
+						longitude: pt.lng,
+						latitude: pt.lat,
+					}
+					alert(addComp.province + ", " + addComp.city + ", " + addComp.district + ", " +
+						addComp.street + ", " + addComp.streetNumber + ";" + pt.lng + "," + pt.lat);
+				});
+			});
+		})
+	</script>
+	<script>
 		var data = {
 			regionList: '',
 			config: '',
 			currentPointProvince: '',
 			currentPointCity: '',
 		};
+		var map_data = {};
+		var map_backData = {};
 		window.onload = function () {
 			$('#header').load('public/header.html');
 			$('#sidebar').load('public/menu.html');
+			var menu_data={
+				opening:'.loupanzidian',
+				acting:'.xiangmuxinxi'
+			}
+			$.cookie('menu_data', JSON.stringify(menu_data), {
+				path: "menu.html"
+			});
+
+
+
+			//获取地图地址
+			if ($.cookie('map_backData')) {
+				var map_backData = JSON.parse($.cookie('map_backData'));
+			} else {
+				var map_backData = '';
+			}
+			// console.log(map_backData);
+
+
 
 			var data = {
 				regionList: '',
@@ -323,10 +410,10 @@
 					data.config = res.data;
 					var property =
 						' <div class="checkbox checkSty_projectInfo"><label> <input name="form-field-checkbox" type="checkbox" class="ace" value="{id}"><span class="lbl">{name}</span></label> </div>',
-						str='',
+						str = '',
 						property_dom = $('#property');
 					$.each(data.config[config.configList.PROPERTY_TYPE].param, function (k, v) {
-						str+=property.replace('{id}',v.id).replace('{name}',v.param);
+						str += property.replace('{id}', v.id).replace('{name}', v.param);
 					})
 					property_dom.append(str);
 				},
@@ -359,16 +446,16 @@
 				ajax.get('provide/project/getProjectInfo', {}, function (res) {
 
 					var yunsuan_project_dom = $("select[name='yunsuan_project']"),
-						tag_list='',
-						tag_list_model='<li value="{id}">{name}</li>',
-                        extra_tags=[];
+						tag_list = '',
+						tag_list_model = '<li value="{id}">{name}</li>',
+						extra_tags = [];
 					$('#project_name').html(res.data.project_name);
 					$('#absolute_address').val(res.data.absolute_address);
 					$('#yunsuan_url').val(res.data.yunsuan_url);
 					$('#developer_name').html(res.data.developer_name);
 					$("select[name='sale_state']").find("option[value=" + res.data.sale_state + "]").attr('selected', 'selected');
 					if (res.data.img_url != '') {
-                        $('#list_img').attr('src', config.address + res.data.img_url);
+						$('#list_img').attr('src', config.address + res.data.img_url);
 					}
 					if (res.data.yunsuan_url != '') {
 						ajax.get('project/build/getYsBuild', {
@@ -385,88 +472,88 @@
 					if (res.data.province != '') {
 						$("select[name='province']").find("option[value=" + res.data.province + "]").attr('selected', 'selected');
 					}
-					if(res.data.property.length!=0){
-					    var dom= $('input[name=form-field-checkbox]');
-                      	dom.each(function(){
-                      	    if($.inArray(parseInt($(this).val()),res.data.property)!=-1){
-                                $(this).attr('checked', true);
+					if (res.data.property.length != 0) {
+						var dom = $('input[name=form-field-checkbox]');
+						dom.each(function () {
+							if ($.inArray(parseInt($(this).val()), res.data.property) != -1) {
+								$(this).attr('checked', true);
 							}
 						})
 					}
 
-					if(res.data.project_tags!=''){
-					    var project_tags=res.data.project_tags.split(','),
-							model='<span class="tag"><span class="tag_name"> {name}</span> <button type="button" class="close closed" value="{id}">×</button> </span>'
-							str='';
-					    $.each(data.config[config.configList.PROJECT_TAGS_DEFAULT].param,function(k,v){
-							if($.inArray(v.id.toString(),project_tags)!=-1){
-                                str+=model.replace('{id}',v.id).replace('{name}',v.param);
-							}else{
-                                extra_tags.push(v);
+					if (res.data.project_tags != '') {
+						var project_tags = res.data.project_tags.split(','),
+							model =
+							'<span class="tag"><span class="tag_name"> {name}</span> <button type="button" class="close closed" value="{id}">×</button> </span>'
+						str = '';
+						$.each(data.config[config.configList.PROJECT_TAGS_DEFAULT].param, function (k, v) {
+							if ($.inArray(v.id.toString(), project_tags) != -1) {
+								str += model.replace('{id}', v.id).replace('{name}', v.param);
+							} else {
+								extra_tags.push(v);
 							}
 						})
 						$('#project_tag').append(str);
 					}
-					if(extra_tags.length==0){
-					    extra_tags=data.config[config.configList.PROJECT_TAGS_DEFAULT].param;
+					if (extra_tags.length == 0) {
+						extra_tags = data.config[config.configList.PROJECT_TAGS_DEFAULT].param;
 					}
-                    $.each(extra_tags,function(k,v){
-                        tag_list+=tag_list_model.replace('{id}',v.id).replace('{name}',v.param);
-                    })
+					$.each(extra_tags, function (k, v) {
+						tag_list += tag_list_model.replace('{id}', v.id).replace('{name}', v.param);
+					})
 					$('#tag_list').append(tag_list);
 					//获取地址并传到map.html
+
 					$(".map_sty").on('click', function () {
 						let addr = $('#absolute_address').val();
-						let map_data={
-							addr:addr,
-							latitude:res.data.latitude,
-							longitude:res.data.longitude,
+						map_data = {
+							addr: addr,
+							latitude: res.data.latitude,
+							longitude: res.data.longitude,
 						}
-						$.cookie('map_data', JSON.stringify(map_data), {
-							path: "/map.html"
-						});
 					})
 				})
 			}
 
 		}
 
-		$('#project_tag').on('click','.close',function(){
-            var tag='<li value="'+$(this).attr('value')+'">'+$(this).siblings('.tag_name').html()+'</li>';
-            $('#tag_list').append(tag);
+		$('#project_tag').on('click', '.close', function () {
+			var tag = '<li value="' + $(this).attr('value') + '">' + $(this).siblings('.tag_name').html() + '</li>';
+			$('#tag_list').append(tag);
 
 		})
 
-		$('#tag_list').on('click','li',function () {
-			if($(this).hasClass('point')){
+		$('#tag_list').on('click', 'li', function () {
+			if ($(this).hasClass('point')) {
 				$(this).removeClass('point');
-			}else{
-                $(this).addClass('point');
+			} else {
+				$(this).addClass('point');
 			}
-        })
-
-		$('#tags_add').click(function(){
-		    var  model='<span class="tag"><span class="tag_name"> {name}</span> <button type="button" class="close closed" value="{id}">×</button> </span>',
-				str='';
-            $('.point').each(function(){
-                str+=model.replace('{id}',$(this).attr('value')).replace('{name}',$(this).html());
-                $(this).remove();
-			})
-            $('#project_tag').append(str);
-            $('.modal_all').css('display', 'none');
 		})
-        $('#list_img_edit').on('change',function(){
-            console.log(1);
-            if($(this)[0].files[0].size>=config.allowImgFileSize){
-                alert(config.ImgSizeBeyondErrMes);
-            }
-            var formData = new FormData();
-            formData.append("img",$(this)[0].files[0]);
-            ajax.file(formData,'img',function(res){
-                $('#list_img_edit').siblings('.img_url').attr('src',config.address+res.data);
-                $('#list_img_edit').siblings('.img_url').attr('address',res.data);
-            })
-        })
+
+		$('#tags_add').click(function () {
+			var model =
+				'<span class="tag"><span class="tag_name"> {name}</span> <button type="button" class="close closed" value="{id}">×</button> </span>',
+				str = '';
+			$('.point').each(function () {
+				str += model.replace('{id}', $(this).attr('value')).replace('{name}', $(this).html());
+				$(this).remove();
+			})
+			$('#project_tag').append(str);
+			$('.modal_all').css('display', 'none');
+		})
+		$('#list_img_edit').on('change', function () {
+			console.log(1);
+			if ($(this)[0].files[0].size >= config.allowImgFileSize) {
+				alert(config.ImgSizeBeyondErrMes);
+			}
+			var formData = new FormData();
+			formData.append("img", $(this)[0].files[0]);
+			ajax.file(formData, 'img', function (res) {
+				$('#list_img_edit').siblings('.img_url').attr('src', config.address + res.data);
+				$('#list_img_edit').siblings('.img_url').attr('address', res.data);
+			})
+		})
 	</script>
 
 </body>

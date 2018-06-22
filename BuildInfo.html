@@ -82,14 +82,17 @@
             z-index: 100;
             padding: 3px 10px;
         }
-        .build_detail{
+
+        .build_detail {
             list-style: none;
         }
-        .build_detail li{
+
+        .build_detail li {
             display: inline-block;
             padding: 5px;
         }
-        .build_detail li button{
+
+        .build_detail li button {
             padding: 5px 15px;
         }
     </style>
@@ -137,7 +140,106 @@
                 <div class="page-content">
                     <div class="row" style="margin-top: 15px;">
                         <div class="col-xs-12">
-                            <div class="widget-box">
+                            <div id="accordion" class="accordion-style1 panel-group">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true">
+                                                <i class="bigger-110 ace-icon fa fa-angle-down" data-icon-hide="ace-icon fa fa-angle-down" data-icon-show="ace-icon fa fa-angle-right"></i>
+
+                                                <h4 class="smaller" style="display: inline;">总平图</h4>
+                                                <div style="position: absolute;right: 80px;top:0;z-index: 100;">
+                                                    <button class="btn btn-danger" style="padding: 3px 10px;">确定</button>
+                                                    <button class="btn btn-primary" style="padding: 3px 10px;">取消</button>
+                                                </div>
+                                            </a>
+                                        </h4>
+                                    </div>
+
+                                    <div class="panel-collapse collapse in" id="collapseOne" aria-expanded="true" style="">
+                                        <div class="panel-body">
+                                            <label class="ace-file-input ace-file-multiple col-sm-3 fileUpLabel">
+                                                <input multiple="" type="file">
+                                                <span class="ace-file-container" data-title="点击上传图片">
+                                                    <span class="ace-file-name" data-title="No File ...">
+                                                        <i class=" ace-icon ace-icon fa fa-picture-o">
+
+                                                        </i>
+                                                    </span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- <div class="widget-box">
+                                <div class="widget-header" style="position: relative;">
+                                    <h4 class="smaller">总平图</h4>
+                                    <div style="position: absolute;right: 80px;top:0;z-index: 100;">
+                                        <button class="btn btn-danger" style="padding: 3px 10px;">确定</button>
+                                        <button class="btn btn-primary" style="padding: 3px 10px;">取消</button>
+                                    </div>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="widget-main" style="overflow: hidden;">
+                                        <div class="col-xs-12">
+                                            <label class="ace-file-input ace-file-multiple col-sm-3 fileUpLabel">
+                                                <input multiple="" type="file">
+                                                <span class="ace-file-container" data-title="点击上传图片">
+                                                    <span class="ace-file-name" data-title="No File ...">
+                                                        <i class=" ace-icon ace-icon fa fa-picture-o">
+
+                                                        </i>
+                                                    </span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+
+
+                            <div class="widget-box" style="margin-top: 30px;">
+                                <div class="widget-header" style="position: relative;">
+                                    <h4 class="smaller">楼栋详情</h4>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="widget-main" style="overflow: hidden;">
+                                        <ul class="build_detail">
+                                            <li>
+                                                <button type="button" class="btn btn-white btn-primary build_detail_look">1栋</button>
+                                            </li>
+                                            <li>
+                                                <button type="button" class="btn btn-white btn-primary build_detail_look">2栋</button>
+                                            </li>
+                                            <li>
+                                                <button type="button" class="btn btn-white btn-primary build_detail_look">3栋</button>
+                                            </li>
+                                            <li>
+                                                <button type="button" class="btn btn-white btn-primary build_detail_look">4栋</button>
+                                            </li>
+                                            <li>
+                                                <button type="button" class="btn btn-white btn-primary build_detail_look">5栋</button>
+                                            </li>
+                                            <li>
+                                                <button type="button" class="btn btn-white btn-primary build_detail_look">6栋</button>
+                                            </li>
+                                            <li>
+                                                <button type="button" class="btn btn-white btn-primary build_detail_look">7栋</button>
+                                            </li>
+                                            <li>
+                                                <button type="button" class="btn btn-white btn-primary build_detail_look">8栋</button>
+                                            </li>
+                                            <li>
+                                                <button type="button" class="btn btn-white btn-primary build_detail_look">9栋</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="widget-box" style="margin-top: 30px;">
                                 <div class="widget-header" style="position: relative;">
                                     <h4 class="smaller">楼栋信息</h4>
                                     <button class="btn btn-danger build_add">新增</button>
@@ -240,59 +342,6 @@
                                     </div>
                                 </div>
                             </div>
-                            
-                            <div class="widget-box" style="margin-top: 30px;">
-                                    <div class="widget-header" style="position: relative;">
-                                        <h4 class="smaller">楼栋详情</h4>
-                                    </div>
-                                    <div class="widget-body">
-                                        <div class="widget-main" style="overflow: hidden;">
-                                            <ul class="build_detail">
-                                                <li><button type="button" class="btn btn-white btn-primary build_detail_look">1栋</button></li>
-                                                <li><button type="button" class="btn btn-white btn-primary build_detail_look">2栋</button></li>
-                                                <li><button type="button" class="btn btn-white btn-primary build_detail_look">3栋</button></li>
-                                                <li><button type="button" class="btn btn-white btn-primary build_detail_look">4栋</button></li>
-                                                <li><button type="button" class="btn btn-white btn-primary build_detail_look">5栋</button></li>
-                                                <li><button type="button" class="btn btn-white btn-primary build_detail_look">6栋</button></li>
-                                                <li><button type="button" class="btn btn-white btn-primary build_detail_look">7栋</button></li>
-                                                <li><button type="button" class="btn btn-white btn-primary build_detail_look">8栋</button></li>
-                                                <li><button type="button" class="btn btn-white btn-primary build_detail_look">9栋</button></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            <div class="widget-box" style="margin-top: 30px;">
-                                <div class="widget-header" style="position: relative;">
-                                    <h4 class="smaller">总平图</h4>
-                                    <div style="position: absolute;right: 80px;top:0;z-index: 100;">
-                                        <button class="btn btn-danger" style="padding: 3px 10px;">确定</button>
-                                        <button class="btn btn-primary" style="padding: 3px 10px;">取消</button>
-                                    </div>
-                                </div>
-                                <div class="widget-body">
-                                    <div class="widget-main" style="overflow: hidden;">
-                                        <div class="col-xs-12">
-                                            <!-- <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 楼栋信息主图：</label> -->
-                                            <label class="ace-file-input ace-file-multiple col-sm-3 fileUpLabel">
-                                                <input multiple="" type="file">
-                                                <span class="ace-file-container" data-title="点击上传图片">
-                                                    <span class="ace-file-name" data-title="No File ...">
-                                                        <i class=" ace-icon ace-icon fa fa-picture-o">
-
-                                                        </i>
-                                                    </span>
-                                                </span>
-                                            </label>
-                                            <!-- <div class="show_UpDiv col-sm-3 ace-file-input ace-file-multiple">
-                                                <img class="show_UpImg" src="assets/images/email1.png" alt="">
-                                                <div class="del_UpImg">
-                                                    <i class="ace-icon fa fa-trash-o fa-2x icon-only"></i>
-                                                </div>
-                                            </div> -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
                         </div>
 
@@ -368,18 +417,26 @@
     <script src="assets/js/src/ace.widget-on-reload.js"></script>
     <script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
     <!-- 本页js -->
+    <script src="assets/js/jquery.cookie.js"></script>
     <script>
         window.onload = function () {
             $('#header').load('public/header.html');
             $('#sidebar').load('public/menu.html');
+            var menu_data={
+				opening:'.loupanzidian',
+				acting:'.loudongxinxi'
+			}
+			$.cookie('menu_data', JSON.stringify(menu_data), {
+				path: "menu.html"
+			});
         }
     </script>
     <script>
         $('.build_add').on('click', function () {
-            window.location.href="BuildInfoAdd.html";
+            window.location.href = "BuildInfoAdd.html";
         })
-        $('.build_detail').on('click','.build_detail_look',function(){
-            window.location.href="BuildInfoDetails.html";
+        $('.build_detail').on('click', '.build_detail_look', function () {
+            window.location.href = "BuildInfoDetails.html";
         })
     </script>
 </body>

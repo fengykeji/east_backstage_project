@@ -288,11 +288,20 @@
     <script src="assets/js/public.js"></script>
 
     <!-- 本页js -->
+    <script src="assets/js/jquery.cookie.js"></script>
+
     <script>
         window.onload = function () {
             getConfig();
             $('#header').load('public/header.html');
             $('#sidebar').load('public/menu.html');
+            var menu_data = {
+                opening: '.loupanzidian',
+                acting: '.loupanxiangqing'
+            }
+            $.cookie('menu_data', JSON.stringify(menu_data), {
+                path: "menu.html"
+            });
         }
 
         function getConfig() {

@@ -67,15 +67,13 @@
             top: 14px;
         }
 
-        .inpt_width {
-            width: 70%;
-        }
+        
 
         .lab_width {
             width: 100px;
         } */
 
-        .build_add {
+        /* .build_add {
             position: absolute;
             right: 80px;
             top: 0;
@@ -94,6 +92,37 @@
 
         .build_detail li button {
             padding: 5px 15px;
+        } */
+        .inpt_width {
+            width: 200px;
+        }
+        #simple-table {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #simple-table th {
+            text-align: center;
+        }
+
+        .sale {
+            background-color: #D15B47;
+        }
+
+        .sold {
+            background-color: #87B87F;
+        }
+
+        .forSale {
+            background-color: #E7E7E7;
+        }
+        .sale_state{
+            list-style: none;
+            display: inline-block;
+        }
+        .sale_state li{
+            display: inline-block;
+            padding: 5px 10px;
         }
     </style>
 </head>
@@ -143,13 +172,50 @@
                                 </div>
                                 <div class="widget-body">
                                     <div class="widget-main" style="overflow: hidden;">
-                                        <ul>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                        </ul>
+                                        <div class="col-xs-12">
+                                            <div>
+                                                <h4 style="display: inline-block;">1栋</h4>
+                                                <select class="form-control inpt_width" style="display: inline-block; margin-left: 10px;">
+                                                    <option value="">一单元</option>
+                                                    <option value="">二单元</option>
+                                                    <option value="">三单元</option>
+                                                </select>
+                                                <ul class="sale_state">
+                                                    <li class="forSale">待售</li>
+                                                    <li class="sale">在售</li>
+                                                    <li class="sold">售罄</li>
+                                                </ul>
+                                            </div>
+                                            <table id="simple-table" class="table table-bordered table-hover">
+                                                <tbody>
+                                                    <tr>
+                                                        <th>1L</th>
+                                                        <td class="forSale">101</td>
+                                                        <td class="sale">102</td>
+                                                        <td class="forSale">103</td>
+                                                        <td class="sold">104</td>
+                                                        <td class="sold">105</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>2L</th>
+                                                        <td class="sold">201</td>
+                                                        <td class="forSale">202</td>
+                                                        <td class="sale">203</td>
+                                                        <td class="sale">204</td>
+                                                        <td class="sold">205</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>3L</th>
+                                                        <td class="sale">301</td>
+                                                        <td class="forSale">302</td>
+                                                        <td class="sold">303</td>
+                                                        <td class="sale">304</td>
+                                                        <td class="forSale">305</td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -228,10 +294,18 @@
     <script src="assets/js/src/ace.widget-on-reload.js"></script>
     <script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
     <!-- 本页js -->
+    <script src="assets/js/jquery.cookie.js"></script>
     <script>
         window.onload = function () {
             $('#header').load('public/header.html');
             $('#sidebar').load('public/menu.html');
+            var menu_data={
+				opening:'.loupanzidian',
+				acting:'.loudongxinxi'
+			}
+			$.cookie('menu_data', JSON.stringify(menu_data), {
+				path: "menu.html"
+			});
         }
     </script>
 </body>

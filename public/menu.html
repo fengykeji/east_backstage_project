@@ -4,7 +4,7 @@
     } catch (e) {}
 </script>
 <ul class="nav nav-list">
-    <li class="open">
+    <li class="loupanzidian">
         <a href="#" class="dropdown-toggle">
             <i class="menu-icon fa fa-list"></i>
             <span class="menu-text">
@@ -17,7 +17,7 @@
         <b class="arrow"></b>
 
         <ul class="submenu">
-            <li class="">
+            <li class="xiangmuxinxi">
                 <a data-url="page/typography" href="index.html">
                     <i class="menu-icon fa fa-caret-right"></i>
                     项目信息
@@ -26,7 +26,7 @@
                 <b class="arrow"></b>
             </li>
 
-            <li class="active">
+            <li class="dingbubanner">
                 <a data-url="page/buttons" href="ProjectImg.html">
                     <i class="menu-icon fa fa-caret-right"></i>
                     顶部banner
@@ -35,7 +35,7 @@
                 <b class="arrow"></b>
             </li>
 
-            <li class="">
+            <li class="loupanxiangqing">
                 <a data-url="page/elements" href="PropertyDetail.html">
                     <i class="menu-icon fa fa-caret-right"></i>
                     楼盘详情
@@ -43,7 +43,7 @@
 
                 <b class="arrow"></b>
             </li>
-            <li class="">
+            <li class="loudongxinxi">
                 <a data-url="page/content-slider" href="BuildInfo.html">
                     <i class="menu-icon fa fa-caret-right"></i>
                     楼栋信息
@@ -51,7 +51,7 @@
 
                 <b class="arrow"></b>
             </li>
-            <li class="">
+            <li class="huxingxinxi">
                 <a data-url="page/content-slider" href="HouseInfor.html">
                     <i class="menu-icon fa fa-caret-right"></i>
                     户型信息
@@ -59,8 +59,15 @@
 
                 <b class="arrow"></b>
             </li>
+            <li class="qudaofenxi">
+                <a data-url="page/treeview" href="channelAnalaysis.html">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    渠道分析
+                </a>
 
-            <li class="">
+                <b class="arrow"></b>
+            </li>
+            <li class="xiangmufenxi">
                 <a data-url="page/treeview" href="ProjectAnalysis.html">
                     <i class="menu-icon fa fa-caret-right"></i>
                     项目分析
@@ -69,7 +76,7 @@
                 <b class="arrow"></b>
             </li>
 
-            <li class="">
+            <li class="dongtailiebiao">
                 <a data-url="page/nestable-list" href="DynamicList.html">
                     <i class="menu-icon fa fa-caret-right"></i>
                     动态列表
@@ -81,7 +88,7 @@
     </li>
 
 
-    <li class="">
+    <li class="dianzishapan">
         <a href="#" class="dropdown-toggle">
             <i class="menu-icon fa fa-list"></i>
             <span class="menu-text">
@@ -115,7 +122,7 @@
 
         </ul>
     </li>
-    <li class="">
+    <li class="jieyongguize">
         <a data-url="page/gallery" href="CommissionRules.html">
             <i class="menu-icon fa fa-list"></i>
             <span class="menu-text"> 结佣规则 </span>
@@ -123,7 +130,7 @@
 
         <b class="arrow"></b>
     </li>
-    <li class="">
+    <li class="yongjinguanli">
         <a data-url="page/gallery" href="CommissionManagement.html">
             <i class="menu-icon fa fa-list"></i>
             <span class="menu-text"> 佣金管理 </span>
@@ -131,7 +138,7 @@
 
         <b class="arrow"></b>
     </li>
-    <li class="">
+    <li class="kehuguanli">
         <a data-url="page/gallery" href="CustomerManagement.html">
             <i class="menu-icon fa fa-list"></i>
             <span class="menu-text"> 客户管理 </span>
@@ -139,7 +146,7 @@
 
         <b class="arrow"></b>
     </li>
-    <li class="">
+    <li class="jingjirenguanli">
         <a data-url="page/gallery" href="BrokerManagement.html">
             <i class="menu-icon fa fa-list"></i>
             <span class="menu-text"> 经纪人管理 </span>
@@ -157,3 +164,12 @@
 </div>
 
 <!-- /section:basics/sidebar.layout.minimize -->
+<script>
+    if ($.cookie('menu_data')) {
+        var menu_data = JSON.parse($.cookie('menu_data'));
+        $(menu_data.opening).addClass('open');
+        $(menu_data.acting).addClass('active');
+    } else {
+       
+    }
+</script>

@@ -115,14 +115,7 @@
 
         <!-- 菜单开始 -->
         <div id="sidebar" class="sidebar responsive ace-save-state">
-            <script type="text/javascript">
-                try {
-                    ace.settings.loadState('sidebar')
-                } catch (e) {}
-            </script>
-            <div id="menu" style="position: absolute;height: 100%;z-index:100">
-
-            </div>
+          
 
 
         </div>
@@ -239,6 +232,8 @@
     <script>
         window.onload=function(){
             getList();
+            $('#header').load('public/header.html');
+            $('#sidebar').load('public/menu.html');
         }
 
         function getList(){
