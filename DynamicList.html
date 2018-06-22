@@ -246,7 +246,7 @@
         function getList() {
             ajax.get('project/dynamic/list', {}, function (res) {
                 var model =
-                    ' <tr role="row" class="odd" value="{dynamic_id}"> <td class="center">{id}</td> <td class="center">{title}</td> <td class="center">{abstract}</td> <td class="center">{uploader}</td> <td class="center">{create_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="">查看</a> <a class="green edit_leibie" href="#">编辑</a> <a class="red del_leibie" href="#">删除</a> </div> </td> </tr>',
+                    ' <tr role="row" class="odd" value="{dynamic_id}"> <td class="center">{id}</td> <td class="center">{title}</td> <td class="center">{abstract}</td> <td class="center">{uploader}</td> <td class="center">{create_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="">预览</a> <a class="green edit_leibie" href="DynamicListModify.html">编辑</a> <a class="red del_leibie" href="#">删除</a> </div> </td> </tr>',
                     id = 1,
                     page =
                     '<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>',
@@ -269,6 +269,11 @@
                 }
             })
         }
+    </script>
+    <script>
+    $('#addleibie').on('click',function(){
+        window.location.href="DynamicListAdd.html";
+    })
     </script>
 </body>
 
