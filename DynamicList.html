@@ -115,7 +115,7 @@
 
         <!-- 菜单开始 -->
         <div id="sidebar" class="sidebar responsive ace-save-state">
-          
+
 
 
         </div>
@@ -165,11 +165,11 @@
                                         <div class="col-xs-12">
                                             <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
                                                 <ul class="pagination">
-                                                    <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0"  id="prev">
+                                                    <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="prev">
                                                         <a href="#">上一页</a>
                                                     </li>
 
-                                                    <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0"  id="next">
+                                                    <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="next">
                                                         <a href="#">下一页</a>
                                                     </li>
                                                 </ul>
@@ -224,40 +224,52 @@
     <script src="assets/js/src/ace.settings-skin.js"></script>
     <script src="assets/js/src/ace.widget-on-reload.js"></script>
     <script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
-
+    <!-- 本页js -->
     <script src="assets/js/jquery.cookie.js"></script>
     <script src="assets/js/config.js"></script>
     <script src="assets/js/public.js"></script>
-</body>
+
     <script>
-        window.onload=function(){
+        window.onload = function () {
             getList();
             $('#header').load('public/header.html');
             $('#sidebar').load('public/menu.html');
+            var menu_data = {
+                opening: '.loupanzidian',
+                acting: '.dongtailiebiao'
+            }
+            $.cookie('menu_data', JSON.stringify(menu_data), {
+                path: "menu.html"
+            });
         }
 
-        function getList(){
-            ajax.get('project/dynamic/list',{},function(res){
-                var model=' <tr role="row" class="odd" value="{dynamic_id}"> <td class="center">{id}</td> <td class="center">{title}</td> <td class="center">{abstract}</td> <td class="center">{uploader}</td> <td class="center">{create_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="">查看</a> <a class="green edit_leibie" href="#">编辑</a> <a class="red del_leibie" href="#">删除</a> </div> </td> </tr>',
-                    id=1,
-                    page='<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>',
-                    list='';
-                $.each(res.data.data,function(k,v){
-                    list+=model.replace('{dynamic_id}',v.dynamic_id).replace('{id}',id++).replace('{title}',v.title).replace('{uploader}',v.uploader).replace('{create_time}',v.create_time).replace('{abstract}',v.abstract);
+        function getList() {
+            ajax.get('project/dynamic/list', {}, function (res) {
+                var model =
+                    ' <tr role="row" class="odd" value="{dynamic_id}"> <td class="center">{id}</td> <td class="center">{title}</td> <td class="center">{abstract}</td> <td class="center">{uploader}</td> <td class="center">{create_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="">查看</a> <a class="green edit_leibie" href="#">编辑</a> <a class="red del_leibie" href="#">删除</a> </div> </td> </tr>',
+                    id = 1,
+                    page =
+                    '<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>',
+                    list = '';
+                $.each(res.data.data, function (k, v) {
+                    list += model.replace('{dynamic_id}', v.dynamic_id).replace('{id}', id++).replace(
+                        '{title}', v.title).replace('{uploader}', v.uploader).replace(
+                        '{create_time}', v.create_time).replace('{abstract}', v.abstract);
                 })
                 $('#list').append(list);
-                for(var i=1;i<=res.data.last_page;i++){
-                    var str = page.replace('{pageValue}',i).replace('{page}',i);
-                    if(i==res.data.current_page){
-                        str= str.replace('{avtive}','active');
-                    }else{
-                        str= str.replace('{avtive}','');
+                for (var i = 1; i <= res.data.last_page; i++) {
+                    var str = page.replace('{pageValue}', i).replace('{page}', i);
+                    if (i == res.data.current_page) {
+                        str = str.replace('{avtive}', 'active');
+                    } else {
+                        str = str.replace('{avtive}', '');
                     }
                     console.log(str);
                     $('#next').before(str);
                 }
             })
         }
-        </script>
+    </script>
+</body>
 
 </html>

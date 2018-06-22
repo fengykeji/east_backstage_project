@@ -384,10 +384,18 @@
     <script src="assets/js/src/ace.widget-on-reload.js"></script>
     <script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
     <!-- 本页js -->
+    <script src="assets/js/jquery.cookie.js"></script>
     <script>
         window.onload = function () {
             $('#header').load('public/header.html');
             $('#sidebar').load('public/menu.html');
+            var menu_data={
+				opening:'.dianzishapan',
+				acting:'.zhucaidan'
+			}
+			$.cookie('menu_data', JSON.stringify(menu_data), {
+				path: "menu.html"
+			});
         }
     </script>
 </body>

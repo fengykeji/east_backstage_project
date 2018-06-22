@@ -188,7 +188,23 @@
                                             </tr>
                                         </thead>
                                         <tbody id="list">
-
+                                            <!-- <tr role="row" class="odd" value="{id}">
+                                                <td class="center">{list_id}</td>
+                                                <td class="center img">
+                                                    <img class="proLook_img" src="{img_url}" alt=""> </td>
+                                                <td class="center comment">{comment}</td>
+                                                <td class="center">{uploader} </td>
+                                                <td class="center">{create_time}</td>
+                                                <td class="center">
+                                                    <div class="hidden-sm hidden-xs action-buttons">
+                                                        <a class="green edit_Img" style="cursor: pointer">编辑</a>
+                                                        <a class="red del_img" style="cursor: pointer">删除</a>
+                                                        <a class="" style="cursor: pointer">上移</a>
+                                                        <a class="" style="cursor: pointer">下移</a>
+                                                        <a class="" style="cursor: pointer">设为封面</a>
+                                                    </div>
+                                                </td>
+                                            </tr> -->
                                         </tbody>
                                     </table>
                                     <div class="row">
@@ -449,7 +465,7 @@
                 var dom = $('#list'),
                     list_id = 1,
                     model =
-                    '<tr role="row" class="odd" value="{id}"> <td class="center">{list_id}</td> <td class="center img"> <img class="proLook_img" src="{img_url}" alt=""> </td> <td class="center comment">{comment}</td> <td class="center">{uploader} </td> <td class="center">{create_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green edit_Img" style="cursor: pointer">编辑</a> <a class="red del_img"  style="cursor: pointer">删除</a> </div> </td> </tr>',
+                    '<tr role="row" class="odd" value="{id}"> <td class="center">{list_id}</td> <td class="center img"> <img class="proLook_img" src="{img_url}" alt=""> </td> <td class="center comment">{comment}</td> <td class="center">{uploader} </td> <td class="center">{create_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green edit_Img" style="cursor: pointer">编辑</a> <a class="red del_img"  style="cursor: pointer">删除</a> <a class="" style="cursor: pointer">上移</a><a class="" style="cursor: pointer">下移</a><a class="" style="cursor: pointer">设为封面</a></div> </td> </tr>',
                     page =
                     '<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>';
                 $.each(res.data.data, function (k, v) {
@@ -474,13 +490,13 @@
             getList();
             $('#header').load('public/header.html');
             $('#sidebar').load('public/menu.html');
-            var menu_data={
-				opening:'.loupanzidian',
-				acting:'.dingbubanner'
-			}
-			$.cookie('menu_data', JSON.stringify(menu_data), {
-				path: "menu.html"
-			});
+            var menu_data = {
+                opening: '.loupanzidian',
+                acting: '.dingbubanner'
+            }
+            $.cookie('menu_data', JSON.stringify(menu_data), {
+                path: "menu.html"
+            });
         }
     </script>
 

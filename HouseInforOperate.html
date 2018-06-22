@@ -74,7 +74,8 @@
             width: 500px;
         }
 
-        .build_add {
+        .build_add,
+        .build_add_3D {
             position: absolute;
             right: 80px;
             top: 0;
@@ -86,8 +87,43 @@
             width: 150px;
             height: auto;
         }
-        .table.table-striped td{
+
+        .table.table-striped td {
             vertical-align: middle;
+        }
+
+        .modal_add,
+        .modal_add_3D {
+            display: none;
+            background-color: rgba(0, 0, 0, .5);
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .modal-dialog {
+            margin: 150px auto;
+        }
+
+        .bootbox-body {
+            font-size: 18px;
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .modal-content {
+            padding: 30px 50px;
+        }
+
+        .modal-footer {
+            margin-top: 20px;
+        }
+
+        .close {
+            font-size: 32px;
         }
     </style>
 </head>
@@ -134,7 +170,7 @@
                         <div class="col-xs-12">
                             <div class="widget-box">
                                 <div class="widget-header" style="position: relative;">
-                                    <h4 class="smaller">新增</h4>
+                                    <h4 class="smaller">查看修改</h4>
                                     <div style="position: absolute;right: 80px;top:0;z-index: 100;">
                                         <button class="btn btn-danger" style="padding: 3px 10px;">确定</button>
                                         <button class="btn btn-primary" style="padding: 3px 10px;">取消</button>
@@ -203,17 +239,18 @@
                                                                 <td class="center">1</td>
                                                                 <td class="center">图片一</td>
                                                                 <td class="center">
-                                                                    <img class="proLook_img" src="http://120.27.21.136:2798/upload/project/img/06.jpg"
-                                                                        alt="">
+                                                                    <img class="proLook_img" src="http://120.27.21.136:2798/upload/project/img/06.jpg" alt="">
                                                                 </td>
                                                                 <td class="center">XXXXXXXXXXXXXXXX</td>
                                                                 <td class="center">张三</td>
                                                                 <td class="center">2017-12-12</td>
                                                                 <td class="center">
                                                                     <div class="hidden-sm hidden-xs action-buttons">
-                                                                        <a class="blue" href="BuildInfoOperate.html">查看</a>
-                                                                        <a class="green edit_leibie" href="BuildInfoOperate.html">编辑</a>
+                                                                        <a class="blue" href="">查看</a>
+                                                                        <a class="green edit_leibie" href="">编辑</a>
                                                                         <a class="red del_leibie" href="#">删除</a>
+                                                                        <a class="" href="">上移</a>
+                                                                        <a class="" href="">下移</a>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -221,17 +258,18 @@
                                                                 <td class="center">1</td>
                                                                 <td class="center">图片一</td>
                                                                 <td class="center">
-                                                                    <img class="proLook_img" src="http://120.27.21.136:2798/upload/project/img/06.jpg"
-                                                                        alt="">
+                                                                    <img class="proLook_img" src="http://120.27.21.136:2798/upload/project/img/06.jpg" alt="">
                                                                 </td>
                                                                 <td class="center">XXXXXXXXXXXXXXXX</td>
                                                                 <td class="center">张三</td>
                                                                 <td class="center">2017-12-12</td>
                                                                 <td class="center">
                                                                     <div class="hidden-sm hidden-xs action-buttons">
-                                                                        <a class="blue" href="BuildInfoOperate.html">查看</a>
-                                                                        <a class="green edit_leibie" href="BuildInfoOperate.html">编辑</a>
+                                                                        <a class="blue" href="">查看</a>
+                                                                        <a class="green edit_leibie" href="">编辑</a>
                                                                         <a class="red del_leibie" href="#">删除</a>
+                                                                        <a class="" href="">上移</a>
+                                                                        <a class="" href="">下移</a>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -294,17 +332,18 @@
                                                                 <td class="center">1</td>
                                                                 <td class="center">图片一</td>
                                                                 <td class="center">
-                                                                    <img class="proLook_img" src="http://120.27.21.136:2798/upload/project/img/06.jpg"
-                                                                        alt="">
+                                                                    <img class="proLook_img" src="http://120.27.21.136:2798/upload/project/img/06.jpg" alt="">
                                                                 </td>
                                                                 <td class="center">XXXXXXXXXXXXXXXX</td>
                                                                 <td class="center">张三</td>
                                                                 <td class="center">2017-12-12</td>
                                                                 <td class="center">
                                                                     <div class="hidden-sm hidden-xs action-buttons">
-                                                                        <a class="blue" href="BuildInfoOperate.html">查看</a>
-                                                                        <a class="green edit_leibie" href="BuildInfoOperate.html">编辑</a>
+                                                                        <a class="blue" href="">查看</a>
+                                                                        <a class="green edit_leibie" href="">编辑</a>
                                                                         <a class="red del_leibie" href="#">删除</a>
+                                                                        <a class="" href="">上移</a>
+                                                                        <a class="" href="">下移</a>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -312,17 +351,18 @@
                                                                 <td class="center">1</td>
                                                                 <td class="center">图片一</td>
                                                                 <td class="center">
-                                                                    <img class="proLook_img" src="http://120.27.21.136:2798/upload/project/img/06.jpg"
-                                                                        alt="">
+                                                                    <img class="proLook_img" src="http://120.27.21.136:2798/upload/project/img/06.jpg" alt="">
                                                                 </td>
                                                                 <td class="center">XXXXXXXXXXXXXXXX</td>
                                                                 <td class="center">张三</td>
                                                                 <td class="center">2017-12-12</td>
                                                                 <td class="center">
                                                                     <div class="hidden-sm hidden-xs action-buttons">
-                                                                        <a class="blue" href="BuildInfoOperate.html">查看</a>
-                                                                        <a class="green edit_leibie" href="BuildInfoOperate.html">编辑</a>
+                                                                        <a class="blue" href="">查看</a>
+                                                                        <a class="green edit_leibie" href="">编辑</a>
                                                                         <a class="red del_leibie" href="#">删除</a>
+                                                                        <a class="" href="">上移</a>
+                                                                        <a class="" href="">下移</a>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -360,7 +400,7 @@
                             <div class="widget-box" style="margin-top: 20px;">
                                 <div class="widget-header" style="position: relative;">
                                     <h4 class="smaller">3D图</h4>
-                                    <button class="btn btn-danger build_add">新增</button>
+                                    <button class="btn btn-danger build_add_3D">新增</button>
                                 </div>
                                 <div class="widget-body">
                                     <div class="widget-main" style="overflow: hidden;">
@@ -373,7 +413,8 @@
                                                             <tr role="row">
                                                                 <th class="center">序号</th>
                                                                 <th class="center">图片顺序</th>
-                                                                <th class="center">图片</th>
+                                                                <th class="center">平面图</th>
+                                                                <th class="center">3D图</th>
                                                                 <th class="center">备注</th>
                                                                 <th class="center">更新人员</th>
                                                                 <th class="center">更新时间</th>
@@ -385,17 +426,21 @@
                                                                 <td class="center">1</td>
                                                                 <td class="center">图片一</td>
                                                                 <td class="center">
-                                                                    <img class="proLook_img" src="http://120.27.21.136:2798/upload/project/img/06.jpg"
-                                                                        alt="">
+                                                                    <img class="proLook_img" src="http://120.27.21.136:2798/upload/project/img/06.jpg" alt="">
+                                                                </td>
+                                                                <td class="center">
+                                                                    <img class="proLook_img" src="http://120.27.21.136:2798/upload/project/img/06.jpg" alt="">
                                                                 </td>
                                                                 <td class="center">XXXXXXXXXXXXXXXX</td>
                                                                 <td class="center">张三</td>
                                                                 <td class="center">2017-12-12</td>
                                                                 <td class="center">
                                                                     <div class="hidden-sm hidden-xs action-buttons">
-                                                                        <a class="blue" href="BuildInfoOperate.html">查看</a>
-                                                                        <a class="green edit_leibie" href="BuildInfoOperate.html">编辑</a>
+                                                                        <a class="blue" href="">查看</a>
+                                                                        <a class="green edit_leibie" href="">编辑</a>
                                                                         <a class="red del_leibie" href="#">删除</a>
+                                                                        <a class="" href="">上移</a>
+                                                                        <a class="" href="">下移</a>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -403,17 +448,21 @@
                                                                 <td class="center">1</td>
                                                                 <td class="center">图片一</td>
                                                                 <td class="center">
-                                                                    <img class="proLook_img" src="http://120.27.21.136:2798/upload/project/img/06.jpg"
-                                                                        alt="">
+                                                                    <img class="proLook_img" src="http://120.27.21.136:2798/upload/project/img/06.jpg" alt="">
+                                                                </td>
+                                                                <td class="center">
+                                                                    <img class="proLook_img" src="http://120.27.21.136:2798/upload/project/img/06.jpg" alt="">
                                                                 </td>
                                                                 <td class="center">XXXXXXXXXXXXXXXX</td>
                                                                 <td class="center">张三</td>
                                                                 <td class="center">2017-12-12</td>
                                                                 <td class="center">
                                                                     <div class="hidden-sm hidden-xs action-buttons">
-                                                                        <a class="blue" href="BuildInfoOperate.html">查看</a>
-                                                                        <a class="green edit_leibie" href="BuildInfoOperate.html">编辑</a>
+                                                                        <a class="blue" href="">查看</a>
+                                                                        <a class="green edit_leibie" href="">编辑</a>
                                                                         <a class="red del_leibie" href="#">删除</a>
+                                                                        <a class="" href="">上移</a>
+                                                                        <a class="" href="">下移</a>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -476,17 +525,18 @@
                                                                 <td class="center">1</td>
                                                                 <td class="center">图片一</td>
                                                                 <td class="center">
-                                                                    <img class="proLook_img" src="http://120.27.21.136:2798/upload/project/img/06.jpg"
-                                                                        alt="">
+                                                                    <img class="proLook_img" src="http://120.27.21.136:2798/upload/project/img/06.jpg" alt="">
                                                                 </td>
                                                                 <td class="center">XXXXXXXXXXXXXXXX</td>
                                                                 <td class="center">张三</td>
                                                                 <td class="center">2017-12-12</td>
                                                                 <td class="center">
                                                                     <div class="hidden-sm hidden-xs action-buttons">
-                                                                        <a class="blue" href="BuildInfoOperate.html">查看</a>
-                                                                        <a class="green edit_leibie" href="BuildInfoOperate.html">编辑</a>
+                                                                        <a class="blue" href="">查看</a>
+                                                                        <a class="green edit_leibie" href="">编辑</a>
                                                                         <a class="red del_leibie" href="#">删除</a>
+                                                                        <a class="" href="">上移</a>
+                                                                        <a class="" href="">下移</a>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -494,17 +544,18 @@
                                                                 <td class="center">1</td>
                                                                 <td class="center">图片一</td>
                                                                 <td class="center">
-                                                                    <img class="proLook_img" src="http://120.27.21.136:2798/upload/project/img/06.jpg"
-                                                                        alt="">
+                                                                    <img class="proLook_img" src="http://120.27.21.136:2798/upload/project/img/06.jpg" alt="">
                                                                 </td>
                                                                 <td class="center">XXXXXXXXXXXXXXXX</td>
                                                                 <td class="center">张三</td>
                                                                 <td class="center">2017-12-12</td>
                                                                 <td class="center">
                                                                     <div class="hidden-sm hidden-xs action-buttons">
-                                                                        <a class="blue" href="BuildInfoOperate.html">查看</a>
-                                                                        <a class="green edit_leibie" href="BuildInfoOperate.html">编辑</a>
+                                                                        <a class="blue" href="">查看</a>
+                                                                        <a class="green edit_leibie" href="">编辑</a>
                                                                         <a class="red del_leibie" href="#">删除</a>
+                                                                        <a class="" href="">上移</a>
+                                                                        <a class="" href="">下移</a>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -548,7 +599,103 @@
 
 
 
+    <div class="modal_add">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="bootbox-close-button close closed">×</button>
+                    <h4 class="modal-title">新增</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="bootbox-body" style="overflow: hidden;">
+                        <form class="bootbox-form">
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label class=" control-label no-padding-right" for="form-field-1-1" style="width: 100px;vertical-align: top;">添加文件：</label>
+                                    <label class="ace-file-input ace-file-multiple fileUpLabel" style="display: inline-block;width: 300px;">
+                                        <input multiple="" type="file">
+                                        <span class="ace-file-container" data-title="点击上传图片">
+                                            <span class="ace-file-name" data-title="No File ...">
+                                                <i class=" ace-icon ace-icon fa fa-picture-o">
 
+                                                </i>
+                                            </span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label class="control-label no-padding-right" for="form-field-1-1" style="width: 100px;vertical-align: top;">备注：</label>
+                                    <textarea style="display: inline-block;width: 300px;" name="" id="" cols="30" rows="4"></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
+                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="add">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal_add_3D">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="bootbox-close-button close closed">×</button>
+                    <h4 class="modal-title">新增</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="bootbox-body" style="overflow: hidden;">
+                        <form class="bootbox-form">
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label class=" control-label no-padding-right" for="form-field-1-1" style="width: 100px;vertical-align: top;">添加平面图：</label>
+                                    <label class="ace-file-input ace-file-multiple fileUpLabel" style="display: inline-block;width: 300px;">
+                                        <input multiple="" type="file">
+                                        <span class="ace-file-container" data-title="点击上传图片">
+                                            <span class="ace-file-name" data-title="No File ...">
+                                                <i class=" ace-icon ace-icon fa fa-picture-o">
+
+                                                </i>
+                                            </span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label class=" control-label no-padding-right" for="form-field-1-1" style="width: 100px;vertical-align: top;">添加3D图：</label>
+                                    <label class="ace-file-input ace-file-multiple fileUpLabel" style="display: inline-block;width: 300px;">
+                                        <input multiple="" type="file">
+                                        <span class="ace-file-container" data-title="点击上传图片">
+                                            <span class="ace-file-name" data-title="No File ...">
+                                                <i class=" ace-icon ace-icon fa fa-picture-o">
+
+                                                </i>
+                                            </span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label class="control-label no-padding-right" for="form-field-1-1" style="width: 100px;vertical-align: top;">备注：</label>
+                                    <textarea style="display: inline-block;width: 300px;" name="" id="" cols="30" rows="4"></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
+                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="add">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- basic scripts -->
 
@@ -585,10 +732,18 @@
     <script src="assets/js/src/ace.widget-on-reload.js"></script>
     <script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
     <!-- 本页js -->
+    <script src="assets/js/jquery.cookie.js"></script>
     <script>
         window.onload = function () {
             $('#header').load('public/header.html');
             $('#sidebar').load('public/menu.html');
+            var menu_data = {
+                opening: '.loupanzidian',
+                acting: '.huxingxinxi'
+            }
+            $.cookie('menu_data', JSON.stringify(menu_data), {
+                path: "menu.html"
+            });
         }
     </script>
     <script src="components/fuelux/js/spinbox.js"></script>
@@ -629,6 +784,19 @@
             icon_up: 'ace-icon fa fa-caret-up bigger-110',
             icon_down: 'ace-icon fa fa-caret-down bigger-110'
         });
+    </script>
+    <script>
+        //新增图片
+        $('.build_add').on('click', function () {
+            $('.modal_add').css('display', 'block');
+        })
+        //新增3d图
+        $('.build_add_3D').on('click', function () {
+            $('.modal_add_3D').css('display', 'block');
+        })
+        $('.closed').on('click', function () {
+            $(this).parent().parent().parent().parent().css('display', 'none');
+        })
     </script>
 </body>
 

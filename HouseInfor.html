@@ -264,12 +264,19 @@
             getList();
             $('#header').load('public/header.html');
             $('#sidebar').load('public/menu.html');
+            var menu_data={
+				opening:'.loupanzidian',
+				acting:'.huxingxinxi'
+			}
+			$.cookie('menu_data', JSON.stringify(menu_data), {
+				path: "menu.html"
+			});
         }
 
 
         function getList(){
             ajax.get('project/houseType/list',{},function(res){
-                var model='<tr role="row" class="odd" value="{house_id}"> <td class="center">{id}</td> <td class="center">{name}</td> <td class="center">{type}</td> <td class="center">{area_min}㎡--{area_max}㎡</td> <td class="center">{pm}</td> <td class="center">{3d}</td> <td class="center">{xg}</td> <td class="center">{sj}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="HouseInforOperate.html">查看</a> <a class="green edit_leibie" href="#">编辑</a> <a class="red del_leibie" href="#">删除</a> </div> </td> </tr>',
+                var model='<tr role="row" class="odd" value="{house_id}"> <td class="center">{id}</td> <td class="center">{name}</td> <td class="center">{type}</td> <td class="center">{area_min}㎡--{area_max}㎡</td> <td class="center">{pm}</td> <td class="center">{3d}</td> <td class="center">{xg}</td> <td class="center">{sj}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="HouseInforOperate.html">查看</a> <a class="green edit_leibie" href="HouseInforOperate.html">编辑</a> <a class="red del_leibie" href="#">删除</a> </div> </td> </tr>',
                     dom=$('#list'),
                     id=1,
                     str='';

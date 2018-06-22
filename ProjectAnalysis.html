@@ -107,14 +107,7 @@
 
         <!-- 菜单开始 -->
         <div id="sidebar" class="sidebar responsive ace-save-state">
-            <script type="text/javascript">
-                try {
-                    ace.settings.loadState('sidebar')
-                } catch (e) {}
-            </script>
-            <div id="menu" style="position: absolute;height: 100%;z-index:100">
-
-            </div>
+          
 
 
         </div>
@@ -216,42 +209,52 @@
     <script src="assets/js/src/ace.settings-skin.js"></script>
     <script src="assets/js/src/ace.widget-on-reload.js"></script>
     <script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
-
+    <!-- 本页js -->
     <script src="assets/js/jquery.cookie.js"></script>
     <script src="assets/js/config.js"></script>
     <script src="assets/js/public.js"></script>
+
+    <script>
+        window.onload = function () {
+            getInfo();
+            $('#header').load('public/header.html');
+            $('#sidebar').load('public/menu.html');
+            var menu_data = {
+                opening: '.loupanzidian',
+                acting: '.xiangmufenxi'
+            }
+            $.cookie('menu_data', JSON.stringify(menu_data), {
+                path: "menu.html"
+            });
+        }
+
+
+        function getInfo() {
+            ajax.get('project/analyse/get', {}, function (res) {
+                if (res.data.length != 0) {
+                    $('#advantage').val(res.data.advantage);
+                    $('#fetch').val(res.data.fetch);
+                    $('#rim').val(res.data.rim);
+                    $('#increase_value').val(res.data.increase_value)
+                }
+
+            })
+        }
+        $('#save').click(function () {
+            var data = {
+                'advantage': $('#advantage').val(),
+                'fetch': $('#fetch').val(),
+                'rim': $('#rim').val(),
+                'increase_value': $('#increase_value').val()
+            };
+            ajax.post('project/analyse/update', data, function (res) {
+                alert(res.msg)
+                if (res.code == config.responseSuccess) {
+                    window.location.reload();
+                }
+            })
+        })
+    </script>
 </body>
-<script>
 
-    window.onload=function(){
-        getInfo()
-    }
-
-
-    function getInfo(){
-        ajax.get('project/analyse/get',{},function(res){
-            if(res.data.length!=0){
-                $('#advantage').val(res.data.advantage);
-                $('#fetch').val(res.data.fetch);
-                $('#rim').val(res.data.rim);
-                $('#increase_value').val(res.data.increase_value)
-            }
-
-        })
-    }
-    $('#save').click(function(){
-        var data={
-            'advantage':$('#advantage').val(),
-            'fetch':  $('#fetch').val(),
-            'rim': $('#rim').val(),
-            'increase_value':$('#increase_value').val()
-        };
-        ajax.post('project/analyse/update',data,function(res){
-            alert(res.msg)
-            if(res.code==config.responseSuccess){
-                window.location.reload();
-            }
-        })
-    })
-</script>
 </html>
