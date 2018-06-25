@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>客户管理</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="components/font-awesome/css/font-awesome.css" />
+
+    <!-- text fonts -->
+    <link rel="stylesheet" href="assets/css/ace-fonts.css" />
+
+    <!-- ace styles -->
+    <link rel="stylesheet" href="assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
+
+
+    <link rel="stylesheet" href="assets/css/ace-skins.css" />
+    <link rel="stylesheet" href="assets/css/ace-rtl.css" />
+
+
+    <!-- ace settings handler -->
+    <script src="assets/js/ace-extra.js"></script>
+
+    <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+
+
+    <style>
+        .checkSty_projectInfo {
+            float: left;
+        }
+
+        /* .tags {
+            display: inline-block;
+            padding: 4px 6px;
+            color: #777;
+            vertical-align: middle;
+            border: none;
+            width: auto;
+        }
+
+        .tag {
+            max-width: 200px;
+            outline: none;
+        } */
+
+        .operate_proInfo {
+            position: absolute;
+            right: 100px;
+            z-index: 100;
+        }
+
+        .user-info {
+            max-width: 150px;
+            display: inline-block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            text-align: left;
+            vertical-align: top;
+            line-height: 15px;
+            position: relative;
+            top: 14px;
+        }
+
+        .inpt_width {
+            width: 70%;
+            display: inline-block;
+        }
+
+        .lab_width {
+            width: 120px;
+        }
+
+        .cofimg_sty {
+            width: 160px;
+            height: 100px;
+        }
+
+        /* .modal_judgment {
+            display: none;
+            background-color: rgba(0, 0, 0, .5);
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .modal-dialog {
+            margin: 150px auto;
+        }
+
+        .bootbox-body {
+            font-size: 18px;
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .modal-content {
+            padding: 30px 50px;
+        }
+
+        .modal-footer {
+            margin-top: 20px;
+        }
+
+        .close {
+            font-size: 32px;
+        } */
+        .label_ul{
+            list-style: none;
+            overflow: hidden;
+            margin: 0;
+            vertical-align: bottom;
+        }
+        .label_ul li{
+            float: left;
+            padding: 5px 10px;
+            margin-right: 5px;
+            background-color: #eeeeee;
+            color: #848484;
+        }
+    </style>
+</head>
+
+<body class="no-skin">
+    <!-- #section:basics/navbar.layout -->
+    <div id="header">
+
+    </div>
+    <!-- /section:basics/navbar.layout -->
+    <div class="main-container" id="main-container">
+        <script type="text/javascript">
+            try {
+                ace.settings.check('main-container', 'fixed')
+            } catch (e) {}
+        </script>
+
+        <!-- 菜单开始 -->
+        <div id="sidebar" class="sidebar responsive ace-save-state">
+
+
+
+        </div>
+
+        <!-- /section:basics/sidebar -->
+        <div class="main-content">
+            <div class="main-content-inner">
+                <div class="breadcrumbs" id="breadcrumbs">
+                    <script type="text/javascript">
+                        try {
+                            ace.settings.check('breadcrumbs', 'fixed')
+                        } catch (e) {}
+                    </script>
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                            <a href="CustomerManagement.html">楼盘字典>客户管理</a>
+                            <a>>有效客户查看</a>
+                        </li>
+                    </ul>
+                    <div class="operate_proInfo">
+                        <!-- <button class="btn btn-primary">确定</button> -->
+                        <button class="btn btn-danger" id="save">关闭</button>
+                    </div>
+                </div>
+                <!-- 内容开始 -->
+                <div class="page-content">
+                    <div class="row" style="margin-top: 50px;">
+                        <div class="col-xs-12">
+                            <div>
+                                <h4 class="smaller">推荐编号：TJBHNO1</h4>
+                                <div style="position: absolute;right: 80px;top:0;z-index: 100;height: 38px;line-height: 38px;">
+                                    <span>目前状态：
+                                        <span style="color: red;margin-right: 30px;">已到访</span>
+                                    </span>
+                                    <span style="color: green;">失效倒计时：59:00:21</span>
+                                </div>
+                            </div>
+                            <form class="form-horizontal" role="form">
+                                <div class="widget-box">
+                                    <div class="widget-header">
+                                        <h4 class="smaller">客户信息</h4>
+                                    </div>
+                                    <div class="widget-body">
+                                        <div class="widget-main" style="overflow: hidden;">
+                                            <div class="col-xs-6" style="padding-left: 100px;">
+                                                <div class="form-group">
+                                                    <label class="lab_width">客户名称：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="居住">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">联系电话1：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="12352639856">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">联系电话2：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="15489659652">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">证件类型：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="身份证">
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6" style="padding-left: 50px;">
+                                                <div class="form-group">
+                                                    <label class="lab_width">证件号码：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="845692569878546231">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">住址：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="成都-郫县-大禹东路">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">到访时间：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="2015-12-12">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="widget-box" style="margin-top: 30px;">
+                                    <div class="widget-header">
+                                        <h4 class="smaller">客户需求信息</h4>
+                                    </div>
+                                    <div class="widget-body">
+                                        <div class="widget-main" style="overflow: hidden;">
+                                            <div class="col-xs-6" style="padding-left: 100px;">
+                                                <div class="form-group">
+                                                    <label class="lab_width">需求物业：</label>
+                                                    <!-- <input class="inpt_width" type="text" disabled="disabled" value="居住"> -->
+                                                    <ul class="inpt_width label_ul">
+                                                        <li>住宅</li>
+                                                        <li>别墅</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">需求标签：</label>
+                                                    <!-- <input class="inpt_width" type="text" disabled="disabled" value="845692569878546231"> -->
+                                                    <ul class="inpt_width label_ul">
+                                                        <li>学区房</li>
+                                                        <li>满5年</li>
+                                                        <li>地铁房</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">总价（万）：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="90--100">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">付款方式：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="全款">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">置业目的：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="自住">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">楼层户数（户）：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="2--4">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">意向区域：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="成都-郫县-大禹东路 高新区">
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6" style="padding-left: 50px;">
+
+                                                <div class="form-group">
+                                                    <label class="lab_width">户型：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="3室2厅2卫">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">面积（㎡）：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="90--100">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">朝向：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="西南、东南">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">装修状况：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="精装">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">房龄要求：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="10年之内">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">楼层（层）：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="5--10">
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="widget-box" style="margin-top: 30px;">
+                                    <div class="widget-header">
+                                        <h4 class="smaller">置业顾问信息</h4>
+                                    </div>
+                                    <div class="widget-body">
+                                        <div class="widget-main" style="overflow: hidden;">
+                                            <div class="col-xs-6" style="padding-left: 100px;">
+                                                <div class="form-group">
+                                                    <label class="lab_width">置业顾问：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="张三">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">联系电话1：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="12352639856">
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-xs-6" style="padding-left: 50px;">
+                                                <div class="form-group">
+                                                    <label class="lab_width">联系电话2：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="15489659652">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- basic scripts -->
+
+    <!--[if !IE]> -->
+    <script src="components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        if ('ontouchstart' in document.documentElement) document.write(
+            "<script src='components/_mod/jquery.mobile.custom/jquery.mobile.custom.js'>" + "<" + "/script>");
+    </script>
+    <script src="components/bootstrap/dist/js/bootstrap.js"></script>
+
+    <!-- ace scripts -->
+    <script src="assets/js/src/elements.scroller.js"></script>
+    <script src="assets/js/src/elements.colorpicker.js"></script>
+    <script src="assets/js/src/elements.fileinput.js"></script>
+    <script src="assets/js/src/elements.typeahead.js"></script>
+    <script src="assets/js/src/elements.wysiwyg.js"></script>
+    <script src="assets/js/src/elements.spinner.js"></script>
+    <script src="assets/js/src/elements.treeview.js"></script>
+    <script src="assets/js/src/elements.wizard.js"></script>
+    <script src="assets/js/src/elements.aside.js"></script>
+    <script src="assets/js/src/ace.js"></script>
+    <script src="assets/js/src/ace.basics.js"></script>
+    <script src="assets/js/src/ace.scrolltop.js"></script>
+    <script src="assets/js/src/ace.ajax-content.js"></script>
+    <script src="assets/js/src/ace.touch-drag.js"></script>
+    <script src="assets/js/src/ace.sidebar.js"></script>
+    <script src="assets/js/src/ace.sidebar-scroll-1.js"></script>
+    <script src="assets/js/src/ace.submenu-hover.js"></script>
+    <script src="assets/js/src/ace.widget-box.js"></script>
+    <script src="assets/js/src/ace.settings.js"></script>
+    <script src="assets/js/src/ace.settings-rtl.js"></script>
+    <script src="assets/js/src/ace.settings-skin.js"></script>
+    <script src="assets/js/src/ace.widget-on-reload.js"></script>
+    <script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
+
+    <script src="assets/js/jquery.cookie.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/public.js"></script>
+
+    <!-- 本页js -->
+    <script src="assets/js/jquery.cookie.js"></script>
+    <script>
+        window.onload = function () {
+            $('#header').load('public/header.html');
+            $('#sidebar').load('public/menu.html');
+            var menu_data = {
+                opening: '',
+                acting: '.kehuguanli'
+            }
+            $.cookie('menu_data', JSON.stringify(menu_data), {
+                path: "menu.html"
+            });
+        }
+    </script>
+</body>
+
+</html>
