@@ -4,8 +4,8 @@ var config={
     responseSuccess:200,
     cookiePrefix:'yqd_',
     defaultRole:'project',
-    allowImgFileSize:2*1024*1024,
-    ImgSizeBeyondErrMes:'上传文件大小不能超过2m',
+    allowImgFileSize:3*1024*1024,
+    ImgSizeBeyondErrMes:'上传文件大小不能超过3m',
     configList:{
         'BANK_TYPE':1, //银行类型
         'CARD_TYPE':2, //证件类型

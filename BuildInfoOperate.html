@@ -90,172 +90,152 @@
 </head>
 
 <body class="no-skin">
-    <div id="header"></div>
+<div id="header"></div>
 
 
 
-    <!-- /section:basics/navbar.layout -->
-    <div class="main-container" id="main-container">
-        <script type="text/javascript">
-            try {
-                ace.settings.check('main-container', 'fixed')
-            } catch (e) {}
-        </script>
+<!-- /section:basics/navbar.layout -->
+<div class="main-container" id="main-container">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('main-container', 'fixed')
+        } catch (e) {}
+    </script>
 
-        <!-- 菜单开始 -->
-        <div id="sidebar" class="sidebar responsive ace-save-state">
+    <!-- 菜单开始 -->
+    <div id="sidebar" class="sidebar responsive ace-save-state">
 
-        </div>
+    </div>
 
-        <!-- /section:basics/sidebar -->
-        <div class="main-content">
-            <div class="main-content-inner">
-                <div class="breadcrumbs" id="breadcrumbs">
-                    <script type="text/javascript">
-                        try {
-                            ace.settings.check('breadcrumbs', 'fixed')
-                        } catch (e) {}
-                    </script>
-                    <ul class="breadcrumb">
-                        <li>
-                            <i class="ace-icon fa fa-home home-icon"></i>
-                            <a href="CommissionRules.html">楼盘字典>楼栋信息</a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- 内容开始 -->
-                <div class="page-content">
-                    <div class="row" style="margin-top: 15px;">
-                        <div class="col-xs-12">
-                            <form class="form-horizontal" role="form">
-                                <div class="widget-box">
-                                    <div class="widget-header" style="position: relative;">
-                                        <h4 class="smaller">查看修改</h4>
-                                        <div style="position: absolute;right: 80px;top:0;z-index: 100;">
-                                            <button class="btn btn-danger" style="padding: 3px 10px;">确定</button>
-                                            <button class="btn btn-primary" style="padding: 3px 10px;">取消</button>
-                                        </div>
+    <!-- /section:basics/sidebar -->
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs" id="breadcrumbs">
+                <script type="text/javascript">
+                    try {
+                        ace.settings.check('breadcrumbs', 'fixed')
+                    } catch (e) {}
+                </script>
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="ace-icon fa fa-home home-icon"></i>
+                        <a href="CommissionRules.html">楼盘字典>楼栋信息</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- 内容开始 -->
+            <div class="page-content">
+                <div class="row" style="margin-top: 15px;">
+                    <div class="col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="widget-box">
+                                <div class="widget-header" style="position: relative;">
+                                    <h4 class="smaller">新增</h4>
+                                    <div style="position: absolute;right: 80px;top:0;z-index: 100;">
+                                        <div class="btn btn-danger" style="padding: 3px 10px;" id="add">确定</div>
+                                        <button class="btn btn-primary" style="padding: 3px 10px;">取消</button>
                                     </div>
-                                    <div class="widget-body">
-                                        <div class="widget-main" style="overflow: hidden;">
-                                            <div class="col-xs-6" style="padding-left: 100px;">
-                                                <div class="form-group">
-                                                    <label class="lab_width">名称：</label>
-                                                    <input class="inpt_width" placeholder="请输入楼栋名称" type="text">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">预售许可证：</label>
-                                                    <input class="inpt_width" type="text">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">开盘方式：</label>
-                                                    <select class="form-control inpt_width" style="display: inline-block;">
-                                                        <option value="">网上开盘</option>
-                                                        <option value="">XXXX</option>
-                                                        <option value="">XXXXX</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">交房时间：</label>
-                                                    <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
-                                                        <div class="input-group">
-                                                            <input class="form-control date-picker" type="text" data-date-format="yyyy-mm-dd">
-                                                            <span class="input-group-addon">
+                                </div>
+                                <div class="widget-body">
+                                    <div class="widget-main" style="overflow: hidden;">
+                                        <div class="col-xs-6" style="padding-left: 100px;">
+                                            <div class="form-group">
+                                                <label class="lab_width">名称：</label>
+                                                <input class="inpt_width" placeholder="请输入楼栋名称" type="text" name="name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">预售许可证：</label>
+                                                <input class="inpt_width" type="text" name="permit">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">开盘方式：</label>
+                                                <select class="form-control inpt_width" style="display: inline-block;" name="open_way" >
+
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">交房时间：</label>
+                                                <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
+                                                    <div class="input-group">
+                                                        <input class="form-control date-picker" type="text" data-date-format="yyyy-mm-dd" name="handing_room_time">
+                                                        <span class="input-group-addon">
                                                                 <i class="fa fa-calendar bigger-110"></i>
                                                             </span>
-                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">楼栋层数：</label>
-                                                    <input class="inpt_width" type="text">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">梯户比：</label>
-                                                    <input type="text" class="input-sm" id="spinner1" />
-                                                    <span class="tihubi_span">梯</span>
-                                                    <input type="text" class="input-sm" id="spinner2" />
-                                                    <span class="tihubi_span">户</span>
-                                                </div>
-
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">楼上层数：</label>
+                                                <input class="inpt_width" type="number" name="upper_floor_num" min="1">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">梯户比：</label>
+                                                <input type="text" class="input-sm" id="spinner1" name="ratio1" />
+                                                <span class="tihubi_span">梯</span>
+                                                <input type="text" class="input-sm" id="spinner2" name="ratio2"/>
+                                                <span class="tihubi_span">户</span>
                                             </div>
 
+                                        </div>
 
 
 
 
 
-                                            <div class="col-xs-6" style="padding-left: 50px;">
-                                                <div class="form-group">
-                                                    <label class="lab_width">绑定楼栋：</label>
-                                                    <select class="form-control inpt_width" style="display: inline-block;">
-                                                        <option value="">1栋</option>
-                                                        <option value="">2栋</option>
-                                                        <option value="">3栋</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">开发时间：</label>
-                                                    <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
-                                                        <div class="input-group">
-                                                            <input class="form-control date-picker" type="text" data-date-format="yyyy-mm-dd">
-                                                            <span class="input-group-addon">
-                                                                <i class="fa fa-calendar bigger-110"></i>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">开盘时间：</label>
-                                                    <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
-                                                        <div class="input-group">
-                                                            <input class="form-control date-picker" type="text" data-date-format="yyyy-mm-dd">
-                                                            <span class="input-group-addon">
-                                                                <i class="fa fa-calendar bigger-110"></i>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">单元数：</label>
-                                                    <input class="inpt_width" placeholder="请输入楼栋名称" type="text">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">楼下层数：</label>
-                                                    <input class="inpt_width" placeholder="请输入楼栋名称" type="text">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">总户数：</label>
-                                                    <input class="inpt_width" placeholder="请输入楼栋名称" type="text">
-                                                </div>
 
+                                        <div class="col-xs-6" style="padding-left: 50px;">
+                                            <div class="form-group">
+                                                <label class="lab_width">绑定楼栋：</label>
+                                                <select class="form-control inpt_width" style="display: inline-block;" name="ys">
+
+                                                </select>
                                             </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">发证时间：</label>
+                                                <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
+                                                    <div class="input-group">
+                                                        <input class="form-control date-picker" type="text" data-date-format="yyyy-mm-dd" name="permit_time">
+                                                        <span class="input-group-addon">
+                                                                <i class="fa fa-calendar bigger-110"></i>
+                                                            </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">开盘时间：</label>
+                                                <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
+                                                    <div class="input-group">
+                                                        <input class="form-control date-picker" type="text" data-date-format="yyyy-mm-dd" name="open_time">
+                                                        <span class="input-group-addon">
+                                                                <i class="fa fa-calendar bigger-110"></i>
+                                                            </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">单元数：</label>
+                                                <input class="inpt_width"  type="number" name="unit_num" min="1">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">楼下层数：</label>
+                                                <input class="inpt_width"  type="number" name="down_floor_num" min="1">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">总户数：</label>
+                                                <input class="inpt_width" type="number" name="total_house_num" min="1">
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</div>
 
 
 
@@ -307,6 +287,8 @@
     <script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
     <!-- 本页js -->
     <script src="assets/js/jquery.cookie.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/public.js"></script>
     <script>
         window.onload = function () {
             $('#header').load('public/header.html');
@@ -318,6 +300,8 @@
 			$.cookie('menu_data', JSON.stringify(menu_data), {
 				path: "menu.html"
 			});
+            getConfig();
+            ysBuild();
         }
     </script>
     <script src="components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
@@ -353,5 +337,148 @@
         })
     </script>
 </body>
+<script>
+    $('#spinner1').ace_spinner({
+        value: 0,
+        min: 0,
+        max: 100,
+        step: 1,
+        touch_spinner: true,
+        icon_up: 'ace-icon fa fa-caret-up bigger-110',
+        icon_down: 'ace-icon fa fa-caret-down bigger-110'
+    });
+    $('#spinner2').ace_spinner({
+        value: 0,
+        min: 0,
+        max: 100,
+        step: 1,
+        touch_spinner: true,
+        icon_up: 'ace-icon fa fa-caret-up bigger-110',
+        icon_down: 'ace-icon fa fa-caret-down bigger-110'
+    });
+
+    //日历插件初始化
+    $('.date-picker').datepicker({
+        autoclose: true,
+        todayHighlight: true
+    })
+</script>
+<script>
+    var build_id = $.getUrlVar('build_id');
+
+    function getConfig(){
+        ajax.get('config',{id:config.configList['OPEN_TYPE']},function(res){
+            var dom=$('select[name=open_way]'),
+                model='<option value="{id}">{name}</option>',
+                str='';
+            $.each(res.data[config.configList['OPEN_TYPE']].param,function(k,v){
+                str+=model.replace('{id}',v.id).replace('{name}',v.param);
+            })
+            dom.append(str);
+
+        })
+    }
+
+    function ysBuild(){
+        ajax.get('project/build/ys/build',{},function(res){
+            var dom=$('select[name=ys]'),
+                model='<option value="{id}">{name}</option>',
+                str='';
+            $.each(res.data[0].rows,function(k,v){
+                str+=model.replace('{id}',v.LDID).replace('{name}',v.LDMC);
+            })
+            dom.append(str);
+            getBuildInfo()
+        })
+    }
+
+    function getBuildInfo(){
+        ajax.get('project/build/getBuildInfo',{'build_id':build_id},function(res){
+            $('input[name=name]').val(res.data.build_name);
+            $('select[name=open_way]').children('option').each(function(){
+                if(parseInt($(this).attr('value'))==res.data.open_way){
+                    $(this).attr('checked','checked');
+                }
+            })
+            $('input[name=handing_room_time]').val(res.data.handing_room_time);
+            $('input[name=upper_floor_num]').val(res.data.upper_floor_num);
+            $('input[name=down_floor_num]').val(res.data.down_floor_num);
+            $('input[name=permit]').val(res.data.sale_permit);
+            $('input[name=permit_time]').val(res.data.permit_time);
+            $('input[name=open_time]').val(res.data.open_time);
+            $('input[name=total_house_num]').val(res.data.total_house_num);
+            $('input[name=unit_num]').val(res.data.unit_num);
+            $('select[name=ys]').children('option').each(function(){
+                if(parseInt($(this).attr('value'))==res.data.ys_build_id){
+                    $(this).attr('checked','checked');
+                }
+            })
+            var retio = res.data.ladder_ratio.split(',');
+            $('input[name=ratio1]').val(retio[0])
+            $('input[name=ratio2]').val(retio[1])
+        })
+    }
+    $('#add').click(function(){
+        var data={
+            'build_id':build_id,
+            'build_name':$('input[name=name]').val(),
+            'open_way':$('select[name=open_way]').val(),
+            'handing_room_time':$('input[name=handing_room_time]').val(),
+            'upper_floor_num':$('input[name=upper_floor_num]').val(),
+            'down_floor_num':$('input[name=down_floor_num]').val(),
+            'sale_permit':$('input[name=permit]').val(),
+            'permit_time':$('input[name=permit_time]').val(),
+            'open_time':$('input[name=open_time]').val(),
+            'total_house_num':$('input[name=total_house_num]').val(),
+            'unit_num':$('input[name=unit_num]').val(),
+            'ys_build_id':$('select[name=ys]').val(),
+        }
+        if(data.name==''){
+            alert('名称不能为空');
+            return false;
+        }
+        if(data.handing_room_time==''){
+            alert('交房时间不能为空');
+            return false;
+        }
+        if(data.down_floor_num==''){
+            data.down_floor_num=0
+        }
+        if(data.upper_floor_num==''){
+            data.upper_floor_num=0
+        }
+        if(data.unit_num==''){
+            data.unit_num=0
+        }
+        if(data.total_house_num==''){
+            data.total_house_num=0
+        }
+        if(data.sale_permit==''){
+            alert('预售许可证不能为空');
+            return false;
+        }
+        if(data.permit_time==''){
+            alert('预售许可证发证时间不能为空');
+            return false;
+        }
+        if(data.open_time==''){
+            alert('开盘时间不能为空');
+            return false;
+        }
+        if(data.open_time<0 ){
+            alert('开盘时间不能为空');
+            return false;
+        }
+
+        data.ladder_ratio=$('input[name=ratio1]').val()+','+$('input[name=ratio2]').val()
+
+        ajax.post('project/build/update',data,function(res){
+            alert(res.msg);
+            window.location.href='BuildInfo.html';
+        })
+
+    })
+
+</script>
 
 </html>

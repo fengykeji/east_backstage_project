@@ -34,46 +34,6 @@
             float: left;
         }
 
-        /* .tags {
-            display: inline-block;
-            padding: 4px 6px;
-            color: #777;
-            vertical-align: middle;
-            border: none;
-            width: auto;
-        }
-
-        .tag {
-            max-width: 200px;
-            outline: none;
-        } */
-
-        /* .operate_proInfo {
-            position: absolute;
-            right: 100px;
-            z-index: 100;
-        } */
-
-        /* .user-info {
-            max-width: 150px;
-            display: inline-block;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            text-align: left;
-            vertical-align: top;
-            line-height: 15px;
-            position: relative;
-            top: 14px;
-        }
-
-        .inpt_width {
-            width: 70%;
-        }
-
-        .lab_width {
-            width: 100px;
-        } */
 
         .modal_upImg {
             display: none;
@@ -181,19 +141,16 @@
                                                 <i class="bigger-110 ace-icon fa fa-angle-down" data-icon-hide="ace-icon fa fa-angle-down" data-icon-show="ace-icon fa fa-angle-right"></i>
 
                                                 <h4 class="smaller" style="display: inline;">总平图</h4>
-                                                <div style="position: absolute;right: 80px;top:0;z-index: 100;">
-                                                    <button class="btn btn-danger" style="padding: 3px 10px;">确定</button>
-                                                    <button class="btn btn-primary" style="padding: 3px 10px;">取消</button>
-                                                </div>
+
                                             </a>
                                         </h4>
                                     </div>
 
                                     <div class="panel-collapse collapse in" id="collapseOne" aria-expanded="true">
                                         <div class="panel-body">
-                                            <label id="zongImg_up" class="ace-file-input ace-file-multiple col-sm-3 fileUpLabel">
-                                                <!-- <input multiple="" type="file"> -->
-                                                <span class="ace-file-container" data-title="点击选择上传图片类型">
+                                            <label id="zongImg_up" class="ace-file-input ace-file-multiple col-sm-5 fileUpLabel">
+                                                <img class="show_UpImg img_url" src="assets/images/null.jpg" id="img" style="display: none;width: 100%">
+                                                <span class="ace-file-container" data-title="点击选择上传图片类型" id="noFile">
                                                     <span class="ace-file-name" data-title="No File ...">
                                                         <i class=" ace-icon ace-icon fa fa-picture-o">
 
@@ -206,73 +163,23 @@
                                 </div>
                             </div>
 
-                            <!-- <div class="widget-box">
-                                <div class="widget-header" style="position: relative;">
-                                    <h4 class="smaller">总平图</h4>
-                                    <div style="position: absolute;right: 80px;top:0;z-index: 100;">
-                                        <button class="btn btn-danger" style="padding: 3px 10px;">确定</button>
-                                        <button class="btn btn-primary" style="padding: 3px 10px;">取消</button>
-                                    </div>
-                                </div>
-                                <div class="widget-body">
-                                    <div class="widget-main" style="overflow: hidden;">
-                                        <div class="col-xs-12">
-                                            <label class="ace-file-input ace-file-multiple col-sm-3 fileUpLabel">
-                                                <input multiple="" type="file">
-                                                <span class="ace-file-container" data-title="点击上传图片">
-                                                    <span class="ace-file-name" data-title="No File ...">
-                                                        <i class=" ace-icon ace-icon fa fa-picture-o">
-
-                                                        </i>
-                                                    </span>
-                                                </span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
 
 
-                            <div class="widget-box" style="margin-top: 30px;">
+
+                            <div class="widget-box ys" style="margin-top: 30px;" >
                                 <div class="widget-header" style="position: relative;">
                                     <h4 class="smaller">楼栋详情</h4>
                                 </div>
                                 <div class="widget-body">
                                     <div class="widget-main" style="overflow: hidden;">
                                         <ul class="build_detail">
-                                            <li>
-                                                <button type="button" class="btn btn-white btn-primary build_detail_look">1栋</button>
-                                            </li>
-                                            <li>
-                                                <button type="button" class="btn btn-white btn-primary build_detail_look">2栋</button>
-                                            </li>
-                                            <li>
-                                                <button type="button" class="btn btn-white btn-primary build_detail_look">3栋</button>
-                                            </li>
-                                            <li>
-                                                <button type="button" class="btn btn-white btn-primary build_detail_look">4栋</button>
-                                            </li>
-                                            <li>
-                                                <button type="button" class="btn btn-white btn-primary build_detail_look">5栋</button>
-                                            </li>
-                                            <li>
-                                                <button type="button" class="btn btn-white btn-primary build_detail_look">6栋</button>
-                                            </li>
-                                            <li>
-                                                <button type="button" class="btn btn-white btn-primary build_detail_look">7栋</button>
-                                            </li>
-                                            <li>
-                                                <button type="button" class="btn btn-white btn-primary build_detail_look">8栋</button>
-                                            </li>
-                                            <li>
-                                                <button type="button" class="btn btn-white btn-primary build_detail_look">9栋</button>
-                                            </li>
+
                                         </ul>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="widget-box" style="margin-top: 30px;">
+                            <div class="widget-box ys" style="margin-top: 30px;">
                                 <div class="widget-header" style="position: relative;">
                                     <h4 class="smaller">楼栋信息</h4>
                                     <button class="btn btn-danger build_add">新增</button>
@@ -301,49 +208,9 @@
                                                                 <th class="center">操作</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
-                                                            <tr role="row" class="odd">
-                                                                <td class="center">1</td>
-                                                                <td class="center">效果图</td>
-                                                                <td class="center">CDSFCZNO_1345</td>
-                                                                <td class="center">2017-12-12</td>
-                                                                <td class="center">网上开盘</td>
-                                                                <td class="center">2017-12-12</td>
-                                                                <td class="center">2017-12-12</td>
-                                                                <td class="center">4</td>
-                                                                <td class="center">2梯4户</td>
-                                                                <td class="center">100</td>
-                                                                <td class="center">12</td>
-                                                                <td class="center">3</td>
-                                                                <td class="center">
-                                                                    <div class="hidden-sm hidden-xs action-buttons">
-                                                                        <a class="blue" href="BuildInfoOperate.html">查看</a>
-                                                                        <a class="green edit_leibie" href="BuildInfoOperate.html">编辑</a>
-                                                                        <a class="red del_leibie" href="#">删除</a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr role="row" class="odd">
-                                                                <td class="center">1</td>
-                                                                <td class="center">效果图</td>
-                                                                <td class="center">CDSFCZNO_1345</td>
-                                                                <td class="center">2017-12-12</td>
-                                                                <td class="center">网上开盘</td>
-                                                                <td class="center">2017-12-12</td>
-                                                                <td class="center">2017-12-12</td>
-                                                                <td class="center">4</td>
-                                                                <td class="center">2梯4户</td>
-                                                                <td class="center">100</td>
-                                                                <td class="center">12</td>
-                                                                <td class="center">3</td>
-                                                                <td class="center">
-                                                                    <div class="hidden-sm hidden-xs action-buttons">
-                                                                        <a class="blue" href="BuildInfoOperate.html">查看</a>
-                                                                        <a class="green edit_leibie" href="BuildInfoOperate.html">编辑</a>
-                                                                        <a class="red del_leibie" href="#">删除</a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
+                                                        <tbody id="build_list">
+
+
                                                         </tbody>
                                                     </table>
                                                     <div class="row">
@@ -388,19 +255,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     <div class="modal_upImg">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -409,8 +263,9 @@
                     <div class="bootbox-body" style="overflow: hidden;">
                         <div>
                             <label id="zongImg_up" class="ace-file-input ace-file-multiple col-sm-3 fileUpLabel" style="width: 200px;">
-                                <input multiple="" type="file">
-                                <span class="ace-file-container" data-title="点击上传平面图">
+                                <input multiple="" type="file" id="phoneUpload">
+                                <img class="show_UpImg img_url" src="assets/images/null.jpg" id="phone" style="display: none;width: 100%">
+                                <span class="ace-file-container" data-title="点击上传平面图" id="nophone">
                                     <span class="ace-file-name" data-title="No File ...">
                                         <i class=" ace-icon ace-icon fa fa-picture-o">
 
@@ -421,8 +276,9 @@
                         </div>
                         <div>
                             <label id="zongImg_up" class="ace-file-input ace-file-multiple col-sm-3 fileUpLabel" style="width: 200px;">
-                                <input multiple="" type="file">
-                                <span class="ace-file-container" data-title="点击上传3D图">
+                                <input multiple="" type="file" id="panoramaUpload">
+                                <img class="show_UpImg img_url" src="assets/images/null.jpg" id="panorama" style="display: none;width: 100%">
+                                <span class="ace-file-container" data-title="点击上传3D图" id="nopanorama">
                                     <span class="ace-file-name" data-title="No File ...">
                                         <i class=" ace-icon ace-icon fa fa-picture-o">
 
@@ -435,7 +291,7 @@
                 </div>
                 <div class="modal-footer">
 					<button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
-					<button data-bb-handler="confirm" type="button" class="btn btn-primary" id="tags_add">确定</button>
+					<button data-bb-handler="confirm" type="button" class="btn btn-primary" id="float_add">确定</button>
 				</div>
             </div>
         </div>
@@ -489,6 +345,8 @@
     <script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
     <!-- 本页js -->
     <script src="assets/js/jquery.cookie.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/public.js"></script>
     <script>
         window.onload = function () {
             $('#header').load('public/header.html');
@@ -500,6 +358,7 @@
             $.cookie('menu_data', JSON.stringify(menu_data), {
                 path: "menu.html"
             });
+            getImgInfo();
         }
     </script>
     <script>
@@ -516,6 +375,104 @@
         $('.closed').on('click', function () {
 			$(this).parent().parent().parent().parent().css('display', 'none');
 		})
+    </script>
+    <script>
+
+        function getImgInfo(){
+            ajax.get('project/project/getTotalFloatImg',{},function(res)
+            {
+                if(res.data.total_float_url_panorama!='' || res.data.total_float_url_phone!=''){
+
+                    var address;
+
+                    if(res.data.total_float_url_phone!=''){
+                        $('#nophone').hide();
+                        address=res.data.total_float_url_phone;
+                        $('#phone').attr('src',config.address+address).attr('address', address).show()
+                    }
+                    if(res.data.total_float_url_panorama!=''){
+                        $('#nopanorama').hide();
+                        address=res.data.total_float_url_panorama;
+                        $('#panorama').attr('src',config.address+address).attr('address', address).show();
+                    }
+                    $('#noFile').hide();
+                    $('#img').attr('src',config.address+address).show();
+                    if(res.data.yunsuan_url=='' || res.data.yunsuan_id==0){
+                        $('.ys').hide();
+                    }else{
+                        getBuildInfo();
+                    }
+                }
+            })
+        }
+
+        function getBuildInfo(){
+            ajax.get('project/build/list',{},function(res){
+                var model='<tr role="row" class="odd" value="{build_id}"> <td class="center">{id}</td> <td class="center">{name}</td> <td class="center">{sale_permit}</td> <td class="center">{permit_time}</td> <td class="center">{open_way}</td> <td class="center">{open_time}</td> <td class="center">{handing_room_time}</td> <td class="center">{unit_num}</td> <td class="center">{ladder_ratio}</td> <td class="center">{total_house_num}</td> <td class="center">{upper_floor_num}</td> <td class="center">{down_floor_num}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green edit_leibie" href="BuildInfoOperate.html?build_id={b_id}">编辑</a> <div class="red del_leibie del"  style="cursor: pointer">删除</div> </div> </td> </tr>',
+                    id=1.
+                    str='',
+                    detail_model='<li value="{id}"> <button type="button" class="btn btn-white btn-primary build_detail_look">{name}</button> </li>';
+                    detail_str='';
+                $.each(res.data.data,function(k,v){
+                    str+=model.replace('{build_id}',v.build_id).replace('{id}',id++).replace('{name}',v.build_name).replace('{sale_permit}',v.sale_permit).replace('{permit_time}',v.permit_time).replace('{open_way}',v.open_way).replace('{open_time}',v.open_time).replace('{handing_room_time}',v.handing_room_time).replace('{unit_num}',v.unit_num).replace('{ladder_ratio}',v.ladder_ratio).replace('{total_house_num}',v.total_house_num).replace('{upper_floor_num}',v.upper_floor_num).replace('{down_floor_num}',v.down_floor_num).replace('{b_id}',v.build_id);
+                    detail_str+=detail_model.replace('{id}',v.build_id).replace('{name}',v.build_name);
+                })
+                $('#build_list').append(str);
+                $('.build_detail').append(detail_str);
+            })
+        }
+        $('#phoneUpload').on('change', function () {
+            if ($(this)[0].files[0].size >= config.allowImgFileSize) {
+                alert(config.ImgSizeBeyondErrMes);
+                return false;
+            }
+            var formData = new FormData();
+            formData.append("img", $(this)[0].files[0]);
+            ajax.file(formData, 'img', function (res) {
+                $('#phone').attr('src', config.address + res.data).attr('address', res.data).show();
+                $('#nophone').hide();
+            })
+        })
+        $('#panoramaUpload').on('change', function () {
+            if ($(this)[0].files[0].size >= config.allowImgFileSize) {
+                alert(config.ImgSizeBeyondErrMes);
+                return false;
+            }
+            var formData = new FormData();
+            formData.append("img", $(this)[0].files[0]);
+            ajax.file(formData, 'img', function (res) {
+                $('#panorama').attr('src', config.address + res.data).attr('address', res.data).show();
+                $('#nopanorama').hide();
+            })
+        })
+        $('#float_add').click(function(){
+            var data={};
+            if($('#panorama').css('display')!='none'){
+                data.total_float_url_panorama=$('#panorama').attr('address');
+            }
+            if($('#phone').css('display')!='none'){
+                data.total_float_url_phone=$('#phone').attr('address');
+            }
+            ajax.post('project/project/updateTotalFloatImg',data,function(res){
+                alert(res.msg);
+               window.location.reload();
+            })
+        })
+
+        $(document).on('click','.del',function(){
+            var ms=confirm("您确定要删除该条信息么"),
+                id=$(this).parents('tr').attr('value');
+            if (ms==true)
+            {
+
+                ajax.post('project/build/delete',{'build_id':id},function(res){
+                    alert(res.msg);
+                    window.location.reload();
+                })
+            }
+
+        }
+        )
     </script>
 </body>
 
