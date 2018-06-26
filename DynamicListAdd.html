@@ -177,19 +177,19 @@
                                     <h4 class="smaller">新增</h4>
                                     <div style="position: absolute;right: 80px;top:0;z-index: 100;">
                                         <button class="btn btn-success" style="padding: 3px 10px;">预览</button>
-                                        <button class="btn btn-danger" style="padding: 3px 10px;">确定</button>
-                                        <button class="btn btn-primary" style="padding: 3px 10px;">取消</button>
+                                        <button class="btn btn-danger" style="padding: 3px 10px;" onclick="submit()">确定</button>
+                                        <button class="btn btn-primary" style="padding: 3px 10px;"  onclick="javascript :history.back(-1)">取消</button>
                                     </div>
                                 </div>
                                 <div class="widget-body">
                                     <div class="widget-main" style="overflow: hidden;padding-left: 100px;">
                                         <div class="form-group">
                                             <label>标题：</label>
-                                            <input type="text">
+                                            <input type="text" name="title">
                                         </div>
                                         <div class="form-group">
                                             <label style="vertical-align: top;">简述：</label>
-                                            <textarea cols="100" rows="4"></textarea>
+                                            <textarea cols="100" rows="4" id="abstract"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label style="vertical-align: top;">内容：</label>
@@ -197,7 +197,7 @@
                                                 <div>
                                                     <script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
                                                 </div>
-                                                <div id="btns">
+                                             <!--   <div id="btns">
                                                     <button onclick="getContent()">获得内容</button>
                                                     <button onclick="getPlainTxt()">获得带格式的纯文本</button>
                                                     <button onclick="hasContent()">判断是否有内容</button>
@@ -205,7 +205,7 @@
                                                     <button onclick=" UE.getEditor('editor').setShow()">显示编辑器</button>
                                                     <button onclick=" UE.getEditor('editor').setShow()">显示编辑器</button>
                                                     <button onclick="submit()">保存</button>
-                                                </div>
+                                                </div>-->
                                             </div>
                                         </div>
                                     </div>
@@ -258,6 +258,9 @@
     <script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
     <!-- 本页js -->
     <script src="assets/js/jquery.cookie.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/public.js"></script>
+
     <script>
         window.onload = function () {
             $('#header').load('public/header.html');
@@ -266,6 +269,7 @@
                 opening: '.loupanzidian',
                 acting: '.dongtailiebiao'
             }
+
             $.cookie('menu_data', JSON.stringify(menu_data), {
                 path: "menu.html"
             });
@@ -274,16 +278,13 @@
 
 
     <script type="text/javascript">
-        var ue = UE.getEditor('editor'),
-            project_id;
-
+        var ue = UE.getEditor('editor');
 
         function getContent() {
             var arr = [];
             arr.push("使用editor.getContent()方法可以获得编辑器的内容");
             arr.push("内容为：");
             arr.push(UE.getEditor('editor').getContent());
-
             alert(arr.join("\n"));
         }
 
@@ -304,42 +305,24 @@
         }
 
 
-        function disableBtn(str) {
-            var div = document.getElementById('btns');
-            var btns = UE.dom.domUtils.getElementsByTagName(div, "button");
-            for (var i = 0, btn; btn = btns[i++];) {
-                if (btn.id == str) {
-                    UE.dom.domUtils.removeAttributes(btn, ["disabled"]);
-                } else {
-                    btn.setAttribute("disabled", "true");
-                }
-            }
-        }
 
-        function enableBtn() {
-            var div = document.getElementById('btns');
-            var btns = UE.dom.domUtils.getElementsByTagName(div, "button");
-            for (var i = 0, btn; btn = btns[i++];) {
-                UE.dom.domUtils.removeAttributes(btn, ["disabled"]);
-            }
-        }
 
         function submit() {
 
             var dynamic = {
-                'title': '中国掀起一场问责风暴 关系子孙后代',
-                'abstract': '这是摘要',
+                'title': $('input[name=title]').val(),
+                'abstract':$('#abstract').val(),
                 'content': UE.getEditor('editor').getContent()
             }
-            $.ajax({
-                type: "POST",
-                url: ajaxUrl + 'project/dynamic/create',
-                data: dynamic,
-                dataType: "json",
-                success: function (data) {
-                    console.log(data);
-                }
-            });
+            if(dynamic.title==''){
+                alert('标题不能为空');
+                return false;
+            }
+            ajax.post('project/dynamic/create',dynamic,function(res){
+                alert(res.msg)
+                window.location.href="DynamicList.html";
+            })
+
         }
     </script>
 </body>

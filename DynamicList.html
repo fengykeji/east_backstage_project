@@ -246,7 +246,7 @@
         function getList() {
             ajax.get('project/dynamic/list', {}, function (res) {
                 var model =
-                    ' <tr role="row" class="odd" value="{dynamic_id}"> <td class="center">{id}</td> <td class="center">{title}</td> <td class="center">{abstract}</td> <td class="center">{uploader}</td> <td class="center">{create_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="">预览</a> <a class="green edit_leibie" href="DynamicListModify.html">编辑</a> <a class="red del_leibie" href="#">删除</a> </div> </td> </tr>',
+                    ' <tr role="row" class="odd" value="{dynamic_id}"> <td class="center">{id}</td> <td class="center">{title}</td> <td class="center">{abstract}</td> <td class="center">{uploader}</td> <td class="center">{create_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="">预览</a> <a class="green edit_leibie" href="DynamicListModify.html?id={d_id}">编辑</a> <div class="red del_leibie del" style="cursor: pointer" >删除</div> </div> </td> </tr>',
                     id = 1,
                     page =
                     '<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>',
@@ -254,7 +254,7 @@
                 $.each(res.data.data, function (k, v) {
                     list += model.replace('{dynamic_id}', v.dynamic_id).replace('{id}', id++).replace(
                         '{title}', v.title).replace('{uploader}', v.uploader).replace(
-                        '{create_time}', v.create_time).replace('{abstract}', v.abstract);
+                        '{create_time}', v.create_time).replace('{abstract}', v.abstract).replace('{d_id}',v.dynamic_id);
                 })
                 $('#list').append(list);
                 for (var i = 1; i <= res.data.last_page; i++) {
@@ -273,6 +273,20 @@
     <script>
     $('#addleibie').on('click',function(){
         window.location.href="DynamicListAdd.html";
+    })
+
+    $(document).on('click','.del',function(){
+        var ms=confirm("您确定要删除该条动态么"),
+            id=$(this).parents('tr').attr('value');
+        if (ms==true)
+        {
+
+            ajax.get('project/dynamic/delete',{'dynamic_id':id},function(res){
+                alert(res.msg);
+                window.location.reload();
+            })
+        }
+
     })
     </script>
 </body>

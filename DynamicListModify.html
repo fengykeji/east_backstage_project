@@ -49,86 +49,7 @@
     </script>
     <script type="text/javascript" charset="utf-8" src="assets/js/Customize_js/zh-cn.js"></script>
     <style>
-        /* .operate_proInfo {
-            position: absolute;
-            right: 100px;
-            z-index: 100;
-        } */
 
-        /* .user-info {
-            max-width: 150px;
-            display: inline-block;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            text-align: left;
-            vertical-align: top;
-            line-height: 15px;
-            position: relative;
-            top: 14px;
-        }
-
-        */
-
-        /* .lab_width {
-            width: 120px;
-        }
-
-        .inpt_width {
-            width: 500px;
-        } */
-
-        /* .build_add,
-        .build_add_3D {
-            position: absolute;
-            right: 80px;
-            top: 0;
-            z-index: 100;
-            padding: 3px 10px;
-        }
-
-        .proLook_img {
-            width: 150px;
-            height: auto;
-        }
-
-        .table.table-striped td {
-            vertical-align: middle;
-        }
-
-        .modal_add,
-        .modal_add_3D {
-            display: none;
-            background-color: rgba(0, 0, 0, .5);
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-        }
-
-        .modal-dialog {
-            margin: 150px auto;
-        }
-
-        .bootbox-body {
-            font-size: 18px;
-            margin-top: 25px;
-            text-align: center;
-        }
-
-        .modal-content {
-            padding: 30px 50px;
-        }
-
-        .modal-footer {
-            margin-top: 20px;
-        }
-
-        .close {
-            font-size: 32px;
-        } */
     </style>
 </head>
 
@@ -177,19 +98,19 @@
                                     <h4 class="smaller">修改</h4>
                                     <div style="position: absolute;right: 80px;top:0;z-index: 100;">
                                         <button class="btn btn-success" style="padding: 3px 10px;">预览</button>
-                                        <button class="btn btn-danger" style="padding: 3px 10px;">确定</button>
-                                        <button class="btn btn-primary" style="padding: 3px 10px;">取消</button>
+                                        <button class="btn btn-danger" style="padding: 3px 10px;" onclick="submit()">确定</button>
+                                        <button class="btn btn-primary" style="padding: 3px 10px;" onclick="javascript :history.back(-1)">取消</button>
                                     </div>
                                 </div>
                                 <div class="widget-body">
                                     <div class="widget-main" style="overflow: hidden;padding-left: 100px;">
                                         <div class="form-group">
                                             <label>标题：</label>
-                                            <input type="text">
+                                            <input type="text" name="title">
                                         </div>
                                         <div class="form-group">
                                             <label style="vertical-align: top;">简述：</label>
-                                            <textarea cols="100" rows="4"></textarea>
+                                            <textarea cols="100" rows="4" id="abstract" ></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label style="vertical-align: top;">内容：</label>
@@ -197,15 +118,7 @@
                                                 <div>
                                                     <script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
                                                 </div>
-                                                <div id="btns">
-                                                    <button onclick="getContent()">获得内容</button>
-                                                    <button onclick="getPlainTxt()">获得带格式的纯文本</button>
-                                                    <button onclick="hasContent()">判断是否有内容</button>
-                                                    <button onclick=" UE.getEditor('editor').setHide()">隐藏编辑器</button>
-                                                    <button onclick=" UE.getEditor('editor').setShow()">显示编辑器</button>
-                                                    <button onclick=" UE.getEditor('editor').setShow()">显示编辑器</button>
-                                                    <button onclick="submit()">保存</button>
-                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -258,6 +171,8 @@
     <script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
     <!-- 本页js -->
     <script src="assets/js/jquery.cookie.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/public.js"></script>
     <script>
         window.onload = function () {
             $('#header').load('public/header.html');
@@ -269,15 +184,27 @@
             $.cookie('menu_data', JSON.stringify(menu_data), {
                 path: "menu.html"
             });
+            getDynamic();
         }
     </script>
 
 
     <script type="text/javascript">
         var ue = UE.getEditor('editor'),
-            project_id;
+            dynamic_id = $.getUrlVar('id');
 
 
+        function getDynamic(){
+            ajax.get('project/dynamic/info',{'dynamic_id':dynamic_id},function(res){
+                insertHtml(res.data.content);
+                $('input[name=title]').val(res.data.title);
+                $('#abstract').val(res.data.abstract)
+            })
+        }
+
+        function insertHtml(value) {
+            UE.getEditor('editor').execCommand('insertHtml', value)
+        }
         function getContent() {
             var arr = [];
             arr.push("使用editor.getContent()方法可以获得编辑器的内容");
@@ -327,19 +254,19 @@
         function submit() {
 
             var dynamic = {
-                'title': '中国掀起一场问责风暴 关系子孙后代',
-                'abstract': '这是摘要',
+                'dynamic_id':dynamic_id,
+                'title': $('input[name=title]').val(),
+                'abstract':$('#abstract').val(),
                 'content': UE.getEditor('editor').getContent()
             }
-            $.ajax({
-                type: "POST",
-                url: ajaxUrl + 'project/dynamic/create',
-                data: dynamic,
-                dataType: "json",
-                success: function (data) {
-                    console.log(data);
-                }
-            });
+            if(dynamic.title==''){
+                alert('标题不能为空');
+                return false;
+            }
+            ajax.post('project/dynamic/update',dynamic,function(res){
+                alert(res.msg)
+                window.location.href="DynamicList.html";
+            })
         }
     </script>
 </body>

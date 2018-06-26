@@ -125,6 +125,9 @@
         .close {
             font-size: 32px;
         }
+        .pic{
+            display: none;
+        }
     </style>
 </head>
 
@@ -172,8 +175,8 @@
                                 <div class="widget-header" style="position: relative;">
                                     <h4 class="smaller">新增</h4>
                                     <div style="position: absolute;right: 80px;top:0;z-index: 100;">
-                                        <button class="btn btn-danger" style="padding: 3px 10px;">确定</button>
-                                        <button class="btn btn-primary" style="padding: 3px 10px;">取消</button>
+                                        <button class="btn btn-danger" style="padding: 3px 10px;" onclick="add_house()">确定</button>
+                                        <button class="btn btn-primary" style="padding: 3px 10px;" onclick="javascript :history.back(-1)">取消</button>
                                     </div>
                                 </div>
                                 <div class="widget-body">
@@ -183,35 +186,31 @@
                                             <form class="form-horizontal col-xs-11" role="form">
                                                 <div class="form-group">
                                                     <label class="lab_width">户型编号：</label>
-                                                    <input class="inpt_width" type="text">
+                                                    <input class="inpt_width" type="text" name="house_type_name">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">户型：</label>
-                                                    <input type="text" class="input-sm" id="spinner1" />
-                                                    <span class="tihubi_span">室</span>
-                                                    <input type="text" class="input-sm" id="spinner2" />
-                                                    <span class="tihubi_span">厅</span>
-                                                    <input type="text" class="input-sm" id="spinner3" />
-                                                    <span class="tihubi_span">厨</span>
-                                                    <input type="text" class="input-sm" id="spinner4" />
-                                                    <span class="tihubi_span">卫</span>
+                                                    <select class="form-control" style="width: 150px;" name="house">
+                                                        <option value=""></option>
+
+                                                    </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">产权面积（㎡）：</label>
-                                                    <input type="text">
+                                                    <input type="text" name="property_area_min">
                                                     <span>----</span>
-                                                    <input type="text">
+                                                    <input type="text" name="property_area_max">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">户型卖点：</label>
-                                                    <textarea class="inpt_width" rows="4" style="vertical-align: top;"></textarea>
+                                                    <textarea class="inpt_width" rows="4" style="vertical-align: top;" id="sell_point"></textarea>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="widget-box" style="margin-top: 20px;">
+                            <div class="widget-box pic" style="margin-top: 20px;">
                                 <div class="widget-header" style="position: relative;">
                                     <h4 class="smaller">平面图</h4>
                                     <button class="btn btn-danger build_add">新增</button>
@@ -300,7 +299,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="widget-box" style="margin-top: 20px;">
+                            <div class="widget-box pic" style="margin-top: 20px;">
                                 <div class="widget-header" style="position: relative;">
                                     <h4 class="smaller">效果图</h4>
                                     <button class="btn btn-danger build_add">新增</button>
@@ -389,7 +388,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="widget-box" style="margin-top: 20px;">
+                            <div class="widget-box pic" style="margin-top: 20px;">
                                 <div class="widget-header" style="position: relative;">
                                     <h4 class="smaller">3D图</h4>
                                     <button class="btn btn-danger build_add_3D">新增</button>
@@ -485,7 +484,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="widget-box" style="margin-top: 20px;">
+                            <div class="widget-box pic" style="margin-top: 20px;">
                                 <div class="widget-header" style="position: relative;">
                                     <h4 class="smaller">实景图</h4>
                                     <button class="btn btn-danger build_add">新增</button>
@@ -717,7 +716,11 @@
     <script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
     <!-- 本页js -->
     <script src="assets/js/jquery.cookie.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/public.js"></script>
+
     <script>
+
         window.onload = function () {
             $('#header').load('public/header.html');
             $('#sidebar').load('public/menu.html');
@@ -728,6 +731,45 @@
             $.cookie('menu_data', JSON.stringify(menu_data), {
                 path: "menu.html"
             });
+            getConfig();
+        }
+    </script>
+    <script>
+        function getConfig(){
+            ajax.get('config',{id:config.configList.HOUSE_TYPE},function(res){
+                var model='<option value="{id}">{name}</option>',
+                    str='';
+                    $.each(res.data[config.configList.HOUSE_TYPE].param,function(k,v){
+                        str+=model.replace('{id}',v.id).replace('{name}',v.param);
+                    })
+                console.log(str);
+                $('select[name=house]').append(str);
+            })
+        }
+        function add_house(){
+            var data={
+                'house_type_name':$('input[name=house_type_name]').val(),
+                'house_type':$('select[name=house]').val(),
+                'property_area_min':$('input[name=property_area_min]').val(),
+                'property_area_max':$('input[name=property_area_max]').val(),
+                'sell_point':$('#sell_point').val()
+            };
+            if(data.house_type_name==''){
+                alert('户型名称不能为空');
+                return false;
+            }
+            if(data.house_type==''){
+                alert('请选择户型');
+                return false;
+            }
+
+            ajax.post('project/houseType/add',data,function(res){
+                alert(res.msg);
+                if(res.code=config.responseSuccess){
+                    window.location.href='HouseInforOperate?id='+res.data;
+                }
+            })
+
         }
     </script>
     <script src="components/fuelux/js/spinbox.js"></script>
