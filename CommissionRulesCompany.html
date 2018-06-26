@@ -82,7 +82,8 @@
         /* #dynamic-table td {
             vertical-align: middle;
         } */
-        .pro_coop_record{
+
+        .pro_coop_record {
             text-align: center;
             font-size: 15px;
             color: #999999;
@@ -122,28 +123,43 @@
                         <li>
                             <i class="ace-icon fa fa-home home-icon"></i>
                             <a href="CommissionRules.html">楼盘字典>结佣规则</a>
+                            <a href="#">>公司规则</a>
                         </li>
                     </ul>
-                    <!-- <div class="operate_proInfo">
-                        <button class="btn btn-danger " id="rule_add">新增</button>
-                    </div> -->
+                    <div class="operate_proInfo">
+                        <button class="btn btn-primary">保存</button>
+                        <button class="btn btn-danger" id="save">关闭</button>
+                    </div>
                 </div>
                 <!-- 内容开始 -->
                 <div class="page-content">
-                    <div class="row" style="margin-top: 15px;">
+                    <div class="row" style="margin-top: 50px;">
                         <div class="col-xs-12">
                             <form class="form-horizontal" role="form">
                                 <div class="widget-box">
                                     <div class="widget-header" style="position: relative;">
-                                        <h4 class="smaller">合同信息</h4>
-                                        <div style="position: absolute;right: 80px;top:0;z-index: 100;">
+                                        <h4 class="smaller" style="display: inline-block;">合同信息</h4>
+                                        <span>（甲方为项目方，乙方为销售方）</span>
+                                        <!-- <div style="position: absolute;right: 80px;top:0;z-index: 100;">
                                             <button class="btn btn-danger" style="padding: 3px 10px;">确定</button>
                                             <button class="btn btn-primary" style="padding: 3px 10px;">取消</button>
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <div class="widget-body">
                                         <div class="widget-main" style="overflow: hidden;">
                                             <div class="col-xs-6" style="padding-left: 100px;">
+                                                <div class="form-group">
+                                                    <label class="lab_width">甲方单位：</label>
+                                                    <input class="inpt_width" type="text">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">甲方对接人：</label>
+                                                    <input class="inpt_width" type="text">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">甲方对接人电话：</label>
+                                                    <input class="inpt_width" type="text">
+                                                </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">*合同开始日期：</label>
                                                     <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
@@ -156,7 +172,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="lab_width">*实际开始日期：</label>
+                                                    <label class="lab_width">*合同截止日期：</label>
                                                     <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
                                                         <div class="input-group">
                                                             <input class="form-control date-picker" type="text" data-date-format="yyyy-mm-dd">
@@ -166,47 +182,28 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">到访确认保护期(分钟)：</label>
-                                                    <input class="inpt_width" placeholder="请输入失效时间..." type="text">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">有效来访保护期(天)：</label>
-                                                    <input class="inpt_width" placeholder="请输入失效时间..." type="text">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">成交保护期(天)：</label>
-                                                    <input class="inpt_width" placeholder="请输入失效时间..." type="text">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">推荐佣金结款周期：</label>
-                                                    <select class="form-control inpt_width" style="display: inline-block;">
-                                                        <option value="">1个工作日后</option>
-                                                        <option value="">2个工作日后</option>
-                                                        <option value="">3个工作日后</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">到访佣金结款周期：</label>
-                                                    <select class="form-control inpt_width" style="display: inline-block;">
-                                                        <option value="">1个工作日后</option>
-                                                        <option value="">2个工作日后</option>
-                                                        <option value="">3个工作日后</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">成交佣金结款周期：</label>
-                                                    <select class="form-control inpt_width" style="display: inline-block;">
-                                                        <option value="">1个工作日后</option>
-                                                        <option value="">2个工作日后</option>
-                                                        <option value="">3个工作日后</option>
-                                                    </select>
-                                                </div>
                                             </div>
 
                                             <div class="col-xs-6" style="padding-left: 50px;">
                                                 <div class="form-group">
-                                                    <label class="lab_width">*计划截止日期：</label>
+                                                    <label class="lab_width">乙方单位：</label>
+                                                    <div class="inpt_width" style="display: inline-block;">
+                                                        <input type="text">
+                                                        <button class="btn btn-sm btn-info companySel" style="vertical-align: top;">选择</button>
+                                                    </div>
+
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">乙方对接人：</label>
+                                                    <input class="inpt_width" type="text">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">乙方对接人电话：</label>
+                                                    <input class="inpt_width" type="text">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="lab_width">*实际开始日期：</label>
                                                     <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
                                                         <div class="input-group">
                                                             <input class="form-control date-picker" type="text" data-date-format="yyyy-mm-dd">
@@ -226,22 +223,6 @@
                                                             </span>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">成交结款条件：</label>
-                                                    <select class="form-control inpt_width" style="display: inline-block;">
-                                                        <option value="">1、已签订单，且付定金</option>
-                                                        <option value="">2、</option>
-                                                        <option value="">3、</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">结佣标准：</label>
-                                                    <textarea class="inpt_width" rows="3" style="vertical-align: top;"></textarea>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">备注：</label>
-                                                    <textarea class="inpt_width" rows="3" style="vertical-align: top;"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -274,7 +255,9 @@
                                                                 <tr role="row" class="odd">
                                                                     <td class="center">1</td>
                                                                     <td class="center">三室两厅两卫</td>
-                                                                    <td class="center"><a href="">查看附件</a></td>
+                                                                    <td class="center">
+                                                                        <a href="">查看附件</a>
+                                                                    </td>
                                                                     <td class="center">某某某某</td>
                                                                     <td class="center">2015-12-12</td>
                                                                     <td class="center">
@@ -288,7 +271,9 @@
                                                                 <tr role="row" class="odd">
                                                                     <td class="center">2</td>
                                                                     <td class="center">三室两厅两卫</td>
-                                                                    <td class="center"><a href="">查看附件</a></td>
+                                                                    <td class="center">
+                                                                        <a href="">查看附件</a>
+                                                                    </td>
                                                                     <td class="center">某某某某</td>
                                                                     <td class="center">2015-12-12</td>
                                                                     <td class="center">
@@ -302,7 +287,9 @@
                                                                 <tr role="row" class="odd">
                                                                     <td class="center">3</td>
                                                                     <td class="center">三室两厅两卫</td>
-                                                                    <td class="center"><a href="">查看附件</a></td>
+                                                                    <td class="center">
+                                                                        <a href="">查看附件</a>
+                                                                    </td>
                                                                     <td class="center">某某某某</td>
                                                                     <td class="center">2015-12-12</td>
                                                                     <td class="center">
@@ -723,6 +710,7 @@
 
 
 
+    </div>
 
 
 
@@ -732,60 +720,73 @@
 
 
 
+    <!-- basic scripts -->
 
-        <!-- basic scripts -->
+    <!--[if !IE]> -->
+    <script src="components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        if ('ontouchstart' in document.documentElement) document.write(
+            "<script src='components/_mod/jquery.mobile.custom/jquery.mobile.custom.js'>" + "<" + "/script>");
+    </script>
+    <script src="components/bootstrap/dist/js/bootstrap.js"></script>
 
-        <!--[if !IE]> -->
-        <script src="components/jquery/dist/jquery.js"></script>
-        <script type="text/javascript">
-            if ('ontouchstart' in document.documentElement) document.write(
-                "<script src='components/_mod/jquery.mobile.custom/jquery.mobile.custom.js'>" + "<" + "/script>");
-        </script>
-        <script src="components/bootstrap/dist/js/bootstrap.js"></script>
-
-        <!-- ace scripts -->
-        <script src="assets/js/src/elements.scroller.js"></script>
-        <script src="assets/js/src/elements.colorpicker.js"></script>
-        <script src="assets/js/src/elements.fileinput.js"></script>
-        <script src="assets/js/src/elements.typeahead.js"></script>
-        <script src="assets/js/src/elements.wysiwyg.js"></script>
-        <script src="assets/js/src/elements.spinner.js"></script>
-        <script src="assets/js/src/elements.treeview.js"></script>
-        <script src="assets/js/src/elements.wizard.js"></script>
-        <script src="assets/js/src/elements.aside.js"></script>
-        <script src="assets/js/src/ace.js"></script>
-        <script src="assets/js/src/ace.basics.js"></script>
-        <script src="assets/js/src/ace.scrolltop.js"></script>
-        <script src="assets/js/src/ace.ajax-content.js"></script>
-        <script src="assets/js/src/ace.touch-drag.js"></script>
-        <script src="assets/js/src/ace.sidebar.js"></script>
-        <script src="assets/js/src/ace.sidebar-scroll-1.js"></script>
-        <script src="assets/js/src/ace.submenu-hover.js"></script>
-        <script src="assets/js/src/ace.widget-box.js"></script>
-        <script src="assets/js/src/ace.settings.js"></script>
-        <script src="assets/js/src/ace.settings-rtl.js"></script>
-        <script src="assets/js/src/ace.settings-skin.js"></script>
-        <script src="assets/js/src/ace.widget-on-reload.js"></script>
-        <script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
-        <!-- 本页js -->
-        <script>
-            window.onload = function () {
-                $('#header').load('public/header.html');
-                $('#sidebar').load('public/menu.html');
+    <!-- ace scripts -->
+    <script src="assets/js/src/elements.scroller.js"></script>
+    <script src="assets/js/src/elements.colorpicker.js"></script>
+    <script src="assets/js/src/elements.fileinput.js"></script>
+    <script src="assets/js/src/elements.typeahead.js"></script>
+    <script src="assets/js/src/elements.wysiwyg.js"></script>
+    <script src="assets/js/src/elements.spinner.js"></script>
+    <script src="assets/js/src/elements.treeview.js"></script>
+    <script src="assets/js/src/elements.wizard.js"></script>
+    <script src="assets/js/src/elements.aside.js"></script>
+    <script src="assets/js/src/ace.js"></script>
+    <script src="assets/js/src/ace.basics.js"></script>
+    <script src="assets/js/src/ace.scrolltop.js"></script>
+    <script src="assets/js/src/ace.ajax-content.js"></script>
+    <script src="assets/js/src/ace.touch-drag.js"></script>
+    <script src="assets/js/src/ace.sidebar.js"></script>
+    <script src="assets/js/src/ace.sidebar-scroll-1.js"></script>
+    <script src="assets/js/src/ace.submenu-hover.js"></script>
+    <script src="assets/js/src/ace.widget-box.js"></script>
+    <script src="assets/js/src/ace.settings.js"></script>
+    <script src="assets/js/src/ace.settings-rtl.js"></script>
+    <script src="assets/js/src/ace.settings-skin.js"></script>
+    <script src="assets/js/src/ace.widget-on-reload.js"></script>
+    <script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
+    <!-- 本页js -->
+    <script src="assets/js/jquery.cookie.js"></script>
+    <script>
+        window.onload = function () {
+            $('#header').load('public/header.html');
+            $('#sidebar').load('public/menu.html');
+            var menu_data = {
+                opening: '',
+                acting: '.jieyongguize'
             }
-        </script>
-        <script src="components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
-        <script src="components/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
-        <script src="components/moment/moment.js"></script>
-        <script src="components/bootstrap-daterangepicker/daterangepicker.js"></script>
-        <script src="components/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js"></script>
-        <script>
-            //日历插件初始化
-            $('.date-picker').datepicker({
-                autoclose: true,
-                todayHighlight: true
-            })
-        </script>
+            $.cookie('menu_data', JSON.stringify(menu_data), {
+                path: "menu.html"
+            });
+        }
+    </script>
+    <script src="components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+    <script src="components/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+    <script src="components/moment/moment.js"></script>
+    <script src="components/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="components/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js"></script>
+    <script>
+        //日历插件初始化
+        $('.date-picker').datepicker({
+            autoclose: true,
+            todayHighlight: true
+        })
+    </script>
+    <script>
+        $(".companySel").on('click', function () {
+            window.location.href = "compayRuleSelectCom.html";
+            return false;
+        })
+    </script>
 </body>
 
 </html>

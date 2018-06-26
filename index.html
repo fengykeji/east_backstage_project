@@ -63,7 +63,7 @@
 					<ul class="breadcrumb">
 						<li>
 							<i class="ace-icon fa fa-home home-icon"></i>
-							<a href="#">楼盘字典>项目信息</a>
+							<a href="index.html">楼盘字典>项目信息</a>
 						</li>
 					</ul>
 					<div class="operate_proInfo">
@@ -91,7 +91,6 @@
 										<select name="area" class="pro_area"></select>
 									</div>
 								</div>
-
 								<div class="form-group">
 									<label class="col-sm-3 control-label no-padding-right" for="form-field-2"></label>
 
@@ -103,7 +102,6 @@
 										<input type="hidden" name="longitude">
 									</div>
 								</div>
-
 								<div class="form-group">
 									<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 物业类型：</label>
 
@@ -118,7 +116,6 @@
 
 									</div>
 								</div>
-
 								<div class="form-group">
 									<label class="col-sm-3 control-label no-padding-right" for="form-field-2"></label>
 									<div class="col-sm-9">
@@ -323,30 +320,30 @@
 						latitude: pt.lat,
 					}
 
-                    $('input[name="latitude"]').val(pt.lat);
-                    $('input[name="longitude"]').val(pt.lng);
-                    $('#absolute_address').val(addComp.province+addComp.city+addComp.district+addComp.street);
-                    $('.modal_map').css('display', 'none');
+					$('input[name="latitude"]').val(pt.lat);
+					$('input[name="longitude"]').val(pt.lng);
+					$('#absolute_address').val(addComp.province + addComp.city + addComp.district + addComp.street);
+					$('.modal_map').css('display', 'none');
 				});
 			});
 		})
 	</script>
 	<script>
 		var data = {
-			regionList: '',
-			config: '',
-			currentPointProvince: '',
-			currentPointCity: '',
-		},
-		 map_data = {},
-		map_backData = {},
-		oldData;
+				regionList: '',
+				config: '',
+				currentPointProvince: '',
+				currentPointCity: '',
+			},
+			map_data = {},
+			map_backData = {},
+			oldData;
 		window.onload = function () {
 			$('#header').load('public/header.html');
 			$('#sidebar').load('public/menu.html');
-			var menu_data={
-				opening:'.loupanzidian',
-				acting:'.xiangmuxinxi'
+			var menu_data = {
+				opening: '.loupanzidian',
+				acting: '.xiangmuxinxi'
 			}
 			$.cookie('menu_data', JSON.stringify(menu_data), {
 				path: "menu.html"
@@ -418,7 +415,7 @@
 					$('#developer_name').html(res.data.developer_name);
 					$("select[name='sale_state']").find("option[value=" + res.data.sale_state + "]").attr('selected', 'selected');
 					if (res.data.img_url != '') {
-						$('#list_img').attr('src', config.address + res.data.total_float_url).attr('address',res.data.total_float_url);
+						$('#list_img').attr('src', config.address + res.data.total_float_url).attr('address', res.data.total_float_url);
 					}
 					if (res.data.yunsuan_url != '') {
 						ajax.get('project/build/getYsBuild', {
@@ -433,32 +430,32 @@
 						yunsuan_project_dom.find("option[value=" + res.data.yunsuan_id + "]").attr('selected', 'selected');
 					}
 					if (res.data.province != '') {
-					    var  city = $('select[name="city"]');
+						var city = $('select[name="city"]');
 						$("select[name='province']").find("option[value=" + res.data.province + "]").attr('selected', 'selected');
-                        $.each(data.regionList, function (k, v) {
-                            if (v.code == res.data.province) {
-                                data.currentPointProvince = v.city;
-                                $.each(v.city, function (k, v) {
-                                    city.append('<option value="' + v.code + '">' + v.name + '</option>')
-                                })
-                            }
-                        })
+						$.each(data.regionList, function (k, v) {
+							if (v.code == res.data.province) {
+								data.currentPointProvince = v.city;
+								$.each(v.city, function (k, v) {
+									city.append('<option value="' + v.code + '">' + v.name + '</option>')
+								})
+							}
+						})
 					}
-                    if (res.data.city != '') {
-                        var area = $('select[name="area"]');
-                        $("select[name='city']").find("option[value=" + res.data.city+ "]").attr('selected', 'selected');
-                        $.each(data.currentPointProvince, function (k, v) {
-                            if (v.code == res.data.city) {
-                                data.currentPointCity = v.district;
-                                $.each(v.district, function (k, v) {
-                                    area.append('<option value="' + v.code + '">' + v.name + '</option>')
-                                })
-                            }
-                        })
-                    }
-                    if (res.data.district != '') {
-                        $("select[name='area']").find("option[value=" + res.data.district+ "]").attr('selected', 'selected');
-                    }
+					if (res.data.city != '') {
+						var area = $('select[name="area"]');
+						$("select[name='city']").find("option[value=" + res.data.city + "]").attr('selected', 'selected');
+						$.each(data.currentPointProvince, function (k, v) {
+							if (v.code == res.data.city) {
+								data.currentPointCity = v.district;
+								$.each(v.district, function (k, v) {
+									area.append('<option value="' + v.code + '">' + v.name + '</option>')
+								})
+							}
+						})
+					}
+					if (res.data.district != '') {
+						$("select[name='area']").find("option[value=" + res.data.district + "]").attr('selected', 'selected');
+					}
 					if (res.data.property.length != 0) {
 						var dom = $('input[name=form-field-checkbox]');
 						dom.each(function () {
@@ -491,27 +488,27 @@
 					$('#tag_list').append(tag_list);
 					//获取地址并传到map.html
 					$('input[name="latitude"]').val(res.data.latitude);
-                    $('input[name="longitude"]').val(res.data.longitude);
-                    var addr = $('#absolute_address').val();
-                    map_data = {
-                        addr: addr,
-                        latitude: res.data.latitude,
-                        longitude: res.data.longitude,
-                    }
+					$('input[name="longitude"]').val(res.data.longitude);
+					var addr = $('#absolute_address').val();
+					map_data = {
+						addr: addr,
+						latitude: res.data.latitude,
+						longitude: res.data.longitude,
+					}
 				})
 			}
-            oldData={
-                'province':$('select[name="province"]').val(),
-                'city':$('select[name="city"]').val(),
-                'district':$('select[name="area"]').val(),
-                'absolute_address':$('#absolute_address').val(),
-                'latitude': $('input[name="latitude"]').val(),
-                'longitude':$('input[name="longitude"]').val(),
-                'sale_state':$('select[name="sale_state"]').val(),
-                'yunsuan_url':$('#yunsuan_url').val(),
-                'yunsuan_project':$('select[name="yunsuan_project"]').val(),
-                'total_float_url':$('#list_img').attr('address')
-            };
+			oldData = {
+				'province': $('select[name="province"]').val(),
+				'city': $('select[name="city"]').val(),
+				'district': $('select[name="area"]').val(),
+				'absolute_address': $('#absolute_address').val(),
+				'latitude': $('input[name="latitude"]').val(),
+				'longitude': $('input[name="longitude"]').val(),
+				'sale_state': $('select[name="sale_state"]').val(),
+				'yunsuan_url': $('#yunsuan_url').val(),
+				'yunsuan_project': $('select[name="yunsuan_project"]').val(),
+				'total_float_url': $('#list_img').attr('address')
+			};
 		}
 
 		$('#project_tag').on('click', '.close', function () {
@@ -542,7 +539,7 @@
 		$('#list_img_edit').on('change', function () {
 			if ($(this)[0].files[0].size >= config.allowImgFileSize) {
 				alert(config.ImgSizeBeyondErrMes);
-                return false;
+				return false;
 			}
 			var formData = new FormData();
 			formData.append("img", $(this)[0].files[0]);
@@ -551,71 +548,71 @@
 			})
 		})
 
-        $(document).on('change', 'select[name="province"]', function () {
+		$(document).on('change', 'select[name="province"]', function () {
 
-            var value = $('select[name="province"]').val(),
-                city = $('select[name="city"]');
-            city.children().remove();
+			var value = $('select[name="province"]').val(),
+				city = $('select[name="city"]');
+			city.children().remove();
 
-            $.each(data.regionList, function (k, v) {
-                if (v.code == value) {
-                    data.currentPointProvince = v.city;
-                    $.each(v.city, function (k, v) {
-                        city.append('<option value="' + v.code + '">' + v.name + '</option>')
-                    })
-                }
-            })
-        })
-        $(document).on('change', 'select[name="city"]', function () {
-            var value = $('select[name="city"]').val(),
-                area = $('select[name="area"]');
-            area.children().remove();
-            $.each(data.currentPointProvince, function (k, v) {
-                if (v.code == value) {
-                    data.currentPointCity = v.district;
-                    $.each(v.district, function (k, v) {
-                        area.append('<option value="' + v.code + '">' + v.name + '</option>')
-                    })
-                }
-            })
-        })
+			$.each(data.regionList, function (k, v) {
+				if (v.code == value) {
+					data.currentPointProvince = v.city;
+					$.each(v.city, function (k, v) {
+						city.append('<option value="' + v.code + '">' + v.name + '</option>')
+					})
+				}
+			})
+		})
+		$(document).on('change', 'select[name="city"]', function () {
+			var value = $('select[name="city"]').val(),
+				area = $('select[name="area"]');
+			area.children().remove();
+			$.each(data.currentPointProvince, function (k, v) {
+				if (v.code == value) {
+					data.currentPointCity = v.district;
+					$.each(v.district, function (k, v) {
+						area.append('<option value="' + v.code + '">' + v.name + '</option>')
+					})
+				}
+			})
+		})
 
-		$('#save').click(function(){
-		    var data={
-				'province':$('select[name="province"]').val(),
-				'city':$('select[name="city"]').val(),
-				'district':$('select[name="area"]').val(),
-				'absolute_address':$('#absolute_address').val(),
+		$('#save').click(function () {
+			var data = {
+				'province': $('select[name="province"]').val(),
+				'city': $('select[name="city"]').val(),
+				'district': $('select[name="area"]').val(),
+				'absolute_address': $('#absolute_address').val(),
 				'latitude': $('input[name="latitude"]').val(),
-				'longitude':$('input[name="longitude"]').val(),
-				'sale_state':$('select[name="sale_state"]').val(),
-				'yunsuan_url':$('#yunsuan_url').val(),
-				'yunsuan_id':$('select[name="yunsuan_project"]').val(),
-				'total_float_url':$('#list_img').attr('address')
+				'longitude': $('input[name="longitude"]').val(),
+				'sale_state': $('select[name="sale_state"]').val(),
+				'yunsuan_url': $('#yunsuan_url').val(),
+				'yunsuan_id': $('select[name="yunsuan_project"]').val(),
+				'total_float_url': $('#list_img').attr('address')
 			};
-            data.property_type='';
-		    $('input[name=form-field-checkbox]:checked').each(function(){
-		        if($(this).val()!=undefined){
-                    data.property_type+=$(this).val()+',';
+			data.property_type = '';
+			$('input[name=form-field-checkbox]:checked').each(function () {
+				if ($(this).val() != undefined) {
+					data.property_type += $(this).val() + ',';
 				}
 
 			})
-			if(data.property_type!=''){
-                data.property_type=data.property_type.slice(0,-1);
+			if (data.property_type != '') {
+				data.property_type = data.property_type.slice(0, -1);
 			}
-            data.project_tags='';
-            $('#project_tag .tag').each(function(){
-                if($(this).attr('value')!=undefined) {
-                    data.project_tags += $(this).attr('value') + ',';
-                }
-            })
-            if(data.project_tags!=''){
-                data.project_tags=data.project_tags.slice(0,-1);
-            }
+			data.project_tags = '';
+			$('#project_tag .tag').each(function () {
+				if ($(this).attr('value') != undefined) {
+					data.project_tags += $(this).attr('value') + ',';
+				}
+			})
+			if (data.project_tags != '') {
+				data.project_tags = data.project_tags.slice(0, -1);
+			}
 
-			ajax.post('project/update',data,function(res){
-			    alert(res.msg);
-			    window.location.reload();
+			ajax.post('project/update', data, function (res) {
+				alert(res.msg);
+				window.location.reload();
 			})
 
 		})
