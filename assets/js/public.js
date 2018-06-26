@@ -1,7 +1,7 @@
 $('#header').load('public/header.html');
 $('#menu').load('public/menu.html');
 loginAuth();
-
+project_id;
 function loginAuth()
 {
     if(token=$.cookie(config.cookiePrefix+'login_token')){
@@ -9,6 +9,7 @@ function loginAuth()
             'token':token
         };
         ajax.publicInfo('project/user/init',data,function(res){
+           project_id=res.data.project_id;
             if(res.code!=config.responseSuccess){
                 window.location.href='login.html';
             }
