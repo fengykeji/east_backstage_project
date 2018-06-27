@@ -424,6 +424,7 @@
         })
 
         $('#img_add').on('change', function () {
+            console.log('2222222')
             if ($(this)[0].files[0].size >= config.allowImgFileSize) {
                 alert(config.ImgSizeBeyondErrMes);
             }
@@ -436,6 +437,7 @@
         })
 
         $('#add').click(function () {
+            console.log('11111111')
             var data = {
                 'type_id': type_id,
                 'img_url': $('#img_add').siblings('.img_url').attr('address'),
