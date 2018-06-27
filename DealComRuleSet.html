@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>结佣规则</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="components/font-awesome/css/font-awesome.css" />
+
+    <!-- text fonts -->
+    <link rel="stylesheet" href="assets/css/ace-fonts.css" />
+
+    <!-- ace styles -->
+    <link rel="stylesheet" href="assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
+
+
+    <link rel="stylesheet" href="assets/css/ace-skins.css" />
+    <link rel="stylesheet" href="assets/css/ace-rtl.css" />
+
+
+
+    <!-- ace settings handler -->
+    <script src="assets/js/ace-extra.js"></script>
+
+    <!-- 本页css -->
+    <link rel="stylesheet" href="components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css" />
+    <link rel="stylesheet" href="components/bootstrap-timepicker/css/bootstrap-timepicker.css" />
+    <link rel="stylesheet" href="components/bootstrap-daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" href="components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" />
+    <style>
+        .checkSty_projectInfo {
+            float: left;
+        }
+
+        .modal_addAnnex {
+            display: none;
+            background-color: rgba(0, 0, 0, .5);
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .modal-dialog {
+            margin: 150px auto;
+        }
+
+        .bootbox-body {
+            font-size: 18px;
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .modal-content {
+            padding: 30px 50px;
+        }
+
+        .modal-footer {
+            margin-top: 20px;
+        }
+
+        .close {
+            font-size: 32px;
+        }
+
+        .operate_proInfo {
+            position: absolute;
+            right: 100px;
+            z-index: 100;
+        }
+
+        .user-info {
+            max-width: 150px;
+            display: inline-block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            text-align: left;
+            vertical-align: top;
+            line-height: 15px;
+            position: relative;
+            top: 14px;
+        }
+
+        .inpt_width {
+            width: 70%;
+        }
+
+        .lab_width {
+            width: 120px;
+        }
+
+        /* #dynamic-table td {
+            vertical-align: middle;
+        } */
+
+        .pro_coop_record {
+            text-align: center;
+            font-size: 15px;
+            color: #999999;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+
+<body class="no-skin">
+    <div id="header"></div>
+
+
+
+    <!-- /section:basics/navbar.layout -->
+    <div class="main-container" id="main-container">
+        <script type="text/javascript">
+            try {
+                ace.settings.check('main-container', 'fixed')
+            } catch (e) {}
+        </script>
+
+        <!-- 菜单开始 -->
+        <div id="sidebar" class="sidebar responsive ace-save-state">
+
+        </div>
+
+        <!-- /section:basics/sidebar -->
+        <div class="main-content">
+            <div class="main-content-inner">
+                <div class="breadcrumbs" id="breadcrumbs">
+                    <script type="text/javascript">
+                        try {
+                            ace.settings.check('breadcrumbs', 'fixed')
+                        } catch (e) {}
+                    </script>
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                            <a href="CommissionRules.html">楼盘字典>结佣规则</a>
+                            <a href="#">>公司规则>成交佣金</a>
+                        </li>
+                    </ul>
+                    <div class="operate_proInfo">
+                        <button class="btn btn-primary">保存</button>
+                        <button class="btn btn-danger" id="save">关闭</button>
+                    </div>
+                </div>
+                <!-- 内容开始 -->
+                <div class="page-content">
+                    <div class="row" style="margin-top: 50px;">
+                        <div class="col-xs-12">
+                            <form class="form-horizontal" role="form">
+                                <div class="widget-box">
+                                    <div class="widget-header">
+                                        <h4 class="smaller">规则设置</h4>
+                                    </div>
+                                    <div class="widget-body">
+                                        <div class="widget-main" style="overflow: hidden;">
+                                            <div class="col-xs-6" style="padding-left: 100px;">
+                                                <div class="form-group">
+                                                    <label class="lab_width">*物业类型：</label>
+                                                    <div class="inpt_width" style="display: inline-block;">
+                                                        <div class="checkbox checkSty_projectInfo">
+                                                            <label>
+                                                                <input name="form-field-checkbox" type="checkbox" class="ace">
+                                                                <span class="lbl">住宅</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox checkSty_projectInfo">
+                                                            <label>
+                                                                <input name="form-field-checkbox" type="checkbox" class="ace">
+                                                                <span class="lbl">公寓</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox checkSty_projectInfo">
+                                                            <label>
+                                                                <input name="form-field-checkbox" type="checkbox" class="ace">
+                                                                <span class="lbl">别墅</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox checkSty_projectInfo">
+                                                            <label>
+                                                                <input name="form-field-checkbox" type="checkbox" class="ace">
+                                                                <span class="lbl">商铺</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox checkSty_projectInfo">
+                                                            <label>
+                                                                <input name="form-field-checkbox" type="checkbox" class="ace">
+                                                                <span class="lbl">写字楼</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox checkSty_projectInfo">
+                                                            <label>
+                                                                <input name="form-field-checkbox" type="checkbox" class="ace">
+                                                                <span class="lbl">车位</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="lab_width">*跳点：</label>
+                                                    <div class="inpt_width" style="display: inline-block;">
+                                                        <div class="radio" style="display: inline-block;">
+                                                            <label>
+                                                                <input name="form-field-radio" type="radio" class="ace">
+                                                                <span class="lbl">是</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="radio" style="display: inline-block;">
+                                                            <label>
+                                                                <input name="form-field-radio" type="radio" class="ace InvalidVisit">
+                                                                <span class="lbl">否</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="lab_width">*单位：</label>
+                                                    <select class="inpt_width">
+                                                        <option value="">人民币</option>
+                                                        <option value="">XXX</option>
+                                                        <option value="">XXX</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xs-6" style="padding-left: 50px;">
+                                                <div class="form-group">
+                                                    <label class="lab_width">*跳点提成累积：</label>
+                                                    <div class="inpt_width" style="display: inline-block;">
+                                                        <div class="radio" style="display: inline-block;">
+                                                            <label>
+                                                                <input name="form-field-radio" type="radio" class="ace">
+                                                                <span class="lbl">是</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="radio" style="display: inline-block;">
+                                                            <label>
+                                                                <input name="form-field-radio" type="radio" class="ace InvalidVisit">
+                                                                <span class="lbl">否</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">*提成方式：</label>
+                                                    <select class="inpt_width">
+                                                        <option value="">固定金额*套数</option>
+                                                        <option value="">总价*比例</option>
+                                                        <option value="">面积*单价</option>
+                                                    </select>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="widget-box" style="margin-top: 20px;">
+                                        <div class="widget-header">
+                                            <h4 class="smaller">跳点规则</h4>
+                                        </div>
+                                        <div class="widget-body">
+                                            <div class="widget-main" style="overflow: hidden;">
+                                                <div class="col-xs-6" style="padding-left: 100px;">
+                                                    <div class="form-group">
+                                                        <label class="lab_width">*物业类型：</label>
+                                                        <div class="inpt_width" style="display: inline-block;">
+                                                            <div class="checkbox checkSty_projectInfo">
+                                                                <label>
+                                                                    <input name="form-field-checkbox" type="checkbox" class="ace">
+                                                                    <span class="lbl">住宅</span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox checkSty_projectInfo">
+                                                                <label>
+                                                                    <input name="form-field-checkbox" type="checkbox" class="ace">
+                                                                    <span class="lbl">公寓</span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox checkSty_projectInfo">
+                                                                <label>
+                                                                    <input name="form-field-checkbox" type="checkbox" class="ace">
+                                                                    <span class="lbl">别墅</span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox checkSty_projectInfo">
+                                                                <label>
+                                                                    <input name="form-field-checkbox" type="checkbox" class="ace">
+                                                                    <span class="lbl">商铺</span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox checkSty_projectInfo">
+                                                                <label>
+                                                                    <input name="form-field-checkbox" type="checkbox" class="ace">
+                                                                    <span class="lbl">写字楼</span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox checkSty_projectInfo">
+                                                                <label>
+                                                                    <input name="form-field-checkbox" type="checkbox" class="ace">
+                                                                    <span class="lbl">车位</span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+    
+                                                    <div class="form-group">
+                                                        <label class="lab_width">*跳点：</label>
+                                                        <div class="inpt_width" style="display: inline-block;">
+                                                            <div class="radio" style="display: inline-block;">
+                                                                <label>
+                                                                    <input name="form-field-radio" type="radio" class="ace">
+                                                                    <span class="lbl">是</span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="radio" style="display: inline-block;">
+                                                                <label>
+                                                                    <input name="form-field-radio" type="radio" class="ace InvalidVisit">
+                                                                    <span class="lbl">否</span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+    
+                                                    <div class="form-group">
+                                                        <label class="lab_width">*单位：</label>
+                                                        <select class="inpt_width">
+                                                            <option value="">人民币</option>
+                                                            <option value="">XXX</option>
+                                                            <option value="">XXX</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+    
+                                                <div class="col-xs-6" style="padding-left: 50px;">
+                                                    <div class="form-group">
+                                                        <label class="lab_width">*跳点提成累积：</label>
+                                                        <div class="inpt_width" style="display: inline-block;">
+                                                            <div class="radio" style="display: inline-block;">
+                                                                <label>
+                                                                    <input name="form-field-radio" type="radio" class="ace">
+                                                                    <span class="lbl">是</span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="radio" style="display: inline-block;">
+                                                                <label>
+                                                                    <input name="form-field-radio" type="radio" class="ace InvalidVisit">
+                                                                    <span class="lbl">否</span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="lab_width">*提成方式：</label>
+                                                        <select class="inpt_width">
+                                                            <option value="">固定金额*套数</option>
+                                                            <option value="">总价*比例</option>
+                                                            <option value="">面积*单价</option>
+                                                        </select>
+                                                    </div>
+    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <!-- basic scripts -->
+
+    <!--[if !IE]> -->
+    <script src="components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        if ('ontouchstart' in document.documentElement) document.write(
+            "<script src='components/_mod/jquery.mobile.custom/jquery.mobile.custom.js'>" + "<" + "/script>");
+    </script>
+    <script src="components/bootstrap/dist/js/bootstrap.js"></script>
+
+    <!-- ace scripts -->
+    <script src="assets/js/src/elements.scroller.js"></script>
+    <script src="assets/js/src/elements.colorpicker.js"></script>
+    <script src="assets/js/src/elements.fileinput.js"></script>
+    <script src="assets/js/src/elements.typeahead.js"></script>
+    <script src="assets/js/src/elements.wysiwyg.js"></script>
+    <script src="assets/js/src/elements.spinner.js"></script>
+    <script src="assets/js/src/elements.treeview.js"></script>
+    <script src="assets/js/src/elements.wizard.js"></script>
+    <script src="assets/js/src/elements.aside.js"></script>
+    <script src="assets/js/src/ace.js"></script>
+    <script src="assets/js/src/ace.basics.js"></script>
+    <script src="assets/js/src/ace.scrolltop.js"></script>
+    <script src="assets/js/src/ace.ajax-content.js"></script>
+    <script src="assets/js/src/ace.touch-drag.js"></script>
+    <script src="assets/js/src/ace.sidebar.js"></script>
+    <script src="assets/js/src/ace.sidebar-scroll-1.js"></script>
+    <script src="assets/js/src/ace.submenu-hover.js"></script>
+    <script src="assets/js/src/ace.widget-box.js"></script>
+    <script src="assets/js/src/ace.settings.js"></script>
+    <script src="assets/js/src/ace.settings-rtl.js"></script>
+    <script src="assets/js/src/ace.settings-skin.js"></script>
+    <script src="assets/js/src/ace.widget-on-reload.js"></script>
+    <script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
+    <!-- 本页js -->
+    <script src="assets/js/jquery.cookie.js"></script>
+    <script>
+        window.onload = function () {
+            $('#header').load('public/header.html');
+            $('#sidebar').load('public/menu.html');
+            var menu_data = {
+                opening: '',
+                acting: '.jieyongguize'
+            }
+            $.cookie('menu_data', JSON.stringify(menu_data), {
+                path: "menu.html"
+            });
+        }
+    </script>
+    <script src="components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+    <script src="components/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+    <script src="components/moment/moment.js"></script>
+    <script src="components/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="components/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js"></script>
+    <script>
+        //日历插件初始化
+        $('.date-picker').datepicker({
+            autoclose: true,
+            todayHighlight: true
+        })
+    </script>
+</body>
+
+</html>

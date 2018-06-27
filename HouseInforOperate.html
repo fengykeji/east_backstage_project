@@ -45,7 +45,6 @@
 		<script src="components/respond/dest/respond.min.js"></script>
 		<![endif]-->
     <style>
-
         .lab_width {
             width: 120px;
         }
@@ -105,7 +104,6 @@
         .close {
             font-size: 32px;
         }
-
     </style>
 </head>
 
@@ -175,9 +173,9 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">产权面积（㎡）：</label>
-                                                    <input type="number" name="property_area_min" value="1" min="1" >
+                                                    <input type="number" name="property_area_min" value="1" min="1">
                                                     <span>----</span>
-                                                    <input type="number" name="property_area_max" value="1" min="1" >
+                                                    <input type="number" name="property_area_max" value="1" min="1">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">户型卖点：</label>
@@ -432,7 +430,6 @@
                                                         </tbody>
                                                     </table>
 
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -445,6 +442,7 @@
             </div>
         </div>
     </div>
+    </div>
 
 
 
@@ -452,8 +450,8 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="bootbox-close-button close closed" >×</button>
-                    <h4 class="modal-title" >新增</h4>
+                    <button type="button" class="bootbox-close-button close closed">×</button>
+                    <h4 class="modal-title">新增</h4>
                 </div>
                 <div class="modal-body">
                     <div class="bootbox-body" style="overflow: hidden;">
@@ -466,19 +464,19 @@
                                         <input multiple="" type="hidden" id="type">
                                         <img class="show_UpImg img_url" src="assets/images/null.jpg" id="pic" style="display: none;width: 100%">
                                         <span class="ace-file-container" data-title="点击上传图片" id="pic_wait_up">
-                                    <span class="ace-file-name" data-title="No File ...">
-                                        <i class=" ace-icon ace-icon fa fa-picture-o">
+                                            <span class="ace-file-name" data-title="No File ...">
+                                                <i class=" ace-icon ace-icon fa fa-picture-o">
 
-                                        </i>
-                                    </span>
-                                     </span>
+                                                </i>
+                                            </span>
+                                        </span>
                                     </label>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-12">
                                     <label class="control-label no-padding-right" for="form-field-1-1" style="width: 100px;vertical-align: top;">备注：</label>
-                                    <textarea style="display: inline-block;width: 300px;" name="" id="comment" cols="30" rows="4" ></textarea>
+                                    <textarea style="display: inline-block;width: 300px;" name="" id="comment" cols="30" rows="4"></textarea>
                                 </div>
                             </div>
                         </form>
@@ -587,7 +585,7 @@
     <script src="assets/js/config.js"></script>
     <script src="assets/js/public.js"></script>
     <script>
-        var id=$.getUrlVar('id');
+        var id = $.getUrlVar('id');
         window.onload = function () {
             $('#header').load('public/header.html');
             $('#sidebar').load('public/menu.html');
@@ -603,35 +601,42 @@
         }
     </script>
     <script>
-        function getConfig(){
-            ajax.get('config',{id:config.configList.HOUSE_TYPE},function(res){
-                var model='<option value="{id}">{name}</option>',
-                    str='';
-                $.each(res.data[config.configList.HOUSE_TYPE].param,function(k,v){
-                    str+=model.replace('{id}',v.id).replace('{name}',v.param);
+        function getConfig() {
+            ajax.get('config', {
+                id: config.configList.HOUSE_TYPE
+            }, function (res) {
+                var model = '<option value="{id}">{name}</option>',
+                    str = '';
+                $.each(res.data[config.configList.HOUSE_TYPE].param, function (k, v) {
+                    str += model.replace('{id}', v.id).replace('{name}', v.param);
                 })
 
                 $('select[name=house]').append(str);
             })
         }
 
-        function getBaseInfo(){
-            ajax.get('project/houseType/detail',{id:id},function(res){
+        function getBaseInfo() {
+            ajax.get('project/houseType/detail', {
+                id: id
+            }, function (res) {
                 $('input[name=house_type_name]').val(res.data.baseInfo.house_type_name);
                 $('input[name=property_area_min]').val(res.data.baseInfo.property_area_min);
                 $('input[name=property_area_max]').val(res.data.baseInfo.property_area_max);
                 $('#sell_point').val(res.data.baseInfo.sell_point);
-                $('select[name=house]').children('option').each(function(){
-                    if(parseInt($(this).val())==res.data.baseInfo.house_type){
-                        $(this).attr('selected','selected')
+                $('select[name=house]').children('option').each(function () {
+                    if (parseInt($(this).val()) == res.data.baseInfo.house_type) {
+                        $(this).attr('selected', 'selected')
                     }
                 })
-                var model = '<tr role="row" class="odd" value="{id}"> <td class="center">1</td> <td class="center"> <img class="proLook_img" src="{url}" alt=""> </td> <td class="center">{comment}</td> <td class="center">{uploader}</td> <td class="center">{update_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="">查看</a> <a class="green edit_leibie" href="">编辑</a> <a class="red del_leibie" href="#">删除</a> <a class="" href="">上移</a> <a class="" href="">下移</a> </div> </td> </tr>';
-                if(res.data.imgInfo[54].list.length>0){
-                    var str='';
+                var model =
+                    '<tr role="row" class="odd" value="{id}"> <td class="center">1</td> <td class="center"> <img class="proLook_img" src="{url}" alt=""> </td> <td class="center">{comment}</td> <td class="center">{uploader}</td> <td class="center">{update_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="">查看</a> <a class="green edit_leibie" href="">编辑</a> <a class="red del_leibie" href="#">删除</a> <a class="" href="">上移</a> <a class="" href="">下移</a> </div> </td> </tr>';
+                if (res.data.imgInfo[54].list.length > 0) {
+                    var str = '';
 
-                    $.each(res.data.imgInfo[54].list,function(k,v){
-                        str+=model.replace('{id}',v.img_id).replace('{url}',config.address+v.img_url).replace('{comment}',v.img_describe).replace('{uploader}',v.uploader).replace('{update_time}',v.update_time)
+                    $.each(res.data.imgInfo[54].list, function (k, v) {
+                        str += model.replace('{id}', v.img_id).replace('{url}', config.address + v.img_url)
+                            .replace('{comment}', v.img_describe).replace('{uploader}', v.uploader).replace(
+                                '{update_time}', v.update_time)
                     })
                     $('#pm').append(str);
                 }
@@ -640,8 +645,8 @@
             })
         }
 
-        function add_pic(type){
-            $('#pic').attr('src', 'assets/images/null.jpg').attr('address',"").hide();
+        function add_pic(type) {
+            $('#pic').attr('src', 'assets/images/null.jpg').attr('address', "").hide();
             $('#pic_wait_up').show();
             $('#comment').val("");
             $('.modal_add').fadeIn();
@@ -649,7 +654,7 @@
         }
 
         $('#pic_up').on('change', function () {
-            console.log('111111');
+            // console.log($(this));
             if ($(this)[0].files[0].size >= config.allowImgFileSize) {
                 alert(config.ImgSizeBeyondErrMes);
                 return false;
@@ -661,34 +666,34 @@
                 $('#pic_wait_up').hide();
             })
         })
-            $('#pic_add').on('click',function (e) {
-                e.stopPropagation();
-                var data={
-                    'img_url':$('#pic').attr('address'),
-                    'img_type':$('#type').val(type),
-                    'house_type':id,
-                    'img_describe':$('#comment').val()
-                };
-                if(data.img_url==''){
-                    alert('请上传图片');
-                    return;
-                }
-                if(data.img_type==''){
-                    alert('图片类型丢失，请刷新重试');
-                    return;
-                }
-                if(data.house_type==''){
-                    alert('住宅类型丢失，请刷新重试');
-                    return;
-                }
+        $('#pic_add').on('click', function (e) {
+            e.stopPropagation();
+            var data = {
+                'img_url': $('#pic').attr('address'),
+                'img_type': $('#type').val(type),
+                'house_type': id,
+                'img_describe': $('#comment').val()
+            };
+            if (data.img_url == '') {
+                alert('请上传图片');
+                return;
+            }
+            if (data.img_type == '') {
+                alert('图片类型丢失，请刷新重试');
+                return;
+            }
+            if (data.house_type == '') {
+                alert('住宅类型丢失，请刷新重试');
+                return;
+            }
 
-                ajax.post('project/houseType/upload', data, function (res) {
-                    alert(res.msg);
-                    if(res.code==config.responseSuccess){
-                        window.location.reload();
-                    }
-                })
+            ajax.post('project/houseType/upload', data, function (res) {
+                alert(res.msg);
+                if (res.code == config.responseSuccess) {
+                    window.location.reload();
+                }
             })
+        })
         // function pic_add(e){
         //     e.stopPropagation();
         //     var data={
@@ -718,27 +723,27 @@
         //     })
         // }
 
-        function update_basic(){
-            var data={
-                'id':id,
-                'house_type_name':$('input[name=house_type_name]').val(),
-                'house_type':$('select[name=house]').val(),
-                'property_area_min':$('input[name=property_area_min]').val(),
-                'property_area_max':$('input[name=property_area_max]').val(),
-                'sell_point':$('#sell_point').val()
+        function update_basic() {
+            var data = {
+                'id': id,
+                'house_type_name': $('input[name=house_type_name]').val(),
+                'house_type': $('select[name=house]').val(),
+                'property_area_min': $('input[name=property_area_min]').val(),
+                'property_area_max': $('input[name=property_area_max]').val(),
+                'sell_point': $('#sell_point').val()
             };
-            if(data.house_type_name==''){
+            if (data.house_type_name == '') {
                 alert('户型名称不能为空');
                 return false;
             }
-            if(data.house_type==''){
+            if (data.house_type == '') {
                 alert('请选择户型');
                 return false;
             }
 
-            ajax.post('project/houseType/update',data,function(res){
+            ajax.post('project/houseType/update', data, function (res) {
                 alert(res.msg);
-                if(res.code=config.responseSuccess){
+                if (res.code = config.responseSuccess) {
                     window.location.reload();
                 }
             })
@@ -785,7 +790,6 @@
         });
     </script>
     <script>
-
         //新增3d图
         $('.build_add_3D').on('click', function () {
             $('.modal_add_3D').css('display', 'block');
