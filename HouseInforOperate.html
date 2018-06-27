@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>户型信息</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <!--[if !IE]> -->
+
+    <!-- <link rel="stylesheet" href="assets/css/pace.css" />
+		<script data-pace-options='{ "ajax": true, "document": true, "eventLag": false, "elements": false }' src="components/PACE/pace.js"></script> -->
+
+    <!-- <![endif]-->
+
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="components/font-awesome/css/font-awesome.css" />
+
+    <!-- text fonts -->
+    <link rel="stylesheet" href="assets/css/ace-fonts.css" />
+
+    <!-- ace styles -->
+    <link rel="stylesheet" href="assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
+
+    <!--[if lte IE 9]>
+			<link rel="stylesheet" href="assets/css/ace-part2.css" class="ace-main-stylesheet" />
+		<![endif]-->
+    <link rel="stylesheet" href="assets/css/ace-skins.css" />
+    <link rel="stylesheet" href="assets/css/ace-rtl.css" />
+
+    <!--[if lte IE 9]>
+		  <link rel="stylesheet" href="assets/css/ace-ie.css" />
+		<![endif]-->
+
+    <!-- ace settings handler -->
+    <script src="assets/js/ace-extra.js"></script>
+
+    <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+
+    <!--[if lte IE 8]>
+		<script src="components/html5shiv/dist/html5shiv.min.js"></script>
+		<script src="components/respond/dest/respond.min.js"></script>
+		<![endif]-->
+    <style>
+        .lab_width {
+            width: 120px;
+        }
+        .inpt_width {
+            width: 500px;
+        }
+        .build_add,
+        .build_add_3D {
+            position: absolute;
+            right: 80px;
+            top: 0;
+            z-index: 100;
+            padding: 3px 10px;
+        }
+        .proLook_img {
+            width: 150px;
+            height: auto;
+        }
+        .table.table-striped td {
+            vertical-align: middle;
+        }
+        .modal_add,
+        .modal_add_3D {
+            display: none;
+            background-color: rgba(0, 0, 0, .5);
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        .modal-dialog {
+            margin: 150px auto;
+        }
+        .bootbox-body {
+            font-size: 18px;
+            margin-top: 25px;
+            text-align: center;
+        }
+        .modal-content {
+            padding: 30px 50px;
+        }
+        .modal-footer {
+            margin-top: 20px;
+        }
+        .close {
+            font-size: 32px;
+        }
+    </style>
+</head>
+
+<body class="no-skin">
+    <!-- #section:basics/navbar.layout -->
+    <div id="header">
+
+    </div>
+    <!-- /section:basics/navbar.layout -->
+    <div class="main-container" id="main-container">
+        <script type="text/javascript">
+            try {
+                ace.settings.check('main-container', 'fixed')
+            } catch (e) {}
+        </script>
+
+        <!-- 菜单开始 -->
+        <div id="sidebar" class="sidebar responsive ace-save-state">
+
+
+
+        </div>
+
+        <!-- /section:basics/sidebar -->
+        <div class="main-content">
+            <div class="main-content-inner">
+                <div class="breadcrumbs" id="breadcrumbs">
+                    <script type="text/javascript">
+                        try {
+                            ace.settings.check('breadcrumbs', 'fixed')
+                        } catch (e) {}
+                    </script>
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                            <a href="ProjectImg.html">楼盘字典>户型信息</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 内容开始 -->
+                <div class="page-content">
+                    <div class="row" style="margin-top: 15px;">
+                        <div class="col-xs-12">
+                            <div class="widget-box">
+                                <div class="widget-header" style="position: relative;">
+                                    <h4 class="smaller">新增</h4>
+                                    <div style="position: absolute;right: 80px;top:0;z-index: 100;">
+                                        <button class="btn btn-danger" style="padding: 3px 10px;" onclick="update_basic()">确定</button>
+                                        <button class="btn btn-primary" style="padding: 3px 10px;" onclick="javascript :history.back(-1)">取消</button>
+                                    </div>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="widget-main" style="overflow: hidden;">
+                                        <div class="col-xs-12">
+                                            <div class="col-xs-1"></div>
+                                            <form class="form-horizontal col-xs-11" role="form">
+                                                <div class="form-group">
+                                                    <label class="lab_width">户型编号：</label>
+                                                    <input class="inpt_width" type="text" name="house_type_name">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">户型：</label>
+                                                    <select class="form-control" style="width: 150px;display: inline-block;" name="house">
+                                                        <option value=""></option>
+
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">产权面积（㎡）：</label>
+                                                    <input type="number" name="property_area_min" value="1" min="1" >
+                                                    <span>----</span>
+                                                    <input type="number" name="property_area_max" value="1" min="1" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">户型卖点：</label>
+                                                    <textarea class="inpt_width" rows="4" style="vertical-align: top;" id="sell_point"></textarea>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="widget-box pic" style="margin-top: 20px;">
+                                <div class="widget-header" style="position: relative;">
+                                    <h4 class="smaller">平面图</h4>
+                                    <button class="btn btn-danger build_add" onclick="add_pic(54)">新增</button>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="widget-main" style="overflow: hidden;">
+                                        <div class="col-xs-12">
+                                            <div>
+                                                <div class="dataTables_wrapper form-inline no-footer">
+                                                    <table class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+
+                                                        <thead>
+                                                            <tr role="row">
+                                                                <th class="center">序号</th>
+                                                                <th class="center">图片</th>
+                                                                <th class="center">备注</th>
+                                                                <th class="center">更新人员</th>
+                                                                <th class="center">更新时间</th>
+                                                                <th class="center">操作</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="pm">
+
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="widget-box pic" style="margin-top: 20px;">
+                                <div class="widget-header" style="position: relative;">
+                                    <h4 class="smaller">效果图</h4>
+                                    <button class="btn btn-danger build_add" onclick="add_pic(53)">新增</button>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="widget-main" style="overflow: hidden;">
+                                        <div class="col-xs-12">
+                                            <div>
+                                                <div class="dataTables_wrapper form-inline no-footer">
+                                                    <table class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+
+                                                        <thead>
+                                                            <tr role="row">
+                                                                <th class="center">序号</th>
+                                                                <th class="center">图片</th>
+                                                                <th class="center">备注</th>
+                                                                <th class="center">更新人员</th>
+                                                                <th class="center">更新时间</th>
+                                                                <th class="center">操作</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="xg">
+
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="widget-box pic" style="margin-top: 20px;">
+                                <div class="widget-header" style="position: relative;">
+                                    <h4 class="smaller">3D图</h4>
+                                    <button class="btn btn-danger build_add_3D" onclick="add_pic(52)">新增</button>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="widget-main" style="overflow: hidden;">
+                                        <div class="col-xs-12">
+                                            <div>
+                                                <div class="dataTables_wrapper form-inline no-footer">
+                                                    <table class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+
+                                                        <thead>
+                                                            <tr role="row">
+                                                                <th class="center">序号</th>
+                                                                <th class="center">平面图</th>
+                                                                <th class="center">3D图</th>
+                                                                <th class="center">备注</th>
+                                                                <th class="center">更新人员</th>
+                                                                <th class="center">更新时间</th>
+                                                                <th class="center">操作</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="3d">
+                                                            <tr role="row" class="odd">
+                                                                <td class="center">1</td>
+                                                                <td class="center">图片一</td>
+                                                                <td class="center">
+                                                                    <img class="proLook_img" src="http://120.27.21.136:2798/upload/project/img/06.jpg" alt="">
+                                                                </td>
+                                                                <td class="center">
+                                                                    <img class="proLook_img" src="http://120.27.21.136:2798/upload/project/img/06.jpg" alt="">
+                                                                </td>
+                                                                <td class="center">XXXXXXXXXXXXXXXX</td>
+                                                                <td class="center">张三</td>
+                                                                <td class="center">2017-12-12</td>
+                                                                <td class="center">
+                                                                    <div class="hidden-sm hidden-xs action-buttons">
+                                                                        <a class="blue" href="">查看</a>
+                                                                        <a class="green edit_leibie" href="">编辑</a>
+                                                                        <a class="red del_leibie" href="#">删除</a>
+                                                                        <a class="" href="">上移</a>
+                                                                        <a class="" href="">下移</a>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr role="row" class="odd">
+                                                                <td class="center">1</td>
+                                                                <td class="center">图片一</td>
+                                                                <td class="center">
+                                                                    <img class="proLook_img" src="http://120.27.21.136:2798/upload/project/img/06.jpg" alt="">
+                                                                </td>
+                                                                <td class="center">
+                                                                    <img class="proLook_img" src="http://120.27.21.136:2798/upload/project/img/06.jpg" alt="">
+                                                                </td>
+                                                                <td class="center">XXXXXXXXXXXXXXXX</td>
+                                                                <td class="center">张三</td>
+                                                                <td class="center">2017-12-12</td>
+                                                                <td class="center">
+                                                                    <div class="hidden-sm hidden-xs action-buttons">
+                                                                        <a class="blue" href="">查看</a>
+                                                                        <a class="green edit_leibie" href="">编辑</a>
+                                                                        <a class="red del_leibie" href="#">删除</a>
+                                                                        <a class="" href="">上移</a>
+                                                                        <a class="" href="">下移</a>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="widget-box pic" style="margin-top: 20px;">
+                                <div class="widget-header" style="position: relative;">
+                                    <h4 class="smaller">实景图</h4>
+                                    <button class="btn btn-danger build_add" onclick="add_pic(55)">新增</button>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="widget-main" style="overflow: hidden;">
+                                        <div class="col-xs-12">
+                                            <div>
+                                                <div class="dataTables_wrapper form-inline no-footer">
+                                                    <table class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+
+                                                        <thead>
+                                                            <tr role="row" id="sj">
+                                                                <th class="center">序号</th>
+                                                                <th class="center">图片</th>
+                                                                <th class="center">备注</th>
+                                                                <th class="center">更新人员</th>
+                                                                <th class="center">更新时间</th>
+                                                                <th class="center">操作</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                        </tbody>
+                                                    </table>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="modal_add">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="bootbox-close-button close closed" >×</button>
+                    <h4 class="modal-title" >新增</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="bootbox-body" style="overflow: hidden;">
+                        <form class="bootbox-form">
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label class=" control-label no-padding-right" for="form-field-1-1" style="width: 100px;vertical-align: top;">添加文件：</label>
+                                    <label class="ace-file-input ace-file-multiple fileUpLabel" style="display: inline-block;width: 300px;">
+                                        <input multiple="" type="file" id="pic_up">
+                                        <input multiple="" type="hidden" id="type">
+                                        <img class="show_UpImg img_url" src="assets/images/null.jpg" id="pic" style="display: none;width: 100%">
+                                        <span class="ace-file-container" data-title="点击上传图片" id="pic_wait_up">
+                                        <span class="ace-file-name" data-title="No File ...">
+                                        <i class=" ace-icon ace-icon fa fa-picture-o">
+
+                                        </i>
+                                    </span>
+                                     </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label class="control-label no-padding-right" for="form-field-1-1" style="width: 100px;vertical-align: top;">备注：</label>
+                                    <textarea style="display: inline-block;width: 300px;" name="" id="comment" cols="30" rows="4" ></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
+                    <div  class="btn btn-primary" id="pic_add">确定</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal_add_3D">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="bootbox-close-button close closed">×</button>
+                    <h4 class="modal-title">新增</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="bootbox-body" style="overflow: hidden;">
+                        <form class="bootbox-form">
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label class=" control-label no-padding-right" for="form-field-1-1" style="width: 100px;vertical-align: top;">添加平面图：</label>
+                                    <label class="ace-file-input ace-file-multiple fileUpLabel" style="display: inline-block;width: 300px;">
+                                        <input multiple="" type="file">
+                                        <span class="ace-file-container" data-title="点击上传图片">
+                                            <span class="ace-file-name" data-title="No File ...">
+                                                <i class=" ace-icon ace-icon fa fa-picture-o">
+
+                                                </i>
+                                            </span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label class=" control-label no-padding-right" for="form-field-1-1" style="width: 100px;vertical-align: top;">添加3D图：</label>
+                                    <label class="ace-file-input ace-file-multiple fileUpLabel" style="display: inline-block;width: 300px;">
+                                        <input multiple="" type="file">
+                                        <span class="ace-file-container" data-title="点击上传图片">
+                                            <span class="ace-file-name" data-title="No File ...">
+                                                <i class=" ace-icon ace-icon fa fa-picture-o">
+
+                                                </i>
+                                            </span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label class="control-label no-padding-right" for="form-field-1-1" style="width: 100px;vertical-align: top;">备注：</label>
+                                    <textarea style="display: inline-block;width: 300px;" name="" id="" cols="30" rows="4"></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
+                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="add">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- basic scripts -->
+
+    <!--[if !IE]> -->
+    <script src="components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        if ('ontouchstart' in document.documentElement) document.write(
+            "<script src='components/_mod/jquery.mobile.custom/jquery.mobile.custom.js'>" + "<" + "/script>");
+    </script>
+    <script src="components/bootstrap/dist/js/bootstrap.js"></script>
+
+    <!-- ace scripts -->
+    <script src="assets/js/src/elements.scroller.js"></script>
+    <script src="assets/js/src/elements.colorpicker.js"></script>
+    <script src="assets/js/src/elements.fileinput.js"></script>
+    <script src="assets/js/src/elements.typeahead.js"></script>
+    <script src="assets/js/src/elements.wysiwyg.js"></script>
+    <script src="assets/js/src/elements.spinner.js"></script>
+    <script src="assets/js/src/elements.treeview.js"></script>
+    <script src="assets/js/src/elements.wizard.js"></script>
+    <script src="assets/js/src/elements.aside.js"></script>
+    <script src="assets/js/src/ace.js"></script>
+    <script src="assets/js/src/ace.basics.js"></script>
+    <script src="assets/js/src/ace.scrolltop.js"></script>
+    <script src="assets/js/src/ace.ajax-content.js"></script>
+    <script src="assets/js/src/ace.touch-drag.js"></script>
+    <script src="assets/js/src/ace.sidebar.js"></script>
+    <script src="assets/js/src/ace.sidebar-scroll-1.js"></script>
+    <script src="assets/js/src/ace.submenu-hover.js"></script>
+    <script src="assets/js/src/ace.widget-box.js"></script>
+    <script src="assets/js/src/ace.settings.js"></script>
+    <script src="assets/js/src/ace.settings-rtl.js"></script>
+    <script src="assets/js/src/ace.settings-skin.js"></script>
+    <script src="assets/js/src/ace.widget-on-reload.js"></script>
+    <script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
+    <!-- 本页js -->
+    <script src="assets/js/jquery.cookie.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/public.js"></script>
+    <script>
+        var id=$.getUrlVar('id');
+        window.onload = function () {
+            $('#header').load('public/header.html');
+            $('#sidebar').load('public/menu.html');
+            var menu_data = {
+                opening: '.loupanzidian',
+                acting: '.huxingxinxi'
+            }
+            $.cookie('menu_data', JSON.stringify(menu_data), {
+                path: "menu.html"
+            });
+            getConfig();
+            getBaseInfo();
+        }
+    </script>
+    <script>
+        function getConfig(){
+            ajax.get('config',{id:config.configList.HOUSE_TYPE},function(res){
+                var model='<option value="{id}">{name}</option>',
+                    str='';
+                $.each(res.data[config.configList.HOUSE_TYPE].param,function(k,v){
+                    str+=model.replace('{id}',v.id).replace('{name}',v.param);
+                })
+                $('select[name=house]').append(str);
+            })
+        }
+        function getBaseInfo(){
+            ajax.get('project/houseType/detail',{id:id},function(res){
+                $('input[name=house_type_name]').val(res.data.baseInfo.house_type_name);
+                $('input[name=property_area_min]').val(res.data.baseInfo.property_area_min);
+                $('input[name=property_area_max]').val(res.data.baseInfo.property_area_max);
+                $('#sell_point').val(res.data.baseInfo.sell_point);
+                $('select[name=house]').children('option').each(function(){
+                    if(parseInt($(this).val())==res.data.baseInfo.house_type){
+                        $(this).attr('selected','selected')
+                    }
+                })
+                var model = '<tr role="row" class="odd" value="{id}"> <td class="center">1</td> <td class="center"> <img class="proLook_img" src="{url}" alt=""> </td> <td class="center">{comment}</td> <td class="center">{uploader}</td> <td class="center">{update_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="">查看</a> <a class="green edit_leibie" href="">编辑</a> <a class="red del_leibie" href="#">删除</a> <a class="" href="">上移</a> <a class="" href="">下移</a> </div> </td> </tr>';
+                if(res.data.imgInfo[54].list.length>0){
+                    var str='';
+                    $.each(res.data.imgInfo[54].list,function(k,v){
+                        str+=model.replace('{id}',v.img_id).replace('{url}',config.address+v.img_url).replace('{comment}',v.img_describe).replace('{uploader}',v.uploader).replace('{update_time}',v.update_time)
+                    })
+                    $('#pm').append(str);
+                    str='';
+                }
+                if(res.data.imgInfo[53].list.length>0){
+                    var str='';
+                    $.each(res.data.imgInfo[53].list,function(k,v){
+                        str+=model.replace('{id}',v.img_id).replace('{url}',config.address+v.img_url).replace('{comment}',v.img_describe).replace('{uploader}',v.uploader).replace('{update_time}',v.update_time)
+                    })
+                    $('#xg').append(str);
+                    str='';
+                }
+                if(res.data.imgInfo[55].list.length>0){
+                    var str='';
+                    $.each(res.data.imgInfo[55].list,function(k,v){
+                        str+=model.replace('{id}',v.img_id).replace('{url}',config.address+v.img_url).replace('{comment}',v.img_describe).replace('{uploader}',v.uploader).replace('{update_time}',v.update_time)
+                    })
+                    $('#sj').append(str);
+                    str='';
+                }
+            })
+        }
+        function add_pic(type){
+            $('#pic').attr('src', 'assets/images/null.jpg').attr('address',"").hide();
+            $('#pic_wait_up').show();
+            $('#comment').val("");
+            $('.modal_add').fadeIn();
+            $('#type').val(type);
+        }
+        $('#pic_up').on('change', function () {
+            if($(this)[0].files==undefined){
+                return false;
+            }
+            if ($(this)[0].files[0].size >= config.allowImgFileSize) {
+                alert(config.ImgSizeBeyondErrMes);
+                return false;
+            }
+            var formData = new FormData();
+            formData.append("img", $(this)[0].files[0]);
+            ajax.file(formData, 'img', function (res) {
+                $('#pic').attr('src', config.address + res.data).attr('address', res.data).show();
+                $('#pic_wait_up').hide();
+            })
+        })
+            $('#pic_add').on('click',function () {
+                var data={
+                    'img_url':$('#pic').attr('address'),
+                    'img_type':$('#type').val(type),
+                    'house_type':id,
+                    'img_describe':$('#comment').val()
+                };
+                if(data.img_url==''){
+                    alert('请上传图片 ');
+                    return;
+                }
+                if(data.img_type==''){
+                    alert('图片类型丢失，请刷新重试');
+                    return;
+                }
+                if(data.house_type==''){
+                    alert('住宅类型丢失，请刷新重试');
+                    return;
+                }
+                ajax.post('project/houseType/upload', data, function (res) {
+                    alert(res.msg);
+                    if(res.code==config.responseSuccess){
+                        window.location.reload();
+                    }
+                })
+            })
+        // function pic_add(e){
+        //     e.stopPropagation();
+        //     var data={
+        //         'img_url':$('#pic').attr('address'),
+        //         'img_type':$('#type').val(type),
+        //         'house_type':id,
+        //         'img_describe':$('#comment').val()
+        //     };
+        //     if(data.img_url==''){
+        //         alert('请上传图片');
+        //         return;
+        //     }
+        //     if(data.img_type==''){
+        //         alert('图片类型丢失，请刷新重试');
+        //         return;
+        //     }
+        //     if(data.house_type==''){
+        //         alert('住宅类型丢失，请刷新重试');
+        //         return;
+        //     }
+        //
+        //     ajax.post('project/houseType/upload', data, function (res) {
+        //         alert(res.msg);
+        //         if(res.code==config.responseSuccess){
+        //             window.location.reload();
+        //         }
+        //     })
+        // }
+        function update_basic(){
+            var data={
+                'id':id,
+                'house_type_name':$('input[name=house_type_name]').val(),
+                'house_type':$('select[name=house]').val(),
+                'property_area_min':$('input[name=property_area_min]').val(),
+                'property_area_max':$('input[name=property_area_max]').val(),
+                'sell_point':$('#sell_point').val()
+            };
+            if(data.house_type_name==''){
+                alert('户型名称不能为空');
+                return false;
+            }
+            if(data.house_type==''){
+                alert('请选择户型');
+                return false;
+            }
+            ajax.post('project/houseType/update',data,function(res){
+                alert(res.msg);
+                if(res.code=config.responseSuccess){
+                    window.location.reload();
+                }
+            })
+        }
+    </script>
+    <script src="components/fuelux/js/spinbox.js"></script>
+    <script>
+        $('#spinner1').ace_spinner({
+            value: 0,
+            min: 0,
+            max: 100,
+            step: 1,
+            touch_spinner: true,
+            icon_up: 'ace-icon fa fa-caret-up bigger-110',
+            icon_down: 'ace-icon fa fa-caret-down bigger-110'
+        });
+        $('#spinner2').ace_spinner({
+            value: 0,
+            min: 0,
+            max: 100,
+            step: 1,
+            touch_spinner: true,
+            icon_up: 'ace-icon fa fa-caret-up bigger-110',
+            icon_down: 'ace-icon fa fa-caret-down bigger-110'
+        });
+        $('#spinner3').ace_spinner({
+            value: 0,
+            min: 0,
+            max: 100,
+            step: 1,
+            touch_spinner: true,
+            icon_up: 'ace-icon fa fa-caret-up bigger-110',
+            icon_down: 'ace-icon fa fa-caret-down bigger-110'
+        });
+        $('#spinner4').ace_spinner({
+            value: 0,
+            min: 0,
+            max: 100,
+            step: 1,
+            touch_spinner: true,
+            icon_up: 'ace-icon fa fa-caret-up bigger-110',
+            icon_down: 'ace-icon fa fa-caret-down bigger-110'
+        });
+    </script>
+    <script>
+        //新增3d图
+        $('.build_add_3D').on('click', function () {
+            $('.modal_add_3D').css('display', 'block');
+        })
+        $('.closed').on('click', function () {
+            $(this).parent().parent().parent().parent().css('display', 'none');
+        })
+    </script>
+</body>
+
+</html>
