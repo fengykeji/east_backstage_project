@@ -342,7 +342,7 @@
                                                     <table class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
 
                                                         <thead>
-                                                            <tr role="row" id="sj">
+                                                            <tr role="row">
                                                                 <th class="center">序号</th>
                                                                 <th class="center">图片</th>
                                                                 <th class="center">备注</th>
@@ -350,8 +350,8 @@
                                                                 <th class="center">更新时间</th>
                                                                 <th class="center">操作</th>
                                                             </tr>
-                                                        </thead>
-                                                        <tbody>
+                                                        </thead  >
+                                                        <tbody id="sj">
 
                                                         </tbody>
                                                     </table>
@@ -598,28 +598,26 @@
         $('#pic_up').on('change', function () {
             console.log('11111')
             if ($(this)[0].files == undefined) {
-                console.log('777777');
+                console.log('2222');
                 return false;
             }
-            console.log('33333');
+            console.log('222233');
             if ($(this)[0].files[0].size >= config.allowImgFileSize) {
                 alert(config.ImgSizeBeyondErrMes);
                 return;
             }
-            console.log('4444444');
             var formData = new FormData();
             formData.append("img", $(this)[0].files[0]);
-            console.log('55555555');
             ajax.file(formData, 'img', function (res) {
                 $('#pic_flat').attr('src', config.address + res.data).attr('address', res.data).show();
                 $('#pic_wait_up').hide();
             })
         })
         $('#pic_add').on('click', function () {
-            console.log('222222');
+
             var data = {
                 'img_url': $('#pic_flat').attr('address'),
-                'img_type': $('#type').val(type),
+                'img_type': $('#type').val(),
                 'house_type': id,
                 'img_describe': $('#comment').val()
             };
@@ -635,10 +633,8 @@
                 alert('住宅类型丢失，请刷新重试');
                 return;
             }
-            console.log('888888');
-            ajax.post('project/houseType/upload', data, function (res) {
-                console.log('999999');
-                console.log(res);
+
+            ajax.post('project/houseType/upload',data,function(res) {
                 alert(res.msg);
                 if (res.code == config.responseSuccess) {
                     window.location.reload();
@@ -663,7 +659,7 @@
                 alert('请选择户型');
                 return false;
             }
-            ajax.post('project/houseType/update', data, function (res) {
+            ajax.post('project/houseType/update',data,function(res){
                 alert(res.msg);
                 if (res.code = config.responseSuccess) {
                     window.location.reload();
