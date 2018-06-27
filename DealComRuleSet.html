@@ -38,7 +38,7 @@
             float: left;
         }
 
-        .modal_addAnnex {
+        .modal_JumPoint {
             display: none;
             background-color: rgba(0, 0, 0, .5);
             position: fixed;
@@ -107,6 +107,14 @@
             font-size: 15px;
             color: #999999;
             padding: 20px 0;
+        }
+
+        .build_add {
+            position: absolute;
+            right: 80px;
+            top: 0;
+            z-index: 100;
+            padding: 3px 10px;
         }
     </style>
 </head>
@@ -258,119 +266,131 @@
                                                         <option value="">面积*单价</option>
                                                     </select>
                                                 </div>
-
+                                                <div class="form-group">
+                                                    <label class="lab_width"></label>
+                                                    <select class="">
+                                                        <option value="">固定金额</option>
+                                                        <option value="">销售金额</option>
+                                                        <option value="">XXX</option>
+                                                    </select>
+                                                    <span>X</span>
+                                                    <label>套数</label>
+                                                    <input type="text">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width"></label>
+                                                    <select class="">
+                                                        <option value="">销售总价</option>
+                                                        <option value="">XXXX</option>
+                                                        <option value="">XXX</option>
+                                                    </select>
+                                                    <span>X</span>
+                                                    <label>比例</label>
+                                                    <input type="text">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width"></label>
+                                                    <select class="">
+                                                        <option value="">建筑面积</option>
+                                                        <option value="">XXXX</option>
+                                                        <option value="">XXX</option>
+                                                    </select>
+                                                    <span>X</span>
+                                                    <label>单价</label>
+                                                    <input type="text">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="widget-box" style="margin-top: 20px;">
-                                        <div class="widget-header">
-                                            <h4 class="smaller">跳点规则</h4>
-                                        </div>
-                                        <div class="widget-body">
-                                            <div class="widget-main" style="overflow: hidden;">
-                                                <div class="col-xs-6" style="padding-left: 100px;">
-                                                    <div class="form-group">
-                                                        <label class="lab_width">*物业类型：</label>
-                                                        <div class="inpt_width" style="display: inline-block;">
-                                                            <div class="checkbox checkSty_projectInfo">
-                                                                <label>
-                                                                    <input name="form-field-checkbox" type="checkbox" class="ace">
-                                                                    <span class="lbl">住宅</span>
-                                                                </label>
-                                                            </div>
-                                                            <div class="checkbox checkSty_projectInfo">
-                                                                <label>
-                                                                    <input name="form-field-checkbox" type="checkbox" class="ace">
-                                                                    <span class="lbl">公寓</span>
-                                                                </label>
-                                                            </div>
-                                                            <div class="checkbox checkSty_projectInfo">
-                                                                <label>
-                                                                    <input name="form-field-checkbox" type="checkbox" class="ace">
-                                                                    <span class="lbl">别墅</span>
-                                                                </label>
-                                                            </div>
-                                                            <div class="checkbox checkSty_projectInfo">
-                                                                <label>
-                                                                    <input name="form-field-checkbox" type="checkbox" class="ace">
-                                                                    <span class="lbl">商铺</span>
-                                                                </label>
-                                                            </div>
-                                                            <div class="checkbox checkSty_projectInfo">
-                                                                <label>
-                                                                    <input name="form-field-checkbox" type="checkbox" class="ace">
-                                                                    <span class="lbl">写字楼</span>
-                                                                </label>
-                                                            </div>
-                                                            <div class="checkbox checkSty_projectInfo">
-                                                                <label>
-                                                                    <input name="form-field-checkbox" type="checkbox" class="ace">
-                                                                    <span class="lbl">车位</span>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-    
-                                                    <div class="form-group">
-                                                        <label class="lab_width">*跳点：</label>
-                                                        <div class="inpt_width" style="display: inline-block;">
-                                                            <div class="radio" style="display: inline-block;">
-                                                                <label>
-                                                                    <input name="form-field-radio" type="radio" class="ace">
-                                                                    <span class="lbl">是</span>
-                                                                </label>
-                                                            </div>
-                                                            <div class="radio" style="display: inline-block;">
-                                                                <label>
-                                                                    <input name="form-field-radio" type="radio" class="ace InvalidVisit">
-                                                                    <span class="lbl">否</span>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-    
-                                                    <div class="form-group">
-                                                        <label class="lab_width">*单位：</label>
-                                                        <select class="inpt_width">
-                                                            <option value="">人民币</option>
-                                                            <option value="">XXX</option>
-                                                            <option value="">XXX</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-    
-                                                <div class="col-xs-6" style="padding-left: 50px;">
-                                                    <div class="form-group">
-                                                        <label class="lab_width">*跳点提成累积：</label>
-                                                        <div class="inpt_width" style="display: inline-block;">
-                                                            <div class="radio" style="display: inline-block;">
-                                                                <label>
-                                                                    <input name="form-field-radio" type="radio" class="ace">
-                                                                    <span class="lbl">是</span>
-                                                                </label>
-                                                            </div>
-                                                            <div class="radio" style="display: inline-block;">
-                                                                <label>
-                                                                    <input name="form-field-radio" type="radio" class="ace InvalidVisit">
-                                                                    <span class="lbl">否</span>
-                                                                </label>
+                                <div class="widget-box" style="margin-top: 30px;">
+                                    <div class="widget-header">
+                                        <h4 class="smaller">跳点规则</h4>
+                                        <button class="btn btn-danger build_add fenqiOper">新增</button>
+                                    </div>
+                                    <div class="widget-body">
+                                        <div class="widget-main" style="overflow: hidden;">
+                                            <div class="col-xs-12">
+                                                <div>
+                                                    <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
+                                                        <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+
+                                                            <thead>
+                                                                <tr role="row">
+                                                                    <th class="center">序号</th>
+                                                                    <th class="center">起始数</th>
+                                                                    <th class="center">截止数</th>
+                                                                    <th class="center">提成公式</th>
+                                                                    <th class="center">固定金额</th>
+                                                                    <th class="center">是否累积</th>
+                                                                    <th class="center">奖励金额（元/套）</th>
+                                                                    <th class="center">操作</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr role="row" class="odd">
+                                                                    <td class="center">1</td>
+                                                                    <td class="center">1.00</td>
+                                                                    <td class="center">14.00</td>
+                                                                    <td class="center">固定金额*套数</td>
+                                                                    <td class="center">1000</td>
+                                                                    <td class="center">是</td>
+                                                                    <td class="center">0.00</td>
+                                                                    <td class="center">
+                                                                        <div class="hidden-sm hidden-xs action-buttons">
+                                                                            <a class="blue" href="#">查看</a>
+                                                                            <a class="green" href="#">修改</a>
+                                                                            <a class="red" href="#">删除</a>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr role="row" class="odd">
+                                                                    <td class="center">2</td>
+                                                                    <td class="center">1.00</td>
+                                                                    <td class="center">14.00</td>
+                                                                    <td class="center">固定金额*套数</td>
+                                                                    <td class="center">1000</td>
+                                                                    <td class="center">是</td>
+                                                                    <td class="center">0.00</td>
+                                                                    <td class="center">
+                                                                        <div class="hidden-sm hidden-xs action-buttons">
+                                                                            <a class="blue" href="#">查看</a>
+                                                                            <a class="green" href="#">修改</a>
+                                                                            <a class="red" href="#">删除</a>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
+                                                                    <ul class="pagination">
+                                                                        <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_previous">
+                                                                            <a href="#">上一页</a>
+                                                                        </li>
+                                                                        <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
+                                                                            <a href="#">1</a>
+                                                                        </li>
+                                                                        <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
+                                                                            <a href="#">2</a>
+                                                                        </li>
+                                                                        <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
+                                                                            <a href="#">3</a>
+                                                                        </li>
+                                                                        <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_next">
+                                                                            <a href="#">下一页</a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label class="lab_width">*提成方式：</label>
-                                                        <select class="inpt_width">
-                                                            <option value="">固定金额*套数</option>
-                                                            <option value="">总价*比例</option>
-                                                            <option value="">面积*单价</option>
-                                                        </select>
-                                                    </div>
-    
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -379,7 +399,68 @@
         </div>
     </div>
 
+    <!-- 跳点规则操作 -->
+    <div class="modal_JumPoint">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="bootbox-close-button close closed">×</button>
+                    <h4 class="modal-title">跳点信息</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="bootbox-body">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">文件名称：</label>
 
+                                <div class="col-sm-9">
+                                    <input type="text" class="col-xs-12 col-sm-10">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2">上传人员：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="col-xs-12 col-sm-10">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2">上传时间：</label>
+                                <div class="col-sm-9" style="display: inline-block;vertical-align: middle;">
+                                    <div class="input-group col-xs-12 col-sm-10">
+                                        <input class="form-control date-picker" type="text" data-date-format="yyyy-mm-dd">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-calendar bigger-110"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">附件：</label>
+                                <div class="col-sm-9">
+                                    <label class="ace-file-input ace-file-multiple ">
+                                        <input multiple="" type="file">
+                                        <span class="ace-file-container col-xs-12 col-sm-10" data-title="点击上传文件">
+                                            <span class="ace-file-name" data-title="No File ...">
+                                                <i class=" ace-icon ace-icon fa fa-cloud-upload"></i>
+                                            </span>
+                                        </span>
+                                        <a class="remove" href="#">
+                                            <i class=" ace-icon fa fa-times"></i>
+                                        </a>
+                                    </label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
+                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="tags_add">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -444,6 +525,16 @@
         $('.date-picker').datepicker({
             autoclose: true,
             todayHighlight: true
+        })
+    </script>
+    <script>
+    //终止
+    $('#dynamic-table').on('click','.end_rule',function(){
+            $('.modal_JumPoint.').css('display', 'block');
+            return false;
+        })
+        $('.closed').on('click', function () {
+            $(this).parent().parent().parent().parent().css('display', 'none');
         })
     </script>
 </body>

@@ -38,7 +38,7 @@
             float: left;
         }
 
-        .modal_addAnnex {
+        .modal_addAnnex,.modal_editCom {
             display: none;
             background-color: rgba(0, 0, 0, .5);
             position: fixed;
@@ -457,7 +457,7 @@
                                     <div class="widget-body">
                                         <div class="widget-main" style="overflow: hidden;">
                                             <div class="col-xs-12">
-                                                <div>
+                                                <div class="commissionEdit">
                                                     <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
                                                         <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
                                                             <thead>
@@ -476,8 +476,8 @@
                                                                     <td class="center">
                                                                         <div class="hidden-sm hidden-xs action-buttons">
                                                                             <a class="blue" href="">查看</a>
-                                                                            <a class="green edit_leibie" href="#">编辑</a>
-                                                                            <a class="red del_leibie" href="#">删除</a>
+                                                                            <a class="green edit_Com" href="#">编辑</a>
+                                                                            <a class="red" href="#">删除</a>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
@@ -488,8 +488,8 @@
                                                                     <td class="center">
                                                                         <div class="hidden-sm hidden-xs action-buttons">
                                                                             <a class="blue" href="">查看</a>
-                                                                            <a class="green edit_leibie" href="#">编辑</a>
-                                                                            <a class="red del_leibie" href="#">删除</a>
+                                                                            <a class="green edit_Com" href="#">编辑</a>
+                                                                            <a class="red" href="#">删除</a>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
@@ -500,8 +500,8 @@
                                                                     <td class="center">
                                                                         <div class="hidden-sm hidden-xs action-buttons">
                                                                             <a class="blue" href="">查看</a>
-                                                                            <a class="green edit_leibie" href="#">编辑</a>
-                                                                            <a class="red del_leibie" href="#">删除</a>
+                                                                            <a class="green edit_Com" href="#">编辑</a>
+                                                                            <a class="red " href="#">删除</a>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
@@ -544,7 +544,7 @@
                                     <div class="widget-body">
                                         <div class="widget-main" style="overflow: hidden;">
                                             <div class="col-xs-12">
-                                                <div>
+                                                <div class="commissionEdit">
                                                     <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
                                                         <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
                                                             <thead>
@@ -563,8 +563,8 @@
                                                                     <td class="center">
                                                                         <div class="hidden-sm hidden-xs action-buttons">
                                                                             <a class="blue" href="">查看</a>
-                                                                            <a class="green edit_leibie" href="#">编辑</a>
-                                                                            <a class="red del_leibie" href="#">删除</a>
+                                                                            <a class="green edit_Com" href="#">编辑</a>
+                                                                            <a class="red " href="#">删除</a>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
@@ -575,8 +575,8 @@
                                                                     <td class="center">
                                                                         <div class="hidden-sm hidden-xs action-buttons">
                                                                             <a class="blue" href="">查看</a>
-                                                                            <a class="green edit_leibie" href="#">编辑</a>
-                                                                            <a class="red del_leibie" href="#">删除</a>
+                                                                            <a class="green edit_Com" href="#">编辑</a>
+                                                                            <a class="red " href="#">删除</a>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
@@ -587,8 +587,8 @@
                                                                     <td class="center">
                                                                         <div class="hidden-sm hidden-xs action-buttons">
                                                                             <a class="blue" href="">查看</a>
-                                                                            <a class="green edit_leibie" href="#">编辑</a>
-                                                                            <a class="red del_leibie" href="#">删除</a>
+                                                                            <a class="green edit_Com" href="#">编辑</a>
+                                                                            <a class="red " href="#">删除</a>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
@@ -786,7 +786,44 @@
             </div>
         </div>
     </div>
+    <!-- 修改佣金金额-->
+    <div class="modal_editCom">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="bootbox-close-button close closed">×</button>
+                    <h4 class="modal-title">佣金修改</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="bootbox-body">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">佣金金额：</label>
 
+                                <div class="col-sm-9">
+                                    <input type="text" class="col-xs-12 col-sm-10">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2">单位：</label>
+                                <div class="col-sm-9">
+                                    <!-- <input type="text" > -->
+                                    <select class="col-xs-12 col-sm-10" style="font-size: 14px;">
+                                        <option>人民币</option>
+                                        <option>美元</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
+                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="tags_add">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -870,6 +907,12 @@
         //成交佣金操作
         $(".dealComAdd").on('click', function () {
             window.location.href = "DealComRuleSet.html";
+            return false;
+        })
+        //佣金金额修改编辑
+        $('.commissionEdit').on('click','.edit_Com',function(){
+            console.log('2222');
+            $('.modal_editCom').css('display', 'block');
             return false;
         })
     </script>

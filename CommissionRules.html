@@ -78,6 +78,39 @@
         #dynamic-table td {
             vertical-align: middle;
         }
+        .modal_endRule {
+            display: none;
+            background-color: rgba(0, 0, 0, .5);
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .modal-dialog {
+            margin: 150px auto;
+        }
+
+        .bootbox-body {
+            font-size: 18px;
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .modal-content {
+            padding: 30px 50px;
+        }
+
+        .modal-footer {
+            margin-top: 20px;
+        }
+
+        .close {
+            font-size: 32px;
+        }
+
     </style>
 </head>
 
@@ -169,8 +202,8 @@
                                                             <td class="center">
                                                                 <div class="hidden-sm hidden-xs action-buttons">
                                                                     <a class="blue" href="CommissionRulesAdd.html">查看</a>
-                                                                    <a class="green edit_leibie" href="CommissionRulesAdd.html">编辑</a>
-                                                                    <a class="red del_leibie" href="#">删除</a>
+                                                                    <a class="green" href="CommissionRulesAdd.html">编辑</a>
+                                                                    <a class="red end_rule" href="#">终止</a>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -192,8 +225,8 @@
                                                             <td class="center">
                                                                 <div class="hidden-sm hidden-xs action-buttons">
                                                                     <a class="blue" href="CommissionRulesAdd.html">查看</a>
-                                                                    <a class="green edit_leibie" href="CommissionRulesAdd.html">编辑</a>
-                                                                    <a class="red del_leibie" href="#">删除</a>
+                                                                    <a class="green" href="CommissionRulesAdd.html">编辑</a>
+                                                                    <a class="red end_rule" href="#">终止</a>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -236,7 +269,42 @@
 
 
 
-
+<!-- 终止-->
+<div class="modal_endRule">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="bootbox-close-button close closed">×</button>
+                    <h4 class="modal-title">佣金修改</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="bootbox-body">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2">终止类型：</label>
+                                <div class="col-sm-9">
+                                    <select class="col-xs-12 col-sm-10" style="font-size: 14px;">
+                                        <option>合同到期</option>
+                                        <option>XXX</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">备注：</label>
+                                    <div class="col-sm-9">
+                                        <textarea class="col-xs-12 col-sm-10" cols="30" rows="4"></textarea>
+                                    </div>
+                                </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
+                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="tags_add">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -316,6 +384,14 @@
     <script>
         $('#rule_add').on('click', function () {
             window.location.href="CommissionRulesAdd.html"; 
+        })
+        //终止
+        $('#dynamic-table').on('click','.end_rule',function(){
+            $('.modal_endRule').css('display', 'block');
+            return false;
+        })
+        $('.closed').on('click', function () {
+            $(this).parent().parent().parent().parent().css('display', 'none');
         })
     </script>
 </body>
