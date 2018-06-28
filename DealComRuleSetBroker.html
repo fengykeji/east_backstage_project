@@ -116,6 +116,11 @@
             z-index: 100;
             padding: 3px 10px;
         }
+
+        .zong_jia,
+        .mian_ji {
+            display: none;
+        }
     </style>
 </head>
 
@@ -224,24 +229,25 @@
                                                     <label class="lab_width">提成公式：</label>
                                                     <input class="inpt_width" type="text" disabled="disabled">
                                                 </div>
+
+                                            </div>
+
+                                            <div class="col-xs-6" style="padding-left: 50px;">
                                                 <div class="form-group">
                                                     <label class="lab_width">结佣周期：</label>
                                                     <input class="inpt_width" type="text">
                                                 </div>
-                                            </div>
-
-                                            <div class="col-xs-6" style="padding-left: 50px;">
-
                                                 <div class="form-group">
                                                     <label class="lab_width">*提成方式：</label>
-                                                    <select class="inpt_width">
-                                                        <option value="">固定金额*套数</option>
-                                                        <option value="">总价*比例</option>
-                                                        <option value="">面积*单价</option>
+                                                    <select class="inpt_width com_method">
+                                                        <option value="jin_e">固定金额*套数</option>
+                                                        <option value="zong_jia">总价*比例</option>
+                                                        <option value="mian_ji">面积*单价</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group">
+                                                <div class="form-group jin_e">
                                                     <label class="lab_width"></label>
+                                                    <label>金额</label>
                                                     <select class="">
                                                         <option value="">固定金额</option>
                                                         <option value="">销售金额</option>
@@ -251,8 +257,9 @@
                                                     <label>套数</label>
                                                     <input type="text">
                                                 </div>
-                                                <div class="form-group">
+                                                <div class="form-group zong_jia">
                                                     <label class="lab_width"></label>
+                                                    <label>总价</label>
                                                     <select class="">
                                                         <option value="">销售总价</option>
                                                         <option value="">XXXX</option>
@@ -262,8 +269,9 @@
                                                     <label>比例</label>
                                                     <input type="text">
                                                 </div>
-                                                <div class="form-group">
+                                                <div class="form-group mian_ji">
                                                     <label class="lab_width"></label>
+                                                    <label>面积</label>
                                                     <select class="">
                                                         <option value="">建筑面积</option>
                                                         <option value="">XXXX</option>
@@ -285,55 +293,6 @@
         </div>
     </div>
 
-    <!-- 跳点规则操作 -->
-    <div class="modal_JumPoint">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="bootbox-close-button close closed">×</button>
-                    <h4 class="modal-title">跳点信息</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="bootbox-body" style="overflow: hidden;">
-                        <form class="form-horizontal" role="form">
-                            <div class="form-group">
-                                <label>起始数：</label>
-                                <input type="text">
-                            </div>
-                            <div class="form-group">
-                                <label>固定金额：</label>
-                                <input type="text">
-                            </div>
-                            <div class="form-group">
-                                <label>比例：</label>
-                                <input type="text">
-                            </div>
-                            <div class="form-group">
-                                <label>单价：</label>
-                                <input type="text">
-                            </div>
-                            <div class="form-group">
-                                <label>截止数：</label>
-                                <input type="text">
-                                <label>
-                                    <input name="switch-field-1" class="ace ace-switch ace-switch-5" type="checkbox">
-                                    <span class="lbl"></span>
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <label>奖励金额（元/套）：</label>
-                                <input type="text">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
-                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="tags_add">确定</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- basic scripts -->
 
@@ -397,14 +356,23 @@
         })
     </script>
     <script>
-        //跳点规则操作
-        $('#dynamic-box').on('click', '.Operate_point', function () {
-            $('.modal_JumPoint').css('display', 'block');
-            return false;
-        })
-        $('.closed').on('click', function () {
-            $(this).parent().parent().parent().parent().css('display', 'none');
-        })
+        //提成方式
+        $(".com_method").on('change',function () {
+            var val = $(".com_method").val();
+            if (val == 'jin_e') {
+                $('.jin_e').css('display', 'block');
+                $('.zong_jia').css('display', 'none');
+                $('.mian_ji').css('display', 'none');
+            } else if (val == 'zong_jia') {
+                $('.jin_e').css('display', 'none');
+                $('.zong_jia').css('display', 'block');
+                $('.mian_ji').css('display', 'none');
+            } else if (val == 'mian_ji') {
+                $('.jin_e').css('display', 'none');
+                $('.zong_jia').css('display', 'none');
+                $('.mian_ji').css('display', 'block');
+            }
+        });
     </script>
 </body>
 
