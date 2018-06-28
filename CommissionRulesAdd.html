@@ -132,10 +132,6 @@
                                 <div class="widget-box">
                                     <div class="widget-header" style="position: relative;">
                                         <h4 class="smaller">新增</h4>
-                                        <!-- <div style="position: absolute;right: 80px;top:0;z-index: 100;">
-                                            <button class="btn btn-danger" style="padding: 3px 10px;">确定</button>
-                                            <button class="btn btn-primary" style="padding: 3px 10px;">取消</button>
-                                        </div> -->
                                     </div>
                                     <div class="widget-body">
                                         <div class="widget-main" style="overflow: hidden;">
@@ -362,7 +358,7 @@
                                     <div class="widget-header">
                                         <h4 class="smaller">个人规则</h4>
                                         <div style="position: absolute;right: 80px;top:0;z-index: 100;">
-                                            <button class="btn btn-danger" style="padding: 3px 10px;">新增</button>
+                                            <button class="btn btn-danger brokerRule" style="padding: 3px 10px;">新增</button>
                                         </div>
                                     </div>
                                     <div class="widget-body">
@@ -403,9 +399,9 @@
                                                                     </td>
                                                                     <td class="center">
                                                                         <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="blue" href="">查看</a>
-                                                                            <a class="green edit_leibie" href="#">编辑</a>
-                                                                            <a class="red del_leibie" href="#">删除</a>
+                                                                            <a class="blue" href="CommissionRulesBroker.html">查看</a>
+                                                                            <a class="green" href="CommissionRulesBroker.html">编辑</a>
+                                                                            <a class="red" href="#">删除</a>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
@@ -426,9 +422,9 @@
                                                                     </td>
                                                                     <td class="center">
                                                                         <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="blue" href="">查看</a>
-                                                                            <a class="green edit_leibie" href="#">编辑</a>
-                                                                            <a class="red del_leibie" href="#">删除</a>
+                                                                            <a class="blue" href="CommissionRulesBroker.html">查看</a>
+                                                                            <a class="green" href="CommissionRulesBroker.html">编辑</a>
+                                                                            <a class="red" href="#">删除</a>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
@@ -449,9 +445,9 @@
                                                                     </td>
                                                                     <td class="center">
                                                                         <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="blue" href="">查看</a>
-                                                                            <a class="green edit_leibie" href="#">编辑</a>
-                                                                            <a class="red del_leibie" href="#">删除</a>
+                                                                            <a class="blue" href="CommissionRulesBroker.html">查看</a>
+                                                                            <a class="green" href="CommissionRulesBroker.html">编辑</a>
+                                                                            <a class="red" href="#">删除</a>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
@@ -488,8 +484,6 @@
                                 </div>
                             </form>
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -590,6 +584,11 @@
     <script>
         $(".addCompany").on('click', function () {
             window.location.href = "CommissionRulesCompany.html";
+            return false;
+        })
+        //个人规则
+        $(".brokerRule").on('click', function () {
+            window.location.href = "CommissionRulesBroker.html";
             return false;
         })
     </script>
