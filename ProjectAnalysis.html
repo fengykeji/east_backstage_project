@@ -216,7 +216,6 @@
 
     <script>
         window.onload = function () {
-            getInfo();
             $('#header').load('public/header.html');
             $('#sidebar').load('public/menu.html');
             var menu_data = {
@@ -226,12 +225,13 @@
             $.cookie('menu_data', JSON.stringify(menu_data), {
                 path: "menu.html"
             });
+            getInfo();
         }
 
 
         function getInfo() {
             ajax.get('project/analyse/get', {}, function (res) {
-                if (res.data.length != 0) {
+                if (res.data.length != 0 && res.data!=null) {
                     $('#advantage').val(res.data.advantage);
                     $('#fetch').val(res.data.fetch);
                     $('#rim').val(res.data.rim);
