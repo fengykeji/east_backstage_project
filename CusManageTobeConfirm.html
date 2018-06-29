@@ -230,7 +230,7 @@
                                             <div class="form-group">
                                                 <label class="lab_width">选择的置业顾问：</label>
                                                 <div class="inpt_width">
-                                                    <input type="text" style="width: 200px;vertical-align: top;">
+                                                    <input type="text" style="width: 200px;vertical-align: top;" name="advicer_name">
                                                     <button class="btn btn-sm btn-info" id="asgAdv">选择</button>
                                                 </div>
                                             </div>
@@ -470,9 +470,9 @@
             $('input[name=visit_num]').val(res.data.visit_num);
             $('input[name=property_advicer_wish]').val(res.data.property_advicer_wish);
             $('input[name=visit_time]').val(res.data.visit_time);
-            $('#card_img_url').attr('src',res.data.card_img_url);
-            $('#verify_img_url').attr('src',res.data.verify_img_url);
-            $('#visit_img_url').attr('src',res.data.visit_img_url);
+            $('#card_img_url').attr('src',config.address+res.data.card_img_url);
+            $('#verify_img_url').attr('src',config.address+res.data.verify_img_url);
+            $('#visit_img_url').attr('src',config.address+res.data.visit_img_url);
             $('input[name=butter_name]').val(res.data.butter_name);
             $('input[name=butter_tel]').val(res.data.butter_tel);
             $('input[name=check_client_name]').val(res.data.check_info.client_name);
@@ -492,6 +492,22 @@
             $('#end_time').html(formatSeconds(res.data.CountDown));
 
         })
+    }
+
+    function confirmed(){
+        data={
+            'client_id':id,
+            'advicer_name':$('input[name=advicer_name]').val(),
+            'time':new Date().format("yyyy-MM-dd hh:mm:ss"),
+        }
+        if(data.advicer_name==''){
+            alter('请输入置业顾问名称');
+            return;
+        }
+        ajax.get('user/yunsuan/state/value',data,function(res){
+            alert(res.msg)
+        })
+
     }
 
 </script>

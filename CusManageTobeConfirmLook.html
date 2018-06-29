@@ -456,9 +456,9 @@
                 $('input[name=visit_num]').val(res.data.visit_num);
                 $('input[name=property_advicer_wish]').val(res.data.property_advicer_wish);
                 $('input[name=visit_time]').val(res.data.visit_time);
-                $('#card_img_url').attr('src',res.data.card_img_url);
-                $('#verify_img_url').attr('src',res.data.verify_img_url);
-                $('#visit_img_url').attr('src',res.data.visit_img_url);
+                $('#card_img_url').attr('src',config.address+res.data.card_img_url);
+                $('#verify_img_url').attr('src',config.address+res.data.verify_img_url);
+                $('#visit_img_url').attr('src',config.address+res.data.visit_img_url);
                 $('input[name=butter_name]').val(res.data.butter_name);
                 $('input[name=butter_tel]').val(res.data.butter_tel);
                 $('input[name=check_client_name]').val(res.data.check_info.client_name);
