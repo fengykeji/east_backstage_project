@@ -136,7 +136,7 @@
                         </li>
                     </ul>
                     <div class="operate_proInfo">
-                        <button id="addleibie" class="btn btn-danger">新增</button>
+                        <button id="addfirstMenu" class="btn btn-danger">新增</button>
                     </div>
                 </div>
                 <!-- 内容开始 -->
@@ -162,9 +162,9 @@
                                                 <td class="center">2</td>
                                                 <td class="center">
                                                     <div class="hidden-sm hidden-xs action-buttons">
-                                                        <a class="blue" href="">查看</a>
-                                                        <a class="green edit_leibie" href="#">编辑</a>
-                                                        <a class="red del_leibie" href="#">删除</a>
+                                                        <a class="blue" href="SandboxSecond.html">查看</a>
+                                                        <a class="green" href="SandboxSecond.html">编辑</a>
+                                                        <a class="red" href="#">删除</a>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -174,9 +174,9 @@
                                                 <td class="center">1</td>
                                                 <td class="center">
                                                     <div class="hidden-sm hidden-xs action-buttons">
-                                                        <a class="blue" href="">查看</a>
-                                                        <a class="green edit_leibie" href="#">编辑</a>
-                                                        <a class="red del_leibie" href="#">删除</a>
+                                                        <a class="blue" href="SandboxSecond.html">查看</a>
+                                                        <a class="green" href="SandboxSecond.html">编辑</a>
+                                                        <a class="red" href="#">删除</a>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -390,8 +390,8 @@
             $('#header').load('public/header.html');
             $('#sidebar').load('public/menu.html');
             var menu_data={
-				opening:'.dianzishapan',
-				acting:'.zhucaidan'
+				opening:'',
+				acting:'.dianzishapan'
 			}
 			$.cookie('menu_data', JSON.stringify(menu_data), {
 				path: "menu.html"
