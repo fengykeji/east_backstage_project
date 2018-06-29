@@ -339,9 +339,12 @@
                 $('#heat_supply').val(res.data.heat_supply);
                 $('#power_supply').val(res.data.power_supply);
                 $('#water_supply').val(res.data.water_supply);
-                $.each(res.data.build_type, function (k, v) {
-                    $('.build_type' + v).attr('checked', true);
-                })
+                if(res.data.build_type.length>0){
+                    $.each(res.data.build_type, function (k, v) {
+                        $('.build_type' + v).attr('checked', true);
+                    })
+                }
+
             })
         }
         $('#save').click(function () {
@@ -370,8 +373,10 @@
             })
             data.build_type = list.slice(0, -1);
             ajax.post('project/update', data, function (res) {
-                alert('修改成功');
-                window.location.reload();
+                alert(res.msg);
+                if(res.code==config.responseSuccess){
+                    window.location.reload();
+                }
             })
         })
     </script>

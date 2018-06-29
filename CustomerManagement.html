@@ -140,7 +140,7 @@
                                             有效客户
                                         </a>
                                     </li>
-                                    <li class="disabled">
+                                    <li class="disableds">
                                         <a data-toggle="tab" href="#custom_invalid" aria-expanded="true">
                                             无效客户
                                         </a>
@@ -338,7 +338,7 @@
                                                                 <th class="center">操作</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody id="disabled">
+                                                        <tbody id="disableds">
 
 
                                                         </tbody>
@@ -550,7 +550,7 @@
                     str+=tr;
                 })
 
-                $('#disabled').append(str)
+                $('#disableds').append(str)
             })
         }
 
@@ -583,16 +583,12 @@
 
 
 
-
-
-
         function value(){
             var model='<tr role="row" class="odd" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td></td> <td class="center">{state}</td> <td class="center">{state_change_time}</td><td class="center">{broker}</td>  <td class="center">{company_name}</td><td class="center">{end_time}</td><td class="center">{advice_name}</td><td class="center">{allot_name}</td>   <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="CusManageTobeConfirmLook.html">查看</a> {ys_check}</td> </tr>',
                 id=1,
                 str='';
-
             if(had_ys==.0){
-                model=model.replace('{ys_check}','<a class="green" href="CusManageTobeConfirm.html">成交</a></div>');
+                model=model.replace('{ys_check}','<a class="green" href="CusManageTobeConfirm.html">确认</a></div>');
             }else{
                 model=model.replace('{ys_check}','');
             }
@@ -623,13 +619,13 @@
                 id=1,
                 str='';
             if(had_ys==.0){
-                model=model.replace('{ys_check}','<a class="green" href="CusManageTobeConfirm.html">确认</a></div>');
+                model=model.replace('{ys_check}','<a class="green" href="CusManageTobeConfirm.html?id={d_id}">确认</a></div>');
             }else{
                 model=model.replace('{ys_check}','');
             }
             ajax.get('project/client/waitConfirmed',{},function(res){
                 $.each(res.data.data,function(k,v){
-                var tr=model.replace('{c_id}',v.client_id).replace('{id}',id++).replace('{client_id}',v.client_id).replace('{name}',v.name).replace('{tel}',v.tel).replace('{broker}',v.broker_name).replace('{broker_type}',v.broker_type).replace('{company_name}',v.company_name).replace('{create_time}',v.create_time).replace('{visit_time}',v.state_change_time).replace('{butter_name}',v.butter_name).replace('{b_id}',v.client_id);
+                var tr=model.replace('{c_id}',v.client_id).replace('{id}',id++).replace('{client_id}',v.client_id).replace('{name}',v.name).replace('{tel}',v.tel).replace('{broker}',v.broker_name).replace('{broker_type}',v.broker_type).replace('{company_name}',v.company_name).replace('{create_time}',v.create_time).replace('{visit_time}',v.state_change_time).replace('{butter_name}',v.butter_name).replace('{b_id}',v.client_id).replace('{d_id}',v.client_id);;
                     if(v.CountDown>0){
                         tr=tr.replace('{end_time}',formatSeconds(v.CountDown));
                     }else {
@@ -655,9 +651,9 @@
             if(had_ys==2){
                 ajax.get('project/project/getProjectInfo',{},function(res){
                     if(res.data.yunsuan_url=='' || res.data.yunsuan_id==0){
-                        had_ys==0;
+                        had_ys=0;
                     }else{
-                        had_ys==1;
+                        had_ys=1;
                     }
                 })
             }

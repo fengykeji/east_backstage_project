@@ -437,7 +437,6 @@
         })
 
         $('#add').click(function () {
-            console.log('11111111')
             var data = {
                 'type_id': type_id,
                 'img_url': $('#img_add').siblings('.img_url').attr('address'),
@@ -445,12 +444,13 @@
             };
 
             if (data.img_url == oldData.img_url && data.img_id == oldData.img_id && data.comment == oldData.comment) {
-                alert('新增成功');
                 return;
             }
             ajax.post('project/img/add', data, function (res) {
-                alert('新增成功');
-                window.location.reload();
+                alert(res.msg);
+                if(res.code==config.responseSuccess){
+                    window.location.reload();
+                }
             })
 
         })

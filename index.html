@@ -465,7 +465,7 @@
 						})
 					}
 
-					if (res.data.project_tags != '') {
+					if (res.data.project_tags!=null) {
 						var project_tags = res.data.project_tags.split(','),
 							model =
 							'<span class="tag" value="{id}"><span class="tag_name" > {name}</span> <button type="button" class="close closed" value="{id}">×</button> </span>'
@@ -612,7 +612,10 @@
 
 			ajax.post('project/update', data, function (res) {
 				alert(res.msg);
-				window.location.reload();
+				if(res.code==config.responseSuccess){
+                    window.location.reload();
+				}
+
 			})
 
 		})
