@@ -221,7 +221,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">签字人：</label>
-                                                    <input class="inpt_width" type="text" id="floor_space" placeholder="签字人可以为多个，用逗号隔开">
+                                                    <input class="inpt_width" type="text" id="floor_space" placeholder="" disabled="disabled" name="signatory">
                                                 </div>
 
 
@@ -236,7 +236,10 @@
                                                     <input type="text" style="width: 200px;vertical-align: top;" name="advicer_name">
                                                     <button class="btn btn-sm btn-info" id="asgAdv">选择</button>
                                                 </div>
-
+                                                <div class="form-group">
+                                                    <label class="lab_width">备注：</label>
+                                                    <textarea class="inpt_width" rows="4" disabled="disabled" style="vertical-align: top;" id="comment"></textarea>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -589,6 +592,8 @@
                 $('input[name=address]').val(res.data.address);
                 $('input[name=create_time]').val(res.data.create_time);
                 $('#end_time').html(formatSeconds(res.data.CountDown));
+                $('#comment').val(res.data.comment);
+                $('input[name=signatory]').val(res.data.signatory);
 
             })
         }
