@@ -137,6 +137,13 @@
             z-index: 100;
             padding: 3px 10px;
         }
+
+        .pawn_yinHang,
+        .pawn_Provident,
+        .pawn_zuHe,
+        .pawn_fenQi {
+            display: none;
+        }
     </style>
 </head>
 
@@ -214,10 +221,6 @@
                                 <div class="widget-box" style="margin-top: 30px;">
                                     <div class="widget-header">
                                         <h4 class="smaller">房源信息</h4>
-                                        <!-- <div style="position: absolute;right: 80px;top:0;z-index: 100;">
-                                            <button class="btn btn-danger" style="padding: 3px 10px;">新增</button>
-                                            <button class="btn btn-primary" style="padding: 3px 10px;">取消</button>
-                                        </div> -->
                                     </div>
                                     <div class="widget-body">
                                         <div class="widget-main" style="overflow: hidden;">
@@ -264,8 +267,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <button class="btn btn-danger ListingInfoAdd" style="padding: 3px 10px;margin-top: 10px;">添加房源信息</button>
-                                <div class="ListingInfo"></div> -->
                                 <div class="widget-box" style="margin-top: 30px;">
                                     <div class="widget-header">
                                         <h4 class="smaller">合同信息</h4>
@@ -293,10 +294,12 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">付款方式：</label>
-                                                    <select class="inpt_width">
-                                                        <option value="">一次性付清</option>
-                                                        <option value="">XXXXX</option>
-                                                        <option value="">XXXXX</option>
+                                                    <select class="inpt_width payWay">
+                                                        <option value="pawn_all">一次性付清</option>
+                                                        <option value="pawn_yinHang">银行按揭</option>
+                                                        <option value="pawn_Provident">公积金按揭</option>
+                                                        <option value="pawn_zuHe">组合贷款</option>
+                                                        <option value="pawn_fenQi">分期</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -328,7 +331,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="widget-box" style="margin-top: 30px;">
+                                <div class="widget-box pawn_yinHang" style="margin-top: 30px;">
                                     <div class="widget-header">
                                         <h4 class="smaller">银行按揭</h4>
                                     </div>
@@ -366,7 +369,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="widget-box" style="margin-top: 30px;">
+                                <div class="widget-box pawn_Provident" style="margin-top: 30px;">
                                     <div class="widget-header">
                                         <h4 class="smaller">公积金按揭</h4>
                                     </div>
@@ -404,7 +407,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="widget-box" style="margin-top: 30px;">
+                                <div class="widget-box pawn_zuHe" style="margin-top: 30px;">
                                     <div class="widget-header">
                                         <h4 class="smaller">组合贷款</h4>
                                     </div>
@@ -458,7 +461,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="widget-box" style="margin-top: 30px;">
+                                <div class="widget-box pawn_fenQi" style="margin-top: 30px;">
                                     <div class="widget-header">
                                         <h4 class="smaller">分期</h4>
                                         <button class="btn btn-danger build_add fenqiOper">新增</button>
@@ -669,6 +672,31 @@
         //      );
         //      return false;
         // })
+        //付款方式
+        $('.payWay').on('change', function () {
+            var payVal = $(this).val();
+            if (payVal == 'pawn_yinHang') {
+                $('.pawn_yinHang').css('display', 'block');
+                $('.pawn_Provident').css('display', 'none');
+                $('.pawn_zuHe').css('display', 'none');
+                $('.pawn_fenQi').css('display', 'none');
+            } else if (payVal == 'pawn_Provident') {
+                $('.pawn_yinHang').css('display', 'none');
+                $('.pawn_Provident').css('display', 'block');
+                $('.pawn_zuHe').css('display', 'none');
+                $('.pawn_fenQi').css('display', 'none');
+            } else if (payVal == 'pawn_zuHe') {
+                $('.pawn_yinHang').css('display', 'none');
+                $('.pawn_Provident').css('display', 'none');
+                $('.pawn_zuHe').css('display', 'block');
+                $('.pawn_fenQi').css('display', 'none');
+            } else if (payVal == 'pawn_fenQi') {
+                $('.pawn_yinHang').css('display', 'none');
+                $('.pawn_Provident').css('display', 'none');
+                $('.pawn_zuHe').css('display', 'none');
+                $('.pawn_fenQi').css('display', 'block');
+            }
+        })
     </script>
     <script src="components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
     <script src="components/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
