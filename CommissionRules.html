@@ -167,12 +167,12 @@
                                                     <thead>
                                                         <tr role="row">
                                                             <th class="center">序号</th>
-                                                            <th class="center">计划开始日期</th>
-                                                            <th class="center">计划截止日期</th>
+                                                           <!-- <th class="center">计划开始日期</th>
+                                                            <th class="center">计划截止日期</th>-->
                                                             <th class="center">实际开始日期</th>
                                                             <th class="center">实际截止日期</th>
-                                                            <th class="center">当前是否启用公司规则</th>
-                                                            <th class="center">当前是否启用全民经纪人规则</th>
+                                                           <!-- <th class="center">当前是否启用公司规则</th>
+                                                            <th class="center">当前是否启用全民经纪人规则</th>-->
                                                             <th class="center">到访确认保护期（分钟）</th>
                                                             <th class="center">有效来访保护期（天）</th>
                                                             <th class="center">成交保护期（天）</th>
@@ -183,53 +183,9 @@
                                                             <th class="center">操作</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody>
-                                                        <tr role="row" class="odd">
-                                                            <td class="center">1</td>
-                                                            <td class="center">2015-12-12</td>
-                                                            <td class="center">2015-12-12</td>
-                                                            <td class="center">2017-12-12</td>
-                                                            <td class="center">2015-12-12</td>
-                                                            <td class="center">是</td>
-                                                            <td class="center">有</td>
-                                                            <td class="center">40</td>
-                                                            <td class="center">7</td>
-                                                            <td class="center">30</td>
-                                                            <td class="center">12</td>
-                                                            <td class="center">3</td>
-                                                            <td class="center">12</td>
-                                                            <td class="center">执行中</td>
-                                                            <td class="center">
-                                                                <div class="hidden-sm hidden-xs action-buttons">
-                                                                    <a class="blue" href="CommissionRulesAdd.html">查看</a>
-                                                                    <a class="green" href="CommissionRulesAdd.html">编辑</a>
-                                                                    <a class="red end_rule" href="#">终止</a>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr role="row" class="odd">
-                                                            <td class="center">2</td>
-                                                            <td class="center">2015-12-12</td>
-                                                            <td class="center">2015-12-12</td>
-                                                            <td class="center">2017-12-12</td>
-                                                            <td class="center">2015-12-12</td>
-                                                            <td class="center">是</td>
-                                                            <td class="center">有</td>
-                                                            <td class="center">40</td>
-                                                            <td class="center">7</td>
-                                                            <td class="center">30</td>
-                                                            <td class="center">12</td>
-                                                            <td class="center">3</td>
-                                                            <td class="center">12</td>
-                                                            <td class="center">执行中</td>
-                                                            <td class="center">
-                                                                <div class="hidden-sm hidden-xs action-buttons">
-                                                                    <a class="blue" href="CommissionRulesAdd.html">查看</a>
-                                                                    <a class="green" href="CommissionRulesAdd.html">编辑</a>
-                                                                    <a class="red end_rule" href="#">终止</a>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
+                                                    <tbody id="list">
+
+
                                                     </tbody>
                                                 </table>
                                                 <div class="row">
@@ -314,24 +270,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- basic scripts -->
 
     <!--[if !IE]> -->
@@ -368,6 +306,8 @@
     <script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
     <!-- 本页js -->
     <script src="assets/js/jquery.cookie.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/public.js"></script>
     <script>
         window.onload = function () {
             $('#header').load('public/header.html');
@@ -379,20 +319,50 @@
 			$.cookie('menu_data', JSON.stringify(menu_data), {
 				path: "menu.html"
 			});
+            basicRule();
         }
+
+        function basicRule(){
+            ajax.get('project/ruleBasic/list',{},function(res){
+                var model='<tr role="row" class="odd" value="{a_id}"><td class="center">{key}</td><td class="center">{begin_time}</td><td class="center">{end_time}</td><td class="center">{recommend}</td><td class="center">{value}</td><td class="center">{deal}</td><td class="center">{broker_recommend}</td><td class="center">{broker_value}</td><td class="center">{broker_deal}</td><td class="center">{state}</td><td class="center"><div class="hidden-sm hidden-xs action-buttons"><a class="green" href="CommissionRulesUpdate.html?id={c_id}">编辑</a>',
+                    id=1,
+                    str='';
+                if(res.data.data.length>0){
+                    $.each(res.data.data,function(k,v){
+                        str+=model.replace('{a_id}',v.rule_id).replace('{b_id}',v.rule_id).replace('{c_id}',v.rule_id).replace('{d_id}',v.rule_id).replace('{key}',id++).replace('begin_time',v.begin_time).replace('{end_time}',v.end_time).replace('{recommend}',v.visit_confirm_time).replace('{value}',v.valid_visit_time).replace('{deal}',v.make_bargain_time).replace('{broker_recommend}',v.confirm_settle_commission_time).replace('{broker_value}',v.visit_settle_commission_time).replace('{broker_deal}',v.region_settle_commission_time).replace('{state}',v.state);
+                        if(v.state=='使用中'){
+                            str+='<a class="red end_rule" value="'+v.rule_id+'">终止</a></div></td></tr>';
+                        }
+                    })
+                }
+                $('#list').append(str);
+            })
+        }
+        $(document).on('click','.end_rule',function(){
+            var id=$(this).attr('value'),
+                conf=confirm('确定终止该条规则么');
+            console.log(id);
+            if(conf==true){
+                ajax.get('project/ruleBasic/endById',{'rule_id':id},function(res){
+                    alert(res.msg);
+                })
+            }
+
+        })
     </script>
     <script>
         $('#rule_add').on('click', function () {
             window.location.href="CommissionRulesAdd.html"; 
         })
         //终止
-        $('#dynamic-table').on('click','.end_rule',function(){
+      /*  $('#dynamic-table').on('click','.end_rule',function(){
             $('.modal_endRule').css('display', 'block');
             return false;
-        })
+        })*/
         $('.closed').on('click', function () {
             $(this).parent().parent().parent().parent().css('display', 'none');
         })
+
     </script>
 </body>
 
