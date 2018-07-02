@@ -107,7 +107,7 @@
 
         <!-- 菜单开始 -->
         <div id="sidebar" class="sidebar responsive ace-save-state">
-          
+
 
 
         </div>
@@ -151,12 +151,12 @@
                                                 <textarea cols="100" rows="4" id="rim"></textarea>
                                             </div>
                                             <div class="form-group">
-                                                <label style="vertical-align: top;">升值空间：</label>
-                                                <textarea cols="100" rows="4" id="increase_value"></textarea>
-                                            </div>
-                                            <div class="form-group">
                                                 <label style="vertical-align: top;">适合人群：</label>
                                                 <textarea cols="100" rows="4" id="fetch"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label style="vertical-align: top;">升值空间：</label>
+                                                <textarea cols="100" rows="4" id="increase_value"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -231,7 +231,7 @@
 
         function getInfo() {
             ajax.get('project/analyse/get', {}, function (res) {
-                if (res.data.length != 0 && res.data!=null) {
+                if (res.data.length != 0 && res.data != null) {
                     $('#advantage').val(res.data.advantage);
                     $('#fetch').val(res.data.fetch);
                     $('#rim').val(res.data.rim);

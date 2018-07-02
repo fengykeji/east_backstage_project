@@ -133,7 +133,7 @@
                                         <h4 class="smaller">新增</h4>
                                         <div style="position: absolute;right: 80px;top:0;z-index: 100;">
                                             <div class="btn btn-danger" style="padding: 3px 10px;" id="add">确定</div>
-                                            <button class="btn btn-primary" style="padding: 3px 10px;">取消</button>
+                                            <button class="btn btn-primary backBuildInfo" style="padding: 3px 10px;">取消</button>
                                         </div>
                                     </div>
                                     <div class="widget-body">
@@ -321,6 +321,11 @@
         $('.date-picker').datepicker({
             autoclose: true,
             todayHighlight: true
+        })
+        //取消返回上一级页面
+        $('.backBuildInfo').on('click',function(){
+            window.location.href='BuildInfo.html';
+            return false;
         })
     </script>
 </body>

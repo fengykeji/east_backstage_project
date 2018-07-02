@@ -160,10 +160,11 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">*价格区间（万）：</label>
-                                                    <!-- <input class="inpt_width" type="text"> -->
-                                                    <input type="text" id="min_price">
-                                                    <span>----</span>
-                                                    <input type="text" id="max_price">
+                                                    <div class="inpt_width" style="display: inline-block;">
+                                                        <input type="text" id="min_price">
+                                                        <span>----</span>
+                                                        <input type="text" id="max_price">
+                                                    </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">占地面积（㎡）：</label>
@@ -339,7 +340,7 @@
                 $('#heat_supply').val(res.data.heat_supply);
                 $('#power_supply').val(res.data.power_supply);
                 $('#water_supply').val(res.data.water_supply);
-                if(res.data.build_type.length>0){
+                if (res.data.build_type.length > 0) {
                     $.each(res.data.build_type, function (k, v) {
                         $('.build_type' + v).attr('checked', true);
                     })
@@ -374,7 +375,7 @@
             data.build_type = list.slice(0, -1);
             ajax.post('project/update', data, function (res) {
                 alert(res.msg);
-                if(res.code==config.responseSuccess){
+                if (res.code == config.responseSuccess) {
                     window.location.reload();
                 }
             })
