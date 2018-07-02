@@ -179,37 +179,13 @@
 
                                                 </select>
                                                 <ul class="sale_state">
-                                                    <li class="forSale">待售</li>
-                                                    <li class="sale">在售</li>
-                                                    <li class="sold">售罄</li>
+                                                    <li class="forSale">未售</li>
+                                                    <li class="sale">已定</li>
+                                                    <li class="sold">已售</li>
                                                 </ul>
                                             </div>
                                             <table id="simple-table" class="table table-bordered table-hover">
-                                                <tbody>
-                                                    <tr>
-                                                        <th>1L</th>
-                                                        <td class="forSale">101</td>
-                                                        <td class="sale">102</td>
-                                                        <td class="forSale">103</td>
-                                                        <td class="sold">104</td>
-                                                        <td class="sold">105</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>2L</th>
-                                                        <td class="sold">201</td>
-                                                        <td class="forSale">202</td>
-                                                        <td class="sale">203</td>
-                                                        <td class="sale">204</td>
-                                                        <td class="sold">205</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>3L</th>
-                                                        <td class="sale">301</td>
-                                                        <td class="forSale">302</td>
-                                                        <td class="sold">303</td>
-                                                        <td class="sale">304</td>
-                                                        <td class="forSale">305</td>
-                                                    </tr>
+                                                <tbody id="unitList">
 
                                                 </tbody>
                                             </table>
@@ -276,7 +252,7 @@
     <script src="assets/js/config.js"></script>
     <script src="assets/js/public.js"></script>
     <script>
-        var id = $.getUrlVar('id'),build_id=$.getUrlVar('build');
+        var id = $.getUrlVar('id'),build_id=$.getUrlVar('build'),unit=0;
         window.onload = function () {
             $('#header').load('public/header.html');
             $('#sidebar').load('public/menu.html');
@@ -295,7 +271,6 @@
             ajax.get('project/build/getBuildInfo',{'build_id':id},function(res){
                 if(res.code==config.responseSuccess){
                     $('#name').html(res.data.build_name);
-
                 }
             })
         }
@@ -320,12 +295,63 @@
                 var model='<option value="{DYID}">{DYMC}</option>',
                     str='';
                 $.each(info.DYLIST,function(k,v){
+                    if(unit==0){
+                        unit=v.DYID;
+                    }
                     str+=model.replace('{DYID}',v.DYID).replace('{DYMC}',v.DYMC)
                 })
                 select.append(str);
             }
-
+            unitInfo();
         }
+
+        function unitInfo(){
+            data={
+                'project_id':project_id,
+                'build_id':build_id,
+                'unit_id':unit,
+            };
+
+            ajax.get('user/yunsuan/unit',data,function(res){
+                var model_start='<tr> <th>{L}</th>',
+                    model_end='</tr>',
+                    forSale='forSale',
+                    sale='sale',
+                    sold='sold',
+                    model_info='<td class="{state}">{S}</td>',
+                    str='';
+
+
+                $.each(res.data,function(k,v){
+                    var house='';
+                    $.each(v.LIST,function(key,value){
+                        var state;
+                        switch(parseInt(value.FJZT)){
+                            case 0:case 1:
+
+                                state=forSale;
+                                break;
+                            case 2:case 3:case 5:case 6:
+                                state=sale;
+                                break;
+                            case 4:
+                                state=sold;
+                                break;
+                        }
+                        house+=model_info.replace('{state}',state).replace('{S}',value.FJMC);
+                    })
+                    str+=model_start.replace('{L}',v.FLOORNUM)+house+model_end;
+                })
+                $('#unitList').children().remove();
+                $('#unitList').append(str);
+            })
+        }
+        $('#unit').on('change',function(){
+            unit=$(this).val();
+
+            unitInfo();
+        })
+
 
     </script>
 </body>
