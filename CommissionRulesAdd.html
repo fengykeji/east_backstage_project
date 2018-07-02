@@ -109,7 +109,7 @@
                     </ul>
                     <div class="operate_proInfo">
                         <button class="btn btn-primary" id="add">保存</button>
-                        <button class="btn btn-danger" >关闭</button>
+                        <button class="btn btn-danger">关闭</button>
                     </div>
                 </div>
                 <!-- 内容开始 -->
@@ -127,10 +127,16 @@
                                                 <div class="form-group">
                                                     <label class="lab_width">*开始时间：</label>
                                                     <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
-                                                        <div class="input-group">
+                                                        <!-- <div class="input-group">
                                                             <input class="form-control date-picker" type="text" data-date-format="yyyy-mm-dd" name="start_time">
                                                             <span class="input-group-addon">
                                                                 <i class="fa fa-calendar bigger-110"></i>
+                                                            </span>
+                                                        </div> -->
+                                                        <div class="input-group">
+                                                            <input id="date-timepicker1" type="text" class="form-control"  name="start_time">
+                                                            <span class="input-group-addon">
+                                                                <i class="fa fa-clock-o bigger-110"></i>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -153,7 +159,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">到访佣金结款周期(工作日)：</label>
-                                                    <input class="inpt_width" placeholder="" type="number" min="0"  name="broker_value">
+                                                    <input class="inpt_width" placeholder="" type="number" min="0" name="broker_value">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">成交佣金结款周期(工作日)：</label>
@@ -176,13 +182,13 @@
                                     </div>
                                 </div>
 
-                                </div>
-                            </form>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
 
@@ -228,7 +234,7 @@
     <script src="assets/js/config.js"></script>
     <script src="assets/js/public.js"></script>
     <script>
-        var yunsuan=0;
+        var yunsuan = 0;
         window.onload = function () {
             $('#header').load('public/header.html');
             $('#sidebar').load('public/menu.html');
@@ -242,35 +248,37 @@
             projectInfo();
         }
 
-        function projectInfo(){
-            ajax.get('project/project/getProjectInfo',{},function(res){
-                if(res.data.yunsuan_url=='' || res.data.yunsuan_id==0){
+        function projectInfo() {
+            ajax.get('project/project/getProjectInfo', {}, function (res) {
+                if (res.data.yunsuan_url == '' || res.data.yunsuan_id == 0) {
                     return false;
                 }
-                yunsuan=1;
-                $('#list').append('<div class="form-group"> <label class="lab_width">成交结款条件：</label> <select class="form-control inpt_width" style="display: inline-block;" name="standard"> <option value="1">签约</option> <option value="2">认购</option> </select> </div>')
+                yunsuan = 1;
+                $('#list').append(
+                    '<div class="form-group"> <label class="lab_width">成交结款条件：</label> <select class="form-control inpt_width" style="display: inline-block;" name="standard"> <option value="1">签约</option> <option value="2">认购</option> </select> </div>'
+                )
             })
         }
-        $('#add').on('click',function(){
-            var data={
-                'begin_time':$('input[name=start_time]').val(),
-                'visit_confirm_time':$('input[name=recommend]').val(),
-                'valid_visit_time':$('input[name=value]').val(),
-                'make_bargain_time':$('input[name=deal]').val(),
-                'confirm_settle_commission_time':$('input[name=broker_recommend]').val(),
-                'visit_settle_commission_time':$('input[name=broker_value]').val(),
-                'region_settle_commission_time':$('input[name=broker_deal]').val(),
-                'comment':$('#comment').val(),
-                'describe':$('#describe').val(),
+        $('#add').on('click', function () {
+            var data = {
+                'begin_time': $('input[name=start_time]').val(),
+                'visit_confirm_time': $('input[name=recommend]').val(),
+                'valid_visit_time': $('input[name=value]').val(),
+                'make_bargain_time': $('input[name=deal]').val(),
+                'confirm_settle_commission_time': $('input[name=broker_recommend]').val(),
+                'visit_settle_commission_time': $('input[name=broker_value]').val(),
+                'region_settle_commission_time': $('input[name=broker_deal]').val(),
+                'comment': $('#comment').val(),
+                'describe': $('#describe').val(),
             };
-            if(yunsuan==1){
-                data.standard=$('select[name=standard]').val()
+            if (yunsuan == 1) {
+                data.standard = $('select[name=standard]').val()
             }
 
-            ajax.post('project/ruleBasic/create',data,function(res){
+            ajax.post('project/ruleBasic/create', data, function (res) {
                 alert(res.msg);
-                if(res.code==config.responseSuccess){
-                    window.location.href='CommissionRulesUpdate.html?id='+res.data;
+                if (res.code == config.responseSuccess) {
+                    window.location.href = 'CommissionRulesUpdate.html?id=' + res.data;
                 }
             })
         })
@@ -282,10 +290,23 @@
     <script src="components/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js"></script>
     <script>
         //日历插件初始化
-        $('.date-picker').datepicker({
-            autoclose: true,
-            todayHighlight: true
-        })
+        if (!ace.vars['old_ie']) $('#date-timepicker1').datetimepicker({
+            //format: 'MM/DD/YYYY h:mm:ss A',//use this option to display seconds
+            format: 'YYYY-MM-DD h:mm:ss',
+            icons: {
+                time: 'fa fa-clock-o',
+                date: 'fa fa-calendar',
+                up: 'fa fa-chevron-up',
+                down: 'fa fa-chevron-down',
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right',
+                today: 'fa fa-arrows ',
+                clear: 'fa fa-trash',
+                close: 'fa fa-times'
+            }
+        }).next().on(ace.click_event, function () {
+            $(this).prev().focus();
+        });
     </script>
     <script>
         $(".addCompany").on('click', function () {
