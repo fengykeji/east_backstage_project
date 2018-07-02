@@ -417,7 +417,7 @@
                 'basic_rule_id': id
             }, function (res) {
                 var model =
-                    '<tr role="row" class="odd" value="{a_id}"> <td class="center">{key}</td> <td class="center">{company_name}</td> <td class="center">{project_docker}</td> <td class="center">{project_docker_tel}</td> <td class="center">{compact_begin}</td> <td class="center">{compact_end}</td> <td class="center">{act_start}</td> <td class="center">{act_end}</td> <td class="center">{state}</td> <td class="center">{end_state_name}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green edit_leibie" href="CommissionRulesCompany.html?id={b_id}">编辑</a> <a class="red del_leibie" value="{c_id}">删除</a> <a class="orange" value="">审核通过</a><a class="blue" value="">审核不通过</a></div> </td> </tr>',
+                    '<tr role="row" class="odd" value="{a_id}"> <td class="center">{key}</td> <td class="center">{company_name}</td> <td class="center">{project_docker}</td> <td class="center">{project_docker_tel}</td> <td class="center">{compact_begin}</td> <td class="center">{compact_end}</td> <td class="center">{act_start}</td> <td class="center">{act_end}</td> <td class="center">{state}</td> <td class="center">{end_state_name}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green edit_leibie" href="CommissionRulesCompanyUpdateUpdate.html?id={b_id}">编辑</a> <a class="red del_leibie" value="{c_id}">删除</a> <a class="orange" value="">审核通过</a><a class="blue" value="">审核不通过</a></div> </td> </tr>',
                     id = 1,
                     str = '';
 
@@ -468,7 +468,7 @@
     </script>
     <script>
         $(".addCompany").on('click', function () {
-            window.location.href = "CommissionRulesCompany.html";
+            window.location.href = "CommissionRulesCompanyAdd.html";
             return false;
         })
         //个人规则
