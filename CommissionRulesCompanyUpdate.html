@@ -39,8 +39,7 @@
         }
 
         .modal_addAnnex,
-        .modal_editCom,
-        .modal_checkCompany {
+        .modal_editCom {
             display: none;
             background-color: rgba(0, 0, 0, .5);
             position: fixed;
@@ -205,8 +204,8 @@
                                                 <div class="form-group">
                                                     <label class="lab_width">乙方单位：</label>
                                                     <div class="inpt_width" style="display: inline-block;">
-                                                        <input type="text">
-                                                        <button class="btn btn-sm btn-info companySel" style="vertical-align: top;">选择</button>
+                                                        <input type="text" disabled="disabled">
+                                                        <!-- <button class="btn btn-sm btn-info companySel" style="vertical-align: top;">选择</button> -->
                                                     </div>
 
                                                 </div>
@@ -818,115 +817,7 @@
         </div>
     </div>
 
-    <!-- 乙方公司选择 -->
-    <div class="modal_checkCompany">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="bootbox-close-button close closed">×</button>
-                    <h4 class="modal-title">公司选择</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="bootbox-body" style="overflow: hidden;font-size: 14px;text-align: left;">
-                        <div class="col-xs-12" style="overflow-x: scroll;">
-                            <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer" style="width:900px">
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <div id="dynamic-table_filter">
-                                            <select name="province" class="pro_province">
-                                                <option value="510000" selected="selected">四川省</option>
-                                            </select>
-                                            <select name="city" class="pro_city">
-                                                <option value="510700" selected="selected">绵阳市</option>
-                                            </select>
-                                            <select name="area" class="pro_area">
-                                                <option value="510722" selected="selected">三台县</option>
-                                            </select>
-                                            <!-- <label>置业顾问: -->
-                                            <input type="search" class="form-control input-sm" placeholder="请输入公司名称、营业执照号查询" style="vertical-align: top;width: 250px;">
-                                            <!-- </label> -->
-                                            <button class="btn btn-xs btn-purple" style="vertical-align: top;">查询</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <table class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
-                                    <thead>
-                                        <tr role="row">
-                                            <th></th>
-                                            <th class="center">序号</th>
-                                            <th class="center">公司名称</th>
-                                            <th class="center">地址</th>
-                                            <th class="center">营业执照号</th>
-                                            <th class="center">对接人</th>
-                                            <th class="center">联系方式</th>
-                                        </tr>
-                                    </thead>
-
-                                    <tbody>
-                                        <tr class="odd">
-                                            <td class="center">
-                                                <label class="pos-rel">
-                                                    <input type="checkbox" class="ace">
-                                                    <span class="lbl"></span>
-                                                </label>
-                                            </td>
-                                            <td class="center">1</td>
-                                            <td class="center">云算科技</td>
-                                            <td class="center">成都市 - 郫都区 - 大禹东路85号**小区 1栋1单元101</td>
-                                            <td class="center">YYZZHNO138</td>
-                                            <td class="center">张三</td>
-                                            <td class="center">13025639856</td>
-                                        </tr>
-                                        <tr class="odd">
-                                                <td class="center">
-                                                    <label class="pos-rel">
-                                                        <input type="checkbox" class="ace">
-                                                        <span class="lbl"></span>
-                                                    </label>
-                                                </td>
-                                                <td class="center">1</td>
-                                                <td class="center">云算科技</td>
-                                                <td class="center">成都市 - 郫都区 - 大禹东路85号**小区 1栋1单元101</td>
-                                                <td class="center">YYZZHNO138</td>
-                                                <td class="center">张三</td>
-                                                <td class="center">13025639856</td>
-                                            </tr>
-                                    </tbody>
-                                </table>
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
-                                            <ul class="pagination">
-                                                <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_previous">
-                                                    <a href="#">上一页</a>
-                                                </li>
-                                                <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
-                                                    <a href="#">1</a>
-                                                </li>
-                                                <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                    <a href="#">2</a>
-                                                </li>
-                                                <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                    <a href="#">3</a>
-                                                </li>
-                                                <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_next">
-                                                    <a href="#">下一页</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
-                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="add">确定</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 
 
     <!-- basic scripts -->
@@ -1032,12 +923,7 @@
             $('.modal_editCom').css('display', 'block');
             return false;
         })
-        //乙方公司选择
-        $('.companySel').on('click', function () {
-            console.log('2222');
-            $('.modal_checkCompany').css('display', 'block');
-            return false;
-        })
+       
     </script>
 </body>
 
