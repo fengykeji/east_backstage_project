@@ -473,7 +473,7 @@
                 $.each(res.data.data, function (k, v) {
                     var str = model.replace('{id}', v.img_id).replace('{list_id}', list_id++).replace(
                         '{img_url}', config.address + v.img_url).replace('{comment}', v.comment).replace(
-                        '{uploader}', v.uploader).replace('{create_time}', v.create_time);
+                        '{uploader}', v.uploader).replace('{create_time}', v.update_time);
                     dom.append(str);
                 })
                 //分页

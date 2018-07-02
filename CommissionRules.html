@@ -329,7 +329,7 @@
                     str='';
                 if(res.data.data.length>0){
                     $.each(res.data.data,function(k,v){
-                        str+=model.replace('{a_id}',v.rule_id).replace('{b_id}',v.rule_id).replace('{c_id}',v.rule_id).replace('{d_id}',v.rule_id).replace('{key}',id++).replace('{begin_time)',v.begin_time).replace('{end_time}',v.end_time).replace('{recommend}',v.visit_confirm_time).replace('{value}',v.valid_visit_time).replace('{deal}',v.make_bargain_time).replace('{broker_recommend}',v.confirm_settle_commission_time).replace('{broker_value}',v.visit_settle_commission_time).replace('{broker_deal}',v.region_settle_commission_time).replace('{state}',v.state);
+                        str+=model.replace('{a_id}',v.rule_id).replace('{b_id}',v.rule_id).replace('{c_id}',v.rule_id).replace('{d_id}',v.rule_id).replace('{key}',id++).replace('{begin_time}',v.begin_time).replace('{end_time}',v.end_time).replace('{recommend}',v.visit_confirm_time).replace('{value}',v.valid_visit_time).replace('{deal}',v.make_bargain_time).replace('{broker_recommend}',v.confirm_settle_commission_time).replace('{broker_value}',v.visit_settle_commission_time).replace('{broker_deal}',v.region_settle_commission_time).replace('{state}',v.state);
                         if(v.state=='使用中'){
                             str+='<a class="red end_rule" value="'+v.rule_id+'">终止</a></div></td></tr>';
                         }
