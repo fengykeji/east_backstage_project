@@ -40,7 +40,7 @@
     padding: 2px 5px;
     vertical-align: top;
 }
-.modal_all,.modal_map{
+.modal_all,.modal_map,.modal_preview{
     display: none;
     background-color: rgba(0, 0, 0, .5);
     position: fixed;
@@ -115,4 +115,9 @@
 .pro_province,.pro_city,.pro_area{
     display: inline-block;
     width: 120px!important;
+}
+/* 预览显示 */
+.previewShow{
+    background-image: url("../../images/phone@3x.png") no-repeat;
+    background-size: 100% 100%;
 }

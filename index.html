@@ -67,7 +67,7 @@
 						</li>
 					</ul>
 					<div class="operate_proInfo">
-						<button class="btn btn-primary">预览</button>
+						<button class="btn btn-primary modalPreview">预览</button>
 						<button class="btn btn-danger" id="save">保存</button>
 					</div>
 				</div>
@@ -206,6 +206,19 @@
 			</div>
 		</div>
 	</div>
+	<!-- 预览 -->
+	<div class="modal_preview">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-body">
+					<button type="button" class="bootbox-close-button close closed">×</button>
+					<div id="" class="previewShow">
+						<p>噢哟</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- basic scripts -->
 
 	<!--[if !IE]> -->
@@ -256,6 +269,11 @@
 		$('#label_Add').on('click', function (event) {
 			event.stopPropagation();
 			$('.modal_all').css('display', 'block');
+		})
+		//预览
+		$('.modalPreview').on('click', function () {
+			$('.modal_preview').css('display', 'block');
+			return false;
 		})
 
 		$('.closed').on('click', function () {
@@ -465,7 +483,7 @@
 						})
 					}
 
-					if (res.data.project_tags!=null) {
+					if (res.data.project_tags != null) {
 						var project_tags = res.data.project_tags.split(','),
 							model =
 							'<span class="tag" value="{id}"><span class="tag_name" > {name}</span> <button type="button" class="close closed" value="{id}">×</button> </span>'
@@ -612,8 +630,8 @@
 
 			ajax.post('project/update', data, function (res) {
 				alert(res.msg);
-				if(res.code==config.responseSuccess){
-                    window.location.reload();
+				if (res.code == config.responseSuccess) {
+					window.location.reload();
 				}
 
 			})
