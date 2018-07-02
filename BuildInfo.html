@@ -366,7 +366,7 @@
             window.location.href = "BuildInfoAdd.html";
         })
         $('.build_detail').on('click', '.build_detail_look', function () {
-            window.location.href = "BuildInfoDetails.html";
+            window.location.href = "BuildInfoDetails.html?id="+$(this).parents('li').attr('value')+'&build='+$(this).parents('li').attr('build');
         })
         $('#zongImg_up').on('click', function () {
             console.log("11111");
@@ -410,11 +410,11 @@
                 var model='<tr role="row" class="odd" value="{build_id}"> <td class="center">{id}</td> <td class="center">{name}</td> <td class="center">{sale_permit}</td> <td class="center">{permit_time}</td> <td class="center">{open_way}</td> <td class="center">{open_time}</td> <td class="center">{handing_room_time}</td> <td class="center">{unit_num}</td> <td class="center">{ladder_ratio}</td> <td class="center">{total_house_num}</td> <td class="center">{upper_floor_num}</td> <td class="center">{down_floor_num}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green edit_leibie" href="BuildInfoOperate.html?build_id={b_id}">编辑</a> <div class="red del_leibie del"  style="cursor: pointer">删除</div> </div> </td> </tr>',
                     id=1.
                     str='',
-                    detail_model='<li value="{id}"> <button type="button" class="btn btn-white btn-primary build_detail_look">{name}</button> </li>';
+                    detail_model='<li value="{id}" build="{yunsuan}"> <button type="button" class="btn btn-white btn-primary build_detail_look">{name}</button> </li>';
                     detail_str='';
                 $.each(res.data.data,function(k,v){
                     str+=model.replace('{build_id}',v.build_id).replace('{id}',id++).replace('{name}',v.build_name).replace('{sale_permit}',v.sale_permit).replace('{permit_time}',v.permit_time).replace('{open_way}',v.open_way).replace('{open_time}',v.open_time).replace('{handing_room_time}',v.handing_room_time).replace('{unit_num}',v.unit_num).replace('{ladder_ratio}',v.ladder_ratio).replace('{total_house_num}',v.total_house_num).replace('{upper_floor_num}',v.upper_floor_num).replace('{down_floor_num}',v.down_floor_num).replace('{b_id}',v.build_id);
-                    detail_str+=detail_model.replace('{id}',v.build_id).replace('{name}',v.build_name);
+                    detail_str+=detail_model.replace('{id}',v.build_id).replace('{name}',v.build_name).replace('{yunsuan}',v.ys_build_id);
                 })
                 $('#build_list').append(str);
                 $('.build_detail').append(detail_str);

@@ -174,11 +174,9 @@
                                     <div class="widget-main" style="overflow: hidden;">
                                         <div class="col-xs-12">
                                             <div>
-                                                <h4 style="display: inline-block;">1栋</h4>
-                                                <select class="form-control inpt_width" style="display: inline-block; margin-left: 10px;">
-                                                    <option value="">一单元</option>
-                                                    <option value="">二单元</option>
-                                                    <option value="">三单元</option>
+                                                <h4 style="display: inline-block;" id="name"></h4>
+                                                <select class="form-control inpt_width" style="display: inline-block; margin-left: 10px;" id="unit">
+
                                                 </select>
                                                 <ul class="sale_state">
                                                     <li class="forSale">待售</li>
@@ -239,26 +237,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- basic scripts -->
 
     <!--[if !IE]> -->
@@ -295,7 +273,10 @@
     <script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
     <!-- 本页js -->
     <script src="assets/js/jquery.cookie.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/public.js"></script>
     <script>
+        var id = $.getUrlVar('id'),build_id=$.getUrlVar('build');
         window.onload = function () {
             $('#header').load('public/header.html');
             $('#sidebar').load('public/menu.html');
@@ -306,7 +287,46 @@
 			$.cookie('menu_data', JSON.stringify(menu_data), {
 				path: "menu.html"
 			});
+
+            buildInfo();
+            getYsInfo();
         }
+        function buildInfo(){
+            ajax.get('project/build/getBuildInfo',{'build_id':id},function(res){
+                if(res.code==config.responseSuccess){
+                    $('#name').html(res.data.build_name);
+
+                }
+            })
+        }
+        function getYsInfo(){
+            ajax.get('user/yunsuan/build',{'project_id':project_id},function(res){
+                var info;
+                $.each(res.data,function(k,v){
+                    if(v.LDID==build_id){
+                        info=v;
+                        return false;
+                    }
+                })
+                take(info);
+            })
+        }
+
+        function take(info){
+            var select=$('#unit');
+            if(info.DYLIST.length==0){
+                select.hide();
+            }else{
+                var model='<option value="{DYID}">{DYMC}</option>',
+                    str='';
+                $.each(info.DYLIST,function(k,v){
+                    str+=model.replace('{DYID}',v.DYID).replace('{DYMC}',v.DYMC)
+                })
+                select.append(str);
+            }
+
+        }
+
     </script>
 </body>
 

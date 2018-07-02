@@ -188,23 +188,7 @@
                                             </tr>
                                         </thead>
                                         <tbody id="list">
-                                            <!-- <tr role="row" class="odd" value="{id}">
-                                                <td class="center">{list_id}</td>
-                                                <td class="center img">
-                                                    <img class="proLook_img" src="{img_url}" alt=""> </td>
-                                                <td class="center comment">{comment}</td>
-                                                <td class="center">{uploader} </td>
-                                                <td class="center">{create_time}</td>
-                                                <td class="center">
-                                                    <div class="hidden-sm hidden-xs action-buttons">
-                                                        <a class="green edit_Img" style="cursor: pointer">编辑</a>
-                                                        <a class="red del_img" style="cursor: pointer">删除</a>
-                                                        <a class="" style="cursor: pointer">上移</a>
-                                                        <a class="" style="cursor: pointer">下移</a>
-                                                        <a class="" style="cursor: pointer">设为封面</a>
-                                                    </div>
-                                                </td>
-                                            </tr> -->
+
                                         </tbody>
                                     </table>
                                     <div class="row">
@@ -467,13 +451,13 @@
                 var dom = $('#list'),
                     list_id = 1,
                     model =
-                    '<tr role="row" class="odd" value="{id}"> <td class="center">{list_id}</td> <td class="center img"> <img class="proLook_img" src="{img_url}" alt=""> </td> <td class="center comment">{comment}</td> <td class="center">{uploader} </td> <td class="center">{create_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green edit_Img" style="cursor: pointer">编辑</a> <a class="red del_img"  style="cursor: pointer">删除</a> <a class="" style="cursor: pointer">上移</a><a class="" style="cursor: pointer">下移</a><a class="" style="cursor: pointer">设为封面</a></div> </td> </tr>',
+                    '<tr role="row" class="odd" value="{id}" img_address="{address}"> <td class="center">{list_id}</td> <td class="center img"> <img class="proLook_img" src="{img_url}" alt=""> </td> <td class="center comment">{comment}</td> <td class="center">{uploader} </td> <td class="center">{create_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green edit_Img" style="cursor: pointer">编辑</a> <a class="red del_img"  style="cursor: pointer">删除</a> <a class="up" style="cursor: pointer">上移</a><a class="down" style="cursor: pointer">下移</a><a class="projectImg" style="cursor: pointer">设为封面</a></div> </td> </tr>',
                     page =
                     '<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>';
                 $.each(res.data.data, function (k, v) {
                     var str = model.replace('{id}', v.img_id).replace('{list_id}', list_id++).replace(
                         '{img_url}', config.address + v.img_url).replace('{comment}', v.comment).replace(
-                        '{uploader}', v.uploader).replace('{create_time}', v.update_time);
+                        '{uploader}', v.uploader).replace('{create_time}', v.create_time).replace('{address}',v.img_url);
                     dom.append(str);
                 })
                 //分页
@@ -500,8 +484,43 @@
                 path: "menu.html"
             });
         }
-    </script>
+        $(document).on('click','.up',function(){
+            var downId=$(this).parents('tr').attr('value'),
+                upId=$(this).parents('tr').prev().attr('value');
+            imgSort(downId,upId);
+        })
+        $(document).on('click','.down',function(){
+            var downId=$(this).parents('tr').next().attr('value'),
+                upId=$(this).parents('tr').attr('value');
+            imgSort(downId,upId);
+        })
+        function imgSort(downId,upId){
+           var data={
+                'img_id':downId,
+                'img_id_another':upId,
+            };
+            if(data.img_id_another==undefined){
+                alert('操作失败：该张图片已经是最前一张了。')
+            }
+            if(data.img_id==undefined){
+                alert('操作失败：该张图片已经是最后一张了。')
+            }
+            ajax.post('project/img/exchangeImgSort',data,function(res){
+                if(res.code==config.responseSuccess){
+                    window.location.reload();
+                }
+            })
+        }
 
+        $(document).on('click','.projectImg',function(){
+            var address=$(this).parents('tr').attr('img_address');
+           ajax.post('project/update',{'img_url':address},function(res){
+               if(res.code==config.responseSuccess){
+                   alert('设置封面成功');
+               }
+            })
+        })
+    </script>
 
 
 
