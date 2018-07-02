@@ -38,7 +38,8 @@
             float: left;
         }
 
-        .modal_addAnnex,.modal_editCom {
+        .modal_addAnnex,
+        .modal_editCom {
             display: none;
             background-color: rgba(0, 0, 0, .5);
             position: fixed;
@@ -159,13 +160,9 @@
                                     <div class="widget-header" style="position: relative;">
                                         <h4 class="smaller" style="display: inline-block;">合同信息</h4>
                                         <span>（甲方为项目方，乙方为销售方）</span>
-                                        <!-- <div style="position: absolute;right: 80px;top:0;z-index: 100;">
-                                            <button class="btn btn-danger" style="padding: 3px 10px;">确定</button>
-                                            <button class="btn btn-primary" style="padding: 3px 10px;">取消</button>
-                                        </div> -->
                                     </div>
                                     <div class="widget-body">
-                                        <div class="widget-main" style="overflow: hidden;">
+                                        <div class="widget-main">
                                             <div class="col-xs-6" style="padding-left: 100px;">
                                                 <div class="form-group">
                                                     <label class="lab_width">甲方单位：</label>
@@ -183,9 +180,9 @@
                                                     <label class="lab_width">*合同开始日期：</label>
                                                     <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
                                                         <div class="input-group">
-                                                            <input class="form-control date-picker" type="text" data-date-format="yyyy-mm-dd">
+                                                            <input type="text" class="form-control date-timepicker" name="start_time">
                                                             <span class="input-group-addon">
-                                                                <i class="fa fa-calendar bigger-110"></i>
+                                                                <i class="fa fa-clock-o bigger-110"></i>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -194,9 +191,9 @@
                                                     <label class="lab_width">*合同截止日期：</label>
                                                     <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
                                                         <div class="input-group">
-                                                            <input class="form-control date-picker" type="text" data-date-format="yyyy-mm-dd">
+                                                            <input type="text" class="form-control date-timepicker" name="start_time">
                                                             <span class="input-group-addon">
-                                                                <i class="fa fa-calendar bigger-110"></i>
+                                                                <i class="fa fa-clock-o bigger-110"></i>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -224,26 +221,27 @@
                                                 <div class="form-group">
                                                     <label class="lab_width">*实际开始日期：</label>
                                                     <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
-                                                        <div class="input-group">
-                                                            <input class="form-control date-picker" type="text" data-date-format="yyyy-mm-dd">
-                                                            <span class="input-group-addon">
-                                                                <i class="fa fa-calendar bigger-110"></i>
-                                                            </span>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control date-timepicker" name="start_time">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-clock-o bigger-110"></i>
+                                                                </span>
+                                                            </div>
                                                         </div>
-                                                    </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">*实际截止日期：</label>
                                                     <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
                                                         <div class="input-group">
-                                                            <input class="form-control date-picker" type="text" data-date-format="yyyy-mm-dd">
+                                                            <input type="text" class="form-control date-timepicker" name="start_time">
                                                             <span class="input-group-addon">
-                                                                <i class="fa fa-calendar bigger-110"></i>
+                                                                <i class="fa fa-clock-o bigger-110"></i>
                                                             </span>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div style="clear: both;"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -475,7 +473,6 @@
                                                                     <td class="center">0.00</td>
                                                                     <td class="center">
                                                                         <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="blue" href="">查看</a>
                                                                             <a class="green edit_Com" href="#">编辑</a>
                                                                             <a class="red" href="#">删除</a>
                                                                         </div>
@@ -487,7 +484,6 @@
                                                                     <td class="center">0.00</td>
                                                                     <td class="center">
                                                                         <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="blue" href="">查看</a>
                                                                             <a class="green edit_Com" href="#">编辑</a>
                                                                             <a class="red" href="#">删除</a>
                                                                         </div>
@@ -499,7 +495,6 @@
                                                                     <td class="center">0.00</td>
                                                                     <td class="center">
                                                                         <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="blue" href="">查看</a>
                                                                             <a class="green edit_Com" href="#">编辑</a>
                                                                             <a class="red " href="#">删除</a>
                                                                         </div>
@@ -562,7 +557,6 @@
                                                                     <td class="center">0.00</td>
                                                                     <td class="center">
                                                                         <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="blue" href="">查看</a>
                                                                             <a class="green edit_Com" href="#">编辑</a>
                                                                             <a class="red " href="#">删除</a>
                                                                         </div>
@@ -574,7 +568,6 @@
                                                                     <td class="center">0.00</td>
                                                                     <td class="center">
                                                                         <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="blue" href="">查看</a>
                                                                             <a class="green edit_Com" href="#">编辑</a>
                                                                             <a class="red " href="#">删除</a>
                                                                         </div>
@@ -586,7 +579,6 @@
                                                                     <td class="center">0.00</td>
                                                                     <td class="center">
                                                                         <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="blue" href="">查看</a>
                                                                             <a class="green edit_Com" href="#">编辑</a>
                                                                             <a class="red " href="#">删除</a>
                                                                         </div>
@@ -885,10 +877,28 @@
     <script src="components/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js"></script>
     <script>
         //日历插件初始化
-        $('.date-picker').datepicker({
-            autoclose: true,
-            todayHighlight: true
-        })
+        // $('.date-picker').datepicker({
+        //     autoclose: true,
+        //     todayHighlight: true
+        // })
+        //日历插件初始化
+        if (!ace.vars['old_ie']) $('.date-timepicker').datetimepicker({
+            //format: 'MM/DD/YYYY h:mm:ss A',//use this option to display seconds
+            format: 'YYYY-MM-DD h:mm:ss A',
+            icons: {
+                time: 'fa fa-clock-o',
+                date: 'fa fa-calendar',
+                up: 'fa fa-chevron-up',
+                down: 'fa fa-chevron-down',
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right',
+                today: 'fa fa-arrows ',
+                clear: 'fa fa-trash',
+                close: 'fa fa-times'
+            }
+        }).next().on(ace.click_event, function () {
+            $(this).prev().focus();
+        });
     </script>
     <script>
         //选择乙方公司
@@ -910,7 +920,7 @@
             return false;
         })
         //佣金金额修改编辑
-        $('.commissionEdit').on('click','.edit_Com',function(){
+        $('.commissionEdit').on('click', '.edit_Com', function () {
             console.log('2222');
             $('.modal_editCom').css('display', 'block');
             return false;
