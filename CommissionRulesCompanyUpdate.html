@@ -263,77 +263,12 @@
                                                                     <th class="center">操作</th>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="center">1</td>
-                                                                    <td class="center">三室两厅两卫</td>
-                                                                    <td class="center">
-                                                                        <a href="">查看附件</a>
-                                                                    </td>
-                                                                    <td class="center">某某某某</td>
-                                                                    <td class="center">2015-12-12</td>
-                                                                    <td class="center">
-                                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="green addAnnex" href="#">编辑</a>
-                                                                            <a class="red" href="#">删除</a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="center">2</td>
-                                                                    <td class="center">三室两厅两卫</td>
-                                                                    <td class="center">
-                                                                        <a href="">查看附件</a>
-                                                                    </td>
-                                                                    <td class="center">某某某某</td>
-                                                                    <td class="center">2015-12-12</td>
-                                                                    <td class="center">
-                                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="green addAnnex" href="#">编辑</a>
-                                                                            <a class="red" href="#">删除</a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="center">3</td>
-                                                                    <td class="center">三室两厅两卫</td>
-                                                                    <td class="center">
-                                                                        <a href="">查看附件</a>
-                                                                    </td>
-                                                                    <td class="center">某某某某</td>
-                                                                    <td class="center">2015-12-12</td>
-                                                                    <td class="center">
-                                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="green edit_leibie" href="#">编辑</a>
-                                                                            <a class="red del_leibie" href="#">删除</a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
+                                                            <tbody id="file_list">
+
+
                                                             </tbody>
                                                         </table>
-                                                        <div class="row">
-                                                            <div class="col-xs-12">
-                                                                <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
-                                                                    <ul class="pagination">
-                                                                        <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_previous">
-                                                                            <a href="#">上一页</a>
-                                                                        </li>
-                                                                        <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">1</a>
-                                                                        </li>
-                                                                        <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">2</a>
-                                                                        </li>
-                                                                        <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">3</a>
-                                                                        </li>
-                                                                        <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_next">
-                                                                            <a href="#">下一页</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -635,33 +570,19 @@
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1">文件名称：</label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" class="col-xs-12 col-sm-10">
+                                    <input type="text" class="col-xs-12 col-sm-10" name="file_name">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2">上传人员：</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="col-xs-12 col-sm-10">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2">上传时间：</label>
-                                <div class="col-sm-9" style="display: inline-block;vertical-align: middle;">
-                                    <div class="input-group col-xs-12 col-sm-10">
-                                        <input class="form-control date-picker" type="text" data-date-format="yyyy-mm-dd">
-                                        <span class="input-group-addon">
-                                            <i class="fa fa-calendar bigger-110"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
+
+
 
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">附件：</label>
                                 <div class="col-sm-9">
                                     <label class="ace-file-input ace-file-multiple ">
-                                        <input multiple="" type="file">
-                                        <span class="ace-file-container col-xs-12 col-sm-10" data-title="点击上传文件">
+                                        <input type="hidden" id="url">
+                                        <input multiple="" type="file" id="file" accept=".zip,.rar,.jpg,.docx">
+                                        <span class="ace-file-container col-xs-12 col-sm-10" id="word" data-title="点击上传文件" >
                                             <span class="ace-file-name" data-title="No File ...">
                                                 <i class=" ace-icon ace-icon fa fa-cloud-upload"></i>
                                             </span>
@@ -789,9 +710,29 @@
                 $('input[name=sell_docker_tel]').val(res.data.basic.sell_docker_tel);
                 $('input[name=act_start]').val(res.data.basic.act_start);
                 $('input[name=act_end]').val(res.data.basic.act_end);
+                var model='<tr role="row" class="odd" value="{a_id}"><td class="center">{key}</td> <td class="center">{name}</td> <td class="center"><a target="_blank" href="{url}">查看附件</a> </td> <td class="center">{uploader}</td> <td class="center">{update_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <div class="red delFile" style="cursor: pointer">删除</div> </div> </td> </tr>',
+                    id=1,
+                    str='';
+                $.each(res.data.file,function(k,v){
+                    str+=model.replace('{a_id}',v.id).replace('{key}',id++).replace('{name}',v.file_name).replace('{uploader}',v.uploader).replace('{url}',config.address+v.file_url).replace('{update_time}',v.update_time);
+                })
+                $('#file_list').append(str);
 
             })
         }
+        $(document).on('click','.delFile',function(){
+            var id=$(this).parents('tr').attr('value'),
+                conf=confirm('确定删除该文件?');
+            if(conf==true){
+                ajax.post('project/ruleCompany/agreement/delete',{'id':id},function(res){
+                    alert(res.msg);
+                    if(res.code==config.responseSuccess){
+                        window.location.reload();
+                    }
+                })
+            }
+
+        })
     </script>
     <script src="components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
     <script src="components/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
@@ -801,24 +742,41 @@
 
     <script>
 
-        //日历插件初始化
-       /* if (!ace.vars['old_ie']) $('.date-timepicker').datetimepicker({
-            //format: 'MM/DD/YYYY h:mm:ss A',//use this option to display seconds
-            format: 'YYYY-MM-DD h:mm:ss',
-            icons: {
-                time: 'fa fa-clock-o',
-                date: 'fa fa-calendar',
-                up: 'fa fa-chevron-up',
-                down: 'fa fa-chevron-down',
-                previous: 'fa fa-chevron-left',
-                next: 'fa fa-chevron-right',
-                today: 'fa fa-arrows ',
-                clear: 'fa fa-trash',
-                close: 'fa fa-times'
+        $('#file').on('change', function () {
+            if ($(this)[0].files[0].size >= config.allowImgFileSize) {
+                alert(config.ImgSizeBeyondErrMes);
+                return false;
             }
-        }).next().on(ace.click_event, function () {
-            $(this).prev().focus();
-        });*/
+            var formData = new FormData();
+            formData.append("agreement", $(this)[0].files[0]);
+            ajax.file(formData, 'agreement', function (res) {
+                if(res.code==config.responseSuccess){
+                    $('#url').val(res.data);
+                    $('#word').attr('data-title','上传成功');
+                }
+            })
+        })
+        $('#tags_add').click(function(){
+            var data={
+                'file_name':$('input[name=file_name]').val(),
+                'file_url':$('#url').val(),
+                'rule_id':id
+            };
+            if(data.file_name==''){
+                alert('请输入文件名称');
+                return;
+            }
+            if(data.file_url==''){
+                alert('请先上传文件');
+                return;
+            }
+            ajax.post('project/ruleCompany/agreement/upload',data,function(res){
+                alert(res.msg);
+                if(res.code==config.responseSuccess){
+                    window.location.reload();
+                }
+            })
+        })
     </script>
     <script>
 
@@ -832,7 +790,7 @@
         })
         //成交佣金操作
         $(".dealComAdd").on('click', function () {
-            window.location.href = "DealComRuleSet.html";
+            window.location.href = "DealComRuleSet.html?id="+id;
             return false;
         })
         //佣金金额修改编辑

@@ -159,8 +159,8 @@
                         </li>
                     </ul>
                     <div class="operate_proInfo">
-                        <button class="btn btn-primary">保存</button>
-                        <button class="btn btn-danger" id="save">关闭</button>
+                        <button class="btn btn-primary" id="save">保存</button>
+                        <button class="btn btn-danger" >关闭</button>
                     </div>
                 </div>
                 <!-- 内容开始 -->
@@ -177,43 +177,10 @@
                                             <div class="col-xs-6" style="padding-left: 100px;">
                                                 <div class="form-group">
                                                     <label class="lab_width">*物业类型：</label>
-                                                    <div class="inpt_width" style="display: inline-block;">
-                                                        <div class="checkbox checkSty_projectInfo">
-                                                            <label>
-                                                                <input name="form-field-checkbox" type="checkbox" class="ace">
-                                                                <span class="lbl">住宅</span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="checkbox checkSty_projectInfo">
-                                                            <label>
-                                                                <input name="form-field-checkbox" type="checkbox" class="ace">
-                                                                <span class="lbl">公寓</span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="checkbox checkSty_projectInfo">
-                                                            <label>
-                                                                <input name="form-field-checkbox" type="checkbox" class="ace">
-                                                                <span class="lbl">别墅</span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="checkbox checkSty_projectInfo">
-                                                            <label>
-                                                                <input name="form-field-checkbox" type="checkbox" class="ace">
-                                                                <span class="lbl">商铺</span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="checkbox checkSty_projectInfo">
-                                                            <label>
-                                                                <input name="form-field-checkbox" type="checkbox" class="ace">
-                                                                <span class="lbl">写字楼</span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="checkbox checkSty_projectInfo">
-                                                            <label>
-                                                                <input name="form-field-checkbox" type="checkbox" class="ace">
-                                                                <span class="lbl">车位</span>
-                                                            </label>
-                                                        </div>
+                                                    <div class="inpt_width" style="display: inline-block;" id="property">
+
+
+
                                                     </div>
                                                 </div>
 
@@ -493,7 +460,10 @@
     <script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
     <!-- 本页js -->
     <script src="assets/js/jquery.cookie.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/public.js"></script>
     <script>
+        var id = $.getUrlVar('id'),yunsuan=0;
         window.onload = function () {
             $('#header').load('public/header.html');
             $('#sidebar').load('public/menu.html');
@@ -504,6 +474,42 @@
             $.cookie('menu_data', JSON.stringify(menu_data), {
                 path: "menu.html"
             });
+            projectInfo();
+        }
+        function projectInfo() {
+            var list;
+            ajax.get('project/project/getProjectInfo', {}, function (res) {
+                if (res.data.yunsuan_url == '' || res.data.yunsuan_id == 0) {
+                    list=setPropertyWithOutYunsuan(res);
+                }else{
+                    list=setProperty()
+                }
+                $('#property').append(list);
+            })
+        }
+
+        function setPropertyWithOutYunsuan(){
+            var model='<div class="checkbox checkSty_projectInfo"> <label> <input name="form-field-checkbox" type="checkbox" class="ace"> <span class="lbl">{name}</span> </label> </div>',
+                str='';
+            ajax.get('project/project/getProjectProperty',{},function(res){
+                $.each(res.data,function(k,v){
+                    str+=model.replace('{name}',v.property_name);
+                })
+
+            })
+            return str;
+        }
+
+        function setProperty(){
+            var model='<div class="checkbox checkSty_projectInfo"> <label> <input name="form-field-checkbox" type="checkbox" class="ace"> <span class="lbl">{name}</span> </label> </div>',
+                str='';
+            ajax.get('project/ruleCompany/brokerRule/getProperty',{},function(res){
+                $.each(res[0].content[0].rows,function(k,v){
+                    str+=model.replace('{name}',v.WYLXMC);
+                })
+
+            })
+            return str;
         }
     </script>
     <script src="components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
