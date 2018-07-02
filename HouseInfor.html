@@ -237,9 +237,7 @@
         $('.closed').on('click', function () {
             $(this).parent().parent().parent().parent().css('display', 'none');
         })
-        $('.del_leibie').on('click', function () {
-            $('.modal_tishi').css('display', 'block');
-        })
+
         $('#addleibie').on('click',function(){
             window.location.href="HouseInforAdd.html";
         })
@@ -272,6 +270,21 @@
                 $('#list').append(str);
             })
         }
+
+        $(document).on('click','.del_leibie',function(){
+            var id=$(this).parents('tr').attr('value'),
+                con=confirm('确定要删除该户型么');
+            if(con==true){
+                ajax.post('project/houseType/delete',{'id':id},function(res){
+                    alert(res.msg);
+                    if(res.code==config.responseSuccess){
+                        window.location.reload();
+                    }
+                })
+            }
+        })
+
+
     </script>
 </body>
 

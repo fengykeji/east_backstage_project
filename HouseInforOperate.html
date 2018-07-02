@@ -554,7 +554,7 @@
                     }
                 })
                 var model =
-                    '<tr role="row" class="odd" value="{id}"> <td class="center">1</td> <td class="center"> <img class="proLook_img" src="{url}" alt=""> </td> <td class="center">{comment}</td> <td class="center">{uploader}</td> <td class="center">{update_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="">查看</a> <a class="green edit_leibie" href="">编辑</a> <a class="red del_leibie" href="#">删除</a> <a class="" href="">上移</a> <a class="" href="">下移</a> </div> </td> </tr>';
+                    '<tr role="row" class="odd" value="{id}"> <td class="center">1</td> <td class="center"> <img class="proLook_img" src="{url}" alt=""> </td> <td class="center">{comment}</td> <td class="center">{uploader}</td> <td class="center">{update_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green edit_leibie" href="">编辑</a> <div class="red del_leibie" style="cursor: pointer">删除</div> <div class="red up" style="cursor: pointer">上移</div> <div class="down blue"  style="cursor: pointer">下移</div> </div> </td> </tr>';
                 if (res.data.imgInfo[54].list.length > 0) {
                     var str = '';
                     $.each(res.data.imgInfo[54].list, function (k, v) {
@@ -596,12 +596,9 @@
             $('#type').val(type);
         }
         $('#pic_up').on('change', function () {
-            console.log('11111')
             if ($(this)[0].files == undefined) {
-                console.log('2222');
                 return false;
             }
-            console.log('222233');
             if ($(this)[0].files[0].size >= config.allowImgFileSize) {
                 alert(config.ImgSizeBeyondErrMes);
                 return;
@@ -666,6 +663,47 @@
                 }
             })
         }
+
+        $(document).on('click','.up',function(){
+            var downId=$(this).parents('tr').attr('value'),
+                upId=$(this).parents('tr').prev().attr('value');
+            imgSort(downId,upId);
+        })
+        $(document).on('click','.down',function(){
+            var downId=$(this).parents('tr').next().attr('value'),
+                upId=$(this).parents('tr').attr('value');
+            imgSort(downId,upId);
+        })
+        $(document).on('click','.del_leibie',function(){
+            var  id=$(this).parents('tr').attr('value'),
+                conf=confirm('是否删除该户型图片');
+            if(conf==true){
+                ajax.get('project/houseType/deleteImg',{'img_id':id},function(res){
+                    if(res.code==config.responseSuccess){
+                        window.location.reload();
+                    }
+                })
+            }
+
+        })
+        function imgSort(downId,upId){
+            var data={
+                'img_id':downId,
+                'img_id_another':upId,
+            };
+            if(data.img_id_another==undefined){
+                alert('操作失败：该张图片已经是最前一张了。')
+            }
+            if(data.img_id==undefined){
+                alert('操作失败：该张图片已经是最后一张了。')
+            }
+            ajax.post('project/img/exchangeImgSort',data,function(res){
+              if(res.code==config.responseSuccess){
+                    window.location.reload();
+                }
+            })
+        }
+
     </script>
     <script src="components/fuelux/js/spinbox.js"></script>
     <script>
