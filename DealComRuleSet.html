@@ -189,13 +189,13 @@
                                                     <div class="inpt_width" style="display: inline-block;" id="jump">
                                                         <div class="radio" style="display: inline-block;">
                                                             <label>
-                                                                <input value="yes" name="form-field-radio" type="radio" class="ace tiaodian_checked">
+                                                                <input value="1"  type="radio" class="ace tiaodian_checked" name="td">
                                                                 <span class="lbl">是</span>
                                                             </label>
                                                         </div>
                                                         <div class="radio" style="display: inline-block;">
                                                             <label>
-                                                                <input value="no" name="form-field-radio" type="radio" class="ace tiaodian_checked">
+                                                                <input value="0"  type="radio" class="ace tiaodian_checked" name="td">
                                                                 <span class="lbl">否</span>
                                                             </label>
                                                         </div>
@@ -216,13 +216,13 @@
                                                     <div class="inpt_width" style="display: inline-block;">
                                                         <div class="radio" style="display: inline-block;">
                                                             <label>
-                                                                <input name="form-field-radio" type="radio" class="ace">
+                                                                <input name="lj"  value="1" type="radio" class="ace">
                                                                 <span class="lbl">是</span>
                                                             </label>
                                                         </div>
                                                         <div class="radio" style="display: inline-block;">
                                                             <label>
-                                                                <input name="form-field-radio" type="radio" class="ace InvalidVisit">
+                                                                <input name="lj" value="0" type="radio" class="ace InvalidVisit">
                                                                 <span class="lbl">否</span>
                                                             </label>
                                                         </div>
@@ -230,48 +230,15 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">*提成方式：</label>
-                                                    <select class="inpt_width com_method">
-                                                        <option value="jin_e">固定金额*套数</option>
-                                                        <option value="zong_jia">总价*比例</option>
-                                                        <option value="mian_ji">面积*单价</option>
+                                                    <select class="inpt_width com_method" name="commission">
+
                                                     </select>
                                                 </div>
-                                                <div class="form-group jin_e">
-                                                    <label class="lab_width"></label>
-                                                    <label>金额</label>
-                                                    <select class="">
-                                                        <option value="">固定金额</option>
-                                                        <option value="">销售金额</option>
-                                                        <option value="">XXX</option>
-                                                    </select>
-                                                    <span>X</span>
-                                                    <label>套数</label>
-                                                    <input type="text">
-                                                </div>
-                                                <div class="form-group zong_jia">
-                                                    <label class="lab_width"></label>
-                                                    <label>总价</label>
-                                                    <select class="">
-                                                        <option value="">销售总价</option>
-                                                        <option value="">XXXX</option>
-                                                        <option value="">XXX</option>
-                                                    </select>
-                                                    <span>X</span>
-                                                    <label>比例</label>
-                                                    <input type="text">
-                                                </div>
-                                                <div class="form-group mian_ji">
-                                                    <label class="lab_width"></label>
-                                                    <label>面积</label>
-                                                    <select class="">
-                                                        <option value="">建筑面积</option>
-                                                        <option value="">XXXX</option>
-                                                        <option value="">XXX</option>
-                                                    </select>
-                                                    <span>X</span>
-                                                    <label>单价</label>
-                                                    <input type="text">
-                                                </div>
+
+
+                                                    <label>参数</label>
+                                                    <input type="text" name="param">
+
                                             </div>
                                         </div>
                                     </div>
@@ -335,29 +302,7 @@
                                                                 </tr>
                                                             </tbody>
                                                         </table>
-                                                        <div class="row">
-                                                            <div class="col-xs-12">
-                                                                <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
-                                                                    <ul class="pagination">
-                                                                        <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_previous">
-                                                                            <a href="#">上一页</a>
-                                                                        </li>
-                                                                        <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">1</a>
-                                                                        </li>
-                                                                        <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">2</a>
-                                                                        </li>
-                                                                        <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">3</a>
-                                                                        </li>
-                                                                        <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_next">
-                                                                            <a href="#">下一页</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -498,10 +443,19 @@
                 })
                 dom.append(str);
             })
+            ajax.get('config',{id:config.configList['COMMISSION_TYPE']},function(res){
+                var dom=$('select[name=commission]'),
+                    model='<option value="{id}">{name}</option>',
+                    str='';
+                $.each(res.data[config.configList['COMMISSION_TYPE']].param,function(k,v){
+                    str+=model.replace('{id}',v.id).replace('{name}',v.param);
+                })
+                dom.append(str);
+            })
         }
 
         function setPropertyWithOutYunsuan(){
-            var model='<div class="checkbox checkSty_projectInfo"> <label> <input name="form-field-checkbox" type="checkbox" class="ace"> <span class="lbl">{name}</span> </label> </div>',
+            var model='<div class="checkbox checkSty_projectInfo"> <label> <input  type="checkbox" class="ace" name="property"> <span class="lbl">{name}</span> </label> </div>',
                 str='';
             ajax.get('project/project/getProjectProperty',{},function(res){
                 $.each(res.data,function(k,v){
@@ -513,7 +467,7 @@
         }
 
         function setProperty(){
-            var model='<div class="checkbox checkSty_projectInfo"> <label> <input name="form-field-checkbox" type="checkbox" class="ace"> <span class="lbl">{name}</span> </label> </div>',
+            var model='<div class="checkbox checkSty_projectInfo"> <label> <input name="property" type="checkbox" class="ace"> <span class="lbl">{name}</span> </label> </div>',
                 str='';
             ajax.get('project/ruleCompany/brokerRule/getProperty',{},function(res){
                 $.each(res[0].content[0].rows,function(k,v){
@@ -523,6 +477,30 @@
             })
             return str;
         }
+
+        $('#save').click(function(){
+            var data={
+                'is_jump':$('input[name=td]:checked').val(),
+                'is_total':$('input[name=lj]:checked').val(),
+                'company_rule_id':id,
+                'brokerage_type':1,
+                'money_type':$('select[name=money]').val(),
+                'commission_way':$('select[name=commission]').val(),
+                'param':$('input[name=param]').val()
+            },
+              list='',
+                insertId=0;
+
+            $('input[name=property]:checked').each(function(){
+
+                list+=$(this).siblings('span').html()+',';
+            })
+            data.list = list.slice(0,-1);
+           ajax.post('project/ruleCompany/brokerRule/create',data,function(res){
+               insertId=res.data;
+            })
+
+        })
     </script>
     <script src="components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
     <script src="components/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
@@ -567,7 +545,7 @@
         //是否跳点
         $('.tiaodian_checked').on('click',function(){
             var val_radio=$(this).val();
-            if(val_radio=='yes'){
+            if(val_radio=='1'){
                 $('#dynamic-box').css('display','block');
             }else{
                 $('#dynamic-box').css('display','none');
