@@ -186,7 +186,7 @@
 
                                                 <div class="form-group">
                                                     <label class="lab_width ">*跳点：</label>
-                                                    <div class="inpt_width" style="display: inline-block;">
+                                                    <div class="inpt_width" style="display: inline-block;" id="jump">
                                                         <div class="radio" style="display: inline-block;">
                                                             <label>
                                                                 <input value="yes" name="form-field-radio" type="radio" class="ace tiaodian_checked">
@@ -204,10 +204,8 @@
 
                                                 <div class="form-group">
                                                     <label class="lab_width">*单位：</label>
-                                                    <select class="inpt_width">
-                                                        <option value="">人民币</option>
-                                                        <option value="">XXX</option>
-                                                        <option value="">XXX</option>
+                                                    <select class="inpt_width" name="money">
+
                                                     </select>
                                                 </div>
                                             </div>
@@ -474,7 +472,9 @@
             $.cookie('menu_data', JSON.stringify(menu_data), {
                 path: "menu.html"
             });
+
             projectInfo();
+            configList();
         }
         function projectInfo() {
             var list;
@@ -485,6 +485,18 @@
                     list=setProperty()
                 }
                 $('#property').append(list);
+            })
+        }
+
+        function configList(){
+            ajax.get('config',{id:config.configList['MONEY_TYPE']},function(res){
+                var dom=$('select[name=money]'),
+                    model='<option value="{id}">{name}</option>',
+                    str='';
+                $.each(res.data[config.configList['MONEY_TYPE']].param,function(k,v){
+                    str+=model.replace('{id}',v.id).replace('{name}',v.param);
+                })
+                dom.append(str);
             })
         }
 
