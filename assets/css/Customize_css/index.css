@@ -117,7 +117,7 @@
     width: 120px!important;
 }
 /* 预览显示 */
-.previewShow{
+.preBackImg{
     background-image: url("../../images/phone@3x.png") no-repeat;
-    background-size: 100% 100%;
+    background-size: 100px 100px;
 }
