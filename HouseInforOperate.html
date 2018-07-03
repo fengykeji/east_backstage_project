@@ -283,50 +283,7 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody id="3d">
-                                                            <tr role="row" class="odd">
-                                                                <td class="center">1</td>
-                                                                <td class="center">图片一</td>
-                                                                <td class="center">
-                                                                    <img class="proLook_img" src="http://120.27.21.136:2798/upload/project/img/06.jpg" alt="">
-                                                                </td>
-                                                                <td class="center">
-                                                                    <img class="proLook_img" src="http://120.27.21.136:2798/upload/project/img/06.jpg" alt="">
-                                                                </td>
-                                                                <td class="center">XXXXXXXXXXXXXXXX</td>
-                                                                <td class="center">张三</td>
-                                                                <td class="center">2017-12-12</td>
-                                                                <td class="center">
-                                                                    <div class="hidden-sm hidden-xs action-buttons">
-                                                                        <a class="blue" href="">查看</a>
-                                                                        <a class="green edit_leibie" href="">编辑</a>
-                                                                        <a class="red del_leibie" href="#">删除</a>
-                                                                        <a class="" href="">上移</a>
-                                                                        <a class="" href="">下移</a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr role="row" class="odd">
-                                                                <td class="center">1</td>
-                                                                <td class="center">图片一</td>
-                                                                <td class="center">
-                                                                    <img class="proLook_img" src="http://120.27.21.136:2798/upload/project/img/06.jpg" alt="">
-                                                                </td>
-                                                                <td class="center">
-                                                                    <img class="proLook_img" src="http://120.27.21.136:2798/upload/project/img/06.jpg" alt="">
-                                                                </td>
-                                                                <td class="center">XXXXXXXXXXXXXXXX</td>
-                                                                <td class="center">张三</td>
-                                                                <td class="center">2017-12-12</td>
-                                                                <td class="center">
-                                                                    <div class="hidden-sm hidden-xs action-buttons">
-                                                                        <a class="blue" href="">查看</a>
-                                                                        <a class="green edit_leibie" href="">编辑</a>
-                                                                        <a class="red del_leibie" href="#">删除</a>
-                                                                        <a class="" href="">上移</a>
-                                                                        <a class="" href="">下移</a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
+
                                                         </tbody>
                                                     </table>
 
@@ -435,10 +392,10 @@
                             <div class="form-group">
                                 <div class="col-xs-12">
                                     <label class=" control-label no-padding-right" for="form-field-1-1" style="width: 100px;vertical-align: top;">添加平面图：</label>
-                                    <label class="ace-file-input ace-file-multiple fileUpLabel" style="display: inline-block;width: 300px;">
-                                        <input multiple="" type="file">
-                                        <img class="show_UpImg img_url" src="assets/images/null.jpg" id="pic_flat" style="display: none;width: 100%">
-                                        <span class="ace-file-container" data-title="点击上传图片">
+                                    <label class="ace-file-input ace-file-multiple fileUpLabel" style="display: inline-block;width: 300px;" >
+                                        <input multiple="" type="file" class="3d_file_1">
+                                        <img class="show_UpImg img_url pic_flat2_1" src="assets/images/null.jpg"  style="display: none;width: 100%" address="">
+                                        <span class="ace-file-container pic_wait_up1" data-title="点击上传图片" >
                                             <span class="ace-file-name" data-title="No File ...">
                                                 <i class=" ace-icon ace-icon fa fa-picture-o">
 
@@ -452,9 +409,9 @@
                                 <div class="col-xs-12">
                                     <label class=" control-label no-padding-right" for="form-field-1-1" style="width: 100px;vertical-align: top;">添加3D图：</label>
                                     <label class="ace-file-input ace-file-multiple fileUpLabel" style="display: inline-block;width: 300px;">
-                                        <input multiple="" type="file">
-                                        <img class="show_UpImg img_url" src="assets/images/null.jpg" id="pic_flat" style="display: none;width: 100%">
-                                        <span class="ace-file-container" data-title="点击上传图片">
+                                        <input multiple="" type="file" class="3d_file_2">
+                                        <img class="show_UpImg img_url pic_flat2_2" src="assets/images/null.jpg" class="" style="display: none;width: 100%" address="">
+                                        <span class="ace-file-container pic_wait_up2" data-title="点击上传图片" >
                                             <span class="ace-file-name" data-title="No File ...">
                                                 <i class=" ace-icon ace-icon fa fa-picture-o">
 
@@ -467,7 +424,7 @@
                             <div class="form-group">
                                 <div class="col-xs-12">
                                     <label class="control-label no-padding-right" for="form-field-1-1" style="width: 100px;vertical-align: top;">备注：</label>
-                                    <textarea style="display: inline-block;width: 300px;" name="" id="" cols="30" rows="4"></textarea>
+                                    <textarea style="display: inline-block;width: 300px;" name=""  cols="30" rows="4" id="comment2"></textarea>
                                 </div>
                             </div>
                         </form>
@@ -475,7 +432,7 @@
                 </div>
                 <div class="modal-footer">
                     <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
-                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="add">确定</button>
+                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="add_3d">确定</button>
                 </div>
             </div>
         </div>
@@ -594,6 +551,18 @@
                     $('#sj').append(str);
                     str = '';
                 }
+                if (res.data.imgInfo[52].list.length > 0) {
+                    var str = '',
+                        model=
+                            '<tr role="row" class="odd" value="{id}"> <td class="center">1</td> <td class="center"> <img class="proLook_img" src="{url}" alt=""> </td> <td class="center"> <img class="proLook_img" src="{url2}" alt=""> </td><td class="center">{comment}</td> <td class="center">{uploader}</td> <td class="center">{update_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green edit_leibie" href="">编辑</a> <div class="red del_leibie" style="cursor: pointer">删除</div> <div class="red up" style="cursor: pointer">上移</div> <div class="down blue"  style="cursor: pointer">下移</div> </div> </td> </tr>';
+                    $.each(res.data.imgInfo[52].list, function (k, v) {
+                        str += model.replace('{id}', v.img_id).replace('{url}', config.address + v.img_url).replace('{url2}', config.address + v.img_url_3d)
+                            .replace('{comment}', v.img_describe).replace('{uploader}', v.uploader).replace(
+                                '{update_time}', v.update_time)
+                    })
+                    $('#3d').append(str);
+                    str = '';
+                }
             })
         }
 
@@ -601,7 +570,6 @@
             $('#pic_flat').attr('src', 'assets/images/null.jpg').attr('address', "").hide();
             $('#pic_wait_up').show();
             $('#comment').val("");
-            console.log(1);
             $('.modal_add').fadeIn();
             $('#type').val(type);
         }
@@ -759,12 +727,78 @@
     <script>
         //新增3d图
         $('.build_add_3D').on('click', function (e) {
-            console.log(2);
+
             e.stopPropagation();
-            $('.modal_add_3D').css('display', 'block');
+            $('#pic_flat2').attr('src', 'assets/images/null.jpg').attr('address', "").hide();
+            $('.pic_wait_up').show();
+            $('#comment2').val("");
+            $('.modal_add_3D').fadeIn();
+            $('#type').val(52);
+
         })
         $('.closed').on('click', function () {
             $(this).parent().parent().parent().parent().css('display', 'none');
+        })
+
+        $('.3d_file_1').on('change', function () {
+            if ($(this)[0].files == undefined) {
+                return false;
+            }
+            if ($(this)[0].files[0].size >= config.allowImgFileSize) {
+                alert(config.ImgSizeBeyondErrMes);
+                return;
+            }
+            var formData = new FormData();
+            formData.append("img", $(this)[0].files[0]);
+            ajax.file(formData, 'img', function (res) {
+                $('.pic_flat2_1').attr('src', config.address + res.data).attr('address', res.data).show();
+                $('.pic_wait_up1').hide();
+            })
+        })
+
+        $('.3d_file_2').on('change', function () {
+            if ($(this)[0].files == undefined) {
+                return false;
+            }
+            if ($(this)[0].files[0].size >= config.allowImgFileSize) {
+                alert(config.ImgSizeBeyondErrMes);
+                return;
+            }
+            var formData = new FormData();
+            formData.append("img", $(this)[0].files[0]);
+            ajax.file(formData, 'img', function (res) {
+                $('.pic_flat2_2').attr('src', config.address + res.data).attr('address', res.data).show();
+                $('.pic_wait_up2').hide();
+            })
+        })
+
+        $('#add_3d').on('click', function () {
+
+            var data = {
+                'img_url': $('.pic_flat2_1').attr('address'),
+                'img_url_3d':$('.pic_flat2_2').attr('address'),
+                'img_type': 52,
+                'house_type': id,
+                'img_describe': $('#comment2').val()
+            };
+            if ((data.img_url == '' || data.img_url == undefined) && (data.img_url_3d == '' || data.img_url_3d == undefined)) {
+                alert('请上传图片 ');
+                return;
+            }
+            if (data.img_type == '' || data.img_type == undefined) {
+                alert('图片类型丢失，请刷新重试');
+                return;
+            }
+            if (data.house_type == '' || data.house_type == undefined) {
+                alert('住宅类型丢失，请刷新重试');
+                return;
+            }
+            ajax.post('project/houseType/upload', data, function (res) {
+                alert(res.msg);
+                if (res.code == config.responseSuccess) {
+                    window.location.reload();
+                }
+            })
         })
     </script>
 </body>
