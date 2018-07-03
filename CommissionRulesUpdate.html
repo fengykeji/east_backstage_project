@@ -413,7 +413,7 @@
                 'basic_rule_id': id
             }, function (res) {
                 var model =
-                    '<tr role="row" class="odd" value="{a_id}"> <td class="center">{key}</td> <td class="center">{rule_name}</td>  <td class="center">{plan_start}</td> <td class="center">{plan_end}</td> <td class="center">{act_start}</td> <td class="center">{act_end}</td> <td class="center">{state}</td> <td class="center"> <label> <input name="switch-field-1" class="ace ace-switch  ace-switch-5 switchCom" type="checkbox" value="true"> <span class="lbl"></span> </label> </td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green" href="CommissionRulesBrokerUpdate.html?id={b_id}">编辑</a> <a class="red person_stop" value="{c_id}" >停用</a> </div> </td> </tr>',
+                    '<tr role="row" class="odd" value="{a_id}"> <td class="center">{key}</td> <td class="center">{rule_name}</td>  <td class="center">{plan_start}</td> <td class="center">{plan_end}</td> <td class="center">{act_start}</td> <td class="center">{act_end}</td> <td class="center">{state}</td> <td class="center"> <label> <input checked="checked" name="switch-field-1" class="ace ace-switch  ace-switch-5 switchCom" type="checkbox"> <span class="lbl"></span> </label> </td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green" href="CommissionRulesBrokerUpdate.html?id={b_id}">编辑</a> <a class="red person_stop" value="{c_id}" >停用</a> </div> </td> </tr>',
                     id = 1,
                     str = '';
                 $.each(res.data.data, function (k, v) {

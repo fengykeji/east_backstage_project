@@ -38,7 +38,8 @@
             float: left;
         }
 
-        .modal_JumPoint {
+        .modal_JumPoint,
+        .modal_JumPointXiuG{
             display: none;
             background-color: rgba(0, 0, 0, .5);
             position: fixed;
@@ -160,7 +161,7 @@
                     </ul>
                     <div class="operate_proInfo">
                         <button class="btn btn-primary" id="save">保存</button>
-                        <button class="btn btn-danger" >关闭</button>
+                        <button class="btn btn-danger">关闭</button>
                     </div>
                 </div>
                 <!-- 内容开始 -->
@@ -189,13 +190,13 @@
                                                     <div class="inpt_width" style="display: inline-block;" id="jump">
                                                         <div class="radio" style="display: inline-block;">
                                                             <label>
-                                                                <input value="1"  type="radio" class="ace tiaodian_checked" name="td">
+                                                                <input value="1" type="radio" class="ace tiaodian_checked" name="td">
                                                                 <span class="lbl">是</span>
                                                             </label>
                                                         </div>
                                                         <div class="radio" style="display: inline-block;">
                                                             <label>
-                                                                <input value="0"  type="radio" class="ace tiaodian_checked" name="td">
+                                                                <input value="0" type="radio" class="ace tiaodian_checked" name="td">
                                                                 <span class="lbl">否</span>
                                                             </label>
                                                         </div>
@@ -216,7 +217,7 @@
                                                     <div class="inpt_width" style="display: inline-block;">
                                                         <div class="radio" style="display: inline-block;">
                                                             <label>
-                                                                <input name="lj"  value="1" type="radio" class="ace">
+                                                                <input name="lj" value="1" type="radio" class="ace InvalidVisit">
                                                                 <span class="lbl">是</span>
                                                             </label>
                                                         </div>
@@ -235,9 +236,11 @@
                                                     </select>
                                                 </div>
 
+                                                <div class="form-group">
+                                                    <label class="lab_width">参数：</label>
+                                                    <input class="inpt_width" type="text" name="param">
+                                                </div>
 
-                                                    <label>参数</label>
-                                                    <input type="text" name="param">
 
                                             </div>
                                         </div>
@@ -246,7 +249,7 @@
                                 <div class="widget-box" id="dynamic-box" style="margin-top: 30px;display: none;">
                                     <div class="widget-header">
                                         <h4 class="smaller">跳点规则</h4>
-                                        <button class="btn btn-danger build_add Operate_point">新增</button>
+                                        <button class="btn btn-danger build_add">新增</button>
                                     </div>
                                     <div class="widget-body">
                                         <div class="widget-main" style="overflow: hidden;">
@@ -261,48 +264,16 @@
                                                                     <th class="center">起始数</th>
                                                                     <th class="center">截止数</th>
                                                                     <th class="center">提成公式</th>
-                                                                    <th class="center">固定金额</th>
+                                                                    <th class="center">参数</th>
                                                                     <th class="center">是否累积</th>
                                                                     <th class="center">奖励金额（元/套）</th>
                                                                     <th class="center">操作</th>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="center">1</td>
-                                                                    <td class="center">1.00</td>
-                                                                    <td class="center">14.00</td>
-                                                                    <td class="center">固定金额*套数</td>
-                                                                    <td class="center">1000</td>
-                                                                    <td class="center">是</td>
-                                                                    <td class="center">0.00</td>
-                                                                    <td class="center">
-                                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="blue Operate_point" href="#">查看</a>
-                                                                            <a class="green Operate_point" href="#">修改</a>
-                                                                            <a class="red" href="#">删除</a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="center">2</td>
-                                                                    <td class="center">1.00</td>
-                                                                    <td class="center">14.00</td>
-                                                                    <td class="center">固定金额*套数</td>
-                                                                    <td class="center">1000</td>
-                                                                    <td class="center">是</td>
-                                                                    <td class="center">0.00</td>
-                                                                    <td class="center">
-                                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="blue Operate_point" href="#">查看</a>
-                                                                            <a class="green Operate_point" href="#">修改</a>
-                                                                            <a class="red" href="#">删除</a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
+                                                            <tbody class="jumpPointShow">
+                                                               
                                                             </tbody>
                                                         </table>
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -317,51 +288,120 @@
         </div>
     </div>
 
-    <!-- 跳点规则操作 -->
+    <!-- 跳点规则新增 -->
     <div class="modal_JumPoint">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="bootbox-close-button close closed">×</button>
-                    <h4 class="modal-title">跳点信息</h4>
+                    <h4 class="modal-title">跳点信息新增</h4>
                 </div>
                 <div class="modal-body">
                     <div class="bootbox-body" style="overflow: hidden;">
                         <form class="form-horizontal" role="form">
                             <div class="form-group">
-                                <label>起始数：</label>
-                                <input type="text">
+                                <label class="col-sm-4 control-label no-padding-right" for="form-field-1">起始数：</label>
+
+                                <div class="col-sm-8">
+                                    <input type="number" min="0" class="col-xs-12 col-sm-10 startNum">
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label>固定金额：</label>
-                                <input type="text">
+                                <label class="col-sm-4 control-label no-padding-right" for="form-field-1">截止数：</label>
+
+                                <div class="col-sm-8">
+                                    <input type="number" min="0" class="col-xs-12 col-sm-10 endNum">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>比例：</label>
-                                <input type="text">
+                            <div class="form-group" style="text-align: left;">
+                                <label class="col-sm-4 control-label no-padding-right" for="form-field-1">包含：</label>
+
+                                <div class="col-sm-8">
+                                    <label>
+                                        <input name="switch-field-1" class="ace ace-switch ace-switch-5 includes" type="checkbox">
+                                        <span class="lbl"></span>
+                                    </label>
+                                </div>
                             </div>
+                            <!-- <div class="form-group">
+                                <label class="col-sm-4 control-label no-padding-right" for="form-field-1">参数：</label>
+
+                                <div class="col-sm-8">
+                                    <input type="number" min="0" class="col-xs-12 col-sm-10">
+                                </div>
+                            </div> -->
                             <div class="form-group">
-                                <label>单价：</label>
-                                <input type="text">
-                            </div>
-                            <div class="form-group">
-                                <label>截止数：</label>
-                                <input type="text">
-                                <label>
-                                    <input name="switch-field-1" class="ace ace-switch ace-switch-5" type="checkbox">
-                                    <span class="lbl"></span>
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <label>奖励金额（元/套）：</label>
-                                <input type="text">
+                                <label class="col-sm-4 control-label no-padding-right" for="form-field-1">奖励金额（元/套）：</label>
+
+                                <div class="col-sm-8">
+                                    <input type="number" min="0" class="col-xs-12 col-sm-10 jiangLi">
+                                </div>
                             </div>
                         </form>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
-                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="tags_add">确定</button>
+                    <button data-bb-handler="confirm" type="button" class="btn btn-primary jumpPointSub">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 跳点规则修改 -->
+    <div class="modal_JumPointXiuG">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="bootbox-close-button close closed">×</button>
+                    <h4 class="modal-title">跳点信息修改</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="bootbox-body" style="overflow: hidden;">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label no-padding-right" for="form-field-1">起始数：</label>
+
+                                <div class="col-sm-8">
+                                    <input type="number" min="0" class="col-xs-12 col-sm-10 startNumX">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label no-padding-right" for="form-field-1">截止数：</label>
+
+                                <div class="col-sm-8">
+                                    <input type="number" min="0" class="col-xs-12 col-sm-10 endNumX">
+                                </div>
+                            </div>
+                            <div class="form-group" style="text-align: left;">
+                                <label class="col-sm-4 control-label no-padding-right" for="form-field-1">包含：</label>
+
+                                <div class="col-sm-8">
+                                    <label>
+                                        <input name="switch-field-1" class="ace ace-switch ace-switch-5 includesX" type="checkbox">
+                                        <span class="lbl"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- <div class="form-group">
+                                <label class="col-sm-4 control-label no-padding-right" for="form-field-1">参数：</label>
+
+                                <div class="col-sm-8">
+                                    <input type="number" min="0" class="col-xs-12 col-sm-10">
+                                </div>
+                            </div> -->
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label no-padding-right" for="form-field-1">奖励金额（元/套）：</label>
+
+                                <div class="col-sm-8">
+                                    <input type="number" min="0" class="col-xs-12 col-sm-10 jiangLiX">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
+                    <button data-bb-handler="confirm" type="button" class="btn btn-primary jumpPointSubX">确定</button>
                 </div>
             </div>
         </div>
@@ -406,7 +446,8 @@
     <script src="assets/js/config.js"></script>
     <script src="assets/js/public.js"></script>
     <script>
-        var id = $.getUrlVar('id'),yunsuan=0;
+        var id = $.getUrlVar('id'),
+            yunsuan = 0;
         window.onload = function () {
             $('#header').load('public/header.html');
             $('#sidebar').load('public/menu.html');
@@ -421,83 +462,90 @@
             projectInfo();
             configList();
         }
+
         function projectInfo() {
             var list;
             ajax.get('project/project/getProjectInfo', {}, function (res) {
                 if (res.data.yunsuan_url == '' || res.data.yunsuan_id == 0) {
-                    list=setPropertyWithOutYunsuan(res);
-                }else{
-                    list=setProperty()
+                    list = setPropertyWithOutYunsuan(res);
+                } else {
+                    list = setProperty()
                 }
                 $('#property').append(list);
             })
         }
 
-        function configList(){
-            ajax.get('config',{id:config.configList['MONEY_TYPE']},function(res){
-                var dom=$('select[name=money]'),
-                    model='<option value="{id}">{name}</option>',
-                    str='';
-                $.each(res.data[config.configList['MONEY_TYPE']].param,function(k,v){
-                    str+=model.replace('{id}',v.id).replace('{name}',v.param);
+        function configList() {
+            ajax.get('config', {
+                id: config.configList['MONEY_TYPE']
+            }, function (res) {
+                var dom = $('select[name=money]'),
+                    model = '<option value="{id}">{name}</option>',
+                    str = '';
+                $.each(res.data[config.configList['MONEY_TYPE']].param, function (k, v) {
+                    str += model.replace('{id}', v.id).replace('{name}', v.param);
                 })
                 dom.append(str);
             })
-            ajax.get('config',{id:config.configList['COMMISSION_TYPE']},function(res){
-                var dom=$('select[name=commission]'),
-                    model='<option value="{id}">{name}</option>',
-                    str='';
-                $.each(res.data[config.configList['COMMISSION_TYPE']].param,function(k,v){
-                    str+=model.replace('{id}',v.id).replace('{name}',v.param);
+            ajax.get('config', {
+                id: config.configList['COMMISSION_TYPE']
+            }, function (res) {
+                var dom = $('select[name=commission]'),
+                    model = '<option value="{id}">{name}</option>',
+                    str = '';
+                $.each(res.data[config.configList['COMMISSION_TYPE']].param, function (k, v) {
+                    str += model.replace('{id}', v.id).replace('{name}', v.param);
                 })
                 dom.append(str);
             })
         }
 
-        function setPropertyWithOutYunsuan(){
-            var model='<div class="checkbox checkSty_projectInfo"> <label> <input  type="checkbox" class="ace" name="property"> <span class="lbl">{name}</span> </label> </div>',
-                str='';
-            ajax.get('project/project/getProjectProperty',{},function(res){
-                $.each(res.data,function(k,v){
-                    str+=model.replace('{name}',v.property_name);
+        function setPropertyWithOutYunsuan() {
+            var model =
+                '<div class="checkbox checkSty_projectInfo"> <label> <input  type="checkbox" class="ace" name="property"> <span class="lbl">{name}</span> </label> </div>',
+                str = '';
+            ajax.get('project/project/getProjectProperty', {}, function (res) {
+                $.each(res.data, function (k, v) {
+                    str += model.replace('{name}', v.property_name);
                 })
 
             })
             return str;
         }
 
-        function setProperty(){
-            var model='<div class="checkbox checkSty_projectInfo"> <label> <input name="property" type="checkbox" class="ace"> <span class="lbl">{name}</span> </label> </div>',
-                str='';
-            ajax.get('project/ruleCompany/brokerRule/getProperty',{},function(res){
-                $.each(res[0].content[0].rows,function(k,v){
-                    str+=model.replace('{name}',v.WYLXMC);
+        function setProperty() {
+            var model =
+                '<div class="checkbox checkSty_projectInfo"> <label> <input name="property" type="checkbox" class="ace"> <span class="lbl">{name}</span> </label> </div>',
+                str = '';
+            ajax.get('project/ruleCompany/brokerRule/getProperty', {}, function (res) {
+                $.each(res[0].content[0].rows, function (k, v) {
+                    str += model.replace('{name}', v.WYLXMC);
                 })
 
             })
             return str;
         }
 
-        $('#save').click(function(){
-            var data={
-                'is_jump':$('input[name=td]:checked').val(),
-                'is_total':$('input[name=lj]:checked').val(),
-                'company_rule_id':id,
-                'brokerage_type':1,
-                'money_type':$('select[name=money]').val(),
-                'commission_way':$('select[name=commission]').val(),
-                'param':$('input[name=param]').val()
-            },
-              list='',
-                insertId=0;
+        $('#save').click(function () {
+            var data = {
+                    'is_jump': $('input[name=td]:checked').val(),
+                    'is_total': $('input[name=lj]:checked').val(),
+                    'company_rule_id': id,
+                    'brokerage_type': 1,
+                    'money_type': $('select[name=money]').val(),
+                    'commission_way': $('select[name=commission]').val(),
+                    'param': $('input[name=param]').val()
+                },
+                list = '',
+                insertId = 0;
 
-            $('input[name=property]:checked').each(function(){
+            $('input[name=property]:checked').each(function () {
 
-                list+=$(this).siblings('span').html()+',';
+                list += $(this).siblings('span').html() + ',';
             })
-            data.list = list.slice(0,-1);
-           ajax.post('project/ruleCompany/brokerRule/create',data,function(res){
-               insertId=res.data;
+            data.list = list.slice(0, -1);
+            ajax.post('project/ruleCompany/brokerRule/create', data, function (res) {
+                insertId = res.data;
             })
 
         })
@@ -514,17 +562,99 @@
             todayHighlight: true
         })
     </script>
-    
-    <script> 
-        //跳点规则操作
+
+    <script>
+        //跳点规则修改jumpPointSubX
+        var jumPointXiu;
         $('#dynamic-box').on('click', '.Operate_point', function () {
+            $('.modal_JumPointXiuG').css('display', 'block');
+            jumPointXiu=$(this).parent().parent().parent();
+            return false;
+        })
+        $('.jumpPointSubX').on('click',function(){
+            
+            var startNum = $('.startNumX').val();
+            var endNum = $('.endNumX').val();
+            var includes = $('.includesX').is(':checked');
+            var jiangLi = $('.jiangLiX').val();
+
+           
+            var canNum = $('input[name=param]').val();
+            var gongShi = $("select[name=commission]").find("option:selected").text();
+            var lj=$('input:radio[name="lj"]:checked').val();
+            var leiJi="";
+            if(lj==1){
+                leiJi="是";
+            }else if(lj==0){
+                leiJi="否";
+            }
+            var xunNum=jumPointXiu.children(':first').html();
+            if (!includes) {
+                endNum--;
+            }
+            jumPointXiu.html(
+                '<td class="center">'+xunNum+'</td>' +
+                '<td class="center">' + startNum + '</td>' +
+                '<td class="center">' + endNum + '</td>' +
+                '<td class="center">'+gongShi+'</td>' +
+                '<td class="center">'+canNum+'</td>' +
+                '<td class="center">'+leiJi+'</td>' +
+                '<td class="center">' + jiangLi + '</td>' +
+                '<td class="center">' +
+                '<div class="hidden-sm hidden-xs action-buttons">' +
+                '<a class="green Operate_point" href="#">修改</a>' +
+                '<a class="red delJumPoint" href="#">删除</a>'
+                );
+            $('.modal_JumPointXiuG').css('display', 'none');
+        })
+        //跳点规则新增
+        $('.build_add').on('click',function(){
             $('.modal_JumPoint').css('display', 'block');
             return false;
         })
+        $('.jumpPointSub').on('click', function () {
+            var startNum = $('.startNum').val();
+            var endNum = $('.endNum').val();
+            var includes = $('.includes').is(':checked');
+            var jiangLi = $('.jiangLi').val();
+            var canNum = $('input[name=param]').val();
+            var gongShi = $("select[name=commission]").find("option:selected").text();
+            var lj=$('input:radio[name="lj"]:checked').val();
+            var leiJi="";
+            if(lj==1){
+                leiJi="是";
+            }else if(lj==0){
+                leiJi="否";
+            }
+            var xunNum=$('.jumpPointShow').find("tr").length+1;
+            if (!includes) {
+                endNum--;
+            }
+            $('.jumpPointShow').append('<tr role="row" class="odd">' +
+                '<td class="center">'+xunNum+'</td>' +
+                '<td class="center">' + startNum + '</td>' +
+                '<td class="center">' + endNum + '</td>' +
+                '<td class="center">'+gongShi+'</td>' +
+                '<td class="center">'+canNum+'</td>' +
+                '<td class="center">'+leiJi+'</td>' +
+                '<td class="center">' + jiangLi + '</td>' +
+                '<td class="center">' +
+                '<div class="hidden-sm hidden-xs action-buttons">' +
+                // '<a class="blue" href="#">查看</a>' +
+                '<a class="green Operate_point" href="#">修改</a>' +
+                '<a class="red delJumPoint" href="#">删除</a>' +
+                '</div></td></tr>');
+            
+                $('.modal_JumPoint').css('display', 'none');
+        })
+        //
         $('.closed').on('click', function () {
             $(this).parent().parent().parent().parent().css('display', 'none');
         })
-
+        //删除跳点规则
+        $('#dynamic-box').on('click','.delJumPoint',function(){
+            $(this).parent().parent().parent().remove();
+        })
         //提成方式
         $(".com_method").on('change', function () {
             var val = $(".com_method").val();
@@ -543,15 +673,14 @@
             }
         });
         //是否跳点
-        $('.tiaodian_checked').on('click',function(){
-            var val_radio=$(this).val();
-            if(val_radio=='1'){
-                $('#dynamic-box').css('display','block');
-            }else{
-                $('#dynamic-box').css('display','none');
+        $('.tiaodian_checked').on('click', function () {
+            var val_radio = $(this).val();
+            if (val_radio == '1') {
+                $('#dynamic-box').css('display', 'block');
+            } else {
+                $('#dynamic-box').css('display', 'none');
             }
         })
-        
     </script>
 </body>
 
