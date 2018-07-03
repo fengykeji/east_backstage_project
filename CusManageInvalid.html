@@ -170,7 +170,7 @@
                     </ul>
                     <div class="operate_proInfo">
                         <!-- <button class="btn btn-primary">确定</button> -->
-                        <button class="btn btn-danger" id="save">关闭</button>
+                        <button class="btn btn-danger" id="backLastPage">关闭</button>
                     </div>
                 </div>
                 <!-- 内容开始 -->
@@ -417,6 +417,10 @@
                 path: "menu.html"
             });
         }
+        //关闭按钮返回上一页
+        $('#backLastPage').on('click',function(){
+            history.back(-1);
+        })
     </script>
 </body>
 

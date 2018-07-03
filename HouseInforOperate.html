@@ -104,6 +104,13 @@
         .close {
             font-size: 32px;
         }
+
+        .show_UpImg {
+            width: auto;
+            height: auto;
+            max-width: 300px;
+            max-height: 300px;
+        }
     </style>
 </head>
 
@@ -430,6 +437,7 @@
                                     <label class=" control-label no-padding-right" for="form-field-1-1" style="width: 100px;vertical-align: top;">添加平面图：</label>
                                     <label class="ace-file-input ace-file-multiple fileUpLabel" style="display: inline-block;width: 300px;">
                                         <input multiple="" type="file">
+                                        <img class="show_UpImg img_url" src="assets/images/null.jpg" id="pic_flat" style="display: none;width: 100%">
                                         <span class="ace-file-container" data-title="点击上传图片">
                                             <span class="ace-file-name" data-title="No File ...">
                                                 <i class=" ace-icon ace-icon fa fa-picture-o">
@@ -445,6 +453,7 @@
                                     <label class=" control-label no-padding-right" for="form-field-1-1" style="width: 100px;vertical-align: top;">添加3D图：</label>
                                     <label class="ace-file-input ace-file-multiple fileUpLabel" style="display: inline-block;width: 300px;">
                                         <input multiple="" type="file">
+                                        <img class="show_UpImg img_url" src="assets/images/null.jpg" id="pic_flat" style="display: none;width: 100%">
                                         <span class="ace-file-container" data-title="点击上传图片">
                                             <span class="ace-file-name" data-title="No File ...">
                                                 <i class=" ace-icon ace-icon fa fa-picture-o">
@@ -665,46 +674,48 @@
             })
         }
 
-        $(document).on('click','.up',function(){
-            var downId=$(this).parents('tr').attr('value'),
-                upId=$(this).parents('tr').prev().attr('value');
-            imgSort(downId,upId);
+        $(document).on('click', '.up', function () {
+            var downId = $(this).parents('tr').attr('value'),
+                upId = $(this).parents('tr').prev().attr('value');
+            imgSort(downId, upId);
         })
-        $(document).on('click','.down',function(){
-            var downId=$(this).parents('tr').next().attr('value'),
-                upId=$(this).parents('tr').attr('value');
-            imgSort(downId,upId);
+        $(document).on('click', '.down', function () {
+            var downId = $(this).parents('tr').next().attr('value'),
+                upId = $(this).parents('tr').attr('value');
+            imgSort(downId, upId);
         })
-        $(document).on('click','.del_leibie',function(){
-            var  id=$(this).parents('tr').attr('value'),
-                conf=confirm('是否删除该户型图片');
-            if(conf==true){
-                ajax.get('project/houseType/deleteImg',{'img_id':id},function(res){
-                    if(res.code==config.responseSuccess){
+        $(document).on('click', '.del_leibie', function () {
+            var id = $(this).parents('tr').attr('value'),
+                conf = confirm('是否删除该户型图片');
+            if (conf == true) {
+                ajax.get('project/houseType/deleteImg', {
+                    'img_id': id
+                }, function (res) {
+                    if (res.code == config.responseSuccess) {
                         window.location.reload();
                     }
                 })
             }
 
         })
-        function imgSort(downId,upId){
-            var data={
-                'img_id':downId,
-                'img_id_another':upId,
+
+        function imgSort(downId, upId) {
+            var data = {
+                'img_id': downId,
+                'img_id_another': upId,
             };
-            if(data.img_id_another==undefined){
+            if (data.img_id_another == undefined) {
                 alert('操作失败：该张图片已经是最前一张了。')
             }
-            if(data.img_id==undefined){
+            if (data.img_id == undefined) {
                 alert('操作失败：该张图片已经是最后一张了。')
             }
-            ajax.post('project/img/exchangeImgSort',data,function(res){
-              if(res.code==config.responseSuccess){
+            ajax.post('project/img/exchangeImgSort', data, function (res) {
+                if (res.code == config.responseSuccess) {
                     window.location.reload();
                 }
             })
         }
-
     </script>
     <script src="components/fuelux/js/spinbox.js"></script>
     <script>

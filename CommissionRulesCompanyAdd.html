@@ -149,7 +149,7 @@
                     </ul>
                     <div class="operate_proInfo">
                         <button class="btn btn-primary" id="add">新增</button>
-                        <button class="btn btn-danger" id="save">关闭</button>
+                        <button class="btn btn-danger" id="backLastPage">关闭</button>
                     </div>
                 </div>
                 <!-- 内容开始 -->
@@ -568,7 +568,10 @@
         }).next().on(ace.click_event, function () {
             $(this).prev().focus();
         });
-
+//关闭按钮返回上一页
+$('#backLastPage').on('click',function(){
+            history.back(-1);
+        })
     </script>
     <script>
         var id = $.getUrlVar('id');
