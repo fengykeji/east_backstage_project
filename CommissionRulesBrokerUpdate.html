@@ -39,8 +39,7 @@
         }
 
         .modal_addAnnex,
-        .modal_editCom,
-        .modal_addCom {
+        .modal_editCom {
             display: none;
             background-color: rgba(0, 0, 0, .5);
             position: fixed;
@@ -149,7 +148,11 @@
                     </ul>
                     <div class="operate_proInfo">
                         <button class="btn btn-primary" id="save">保存</button>
-                            <button class="btn btn-danger" id="backLastPage">关闭</button>
+
+                        <button class="btn btn-danger" id="backLastPage">关闭</button>
+
+                        <!-- <button class="btn btn-danger" >关闭</button> -->
+
                     </div>
                 </div>
                 <!-- 内容开始 -->
@@ -167,13 +170,13 @@
                                             <div class="col-xs-6" style="padding-left: 100px;">
                                                 <div class="form-group">
                                                     <label class="lab_width">规则名称：</label>
-                                                    <input class="inpt_width" type="text">
+                                                    <input class="inpt_width" type="text" name="rule_name" disabled>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">*合同开始日期：</label>
                                                     <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
                                                         <div class="input-group">
-                                                            <input type="text" class="form-control date-timepicker" name="start_time">
+                                                            <input type="text" class="form-control date-timepicker" name="plan_start" disabled>
                                                             <span class="input-group-addon">
                                                                 <i class="fa fa-clock-o bigger-110"></i>
                                                             </span>
@@ -183,14 +186,9 @@
                                                 <div class="form-group">
                                                     <label class="lab_width">*合同截止日期：</label>
                                                     <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
-                                                        <!-- <div class="input-group">
-                                                            <input class="form-control date-picker" type="text" data-date-format="yyyy-mm-dd">
-                                                            <span class="input-group-addon">
-                                                                <i class="fa fa-calendar bigger-110"></i>
-                                                            </span>
-                                                        </div> -->
+
                                                         <div class="input-group">
-                                                            <input type="text" class="form-control date-timepicker" name="start_time">
+                                                            <input type="text" class="form-control date-timepicker" name="plan_end" disabled>
                                                             <span class="input-group-addon">
                                                                 <i class="fa fa-clock-o bigger-110"></i>
                                                             </span>
@@ -199,7 +197,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width" style="vertical-align: top;">佣金规则：</label>
-                                                    <textarea class="inpt_width" rows="4"></textarea>
+                                                    <textarea class="inpt_width" rows="4" id="comment" disabled></textarea>
                                                 </div>
                                             </div>
 
@@ -209,13 +207,13 @@
                                                     <div class="inpt_width" style="display: inline-block;">
                                                         <div class="radio" style="display: inline-block;">
                                                             <label>
-                                                                <input name="form-field-radio" type="radio" class="ace">
+                                                                <input type="radio" class="ace y" name="screen" disabled>
                                                                 <span class="lbl">是</span>
                                                             </label>
                                                         </div>
                                                         <div class="radio" style="display: inline-block;">
                                                             <label>
-                                                                <input name="form-field-radio" type="radio" class="ace InvalidVisit">
+                                                                <input type="radio" class="ace InvalidVisit n" dirname="screen" disabled>
                                                                 <span class="lbl">否</span>
                                                             </label>
                                                         </div>
@@ -226,7 +224,7 @@
                                                     <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
 
                                                         <div class="input-group">
-                                                            <input type="text" class="form-control date-timepicker" name="start_time">
+                                                            <input type="text" class="form-control date-timepicker" name="act_start" disabled>
                                                             <span class="input-group-addon">
                                                                 <i class="fa fa-clock-o bigger-110"></i>
                                                             </span>
@@ -236,14 +234,9 @@
                                                 <div class="form-group">
                                                     <label class="lab_width">*实际截止日期：</label>
                                                     <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
-                                                        <!-- <div class="input-group">
-                                                            <input class="form-control date-picker" type="text" data-date-format="yyyy-mm-dd">
-                                                            <span class="input-group-addon">
-                                                                <i class="fa fa-calendar bigger-110"></i>
-                                                            </span>
-                                                        </div> -->
+
                                                         <div class="input-group">
-                                                            <input type="text" class="form-control date-timepicker" name="start_time">
+                                                            <input type="text" class="form-control date-timepicker" name="act_end" disabled>
                                                             <span class="input-group-addon">
                                                                 <i class="fa fa-clock-o bigger-110"></i>
                                                             </span>
@@ -274,62 +267,15 @@
                                                                     <th class="center">序号</th>
                                                                     <th class="center">物业类型</th>
                                                                     <th class="center">提成公式</th>
-                                                                    <th class="center">结佣周期</th>
+                                                                    <th class="center">参数</th>
                                                                     <th class="center">操作</th>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="center">1</td>
-                                                                    <td class="center">三室两厅两卫</td>
-                                                                    <td class="center">固定金额*套数</td>
-                                                                    <td class="center"></td>
-                                                                    <td class="center">
-                                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="blue" href="">查看</a>
-                                                                            <a class="green edit_leibie" href="#">编辑</a>
-                                                                            <a class="red del_leibie" href="#">删除</a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="center">2</td>
-                                                                    <td class="center">三室两厅两卫</td>
-                                                                    <td class="center">固定金额*套数</td>
-                                                                    <td class="center"></td>
-                                                                    <td class="center">
-                                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="blue" href="">查看</a>
-                                                                            <a class="green edit_leibie" href="#">编辑</a>
-                                                                            <a class="red del_leibie" href="#">删除</a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
+                                                            <tbody id="deal">
+
                                                             </tbody>
                                                         </table>
-                                                        <div class="row">
-                                                            <div class="col-xs-12">
-                                                                <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
-                                                                    <ul class="pagination">
-                                                                        <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_previous">
-                                                                            <a href="#">上一页</a>
-                                                                        </li>
-                                                                        <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">1</a>
-                                                                        </li>
-                                                                        <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">2</a>
-                                                                        </li>
-                                                                        <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">3</a>
-                                                                        </li>
-                                                                        <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_next">
-                                                                            <a href="#">下一页</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -340,9 +286,6 @@
                                     <div class="widget-header">
                                         <h4 style="display: inline-block;" class="smaller">到访佣金</h4>
                                         <p style="display: inline-block;">（客户到访后且售楼处确认后产生的佣金）</p>
-                                        <div style="position: absolute;right: 80px;top:0;z-index: 100;">
-                                            <button class="btn btn-danger addCom" style="padding: 3px 10px;">新增</button>
-                                        </div>
                                     </div>
                                     <div class="widget-body">
                                         <div class="widget-main" style="overflow: hidden;">
@@ -358,65 +301,11 @@
                                                                     <th class="center">操作</th>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="center">1</td>
-                                                                    <td class="center">人民币</td>
-                                                                    <td class="center">0.00</td>
-                                                                    <td class="center">
-                                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="green edit_Com" href="#">编辑</a>
-                                                                            <a class="red" href="#">删除</a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="center">2</td>
-                                                                    <td class="center">人民币</td>
-                                                                    <td class="center">0.00</td>
-                                                                    <td class="center">
-                                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="green edit_Com" href="#">编辑</a>
-                                                                            <a class="red" href="#">删除</a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="center">3</td>
-                                                                    <td class="center">人民币</td>
-                                                                    <td class="center">0.00</td>
-                                                                    <td class="center">
-                                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="green edit_Com" href="#">编辑</a>
-                                                                            <a class="red " href="#">删除</a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
+                                                            <tbody id="value">
+
                                                             </tbody>
                                                         </table>
-                                                        <div class="row">
-                                                            <div class="col-xs-12">
-                                                                <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
-                                                                    <ul class="pagination">
-                                                                        <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_previous">
-                                                                            <a href="#">上一页</a>
-                                                                        </li>
-                                                                        <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">1</a>
-                                                                        </li>
-                                                                        <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">2</a>
-                                                                        </li>
-                                                                        <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">3</a>
-                                                                        </li>
-                                                                        <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_next">
-                                                                            <a href="#">下一页</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -427,9 +316,6 @@
                                     <div class="widget-header">
                                         <h4 style="display: inline-block;" class="smaller">推荐佣金</h4>
                                         <p style="display: inline-block;">（经纪人将客户推荐给项目后的佣金）</p>
-                                        <div style="position: absolute;right: 80px;top:0;z-index: 100;">
-                                            <button class="btn btn-danger addCom" style="padding: 3px 10px;">新增</button>
-                                        </div>
                                     </div>
                                     <div class="widget-body">
                                         <div class="widget-main" style="overflow: hidden;">
@@ -445,8 +331,8 @@
                                                                     <th class="center">操作</th>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody>
-                                                                <tr role="row" class="odd">
+                                                            <tbody id="recommend">
+                                                                <!--  <tr role="row" class="odd">
                                                                     <td class="center">1</td>
                                                                     <td class="center">人民币</td>
                                                                     <td class="center">0.00</td>
@@ -478,32 +364,10 @@
                                                                             <a class="red " href="#">删除</a>
                                                                         </div>
                                                                     </td>
-                                                                </tr>
+                                                                </tr>-->
                                                             </tbody>
                                                         </table>
-                                                        <div class="row">
-                                                            <div class="col-xs-12">
-                                                                <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
-                                                                    <ul class="pagination">
-                                                                        <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_previous">
-                                                                            <a href="#">上一页</a>
-                                                                        </li>
-                                                                        <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">1</a>
-                                                                        </li>
-                                                                        <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">2</a>
-                                                                        </li>
-                                                                        <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">3</a>
-                                                                        </li>
-                                                                        <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_next">
-                                                                            <a href="#">下一页</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -556,43 +420,7 @@
             </div>
         </div>
     </div>
-    <!-- 添加佣金-->
-    <div class="modal_addCom">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="bootbox-close-button close closed">×</button>
-                    <h4 class="modal-title">佣金添加</h4>
-                    <input type="hidden" name="broker_type">
-                </div>
-                <div class="modal-body">
-                    <div class="bootbox-body">
-                        <form class="form-horizontal" role="form">
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">佣金金额：</label>
 
-                                <div class="col-sm-9">
-                                    <input type="number" min="0" class="col-xs-12 col-sm-10" name="broker_add_param">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2">单位：</label>
-                                <div class="col-sm-9">
-                                    <select class="col-xs-12 col-sm-10 money" style="font-size: 14px;" name="broker_add_money">
-
-                                    </select>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
-                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="broker_add">确定</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 
@@ -633,7 +461,10 @@
     <script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
     <!-- 本页js -->
     <script src="assets/js/jquery.cookie.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/public.js"></script>
     <script>
+        var id = $.getUrlVar('id');
         window.onload = function () {
             $('#header').load('public/header.html');
             $('#sidebar').load('public/menu.html');
@@ -644,7 +475,86 @@
             $.cookie('menu_data', JSON.stringify(menu_data), {
                 path: "menu.html"
             });
+            getRule();
         }
+
+        function getRule() {
+            ajax.get('project/rulePerson/brokerRule/detail', {
+                'rule_id': id
+            }, function (res) {
+                $('input[name=rule_name]').val(res.data.basic.rule_name);
+                $('input[name=plan_start]').val(res.data.basic.plan_start);
+                $('input[name=plan_end]').val(res.data.basic.plan_end);
+                $('input[name=act_start]').val(res.data.basic.act_start);
+                $('input[name=act_end]').val(res.data.basic.act_end);
+                switch (res.data.basic.is_screen) {
+                    case 0:
+                        $('.n').attr('checked', true);
+                        break;
+                    case 1:
+                        $('.y').attr('checked', true);
+                        break;
+                }
+                $('#comment').val(res.data.basic.commission_describe)
+
+                if (res.data.brokerRule != undefined) {
+                    if (res.data.brokerRule[2] != undefined) {
+                        model =
+                            '<tr role="row" class="odd" value="{a_id}"> <td class="center">{key}</td> <td class="center">{money_type}</td> <td class="center">{money}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="red " href="#">删除</a> </div> </td> </tr>'; //<a class="green edit_Com" href="#">编辑</a>
+                        id = 1;
+                        str = '';
+
+                        $.each(res.data.brokerRule[2], function (k, v) {
+                            str += model.replace('{a_id}', v.rule_id).replace('{key}', id++).replace(
+                                    '{money_type}', v.money_type)
+                                .replace('{money}', v.param);
+                        })
+                        $('#value').append(str);
+                    }
+                    if (res.data.brokerRule[3] != undefined) {
+                        model =
+                            '<tr role="row" class="odd" value="{a_id}"> <td class="center">{key}</td> <td class="center">{money_type}</td> <td class="center">{money}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="red " href="#">删除</a> </div> </td> </tr>'; //<a class="green edit_Com" href="#">编辑</a>
+                        id = 1;
+                        str = '';
+                        $.each(res.data.brokerRule[3], function (k, v) {
+                            str += model.replace('{a_id}', v.rule_id).replace('{key}', id++).replace(
+                                    '{money_type}', v.money_type)
+                                .replace('{money}', v.param);
+                        })
+                        $('#recommend').append(str);
+                    }
+
+                    if (res.data.brokerRule[1] != undefined) {
+                        model =
+                            '<tr role="row" class="odd" value="{a_id}"> <td class="center">{key}</td><td class="center">{property}</td> <td class="center">{commission_way}</td> <td class="center">{money}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <div class="red del" style="cursor: pointer">删除</div> </div> </td> </tr>'; //<a class="green edit_Com" href="#">编辑</a>
+                        id = 1,
+                            str = '';
+                        $.each(res.data.brokerRule[1], function (k, v) {
+                            str += model.replace('{a_id}', v.rule_id).replace('{key}', id++).replace(
+                                    '{commission_way}', v.commission_way).replace('{property}', v.property_type)
+                                .replace('{money}', v.param);
+                        })
+                        $('#deal').append(str);
+                    }
+
+                }
+            })
+        }
+        $(document).on('click', '.del', function () {
+            var id = $(this).parents('tr').attr('value'),
+                conf = confirm('是否删除该条规则?');
+            if (conf == true) {
+                ajax.post('project/rulePerson/brokerRule/delete', {
+                    'rule_id': id
+                }, function (res) {
+                    alert(res.msg);
+                    if (res.code == config.responseSuccess) {
+                        window.location.reload();
+                    }
+                })
+            }
+
+        })
     </script>
     <script src="components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
     <script src="components/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
@@ -677,34 +587,12 @@
         })
         //成交佣金操作
         $(".dealComAdd").on('click', function () {
-            window.location.href = "DealComRuleSetBroker.html";
+            window.location.href = "DealComRuleSetBroker.html?id=" + id;
             return false;
         })
         //佣金金额修改编辑
         $('.commissionEdit').on('click', '.edit_Com', function () {
             $('.modal_editCom').css('display', 'block');
-            return false;
-        })
-        //关闭按钮返回上一页
-        $('#backLastPage').on('click', function () {
-            history.back(-1);
-        })
-        //佣金添加
-        $('.addCom').on('click', function () {
-            switch (parseInt($(this).attr('value'))) {
-                case 2:
-                    if ($('#value').children().length >= 1) {
-                        alert('已存在到访佣金规则，请删除当前到访佣金规则后再添加');
-                    }
-                    break;
-                case 3:
-                    if ($('#recommend').children().length >= 1) {
-                        alert('已存在推荐佣金规则，请删除当前推荐佣金规则后再添加');
-                    }
-                    break;
-            }
-            $('.modal_addCom').css('display', 'block');
-            $('input[name=broker_type]').val($(this).attr('value'))
             return false;
         })
     </script>

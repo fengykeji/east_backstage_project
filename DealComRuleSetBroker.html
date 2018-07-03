@@ -155,12 +155,12 @@
                         <li>
                             <i class="ace-icon fa fa-home home-icon"></i>
                             <a href="CommissionRules.html">结佣规则</a>
-                            <a href="#">>个人规则>成交佣金</a>
+                            <a href="#">>公司规则>成交佣金</a>
                         </li>
                     </ul>
                     <div class="operate_proInfo">
-                        <button class="btn btn-primary">保存</button>
-                        <button class="btn btn-danger" id="backLastPage">关闭</button>
+                        <button class="btn btn-primary" id="save">保存</button>
+                        <button class="btn btn-danger">关闭</button>
                     </div>
                 </div>
                 <!-- 内容开始 -->
@@ -177,110 +177,36 @@
                                             <div class="col-xs-6" style="padding-left: 100px;">
                                                 <div class="form-group">
                                                     <label class="lab_width">*物业类型：</label>
-                                                    <div class="inpt_width" style="display: inline-block;">
-                                                        <div class="checkbox checkSty_projectInfo">
-                                                            <label>
-                                                                <input name="form-field-checkbox" type="checkbox" class="ace">
-                                                                <span class="lbl">住宅</span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="checkbox checkSty_projectInfo">
-                                                            <label>
-                                                                <input name="form-field-checkbox" type="checkbox" class="ace">
-                                                                <span class="lbl">公寓</span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="checkbox checkSty_projectInfo">
-                                                            <label>
-                                                                <input name="form-field-checkbox" type="checkbox" class="ace">
-                                                                <span class="lbl">别墅</span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="checkbox checkSty_projectInfo">
-                                                            <label>
-                                                                <input name="form-field-checkbox" type="checkbox" class="ace">
-                                                                <span class="lbl">商铺</span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="checkbox checkSty_projectInfo">
-                                                            <label>
-                                                                <input name="form-field-checkbox" type="checkbox" class="ace">
-                                                                <span class="lbl">写字楼</span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="checkbox checkSty_projectInfo">
-                                                            <label>
-                                                                <input name="form-field-checkbox" type="checkbox" class="ace">
-                                                                <span class="lbl">车位</span>
-                                                            </label>
-                                                        </div>
+                                                    <div class="inpt_width" style="display: inline-block;" id="property">
+
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="lab_width">*单位：</label>
-                                                    <select class="inpt_width">
-                                                        <option value="">人民币</option>
-                                                        <option value="">XXX</option>
-                                                        <option value="">XXX</option>
+                                                    <select class="inpt_width" name="money">
+
                                                     </select>
                                                 </div>
-                                                <div class="form-group">
+                                              <!--  <div class="form-group">
                                                     <label class="lab_width">提成公式：</label>
                                                     <input class="inpt_width" type="text" disabled="disabled">
-                                                </div>
+                                                </div>-->
 
                                             </div>
 
                                             <div class="col-xs-6" style="padding-left: 50px;">
-                                                <div class="form-group">
-                                                    <label class="lab_width">结佣周期：</label>
-                                                    <input class="inpt_width" type="text">
-                                                </div>
+
                                                 <div class="form-group">
                                                     <label class="lab_width">*提成方式：</label>
-                                                    <select class="inpt_width com_method">
-                                                        <option value="jin_e">固定金额*套数</option>
-                                                        <option value="zong_jia">总价*比例</option>
-                                                        <option value="mian_ji">面积*单价</option>
+                                                    <select class="inpt_width com_method" name="commission">
+
                                                     </select>
                                                 </div>
-                                                <div class="form-group jin_e">
-                                                    <label class="lab_width"></label>
-                                                    <label>金额</label>
-                                                    <select class="">
-                                                        <option value="">固定金额</option>
-                                                        <option value="">销售金额</option>
-                                                        <option value="">XXX</option>
-                                                    </select>
-                                                    <span>X</span>
-                                                    <label>套数</label>
-                                                    <input type="text">
-                                                </div>
-                                                <div class="form-group zong_jia">
-                                                    <label class="lab_width"></label>
-                                                    <label>总价</label>
-                                                    <select class="">
-                                                        <option value="">销售总价</option>
-                                                        <option value="">XXXX</option>
-                                                        <option value="">XXX</option>
-                                                    </select>
-                                                    <span>X</span>
-                                                    <label>比例</label>
-                                                    <input type="text">
-                                                </div>
-                                                <div class="form-group mian_ji">
-                                                    <label class="lab_width"></label>
-                                                    <label>面积</label>
-                                                    <select class="">
-                                                        <option value="">建筑面积</option>
-                                                        <option value="">XXXX</option>
-                                                        <option value="">XXX</option>
-                                                    </select>
-                                                    <span>X</span>
-                                                    <label>单价</label>
-                                                    <input type="text">
-                                                </div>
+
+                                                    <label>参数：</label>
+                                                    <input type="text" name="param">
+
                                             </div>
                                         </div>
                                     </div>
@@ -330,7 +256,11 @@
     <script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
     <!-- 本页js -->
     <script src="assets/js/jquery.cookie.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/public.js"></script>
     <script>
+        var id = $.getUrlVar('id'),
+            yunsuan = 0;
         window.onload = function () {
             $('#header').load('public/header.html');
             $('#sidebar').load('public/menu.html');
@@ -341,7 +271,96 @@
             $.cookie('menu_data', JSON.stringify(menu_data), {
                 path: "menu.html"
             });
+            projectInfo();
+            configList();
         }
+
+        function projectInfo() {
+            var list;
+            ajax.get('project/project/getProjectInfo', {}, function (res) {
+                if (res.data.yunsuan_url == '' || res.data.yunsuan_id == 0) {
+                    list = setPropertyWithOutYunsuan(res);
+                } else {
+                    list = setProperty()
+                }
+                $('#property').append(list);
+            })
+        }
+
+        function configList() {
+            ajax.get('config', {
+                id: config.configList['MONEY_TYPE']
+            }, function (res) {
+                var dom = $('select[name=money]'),
+                    model = '<option value="{id}">{name}</option>',
+                    str = '';
+                $.each(res.data[config.configList['MONEY_TYPE']].param, function (k, v) {
+                    str += model.replace('{id}', v.id).replace('{name}', v.param);
+                })
+                dom.append(str);
+            })
+            ajax.get('config', {
+                id: config.configList['COMMISSION_TYPE']
+            }, function (res) {
+                var dom = $('select[name=commission]'),
+                    model = '<option value="{id}">{name}</option>',
+                    str = '';
+                $.each(res.data[config.configList['COMMISSION_TYPE']].param, function (k, v) {
+                    str += model.replace('{id}', v.id).replace('{name}', v.param);
+                })
+                dom.append(str);
+            })
+        }
+
+        function setPropertyWithOutYunsuan() {
+            var model =
+                    '<div class="checkbox checkSty_projectInfo"> <label> <input  type="checkbox" class="ace" name="property"> <span class="lbl">{name}</span> </label> </div>',
+                str = '';
+            ajax.get('project/project/getProjectProperty', {}, function (res) {
+                $.each(res.data, function (k, v) {
+                    str += model.replace('{name}', v.property_name);
+                })
+
+            })
+            return str;
+        }
+
+        function setProperty() {
+            var model =
+                    '<div class="checkbox checkSty_projectInfo"> <label> <input name="property" type="checkbox" class="ace"> <span class="lbl">{name}</span> </label> </div>',
+                str = '';
+            ajax.get('project/ruleCompany/brokerRule/getProperty', {}, function (res) {
+                $.each(res[0].content[0].rows, function (k, v) {
+                    str += model.replace('{name}', v.WYLXMC);
+                })
+
+            })
+            return str;
+        }
+        $('#save').click(function () {
+            var data = {
+                    'person_rule_id': id,
+                    'broker_type': 1,
+                    'money_type': $('select[name=money]').val(),
+                    'commission_way': $('select[name=commission]').val(),
+                    'param': $('input[name=param]').val()
+                },
+                list = '',
+                insertId = 0;
+
+            $('input[name=property]:checked').each(function () {
+
+                list += $(this).siblings('span').html() + ',';
+            })
+            data.property_type= list.slice(0, -1);
+
+            ajax.post('project/rulePerson/brokerRule/create', data, function (res) {
+                alert(res.msg);
+                if(res.code==config.responseSuccess){
+                    window.location.href='CommissionRulesUpdate.html?id='+id;
+                }
+            })
+        })
     </script>
     <script src="components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
     <script src="components/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
@@ -353,10 +372,6 @@
         $('.date-picker').datepicker({
             autoclose: true,
             todayHighlight: true
-        })
-        //关闭按钮返回上一页
-        $('#backLastPage').on('click',function(){
-            history.back(-1);
         })
     </script>
     <script>
