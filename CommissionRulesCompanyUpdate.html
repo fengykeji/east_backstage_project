@@ -39,7 +39,8 @@
         }
 
         .modal_addAnnex,
-        .modal_editCom {
+        .modal_editCom,
+        .modal_addCom {
             display: none;
             background-color: rgba(0, 0, 0, .5);
             position: fixed;
@@ -451,6 +452,9 @@
                                     <div class="widget-header">
                                         <h4 style="display: inline-block;" class="smaller">到访佣金</h4>
                                         <p style="display: inline-block;">（客户到访后且售楼处确认后产生的佣金）</p>
+                                        <div style="position: absolute;right: 80px;top:0;z-index: 100;">
+                                            <button class="btn btn-danger addCom" style="padding: 3px 10px;">新增</button>
+                                        </div>
                                     </div>
                                     <div class="widget-body">
                                         <div class="widget-main" style="overflow: hidden;">
@@ -535,6 +539,9 @@
                                     <div class="widget-header">
                                         <h4 style="display: inline-block;" class="smaller">推荐佣金</h4>
                                         <p style="display: inline-block;">（经纪人将客户推荐给项目后的佣金）</p>
+                                        <div style="position: absolute;right: 80px;top:0;z-index: 100;">
+                                            <button class="btn btn-danger addCom" style="padding: 3px 10px;">新增</button>
+                                        </div>
                                     </div>
                                     <div class="widget-body">
                                         <div class="widget-main" style="overflow: hidden;">
@@ -816,8 +823,45 @@
             </div>
         </div>
     </div>
+    <!-- 添加佣金-->
+    <div class="modal_addCom">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="bootbox-close-button close closed">×</button>
+                    <h4 class="modal-title">佣金添加</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="bootbox-body">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">佣金金额：</label>
 
-    
+                                <div class="col-sm-9">
+                                    <input type="text" class="col-xs-12 col-sm-10">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2">单位：</label>
+                                <div class="col-sm-9">
+                                    <!-- <input type="text" > -->
+                                    <select class="col-xs-12 col-sm-10" style="font-size: 14px;">
+                                        <option>人民币</option>
+                                        <option>美元</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
+                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="tags_add">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
     <!-- basic scripts -->
@@ -876,11 +920,6 @@
     <script src="components/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js"></script>
     <script>
         //日历插件初始化
-        // $('.date-picker').datepicker({
-        //     autoclose: true,
-        //     todayHighlight: true
-        // })
-        //日历插件初始化
         if (!ace.vars['old_ie']) $('.date-timepicker').datetimepicker({
             //format: 'MM/DD/YYYY h:mm:ss A',//use this option to display seconds
             format: 'YYYY-MM-DD h:mm:ss',
@@ -900,11 +939,6 @@
         });
     </script>
     <script>
-        //选择乙方公司
-        // $(".companySel").on('click', function () {
-        //     window.location.href = "compayRuleSelectCom.html";
-        //     return false;
-        // })
         //添加附件
         $(".addAnnex").on('click', function () {
             $('.modal_addAnnex').css('display', 'block');
@@ -923,7 +957,11 @@
             $('.modal_editCom').css('display', 'block');
             return false;
         })
-       
+        //添加佣金
+        $('.addCom').on('click', function () {
+            $('.modal_addCom').css('display', 'block');
+            return false;
+        })
     </script>
 </body>
 
