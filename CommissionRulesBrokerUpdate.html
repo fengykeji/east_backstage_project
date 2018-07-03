@@ -49,7 +49,16 @@
             right: 0;
             z-index: 1000;
         }
-
+        .modal_addCom {
+            display: none;
+            background-color: rgba(0, 0, 0, .5);
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
         .modal-dialog {
             margin: 150px auto;
         }
@@ -286,6 +295,9 @@
                                     <div class="widget-header">
                                         <h4 style="display: inline-block;" class="smaller">到访佣金</h4>
                                         <p style="display: inline-block;">（客户到访后且售楼处确认后产生的佣金）</p>
+                                        <div style="position: absolute;right: 80px;top:0;z-index: 100;">
+                                            <div class="btn btn-danger addCom" style="padding: 3px 10px;" value="2" >新增</div>
+                                        </div>
                                     </div>
                                     <div class="widget-body">
                                         <div class="widget-main" style="overflow: hidden;">
@@ -316,6 +328,9 @@
                                     <div class="widget-header">
                                         <h4 style="display: inline-block;" class="smaller">推荐佣金</h4>
                                         <p style="display: inline-block;">（经纪人将客户推荐给项目后的佣金）</p>
+                                        <div style="position: absolute;right: 80px;top:0;z-index: 100;">
+                                            <div class="btn btn-danger addCom" style="padding: 3px 10px;" value="3" >新增</div>
+                                        </div>
                                     </div>
                                     <div class="widget-body">
                                         <div class="widget-main" style="overflow: hidden;">
@@ -420,7 +435,43 @@
             </div>
         </div>
     </div>
+    <!-- 添加佣金-->
+    <div class="modal_addCom">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="bootbox-close-button close closed">×</button>
+                    <h4 class="modal-title">佣金添加</h4>
+                    <input type="hidden" name="broker_type">
+                </div>
+                <div class="modal-body">
+                    <div class="bootbox-body">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">佣金金额：</label>
 
+                                <div class="col-sm-9">
+                                    <input type="number" min="0" class="col-xs-12 col-sm-10" name="broker_add_param">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2">单位：</label>
+                                <div class="col-sm-9">
+                                    <select class="col-xs-12 col-sm-10 money" style="font-size: 14px;" name="broker_add_money">
+
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
+                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="broker_add">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -476,8 +527,19 @@
                 path: "menu.html"
             });
             getRule();
+            configList();
         }
-
+        function configList(){
+            ajax.get('config',{id:config.configList['MONEY_TYPE']},function(res){
+                var dom=$('.money'),
+                    model='<option value="{id}">{name}</option>',
+                    str='';
+                $.each(res.data[config.configList['MONEY_TYPE']].param,function(k,v){
+                    str+=model.replace('{id}',v.id).replace('{name}',v.param);
+                })
+                dom.append(str);
+            })
+        }
         function getRule() {
             ajax.get('project/rulePerson/brokerRule/detail', {
                 'rule_id': id
@@ -555,6 +617,29 @@
             }
 
         })
+
+        $('#broker_add').click(function(){
+
+            var data={
+                'person_rule_id':$.getUrlVar('id'),
+                'broker_type':$('input[name=broker_type]').val(),
+                'param':$('input[name=broker_add_param]').val(),
+                'money_type':$('select[name=broker_add_money]').val(),
+            };
+
+            if (data.param == '') {
+                alert('请输入金额');
+                return;
+            }
+
+            ajax.post('project/rulePerson/brokerRule/create',data,function(res){
+                alert(res.msg);
+                if(res.code==config.responseSuccess){
+                    window.location.reload();
+                }
+
+            })
+        })
     </script>
     <script src="components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
     <script src="components/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
@@ -593,6 +678,28 @@
         //佣金金额修改编辑
         $('.commissionEdit').on('click', '.edit_Com', function () {
             $('.modal_editCom').css('display', 'block');
+            return false;
+        })
+
+        //佣金添加
+        $('.addCom').on('click', function () {
+            switch (parseInt($(this).attr('value'))){
+                case 2:
+                    if( $('#value').children().length>=1){
+                        alert('已存在到访佣金规则，请删除当前到访佣金规则后再添加');
+                        return false;
+                    }
+                    break;
+                case 3:
+                    if( $('#recommend').children().length>=1){
+                        alert('已存在推荐佣金规则，请删除当前推荐佣金规则后再添加');
+                        return false;
+                    }
+                    break;
+            }
+
+            $('.modal_addCom').css('display', 'block');
+            $('input[name=broker_type]').val($(this).attr('value'))
             return false;
         })
     </script>

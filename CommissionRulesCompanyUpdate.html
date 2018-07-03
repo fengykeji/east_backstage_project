@@ -148,7 +148,7 @@
                         </li>
                     </ul>
                     <div class="operate_proInfo">
-                        <button class="btn btn-primary">保存</button>
+                        <button class="btn btn-primary" id="save">保存</button>
                         <button class="btn btn-danger" id="backLastPage">关闭</button>
                     </div>
                 </div>
@@ -301,52 +301,9 @@
                                                                     <th class="center">操作</th>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="center">1</td>
-                                                                    <td class="center">三室两厅两卫</td>
-                                                                    <td class="center">是</td>
-                                                                    <td class="center">固定金额*套数</td>
-                                                                    <td class="center">人民币</td>
-                                                                    <td class="center">0.00</td>
-                                                                    <td class="center">
-                                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="blue" href="">查看</a>
-                                                                            <a class="green edit_leibie" href="#">编辑</a>
-                                                                            <a class="red del_leibie" href="#">删除</a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="center">2</td>
-                                                                    <td class="center">三室两厅两卫</td>
-                                                                    <td class="center">是</td>
-                                                                    <td class="center">固定金额*套数</td>
-                                                                    <td class="center">人民币</td>
-                                                                    <td class="center">0.00</td>
-                                                                    <td class="center">
-                                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="blue" href="">查看</a>
-                                                                            <a class="green edit_leibie" href="#">编辑</a>
-                                                                            <a class="red del_leibie" href="#">删除</a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="center">3</td>
-                                                                    <td class="center">三室两厅两卫</td>
-                                                                    <td class="center">是</td>
-                                                                    <td class="center">固定金额*套数</td>
-                                                                    <td class="center">人民币</td>
-                                                                    <td class="center">0.00</td>
-                                                                    <td class="center">
-                                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="blue" href="">查看</a>
-                                                                            <a class="green edit_leibie" href="#">编辑</a>
-                                                                            <a class="red del_leibie" href="#">删除</a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
+                                                            <tbody id="deal">
+
+
                                                             </tbody>
                                                         </table>
 
@@ -650,26 +607,40 @@
                 }
 
                 if(res.data.brokerRule!=undefined){
-                    model='<tr role="row" class="odd" value="{a_id}"> <td class="center">{key}</td> <td class="center">{money_type}</td> <td class="center">{money}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="red " href="#">删除</a> </div> </td> </tr>';//<a class="green edit_Com" href="#">编辑</a>
+                    model='<tr role="row" class="odd" value="{a_id}"> <td class="center">{key}</td> <td class="center">{money_type}</td> <td class="center">{money}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <div class="red del_broker" style="cursor: pointer" value="{b_id}">删除</div></div> </td> </tr>';//<a class="green edit_Com" href="#">编辑</a>
                     if(res.data.brokerRule[2]!=undefined){
                         id=1;
                         str='';
 
                         $.each(res.data.brokerRule[2], function (k, v) {
-                            str += model.replace('{a_id}', v.id).replace('{key}', id++).replace('{money_type}', v.money_type)
-                                .replace('{money}', v.param);
+                            str += model.replace('{a_id}', v.rule_).replace('{key}', id++).replace('{money_type}', v.money_type)
+                                .replace('{money}', v.param).replace('{b_id}', v.rule_id);
                         })
                         $('#value').append(str);
                     }
                     if(res.data.brokerRule[3]!=undefined){
-                        id=1,
+
+                        id=1;
                         str='';
                         $.each(res.data.brokerRule[3], function (k, v) {
-                            str += model.replace('{a_id}', v.id).replace('{key}', id++).replace('{money_type}', v.money_type)
-                                .replace('{money}', v.param);
+                            str += model.replace('{a_id}', v.rule_id).replace('{key}', id++).replace('{money_type}', v.money_type)
+                                .replace('{money}', v.param).replace('{b_id}', v.rule_id);
                         })
                         $('#recommend').append(str);
                     }
+
+                    if(res.data.brokerRule[1]!=undefined){
+                        var model='<tr role="row" class="odd" value="{a_id}"> <td class="center">{key}</td> <td class="center">{property}</td> <td class="center">{jump}</td> <td class="center">{commission}</td> <td class="center">{money}</td> <td class="center">{param}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons">  <div class="red del_broker" style="cursor: pointer" value="{b_id}">删除</div> </div> </td> </tr>'
+                        id=1;
+                        str='';
+                        $.each(res.data.brokerRule[1], function (k, v) {
+                            str += model.replace('{a_id}', v.rule_id).replace('{b_id}', v.rule_id).replace('{key}', id++).replace('{property}', v.property_type).replace('{jump}',v.is_jump).replace('{commission}',v.commission_way).replace('{money}',v.money_type).replace('{param}',v.param);
+                        })
+
+                        $('#deal').append(str);
+                    }
+
+
 
 
                 }
@@ -679,8 +650,9 @@
 
         }
         $(document).on('click', '.delFile', function () {
-            var id = $(this).parents('tr').attr('value'),
+            var id = $(this).attr('value'),
                 conf = confirm('确定删除该文件?');
+
             if (conf == true) {
                 ajax.post('project/ruleCompany/agreement/delete', {
                     'id': id
@@ -693,6 +665,21 @@
             }
         })
 
+    $(document).on('click','.del_broker',function(){
+        var id = $(this).parents('tr').attr('value'),
+            conf = confirm('确定删除该条结佣规则?');
+
+        if (conf == true) {
+            ajax.post('project/ruleCompany/brokerRule/delete', {
+                'rule_id': id
+            }, function (res) {
+                alert(res.msg);
+                if (res.code == config.responseSuccess) {
+                    window.location.reload();
+                }
+            })
+        }
+    })
 
     </script>
     <script src="components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
@@ -760,6 +747,56 @@
 
             })
         })
+        $('#save').click(function(){
+            var data={
+                'rule_id':id,
+                'project_name':$('input[name=project_name]').val(),
+                'project_docker':$('input[name=project_docker]').val(),
+                'project_docker_tel':$('input[name=project_docker_tel]').val(),
+                'compact_start':$('input[name=compact_start]').val(),
+                'compact_end':$('input[name=compact_end]').val(),
+                'sell_docker':$('input[name=sell_docker]').val(),
+                'sell_docker_tel':$('input[name=sell_docker_tel]').val(),
+            };
+            if(data.project_name==''){
+                alert('请输入项目名称');
+                return false;
+            }
+            if(data.project_docker==''){
+                alert('请输入甲方项目对接人姓名');
+                return false;
+            }
+            if(data.project_docker_tel==''){
+                alert('请输入甲方项目对接人电话');
+                return false;
+            }
+            if(data.compact_begin==''){
+                alert('请输入合同开始时间');
+                return false;
+            }
+            if(Date.parse(new Date(data.compact_begin))>Date.parse(new Date(data.compact_end))){
+                alert('计划开始时间不能大于计划结束时间');
+                return false;
+            }
+            if(data.compact_end==''){
+                alert('请输入合同结束时间');
+                return false;
+            }
+            if(data.sell_docker==''){
+                alert('请输出乙方对接人姓名');
+                return false;
+            }
+            if(data.sell_docker_tel==''){
+                alert('请输出乙方对接人姓名');
+                return false;
+            }
+            ajax.post('project/ruleCompany/update',data,function(res){
+                alert(res.msg);
+                if(res.code==config.responseSuccess){
+                    window.history.go(-1);
+                }
+            })
+        })
     </script>
     <script>
         //添加附件
@@ -786,11 +823,13 @@
                 case 2:
                     if( $('#value').children().length>=1){
                         alert('已存在到访佣金规则，请删除当前到访佣金规则后再添加');
+                        return false;
                     }
                     break;
                 case 3:
                     if( $('#recommend').children().length>=1){
                         alert('已存在推荐佣金规则，请删除当前推荐佣金规则后再添加');
+                        return false;
                     }
                     break;
             }

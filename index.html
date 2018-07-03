@@ -77,6 +77,13 @@
                         <div class="col-xs-12">
                             <form class="form-horizontal" role="form">
                                 <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 项目编号：</label>
+
+                                    <div class="col-sm-9">
+                                        <p class="col-xs-10 col-sm-5 inputP" id="project_id"></p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 项目名称：</label>
 
                                     <div class="col-sm-9">
@@ -86,30 +93,30 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 项目地址：</label>
                                     <div class="col-sm-9">
-                                        <select name="province" class="pro_province"></select>
-                                        <select name="city" class="pro_city"></select>
-                                        <select name="area" class="pro_area"></select>
+                                        <select name="province" class="pro_province" disabled></select>
+                                        <select name="city" class="pro_city" disabled></select>
+                                        <select name="area" class="pro_area" disabled></select>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label no-padding-right" for="form-field-2"></label>
 
                                     <div class="col-sm-9">
-                                        <input type="text" class="col-xs-10 col-sm-5" id="absolute_address">
+                                        <input type="text" class="col-xs-10 col-sm-5" id="absolute_address" disabled>
                                         <!-- <a href="map.html" class="ace-icon fa fa-map-marker bigger-200 map_sty"></a> -->
                                         <a href="#" class="ace-icon fa fa-map-marker bigger-200 map_sty"></a>
-                                        <input type="hidden" name="latitude">
-                                        <input type="hidden" name="longitude">
+                                        <!--<input type="hidden" name="latitude">
+                                        <input type="hidden" name="longitude">-->
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-xs-12">
                                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">项目主图：</label>
                                         <label class="ace-file-input ace-file-multiple col-sm-3 fileUpLabel">
-                                           <!-- <div class="show_UpImgDiv"> -->
-                                            <img class="show_UpImg img_url" src="assets/images/null.jpg" id="list_img">
-                                           <!-- </div> -->
-                                            <input multiple="" type="file" accept="image/*" id="list_img_edit">
+                                           <
+                                            <img class="show_UpImg img_url" src="assets/images/null.jpg" id="img_url">
+
+                                            <!--<input multiple="" type="file" accept="image/*" id="img_url_edit">-->
                                         </label>
 
                                     </div>
@@ -130,10 +137,10 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label no-padding-right" for="form-field-2"></label>
-                                    <div class="col-sm-9">
-                                        <!-- <input id="label_Add_int" type="text"> -->
+                                   <!-- <div class="col-sm-9">
+
                                         <span id="label_Add" class="btn btn-success ">添加标签</span>
-                                    </div>
+                                    </div>-->
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 开发商：</label>
@@ -145,7 +152,7 @@
                                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 项目状态：</label>
 
                                     <div class="col-sm-9">
-                                        <select class="form-control" style="width: 150px;" name="sale_state">
+                                        <select class="form-control" style="width: 150px;" name="sale_state" disabled>
                                             <option value=""></option>
                                             <option value="1">待售</option>
                                             <option value="2">在售</option>
@@ -173,7 +180,7 @@
                                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 楼栋信息主图：</label>
                                         <label class="ace-file-input ace-file-multiple col-sm-3 fileUpLabel">
                                             <img class="show_UpImg img_url" src="assets/images/null.jpg" id="list_img">
-                                            <input multiple="" type="file" accept="image/*" id="list_img_edit">
+                                            <<!--input multiple="" type="file" accept="image/*" id="list_img_edit">-->
                                         </label>
 
                                     </div>
@@ -365,7 +372,7 @@
                     $('input[name="longitude"]').val(pt.lng);
                     $('#absolute_address').val(addComp.province + addComp.city + addComp.district +
                         addComp.street);
-                    $('.modal_map').css('display', 'none');
+                    //$('.modal_map').css('display', 'none');
                 });
             });
         })
@@ -411,7 +418,7 @@
                     getAddress();
                     data.config = res.data;
                     var property =
-                        ' <div class="checkbox checkSty_projectInfo"><label> <input name="form-field-checkbox" type="checkbox" class="ace" value="{id}"><span class="lbl">{name}</span></label> </div>',
+                        ' <div class="checkbox checkSty_projectInfo"><label> <input name="form-field-checkbox" type="checkbox" class="ace" value="{id}" disabled><span class="lbl">{name}</span></label> </div>',
                         str = '',
                         property_dom = $('#property');
                     $.each(data.config[config.configList.PROPERTY_TYPE].param, function (k, v) {
@@ -456,9 +463,14 @@
                     $('#absolute_address').val(res.data.absolute_address);
                     $('#yunsuan_url').val(res.data.yunsuan_url);
                     $('#developer_name').html(res.data.developer_name);
+                    $('#project_id').html(res.data.project_id);
                     $("select[name='sale_state']").find("option[value=" + res.data.sale_state + "]").attr(
                         'selected', 'selected');
                     if (res.data.img_url != '') {
+                        $('#img_url').attr('src', config.address + res.data.img_url).attr(
+                            'address', res.data.total_float_url);
+                    }
+                    if (res.data.total_float_url != '') {
                         $('#list_img').attr('src', config.address + res.data.total_float_url).attr(
                             'address', res.data.total_float_url);
                     }
@@ -520,7 +532,7 @@
                     if (res.data.project_tags != null) {
                         var project_tags = res.data.project_tags.split(','),
                             model =
-                            '<span class="tag" value="{id}"><span class="tag_name" > {name}</span> <button type="button" class="close closed" value="{id}">×</button> </span>'
+                            '<span class="tag" value="{id}"><span class="tag_name" > {name}</span> <!--<button type="button" class="close closed" value="{id}">×</button>--> </span>'
                         str = '';
                         $.each(data.config[config.configList.PROJECT_TAGS_DEFAULT].param, function (k,
                             v) {
@@ -553,6 +565,7 @@
             oldData = {
                 'province': $('select[name="province"]').val(),
                 'city': $('select[name="city"]').val(),
+                'img_url':$('#img_url').attr('address'),
                 'district': $('select[name="area"]').val(),
                 'absolute_address': $('#absolute_address').val(),
                 'latitude': $('input[name="latitude"]').val(),
@@ -604,6 +617,19 @@
             })
         })
 
+        $('#img_url_edit').on('change', function () {
+            if ($(this)[0].files[0].size >= config.allowImgFileSize) {
+                alert(config.ImgSizeBeyondErrMes);
+                return false;
+            }
+            var formData = new FormData();
+            formData.append("img", $(this)[0].files[0]);
+            ajax.file(formData, 'img', function (res) {
+                $('#img_url_edit').siblings('.img_url').attr('src', config.address + res.data).attr(
+                    'address', res.data);
+            })
+        })
+
         $(document).on('change', 'select[name="province"]', function () {
 
             var value = $('select[name="province"]').val(),
@@ -639,6 +665,7 @@
             var data = {
                 'province': $('select[name="province"]').val(),
                 'city': $('select[name="city"]').val(),
+                'img_url':$('#img_url').attr('address'),
                 'district': $('select[name="area"]').val(),
                 'absolute_address': $('#absolute_address').val(),
                 'latitude': $('input[name="latitude"]').val(),
@@ -667,7 +694,6 @@
             if (data.project_tags != '') {
                 data.project_tags = data.project_tags.slice(0, -1);
             }
-
             ajax.post('project/update', data, function (res) {
                 alert(res.msg);
                 if (res.code == config.responseSuccess) {
