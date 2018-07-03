@@ -222,13 +222,12 @@
                     <!-- </div>  -->
                 </div>
                 <!-- <div class="modal-footer">
-				<button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
-				<button data-bb-handler="confirm" type="button" class="btn btn-primary" id="tags_add">确定</button>
-			</div> -->
+                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
+                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="tags_add">确定</button>
+                </div> -->
             </div>
         </div>
     </div>
-
 
 
     <!-- basic scripts -->
@@ -511,7 +510,8 @@
                             model =
                             '<span class="tag" value="{id}"><span class="tag_name" > {name}</span> <button type="button" class="close closed" value="{id}">×</button> </span>'
                         str = '';
-                        $.each(data.config[config.configList.PROJECT_TAGS_DEFAULT].param, function (k, v) {
+                        $.each(data.config[config.configList.PROJECT_TAGS_DEFAULT].param, function (k,
+                            v) {
                             if ($.inArray(v.id.toString(), project_tags) != -1) {
                                 str += model.replace('{id}', v.id).replace('{name}', v.param);
                             } else {
@@ -572,7 +572,8 @@
                 '<span class="tag" value="{valuea}"><span class="tag_name"> {name}</span> <button type="button" class="close closed" >×</button> </span>',
                 str = '';
             $('.point').each(function () {
-                str += model.replace('{name}', $(this).html()).replace('{valuea}', $(this).attr('value'));
+                str += model.replace('{name}', $(this).html()).replace('{valuea}', $(this).attr(
+                    'value'));
                 $(this).remove();
             })
             $('#project_tag').append(str);
@@ -601,7 +602,8 @@
                 if (v.code == value) {
                     data.currentPointProvince = v.city;
                     $.each(v.city, function (k, v) {
-                        city.append('<option value="' + v.code + '">' + v.name + '</option>')
+                        city.append('<option value="' + v.code + '">' + v.name +
+                            '</option>')
                     })
                 }
             })
@@ -614,7 +616,8 @@
                 if (v.code == value) {
                     data.currentPointCity = v.district;
                     $.each(v.district, function (k, v) {
-                        area.append('<option value="' + v.code + '">' + v.name + '</option>')
+                        area.append('<option value="' + v.code + '">' + v.name +
+                            '</option>')
                     })
                 }
             })
