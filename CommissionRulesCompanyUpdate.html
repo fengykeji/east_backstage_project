@@ -37,10 +37,8 @@
         .checkSty_projectInfo {
             float: left;
         }
-
         .modal_addAnnex,
-        .modal_editCom,
-        .modal_addCom {
+        .modal_editCom {
             display: none;
             background-color: rgba(0, 0, 0, .5);
             position: fixed;
@@ -50,35 +48,28 @@
             right: 0;
             z-index: 1000;
         }
-
         .modal-dialog {
             margin: 150px auto;
         }
-
         .bootbox-body {
             font-size: 18px;
             margin-top: 25px;
             text-align: center;
         }
-
         .modal-content {
             padding: 30px 50px;
         }
-
         .modal-footer {
             margin-top: 20px;
         }
-
         .close {
             font-size: 32px;
         }
-
         .operate_proInfo {
             position: absolute;
             right: 100px;
             z-index: 100;
         }
-
         .user-info {
             max-width: 150px;
             display: inline-block;
@@ -91,19 +82,15 @@
             position: relative;
             top: 14px;
         }
-
         .inpt_width {
             width: 70%;
         }
-
         .lab_width {
             width: 150px;
         }
-
         /* #dynamic-table td {
             vertical-align: middle;
         } */
-
         .pro_coop_record {
             text-align: center;
             font-size: 15px;
@@ -114,855 +101,688 @@
 </head>
 
 <body class="no-skin">
-    <div id="header"></div>
+<div id="header"></div>
 
 
 
-    <!-- /section:basics/navbar.layout -->
-    <div class="main-container" id="main-container">
-        <script type="text/javascript">
-            try {
-                ace.settings.check('main-container', 'fixed')
-            } catch (e) {}
-        </script>
+<!-- /section:basics/navbar.layout -->
+<div class="main-container" id="main-container">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('main-container', 'fixed')
+        } catch (e) {}
+    </script>
 
-        <!-- 菜单开始 -->
-        <div id="sidebar" class="sidebar responsive ace-save-state">
+    <!-- 菜单开始 -->
+    <div id="sidebar" class="sidebar responsive ace-save-state">
 
-        </div>
+    </div>
 
-        <!-- /section:basics/sidebar -->
-        <div class="main-content">
-            <div class="main-content-inner">
-                <div class="breadcrumbs" id="breadcrumbs">
-                    <script type="text/javascript">
-                        try {
-                            ace.settings.check('breadcrumbs', 'fixed')
-                        } catch (e) {}
-                    </script>
-                    <ul class="breadcrumb">
-                        <li>
-                            <i class="ace-icon fa fa-home home-icon"></i>
-                            <a href="CommissionRules.html">结佣规则</a>
-                            <a href="#">>公司规则</a>
-                        </li>
-                    </ul>
-                    <div class="operate_proInfo">
-                        <button class="btn btn-primary">保存</button>
-                        <button class="btn btn-danger" id="save">关闭</button>
-                    </div>
+    <!-- /section:basics/sidebar -->
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs" id="breadcrumbs">
+                <script type="text/javascript">
+                    try {
+                        ace.settings.check('breadcrumbs', 'fixed')
+                    } catch (e) {}
+                </script>
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="ace-icon fa fa-home home-icon"></i>
+                        <a href="CommissionRules.html">结佣规则</a>
+                        <a href="#">>公司规则</a>
+                    </li>
+                </ul>
+                <div class="operate_proInfo">
+                    <button class="btn btn-primary">保存</button>
+                    <button class="btn btn-danger" id="save">关闭</button>
                 </div>
-                <!-- 内容开始 -->
-                <div class="page-content">
-                    <div class="row" style="margin-top: 50px;">
-                        <div class="col-xs-12">
-                            <form class="form-horizontal" role="form">
-                                <div class="widget-box">
-                                    <div class="widget-header" style="position: relative;">
-                                        <h4 class="smaller" style="display: inline-block;">合同信息</h4>
-                                        <span>（甲方为项目方，乙方为销售方）</span>
-                                    </div>
-                                    <div class="widget-body">
-                                        <div class="widget-main">
-                                            <div class="col-xs-6" style="padding-left: 100px;">
-                                                <div class="form-group">
-                                                    <label class="lab_width">甲方单位：</label>
-                                                    <input class="inpt_width" type="text">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">甲方对接人：</label>
-                                                    <input class="inpt_width" type="text">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">甲方对接人电话：</label>
-                                                    <input class="inpt_width" type="text">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">*合同开始日期：</label>
-                                                    <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control date-timepicker" name="start_time">
-                                                            <span class="input-group-addon">
-                                                                <i class="fa fa-clock-o bigger-110"></i>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">*合同截止日期：</label>
-                                                    <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control date-timepicker" name="start_time">
-                                                            <span class="input-group-addon">
-                                                                <i class="fa fa-clock-o bigger-110"></i>
-                                                            </span>
-                                                        </div>
+            </div>
+            <!-- 内容开始 -->
+            <div class="page-content">
+                <div class="row" style="margin-top: 50px;">
+                    <div class="col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="widget-box">
+                                <div class="widget-header" style="position: relative;">
+                                    <h4 class="smaller" style="display: inline-block;">合同信息</h4>
+                                    <span>（甲方为项目方，乙方为销售方）</span>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="widget-main">
+                                        <div class="col-xs-6" style="padding-left: 100px;">
+                                            <div class="form-group">
+                                                <label class="lab_width">甲方单位：</label>
+                                                <input class="inpt_width" type="text" name="project_name" disabled>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">甲方对接人：</label>
+                                                <input class="inpt_width" type="text" name="project_docker" disabled>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">甲方对接人电话：</label>
+                                                <input class="inpt_width" type="text" name="project_docker_tel" disabled>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">*合同开始日期：</label>
+                                                <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control date-timepicker" name="compact_start" disabled>
+
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">*合同截止日期：</label>
+                                                <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control date-timepicker" name="compact_end" disabled>
 
-                                            <div class="col-xs-6" style="padding-left: 50px;">
-                                                <div class="form-group">
-                                                    <label class="lab_width">乙方单位：</label>
-                                                    <div class="inpt_width" style="display: inline-block;">
-                                                        <input type="text" disabled="disabled">
-                                                        <!-- <button class="btn btn-sm btn-info companySel" style="vertical-align: top;">选择</button> -->
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">乙方对接人：</label>
-                                                    <input class="inpt_width" type="text">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">乙方对接人电话：</label>
-                                                    <input class="inpt_width" type="text">
+                                        <div class="col-xs-6" style="padding-left: 50px;">
+                                            <div class="form-group">
+                                                <label class="lab_width">乙方单位：</label>
+                                                <div class="inpt_width" style="display: inline-block;">
+                                                    <input type="text" disabled="disabled" name="sell_id" disabled>
                                                 </div>
 
-                                                <div class="form-group">
-                                                    <label class="lab_width">*实际开始日期：</label>
-                                                    <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control date-timepicker" name="start_time">
-                                                            <span class="input-group-addon">
-                                                                <i class="fa fa-clock-o bigger-110"></i>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">*实际截止日期：</label>
-                                                    <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control date-timepicker" name="start_time">
-                                                            <span class="input-group-addon">
-                                                                <i class="fa fa-clock-o bigger-110"></i>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </div>
-                                            <div style="clear: both;"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="widget-box" style="margin-top: 20px;">
-                                    <div class="widget-header">
-                                        <h4 class="smaller">附件</h4>
-                                        <div style="position: absolute;right: 80px;top:0;z-index: 100;">
-                                            <button class="btn btn-danger addAnnex" style="padding: 3px 10px;">新增</button>
-                                        </div>
-                                    </div>
-                                    <div class="widget-body">
-                                        <div class="widget-main" style="overflow: hidden;">
-                                            <div class="col-xs-12">
-                                                <div>
-                                                    <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
-                                                        <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
-                                                            <thead>
-                                                                <tr role="row">
-                                                                    <th class="center">序号</th>
-                                                                    <th class="center">文件名称</th>
-                                                                    <th class="center"></th>
-                                                                    <th class="center">上传人员</th>
-                                                                    <th class="center">上传时间</th>
-                                                                    <th class="center">操作</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="center">1</td>
-                                                                    <td class="center">三室两厅两卫</td>
-                                                                    <td class="center">
-                                                                        <a href="">查看附件</a>
-                                                                    </td>
-                                                                    <td class="center">某某某某</td>
-                                                                    <td class="center">2015-12-12</td>
-                                                                    <td class="center">
-                                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="green addAnnex" href="#">编辑</a>
-                                                                            <a class="red" href="#">删除</a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="center">2</td>
-                                                                    <td class="center">三室两厅两卫</td>
-                                                                    <td class="center">
-                                                                        <a href="">查看附件</a>
-                                                                    </td>
-                                                                    <td class="center">某某某某</td>
-                                                                    <td class="center">2015-12-12</td>
-                                                                    <td class="center">
-                                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="green addAnnex" href="#">编辑</a>
-                                                                            <a class="red" href="#">删除</a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="center">3</td>
-                                                                    <td class="center">三室两厅两卫</td>
-                                                                    <td class="center">
-                                                                        <a href="">查看附件</a>
-                                                                    </td>
-                                                                    <td class="center">某某某某</td>
-                                                                    <td class="center">2015-12-12</td>
-                                                                    <td class="center">
-                                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="green edit_leibie" href="#">编辑</a>
-                                                                            <a class="red del_leibie" href="#">删除</a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                        <div class="row">
-                                                            <div class="col-xs-12">
-                                                                <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
-                                                                    <ul class="pagination">
-                                                                        <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_previous">
-                                                                            <a href="#">上一页</a>
-                                                                        </li>
-                                                                        <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">1</a>
-                                                                        </li>
-                                                                        <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">2</a>
-                                                                        </li>
-                                                                        <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">3</a>
-                                                                        </li>
-                                                                        <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_next">
-                                                                            <a href="#">下一页</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">乙方对接人：</label>
+                                                <input class="inpt_width" type="text" name="sell_docker" disabled>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="widget-box" style="margin-top: 20px;">
-                                    <div class="widget-header">
-                                        <h4 style="display: inline-block;" class="smaller">成交佣金</h4>
-                                        <p style="display: inline-block;">（推荐的客户在该项目购置房源后产生的佣金）</p>
-                                        <div style="position: absolute;right: 80px;top:0;z-index: 100;">
-                                            <button class="btn btn-danger dealComAdd" style="padding: 3px 10px;">新增</button>
-                                        </div>
-                                    </div>
-                                    <div class="widget-body">
-                                        <div class="widget-main" style="overflow: hidden;">
-                                            <div class="col-xs-12">
-                                                <div>
-                                                    <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
-                                                        <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
-                                                            <thead>
-                                                                <tr role="row">
-                                                                    <th class="center">序号</th>
-                                                                    <th class="center">物业类型</th>
-                                                                    <th class="center">跳点</th>
-                                                                    <th class="center">提成公式</th>
-                                                                    <th class="center">单位</th>
-                                                                    <th class="center">奖励金额（元/套）</th>
-                                                                    <th class="center">操作</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="center">1</td>
-                                                                    <td class="center">三室两厅两卫</td>
-                                                                    <td class="center">是</td>
-                                                                    <td class="center">固定金额*套数</td>
-                                                                    <td class="center">人民币</td>
-                                                                    <td class="center">0.00</td>
-                                                                    <td class="center">
-                                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="blue" href="">查看</a>
-                                                                            <a class="green edit_leibie" href="#">编辑</a>
-                                                                            <a class="red del_leibie" href="#">删除</a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="center">2</td>
-                                                                    <td class="center">三室两厅两卫</td>
-                                                                    <td class="center">是</td>
-                                                                    <td class="center">固定金额*套数</td>
-                                                                    <td class="center">人民币</td>
-                                                                    <td class="center">0.00</td>
-                                                                    <td class="center">
-                                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="blue" href="">查看</a>
-                                                                            <a class="green edit_leibie" href="#">编辑</a>
-                                                                            <a class="red del_leibie" href="#">删除</a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="center">3</td>
-                                                                    <td class="center">三室两厅两卫</td>
-                                                                    <td class="center">是</td>
-                                                                    <td class="center">固定金额*套数</td>
-                                                                    <td class="center">人民币</td>
-                                                                    <td class="center">0.00</td>
-                                                                    <td class="center">
-                                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="blue" href="">查看</a>
-                                                                            <a class="green edit_leibie" href="#">编辑</a>
-                                                                            <a class="red del_leibie" href="#">删除</a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                        <div class="row">
-                                                            <div class="col-xs-12">
-                                                                <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
-                                                                    <ul class="pagination">
-                                                                        <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_previous">
-                                                                            <a href="#">上一页</a>
-                                                                        </li>
-                                                                        <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">1</a>
-                                                                        </li>
-                                                                        <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">2</a>
-                                                                        </li>
-                                                                        <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">3</a>
-                                                                        </li>
-                                                                        <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_next">
-                                                                            <a href="#">下一页</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">乙方对接人电话：</label>
+                                                <input class="inpt_width" type="text" name="sell_docker_tel" disabled>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="widget-box" style="margin-top: 20px;">
-                                    <div class="widget-header">
-                                        <h4 style="display: inline-block;" class="smaller">到访佣金</h4>
-                                        <p style="display: inline-block;">（客户到访后且售楼处确认后产生的佣金）</p>
-                                        <div style="position: absolute;right: 80px;top:0;z-index: 100;">
-                                            <button class="btn btn-danger addCom" style="padding: 3px 10px;">新增</button>
-                                        </div>
-                                    </div>
-                                    <div class="widget-body">
-                                        <div class="widget-main" style="overflow: hidden;">
-                                            <div class="col-xs-12">
-                                                <div class="commissionEdit">
-                                                    <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
-                                                        <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
-                                                            <thead>
-                                                                <tr role="row">
-                                                                    <th class="center">序号</th>
-                                                                    <th class="center">单位</th>
-                                                                    <th class="center">奖励金额（元/套）</th>
-                                                                    <th class="center">操作</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="center">1</td>
-                                                                    <td class="center">人民币</td>
-                                                                    <td class="center">0.00</td>
-                                                                    <td class="center">
-                                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="green edit_Com" href="#">编辑</a>
-                                                                            <a class="red" href="#">删除</a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="center">2</td>
-                                                                    <td class="center">人民币</td>
-                                                                    <td class="center">0.00</td>
-                                                                    <td class="center">
-                                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="green edit_Com" href="#">编辑</a>
-                                                                            <a class="red" href="#">删除</a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="center">3</td>
-                                                                    <td class="center">人民币</td>
-                                                                    <td class="center">0.00</td>
-                                                                    <td class="center">
-                                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="green edit_Com" href="#">编辑</a>
-                                                                            <a class="red " href="#">删除</a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                        <div class="row">
-                                                            <div class="col-xs-12">
-                                                                <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
-                                                                    <ul class="pagination">
-                                                                        <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_previous">
-                                                                            <a href="#">上一页</a>
-                                                                        </li>
-                                                                        <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">1</a>
-                                                                        </li>
-                                                                        <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">2</a>
-                                                                        </li>
-                                                                        <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">3</a>
-                                                                        </li>
-                                                                        <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_next">
-                                                                            <a href="#">下一页</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="widget-box" style="margin-top: 20px;">
-                                    <div class="widget-header">
-                                        <h4 style="display: inline-block;" class="smaller">推荐佣金</h4>
-                                        <p style="display: inline-block;">（经纪人将客户推荐给项目后的佣金）</p>
-                                        <div style="position: absolute;right: 80px;top:0;z-index: 100;">
-                                            <button class="btn btn-danger addCom" style="padding: 3px 10px;">新增</button>
-                                        </div>
-                                    </div>
-                                    <div class="widget-body">
-                                        <div class="widget-main" style="overflow: hidden;">
-                                            <div class="col-xs-12">
-                                                <div class="commissionEdit">
-                                                    <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
-                                                        <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
-                                                            <thead>
-                                                                <tr role="row">
-                                                                    <th class="center">序号</th>
-                                                                    <th class="center">单位</th>
-                                                                    <th class="center">奖励金额（元/套）</th>
-                                                                    <th class="center">操作</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="center">1</td>
-                                                                    <td class="center">人民币</td>
-                                                                    <td class="center">0.00</td>
-                                                                    <td class="center">
-                                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="green edit_Com" href="#">编辑</a>
-                                                                            <a class="red " href="#">删除</a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="center">2</td>
-                                                                    <td class="center">人民币</td>
-                                                                    <td class="center">0.00</td>
-                                                                    <td class="center">
-                                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="green edit_Com" href="#">编辑</a>
-                                                                            <a class="red " href="#">删除</a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="center">3</td>
-                                                                    <td class="center">人民币</td>
-                                                                    <td class="center">0.00</td>
-                                                                    <td class="center">
-                                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="green edit_Com" href="#">编辑</a>
-                                                                            <a class="red " href="#">删除</a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                        <div class="row">
-                                                            <div class="col-xs-12">
-                                                                <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
-                                                                    <ul class="pagination">
-                                                                        <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_previous">
-                                                                            <a href="#">上一页</a>
-                                                                        </li>
-                                                                        <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">1</a>
-                                                                        </li>
-                                                                        <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">2</a>
-                                                                        </li>
-                                                                        <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">3</a>
-                                                                        </li>
-                                                                        <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_next">
-                                                                            <a href="#">下一页</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="widget-box" style="margin-top: 20px;">
-                                    <div class="widget-header">
-                                        <h4 class="smaller">合作项目记录</h4>
-                                    </div>
-                                    <div class="widget-body">
-                                        <div class="widget-main" style="overflow: hidden;">
-                                            <!-- 以下两个div只存在一个 无数据就第一个 有数据就第二个 -->
-                                            <div class="col-xs-12">
-                                                <p class="pro_coop_record">暂无合作项目记录！</p>
-                                            </div>
-                                            <div class="col-xs-12">
-                                                <div>
-                                                    <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
-                                                        <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
-                                                            <thead>
-                                                                <tr role="row">
-                                                                    <th class="center">序号</th>
-                                                                    <th class="center">项目名称</th>
-                                                                    <th class="center">公司名称</th>
-                                                                    <th class="center">开始时间</th>
-                                                                    <th class="center">截止时间</th>
-                                                                    <th class="center">区域</th>
-                                                                    <th class="center">推荐客户数量</th>
-                                                                    <th class="center">到访数量</th>
-                                                                    <th class="center">成交数量</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="center">1</td>
-                                                                    <td class="center">云算公馆A</td>
-                                                                    <td class="center">云算****公司</td>
-                                                                    <td class="center">2015-12-12</td>
-                                                                    <td class="center">2015-12-12</td>
-                                                                    <td class="center">成都-郫都区</td>
-                                                                    <td class="center">100</td>
-                                                                    <td class="center">100</td>
-                                                                    <td class="center">100</td>
-                                                                </tr>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="center">2</td>
-                                                                    <td class="center">云算公馆A</td>
-                                                                    <td class="center">云算****公司</td>
-                                                                    <td class="center">2015-12-12</td>
-                                                                    <td class="center">2015-12-12</td>
-                                                                    <td class="center">成都-郫都区</td>
-                                                                    <td class="center">100</td>
-                                                                    <td class="center">100</td>
-                                                                    <td class="center">100</td>
-                                                                </tr>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="center">3</td>
-                                                                    <td class="center">云算公馆A</td>
-                                                                    <td class="center">云算****公司</td>
-                                                                    <td class="center">2015-12-12</td>
-                                                                    <td class="center">2015-12-12</td>
-                                                                    <td class="center">成都-郫都区</td>
-                                                                    <td class="center">100</td>
-                                                                    <td class="center">100</td>
-                                                                    <td class="center">100</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                        <div class="row">
-                                                            <div class="col-xs-12">
-                                                                <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
-                                                                    <ul class="pagination">
-                                                                        <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_previous">
-                                                                            <a href="#">上一页</a>
-                                                                        </li>
-                                                                        <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">1</a>
-                                                                        </li>
-                                                                        <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">2</a>
-                                                                        </li>
-                                                                        <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">3</a>
-                                                                        </li>
-                                                                        <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_next">
-                                                                            <a href="#">下一页</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
 
-                        </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">*实际开始日期：</label>
+                                                <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control date-timepicker" name="act_start" disabled>
+                                                        <span class="input-group-addon">
+                                                                <i class="fa fa-clock-o bigger-110"></i>
+                                                            </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">*实际截止日期：</label>
+                                                <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control date-timepicker" name="act_end" disabled>
+                                                        <span class="input-group-addon">
+                                                                <i class="fa fa-clock-o bigger-110"></i>
+                                                            </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="clear: both;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="widget-box" style="margin-top: 20px;">
+                                <div class="widget-header">
+                                    <h4 class="smaller">附件</h4>
+                                    <div style="position: absolute;right: 80px;top:0;z-index: 100;">
+                                        <button class="btn btn-danger addAnnex" style="padding: 3px 10px;">新增</button>
+                                    </div>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="widget-main" style="overflow: hidden;">
+                                        <div class="col-xs-12">
+                                            <div>
+                                                <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
+                                                    <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+                                                        <thead>
+                                                        <tr role="row">
+                                                            <th class="center">序号</th>
+                                                            <th class="center">文件名称</th>
+                                                            <th class="center"></th>
+                                                            <th class="center">上传人员</th>
+                                                            <th class="center">上传时间</th>
+                                                            <th class="center">操作</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody id="file_list">
+
+
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="widget-box" style="margin-top: 20px;">
+                                <div class="widget-header">
+                                    <h4 style="display: inline-block;" class="smaller">成交佣金</h4>
+                                    <p style="display: inline-block;">（推荐的客户在该项目购置房源后产生的佣金）</p>
+                                    <div style="position: absolute;right: 80px;top:0;z-index: 100;">
+                                        <button class="btn btn-danger dealComAdd" style="padding: 3px 10px;">新增</button>
+                                    </div>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="widget-main" style="overflow: hidden;">
+                                        <div class="col-xs-12">
+                                            <div>
+                                                <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
+                                                    <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+                                                        <thead>
+                                                        <tr role="row">
+                                                            <th class="center">序号</th>
+                                                            <th class="center">物业类型</th>
+                                                            <th class="center">跳点</th>
+                                                            <th class="center">提成公式</th>
+                                                            <th class="center">单位</th>
+                                                            <th class="center">奖励金额（元/套）</th>
+                                                            <th class="center">操作</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr role="row" class="odd">
+                                                            <td class="center">1</td>
+                                                            <td class="center">三室两厅两卫</td>
+                                                            <td class="center">是</td>
+                                                            <td class="center">固定金额*套数</td>
+                                                            <td class="center">人民币</td>
+                                                            <td class="center">0.00</td>
+                                                            <td class="center">
+                                                                <div class="hidden-sm hidden-xs action-buttons">
+                                                                    <a class="blue" href="">查看</a>
+                                                                    <a class="green edit_leibie" href="#">编辑</a>
+                                                                    <a class="red del_leibie" href="#">删除</a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr role="row" class="odd">
+                                                            <td class="center">2</td>
+                                                            <td class="center">三室两厅两卫</td>
+                                                            <td class="center">是</td>
+                                                            <td class="center">固定金额*套数</td>
+                                                            <td class="center">人民币</td>
+                                                            <td class="center">0.00</td>
+                                                            <td class="center">
+                                                                <div class="hidden-sm hidden-xs action-buttons">
+                                                                    <a class="blue" href="">查看</a>
+                                                                    <a class="green edit_leibie" href="#">编辑</a>
+                                                                    <a class="red del_leibie" href="#">删除</a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr role="row" class="odd">
+                                                            <td class="center">3</td>
+                                                            <td class="center">三室两厅两卫</td>
+                                                            <td class="center">是</td>
+                                                            <td class="center">固定金额*套数</td>
+                                                            <td class="center">人民币</td>
+                                                            <td class="center">0.00</td>
+                                                            <td class="center">
+                                                                <div class="hidden-sm hidden-xs action-buttons">
+                                                                    <a class="blue" href="">查看</a>
+                                                                    <a class="green edit_leibie" href="#">编辑</a>
+                                                                    <a class="red del_leibie" href="#">删除</a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
+                                                                <ul class="pagination">
+                                                                    <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_previous">
+                                                                        <a href="#">上一页</a>
+                                                                    </li>
+                                                                    <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
+                                                                        <a href="#">1</a>
+                                                                    </li>
+                                                                    <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
+                                                                        <a href="#">2</a>
+                                                                    </li>
+                                                                    <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
+                                                                        <a href="#">3</a>
+                                                                    </li>
+                                                                    <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_next">
+                                                                        <a href="#">下一页</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="widget-box" style="margin-top: 20px;">
+                                <div class="widget-header">
+                                    <h4 style="display: inline-block;" class="smaller">到访佣金</h4>
+                                    <p style="display: inline-block;">（客户到访后且售楼处确认后产生的佣金）</p>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="widget-main" style="overflow: hidden;">
+                                        <div class="col-xs-12">
+                                            <div class="commissionEdit">
+                                                <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
+                                                    <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+                                                        <thead>
+                                                        <tr role="row">
+                                                            <th class="center">序号</th>
+                                                            <th class="center">单位</th>
+                                                            <th class="center">奖励金额（元/套）</th>
+                                                            <th class="center">操作</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr role="row" class="odd">
+                                                            <td class="center">1</td>
+                                                            <td class="center">人民币</td>
+                                                            <td class="center">0.00</td>
+                                                            <td class="center">
+                                                                <div class="hidden-sm hidden-xs action-buttons">
+                                                                    <a class="green edit_Com" href="#">编辑</a>
+                                                                    <a class="red" href="#">删除</a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr role="row" class="odd">
+                                                            <td class="center">2</td>
+                                                            <td class="center">人民币</td>
+                                                            <td class="center">0.00</td>
+                                                            <td class="center">
+                                                                <div class="hidden-sm hidden-xs action-buttons">
+                                                                    <a class="green edit_Com" href="#">编辑</a>
+                                                                    <a class="red" href="#">删除</a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr role="row" class="odd">
+                                                            <td class="center">3</td>
+                                                            <td class="center">人民币</td>
+                                                            <td class="center">0.00</td>
+                                                            <td class="center">
+                                                                <div class="hidden-sm hidden-xs action-buttons">
+                                                                    <a class="green edit_Com" href="#">编辑</a>
+                                                                    <a class="red " href="#">删除</a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
+                                                                <ul class="pagination">
+                                                                    <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_previous">
+                                                                        <a href="#">上一页</a>
+                                                                    </li>
+                                                                    <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
+                                                                        <a href="#">1</a>
+                                                                    </li>
+                                                                    <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
+                                                                        <a href="#">2</a>
+                                                                    </li>
+                                                                    <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
+                                                                        <a href="#">3</a>
+                                                                    </li>
+                                                                    <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_next">
+                                                                        <a href="#">下一页</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="widget-box" style="margin-top: 20px;">
+                                <div class="widget-header">
+                                    <h4 style="display: inline-block;" class="smaller">推荐佣金</h4>
+                                    <p style="display: inline-block;">（经纪人将客户推荐给项目后的佣金）</p>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="widget-main" style="overflow: hidden;">
+                                        <div class="col-xs-12">
+                                            <div class="commissionEdit">
+                                                <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
+                                                    <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+                                                        <thead>
+                                                        <tr role="row">
+                                                            <th class="center">序号</th>
+                                                            <th class="center">单位</th>
+                                                            <th class="center">奖励金额（元/套）</th>
+                                                            <th class="center">操作</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr role="row" class="odd">
+                                                            <td class="center">1</td>
+                                                            <td class="center">人民币</td>
+                                                            <td class="center">0.00</td>
+                                                            <td class="center">
+                                                                <div class="hidden-sm hidden-xs action-buttons">
+                                                                    <a class="green edit_Com" href="#">编辑</a>
+                                                                    <a class="red " href="#">删除</a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr role="row" class="odd">
+                                                            <td class="center">2</td>
+                                                            <td class="center">人民币</td>
+                                                            <td class="center">0.00</td>
+                                                            <td class="center">
+                                                                <div class="hidden-sm hidden-xs action-buttons">
+                                                                    <a class="green edit_Com" href="#">编辑</a>
+                                                                    <a class="red " href="#">删除</a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr role="row" class="odd">
+                                                            <td class="center">3</td>
+                                                            <td class="center">人民币</td>
+                                                            <td class="center">0.00</td>
+                                                            <td class="center">
+                                                                <div class="hidden-sm hidden-xs action-buttons">
+                                                                    <a class="green edit_Com" href="#">编辑</a>
+                                                                    <a class="red " href="#">删除</a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
+                                                                <ul class="pagination">
+                                                                    <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_previous">
+                                                                        <a href="#">上一页</a>
+                                                                    </li>
+                                                                    <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
+                                                                        <a href="#">1</a>
+                                                                    </li>
+                                                                    <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
+                                                                        <a href="#">2</a>
+                                                                    </li>
+                                                                    <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
+                                                                        <a href="#">3</a>
+                                                                    </li>
+                                                                    <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_next">
+                                                                        <a href="#">下一页</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- 添加附件 -->
-    <div class="modal_addAnnex">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="bootbox-close-button close closed">×</button>
-                    <h4 class="modal-title">添加附件</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="bootbox-body">
-                        <form class="form-horizontal" role="form">
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">文件名称：</label>
+<!-- 添加附件 -->
+<div class="modal_addAnnex">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close closed">×</button>
+                <h4 class="modal-title">添加附件</h4>
+            </div>
+            <div class="modal-body">
+                <div class="bootbox-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1">文件名称：</label>
 
-                                <div class="col-sm-9">
-                                    <input type="text" class="col-xs-12 col-sm-10">
-                                </div>
+                            <div class="col-sm-9">
+                                <input type="text" class="col-xs-12 col-sm-10" name="file_name">
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2">上传人员：</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="col-xs-12 col-sm-10">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2">上传时间：</label>
-                                <div class="col-sm-9" style="display: inline-block;vertical-align: middle;">
-                                    <div class="input-group col-xs-12 col-sm-10">
-                                        <input class="form-control date-picker" type="text" data-date-format="yyyy-mm-dd">
-                                        <span class="input-group-addon">
-                                            <i class="fa fa-calendar bigger-110"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
+                        </div>
 
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">附件：</label>
-                                <div class="col-sm-9">
-                                    <label class="ace-file-input ace-file-multiple ">
-                                        <input multiple="" type="file">
-                                        <span class="ace-file-container col-xs-12 col-sm-10" data-title="点击上传文件">
+
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">附件：</label>
+                            <div class="col-sm-9">
+                                <label class="ace-file-input ace-file-multiple ">
+                                    <input type="hidden" id="url">
+                                    <input multiple="" type="file" id="file" accept=".zip,.rar,.jpg,.docx">
+                                    <span class="ace-file-container col-xs-12 col-sm-10" id="word" data-title="点击上传文件" >
                                             <span class="ace-file-name" data-title="No File ...">
                                                 <i class=" ace-icon ace-icon fa fa-cloud-upload"></i>
                                             </span>
                                         </span>
-                                        <a class="remove" href="#">
-                                            <i class=" ace-icon fa fa-times"></i>
-                                        </a>
-                                    </label>
-                                </div>
+                                    <a class="remove" href="#">
+                                        <i class=" ace-icon fa fa-times"></i>
+                                    </a>
+                                </label>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="modal-footer">
-                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
-                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="tags_add">确定</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
+                <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="tags_add">确定</button>
             </div>
         </div>
     </div>
-    <!-- 修改佣金金额-->
-    <div class="modal_editCom">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="bootbox-close-button close closed">×</button>
-                    <h4 class="modal-title">佣金修改</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="bootbox-body">
-                        <form class="form-horizontal" role="form">
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">佣金金额：</label>
+</div>
+<!-- 修改佣金金额-->
+<div class="modal_editCom">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close closed">×</button>
+                <h4 class="modal-title">佣金修改</h4>
+            </div>
+            <div class="modal-body">
+                <div class="bootbox-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1">佣金金额：</label>
 
-                                <div class="col-sm-9">
-                                    <input type="text" class="col-xs-12 col-sm-10">
-                                </div>
+                            <div class="col-sm-9">
+                                <input type="text" class="col-xs-12 col-sm-10">
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2">单位：</label>
-                                <div class="col-sm-9">
-                                    <!-- <input type="text" > -->
-                                    <select class="col-xs-12 col-sm-10" style="font-size: 14px;">
-                                        <option>人民币</option>
-                                        <option>美元</option>
-                                    </select>
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-2">单位：</label>
+                            <div class="col-sm-9">
+                                <!-- <input type="text" > -->
+                                <select class="col-xs-12 col-sm-10" style="font-size: 14px;">
+                                    <option>人民币</option>
+                                    <option>美元</option>
+                                </select>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="modal-footer">
-                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
-                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="tags_add">确定</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
+                <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="tags_add">确定</button>
             </div>
         </div>
     </div>
-    <!-- 添加佣金-->
-    <div class="modal_addCom">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="bootbox-close-button close closed">×</button>
-                    <h4 class="modal-title">佣金添加</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="bootbox-body">
-                        <form class="form-horizontal" role="form">
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">佣金金额：</label>
-
-                                <div class="col-sm-9">
-                                    <input type="text" class="col-xs-12 col-sm-10">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2">单位：</label>
-                                <div class="col-sm-9">
-                                    <!-- <input type="text" > -->
-                                    <select class="col-xs-12 col-sm-10" style="font-size: 14px;">
-                                        <option>人民币</option>
-                                        <option>美元</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
-                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="tags_add">确定</button>
-                </div>
-            </div>
-        </div>
-    </div>
+</div>
 
 
 
-    <!-- basic scripts -->
 
-    <!--[if !IE]> -->
-    <script src="components/jquery/dist/jquery.js"></script>
-    <script type="text/javascript">
-        if ('ontouchstart' in document.documentElement) document.write(
-            "<script src='components/_mod/jquery.mobile.custom/jquery.mobile.custom.js'>" + "<" + "/script>");
-    </script>
-    <script src="components/bootstrap/dist/js/bootstrap.js"></script>
+<!-- basic scripts -->
 
-    <!-- ace scripts -->
-    <script src="assets/js/src/elements.scroller.js"></script>
-    <script src="assets/js/src/elements.colorpicker.js"></script>
-    <script src="assets/js/src/elements.fileinput.js"></script>
-    <script src="assets/js/src/elements.typeahead.js"></script>
-    <script src="assets/js/src/elements.wysiwyg.js"></script>
-    <script src="assets/js/src/elements.spinner.js"></script>
-    <script src="assets/js/src/elements.treeview.js"></script>
-    <script src="assets/js/src/elements.wizard.js"></script>
-    <script src="assets/js/src/elements.aside.js"></script>
-    <script src="assets/js/src/ace.js"></script>
-    <script src="assets/js/src/ace.basics.js"></script>
-    <script src="assets/js/src/ace.scrolltop.js"></script>
-    <script src="assets/js/src/ace.ajax-content.js"></script>
-    <script src="assets/js/src/ace.touch-drag.js"></script>
-    <script src="assets/js/src/ace.sidebar.js"></script>
-    <script src="assets/js/src/ace.sidebar-scroll-1.js"></script>
-    <script src="assets/js/src/ace.submenu-hover.js"></script>
-    <script src="assets/js/src/ace.widget-box.js"></script>
-    <script src="assets/js/src/ace.settings.js"></script>
-    <script src="assets/js/src/ace.settings-rtl.js"></script>
-    <script src="assets/js/src/ace.settings-skin.js"></script>
-    <script src="assets/js/src/ace.widget-on-reload.js"></script>
-    <script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
-    <!-- 本页js -->
-    <script src="assets/js/jquery.cookie.js"></script>
-    <script>
-        window.onload = function () {
-            $('#header').load('public/header.html');
-            $('#sidebar').load('public/menu.html');
-            var menu_data = {
-                opening: '',
-                acting: '.jieyongguize'
-            }
-            $.cookie('menu_data', JSON.stringify(menu_data), {
-                path: "menu.html"
-            });
+<!--[if !IE]> -->
+<script src="components/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+    if ('ontouchstart' in document.documentElement) document.write(
+        "<script src='components/_mod/jquery.mobile.custom/jquery.mobile.custom.js'>" + "<" + "/script>");
+</script>
+<script src="components/bootstrap/dist/js/bootstrap.js"></script>
+
+<!-- ace scripts -->
+<script src="assets/js/src/elements.scroller.js"></script>
+<script src="assets/js/src/elements.colorpicker.js"></script>
+<script src="assets/js/src/elements.fileinput.js"></script>
+<script src="assets/js/src/elements.typeahead.js"></script>
+<script src="assets/js/src/elements.wysiwyg.js"></script>
+<script src="assets/js/src/elements.spinner.js"></script>
+<script src="assets/js/src/elements.treeview.js"></script>
+<script src="assets/js/src/elements.wizard.js"></script>
+<script src="assets/js/src/elements.aside.js"></script>
+<script src="assets/js/src/ace.js"></script>
+<script src="assets/js/src/ace.basics.js"></script>
+<script src="assets/js/src/ace.scrolltop.js"></script>
+<script src="assets/js/src/ace.ajax-content.js"></script>
+<script src="assets/js/src/ace.touch-drag.js"></script>
+<script src="assets/js/src/ace.sidebar.js"></script>
+<script src="assets/js/src/ace.sidebar-scroll-1.js"></script>
+<script src="assets/js/src/ace.submenu-hover.js"></script>
+<script src="assets/js/src/ace.widget-box.js"></script>
+<script src="assets/js/src/ace.settings.js"></script>
+<script src="assets/js/src/ace.settings-rtl.js"></script>
+<script src="assets/js/src/ace.settings-skin.js"></script>
+<script src="assets/js/src/ace.widget-on-reload.js"></script>
+<script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
+<!-- 本页js -->
+<script src="assets/js/jquery.cookie.js"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/public.js"></script>
+<script>
+    var id = $.getUrlVar('id');
+    window.onload = function () {
+        $('#header').load('public/header.html');
+        $('#sidebar').load('public/menu.html');
+        var menu_data = {
+            opening: '',
+            acting: '.jieyongguize'
         }
-    </script>
-    <script src="components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
-    <script src="components/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
-    <script src="components/moment/moment.js"></script>
-    <script src="components/bootstrap-daterangepicker/daterangepicker.js"></script>
-    <script src="components/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js"></script>
-    <script>
-        //日历插件初始化
-        if (!ace.vars['old_ie']) $('.date-timepicker').datetimepicker({
-            //format: 'MM/DD/YYYY h:mm:ss A',//use this option to display seconds
-            format: 'YYYY-MM-DD h:mm:ss',
-            icons: {
-                time: 'fa fa-clock-o',
-                date: 'fa fa-calendar',
-                up: 'fa fa-chevron-up',
-                down: 'fa fa-chevron-down',
-                previous: 'fa fa-chevron-left',
-                next: 'fa fa-chevron-right',
-                today: 'fa fa-arrows ',
-                clear: 'fa fa-trash',
-                close: 'fa fa-times'
-            }
-        }).next().on(ace.click_event, function () {
-            $(this).prev().focus();
+        $.cookie('menu_data', JSON.stringify(menu_data), {
+            path: "menu.html"
         });
-    </script>
-    <script>
-        //添加附件
-        $(".addAnnex").on('click', function () {
-            $('.modal_addAnnex').css('display', 'block');
+        ruleInfo();
+    }
+    function ruleInfo(){
+        ajax.get('project/ruleCompany/getDetail',{'rule_id':id},function(res){
+            $('input[name=project_name]').val(res.data.basic.project_name);
+            $('input[name=project_docker]').val(res.data.basic.project_docker);
+            $('input[name=project_docker_tel]').val(res.data.basic.project_docker_tel);
+            $('input[name=compact_start]').val(res.data.basic.compact_begin);
+            $('input[name=compact_end]').val(res.data.basic.compact_end);
+            $('input[name=sell_id]').val(res.data.basic.sell_id);
+            $('input[name=sell_docker]').val(res.data.basic.sell_docker);
+            $('input[name=sell_docker_tel]').val(res.data.basic.sell_docker_tel);
+            $('input[name=act_start]').val(res.data.basic.act_start);
+            $('input[name=act_end]').val(res.data.basic.act_end);
+            var model='<tr role="row" class="odd" value="{a_id}"><td class="center">{key}</td> <td class="center">{name}</td> <td class="center"><a target="_blank" href="{url}">查看附件</a> </td> <td class="center">{uploader}</td> <td class="center">{update_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <div class="red delFile" style="cursor: pointer">删除</div> </div> </td> </tr>',
+                id=1,
+                str='';
+            $.each(res.data.file,function(k,v){
+                str+=model.replace('{a_id}',v.id).replace('{key}',id++).replace('{name}',v.file_name).replace('{uploader}',v.uploader).replace('{url}',config.address+v.file_url).replace('{update_time}',v.update_time);
+            })
+            $('#file_list').append(str);
+        })
+    }
+    $(document).on('click','.delFile',function(){
+        var id=$(this).parents('tr').attr('value'),
+            conf=confirm('确定删除该文件?');
+        if(conf==true){
+            ajax.post('project/ruleCompany/agreement/delete',{'id':id},function(res){
+                alert(res.msg);
+                if(res.code==config.responseSuccess){
+                    window.location.reload();
+                }
+            })
+        }
+    })
+</script>
+<script src="components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+<script src="components/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+<script src="components/moment/moment.js"></script>
+<script src="components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!--  <script src="components/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js"></script>-->
+
+<script>
+    $('#file').on('change', function () {
+        if ($(this)[0].files[0].size >= config.allowImgFileSize) {
+            alert(config.ImgSizeBeyondErrMes);
             return false;
+        }
+        var formData = new FormData();
+        formData.append("agreement", $(this)[0].files[0]);
+        ajax.file(formData, 'agreement', function (res) {
+            if(res.code==config.responseSuccess){
+                $('#url').val(res.data);
+                $('#word').attr('data-title','上传成功');
+            }
         })
-        $('.closed').on('click', function () {
-            $(this).parent().parent().parent().parent().css('display', 'none');
+    })
+    $('#tags_add').click(function(){
+        var data={
+            'file_name':$('input[name=file_name]').val(),
+            'file_url':$('#url').val(),
+            'rule_id':id
+        };
+        if(data.file_name==''){
+            alert('请输入文件名称');
+            return;
+        }
+        if(data.file_url==''){
+            alert('请先上传文件');
+            return;
+        }
+        ajax.post('project/ruleCompany/agreement/upload',data,function(res){
+            alert(res.msg);
+            if(res.code==config.responseSuccess){
+                window.location.reload();
+            }
         })
-        //成交佣金操作
-        $(".dealComAdd").on('click', function () {
-            window.location.href = "DealComRuleSet.html";
-            return false;
-        })
-        //佣金金额修改编辑
-        $('.commissionEdit').on('click', '.edit_Com', function () {
-            $('.modal_editCom').css('display', 'block');
-            return false;
-        })
-        //添加佣金
-        $('.addCom').on('click', function () {
-            $('.modal_addCom').css('display', 'block');
-            return false;
-        })
-    </script>
+    })
+</script>
+<script>
+    //添加附件
+    $(".addAnnex").on('click', function () {
+        $('.modal_addAnnex').css('display', 'block');
+        return false;
+    })
+    $('.closed').on('click', function () {
+        $(this).parent().parent().parent().parent().css('display', 'none');
+    })
+    //成交佣金操作
+    $(".dealComAdd").on('click', function () {
+        window.location.href = "DealComRuleSet.html?id="+id;
+        return false;
+    })
+    //佣金金额修改编辑
+    $('.commissionEdit').on('click', '.edit_Com', function () {
+        $('.modal_editCom').css('display', 'block');
+        return false;
+    })
+
+</script>
 </body>
 
 </html>
