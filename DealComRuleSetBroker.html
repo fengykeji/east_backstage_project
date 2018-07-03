@@ -155,12 +155,12 @@
                         <li>
                             <i class="ace-icon fa fa-home home-icon"></i>
                             <a href="CommissionRules.html">结佣规则</a>
-                            <a href="#">>公司规则>成交佣金</a>
+                            <a href="#">>个人规则>成交佣金</a>
                         </li>
                     </ul>
                     <div class="operate_proInfo">
                         <button class="btn btn-primary">保存</button>
-                        <button class="btn btn-danger" id="save">关闭</button>
+                        <button class="btn btn-danger" id="backLastPage">关闭</button>
                     </div>
                 </div>
                 <!-- 内容开始 -->
@@ -353,6 +353,10 @@
         $('.date-picker').datepicker({
             autoclose: true,
             todayHighlight: true
+        })
+        //关闭按钮返回上一页
+        $('#backLastPage').on('click',function(){
+            history.back(-1);
         })
     </script>
     <script>

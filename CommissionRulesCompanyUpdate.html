@@ -144,12 +144,12 @@
                         <li>
                             <i class="ace-icon fa fa-home home-icon"></i>
                             <a href="CommissionRules.html">结佣规则</a>
-                            <a href="#">>公司规则</a>
+                            <a href="#">>公司规则>修改</a>
                         </li>
                     </ul>
                     <div class="operate_proInfo">
                         <button class="btn btn-primary">保存</button>
-                        <button class="btn btn-danger" id="save">关闭</button>
+                        <button class="btn btn-danger" id="backLastPage">关闭</button>
                     </div>
                 </div>
                 <!-- 内容开始 -->
@@ -797,6 +797,10 @@
             $('.modal_addCom').css('display', 'block');
             $('input[name=broker_type]').val($(this).attr('value'))
             return false;
+        })
+    //关闭按钮返回上一页
+    $('#backLastPage').on('click',function(){
+            history.back(-1);
         })
     </script>
 </body>

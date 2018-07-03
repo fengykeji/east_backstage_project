@@ -104,11 +104,12 @@
         .close {
             font-size: 32px;
         }
-        .show_UpImg{
+
+        .show_UpImg {
             width: auto;
             height: auto;
-            max-width: 200px;
-            max-height: 200px;
+            max-width: 300px;
+            max-height: 300px;
         }
     </style>
 </head>
@@ -673,46 +674,48 @@
             })
         }
 
-        $(document).on('click','.up',function(){
-            var downId=$(this).parents('tr').attr('value'),
-                upId=$(this).parents('tr').prev().attr('value');
-            imgSort(downId,upId);
+        $(document).on('click', '.up', function () {
+            var downId = $(this).parents('tr').attr('value'),
+                upId = $(this).parents('tr').prev().attr('value');
+            imgSort(downId, upId);
         })
-        $(document).on('click','.down',function(){
-            var downId=$(this).parents('tr').next().attr('value'),
-                upId=$(this).parents('tr').attr('value');
-            imgSort(downId,upId);
+        $(document).on('click', '.down', function () {
+            var downId = $(this).parents('tr').next().attr('value'),
+                upId = $(this).parents('tr').attr('value');
+            imgSort(downId, upId);
         })
-        $(document).on('click','.del_leibie',function(){
-            var  id=$(this).parents('tr').attr('value'),
-                conf=confirm('是否删除该户型图片');
-            if(conf==true){
-                ajax.get('project/houseType/deleteImg',{'img_id':id},function(res){
-                    if(res.code==config.responseSuccess){
+        $(document).on('click', '.del_leibie', function () {
+            var id = $(this).parents('tr').attr('value'),
+                conf = confirm('是否删除该户型图片');
+            if (conf == true) {
+                ajax.get('project/houseType/deleteImg', {
+                    'img_id': id
+                }, function (res) {
+                    if (res.code == config.responseSuccess) {
                         window.location.reload();
                     }
                 })
             }
 
         })
-        function imgSort(downId,upId){
-            var data={
-                'img_id':downId,
-                'img_id_another':upId,
+
+        function imgSort(downId, upId) {
+            var data = {
+                'img_id': downId,
+                'img_id_another': upId,
             };
-            if(data.img_id_another==undefined){
+            if (data.img_id_another == undefined) {
                 alert('操作失败：该张图片已经是最前一张了。')
             }
-            if(data.img_id==undefined){
+            if (data.img_id == undefined) {
                 alert('操作失败：该张图片已经是最后一张了。')
             }
-            ajax.post('project/img/exchangeImgSort',data,function(res){
-              if(res.code==config.responseSuccess){
+            ajax.post('project/img/exchangeImgSort', data, function (res) {
+                if (res.code == config.responseSuccess) {
                     window.location.reload();
                 }
             })
         }
-
     </script>
     <script src="components/fuelux/js/spinbox.js"></script>
     <script>

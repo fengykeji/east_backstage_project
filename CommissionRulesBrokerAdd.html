@@ -148,7 +148,7 @@
                     </ul>
                     <div class="operate_proInfo">
                         <button class="btn btn-primary" id="save">保存</button>
-                        <button class="btn btn-danger" >关闭</button>
+                        <button class="btn btn-danger" id="backLastPage">关闭</button>
                     </div>
                 </div>
                 <!-- 内容开始 -->
@@ -357,6 +357,10 @@
         $('.commissionEdit').on('click', '.edit_Com', function () {
             $('.modal_editCom').css('display', 'block');
             return false;
+        })
+        //关闭按钮返回上一页
+        $('#backLastPage').on('click',function(){
+            history.back(-1);
         })
     </script>
 </body>

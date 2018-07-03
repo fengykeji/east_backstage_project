@@ -121,7 +121,7 @@
                     </ul>
                     <div class="operate_proInfo">
                         <button class="btn btn-primary">保存</button>
-                        <button class="btn btn-danger" id="save">关闭</button>
+                        <button class="btn btn-danger" id="backLastPage">关闭</button>
                     </div>
                 </div>
                 <!-- 内容开始 -->
@@ -186,6 +186,7 @@
                                         <h4 class="smaller">公司规则</h4>
                                         <div style="position: absolute;right: 80px;top:0;z-index: 100;">
                                             <button class="btn btn-danger addCompany" style="padding: 3px 10px;">新增</button>
+                                            <button class="btn btn-warning ReCompany" style="padding: 3px 10px;">审核</button>
                                         </div>
                                     </div>
                                     <div class="widget-body">
@@ -467,6 +468,15 @@
         //开关的值
         $('#person').on('change','.switchCom',function(){
             alert($(this).is(':checked'));
+        })
+        //审核页面跳转
+        $('.ReCompany').on('click',function(){
+            window.location.href='CommissionRulesCompanyReview.html';
+            return false;
+        })
+        //关闭按钮返回上一页
+        $('#backLastPage').on('click',function(){
+            history.back(-1);
         })
     </script>
 </body>
