@@ -60,7 +60,7 @@
             z-index: 1000;
         }
         .modal-dialog {
-            margin: 150px auto;
+            margin: 0 auto;
         }
 
         .bootbox-body {
@@ -160,7 +160,6 @@
 
                         <button class="btn btn-danger" id="backLastPage">关闭</button>
 
-                        <!-- <button class="btn btn-danger" >关闭</button> -->
 
                     </div>
                 </div>
@@ -701,6 +700,10 @@
             $('.modal_addCom').css('display', 'block');
             $('input[name=broker_type]').val($(this).attr('value'))
             return false;
+        })
+         //关闭按钮返回上一页
+         $('#backLastPage').on('click', function () {
+            history.back(-1);
         })
     </script>
 </body>

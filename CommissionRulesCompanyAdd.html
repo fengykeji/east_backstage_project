@@ -39,8 +39,8 @@
         }
 
         .modal_addAnnex,
-        .modal_editCom ,
-        .modal_checkCompany{
+        .modal_editCom,
+        .modal_checkCompany {
             display: none;
             background-color: rgba(0, 0, 0, .5);
             position: fixed;
@@ -52,7 +52,7 @@
         }
 
         .modal-dialog {
-            margin: 150px auto;
+            margin: 0 auto;
         }
 
         .bootbox-body {
@@ -223,13 +223,13 @@
                                                 <div class="form-group">
                                                     <label class="lab_width">*实际开始日期：</label>
                                                     <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
-                                                            <div class="input-group">
-                                                                <input type="text" class="form-control date-timepicker" name="act_start">
-                                                                <span class="input-group-addon">
-                                                                    <i class="fa fa-clock-o bigger-110"></i>
-                                                                </span>
-                                                            </div>
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control date-timepicker" name="act_start">
+                                                            <span class="input-group-addon">
+                                                                <i class="fa fa-clock-o bigger-110"></i>
+                                                            </span>
                                                         </div>
+                                                    </div>
                                                 </div>
 
                                             </div>
@@ -238,7 +238,7 @@
                                     </div>
                                 </div>
 
-                               <!-- <div class="widget-box" style="margin-top: 20px;">
+                                <!-- <div class="widget-box" style="margin-top: 20px;">
                                     <div class="widget-header">
                                         <h4 class="smaller">合作项目记录</h4>
                                     </div>
@@ -440,8 +440,8 @@
         </div>
     </div>
 
-<!-- 乙方公司选择 -->
-<div class="modal_checkCompany">
+    <!-- 乙方公司选择 -->
+    <div class="modal_checkCompany">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -549,7 +549,6 @@
     <script src="assets/js/public.js"></script>
     <script src="components/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js"></script>
     <script>
-
         //日历插件初始化
         if (!ace.vars['old_ie']) $('.date-timepicker').datetimepicker({
             //format: 'MM/DD/YYYY h:mm:ss A',//use this option to display seconds
@@ -568,8 +567,8 @@
         }).next().on(ace.click_event, function () {
             $(this).prev().focus();
         });
-//关闭按钮返回上一页
-$('#backLastPage').on('click',function(){
+        //关闭按钮返回上一页
+        $('#backLastPage').on('click', function () {
             history.back(-1);
         })
     </script>
@@ -594,110 +593,116 @@ $('#backLastPage').on('click',function(){
             return false;
         })
         //乙方公司选择
-        $('#search').click(function(){
+        $('#search').click(function () {
             var value = $('input[name=companySearch]').val();
-            if(value==''){
+            if (value == '') {
                 return false;
             }
-            ajax.get('project/ruleCompany/sellList',{'company_name':value},function(res){
+            ajax.get('project/ruleCompany/sellList', {
+                'company_name': value
+            }, function (res) {
                 companyList(res);
             })
         })
         $('#companyList').on('click', function () {
-            ajax.get('project/ruleCompany/sellList',{},function(res){
+            ajax.get('project/ruleCompany/sellList', {}, function (res) {
                 $('.modal_checkCompany').css('display', 'block');
-                var str=companyList(res);
+                var str = companyList(res);
             })
             return false;
         })
-        function companyList(res){
-            var model='<tr class="odd" value="{id}" nm="{nm}"> <td class="center"> <label class="pos-rel"> <input type="checkbox" class="ace companyCheck"> <span class="lbl"></span> </label> </td> <td class="center">{key}</td> <td class="center ">{name}</td> <td class="center">{address}</td> </tr>',
-                str='',
-                id=1;
-            $.each(res.data.data,function(k,v){
-                str+=model.replace('{id}',v.company_id).replace('{key}',id++).replace('{name}',v.company_name).replace('{address}',v.absolute_address).replace('{nm}',v.company_name);
+
+        function companyList(res) {
+            var model =
+                '<tr class="odd" value="{id}" nm="{nm}"> <td class="center"> <label class="pos-rel"> <input type="checkbox" class="ace companyCheck"> <span class="lbl"></span> </label> </td> <td class="center">{key}</td> <td class="center ">{name}</td> <td class="center">{address}</td> </tr>',
+                str = '',
+                id = 1;
+            $.each(res.data.data, function (k, v) {
+                str += model.replace('{id}', v.company_id).replace('{key}', id++).replace('{name}', v.company_name)
+                    .replace('{address}', v.absolute_address).replace('{nm}', v.company_name);
             })
             $('#company_list').children().remove();
             $('#company_list').append(str);
         }
-        $('#select').click(function(){
-            var count=0,dom;
-            $('.companyCheck').each(function(){
-                if(count>=2){
+        $('#select').click(function () {
+            var count = 0,
+                dom;
+            $('.companyCheck').each(function () {
+                if (count >= 2) {
                     return false;
                 }
-                if($(this).is(":checked")){
+                if ($(this).is(":checked")) {
                     count++;
-                    dom=$(this);
+                    dom = $(this);
                 }
             })
-            if(count==0){
+            if (count == 0) {
                 alert('请选择公司');
             }
-            if(count>=2){
+            if (count >= 2) {
                 alert('只能选择一个公司');
             }
-           $('input[name=sell_id]').val(dom.parents('tr').attr('value'));
-           $('input[name=sell_name]').val(dom.parents('tr').attr('nm'));
+            $('input[name=sell_id]').val(dom.parents('tr').attr('value'));
+            $('input[name=sell_name]').val(dom.parents('tr').attr('nm'));
             $('.modal_checkCompany').fadeOut();
         })
-    $('#add').click(function () {
-        var data={
-            'project_name':$('input[name=project_name]').val(),
-            'project_docker':$('input[name=project_docker]').val(),
-            'project_docker_tel':$('input[name=project_docker_tel]').val(),
-            'compact_begin':$('input[name=compact_begin]').val(),
-            'compact_end':$('input[name=compact_end]').val(),
-            'sell_id':$('input[name=sell_id]').val(),
-            'sell_docker':$('input[name=sell_docker]').val(),
-            'sell_docker_tel':$('input[name=sell_docker_tel]').val(),
-            'act_start':$('input[name=act_start]').val(),
-            'basic_rule_id':id,
-        }
-        console.log(data);
-        if(data.project_name==''){
-            alert('请输入项目名称');
-            return false;
-        }
-        if(data.project_docker==''){
-            alert('请输入甲方项目对接人姓名');
-            return false;
-        }
-        if(data.project_docker_tel==''){
-            alert('请输入甲方项目对接人电话');
-            return false;
-        }
-        if(data.compact_begin==''){
-            alert('请输入合同开始时间');
-            return false;
-        } if(data.compact_end==''){
-            alert('请输入合同结束时间');
-            return false;
-        }
-        if(data.sell_id==''){
-            alert('请选择分销公司');
-            return false;
-        }
-        if(data.sell_docker==''){
-            alert('请输出乙方对接人姓名');
-            return false;
-        }
-        if(data.sell_docker_tel==''){
-            alert('请输出乙方对接人姓名');
-            return false;
-        }
-        if(data.act_start==''){
-            alert('请输出实际开始时间');
-            return false;
-        }
-        ajax.post('project/ruleCompany/create',data,function(res){
-            alert(res.msg);
-            if(res.code==config.responseSuccess){
-                window.location.href='CommissionRulesCompanyUpdate.html?id='+res.data;
+        $('#add').click(function () {
+            var data = {
+                'project_name': $('input[name=project_name]').val(),
+                'project_docker': $('input[name=project_docker]').val(),
+                'project_docker_tel': $('input[name=project_docker_tel]').val(),
+                'compact_begin': $('input[name=compact_begin]').val(),
+                'compact_end': $('input[name=compact_end]').val(),
+                'sell_id': $('input[name=sell_id]').val(),
+                'sell_docker': $('input[name=sell_docker]').val(),
+                'sell_docker_tel': $('input[name=sell_docker_tel]').val(),
+                'act_start': $('input[name=act_start]').val(),
+                'basic_rule_id': id,
             }
+            console.log(data);
+            if (data.project_name == '') {
+                alert('请输入项目名称');
+                return false;
+            }
+            if (data.project_docker == '') {
+                alert('请输入甲方项目对接人姓名');
+                return false;
+            }
+            if (data.project_docker_tel == '') {
+                alert('请输入甲方项目对接人电话');
+                return false;
+            }
+            if (data.compact_begin == '') {
+                alert('请输入合同开始时间');
+                return false;
+            }
+            if (data.compact_end == '') {
+                alert('请输入合同结束时间');
+                return false;
+            }
+            if (data.sell_id == '') {
+                alert('请选择分销公司');
+                return false;
+            }
+            if (data.sell_docker == '') {
+                alert('请输出乙方对接人姓名');
+                return false;
+            }
+            if (data.sell_docker_tel == '') {
+                alert('请输出乙方对接人姓名');
+                return false;
+            }
+            if (data.act_start == '') {
+                alert('请输出实际开始时间');
+                return false;
+            }
+            ajax.post('project/ruleCompany/create', data, function (res) {
+                alert(res.msg);
+                if (res.code == config.responseSuccess) {
+                    window.location.href = 'CommissionRulesCompanyUpdate.html?id=' + res.data;
+                }
+            })
         })
-    })
-
     </script>
 </body>
 
