@@ -152,7 +152,7 @@
                                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 项目状态：</label>
 
                                     <div class="col-sm-9">
-                                        <select class="form-control" style="width: 150px;" name="sale_state" disabled>
+                                        <select class="form-control" style="width: 150px;" name="sale_state" >
                                             <option value=""></option>
                                             <option value="1">待售</option>
                                             <option value="2">在售</option>
@@ -418,7 +418,7 @@
                     getAddress();
                     data.config = res.data;
                     var property =
-                        ' <div class="checkbox checkSty_projectInfo"><label> <input name="form-field-checkbox" type="checkbox" class="ace" value="{id}" disabled><span class="lbl">{name}</span></label> </div>',
+                        ' <div class="checkbox checkSty_projectInfo"><label> <input name="form-field-checkbox" type="checkbox" class="ace" value="{id}" ><span class="lbl">{name}</span></label> </div>',
                         str = '',
                         property_dom = $('#property');
                     $.each(data.config[config.configList.PROPERTY_TYPE].param, function (k, v) {
