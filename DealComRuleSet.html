@@ -39,7 +39,7 @@
         }
 
         .modal_JumPoint,
-        .modal_JumPointXiuG{
+        .modal_JumPointXiuG {
             display: none;
             background-color: rgba(0, 0, 0, .5);
             position: fixed;
@@ -270,7 +270,7 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody class="jumpPointShow">
-                                                               
+
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -322,11 +322,11 @@
                                     </label>
                                 </div>
                             </div>
-                           <div class="form-group">
+                            <div class="form-group">
                                 <label class="col-sm-4 control-label no-padding-right" for="form-field-1">参数：</label>
 
                                 <div class="col-sm-8">
-                                    <input type="number" min="0" class="col-xs-12 col-sm-10">
+                                    <input type="number" min="0" class="col-xs-12 col-sm-10 canShu">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -381,11 +381,11 @@
                                     </label>
                                 </div>
                             </div>
-                             <div class="form-group">
+                            <div class="form-group">
                                 <label class="col-sm-4 control-label no-padding-right" for="form-field-1">参数：</label>
 
                                 <div class="col-sm-8">
-                                    <input type="number" min="0" class="col-xs-12 col-sm-10" name="paramx">
+                                    <input type="number" min="0" class="col-xs-12 col-sm-10 canShuX" name="paramx">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -527,7 +527,7 @@
 
         $('#save').click(function () {
             var data = {
-                    'company_rule_id':parseInt(id),
+                    'company_rule_id': parseInt(id),
                     'is_jump': $('input[name=td]:checked').val(),
                     'is_total': $('input[name=lj]:checked').val(),
                     'company_rule_id': id,
@@ -547,10 +547,10 @@
 
             ajax.post('project/ruleCompany/brokerRule/create', data, function (res) {
                 alert(res.msg);
-                if(res.code==config.responseSuccess){
-                    if(data.is_jump==1){
+                if (res.code == config.responseSuccess) {
+                    if (data.is_jump == 1) {
                         insertId = res.data;
-                    }else{
+                    } else {
                         history.back(-1);
                     }
 
@@ -571,7 +571,7 @@
             todayHighlight: true
         })
         //关闭按钮返回上一页
-        $('#backLastPage').on('click',function(){
+        $('#backLastPage').on('click', function () {
             history.back(-1);
         })
     </script>
@@ -581,80 +581,105 @@
         var jumPointXiu;
         $('#dynamic-box').on('click', '.Operate_point', function () {
             $('.modal_JumPointXiuG').css('display', 'block');
-            jumPointXiu=$(this).parent().parent().parent();
+            jumPointXiu = $(this).parent().parent().parent();
             return false;
         })
-        $('.jumpPointSubX').on('click',function(){
-            
+        $('.jumpPointSubX').on('click', function () {
+
             var startNum = $('.startNumX').val();
             var endNum = $('.endNumX').val();
             var includes = $('.includesX').is(':checked');
             var jiangLi = $('.jiangLiX').val();
-            var canNum = $('input[name=paramx]').val();
+            var canNum = $('.canShuX').val();
             var gongShi = $("select[name=commission]").find("option:selected").text();
-            var lj=$('input:radio[name="lj"]:checked').val();
-            var leiJi="";
-            if(lj==1){
-                leiJi="是";
-            }else if(lj==0){
-                leiJi="否";
-            }
-            var xunNum=jumPointXiu.children(':first').html();
-            if (!includes) {
-                endNum--;
+            var xunNum = jumPointXiu.children(':first').html();
+            if (includes) {
+                var baoHan = "是";
+            } else {
+                var baoHan = "否";
             }
             jumPointXiu.html(
-                '<td class="center">'+xunNum+'</td>' +
+                '<td class="center">' + xunNum + '</td>' +
                 '<td class="center">' + startNum + '</td>' +
                 '<td class="center">' + endNum + '</td>' +
-                '<td class="center">'+gongShi+'</td>' +
-                '<td class="center">'+canNum+'</td>' +
-                '<td class="center">'+leiJi+'</td>' +
+                '<td class="center">' + baoHan + '</td>' +
+                '<td class="center">' + canNum + '</td>' +
                 '<td class="center">' + jiangLi + '</td>' +
                 '<td class="center">' +
                 '<div class="hidden-sm hidden-xs action-buttons">' +
                 '<a class="green Operate_point" href="#">修改</a>' +
                 '<a class="red delJumPoint" href="#">删除</a>'
-                );
+            );
             $('.modal_JumPointXiuG').css('display', 'none');
         })
         //跳点规则新增
-        $('.build_add').on('click',function(){
+        $('.build_add').on('click', function () {
             $('.modal_JumPoint').css('display', 'block');
             return false;
         })
         $('.jumpPointSub').on('click', function () {
             var startNum = $('.startNum').val();
             var endNum = $('.endNum').val();
+
             var includes = $('.includes').is(':checked');
             var jiangLi = $('.jiangLi').val();
-            var canNum = $('input[name=paramx]').val();
-            var xunNum=$('.jumpPointShow').find("tr").length+1;
+            var canNum = $('.canShu').val();
 
+
+            var xunNum = $('.jumpPointShow').find("tr").length + 1;
+            if (includes) {
+                var baoHan = "是";
+            } else {
+                var baoHan = "否";
+            }
 
             $('.jumpPointShow').append('<tr role="row" class="odd">' +
-                '<td class="center">'+xunNum+'</td>' +
+                '<td class="center">' + xunNum + '</td>' +
                 '<td class="center">' + startNum + '</td>' +
                 '<td class="center">' + endNum + '</td>' +
-                '<td class="center">'+canNum+'</td>' +
-                '<td class="center">'+includes+'</td>' +
+                '<td class="center">' + baoHan + '</td>' +
+                '<td class="center">' + canNum + '</td>' +
                 '<td class="center">' + jiangLi + '</td>' +
                 '<td class="center">' +
                 '<div class="hidden-sm hidden-xs action-buttons">' +
-                // '<a class="blue" href="#">查看</a>' +
                 '<a class="green Operate_point" href="#">修改</a>' +
                 '<a class="red delJumPoint" href="#">删除</a>' +
                 '</div></td></tr>');
-            
-                $('.modal_JumPoint').css('display', 'none');
+
+            $('.modal_JumPoint').css('display', 'none');
         })
-        //
+
+
+        //起始、截止数计算
+        function startEnd() {
+            // $('.jumpPointShow').children().each({
+            //    $(this)
+            // })
+        }
+
+
+
+
+
+
+
+
         $('.closed').on('click', function () {
             $(this).parent().parent().parent().parent().css('display', 'none');
         })
         //删除跳点规则
-        $('#dynamic-box').on('click','.delJumPoint',function(){
-            $(this).parent().parent().parent().remove();
+        $('#dynamic-box').on('click', '.delJumPoint', function () {
+            var queD = confirm('确定删除该项？');
+            var i = 0;
+            if (queD) {
+                $(this).parent().parent().parent().remove();
+                $('.jumpPointShow').children().each(function () {
+                    $(this).children("td:first").html(++i);
+                })
+                return false;
+            } else {
+                return false;
+            }
         })
         //提成方式
         $(".com_method").on('change', function () {

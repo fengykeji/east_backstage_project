@@ -100,7 +100,9 @@
             return
         }
         ajax.publicInfo('project/user/login',data,function(res){
+            console.log(config);
             alert(res.msg);
+           
             if(res.code==config.responseSuccess){
                 $.cookie(config.cookiePrefix+'login_token',res.data.token)
                 window.location.href='index.html';
