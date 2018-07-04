@@ -392,10 +392,10 @@
                             <div class="form-group">
                                 <div class="col-xs-12">
                                     <label class=" control-label no-padding-right" for="form-field-1-1" style="width: 100px;vertical-align: top;">添加平面图：</label>
-                                    <label class="ace-file-input ace-file-multiple fileUpLabel" style="display: inline-block;width: 300px;" >
+                                    <label class="ace-file-input ace-file-multiple fileUpLabel" style="display: inline-block;width: 300px;">
                                         <input multiple="" type="file" class="3d_file_1">
-                                        <img class="show_UpImg img_url pic_flat2_1" src="assets/images/null.jpg"  style="display: none;width: 100%" address="">
-                                        <span class="ace-file-container pic_wait_up1" data-title="点击上传图片" >
+                                        <img class="show_UpImg img_url pic_flat2_1" src="assets/images/null.jpg" style="display: none;width: 100%" address="">
+                                        <span class="ace-file-container pic_wait_up1" data-title="点击上传图片">
                                             <span class="ace-file-name" data-title="No File ...">
                                                 <i class=" ace-icon ace-icon fa fa-picture-o">
 
@@ -411,7 +411,7 @@
                                     <label class="ace-file-input ace-file-multiple fileUpLabel" style="display: inline-block;width: 300px;">
                                         <input multiple="" type="file" class="3d_file_2">
                                         <img class="show_UpImg img_url pic_flat2_2" src="assets/images/null.jpg" class="" style="display: none;width: 100%" address="">
-                                        <span class="ace-file-container pic_wait_up2" data-title="点击上传图片" >
+                                        <span class="ace-file-container pic_wait_up2" data-title="点击上传图片">
                                             <span class="ace-file-name" data-title="No File ...">
                                                 <i class=" ace-icon ace-icon fa fa-picture-o">
 
@@ -424,7 +424,7 @@
                             <div class="form-group">
                                 <div class="col-xs-12">
                                     <label class="control-label no-padding-right" for="form-field-1-1" style="width: 100px;vertical-align: top;">备注：</label>
-                                    <textarea style="display: inline-block;width: 300px;" name=""  cols="30" rows="4" id="comment2"></textarea>
+                                    <textarea style="display: inline-block;width: 300px;" name="" cols="30" rows="4" id="comment2"></textarea>
                                 </div>
                             </div>
                         </form>
@@ -521,16 +521,7 @@
                 })
                 var model =
                     '<tr role="row" class="odd" value="{id}"> <td class="center">1</td> <td class="center"> <img class="proLook_img" src="{url}" alt=""> </td> <td class="center">{comment}</td> <td class="center">{uploader}</td> <td class="center">{update_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green edit_leibie" href="">编辑</a> <div class="red del_leibie" style="cursor: pointer">删除</div> <div class="red up" style="cursor: pointer">上移</div> <div class="down blue"  style="cursor: pointer">下移</div> </div> </td> </tr>';
-                if (res.data.imgInfo[54].list.length > 0) {
-                    var str = '';
-                    $.each(res.data.imgInfo[54].list, function (k, v) {
-                        str += model.replace('{id}', v.img_id).replace('{url}', config.address + v.img_url)
-                            .replace('{comment}', v.img_describe).replace('{uploader}', v.uploader).replace(
-                                '{update_time}', v.update_time)
-                    })
-                    $('#pm').append(str);
-                    str = '';
-                }
+
                 if (res.data.imgInfo[53].list.length > 0) {
                     var str = '';
                     $.each(res.data.imgInfo[53].list, function (k, v) {
@@ -551,12 +542,25 @@
                     $('#sj').append(str);
                     str = '';
                 }
+                if (res.data.imgInfo[54].list.length > 0) {
+                    var str = '';
+                    model =
+                        '<tr role="row" class="odd" value="{id}"> <td class="center">1</td> <td class="center"> <img class="proLook_img" src="{url}" alt=""> </td> <td class="center">{comment}</td> <td class="center">{uploader}</td> <td class="center">{update_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green edit_leibie" href="">编辑</a> <div class="red del_leibie" style="cursor: pointer">删除</div> <div class="blue" style="cursor: pointer">设为封面</div> <div class="red up" style="cursor: pointer">上移</div> <div class="down blue"  style="cursor: pointer">下移</div> </div> </td> </tr>';
+                    $.each(res.data.imgInfo[54].list, function (k, v) {
+                        str += model.replace('{id}', v.img_id).replace('{url}', config.address + v.img_url)
+                            .replace('{comment}', v.img_describe).replace('{uploader}', v.uploader).replace(
+                                '{update_time}', v.update_time)
+                    })
+                    $('#pm').append(str);
+                    str = '';
+                }
                 if (res.data.imgInfo[52].list.length > 0) {
                     var str = '',
-                        model=
-                            '<tr role="row" class="odd" value="{id}"> <td class="center">1</td> <td class="center"> <img class="proLook_img" src="{url}" alt=""> </td> <td class="center"> <img class="proLook_img" src="{url2}" alt=""> </td><td class="center">{comment}</td> <td class="center">{uploader}</td> <td class="center">{update_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green edit_leibie" href="">编辑</a> <div class="red del_leibie" style="cursor: pointer">删除</div> <div class="red up" style="cursor: pointer">上移</div> <div class="down blue"  style="cursor: pointer">下移</div> </div> </td> </tr>';
+                        model =
+                        '<tr role="row" class="odd" value="{id}"> <td class="center">1</td> <td class="center"> <img class="proLook_img" src="{url}" alt=""> </td> <td class="center"> <img class="proLook_img" src="{url2}" alt=""> </td><td class="center">{comment}</td> <td class="center">{uploader}</td> <td class="center">{update_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green edit_leibie" href="">编辑</a> <div class="red del_leibie" style="cursor: pointer">删除</div> <div class="red up" style="cursor: pointer">上移</div> <div class="down blue"  style="cursor: pointer">下移</div> </div> </td> </tr>';
                     $.each(res.data.imgInfo[52].list, function (k, v) {
-                        str += model.replace('{id}', v.img_id).replace('{url}', config.address + v.img_url).replace('{url2}', config.address + v.img_url_3d)
+                        str += model.replace('{id}', v.img_id).replace('{url}', config.address + v.img_url)
+                            .replace('{url2}', config.address + v.img_url_3d)
                             .replace('{comment}', v.img_describe).replace('{uploader}', v.uploader).replace(
                                 '{update_time}', v.update_time)
                     })
@@ -776,12 +780,13 @@
 
             var data = {
                 'img_url': $('.pic_flat2_1').attr('address'),
-                'img_url_3d':$('.pic_flat2_2').attr('address'),
+                'img_url_3d': $('.pic_flat2_2').attr('address'),
                 'img_type': 52,
                 'house_type': id,
                 'img_describe': $('#comment2').val()
             };
-            if ((data.img_url == '' || data.img_url == undefined) && (data.img_url_3d == '' || data.img_url_3d == undefined)) {
+            if ((data.img_url == '' || data.img_url == undefined) && (data.img_url_3d == '' || data.img_url_3d ==
+                    undefined)) {
                 alert('请上传图片 ');
                 return;
             }
