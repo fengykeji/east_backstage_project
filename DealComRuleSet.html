@@ -358,21 +358,21 @@
                     <div class="bootbox-body" style="overflow: hidden;">
                         <form class="form-horizontal" role="form">
                             <div class="form-group">
-                                <label class="col-sm-4 control-label no-padding-right" for="form-field-1">起始数：</label>
+                                <label class="col-sm-4 control-label no-padding-right reviseStartNum" for="form-field-1">起始数：</label>
 
                                 <div class="col-sm-8">
                                     <input type="number" min="0" class="col-xs-12 col-sm-10 startNumX">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-4 control-label no-padding-right" for="form-field-1">截止数：</label>
+                                <label class="col-sm-4 control-label no-padding-right reviseEndNum" for="form-field-1">截止数：</label>
 
                                 <div class="col-sm-8">
                                     <input type="number" min="0" class="col-xs-12 col-sm-10 endNumX">
                                 </div>
                             </div>
                             <div class="form-group" style="text-align: left;">
-                                <label class="col-sm-4 control-label no-padding-right" for="form-field-1">包含：</label>
+                                <label class="col-sm-4 control-label no-padding-right reviseInclude" for="form-field-1">包含：</label>
 
                                 <div class="col-sm-8">
                                     <label>
@@ -618,13 +618,14 @@
             return false;
         })
         $('.jumpPointSub').on('click', function () {
+            
             var startNum = $('.startNum').val();
             var endNum = $('.endNum').val();
 
             var includes = $('.includes').is(':checked');
             var jiangLi = $('.jiangLi').val();
             var canNum = $('.canShu').val();
-
+            determine(startNum,endNum,includes);
 
             var xunNum = $('.jumpPointShow').find("tr").length + 1;
             if (includes) {
@@ -648,18 +649,6 @@
 
             $('.modal_JumPoint').css('display', 'none');
         })
-
-
-        //起始、截止数计算
-        function startEnd() {
-            // $('.jumpPointShow').children().each({
-            //    $(this)
-            // })
-        }
-
-
-
-
 
 
 
@@ -707,6 +696,19 @@
                 $('#dynamic-box').css('display', 'none');
             }
         })
+    </script>
+
+
+
+
+
+    <script>
+        var arry = [];
+        //跳点规则添加/修改判断
+        function determine(s,e,i){
+            
+        }
+        
     </script>
 </body>
 

@@ -478,6 +478,7 @@
                 }
             })
         }
+       
         window.onload = function () {
             getList();
             $('#header').load('public/header.html');
@@ -490,6 +491,7 @@
                 path: "menu.html"
             });
         }
+        //图片上下移
         $(document).on('click','.up',function(){
             var downId=$(this).parents('tr').attr('value'),
                 upId=$(this).parents('tr').prev().attr('value');
@@ -517,7 +519,7 @@
                 }
             })
         }
-
+        //设置封面
         $(document).on('click','.projectImg',function(){
             var address=$(this).parents('tr').attr('img_address');
            ajax.post('project/update',{'img_url':address},function(res){

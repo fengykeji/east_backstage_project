@@ -137,8 +137,11 @@
 /* 预览显示 */
 
 .preBackImg {
-    background-image: url("../../images/phone@3x.png") no-repeat;
-    background-size: 100px 100px;
+    background: url("../../images/phone@3x.png") no-repeat;
+    background-size: 100% 100%;
+    width: 310px;
+    height: 600px;
+    margin: 0 auto;
 }
 
 
