@@ -389,13 +389,21 @@
                 'basic_rule_id': id
             }, function (res) {
                 var model =
-                    '<tr role="row" class="odd" value="{a_id}"> <td class="center">{key}</td> <td class="center">{company_name}</td> <td class="center">{project_docker}</td> <td class="center">{project_docker_tel}</td> <td class="center">{compact_begin}</td> <td class="center">{compact_end}</td> <td class="center">{act_start}</td> <td class="center">{act_end}</td> <td class="center">{state}</td> <td class="center">{end_state_name}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green edit_leibie" href="CommissionRulesCompanyUpdate.html?id={b_id}">编辑</a> <a class="orange" href="CommissionRulesCompanyReview.html?id={b_id}">审核</a> <a class="red del_leibie" value="{c_id}">删除</a> ',
+                    '<tr role="row" class="odd" value="{a_id}"> <td class="center">{key}</td> <td class="center">{company_name}</td> <td class="center">{project_docker}</td> <td class="center">{project_docker_tel}</td> <td class="center">{compact_begin}</td> <td class="center">{compact_end}</td> <td class="center">{act_start}</td> <td class="center">{act_end}</td> <td class="center">{state}</td> <td class="center">{end_state_name}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green edit_leibie" href="CommissionRulesCompanyUpdate.html?id={b_id}">编辑</a>  ',
                     id = 1,
                     str = '';
 
                 $.each(res.data.data, function (k, v) {
-                    if(v.state!=1){
+                    /*if(v.state==2){
                         model+='<a class="orange" value="">审核通过</a><a class="blue" value="">审核不通过</a></div> </td> </tr>';
+                    }*/
+                    switch(v.state){
+                        case 2:
+                            model+='<a class="orange" href="CommissionRulesCompanyReview.html?id={b_id}">审核</a>';
+                            break;
+                        case 1:
+                            model+='<a class="red del_leibie" value="{c_id}">终止</a> ';
+                            break;
                     }
                     str += model.replace('{a_id}', v.rule_id).replace('{b_id}', v.rule_id).replace(
                             '{c_id}', v.rule_id).replace('{key}', id++).replace('{company_name}', v.company_name)
@@ -434,6 +442,19 @@
             })
         }
 
+        $(document).on('click','.del_leibie',function(){
+            var id=$(this).attr('value'),
+                conf=confirm('确定停用该条规则么？');
+            if(conf==true){
+                ajax.post('project/ruleCompany/stop',{'rule_id':id},function(res){
+                    alert(res.msg);
+                    if(res.code==config.responseSuccess){
+                        window.location.reload();
+                    }
+                })
+            }
+
+        })
         $(document).on('click','.person_stop',function(){
             var id=$(this).attr('value'),
                 conf=confirm('确定停用该条规则么？');
