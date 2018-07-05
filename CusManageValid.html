@@ -114,13 +114,15 @@
         .close {
             font-size: 32px;
         } */
-        .label_ul{
+
+        .label_ul {
             list-style: none;
             overflow: hidden;
             margin: 0;
             vertical-align: bottom;
         }
-        .label_ul li{
+
+        .label_ul li {
             float: left;
             padding: 5px 10px;
             margin-right: 5px;
@@ -185,145 +187,181 @@
                                 </div>
                             </div>
                             <form class="form-horizontal" role="form">
-                                <div class="widget-box">
+                                <div class="widget-box" style="margin-top: 30px;">
                                     <div class="widget-header">
-                                        <h4 class="smaller">客户信息</h4>
+                                        <h4 class="smaller">到访信息</h4>
                                     </div>
                                     <div class="widget-body">
                                         <div class="widget-main" style="overflow: hidden;">
                                             <div class="col-xs-6" style="padding-left: 100px;">
                                                 <div class="form-group">
-                                                    <label class="lab_width">客户名称：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="居住">
+                                                    <label class="lab_width">置业目的：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="buy_purpose">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">到访人数：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="visit_num">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">身份证照片：</label>
+                                                    <img class="cofimg_sty" src="assets/images/email1.png" alt="" id="card_img_url">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">确认单图片：</label>
+                                                    <img class="cofimg_sty" src="assets/images/email1.png" alt="" id="verify_img_url">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">签字人：</label>
+                                                    <input class="inpt_width" type="text" id="floor_space" placeholder="" disabled="disabled" name="signatory">
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-xs-6" style="padding-left: 50px;">
+                                                <div class="form-group">
+                                                    <label class="lab_width">到访时间：</label>
+                                                    <input class="inpt_width" type="text" id="floor_space" placeholder="" disabled="disabled" name="signatory">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">到访照片：</label>
+                                                    <img class="cofimg_sty" src="assets/images/email1.png" alt="" id="visit_img_url">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">置业顾问：</label>
+                                                    <input class="inpt_width" type="text" id="floor_space" placeholder="" disabled="disabled" name="signatory">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">选择的置业顾问：</label>
+                                                    <div class="inpt_width">
+                                                        <input type="text" style="width: 200px;vertical-align: top;" name="advicer_name" disabled="disabled">
+                                                        <!-- <button class="btn btn-sm btn-info" id="asgAdv">选择</button> -->
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">备注：</label>
+                                                    <textarea class="inpt_width" rows="4" disabled="disabled" style="vertical-align: top;"></textarea>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="widget-box col-xs-12 col-sm-6" style="margin-top: 20px;">
+                                    <div class="widget-header">
+                                        <h4 class="smaller">确认信息</h4>
+                                    </div>
+                                    <div class="widget-body">
+                                        <div class="widget-main" style="overflow: hidden;">
+                                            <div class="col-xs-12" style="padding-left: 100px;">
+                                                <div class="form-group">
+                                                    <label class="lab_width">对接人：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="butter_name">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">联系电话1：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="12352639856">
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="butter_tel">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">联系电话2：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="15489659652">
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="butter_tel">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width"></label>
+                                                    <input class="inpt_width" type="text" style="border-color:transparent;background-color: transparent; ">
+                                                </div>
+                                                <hr style="border-color: #d5d5d5;width: 100%;">
+                                                <div class="form-group">
+                                                    <label class="lab_width">客户名称：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="check_client_name">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">联系电话1：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="check_client_tel">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">联系电话2：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="check_client_tel">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">联系电话3：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="check_client_tel">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="lab_width">证件类型：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="check_card_type">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">证件号码：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="check_card_num">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">通讯住址：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="check_address">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">确认时间：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="check_create_time">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="widget-box col-xs-12 col-sm-6" style="margin-top: 20px;">
+                                    <div class="widget-header">
+                                        <h4 class="smaller">推荐信息</h4>
+                                    </div>
+                                    <div class="widget-body">
+                                        <div class="widget-main" style="overflow: hidden;">
+                                            <div class="col-xs-12" style="padding-left: 100px;">
+                                                <div class="form-group">
+                                                    <label class="lab_width">推荐人：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="broker_name">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">联系电话1：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="broker_tel">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">联系电话2：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="broker_tel">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">所属公司：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="company_name">
+                                                </div>
+                                                <hr style="border-color: #d5d5d5;width: 100%;">
+                                                <div class="form-group">
+                                                    <label class="lab_width">客户名称：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="name">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">联系电话1：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="tel">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">联系电话2：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="check_client_tel">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">联系电话3：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="check_client_tel">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">证件类型：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="身份证">
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="card_type">
                                                 </div>
-                                            </div>
-                                            <div class="col-xs-6" style="padding-left: 50px;">
                                                 <div class="form-group">
                                                     <label class="lab_width">证件号码：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="845692569878546231">
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="card_id">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="lab_width">住址：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="成都-郫县-大禹东路">
+                                                    <label class="lab_width">通讯住址：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="address">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="lab_width">到访时间：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="2015-12-12">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="widget-box" style="margin-top: 30px;">
-                                    <div class="widget-header">
-                                        <h4 class="smaller">客户需求信息</h4>
-                                    </div>
-                                    <div class="widget-body">
-                                        <div class="widget-main" style="overflow: hidden;">
-                                            <div class="col-xs-6" style="padding-left: 100px;">
-                                                <div class="form-group">
-                                                    <label class="lab_width">需求物业：</label>
-                                                    <!-- <input class="inpt_width" type="text" disabled="disabled" value="居住"> -->
-                                                    <ul class="inpt_width label_ul">
-                                                        <li>住宅</li>
-                                                        <li>别墅</li>
-                                                    </ul>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">需求标签：</label>
-                                                    <!-- <input class="inpt_width" type="text" disabled="disabled" value="845692569878546231"> -->
-                                                    <ul class="inpt_width label_ul">
-                                                        <li>学区房</li>
-                                                        <li>满5年</li>
-                                                        <li>地铁房</li>
-                                                    </ul>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">总价（万）：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="90--100">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">付款方式：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="全款">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">置业目的：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="自住">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">楼层户数（户）：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="2--4">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">意向区域：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="成都-郫县-大禹东路 高新区">
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-6" style="padding-left: 50px;">
-
-                                                <div class="form-group">
-                                                    <label class="lab_width">户型：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="3室2厅2卫">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">面积（㎡）：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="90--100">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">朝向：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="西南、东南">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">装修状况：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="精装">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">房龄要求：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="10年之内">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">楼层（层）：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="5--10">
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="widget-box" style="margin-top: 30px;">
-                                    <div class="widget-header">
-                                        <h4 class="smaller">置业顾问信息</h4>
-                                    </div>
-                                    <div class="widget-body">
-                                        <div class="widget-main" style="overflow: hidden;">
-                                            <div class="col-xs-6" style="padding-left: 100px;">
-                                                <div class="form-group">
-                                                    <label class="lab_width">置业顾问：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="张三">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">联系电话1：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="12352639856">
-                                                </div>
-
-
-                                            </div>
-                                            <div class="col-xs-6" style="padding-left: 50px;">
-                                                <div class="form-group">
-                                                    <label class="lab_width">联系电话2：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="15489659652">
+                                                    <label class="lab_width">推荐时间：</label>
+                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="create_time">
                                                 </div>
                                             </div>
                                         </div>
@@ -394,7 +432,7 @@
             });
         }
         //关闭按钮返回上一页
-        $('#backLastPage').on('click',function(){
+        $('#backLastPage').on('click', function () {
             history.back(-1);
         })
     </script>

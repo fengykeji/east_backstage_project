@@ -39,11 +39,11 @@
     <script src="assets/js/ace-extra.js"></script>
 
     <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
-
-    <!--[if lte IE 8]>
-    <script src="components/html5shiv/dist/html5shiv.min.js"></script>
-    <script src="components/respond/dest/respond.min.js"></script>
-    <![endif]-->
+    <!-- 本页css -->
+    <link rel="stylesheet" href="components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css" />
+    <link rel="stylesheet" href="components/bootstrap-timepicker/css/bootstrap-timepicker.css" />
+    <link rel="stylesheet" href="components/bootstrap-daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" href="components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" />
     <style>
         .checkSty_projectInfo {
             float: left;
@@ -96,7 +96,8 @@
             height: 100px;
         }
 
-        .modal_judgment {
+        .modal_judgment
+         {
             display: none;
             background-color: rgba(0, 0, 0, .5);
             position: fixed;
@@ -127,6 +128,14 @@
 
         .close {
             font-size: 32px;
+        }
+
+        #dynamic-table th {
+            text-align: center;
+        }
+
+        #dynamic-table td {
+            text-align: center;
         }
     </style>
 </head>
@@ -163,12 +172,12 @@
                     <ul class="breadcrumb">
                         <li>
                             <i class="ace-icon fa fa-home home-icon"></i>
-                            <a href="CustomerManagement.html">客户管理</a>
+                            <a href="CustomerManagement.html">楼盘字典>客户管理</a>
                             <a>>待确认客户查看</a>
                         </li>
                     </ul>
                     <div class="operate_proInfo">
-                        <button class="btn btn-primary">确定</button>
+                        <button class="btn btn-primary" onclick="confirmed()">确定</button>
                         <button class="btn btn-danger" id="backLastPage">关闭</button>
                     </div>
                 </div>
@@ -179,12 +188,16 @@
                             <form class="form-horizontal" role="form">
                                 <div class="widget-box">
                                     <div class="widget-header">
-                                        <h4 class="smaller">推荐编号：<span id="client_id"></span></h4>
+                                        <h4 class="smaller">推荐编号：
+                                            <span id="client_id"></span>
+                                        </h4>
                                         <div style="position: absolute;right: 80px;top:0;z-index: 100;height: 38px;line-height: 38px;">
                                             <span>目前状态：
                                                 <span style="color: red;margin-right: 30px;" id="state_name"></span>
                                             </span>
-                                            <span style="color: green;">失效倒计时：<span id="end_time">59:00:21</span></span>
+                                            <span style="color: green;">失效倒计时：
+                                                <span id="end_time">59:00:21</span>
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="widget-body">
@@ -192,39 +205,67 @@
                                             <div class="col-xs-6" style="padding-left: 100px;">
                                                 <div class="form-group">
                                                     <label class="lab_width">置业目的：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="buy_purpose">
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="buy_purpose">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">到访人数：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="visit_num">
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="visit_num">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">身份证照片：</label>
-                                                    <img class="cofimg_sty" src="" alt="" id="card_img_url">
+                                                    <img class="cofimg_sty"  src="assets/images/email1.png" alt="" id="card_img_url">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">确认单图片：</label>
-                                                    <img class="cofimg_sty" src="" alt="" id="verify_img_url">
+                                                    <img class="cofimg_sty" disabled="disabled" src="assets/images/email1.png" alt="" id="verify_img_url">
                                                 </div>
-
+                                                <div class="form-group">
+                                                    <label class="lab_width">签字人：</label>
+                                                    <input class="inpt_width" disabled="disabled" type="text" id="floor_space" placeholder="" name="signatory">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">到访确认：</label>
+                                                    <div class="inpt_width" style="display: inline-block;">
+                                                        <div class="radio" style="display: inline-block;">
+                                                            <label>
+                                                                <input name="daoF" value="1" type="radio" class="ace">
+                                                                <span class="lbl">有效到访</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="radio" style="display: inline-block;">
+                                                            <label>
+                                                                <input name="daoF" value="0" type="radio" class="ace">
+                                                                <span class="lbl">无效到访</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                             </div>
-
                                             <div class="col-xs-6" style="padding-left: 50px;">
                                                 <div class="form-group">
-                                                    <label class="lab_width">置业顾问：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="property_advicer_wish">
-                                                </div>
-                                                <div class="form-group">
                                                     <label class="lab_width">到访时间：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="visit_time">
+                                                    <input class="inpt_width" type="text" disabled="disabled">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">到访照片：</label>
                                                     <img class="cofimg_sty" src="assets/images/email1.png" alt="" id="visit_img_url">
                                                 </div>
-
-
+                                                <div class="form-group">
+                                                    <label class="lab_width">置业顾问：</label>
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="visit_num">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">选择的置业顾问：</label>
+                                                    <div class="inpt_width">
+                                                        <input type="text" disabled="disabled" style="width: 200px;vertical-align: top;" name="advicer_name">
+                                                        <!-- <button class="btn btn-sm btn-info" id="asgAdv">选择</button> -->
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">备注：</label>
+                                                    <textarea class="inpt_width"  disabled="disabled" rows="4" style="background-color: #eee;vertical-align: top;" id="comment"></textarea>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -238,38 +279,53 @@
                                             <div class="col-xs-12" style="padding-left: 100px;">
                                                 <div class="form-group">
                                                     <label class="lab_width">对接人：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="butter_name">
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="butter_name">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="lab_width">联系电话：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="butter_tel">
+                                                    <label class="lab_width">联系电话1：</label>
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="butter_tel">
                                                 </div>
-
-
+                                                <div class="form-group">
+                                                    <label class="lab_width">联系电话2：</label>
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="butter_tel">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width"></label>
+                                                    <input class="inpt_width" type="text" style="border-color:transparent;background-color: transparent; ">
+                                                </div>
+                                                <hr style="border-color: #d5d5d5;width: 100%;">
                                                 <div class="form-group">
                                                     <label class="lab_width">客户名称：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="check_client_name">
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="check_client_name">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="lab_width">联系电话：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="check_client_tel">
+                                                    <label class="lab_width">联系电话1：</label>
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="check_client_tel">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">联系电话2：</label>
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="check_client_tel">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">联系电话3：</label>
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="check_client_tel">
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="lab_width">证件类型：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value=""  name="check_card_type">
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="check_card_type">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">证件号码：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="check_card_num">
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="check_card_num">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">通讯住址：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="check_address">
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="check_address">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="lab_width">发起确认时间：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="check_create_time">
+                                                    <label class="lab_width">确认时间：</label>
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="check_create_time">
                                                 </div>
                                             </div>
                                         </div>
@@ -284,41 +340,53 @@
                                             <div class="col-xs-12" style="padding-left: 100px;">
                                                 <div class="form-group">
                                                     <label class="lab_width">推荐人：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="broker_name">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">联系电话：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="broker_tel">
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="lab_width">所属公司：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="company_name">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">客户名称：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="name">
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="broker_name">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">联系电话1：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="tel">
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="broker_tel">
                                                 </div>
-
+                                                <div class="form-group">
+                                                    <label class="lab_width">联系电话2：</label>
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="broker_tel">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">所属公司：</label>
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="company_name">
+                                                </div>
+                                                <hr style="border-color: #d5d5d5;width: 100%;">
+                                                <div class="form-group">
+                                                    <label class="lab_width">客户名称：</label>
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="name">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">联系电话1：</label>
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="tel">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">联系电话2：</label>
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="check_client_tel">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">联系电话3：</label>
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="check_client_tel">
+                                                </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">证件类型：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="card_type">
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="card_type">
+                                                   
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">证件号码：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="card_id">
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="card_id">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">通讯住址：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="address">
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="address">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">推荐时间：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled" value="" name="create_time">
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="create_time">
                                                 </div>
                                             </div>
                                         </div>
@@ -374,6 +442,8 @@
         </div>
     </div>
 
+    
+
     <!-- basic scripts -->
 
     <!--[if !IE]> -->
@@ -409,14 +479,16 @@
     <script src="assets/js/src/ace.widget-on-reload.js"></script>
     <script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
 
-    <script src="assets/js/jquery.cookie.js"></script>
-    <script src="assets/js/config.js"></script>
-    <script src="assets/js/public.js"></script>
 
     <!-- 本页js -->
     <script src="assets/js/jquery.cookie.js"></script>
     <script src="assets/js/config.js"></script>
     <script src="assets/js/public.js"></script>
+    <script src="components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+    <script src="components/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+    <script src="components/moment/moment.js"></script>
+    <script src="components/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="components/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js"></script>
     <script>
         var id = $.getUrlVar('id');
         window.onload = function () {
@@ -433,35 +505,51 @@
         }
     </script>
     <script>
-        $('#asgAdv').on('click', function () {
-            window.location.href = "assignAdviser.html";
-            return false;
-        })
-//关闭按钮返回上一页
-$('#backLastPage').on('click',function(){
-            history.back(-1);
-        })
-
-        $(".InvalidVisit").on('click', function () {
-            if ($(this).attr("checked", "true")) {
-                $('.modal_judgment').css('display', 'block');
-
+        //日历插件初始化
+        if (!ace.vars['old_ie']) $('.date-timepicker').datetimepicker({
+            //format: 'MM/DD/YYYY h:mm:ss A',//use this option to display seconds
+            format: 'YYYY-MM-DD h:mm:ss',
+            icons: {
+                time: 'fa fa-clock-o',
+                date: 'fa fa-calendar',
+                up: 'fa fa-chevron-up',
+                down: 'fa fa-chevron-down',
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right',
+                today: 'fa fa-arrows ',
+                clear: 'fa fa-trash',
+                close: 'fa fa-times'
             }
+        }).next().on(ace.click_event, function () {
+            $(this).prev().focus();
         });
+        // $(".InvalidVisit").on('click', function () {
+        //     if ($(this).attr("checked", "true")) {
+        //         $('.modal_judgment').css('display', 'block');
+
+        //     }
+        // });
         $('.closed').on('click', function () {
             $(this).parent().parent().parent().parent().css('display', 'none');
         })
-        function getInfo(){
-            ajax.get('project/client/waitConfirmedDetail',{client_id:id},function(res){
+        //关闭按钮返回上一页
+        $('#backLastPage').on('click', function () {
+            history.back(-1);
+        })
+
+        function getInfo() {
+            ajax.get('project/client/waitConfirmedDetail', {
+                client_id: id
+            }, function (res) {
                 $('#client_id').html(res.data.client_id);
                 $('#state_name').html(res.data.state_name);
                 $('input[name=buy_purpose]').val(res.data.buy_purpose);
                 $('input[name=visit_num]').val(res.data.visit_num);
                 $('input[name=property_advicer_wish]').val(res.data.property_advicer_wish);
                 $('input[name=visit_time]').val(res.data.visit_time);
-                $('#card_img_url').attr('src',config.address+res.data.card_img_url);
-                $('#verify_img_url').attr('src',config.address+res.data.verify_img_url);
-                $('#visit_img_url').attr('src',config.address+res.data.visit_img_url);
+                $('#card_img_url').attr('src', res.data.card_img_url);
+                $('#verify_img_url').attr('src', res.data.verify_img_url);
+                $('#visit_img_url').attr('src', res.data.visit_img_url);
                 $('input[name=butter_name]').val(res.data.butter_name);
                 $('input[name=butter_tel]').val(res.data.butter_tel);
                 $('input[name=check_client_name]').val(res.data.check_info.client_name);
@@ -479,10 +567,25 @@ $('#backLastPage').on('click',function(){
                 $('input[name=address]').val(res.data.address);
                 $('input[name=create_time]').val(res.data.create_time);
                 $('#end_time').html(formatSeconds(res.data.CountDown));
+                $('#comment').val(res.data.comment);
+                $('input[name=signatory]').val(res.data.signatory);
 
             })
         }
 
+        function confirmed() {
+            data = {
+                'client_id': id,
+                'advicer_name': $('input[name=advicer_name]').val(),
+                'time': new Date().format("yyyy-MM-dd hh:mm:ss"),
+            }
+            ajax.get('user/yunsuan/state/value', data, function (res) {
+                alert(res.msg);
+                if (res.code == config.responseSuccess) {
+                    window.location.href = 'CustomerManagement.html';
+                }
+            })
+        }
     </script>
 </body>
 
