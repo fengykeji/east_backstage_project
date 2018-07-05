@@ -397,12 +397,10 @@
             $(this).parent().parent().parent().parent().css('display', 'none');
         })
         //分页
-        var type_id = $.getUrlVar('type_id'),
-            page = $.getUrlVar('page') ? $.getUrlVar('page') : 1;
+        var page = $.getUrlVar('page') ? $.getUrlVar('page') : 1;
 
         function getList() {
-            ajax.get('project/img/getOneTypeImgList', {
-                'type_id': type_id,
+            ajax.get('project/build/list', {
                 'page': page
             }, function (res) {
                 var dom = $('#list'),
