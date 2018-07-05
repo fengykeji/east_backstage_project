@@ -82,343 +82,344 @@
 </head>
 
 <body class="no-skin">
-<div id="header"></div>
+    <div id="header"></div>
 
 
 
-<!-- /section:basics/navbar.layout -->
-<div class="main-container" id="main-container">
-    <script type="text/javascript">
-        try {
-            ace.settings.check('main-container', 'fixed')
-        } catch (e) {}
-    </script>
+    <!-- /section:basics/navbar.layout -->
+    <div class="main-container" id="main-container">
+        <script type="text/javascript">
+            try {
+                ace.settings.check('main-container', 'fixed')
+            } catch (e) {}
+        </script>
 
-    <!-- 菜单开始 -->
-    <div id="sidebar" class="sidebar responsive ace-save-state">
+        <!-- 菜单开始 -->
+        <div id="sidebar" class="sidebar responsive ace-save-state">
 
-    </div>
+        </div>
 
-    <!-- /section:basics/sidebar -->
-    <div class="main-content">
-        <div class="main-content-inner">
-            <div class="breadcrumbs" id="breadcrumbs">
-                <script type="text/javascript">
-                    try {
-                        ace.settings.check('breadcrumbs', 'fixed')
-                    } catch (e) {}
-                </script>
-                <ul class="breadcrumb">
-                    <li>
-                        <i class="ace-icon fa fa-home home-icon"></i>
-                        <a href="CustomerManagement.html">楼盘字典>客户管理</a>
-                    </li>
-                </ul>
-                <!-- <div class="operate_proInfo">
+        <!-- /section:basics/sidebar -->
+        <div class="main-content">
+            <div class="main-content-inner">
+                <div class="breadcrumbs" id="breadcrumbs">
+                    <script type="text/javascript">
+                        try {
+                            ace.settings.check('breadcrumbs', 'fixed')
+                        } catch (e) {}
+                    </script>
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                            <a href="CustomerManagement.html">楼盘字典>客户管理</a>
+                        </li>
+                    </ul>
+                    <!-- <div class="operate_proInfo">
                     <button class="btn btn-danger " id="rule_add">新增</button>
                 </div> -->
-            </div>
-            <!-- 内容开始 -->
-            <div class="page-content">
-                <div class="row" style="margin-top: 50px;">
-                    <div class="col-xs-12">
-                        <div class="tabbable">
-                            <ul class="nav nav-tabs" id="myTab">
-                                <li class="active all" >
-                                    <a data-toggle="tab" href="#custom_all" aria-expanded="false">
-                                        全部
-                                    </a>
-                                </li>
+                </div>
+                <!-- 内容开始 -->
+                <div class="page-content">
+                    <div class="row" style="margin-top: 50px;">
+                        <div class="col-xs-12">
+                            <div class="tabbable">
+                                <ul class="nav nav-tabs" id="myTab">
+                                    <li class="active all">
+                                        <a data-toggle="tab" href="#custom_all" aria-expanded="false">
+                                            全部
+                                        </a>
+                                    </li>
 
-                                <li class="wait_confirm">
-                                    <a data-toggle="tab" href="#custom_tobeConfirm" aria-expanded="true">
-                                        待确认客户
-                                    </a>
-                                </li>
-                                <li class="value">
-                                    <a data-toggle="tab" href="#custom_valid" aria-expanded="true">
-                                        有效客户
-                                    </a>
-                                </li>
-                                <li class="disableds">
-                                    <a data-toggle="tab" href="#custom_invalid" aria-expanded="true">
-                                        无效客户
-                                    </a>
-                                </li>
-                                <li class="deal">
-                                    <a data-toggle="tab" href="#custom_success" aria-expanded="true">
-                                        已成单客户
-                                    </a>
-                                </li>
-                            </ul>
-                            <div class="tab-content">
-                                <div id="custom_all" class="tab-pane fade active in" style="overflow: hidden;">
-                                    <div class="col-xs-12" style="overflow-x: scroll;">
-                                        <div style="width: 2100px;">
-                                            <div id="" class="dataTables_wrapper form-inline no-footer">
-                                                <table id="" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
-                                                    <thead>
-                                                    <tr role="row">
-                                                        <th class="center">序号</th>
-                                                        <th class="center">推荐编号</th>
-                                                        <th class="center">客户名称</th>
-                                                        <th class="center">联系电话</th>
-                                                        <th class="center">状态</th>
-                                                        <th class="center">推荐人</th>
-                                                        <th class="center">类型</th>
-                                                        <th class="center">公司名称</th>
-                                                        <th class="center">推荐时间</th>
-                                                        <th class="center">发起确认时间</th>
-                                                        <th class="center">状态改变时间</th>
-                                                        <th class="center">失效倒计时</th>
-                                                        <th class="center">是否确认</th>
-                                                        <th class="center">到访确认人</th>
-                                                        <th class="center">分配时间</th>
-                                                        <th class="center">置业顾问</th>
-                                                        <!-- <th class="center">操作</th> -->
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody id="all">
+                                    <li class="wait_confirm">
+                                        <a data-toggle="tab" href="#custom_tobeConfirm" aria-expanded="true">
+                                            待确认客户
+                                        </a>
+                                    </li>
+                                    <li class="value">
+                                        <a data-toggle="tab" href="#custom_valid" aria-expanded="true">
+                                            有效客户
+                                        </a>
+                                    </li>
+                                    <li class="disableds">
+                                        <a data-toggle="tab" href="#custom_invalid" aria-expanded="true">
+                                            无效客户
+                                        </a>
+                                    </li>
+                                    <li class="deal">
+                                        <a data-toggle="tab" href="#custom_success" aria-expanded="true">
+                                            已成单客户
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div id="custom_all" class="tab-pane fade active in" style="overflow: hidden;">
+                                        <div class="col-xs-12" style="overflow-x: scroll;">
+                                            <div style="width: 2100px;">
+                                                <div id="" class="dataTables_wrapper form-inline no-footer">
+                                                    <table id="" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+                                                        <thead>
+                                                            <tr role="row">
+                                                                <th class="center">序号</th>
+                                                                <th class="center">推荐编号</th>
+                                                                <th class="center">客户名称</th>
+                                                                <th class="center">联系电话</th>
+                                                                <th class="center">状态</th>
+                                                                <th class="center">推荐人</th>
+                                                                <th class="center">类型</th>
+                                                                <th class="center">公司名称</th>
+                                                                <th class="center">推荐时间</th>
+                                                                <th class="center">发起确认时间</th>
+                                                                <th class="center">状态改变时间</th>
+                                                                <th class="center">失效倒计时</th>
+                                                                <th class="center">是否确认</th>
+                                                                <th class="center">到访确认人</th>
+                                                                <th class="center">分配时间</th>
+                                                                <th class="center">置业顾问</th>
+                                                                <!-- <th class="center">操作</th> -->
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="all">
 
-                                                    </tbody>
-                                                </table>
-                                                <div class="row">
-                                                    <div class="col-xs-12">
-                                                        <div class="dataTables_paginate paging_simple_numbers" id="">
-                                                            <ul class="pagination">
-                                                                <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0">
-                                                                    <a href="#">上一页</a>
-                                                                </li>
-                                                                <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
-                                                                    <a href="#">1</a>
-                                                                </li>
-                                                                <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                    <a href="#">2</a>
-                                                                </li>
-                                                                <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                    <a href="#">3</a>
-                                                                </li>
-                                                                <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="">
-                                                                    <a href="#">下一页</a>
-                                                                </li>
-                                                            </ul>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <div class="dataTables_paginate paging_simple_numbers" id="">
+                                                                <ul class="pagination">
+                                                                    <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0">
+                                                                        <a href="#">上一页</a>
+                                                                    </li>
+                                                                    <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
+                                                                        <a href="#">1</a>
+                                                                    </li>
+                                                                    <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
+                                                                        <a href="#">2</a>
+                                                                    </li>
+                                                                    <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
+                                                                        <a href="#">3</a>
+                                                                    </li>
+                                                                    <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="">
+                                                                        <a href="#">下一页</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div id="custom_tobeConfirm" class="tab-pane fade  " style="overflow: hidden;">
-                                    <div class="col-xs-12" style="overflow-x: scroll;">
-                                        <div style="width: 2100px;">
-                                            <div id="" class="dataTables_wrapper form-inline no-footer">
-                                                <table id="" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
-                                                    <thead>
-                                                    <tr role="row" >
-                                                        <th class="center">序号</th>
-                                                        <th class="center">推荐编号</th>
-                                                        <th class="center">客户名称</th>
-                                                        <th class="center">联系电话</th>
-                                                        <th class="center">推荐人</th>
-                                                        <th class="center">类型</th>
-                                                        <th class="center">公司名称</th>
-                                                        <th class="center">推荐时间</th>
-                                                        <th class="center">对接人</th>
-                                                        <th class="center">发起确认时间</th>
-                                                        <th class="center">失效倒计时</th>
-                                                        <th class="center">操作</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody id="wait_confrim">
+                                    <div id="custom_tobeConfirm" class="tab-pane fade  " style="overflow: hidden;">
+                                        <div class="col-xs-12" style="overflow-x: scroll;">
+                                            <div style="width: 2100px;">
+                                                <div id="" class="dataTables_wrapper form-inline no-footer">
+                                                    <table id="" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+                                                        <thead>
+                                                            <tr role="row">
+                                                                <th class="center">序号</th>
+                                                                <th class="center">推荐编号</th>
+                                                                <th class="center">客户名称</th>
+                                                                <th class="center">联系电话</th>
+                                                                <th class="center">推荐人</th>
+                                                                <th class="center">类型</th>
+                                                                <th class="center">公司名称</th>
+                                                                <th class="center">推荐时间</th>
+                                                                <th class="center">对接人</th>
+                                                                <th class="center">发起确认时间</th>
+                                                                <th class="center">失效倒计时</th>
+                                                                <th class="center">操作</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="wait_confrim">
 
 
-                                                    </tbody>
-                                                </table>
-                                                <div class="row">
-                                                    <div class="col-xs-12">
-                                                        <div class="dataTables_paginate paging_simple_numbers" id="">
-                                                            <ul class="pagination">
-                                                                <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="">
-                                                                    <a href="#">上一页</a>
-                                                                </li>
-                                                                <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
-                                                                    <a href="#">1</a>
-                                                                </li>
-                                                                <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                    <a href="#">2</a>
-                                                                </li>
-                                                                <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                    <a href="#">3</a>
-                                                                </li>
-                                                                <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="">
-                                                                    <a href="#">下一页</a>
-                                                                </li>
-                                                            </ul>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <div class="dataTables_paginate paging_simple_numbers" id="">
+                                                                <ul class="pagination">
+                                                                    <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="">
+                                                                        <a href="#">上一页</a>
+                                                                    </li>
+                                                                    <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
+                                                                        <a href="#">1</a>
+                                                                    </li>
+                                                                    <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
+                                                                        <a href="#">2</a>
+                                                                    </li>
+                                                                    <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
+                                                                        <a href="#">3</a>
+                                                                    </li>
+                                                                    <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="">
+                                                                        <a href="#">下一页</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div id="custom_valid" class="tab-pane fade  " style="overflow: hidden;">
-                                    <div class="col-xs-12" style="overflow-x: scroll;">
-                                        <div style="width: 2100px;">
-                                            <div id="" class="dataTables_wrapper form-inline no-footer">
-                                                <table id="" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
-                                                    <thead>
-                                                    <tr role="row" >
-                                                        <th class="center">序号</th>
-                                                        <th class="center">推荐编号</th>
-                                                        <th class="center">客户名称</th>
-                                                        <th class="center">联系电话</th>
-                                                        <th class="center">目前状态</th>
-                                                        <th class="center">状态改变时间</th>
-                                                        <th class="center">推荐人</th>
-                                                        <th class="center">公司名称</th>
-                                                        <th class="center">失效倒计时</th>
-                                                        <th class="center">置业顾问</th>
-                                                        <th class="center">确认时间</th>
-                                                        <th class="center">操作</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody id="value">
+                                    <div id="custom_valid" class="tab-pane fade  " style="overflow: hidden;">
+                                        <div class="col-xs-12" style="overflow-x: scroll;">
+                                            <div style="width: 2100px;">
+                                                <div id="" class="dataTables_wrapper form-inline no-footer">
+                                                    <table id="" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+                                                        <thead>
+                                                            <tr role="row">
+                                                                <th class="center">序号</th>
+                                                                <th class="center">推荐编号</th>
+                                                                <th class="center">客户名称</th>
+                                                                <th class="center">联系电话</th>
+                                                                <th class="center">目前状态</th>
+                                                                <th class="center">状态改变时间</th>
+                                                                <th class="center">推荐人</th>
+                                                                <th class="center">公司名称</th>
+                                                                <th class="center">失效倒计时</th>
+                                                                <th class="center">置业顾问</th>
+                                                                <th class="center">确认时间</th>
+                                                                <th class="center">操作</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="value">
 
 
-                                                    </tbody>
-                                                </table>
-                                                <div class="row">
-                                                    <div class="col-xs-12">
-                                                        <div class="dataTables_paginate paging_simple_numbers" id="">
-                                                            <ul class="pagination">
-                                                                <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="">
-                                                                    <a href="#">上一页</a>
-                                                                </li>
-                                                                <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
-                                                                    <a href="#">1</a>
-                                                                </li>
-                                                                <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                    <a href="#">2</a>
-                                                                </li>
-                                                                <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                    <a href="#">3</a>
-                                                                </li>
-                                                                <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="">
-                                                                    <a href="#">下一页</a>
-                                                                </li>
-                                                            </ul>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <div class="dataTables_paginate paging_simple_numbers" id="">
+                                                                <ul class="pagination">
+                                                                    <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="">
+                                                                        <a href="#">上一页</a>
+                                                                    </li>
+                                                                    <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
+                                                                        <a href="#">1</a>
+                                                                    </li>
+                                                                    <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
+                                                                        <a href="#">2</a>
+                                                                    </li>
+                                                                    <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
+                                                                        <a href="#">3</a>
+                                                                    </li>
+                                                                    <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="">
+                                                                        <a href="#">下一页</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div id="custom_invalid" class="tab-pane fade  " style="overflow: hidden;">
+                                    <div id="custom_invalid" class="tab-pane fade  " style="overflow: hidden;">
 
-                                    <div class="col-xs-12" style="overflow-x: scroll;">
-                                        <div style="width: 2100px;">
-                                            <div id="" class="dataTables_wrapper form-inline no-footer">
-                                                <table id="" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
-                                                    <thead>
-                                                    <tr role="row" >
-                                                        <th class="center">序号</th>
-                                                        <th class="center">推荐编号</th>
-                                                        <th class="center">客户名称</th>
-                                                        <th class="center">联系电话</th>
-                                                        <th class="center">无效前状态</th>
-                                                        <th class="center">推荐人</th>
-                                                        <th class="center">公司名称</th>
-                                                        <th class="center">置业顾问</th>
-                                                        <td class="center">目前状态</td>
-                                                        <th class="center">无效时间</th>
-                                                        <th class="center">无效类型</th>
-                                                        <th class="center">失效描述</th>
-                                                        <th class="center">操作</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody id="disableds">
+                                        <div class="col-xs-12" style="overflow-x: scroll;">
+                                            <div style="width: 2100px;">
+                                                <div id="" class="dataTables_wrapper form-inline no-footer">
+                                                    <table id="" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+                                                        <thead>
+                                                            <tr role="row">
+                                                                <th class="center">序号</th>
+                                                                <th class="center">推荐编号</th>
+                                                                <th class="center">客户名称</th>
+                                                                <th class="center">联系电话</th>
+                                                                <th class="center">无效前状态</th>
+                                                                <th class="center">推荐人</th>
+                                                                <th class="center">公司名称</th>
+                                                                <th class="center">置业顾问</th>
+                                                                <td class="center">目前状态</td>
+                                                                <th class="center">无效时间</th>
+                                                                <th class="center">无效类型</th>
+                                                                <th class="center">失效描述</th>
+                                                                <th class="center">操作</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="disableds">
 
 
-                                                    </tbody>
-                                                </table>
-                                                <div class="row">
-                                                    <div class="col-xs-12">
-                                                        <div class="dataTables_paginate paging_simple_numbers" id="">
-                                                            <ul class="pagination">
-                                                                <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="">
-                                                                    <a href="#">上一页</a>
-                                                                </li>
-                                                                <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
-                                                                    <a href="#">1</a>
-                                                                </li>
-                                                                <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                    <a href="#">2</a>
-                                                                </li>
-                                                                <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                    <a href="#">3</a>
-                                                                </li>
-                                                                <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="">
-                                                                    <a href="#">下一页</a>
-                                                                </li>
-                                                            </ul>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <div class="dataTables_paginate paging_simple_numbers" id="">
+                                                                <ul class="pagination">
+                                                                    <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="">
+                                                                        <a href="#">上一页</a>
+                                                                    </li>
+                                                                    <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
+                                                                        <a href="#">1</a>
+                                                                    </li>
+                                                                    <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
+                                                                        <a href="#">2</a>
+                                                                    </li>
+                                                                    <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
+                                                                        <a href="#">3</a>
+                                                                    </li>
+                                                                    <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="">
+                                                                        <a href="#">下一页</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div id="custom_success" class="tab-pane fade  " style="overflow: hidden;">
+                                    <div id="custom_success" class="tab-pane fade  " style="overflow: hidden;">
 
-                                    <div class="col-xs-12" style="overflow-x: scroll;">
-                                        <div style="width: 2100px;">
-                                            <div id="" class="dataTables_wrapper form-inline no-footer">
-                                                <table id="" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
-                                                    <thead>
-                                                    <tr role="row" >
-                                                        <th class="center">序号</th>
-                                                        <th class="center">推荐编号</th>
-                                                        <th class="center">客户名称</th>
-                                                        <th class="center">联系电话</th>
-                                                        <th class="center">成交房源</th>
+                                        <div class="col-xs-12" style="overflow-x: scroll;">
+                                            <div style="width: 2100px;">
+                                                <div id="" class="dataTables_wrapper form-inline no-footer">
+                                                    <table id="" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+                                                        <thead>
+                                                            <tr role="row">
+                                                                <th class="center">序号</th>
+                                                                <th class="center">推荐编号</th>
+                                                                <th class="center">客户名称</th>
+                                                                <th class="center">联系电话</th>
+                                                                <th class="center">成交房源</th>
 
-                                                        <th class="center">总价（￥）</th>
-                                                        <th class="center">单价（元/㎡）</th>
-                                                        <th class="center">成交时间</th>
-                                                        <th class="center">推荐人</th>
-                                                        <th class="center">类型</th>
-                                                        <th class="center">公司名称</th>
-                                                        <th class="center">置业顾问</th>
-                                                        <th class="center">累计佣金（￥）</th>
-                                                        <th class="center">操作</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody id="deal">
+                                                                <th class="center">总价（￥）</th>
+                                                                <th class="center">单价（元/㎡）</th>
+                                                                <th class="center">成交时间</th>
+                                                                <th class="center">推荐人</th>
+                                                                <th class="center">类型</th>
+                                                                <th class="center">公司名称</th>
+                                                                <th class="center">置业顾问</th>
+                                                                <th class="center">累计佣金（￥）</th>
+                                                                <th class="center">操作</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="deal">
 
-                                                    </tbody>
-                                                </table>
-                                                <div class="row">
-                                                    <div class="col-xs-12">
-                                                        <div class="dataTables_paginate paging_simple_numbers" id="">
-                                                            <ul class="pagination">
-                                                                <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="">
-                                                                    <a href="#">上一页</a>
-                                                                </li>
-                                                                <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
-                                                                    <a href="#">1</a>
-                                                                </li>
-                                                                <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                    <a href="#">2</a>
-                                                                </li>
-                                                                <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                    <a href="#">3</a>
-                                                                </li>
-                                                                <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="">
-                                                                    <a href="#">下一页</a>
-                                                                </li>
-                                                            </ul>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <div class="dataTables_paginate paging_simple_numbers" id="">
+                                                                <ul class="pagination">
+                                                                    <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="">
+                                                                        <a href="#">上一页</a>
+                                                                    </li>
+                                                                    <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
+                                                                        <a href="#">1</a>
+                                                                    </li>
+                                                                    <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
+                                                                        <a href="#">2</a>
+                                                                    </li>
+                                                                    <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
+                                                                        <a href="#">3</a>
+                                                                    </li>
+                                                                    <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="">
+                                                                        <a href="#">下一页</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -433,7 +434,6 @@
             </div>
         </div>
     </div>
-</div>
 
 
 
@@ -465,193 +465,217 @@
 
 
 
-<!-- basic scripts -->
+    <!-- basic scripts -->
 
-<!--[if !IE]> -->
-<script src="components/jquery/dist/jquery.js"></script>
-<script type="text/javascript">
-    if ('ontouchstart' in document.documentElement) document.write(
-        "<script src='components/_mod/jquery.mobile.custom/jquery.mobile.custom.js'>" + "<" + "/script>");
-</script>
-<script src="components/bootstrap/dist/js/bootstrap.js"></script>
+    <!--[if !IE]> -->
+    <script src="components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        if ('ontouchstart' in document.documentElement) document.write(
+            "<script src='components/_mod/jquery.mobile.custom/jquery.mobile.custom.js'>" + "<" + "/script>");
+    </script>
+    <script src="components/bootstrap/dist/js/bootstrap.js"></script>
 
-<!-- ace scripts -->
-<script src="assets/js/src/elements.scroller.js"></script>
-<script src="assets/js/src/elements.colorpicker.js"></script>
-<script src="assets/js/src/elements.fileinput.js"></script>
-<script src="assets/js/src/elements.typeahead.js"></script>
-<script src="assets/js/src/elements.wysiwyg.js"></script>
-<script src="assets/js/src/elements.spinner.js"></script>
-<script src="assets/js/src/elements.treeview.js"></script>
-<script src="assets/js/src/elements.wizard.js"></script>
-<script src="assets/js/src/elements.aside.js"></script>
-<script src="assets/js/src/ace.js"></script>
-<script src="assets/js/src/ace.basics.js"></script>
-<script src="assets/js/src/ace.scrolltop.js"></script>
-<script src="assets/js/src/ace.ajax-content.js"></script>
-<script src="assets/js/src/ace.touch-drag.js"></script>
-<script src="assets/js/src/ace.sidebar.js"></script>
-<script src="assets/js/src/ace.sidebar-scroll-1.js"></script>
-<script src="assets/js/src/ace.submenu-hover.js"></script>
-<script src="assets/js/src/ace.widget-box.js"></script>
-<script src="assets/js/src/ace.settings.js"></script>
-<script src="assets/js/src/ace.settings-rtl.js"></script>
-<script src="assets/js/src/ace.settings-skin.js"></script>
-<script src="assets/js/src/ace.widget-on-reload.js"></script>
-<script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
-<!-- 本页js -->
-<script src="assets/js/jquery.cookie.js"></script>
-<script src="assets/js/config.js"></script>
-<script src="assets/js/public.js"></script>
-<script>
-
-    window.onload = function () {
-        $('#header').load('public/header.html');
-        $('#sidebar').load('public/menu.html');
-        var menu_data = {
-            opening: '',
-            acting: '.kehuguanli'
-        }
-        $.cookie('menu_data', JSON.stringify(menu_data), {
-            path: "menu.html"
-        });
-        checkYs();
-        getAllList();
-        wait_confirm();
-        value();
-        disabled();
-        deal();
-    }
-</script>
-<script>
-    var had_ys=2;
-
-    function deal(){
-        var model='<tr role="row" class="odd" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td></td> <td class="center">{house_info}</td> <td class="center">{total_money}</td>  <td class="center">{build_deal_money}</td><td class="center">{design_time}</td><td class="center">{broker_name}</td><td class="center">{broker_type}</td><td class="center">{company_name}</td> <td class="center">{advice_name}</td><td class="center">{broker_name}</td><td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="CusManageClinch.html">查看</a> </div> </td> </tr>',
-            id=1,
-            str='';
-        ajax.get('project/client/deal',{},function(res){
-            $.each(res.data.data,function(k,v){
-                var tr=model.replace('{c_id}',v.client_id).replace('{id}',id++).replace('{client_id}',v.client_id).replace('{name}',v.name).replace('{tel}',v.tel).replace('{house_info}',v.house_info).replace('{total_money}',v.total_money).replace('{build_deal_money}',v.build_deal_money).replace('{design_time}',v.design_time).replace('{broker_name}',v.broker_name).replace('{broker_type}',v.broker_type).replace('{company_name}',v.company_name).replace('{advice_name}',v.advice_name).replace('{broker_name}',v.broker_name);
-                str+=tr;
-            })
-
-            $('#deal').append(str)
-        })
-    }
-
-    function disabled(){
-        var model='<tr role="row" class="odd" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td></td> <td class="center">{current_state}</td> <td class="center">{broker_name}</td>  <td class="center">{company_name}</td><td class="center">{advice_name}</td><td class="center">无效</td><td class="center">{state_change_time}</td><td class="center">{disabled_state}</td> <td class="center">{disabled_reason}</td>  <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="CusManageInvalid.html">查看</a> </td> </tr>',
-            id=1,
-            str='';
-        ajax.get('project/client/disabled',{},function(res){
-            $.each(res.data.data,function(k,v){
-                var tr=model.replace('{c_id}',v.client_id).replace('{id}',id++).replace('{client_id}',v.client_id).replace('{name}',v.name).replace('{tel}',v.tel).replace('{current_state}',v.current_state).replace('{broker_name}',v.broker_name).replace('{company_name}',v.company_name).replace('{advice_name}',v.advice_name).replace('{state_change_time}',v.state_change_time).replace('{disabled_state}',v.disabled_state).replace('{disabled_reason}',v.disabled_reason);
-                str+=tr;
-            })
-
-            $('#disableds').append(str)
-        })
-    }
-
-
-    function getAllList(){
-        var model=' <tr role="row" class="odd" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td> <td class="center">{state}</td> <td class="center">{broker}</td> <td class="center">{broker_type}</td> <td class="center">{company_name}</td> <td class="center">{create_time}</td>  <td class="center">{visit_time}</td> <td class="center">{state_change_time}</td> <td class="center">{end_time}</td> <td class="center">已确认</td> <td class="center">{butter_name}</td> <td class="center">{allot_time}</td><td class="center">{advice_name}</td> </tr>',
-            str='',
-            id=1;
-        ajax.get('project/client/all',{},function(res){
-            if(res.data.data.length!=0){
-                $.each(res.data.data,function(k,v){
-                    if(v.allot_time==null || v.allot_time=='0000-00-00 00:00:00'){
-                        v.allot_time='未分配';
-                    }
-                    var tr=model.replace('{c_id}',v.client_id).replace('{id}',id++).replace('{client_id}',v.client_id).replace('{name}',v.name).replace('{tel}',v.tel).replace('{state}',v.state_name).replace('{broker}',v.broker_agent_name).replace('{broker_type}',v.broker_type).replace('{company_name}',v.company_name).replace('{create_time}',v.create_time).replace('{visit_time}',v.visit_time).replace('{state_change_time}',v.state_change_time).replace('{butter_name}',v.butter_name).replace('{allot_time}',v.allot_time).replace('{advice_name}',v.advice_name);
-                    if(v.CountDown>0){
-                        tr=tr.replace('{end_time}',formatSeconds(v.CountDown));
-                    }else {
-                        tr=tr.replace('{end_time}','已失效');
-                    }
-                    str+=tr;
-                })
-                $('#all').append(str);
+    <!-- ace scripts -->
+    <script src="assets/js/src/elements.scroller.js"></script>
+    <script src="assets/js/src/elements.colorpicker.js"></script>
+    <script src="assets/js/src/elements.fileinput.js"></script>
+    <script src="assets/js/src/elements.typeahead.js"></script>
+    <script src="assets/js/src/elements.wysiwyg.js"></script>
+    <script src="assets/js/src/elements.spinner.js"></script>
+    <script src="assets/js/src/elements.treeview.js"></script>
+    <script src="assets/js/src/elements.wizard.js"></script>
+    <script src="assets/js/src/elements.aside.js"></script>
+    <script src="assets/js/src/ace.js"></script>
+    <script src="assets/js/src/ace.basics.js"></script>
+    <script src="assets/js/src/ace.scrolltop.js"></script>
+    <script src="assets/js/src/ace.ajax-content.js"></script>
+    <script src="assets/js/src/ace.touch-drag.js"></script>
+    <script src="assets/js/src/ace.sidebar.js"></script>
+    <script src="assets/js/src/ace.sidebar-scroll-1.js"></script>
+    <script src="assets/js/src/ace.submenu-hover.js"></script>
+    <script src="assets/js/src/ace.widget-box.js"></script>
+    <script src="assets/js/src/ace.settings.js"></script>
+    <script src="assets/js/src/ace.settings-rtl.js"></script>
+    <script src="assets/js/src/ace.settings-skin.js"></script>
+    <script src="assets/js/src/ace.widget-on-reload.js"></script>
+    <script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
+    <!-- 本页js -->
+    <script src="assets/js/jquery.cookie.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/public.js"></script>
+    <script>
+        window.onload = function () {
+            $('#header').load('public/header.html');
+            $('#sidebar').load('public/menu.html');
+            var menu_data = {
+                opening: '',
+                acting: '.kehuguanli'
             }
-        })
-
-    }
-
-
-
-
-
-    function value(){
-        var model='<tr role="row" class="odd" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td></td> <td class="center">{state}</td> <td class="center">{state_change_time}</td><td class="center">{broker}</td>  <td class="center">{company_name}</td><td class="center">{end_time}</td><td class="center">{advice_name}</td><td class="center">{allot_name}</td>   <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="CusManageValid.html">查看</a>{ys_check}</td> </tr>',
-            id=1,
-            str='';
-        if(had_ys==.0){
-            model=model.replace('{ys_check}','<a class="green" href="CusManageClinch.html?id={d_id}">成交</a></div>');
-        }else{
-            model=model.replace('{ys_check}','');
+            $.cookie('menu_data', JSON.stringify(menu_data), {
+                path: "menu.html"
+            });
+            checkYs();
+            getAllList();
+            wait_confirm();
+            value();
+            disabled();
+            deal();
         }
-        ajax.get('project/client/value',{},function(res){
-            $.each(res.data.data,function(k,v){
-                var tr=model.replace('{c_id}',v.client_id).replace('{id}',id++).replace('{client_id}',v.client_id).replace('{name}',v.name).replace('{tel}',v.tel).replace('{broker}',v.broker_agent_name).replace('{company_name}',v.company_name).replace('{create_time}',v.create_time).replace('{visit_time}',v.visit_time).replace('{butter_name}',v.butter_name).replace('{state}',v.state_name).replace('{state_change_time}',v.state_change_time).replace('{advice_name}',v.advice_name).replace('{allot_name}',v.allot_time).replace('{d_id}',v.client_id);
-                if(v.CountDown>0){
-                    tr=tr.replace('{end_time}',formatSeconds(v.CountDown));
-                }else {
-                    tr=tr.replace('{end_time}','已失效');
-                }
-                str+=tr;
-            })
-            $('#value').append(str)
-        })
-    }
+    </script>
+    <script>
+        var had_ys = 2;
+        //已成单
+        function deal() {
+            var model =
+                '<tr role="row" class="odd" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td></td> <td class="center">{house_info}</td> <td class="center">{total_money}</td>  <td class="center">{build_deal_money}</td><td class="center">{design_time}</td><td class="center">{broker_name}</td><td class="center">{broker_type}</td><td class="center">{company_name}</td> <td class="center">{advice_name}</td><td class="center">{broker_name}</td><td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="CusManageClinchLook.html">查看</a> </div> </td> </tr>',
+                id = 1,
+                str = '';
+            ajax.get('project/client/deal', {}, function (res) {
+                $.each(res.data.data, function (k, v) {
+                    var tr = model.replace('{c_id}', v.client_id).replace('{id}', id++).replace(
+                            '{client_id}', v.client_id).replace('{name}', v.name).replace('{tel}', v.tel)
+                        .replace('{house_info}', v.house_info).replace('{total_money}', v.total_money).replace(
+                            '{build_deal_money}', v.build_deal_money).replace('{design_time}', v.design_time)
+                        .replace('{broker_name}', v.broker_name).replace('{broker_type}', v.broker_type)
+                        .replace('{company_name}', v.company_name).replace('{advice_name}', v.advice_name)
+                        .replace('{broker_name}', v.broker_name);
+                    str += tr;
+                })
 
-
-
-
-
-
-
-
-
-    function wait_confirm(){
-        var model='<tr role="row" class="odd" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td>   <td class="center">{broker}</td> <td class="center">{broker_type}</td> <td class="center">{company_name}</td><td class="center">{create_time}</td> <td class="center">{butter_name}</td>  <td class="center">{visit_time}</td> <td class="center">{end_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="CusManageTobeConfirmLook.html?id={b_id}">查看</a>{ys_check}</td> </tr>',
-            id=1,
-            str='';
-        if(had_ys==.0){
-            model=model.replace('{ys_check}','<a class="green" href="CusManageTobeConfirm.html?id={d_id}">确认</a></div>');
-        }else{
-            model=model.replace('{ys_check}','');
-        }
-        ajax.get('project/client/waitConfirmed',{},function(res){
-            $.each(res.data.data,function(k,v){
-                var tr=model.replace('{c_id}',v.client_id).replace('{id}',id++).replace('{client_id}',v.client_id).replace('{name}',v.name).replace('{tel}',v.tel).replace('{broker}',v.broker_name).replace('{broker_type}',v.broker_type).replace('{company_name}',v.company_name).replace('{create_time}',v.create_time).replace('{visit_time}',v.state_change_time).replace('{butter_name}',v.butter_name).replace('{b_id}',v.client_id).replace('{d_id}',v.client_id);;
-                if(v.CountDown>0){
-                    tr=tr.replace('{end_time}',formatSeconds(v.CountDown));
-                }else {
-                    tr=tr.replace('{end_time}','已失效');
-                }
-                str+=tr;
-            })
-
-        })
-        $('#wait_confrim').append(str)
-    }
-
-
-    function checkYs(){
-        if(had_ys==2){
-            ajax.get('project/project/getProjectInfo',{},function(res){
-                if(res.data.yunsuan_url=='' || res.data.yunsuan_id==0){
-                    had_ys=0;
-                }else{
-                    had_ys=1;
-                }
+                $('#deal').append(str)
             })
         }
-    }
+        //无效
+        function disabled() {
+            var model =
+                '<tr role="row" class="odd" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td></td> <td class="center">{current_state}</td> <td class="center">{broker_name}</td>  <td class="center">{company_name}</td><td class="center">{advice_name}</td><td class="center">无效</td><td class="center">{state_change_time}</td><td class="center">{disabled_state}</td> <td class="center">{disabled_reason}</td>  <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="CusManageInvalid.html">查看</a> </td> </tr>',
+                id = 1,
+                str = '';
+            ajax.get('project/client/disabled', {}, function (res) {
+                $.each(res.data.data, function (k, v) {
+                    var tr = model.replace('{c_id}', v.client_id).replace('{id}', id++).replace(
+                            '{client_id}', v.client_id).replace('{name}', v.name).replace('{tel}', v.tel)
+                        .replace('{current_state}', v.current_state).replace('{broker_name}', v.broker_name)
+                        .replace('{company_name}', v.company_name).replace('{advice_name}', v.advice_name)
+                        .replace('{state_change_time}', v.state_change_time).replace('{disabled_state}',
+                            v.disabled_state).replace('{disabled_reason}', v.disabled_reason);
+                    str += tr;
+                })
 
-</script>
+                $('#disableds').append(str)
+            })
+        }
+
+        // 全部
+        function getAllList() {
+            var model =
+                ' <tr role="row" class="odd" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td> <td class="center">{state}</td> <td class="center">{broker}</td> <td class="center">{broker_type}</td> <td class="center">{company_name}</td> <td class="center">{create_time}</td>  <td class="center">{visit_time}</td> <td class="center">{state_change_time}</td> <td class="center">{end_time}</td> <td class="center">已确认</td> <td class="center">{butter_name}</td> <td class="center">{allot_time}</td><td class="center">{advice_name}</td> </tr>',
+                str = '',
+                id = 1;
+            ajax.get('project/client/all', {}, function (res) {
+                if (res.data.data.length != 0) {
+                    $.each(res.data.data, function (k, v) {
+                        if (v.allot_time == null || v.allot_time == '0000-00-00 00:00:00') {
+                            v.allot_time = '未分配';
+                        }
+                        var tr = model.replace('{c_id}', v.client_id).replace('{id}', id++).replace(
+                                '{client_id}', v.client_id).replace('{name}', v.name).replace('{tel}',
+                                v.tel).replace('{state}', v.state_name).replace('{broker}', v.broker_agent_name)
+                            .replace('{broker_type}', v.broker_type).replace('{company_name}', v.company_name)
+                            .replace('{create_time}', v.create_time).replace('{visit_time}', v.visit_time)
+                            .replace('{state_change_time}', v.state_change_time).replace(
+                                '{butter_name}', v.butter_name).replace('{allot_time}', v.allot_time).replace(
+                                '{advice_name}', v.advice_name);
+                        if (v.CountDown > 0) {
+                            tr = tr.replace('{end_time}', formatSeconds(v.CountDown));
+                        } else {
+                            tr = tr.replace('{end_time}', '已失效');
+                        }
+                        str += tr;
+                    })
+                    $('#all').append(str);
+                }
+            })
+
+        }
+
+        // 有效
+        function value() {
+            var model =
+                '<tr role="row" class="odd" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td></td> <td class="center">{state}</td> <td class="center">{state_change_time}</td><td class="center">{broker}</td>  <td class="center">{company_name}</td><td class="center">{end_time}</td><td class="center">{advice_name}</td><td class="center">{allot_name}</td>   <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="CusManageValid.html">查看</a>{ys_check}</td> </tr>',
+                id = 1,
+                str = '';
+            if (had_ys == .0) {
+                model = model.replace('{ys_check}',
+                    '<a class="green" href="CusManageClinch.html?id={d_id}">成交</a></div>');
+            } else {
+                model = model.replace('{ys_check}', '');
+            }
+            ajax.get('project/client/value', {}, function (res) {
+                $.each(res.data.data, function (k, v) {
+                    var tr = model.replace('{c_id}', v.client_id).replace('{id}', id++).replace(
+                            '{client_id}', v.client_id).replace('{name}', v.name).replace('{tel}', v.tel)
+                        .replace('{broker}', v.broker_agent_name).replace('{company_name}', v.company_name)
+                        .replace('{create_time}', v.create_time).replace('{visit_time}', v.visit_time).replace(
+                            '{butter_name}', v.butter_name).replace('{state}', v.state_name).replace(
+                            '{state_change_time}', v.state_change_time).replace('{advice_name}', v.advice_name)
+                        .replace('{allot_name}', v.allot_time).replace('{d_id}', v.client_id);
+                    if (v.CountDown > 0) {
+                        tr = tr.replace('{end_time}', formatSeconds(v.CountDown));
+                    } else {
+                        tr = tr.replace('{end_time}', '已失效');
+                    }
+                    str += tr;
+                })
+                $('#value').append(str)
+            })
+        }
+
+        // 待确认
+        function wait_confirm() {
+            var model =
+                '<tr role="row" class="odd" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td>   <td class="center">{broker}</td> <td class="center">{broker_type}</td> <td class="center">{company_name}</td><td class="center">{create_time}</td> <td class="center">{butter_name}</td>  <td class="center">{visit_time}</td> <td class="center">{end_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="CusManageTobeConfirmLook.html?id={b_id}">查看</a>{ys_check}</td> </tr>',
+                id = 1,
+                str = '';
+            if (had_ys == .0) {
+                model = model.replace('{ys_check}',
+                    '<a class="green" href="CusManageTobeConfirm.html?id={d_id}">确认</a></div>');
+            } else {
+                model = model.replace('{ys_check}', '');
+            }
+            ajax.get('project/client/waitConfirmed', {}, function (res) {
+                $.each(res.data.data, function (k, v) {
+                    var tr = model.replace('{c_id}', v.client_id).replace('{id}', id++).replace(
+                            '{client_id}', v.client_id).replace('{name}', v.name).replace('{tel}', v.tel)
+                        .replace('{broker}', v.broker_name).replace('{broker_type}', v.broker_type).replace(
+                            '{company_name}', v.company_name).replace('{create_time}', v.create_time).replace(
+                            '{visit_time}', v.state_change_time).replace('{butter_name}', v.butter_name)
+                        .replace('{b_id}', v.client_id).replace('{d_id}', v.client_id);;
+                    if (v.CountDown > 0) {
+                        tr = tr.replace('{end_time}', formatSeconds(v.CountDown));
+                    } else {
+                        tr = tr.replace('{end_time}', '已失效');
+                    }
+                    str += tr;
+                })
+
+            })
+            $('#wait_confrim').append(str)
+        }
+
+
+        function checkYs() {
+            if (had_ys == 2) {
+                ajax.get('project/project/getProjectInfo', {}, function (res) {
+                    if (res.data.yunsuan_url == '' || res.data.yunsuan_id == 0) {
+                        had_ys = 0;
+                    } else {
+                        had_ys = 1;
+                    }
+                })
+            }
+        }
+    </script>
 </body>
 
 </html>
