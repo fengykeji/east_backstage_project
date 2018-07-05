@@ -50,7 +50,7 @@
         }
 
         .modal_all,
-        .modal_tishi,
+        /* .modal_tishi, */
         .modal_edit {
             display: none;
             background-color: rgba(0, 0, 0, .5);
@@ -196,7 +196,7 @@
             </div>
         </div>
     </div>
-    <div class="modal_tishi">
+    <!-- <div class="modal_tishi">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
@@ -210,7 +210,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- basic scripts -->
 
     <!--[if !IE]> -->
@@ -272,8 +272,12 @@
             $(this).parent().parent().parent().parent().css('display', 'none');
         })
         $('#dynamic-table').on('click', '.del_leibie', function () {
-            $('.modal_tishi').css('display', 'block');
-            $('#type_id_del').val($(this).parents('tr').attr('value'));
+            // $('.modal_tishi').css('display', 'block');
+            var a=confirm('确定删除该项？');
+            if(a){
+                $('#type_id_del').val($(this).parents('tr').attr('value'));
+            }
+            
             // $(this).parent().parent().parent().remove();
         })
         //编辑图片类别

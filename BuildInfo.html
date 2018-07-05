@@ -88,6 +88,7 @@
         .build_detail li button {
             padding: 5px 15px;
         }
+
         .show_UpImg {
             width: auto;
             height: auto;
@@ -172,7 +173,7 @@
 
 
 
-                            <div class="widget-box ys" style="margin-top: 30px;" >
+                            <div class="widget-box ys" style="margin-top: 30px;">
                                 <div class="widget-header" style="position: relative;">
                                     <h4 class="smaller">楼栋详情</h4>
                                 </div>
@@ -224,7 +225,7 @@
                                                             <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
                                                                 <ul class="pagination">
                                                                     <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_previous">
-                                                                        <a href="#">上一页</a>
+                                                                        <a href="#">首页</a>
                                                                     </li>
                                                                     <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
                                                                         <a href="#">1</a>
@@ -236,7 +237,7 @@
                                                                         <a href="#">3</a>
                                                                     </li>
                                                                     <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_next">
-                                                                        <a href="#">下一页</a>
+                                                                        <a href="#">尾页</a>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -264,8 +265,11 @@
     <div class="modal_upImg">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-body">
+                <div class="modal-header">
                     <button type="button" class="bootbox-close-button close closed">×</button>
+                    <h4 class="modal-title">总平图设置</h4>
+                </div>
+                <div class="modal-body">
                     <div class="bootbox-body" style="overflow: hidden;">
                         <div>
                             <label id="zongImg_up" class="ace-file-input ace-file-multiple col-sm-3 fileUpLabel" style="width: 200px;">
@@ -293,12 +297,18 @@
                                 </span>
                             </label>
                         </div>
+                        <div style="clear: both;padding: 0;">
+                            <p style="display: inline-block;width: 180px;margin-left: -65px;
+                            margin-right: 15px;">平面图</p>
+                            <p style="display: inline-block;width: 180px;">3D图</p>
+                        </div>
+
                     </div>
                 </div>
                 <div class="modal-footer">
-					<button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
-					<button data-bb-handler="confirm" type="button" class="btn btn-primary" id="float_add">确定</button>
-				</div>
+                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
+                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="float_add">确定</button>
+                </div>
             </div>
         </div>
     </div>
@@ -365,62 +375,140 @@
                 path: "menu.html"
             });
             getImgInfo();
+            getList();
         }
     </script>
     <script>
+        //新增楼栋信息
         $('.build_add').on('click', function () {
             window.location.href = "BuildInfoAdd.html";
         })
+        //查看楼栋详情
         $('.build_detail').on('click', '.build_detail_look', function () {
-            window.location.href = "BuildInfoDetails.html?id="+$(this).parents('li').attr('value')+'&build='+$(this).parents('li').attr('build');
+            window.location.href = "BuildInfoDetails.html?id=" + $(this).parents('li').attr('value') +
+                '&build=' + $(this).parents('li').attr('build');
         })
+        //总平图设置
         $('#zongImg_up').on('click', function () {
-            console.log("11111");
+            // console.log("11111");
             $('.modal_upImg').css('display', 'block');
         });
         $('.closed').on('click', function () {
-			$(this).parent().parent().parent().parent().css('display', 'none');
-		})
-    </script>
-    <script>
+            $(this).parent().parent().parent().parent().css('display', 'none');
+        })
+        //分页
+        var type_id = $.getUrlVar('type_id'),
+            page = $.getUrlVar('page') ? $.getUrlVar('page') : 1;
 
-        function getImgInfo(){
-            ajax.get('project/project/getTotalFloatImg',{},function(res)
-            {
-                if(res.data.total_float_url_panorama!='' || res.data.total_float_url_phone!=''){
+        function getList() {
+            ajax.get('project/img/getOneTypeImgList', {
+                'type_id': type_id,
+                'page': page
+            }, function (res) {
+                var dom = $('#list'),
+                    list_id = 1,
+                    model =
+                    '<tr role="row" class="odd" value="{id}" img_address="{address}"> <td class="center">{list_id}</td> <td class="center img"> <img class="proLook_img" src="{img_url}" alt=""> </td> <td class="center comment">{comment}</td> <td class="center">{uploader} </td> <td class="center">{create_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green edit_Img" style="cursor: pointer">编辑</a> <a class="red del_img"  style="cursor: pointer">删除</a> <a class="up" style="cursor: pointer">上移</a><a class="down" style="cursor: pointer">下移</a><a class="projectImg" style="cursor: pointer">设为封面</a></div> </td> </tr>',
+                    page =
+                    '<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>';
+                $.each(res.data.data, function (k, v) {
+                    var str = model.replace('{id}', v.img_id).replace('{list_id}', list_id++).replace(
+                        '{img_url}', config.address + v.img_url).replace('{comment}', v.comment).replace(
+                        '{uploader}', v.uploader).replace('{create_time}', v.create_time).replace('{address}',v.img_url);
+                    dom.append(str);
+                })
+                //分页
+                for (var i = 1; i <= res.data.last_page; i++) {
+                    var str = page.replace('{pageValue}', i).replace('{page}', i);
+                    if (i == res.data.current_page) {
+                        str = str.replace('{avtive}', 'active');
+                    } else {
+                        str = str.replace('{avtive}', '');
+                    }
+                    $('#next').before(str);
+                }
+            })
+        }
+       
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        function getImgInfo() {
+            ajax.get('project/project/getTotalFloatImg', {}, function (res) {
+                if (res.data.total_float_url_panorama != '' || res.data.total_float_url_phone != '') {
 
                     var address;
-                    if(res.data.total_float_url_phone!=''){
+                    if (res.data.total_float_url_phone != '') {
                         $('#nophone').hide();
-                        address=res.data.total_float_url_phone;
-                        $('#phone').attr('src',config.address+address).attr('address', address).show()
+                        address = res.data.total_float_url_phone;
+                        $('#phone').attr('src', config.address + address).attr('address', address).show()
                     }
-                    if(res.data.total_float_url_panorama!=''){
+                    if (res.data.total_float_url_panorama != '') {
                         $('#nopanorama').hide();
-                        address=res.data.total_float_url_panorama;
-                        $('#panorama').attr('src',config.address+address).attr('address', address).show();
+                        address = res.data.total_float_url_panorama;
+                        $('#panorama').attr('src', config.address + address).attr('address', address).show();
                     }
                     $('#noFile').hide();
-                    $('#img').attr('src',config.address+address).show();
-                    if(res.data.yunsuan_url=='' || res.data.yunsuan_id==0){
+                    $('#img').attr('src', config.address + address).show();
+                    if (res.data.yunsuan_url == '' || res.data.yunsuan_id == 0) {
                         $('.ys').hide();
-                    }else{
+                    } else {
                         getBuildInfo();
                     }
                 }
             })
         }
 
-        function getBuildInfo(){
-            ajax.get('project/build/list',{},function(res){
-                var model='<tr role="row" class="odd" value="{build_id}"> <td class="center">{id}</td> <td class="center">{name}</td> <td class="center">{sale_permit}</td> <td class="center">{permit_time}</td> <td class="center">{open_way}</td> <td class="center">{open_time}</td> <td class="center">{handing_room_time}</td> <td class="center">{unit_num}</td> <td class="center">{ladder_ratio}</td> <td class="center">{total_house_num}</td> <td class="center">{upper_floor_num}</td> <td class="center">{down_floor_num}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green edit_leibie" href="BuildInfoOperate.html?build_id={b_id}">编辑</a> <div class="red del_leibie del"  style="cursor: pointer">删除</div> </div> </td> </tr>',
-                    id=1.
-                    str='',
-                    detail_model='<li value="{id}" build="{yunsuan}"> <button type="button" class="btn btn-white btn-primary build_detail_look">{name}</button> </li>';
-                    detail_str='';
-                $.each(res.data.data,function(k,v){
-                    str+=model.replace('{build_id}',v.build_id).replace('{id}',id++).replace('{name}',v.build_name).replace('{sale_permit}',v.sale_permit).replace('{permit_time}',v.permit_time).replace('{open_way}',v.open_way).replace('{open_time}',v.open_time).replace('{handing_room_time}',v.handing_room_time).replace('{unit_num}',v.unit_num).replace('{ladder_ratio}',v.ladder_ratio).replace('{total_house_num}',v.total_house_num).replace('{upper_floor_num}',v.upper_floor_num).replace('{down_floor_num}',v.down_floor_num).replace('{b_id}',v.build_id);
-                    detail_str+=detail_model.replace('{id}',v.build_id).replace('{name}',v.build_name).replace('{yunsuan}',v.ys_build_id);
+        function getBuildInfo() {
+            ajax.get('project/build/list', {}, function (res) {
+                var model =
+                    '<tr role="row" class="odd" value="{build_id}"> <td class="center">{id}</td> <td class="center">{name}</td> <td class="center">{sale_permit}</td> <td class="center">{permit_time}</td> <td class="center">{open_way}</td> <td class="center">{open_time}</td> <td class="center">{handing_room_time}</td> <td class="center">{unit_num}</td> <td class="center">{ladder_ratio}</td> <td class="center">{total_house_num}</td> <td class="center">{upper_floor_num}</td> <td class="center">{down_floor_num}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green edit_leibie" href="BuildInfoOperate.html?build_id={b_id}">编辑</a> <div class="red del_leibie del"  style="cursor: pointer">删除</div> </div> </td> </tr>',
+                    id = 1.
+                str = '',
+                    detail_model =
+                    '<li value="{id}" build="{yunsuan}"> <button type="button" class="btn btn-white btn-primary build_detail_look">{name}</button> </li>';
+                detail_str = '';
+                $.each(res.data.data, function (k, v) {
+                    str += model.replace('{build_id}', v.build_id).replace('{id}', id++).replace(
+                            '{name}', v.build_name).replace('{sale_permit}', v.sale_permit).replace(
+                            '{permit_time}', v.permit_time).replace('{open_way}', v.open_way).replace(
+                            '{open_time}', v.open_time).replace('{handing_room_time}', v.handing_room_time)
+                        .replace('{unit_num}', v.unit_num).replace('{ladder_ratio}', v.ladder_ratio).replace(
+                            '{total_house_num}', v.total_house_num).replace('{upper_floor_num}', v.upper_floor_num)
+                        .replace('{down_floor_num}', v.down_floor_num).replace('{b_id}', v.build_id);
+                    detail_str += detail_model.replace('{id}', v.build_id).replace('{name}', v.build_name)
+                        .replace('{yunsuan}', v.ys_build_id);
                 })
                 $('#build_list').append(str);
                 $('.build_detail').append(detail_str);
@@ -450,34 +538,34 @@
                 $('#nopanorama').hide();
             })
         })
-        $('#float_add').click(function(){
-            var data={};
-            if($('#panorama').css('display')!='none'){
-                data.total_float_url_panorama=$('#panorama').attr('address');
+        $('#float_add').click(function () {
+            var data = {};
+            if ($('#panorama').css('display') != 'none') {
+                data.total_float_url_panorama = $('#panorama').attr('address');
             }
-            if($('#phone').css('display')!='none'){
-                data.total_float_url_phone=$('#phone').attr('address');
+            if ($('#phone').css('display') != 'none') {
+                data.total_float_url_phone = $('#phone').attr('address');
             }
-            ajax.post('project/project/updateTotalFloatImg',data,function(res){
+            ajax.post('project/project/updateTotalFloatImg', data, function (res) {
                 alert(res.msg);
-               window.location.reload();
+                window.location.reload();
             })
         })
 
-        $(document).on('click','.del',function(){
-            var ms=confirm("您确定要删除该条信息么"),
-                id=$(this).parents('tr').attr('value');
-            if (ms==true)
-            {
+        $(document).on('click', '.del', function () {
+            var ms = confirm("您确定要删除该条信息么"),
+                id = $(this).parents('tr').attr('value');
+            if (ms == true) {
 
-                ajax.post('project/build/delete',{'build_id':id},function(res){
+                ajax.post('project/build/delete', {
+                    'build_id': id
+                }, function (res) {
                     alert(res.msg);
                     window.location.reload();
                 })
             }
 
-        }
-        )
+        })
     </script>
 </body>
 

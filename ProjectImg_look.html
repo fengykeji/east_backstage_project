@@ -202,11 +202,11 @@
                                             <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
                                                 <ul class="pagination" id="pagination">
                                                     <li class="paginate_button previous disabled" id="prev" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_previous">
-                                                        <a href="#">上一页</a>
+                                                        <a href="#">首页</a>
                                                     </li>
 
                                                     <li class="paginate_button next" id="next" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_next">
-                                                        <a href="#">下一页</a>
+                                                        <a href="#">尾页</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -446,6 +446,7 @@
         })
     </script>
     <script>
+        //分页
         var type_id = $.getUrlVar('type_id'),
             page = $.getUrlVar('page') ? $.getUrlVar('page') : 1;
 
