@@ -318,10 +318,27 @@
         });
 
         //日历插件初始化
-        $('.date-picker').datepicker({
-            autoclose: true,
-            todayHighlight: true
-        })
+        // $('.date-picker').datepicker({
+        //     autoclose: true,
+        //     todayHighlight: true
+        // })
+        if (!ace.vars['old_ie']) $('.date-timepicker').datetimepicker({
+            //format: 'MM/DD/YYYY h:mm:ss A',//use this option to display seconds
+            format: 'YYYY-MM-DD HH:mm:ss',
+            icons: {
+                time: 'fa fa-clock-o',
+                date: 'fa fa-calendar',
+                up: 'fa fa-chevron-up',
+                down: 'fa fa-chevron-down',
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right',
+                today: 'fa fa-arrows ',
+                clear: 'fa fa-trash',
+                close: 'fa fa-times'
+            }
+        }).next().on(ace.click_event, function () {
+            $(this).prev().focus();
+        });
         //取消返回上一级页面
         $('.backBuildInfo').on('click',function(){
             window.location.href='BuildInfo.html';
