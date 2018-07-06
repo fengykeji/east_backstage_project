@@ -78,6 +78,7 @@
         #dynamic-table td {
             vertical-align: middle;
         }
+
         .modal_endRule {
             display: none;
             background-color: rgba(0, 0, 0, .5);
@@ -110,7 +111,6 @@
         .close {
             font-size: 32px;
         }
-
     </style>
 </head>
 
@@ -167,11 +167,11 @@
                                                     <thead>
                                                         <tr role="row">
                                                             <th class="center">序号</th>
-                                                           <!-- <th class="center">计划开始日期</th>
+                                                            <!-- <th class="center">计划开始日期</th>
                                                             <th class="center">计划截止日期</th>-->
                                                             <th class="center">实际开始日期</th>
                                                             <th class="center">实际截止日期</th>
-                                                           <!-- <th class="center">当前是否启用公司规则</th>
+                                                            <!-- <th class="center">当前是否启用公司规则</th>
                                                             <th class="center">当前是否启用全民经纪人规则</th>-->
                                                             <th class="center">到访确认保护期（分钟）</th>
                                                             <th class="center">有效来访保护期（天）</th>
@@ -192,10 +192,10 @@
                                                     <div class="col-xs-12">
                                                         <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
                                                             <ul class="pagination">
-                                                                <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_previous">
-                                                                    <a href="#">上一页</a>
+                                                                <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="prev">
+                                                                    <a href="#">首页</a>
                                                                 </li>
-                                                                <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
+                                                                <!-- <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
                                                                     <a href="#">1</a>
                                                                 </li>
                                                                 <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
@@ -203,9 +203,9 @@
                                                                 </li>
                                                                 <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
                                                                     <a href="#">3</a>
-                                                                </li>
-                                                                <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_next">
-                                                                    <a href="#">下一页</a>
+                                                                </li> -->
+                                                                <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="next">
+                                                                    <a href="#">尾页</a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -225,8 +225,8 @@
 
 
 
-<!-- 终止-->
-<div class="modal_endRule">
+    <!-- 终止-->
+    <div class="modal_endRule">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -246,11 +246,11 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">备注：</label>
-                                    <div class="col-sm-9">
-                                        <textarea class="col-xs-12 col-sm-10" cols="30" rows="4"></textarea>
-                                    </div>
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">备注：</label>
+                                <div class="col-sm-9">
+                                    <textarea class="col-xs-12 col-sm-10" cols="30" rows="4"></textarea>
                                 </div>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -312,38 +312,59 @@
         window.onload = function () {
             $('#header').load('public/header.html');
             $('#sidebar').load('public/menu.html');
-            var menu_data={
-				opening:'',
-				acting:'.jieyongguize'
-			}
-			$.cookie('menu_data', JSON.stringify(menu_data), {
-				path: "menu.html"
-			});
+            var menu_data = {
+                opening: '',
+                acting: '.jieyongguize'
+            }
+            $.cookie('menu_data', JSON.stringify(menu_data), {
+                path: "menu.html"
+            });
             basicRule();
         }
 
-        function basicRule(){
-            ajax.get('project/ruleBasic/list',{},function(res){
-                var model='<tr role="row" class="odd" value="{a_id}"><td class="center">{key}</td><td class="center">{begin_time}</td><td class="center">{end_time}</td><td class="center">{recommend}</td><td class="center">{value}</td><td class="center">{deal}</td><td class="center">{broker_recommend}</td><td class="center">{broker_value}</td><td class="center">{broker_deal}</td><td class="center">{state}</td><td class="center"><div class="hidden-sm hidden-xs action-buttons"><a class="blue" href="CommissionRulesUpdate.html?id={c_id}">编辑</a>',
-                    id=1,
-                    str='';
-                if(res.data.data.length>0){
-                    $.each(res.data.data,function(k,v){
-                        str+=model.replace('{a_id}',v.rule_id).replace('{b_id}',v.rule_id).replace('{c_id}',v.rule_id).replace('{d_id}',v.rule_id).replace('{key}',id++).replace('{begin_time}',v.begin_time).replace('{end_time}',v.end_time).replace('{recommend}',v.visit_confirm_time).replace('{value}',v.valid_visit_time).replace('{deal}',v.make_bargain_time).replace('{broker_recommend}',v.confirm_settle_commission_time).replace('{broker_value}',v.visit_settle_commission_time).replace('{broker_deal}',v.region_settle_commission_time).replace('{state}',v.state);
-                        if(v.state=='使用中'){
-                            str+='<a class="red end_rule" value="'+v.rule_id+'">终止</a></div></td></tr>';
+        function basicRule() {
+            ajax.get('project/ruleBasic/list', {}, function (res) {
+                var model =
+                    '<tr role="row" class="odd" value="{a_id}"><td class="center">{key}</td><td class="center">{begin_time}</td><td class="center">{end_time}</td><td class="center">{recommend}</td><td class="center">{value}</td><td class="center">{deal}</td><td class="center">{broker_recommend}</td><td class="center">{broker_value}</td><td class="center">{broker_deal}</td><td class="center">{state}</td><td class="center"><div class="hidden-sm hidden-xs action-buttons"><a class="blue" href="CommissionRulesUpdate.html?id={c_id}">编辑</a>',
+                    id = 1,
+                    page =
+                    '<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>',
+                    str = '';
+                if (res.data.data.length > 0) {
+                    $.each(res.data.data, function (k, v) {
+                        str += model.replace('{a_id}', v.rule_id).replace('{b_id}', v.rule_id).replace(
+                                '{c_id}', v.rule_id).replace('{d_id}', v.rule_id).replace('{key}', id++)
+                            .replace('{begin_time}', v.begin_time).replace('{end_time}', v.end_time).replace(
+                                '{recommend}', v.visit_confirm_time).replace('{value}', v.valid_visit_time)
+                            .replace('{deal}', v.make_bargain_time).replace('{broker_recommend}', v.confirm_settle_commission_time)
+                            .replace('{broker_value}', v.visit_settle_commission_time).replace(
+                                '{broker_deal}', v.region_settle_commission_time).replace('{state}', v.state);
+                        if (v.state == '使用中') {
+                            str += '<a class="red end_rule" value="' + v.rule_id +
+                                '">终止</a></div></td></tr>';
                         }
                     })
                 }
                 $('#list').append(str);
+                for (var i = 1; i <= res.data.last_page; i++) {
+                    var str = page.replace('{pageValue}', i).replace('{page}', i);
+                    if (i == res.data.current_page) {
+                        str = str.replace('{avtive}', 'active');
+                    } else {
+                        str = str.replace('{avtive}', '');
+                    }
+                    $('#next').before(str);
+                }
             })
         }
-        $(document).on('click','.end_rule',function(){
-            var id=$(this).attr('value'),
-                conf=confirm('确定终止该条规则么');
+        $(document).on('click', '.end_rule', function () {
+            var id = $(this).attr('value'),
+                conf = confirm('确定终止该条规则么');
             console.log(id);
-            if(conf==true){
-                ajax.get('project/ruleBasic/endById',{'rule_id':id},function(res){
+            if (conf == true) {
+                ajax.get('project/ruleBasic/endById', {
+                    'rule_id': id
+                }, function (res) {
                     alert(res.msg);
                 })
             }
@@ -352,17 +373,16 @@
     </script>
     <script>
         $('#rule_add').on('click', function () {
-            window.location.href="CommissionRulesAdd.html"; 
+            window.location.href = "CommissionRulesAdd.html";
         })
         //终止
-      /*  $('#dynamic-table').on('click','.end_rule',function(){
-            $('.modal_endRule').css('display', 'block');
-            return false;
-        })*/
+        /*  $('#dynamic-table').on('click','.end_rule',function(){
+              $('.modal_endRule').css('display', 'block');
+              return false;
+          })*/
         $('.closed').on('click', function () {
             $(this).parent().parent().parent().parent().css('display', 'none');
         })
-
     </script>
 </body>
 

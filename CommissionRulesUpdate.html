@@ -171,11 +171,11 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">备注：</label>
-                                                    <textarea class="inpt_width" rows="3" style="vertical-align: top;" id="comment" ></textarea>
+                                                    <textarea class="inpt_width" rows="3" style="vertical-align: top;" id="comment"></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">规则描述：</label>
-                                                    <textarea class="inpt_width" rows="3" style="vertical-align: top;" id="describe" ></textarea>
+                                                    <textarea class="inpt_width" rows="3" style="vertical-align: top;" id="describe"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -220,10 +220,10 @@
                                                             <div class="col-xs-12">
                                                                 <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
                                                                     <ul class="pagination">
-                                                                        <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_previous">
-                                                                            <a href="#">上一页</a>
+                                                                        <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="prev1">
+                                                                            <a href="#">首页</a>
                                                                         </li>
-                                                                        <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
+                                                                        <!-- <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
                                                                             <a href="#">1</a>
                                                                         </li>
                                                                         <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
@@ -231,9 +231,9 @@
                                                                         </li>
                                                                         <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
                                                                             <a href="#">3</a>
-                                                                        </li>
-                                                                        <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_next">
-                                                                            <a href="#">下一页</a>
+                                                                        </li> -->
+                                                                        <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="next1">
+                                                                            <a href="#">尾页</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -279,10 +279,10 @@
                                                             <div class="col-xs-12">
                                                                 <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
                                                                     <ul class="pagination">
-                                                                        <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_previous">
-                                                                            <a href="#">上一页</a>
+                                                                        <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="prev2">
+                                                                            <a href="#">首页</a>
                                                                         </li>
-                                                                        <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
+                                                                        <!-- <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
                                                                             <a href="#">1</a>
                                                                         </li>
                                                                         <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
@@ -290,9 +290,9 @@
                                                                         </li>
                                                                         <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
                                                                             <a href="#">3</a>
-                                                                        </li>
-                                                                        <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_next">
-                                                                            <a href="#">下一页</a>
+                                                                        </li> -->
+                                                                        <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="next2">
+                                                                            <a href="#">尾页</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -392,15 +392,19 @@
                 var model =
                     '<tr role="row" class="odd" value="{a_id}"> <td class="center">{key}</td> <td class="center">{company_name}</td> <td class="center">{project_docker}</td> <td class="center">{project_docker_tel}</td> <td class="center">{compact_begin}</td> <td class="center">{compact_end}</td> <td class="center">{act_start}</td> <td class="center">{act_end}</td> <td class="center">{source}</td><td class="center">{state}</td> <td class="center">{end_state_name}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons">  ',
                     id = 1,
+                    page ='<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>',
                     str = '';
 
                 $.each(res.data.data, function (k, v) {
-                    var st=model;
-                    if(v.state==2){
-                        st+='<a class="orange" href="CommissionRulesCompanyReview.html?id={b_id}&rule_id='+$.getUrlVar('id')+'">审核</a>';
-                    }else{
-                        if(v.end_state_name!='已终止'){
-                            st+='<a class="red del_leibie" value="{c_id}">终止</a> <a class="green edit_leibie" href="CommissionRulesCompanyUpdate.html?id={b_id}">编辑</a> ';
+                    var st = model;
+                    if (v.state == 2) {
+                        st +=
+                            '<a class="orange" href="CommissionRulesCompanyReview.html?id={b_id}&rule_id=' +
+                            $.getUrlVar('id') + '">审核</a>';
+                    } else {
+                        if (v.end_state_name != '已终止') {
+                            st +=
+                                '<a class="red del_leibie" value="{c_id}">终止</a> <a class="green edit_leibie" href="CommissionRulesCompanyUpdate.html?id={b_id}">编辑</a> ';
                         }
                     }
 
@@ -411,9 +415,18 @@
                             v.project_docker_tel).replace('{compact_begin}', v.compact_begin).replace(
                             '{compact_end}', v.compact_end).replace('{act_start}', v.act_start).replace(
                             '{act_end}', v.act_end).replace('{state}', v.state_name).replace(
-                            '{end_state_name}', v.end_state_name).replace('{source}',v.source);
+                            '{end_state_name}', v.end_state_name).replace('{source}', v.source);
                 })
                 $('#company').append(str);
+                for (var i = 1; i <= res.data.last_page; i++) {
+                    var str = page.replace('{pageValue}', i).replace('{page}', i);
+                    if (i == res.data.current_page) {
+                        str = str.replace('{avtive}', 'active');
+                    } else {
+                        str = str.replace('{avtive}', '');
+                    }
+                    $('#next1').before(str);
+                }
             })
         }
 
@@ -422,14 +435,17 @@
                 'basic_rule_id': id
             }, function (res) {
                 var model =
-                        '<tr role="row" class="odd" value="{a_id}"> <td class="center">{key}</td> <td class="center">{rule_name}</td>  <td class="center">{plan_start}</td> <td class="center">{plan_end}</td> <td class="center">{act_start}</td> <td class="center">{act_end}</td> <td class="center">{state}</td> <td class="center"> <label> <input checked="checked" name="switch-field-1" class="ace ace-switch  ace-switch-5 switchCom" type="checkbox"> <span class="lbl"></span> </label> </td> <td class="center">  ',
+                    '<tr role="row" class="odd" value="{a_id}"> <td class="center">{key}</td> <td class="center">{rule_name}</td>  <td class="center">{plan_start}</td> <td class="center">{plan_end}</td> <td class="center">{act_start}</td> <td class="center">{act_end}</td> <td class="center">{state}</td> <td class="center"> <label> <input checked="checked" name="switch-field-1" class="ace ace-switch  ace-switch-5 switchCom" type="checkbox"> <span class="lbl"></span> </label> </td> <td class="center">  ',
                     id = 1,
+                    page =
+                    '<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>',
                     str = '';
                 $.each(res.data.data, function (k, v) {
-                    if(v.end_state_name!='已终止'){
-                        var st=model+'<div class="hidden-sm hidden-xs action-buttons"> <a class="green" href="CommissionRulesBrokerUpdate.html?id={b_id}">编辑</a><a class="red person_stop" value="{c_id}" >停用</a> </div> </td> </tr>';
-                    }else{
-                        st=model;
+                    if (v.end_state_name != '已终止') {
+                        var st = model +
+                            '<div class="hidden-sm hidden-xs action-buttons"> <a class="green" href="CommissionRulesBrokerUpdate.html?id={b_id}">编辑</a><a class="red person_stop" value="{c_id}" >停用</a> </div> </td> </tr>';
+                    } else {
+                        st = model;
                     }
                     str += st.replace('{a_id}', v.rule_id).replace('{b_id}', v.rule_id).replace(
                             '{c_id}', v.rule_id).replace('{key}', id++).replace('{rule_name}', v.rule_name)
@@ -438,45 +454,57 @@
                             '{state}', v.end_state_name).replace('{end_state_name}', v.end_state_name);
                 })
                 $('#person').append(str);
-
+                for (var i = 1; i <= res.data.last_page; i++) {
+                    var str = page.replace('{pageValue}', i).replace('{page}', i);
+                    if (i == res.data.current_page) {
+                        str = str.replace('{avtive}', 'active');
+                    } else {
+                        str = str.replace('{avtive}', '');
+                    }
+                    $('#next2').before(str);
+                }
             })
         }
 
-        $(document).on('click','.del_leibie',function(){
-            var id=$(this).attr('value'),
-                conf=confirm('确定停用该条规则么？');
-            if(conf==true){
-                ajax.post('project/ruleCompany/stop',{'rule_id':id},function(res){
+        $(document).on('click', '.del_leibie', function () {
+            var id = $(this).attr('value'),
+                conf = confirm('确定停用该条规则么？');
+            if (conf == true) {
+                ajax.post('project/ruleCompany/stop', {
+                    'rule_id': id
+                }, function (res) {
                     alert(res.msg);
-                    if(res.code==config.responseSuccess){
+                    if (res.code == config.responseSuccess) {
                         window.location.reload();
                     }
                 })
             }
 
         })
-        $(document).on('click','.person_stop',function(){
-            var id=$(this).attr('value'),
-                conf=confirm('确定停用该条规则么？');
-            if(conf==true){
-                ajax.post('project/rulePerson/stop',{'rule_id':id},function(res){
+        $(document).on('click', '.person_stop', function () {
+            var id = $(this).attr('value'),
+                conf = confirm('确定停用该条规则么？');
+            if (conf == true) {
+                ajax.post('project/rulePerson/stop', {
+                    'rule_id': id
+                }, function (res) {
                     alert(res.msg);
-                    if(res.code==config.responseSuccess){
+                    if (res.code == config.responseSuccess) {
                         window.location.reload();
                     }
                 })
             }
 
         })
-        $('#save').click(function(){
-            var data={
-                'rule_id':id,
-                'describe':$('#describe').val(),
-                'comment':$('#comment').val(),
+        $('#save').click(function () {
+            var data = {
+                'rule_id': id,
+                'describe': $('#describe').val(),
+                'comment': $('#comment').val(),
             };
-            ajax.post('project/ruleBasic/update',data,function(res){
+            ajax.post('project/ruleBasic/update', data, function (res) {
                 alert(res.msg);
-                if(res.code==config.responseSuccess){
+                if (res.code == config.responseSuccess) {
                     window.location.reload();
                 }
             })
@@ -513,16 +541,16 @@
     </script>
     <script>
         $(".addCompany").on('click', function () {
-            window.location.href = "CommissionRulesCompanyAdd.html?id="+id;
+            window.location.href = "CommissionRulesCompanyAdd.html?id=" + id;
             return false;
         })
         //个人规则
         $(".brokerRule").on('click', function () {
-            window.location.href = "CommissionRulesBrokerAdd.html?id="+id;
+            window.location.href = "CommissionRulesBrokerAdd.html?id=" + id;
             return false;
         })
         //开关的值
-        $('#person').on('change','.switchCom',function(){
+        $('#person').on('change', '.switchCom', function () {
             alert($(this).is(':checked'));
         })
         //审核页面跳转
@@ -531,7 +559,7 @@
         //     return false;
         // })
         //关闭按钮返回上一页
-        $('#backLastPage').on('click',function(){
+        $('#backLastPage').on('click', function () {
             history.back(-1);
         })
     </script>

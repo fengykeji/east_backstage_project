@@ -96,8 +96,7 @@
             height: 100px;
         }
 
-        .modal_judgment,
-        .modal_assignAdviser {
+        .modal_judgment,.modal_zhiYe,.modal_addZhiYe {
             display: none;
             background-color: rgba(0, 0, 0, .5);
             position: fixed;
@@ -213,7 +212,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">身份证照片：</label>
-                                                    <img class="cofimg_sty"  src="assets/images/email1.png" alt="" id="card_img_url">
+                                                    <img class="cofimg_sty" src="assets/images/email1.png" alt="" id="card_img_url">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">确认单图片：</label>
@@ -264,7 +263,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">备注：</label>
-                                                    <textarea class="inpt_width"  disabled="disabled" rows="4" style="background-color: #eee;vertical-align: top;" id="comment"></textarea>
+                                                    <textarea class="inpt_width" disabled="disabled" rows="4" style="background-color: #eee;vertical-align: top;" id="comment"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -374,7 +373,7 @@
                                                 <div class="form-group">
                                                     <label class="lab_width">证件类型：</label>
                                                     <input class="inpt_width" disabled="disabled" type="text" value="" name="card_type">
-                                                   
+
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">证件号码：</label>
@@ -442,8 +441,8 @@
         </div>
     </div>
 
-    <!-- 置业顾问选择 -->
-    <div class="modal_assignAdviser">
+    <!-- 选择置业顾问 -->
+    <div class="modal_zhiYe">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -452,8 +451,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="bootbox-body" style="overflow: hidden;font-size: 14px;text-align: left;">
-                        <div class="col-xs-12" style="overflow-x: scroll;">
-                            <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer" style="width:600px">
+                        <div class="col-xs-12" style="overflow: scroll;height: 300px;">
+                            <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer" style="width: 600px;">
                                 <div class="row">
                                     <div class="col-xs-12">
                                         <div id="dynamic-table_filter">
@@ -461,16 +460,17 @@
                                                 <input type="search" class="form-control input-sm" placeholder="请输入编号、名称查询">
                                             </label>
                                             <button class="btn btn-xs btn-purple">查询</button>
+                                            <button class="btn btn-xs btn-danger addZhiYe">新增</button>
                                         </div>
                                     </div>
                                 </div>
                                 <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
                                     <thead>
                                         <tr role="row">
-                                            <th></th>
-                                            <th>序号</th>
-                                            <th>编号</th>
-                                            <th>名称</th>
+                                            <th class="center"></th>
+                                            <th class="center">序号</th>
+                                            <th class="center">姓名</th>
+                                            <th class="center">电话号码</th>
                                         </tr>
                                     </thead>
 
@@ -483,11 +483,11 @@
                                                 </label>
                                             </td>
 
-                                            <td>
+                                            <td class="center">
                                                 1
                                             </td>
-                                            <td>NO25</td>
-                                            <td class="hidden-480">张三</td>
+                                            <td class="center">张三</td>
+                                            <td class="center">12536985623</td>
                                         </tr>
                                         <tr role="row" class="odd">
                                             <td class="center">
@@ -497,11 +497,11 @@
                                                 </label>
                                             </td>
 
-                                            <td>
-                                                1
+                                            <td class="center">
+                                                2
                                             </td>
-                                            <td>NO25</td>
-                                            <td class="hidden-480">张三</td>
+                                            <td class="center">张三</td>
+                                            <td class="center">12536985623</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -509,10 +509,10 @@
                                     <div class="col-xs-12">
                                         <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
                                             <ul class="pagination">
-                                                <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_previous">
-                                                    <a href="#">上一页</a>
+                                                <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="prev">
+                                                    <a href="#">首页</a>
                                                 </li>
-                                                <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
+                                                <!-- <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
                                                     <a href="#">1</a>
                                                 </li>
                                                 <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
@@ -520,9 +520,9 @@
                                                 </li>
                                                 <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
                                                     <a href="#">3</a>
-                                                </li>
-                                                <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_next">
-                                                    <a href="#">下一页</a>
+                                                </li> -->
+                                                <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="next">
+                                                    <a href="#">尾页</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -539,7 +539,40 @@
             </div>
         </div>
     </div>
+    <!-- 置业顾问添加 -->
+    <div class="modal_addZhiYe">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="bootbox-close-button close closed">×</button>
+                    <h4 class="modal-title">置业顾问添加</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="bootbox-body" style="overflow: hidden;">
+                        <form class="bootbox-form">
 
+                            <div class="form-group" style="margin-bottom: 15px;overflow: hidden;">
+                                <div class="col-xs-12">
+                                    <label class="control-label no-padding-right" for="form-field-1-1" style="width: 100px;">姓名：</label>
+                                    <input class="inpt_width">
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 0;overflow: hidden;">
+                                <div class="col-xs-12">
+                                    <label class="control-label no-padding-right" for="form-field-1-1" style="width: 100px;">电话号码：</label>
+                                    <input class="inpt_width">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
+                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="add">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- basic scripts -->
 
     <!--[if !IE]> -->
@@ -601,12 +634,18 @@
         }
     </script>
     <script>
-        
         //置业顾问选择
-        $('#asgAdv').on('click', function () {
-            $('.modal_assignAdviser').css('display', 'block');
+        $("#asgAdv").on('click', function (event) {
+            event.stopPropagation();
+            $('.modal_zhiYe').css('display', 'block');
             return false;
-        })
+        });
+        //置业顾问添加
+        $(".addZhiYe").on('click', function (event) {
+            event.stopPropagation();
+            $('.modal_addZhiYe').css('display', 'block');
+            return false;
+        });
         $(".InvalidVisit").on('click', function () {
             if ($(this).attr("checked", "true")) {
                 $('.modal_judgment').css('display', 'block');
