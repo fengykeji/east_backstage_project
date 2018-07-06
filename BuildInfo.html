@@ -396,39 +396,6 @@
         $('.closed').on('click', function () {
             $(this).parent().parent().parent().parent().css('display', 'none');
         })
-        //分页
-        var page = $.getUrlVar('page') ? $.getUrlVar('page') : 1;
-
-        function getList() {
-
-            ajax.get('project/build/list', {
-                'page': page
-            }, function (res) {
-                var dom = $('#list'),
-                    list_id = 1,
-                    model =
-                    '<tr role="row" class="odd" value="{id}" img_address="{address}"> <td class="center">{list_id}</td> <td class="center img"> <img class="proLook_img" src="{img_url}" alt=""> </td> <td class="center comment">{comment}</td> <td class="center">{uploader} </td> <td class="center">{create_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green edit_Img" style="cursor: pointer">编辑</a> <a class="red del_img"  style="cursor: pointer">删除</a> <a class="up" style="cursor: pointer">上移</a><a class="down" style="cursor: pointer">下移</a><a class="projectImg" style="cursor: pointer">设为封面</a></div> </td> </tr>',
-                    page =
-                    '<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>';
-                $.each(res.data.data, function (k, v) {
-                    var str = model.replace('{id}', v.img_id).replace('{list_id}', list_id++).replace(
-                        '{img_url}', config.address + v.img_url).replace('{comment}', v.comment).replace(
-                        '{uploader}', v.uploader).replace('{create_time}', v.create_time).replace('{address}',v.img_url);
-                    dom.append(str);
-                })
-                //分页
-                for (var i = 1; i <= res.data.last_page; i++) {
-                    var str = page.replace('{pageValue}', i).replace('{page}', i);
-                    if (i == res.data.current_page) {
-                        str = str.replace('{avtive}', 'active');
-                    } else {
-                        str = str.replace('{avtive}', '');
-                    }
-                    $('#next').before(str);
-                }
-            })
-        }
-       
     </script>
 
 
