@@ -195,7 +195,7 @@
                                                 <span style="color: red;margin-right: 30px;" id="state_name"></span>
                                             </span>
                                             <span style="color: green;">失效倒计时：
-                                                <span id="end_time">59:00:21</span>
+                                                <span id="end_time"></span>
                                             </span>
                                         </div>
                                     </div>
@@ -212,11 +212,11 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">身份证照片：</label>
-                                                    <img class="cofimg_sty" src="assets/images/email1.png" alt="" id="card_img_url">
+                                                    <img class="cofimg_sty" src="assets/images/null.jpg" alt="" id="card_img_url">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">确认单图片：</label>
-                                                    <img class="cofimg_sty" disabled="disabled" src="assets/images/email1.png" alt="" id="verify_img_url">
+                                                    <img class="cofimg_sty" disabled="disabled" src="assets/images/null.jpg" alt="" id="verify_img_url">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">签字人：</label>
@@ -248,7 +248,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">到访照片：</label>
-                                                    <img class="cofimg_sty" src="assets/images/email1.png" alt="" id="visit_img_url">
+                                                    <img class="cofimg_sty" src="assets/images/null.jpg" alt="" id="visit_img_url">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">置业顾问：</label>
@@ -457,9 +457,9 @@
                                     <div class="col-xs-12">
                                         <div id="dynamic-table_filter">
                                             <label>置业顾问:
-                                                <input type="search" class="form-control input-sm" placeholder="请输入编号、名称查询">
+                                                <input type="search" class="form-control input-sm" placeholder="请输入编号、名称查询" name="advicer_name_search">
                                             </label>
-                                            <button class="btn btn-xs btn-purple">查询</button>
+                                            <button class="btn btn-xs btn-purple " id="advicer_search">查询</button>
                                             <button class="btn btn-xs btn-danger addZhiYe">新增</button>
                                         </div>
                                     </div>
@@ -521,7 +521,7 @@
                 </div>
                 <div class="modal-footer">
                     <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
-                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="add">确定</button>
+                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="selectAdvicer">确定</button>
                 </div>
             </div>
         </div>
@@ -555,7 +555,7 @@
                 </div>
                 <div class="modal-footer">
                     <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
-                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="add">确定</button>
+                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="addAdvicer">确定</button>
                 </div>
             </div>
         </div>
@@ -629,17 +629,30 @@
             return false;
         });
 
+        $('#selectAdvicer').click(function(){
+            var name=$('input[name=advicerSel]:checked').parents('tr').attr('value');
+            $('input[name=advicer_name]').val(name);
+            $('.modal_zhiYe').css('display', 'none');
+        })
+        $('#advicer_search').click(function(){
+            var name =$('input[name=advicer_name_search]').val();
+            if(name==''){
+                return false;
+            }
+            getAdvicer(name);
+        })
         function getAdvicer(name){
             var data={};
             if(name!=''){
                 data.name=name;
             }
             ajax.get('project/client/getAdvicerList',data,function(res){
-                var model='  <tr role="row" class="odd" value="{id}"> <td class="center" > <label class="pos-rel"> <input type="checkbox" class="ace"> <span class="lbl"></span> </label> </td> <td class="center"> {key}</td> <td class="center">{name}</td> <td class="center">{tel}</td> </tr>',
+                $('#advicer').children().remove();
+                var model='  <tr role="row" class="odd" value="{id}" > <td class="center" > <label class="pos-rel"> <input type="checkbox" class="ace " name="advicerSel"> <span class="lbl"></span> </label> </td> <td class="center"> {key}</td> <td class="center" id="advicer_name">{name}</td> <td class="center">{tel}</td> </tr>',
                     id=1,
                     str='';
                     $.each(res.data.data,function(k,v){
-                        str+=model.replace('{id}',v.advicer_id).replace('{key}',id++).replace('{name}',v.advicer_name).replace('{tel}',v.advicer_tel);
+                        str+=model.replace('{id}',v.advicer_name).replace('{key}',id++).replace('{name}',v.advicer_name).replace('{tel}',v.advicer_tel);
 
                      })
                     $('#advicer').append(str);
@@ -666,6 +679,7 @@
         $('#backLastPage').on('click', function () {
             history.back(-1);
         })
+
 
         function getInfo() {
             ajax.get('project/client/waitConfirmedDetail', {
@@ -713,6 +727,7 @@
             data = {
                 'client_id': id,
                 'advicer_name': $('input[name=advicer_name]').val(),
+                'signatory':  $('input[name=signatory]').val(),
                 'time': new Date().format("yyyy-MM-dd hh:mm:ss"),
             }
             ajax.get('user/yunsuan/state/value', data, function (res) {
