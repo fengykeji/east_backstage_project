@@ -392,10 +392,13 @@
                 var model =
                     '<tr role="row" class="odd" value="{a_id}"> <td class="center">{key}</td> <td class="center">{company_name}</td> <td class="center">{project_docker}</td> <td class="center">{project_docker_tel}</td> <td class="center">{compact_begin}</td> <td class="center">{compact_end}</td> <td class="center">{act_start}</td> <td class="center">{act_end}</td> <td class="center">{source}</td><td class="center">{state}</td> <td class="center">{end_state_name}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons">  ',
                     id = 1,
-                    page ='<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>',
+                    page =
+                    '<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>',
                     str = '';
 
                 $.each(res.data.data, function (k, v) {
+
+
                     var st = model;
                     if (v.state == 2) {
                         st +=
@@ -404,7 +407,8 @@
                     } else {
                         if (v.end_state_name != '已终止') {
                             st +=
-                                '<a class="red del_leibie" value="{c_id}">终止</a> <a class="green edit_leibie" href="CommissionRulesCompanyUpdate.html?id={b_id}">编辑</a> ';
+                                '<a class="red del_leibie" value="{c_id}">终止</a> <a class="green edit_leibie" href="CommissionRulesCompanyUpdate.html?id={b_id}">查看</a> ';
+
                         }
                     }
 
