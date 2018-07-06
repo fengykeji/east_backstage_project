@@ -129,11 +129,15 @@
             font-weight: normal;
             font-size: 14px
         } */
+
         .show_UpImg {
             width: auto;
             height: auto;
             max-width: 180px;
             max-height: 180px;
+        }
+        .paginate_button{
+            cursor: pointer;
         }
     </style>
 </head>
@@ -201,12 +205,12 @@
                                         <div class="col-xs-12">
                                             <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
                                                 <ul class="pagination" id="pagination">
-                                                    <li class="paginate_button previous disabled" id="prev" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_previous">
-                                                        <a href="#">首页</a>
+                                                    <li class="paginate_button previous" id="prev" aria-controls="dynamic-table">
+                                                        <a href="javascript:void(0)">首页</a>
                                                     </li>
 
-                                                    <li class="paginate_button next" id="next" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_next">
-                                                        <a href="#">尾页</a>
+                                                    <li class="paginate_button next" id="next" aria-controls="dynamic-table">
+                                                        <a href="javascript:void(0)">尾页</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -438,7 +442,7 @@
             }
             ajax.post('project/img/add', data, function (res) {
                 alert(res.msg);
-                if(res.code==config.responseSuccess){
+                if (res.code == config.responseSuccess) {
                     window.location.reload();
                 }
             })
@@ -447,28 +451,48 @@
     </script>
     <script>
         //分页
-        var type_id = $.getUrlVar('type_id'),
-            page = $.getUrlVar('page') ? $.getUrlVar('page') : 1;
-
-        function getList() {
+        var type_id = $.getUrlVar('type_id');
+        function getList(p) {
             ajax.get('project/img/getOneTypeImgList', {
                 'type_id': type_id,
-                'page': page
+                'page': p
             }, function (res) {
                 var dom = $('#list'),
-                    list_id = 1,
+                list_id = 15*(p-1)+1,
                     model =
-                    '<tr role="row" class="odd" value="{id}" img_address="{address}"> <td class="center">{list_id}</td> <td class="center img"> <img class="proLook_img" src="{img_url}" alt=""> </td> <td class="center comment">{comment}</td> <td class="center">{uploader} </td> <td class="center">{create_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green edit_Img" style="cursor: pointer">编辑</a> <a class="red del_img"  style="cursor: pointer">删除</a> <a class="up" style="cursor: pointer">上移</a><a class="down" style="cursor: pointer">下移</a><a class="projectImg" style="cursor: pointer">设为封面</a></div> </td> </tr>',
-                    page =
-                    '<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>';
+                    '<tr role="row" class="odd" value="{id}" img_address="{address}"> <td class="center">{list_id}</td> <td class="center img"> <img class="proLook_img" src="{img_url}" alt=""> </td> <td class="center comment">{comment}</td> <td class="center">{uploader} </td> <td class="center">{create_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green edit_Img" style="cursor: pointer">编辑</a> <a class="red del_img"  style="cursor: pointer">删除</a> <a class="up" style="cursor: pointer">上移</a><a class="down" style="cursor: pointer">下移</a><a class="projectImg" style="cursor: pointer">设为封面</a></div> </td> </tr>';
                 $.each(res.data.data, function (k, v) {
                     var str = model.replace('{id}', v.img_id).replace('{list_id}', list_id++).replace(
                         '{img_url}', config.address + v.img_url).replace('{comment}', v.comment).replace(
-                        '{uploader}', v.uploader).replace('{create_time}', v.create_time).replace('{address}',v.img_url);
+                        '{uploader}', v.uploader).replace('{create_time}', v.create_time).replace(
+                        '{address}', v.img_url);
                     dom.append(str);
                 })
-                //分页
-                for (var i = 1; i <= res.data.last_page; i++) {
+
+                aa(res);
+            })
+        }
+        //分页点击事件
+        $('#pagination').on('click', '.paginate_button', function () {
+            var p=$(this).children().html(); //当前点击页
+            $('.pageNum').remove();
+            $('.odd').remove();
+            getList(p);
+        })
+        function aa(res) {
+            var page = '<li class="paginate_button pageNum {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>';
+            var T=Math.floor(res.data.current_page/10)*10;
+            if(res.data.current_page>T||res.data.current_page==T){
+                var i = T-1;
+                if(res.data.last_page>i+10){
+                    var t=i+11;
+                }else{
+                    var t=res.data.last_page;
+                }
+                for (i; i <=t ; i++) {
+                    if(i==0||i<0){
+                        i=1;
+                        }
                     var str = page.replace('{pageValue}', i).replace('{page}', i);
                     if (i == res.data.current_page) {
                         str = str.replace('{avtive}', 'active');
@@ -477,11 +501,27 @@
                     }
                     $('#next').before(str);
                 }
-            })
+            }
+            
         }
-       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         window.onload = function () {
-            getList();
+            getList(1);
             $('#header').load('public/header.html');
             $('#sidebar').load('public/menu.html');
             var menu_data = {
@@ -493,40 +533,43 @@
             });
         }
         //图片上下移
-        $(document).on('click','.up',function(){
-            var downId=$(this).parents('tr').attr('value'),
-                upId=$(this).parents('tr').prev().attr('value');
-            imgSort(downId,upId);
+        $(document).on('click', '.up', function () {
+            var downId = $(this).parents('tr').attr('value'),
+                upId = $(this).parents('tr').prev().attr('value');
+            imgSort(downId, upId);
         })
-        $(document).on('click','.down',function(){
-            var downId=$(this).parents('tr').next().attr('value'),
-                upId=$(this).parents('tr').attr('value');
-            imgSort(downId,upId);
+        $(document).on('click', '.down', function () {
+            var downId = $(this).parents('tr').next().attr('value'),
+                upId = $(this).parents('tr').attr('value');
+            imgSort(downId, upId);
         })
-        function imgSort(downId,upId){
-           var data={
-                'img_id':downId,
-                'img_id_another':upId,
+
+        function imgSort(downId, upId) {
+            var data = {
+                'img_id': downId,
+                'img_id_another': upId,
             };
-            if(data.img_id_another==undefined){
+            if (data.img_id_another == undefined) {
                 alert('操作失败：该张图片已经是最前一张了。')
             }
-            if(data.img_id==undefined){
+            if (data.img_id == undefined) {
                 alert('操作失败：该张图片已经是最后一张了。')
             }
-            ajax.post('project/img/exchangeImgSort',data,function(res){
-                if(res.code==config.responseSuccess){
+            ajax.post('project/img/exchangeImgSort', data, function (res) {
+                if (res.code == config.responseSuccess) {
                     window.location.reload();
                 }
             })
         }
         //设置封面
-        $(document).on('click','.projectImg',function(){
-            var address=$(this).parents('tr').attr('img_address');
-           ajax.post('project/update',{'img_url':address},function(res){
-               if(res.code==config.responseSuccess){
-                   alert('设置封面成功');
-               }
+        $(document).on('click', '.projectImg', function () {
+            var address = $(this).parents('tr').attr('img_address');
+            ajax.post('project/update', {
+                'img_url': address
+            }, function (res) {
+                if (res.code == config.responseSuccess) {
+                    alert('设置封面成功');
+                }
             })
         })
     </script>
