@@ -182,7 +182,7 @@
                                                     <label class="lab_width">*合同开始日期：</label>
                                                     <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
                                                         <div class="input-group">
-                                                            <input type="text" class="form-control date-timepicker" name="">
+                                                            <input type="text" class="form-control date-timepicker" name="compact_begin">
                                                             <span class="input-group-addon">
                                                                 <i class="fa fa-clock-o bigger-110"></i>
                                                             </span>
@@ -193,7 +193,7 @@
                                                     <label class="lab_width">*合同截止日期：</label>
                                                     <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
                                                         <div class="input-group">
-                                                            <input type="text" class="form-control date-timepicker" name="">
+                                                            <input type="text" class="form-control date-timepicker" name="compact_end">
                                                             <span class="input-group-addon">
                                                                 <i class="fa fa-clock-o bigger-110"></i>
                                                             </span>
@@ -584,13 +584,13 @@
                 $('input[name=project_name]').val(res.data.basic.project_name);
                 $('input[name=project_docker]').val(res.data.basic.project_docker);
                 $('input[name=project_docker_tel]').val(res.data.basic.project_docker_tel);
-                $('input[name=compact_start]').val(res.data.basic.compact_begin);
+                $('input[name=compact_begin]').val(res.data.basic.compact_begin);
                 $('input[name=compact_end]').val(res.data.basic.compact_end);
                 $('input[name=sell_id]').val(res.data.basic.sell_id);
                 $('input[name=sell_docker]').val(res.data.basic.sell_docker);
                 $('input[name=sell_docker_tel]').val(res.data.basic.sell_docker_tel);
                 $('input[name=act_start]').val(res.data.basic.act_start);
-                $('input[name=act_end]').val(res.data.basic.act_end);
+
                 if (res.data.file != undefined) {
                     var model =
                         '<tr role="row" class="odd" value="{a_id}"><td class="center">{key}</td> <td class="center">{name}</td> <td class="center"><a target="_blank" href="{url}">查看附件</a> </td> <td class="center">{uploader}</td> <td class="center">{update_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <div class="red delFile" style="cursor: pointer">删除</div> </div> </td> </tr>',
@@ -748,6 +748,7 @@
         })
     </script>
     <script>
+
         //添加附件
         $(".addAnnex").on('click', function () {
             $('.modal_addAnnex').css('display', 'block');
@@ -814,12 +815,13 @@
                 'project_name': $('input[name=project_name]').val(),
                 'project_docker': $('input[name=project_docker]').val(),
                 'project_docker_tel': $('input[name=project_docker_tel]').val(),
-                'compact_start': $('input[name=compact_start]').val(),
+                'compact_begin': $('input[name=compact_begin]').val(),
                 'compact_end': $('input[name=compact_end]').val(),
                 'sell_docker': $('input[name=sell_docker]').val(),
                 'sell_docker_tel': $('input[name=sell_docker_tel]').val(),
-                'act_start': $('input[name=compact_end]').val(),
+                'act_start': $('input[name=act_start]').val(),
             }
+
             if (data.project_name == '') {
                 alert('请输入项目名称');
                 return false;
@@ -859,7 +861,20 @@
             ajax.post('project/ruleCompany/update', data, function (res) {
                 alert(res.msg);
                 if (res.code == config.responseSuccess) {
-                    window.history.go(-1);
+                   window.location.href='CommissionRulesUpdate.html?id='+$.getUrlVar('rule_id');
+                }
+            })
+        })
+
+        $('#no').click(function(){
+            var data = {
+                'state': 0,
+                'rule_id': id,
+            }
+            ajax.post('project/ruleCompany/update', data, function (res) {
+                alert(res.msg);
+                if (res.code == config.responseSuccess) {
+                    window.location.href='CommissionRulesUpdate.html?id='+$.getUrlVar('rule_id');
                 }
             })
         })

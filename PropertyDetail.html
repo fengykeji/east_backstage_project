@@ -146,7 +146,7 @@
                                             <div class="col-xs-6" style="padding-left: 100px;">
                                                 <div class="form-group">
                                                     <label class="lab_width">*售楼处地址：</label>
-                                                    <input class="inpt_width" type="text" id="sale_address">
+                                                    <input class="inpt_width" type="text" id="sale_address" maxlength="100">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">*建筑类型：</label>
@@ -156,50 +156,50 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">*均价（㎡）：</label>
-                                                    <input class="inpt_width" type="text" id="average_price">
+                                                    <input class="inpt_width" type="number" min="0" id="average_price" >
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">*价格区间（万）：</label>
                                                     <div class="inpt_width" style="display: inline-block;">
-                                                        <input type="text" style="width: 100px;" id="min_price">
+                                                        <input type="number" min="0" style="width: 100px;" id="min_price">
                                                         <span>----</span>
-                                                        <input type="text" style="width: 100px;" id="max_price">
+                                                        <input type="number" min="0" style="width: 100px;" id="max_price">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">占地面积（㎡）：</label>
-                                                    <input class="inpt_width" type="text" id="floor_space">
+                                                    <input class="inpt_width" type="number" min="0" id="floor_space">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">规划户数（户）：</label>
-                                                    <input class="inpt_width" type="text" id="households_num">
+                                                    <input class="inpt_width" type="number" min="0" id="households_num">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">规划车位（个）：</label>
-                                                    <input class="inpt_width" type="text" id="parking_num">
+                                                    <input class="inpt_width" type="number" min="0" id="parking_num">
                                                 </div>
                                             </div>
 
                                             <div class="col-xs-6" style="padding-left: 50px;">
                                                 <div class="form-group">
                                                     <label class="lab_width">设计公司：</label>
-                                                    <input class="inpt_width" type="text" id="decoration_company">
+                                                    <input class="inpt_width" type="text" id="decoration_company" maxlength="20">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">建筑面积（㎡）：</label>
-                                                    <input class="inpt_width" type="text" id="covered_area">
+                                                    <input class="inpt_width" type="number" min="0" id="covered_area">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">容积率：</label>
-                                                    <input class="inpt_width" type="text" id="plot_retio">
+                                                    <input class="inpt_width" type="number" min="0" id="plot_retio">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">绿化率：</label>
-                                                    <input class="inpt_width" type="text" id="greening_rate">
+                                                    <input class="inpt_width" type="number" min="0" id="greening_rate">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">装修标准：</label>
-                                                    <input class="inpt_width" type="text" id="decoration_standard">
+                                                    <input class="inpt_width" type="text" id="decoration_standard"  maxlength="40">
                                                 </div>
                                             </div>
                                         </div>
@@ -214,25 +214,25 @@
                                             <div class="col-xs-6" style="padding-left: 100px;">
                                                 <div class="form-group">
                                                     <label class="lab_width">物业公司：</label>
-                                                    <input class="inpt_width" type="text" id="property_company_name">
+                                                    <input class="inpt_width" type="text" maxlength="20" id="property_company_name">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">物业费：</label>
-                                                    <input class="inpt_width" type="text" id="property_cost">
+                                                    <input class="inpt_width" type="number" min="0" id="property_cost">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">供电类型：</label>
-                                                    <input class="inpt_width" type="text" id="power_supply">
+                                                    <input class="inpt_width" type="text" maxlength="10" id="power_supply">
                                                 </div>
                                             </div>
                                             <div class="col-xs-6" style="padding-left: 50px;">
                                                 <div class="form-group">
                                                     <label class="lab_width">供暖方式：</label>
-                                                    <input class="inpt_width" type="text" id="heat_supply">
+                                                    <input class="inpt_width" type="text" maxlength="10" id="heat_supply">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">供水类型：</label>
-                                                    <input class="inpt_width" type="text" id="water_supply">
+                                                    <input class="inpt_width" type="text" maxlength="10" id="water_supply">
                                                 </div>
                                             </div>
                                         </div>
@@ -367,6 +367,11 @@
                 'power_supply': $('#power_supply').val(),
                 'water_supply': $('#water_supply').val()
             }
+            if(data.sale_address.length>=100){
+                alert('售楼处地址过长,请控制在100字之内');
+                return false;
+            }
+
             var checkBoxClass = $('.build_type'),
                 list = '';
             $('input[name=form-field-checkbox]:checked').each(function () {
