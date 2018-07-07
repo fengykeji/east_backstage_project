@@ -187,7 +187,7 @@
                                                     <div class="row">
                                                         <div class="col-xs-12">
                                                             <div class="dataTables_paginate paging_simple_numbers" id="">
-                                                                <ul class="pagination">
+                                                                <ul class="pagination" id="paginationAll">
                                                                     <li class="paginate_button previous" aria-controls="dynamic-table" tabindex="0" id="prev_all">
                                                                         <a>首页</a>
                                                                     </li>
@@ -531,13 +531,10 @@
 
         //.首页点击事件
         $('#prev_success').on('click', function (e) {
-            // alert('首页');
             clickOperDeal(e, 1);
         })
         //尾页点击事件
         $('#next_success').on('click', function (e) {
-            // alert('尾页');
-            // alert(last_page_deal);
             clickOperDeal(e, last_page_deal);
         })
         //分页点击事件
@@ -586,20 +583,15 @@
         }
         //.首页点击事件
         $('#prev_invalid').on('click', function (e) {
-            alert('首页');
             clickOperInvalid(e, 1);
         })
         //尾页点击事件
         $('#next_invalid').on('click', function (e) {
-            alert('尾页');
-            alert(last_page_deal);
             clickOperInvalid(e, last_page_invalid);
         })
         //分页点击事件
         $('#paginationInvalid').on('click', '.pageNumInv', function (e) {
             var p = $(this).children().html(); //当前点击页
-            alert('页数');
-            alert(p);
             clickOperInvalid(e, p);
         })
         //点击事件操作
@@ -613,14 +605,16 @@
     <script>
         // 全部分页
         var last_page_all;
-        function getAllList() {
+        function getAllList(p) {
             var model =
-                ' <tr role="row" class="odd" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td> <td class="center">{state}</td> <td class="center">{broker}</td> <td class="center">{broker_type}</td> <td class="center">{company_name}</td> <td class="center">{create_time}</td>  <td class="center">{visit_time}</td> <td class="center">{state_change_time}</td> <td class="center">{end_time}</td> <td class="center">已确认</td> <td class="center">{butter_name}</td> <td class="center">{allot_time}</td><td class="center">{advice_name}</td> </tr>',
-                page =
-                '<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>',
+                ' <tr role="row" class="odd trAll" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td> <td class="center">{state}</td> <td class="center">{broker}</td> <td class="center">{broker_type}</td> <td class="center">{company_name}</td> <td class="center">{create_time}</td>  <td class="center">{visit_time}</td> <td class="center">{state_change_time}</td> <td class="center">{end_time}</td> <td class="center">已确认</td> <td class="center">{butter_name}</td> <td class="center">{allot_time}</td><td class="center">{advice_name}</td> </tr>',
+                // page =
+                // '<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>',
                 str = '',
                 id = 15*(p-1)+1;
-            ajax.get('project/client/all', {}, function (res) {
+            ajax.get('project/client/all', {
+                'page':p
+            }, function (res) {
                 if (res.data.data.length != 0) {
                     $.each(res.data.data, function (k, v) {
                         if (v.allot_time == null || v.allot_time == '0000-00-00 00:00:00') {
@@ -642,38 +636,38 @@
                         str += tr;
                     })
                     $('#all').append(str);
-                    last_page_valid = res.data.last_page;
-                var pn = 'pageNumVal';
-                var D = "#next_valid";
+                    last_page_all = res.data.last_page;
+                var pn = 'pageNumAll';
+                var D = "#next_all";
                 Paging(res, pn, D);
                 }
             })
 
         }
          //.首页点击事件
-         $('#prev_tobeConfirm').on('click', function (e) {
-            alert('首页');
-            clickOperConfirm(e, 1);
+         $('#prev_all').on('click', function (e) {
+            // alert('首页');
+            clickOperAll(e, 1);
         })
         //尾页点击事件
-        $('#next_tobeConfirm').on('click', function (e) {
-            alert('尾页');
-            alert(last_page_confirm);
-            clickOperConfirm(e, last_page_confirm);
+        $('#next_all').on('click', function (e) {
+            // alert('尾页');
+            // alert(last_page_all);
+            clickOperAll(e, last_page_all);
         })
         //分页点击事件
-        $('#paginationTobeCon').on('click', '.pageNumCon', function (e) {
+        $('#paginationAll').on('click', '.pageNumAll', function (e) {
             var p = $(this).children().html(); //当前点击页
-            alert('页数');
-            alert(p);
-            clickOperConfirm(e, p);
+            // alert('页数');
+            // alert(p);
+            clickOperAll(e, p);
         })
         //点击事件操作
-        function clickOperConfirm(e, p) {
+        function clickOperAll(e, p) {
             e.stopPropagation();
-            $('.pageNumCon').remove();
-            $('.trTobeCom').remove();
-            wait_confirm(p);
+            $('.pageNumAll').remove();
+            $('.trAll').remove();
+            getAllList(p);
         }
     </script>
     <script>
@@ -787,20 +781,20 @@
         }
         //.首页点击事件
         $('#prev_tobeConfirm').on('click', function (e) {
-            alert('首页');
+            // alert('首页');
             clickOperConfirm(e, 1);
         })
         //尾页点击事件
         $('#next_tobeConfirm').on('click', function (e) {
-            alert('尾页');
-            alert(last_page_confirm);
+            // alert('尾页');
+            // alert(last_page_confirm);
             clickOperConfirm(e, last_page_confirm);
         })
         //分页点击事件
         $('#paginationTobeCon').on('click', '.pageNumCon', function (e) {
             var p = $(this).children().html(); //当前点击页
-            alert('页数');
-            alert(p);
+            // alert('页数');
+            // alert(p);
             clickOperConfirm(e, p);
         })
         //点击事件操作
