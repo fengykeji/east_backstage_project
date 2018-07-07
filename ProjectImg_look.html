@@ -136,7 +136,8 @@
             max-width: 180px;
             max-height: 180px;
         }
-        .paginate_button{
+
+        .paginate_button {
             cursor: pointer;
         }
     </style>
@@ -206,11 +207,11 @@
                                             <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
                                                 <ul class="pagination" id="pagination">
                                                     <li class="paginate_button previous" id="prev" aria-controls="dynamic-table">
-                                                        <a href="javascript:void(0)">首页</a>
+                                                        <a>首页</a>
                                                     </li>
 
                                                     <li class="paginate_button next" id="next" aria-controls="dynamic-table">
-                                                        <a href="javascript:void(0)">尾页</a>
+                                                        <a>尾页</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -418,7 +419,7 @@
         })
 
         $('#img_add').on('change', function () {
-            console.log('2222222')
+            // console.log('2222222')
             if ($(this)[0].files[0].size >= config.allowImgFileSize) {
                 alert(config.ImgSizeBeyondErrMes);
             }
@@ -452,13 +453,15 @@
     <script>
         //分页
         var type_id = $.getUrlVar('type_id');
+        var last_page;
+
         function getList(p) {
             ajax.get('project/img/getOneTypeImgList', {
                 'type_id': type_id,
                 'page': p
             }, function (res) {
                 var dom = $('#list'),
-                list_id = 15*(p-1)+1,
+                    list_id = 15 * (p - 1) + 1,
                     model =
                     '<tr role="row" class="odd" value="{id}" img_address="{address}"> <td class="center">{list_id}</td> <td class="center img"> <img class="proLook_img" src="{img_url}" alt=""> </td> <td class="center comment">{comment}</td> <td class="center">{uploader} </td> <td class="center">{create_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green edit_Img" style="cursor: pointer">编辑</a> <a class="red del_img"  style="cursor: pointer">删除</a> <a class="up" style="cursor: pointer">上移</a><a class="down" style="cursor: pointer">下移</a><a class="projectImg" style="cursor: pointer">设为封面</a></div> </td> </tr>';
                 $.each(res.data.data, function (k, v) {
@@ -466,33 +469,28 @@
                         '{img_url}', config.address + v.img_url).replace('{comment}', v.comment).replace(
                         '{uploader}', v.uploader).replace('{create_time}', v.create_time).replace(
                         '{address}', v.img_url);
-                    dom.append(str);
+                        dom.append(str);
                 })
-
-                aa(res);
+                last_page = res.data.last_page;
+                Paging(res);
             })
         }
-        //分页点击事件
-        $('#pagination').on('click', '.paginate_button', function () {
-            var p=$(this).children().html(); //当前点击页
-            $('.pageNum').remove();
-            $('.odd').remove();
-            getList(p);
-        })
-        function aa(res) {
-            var page = '<li class="paginate_button pageNum {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>';
-            var T=Math.floor(res.data.current_page/10)*10;
-            if(res.data.current_page>T||res.data.current_page==T){
-                var i = T-1;
-                if(res.data.last_page>i+10){
-                    var t=i+11;
-                }else{
-                    var t=res.data.last_page;
+
+        function Paging(res) {
+            var page =
+                '<li class="paginate_button pageNum {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>';
+            var T = Math.floor(res.data.current_page / 10) * 10;
+            if (res.data.current_page > T || res.data.current_page == T) {
+                var i = T - 1;
+                if (res.data.last_page > i + 10) {
+                    var t = i + 11;
+                } else {
+                    var t = res.data.last_page;
                 }
-                for (i; i <=t ; i++) {
-                    if(i==0||i<0){
-                        i=1;
-                        }
+                for (i; i <= t; i++) {
+                    if (i == 0 || i < 0) {
+                        i = 1;
+                    }
                     var str = page.replace('{pageValue}', i).replace('{page}', i);
                     if (i == res.data.current_page) {
                         str = str.replace('{avtive}', 'active');
@@ -502,24 +500,31 @@
                     $('#next').before(str);
                 }
             }
-            
+
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        //.首页点击事件
+        $('#prev').on('click', function (e) {
+            clickOper(e,1);
+        })
+        //尾页点击事件
+        $('#next').on('click', function (e) {
+            clickOper(e,last_page);
+        })
+        //分页点击事件
+        $('#pagination').on('click', '.pageNum', function (e) {
+            var p = $(this).children().html(); //当前点击页
+            clickOper(e,p);
+        })
+        //点击事件操作
+        function clickOper(e,p){
+            e.stopPropagation();
+            $('.pageNum').remove();
+            $('.odd').remove();
+            getList(p);
+        }
+    </script>
+    <script>
         window.onload = function () {
             getList(1);
             $('#header').load('public/header.html');

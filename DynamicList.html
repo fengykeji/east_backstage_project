@@ -97,6 +97,12 @@
         .close {
             font-size: 32px;
         } */
+        .paginate_button,a {
+            cursor: pointer;
+        }
+        #dynamic-table td{
+            vertical-align: middle;
+        }
     </style>
 </head>
 
@@ -164,13 +170,13 @@
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
-                                                <ul class="pagination">
-                                                    <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="prev">
-                                                        <a href="#">首页</a>
+                                                <ul class="pagination" id="pagination">
+                                                    <li class="paginate_button previous" aria-controls="dynamic-table" tabindex="0" id="prev">
+                                                        <a>首页</a>
                                                     </li>
 
                                                     <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="next">
-                                                        <a href="#">尾页</a>
+                                                        <a>尾页</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -231,7 +237,7 @@
 
     <script>
         window.onload = function () {
-            getList();
+            getList(1);
             $('#header').load('public/header.html');
             $('#sidebar').load('public/menu.html');
             var menu_data = {
@@ -242,22 +248,64 @@
                 path: "menu.html"
             });
         }
+    </script>
+    <script>
+        $('#addleibie').on('click', function () {
+            window.location.href = "DynamicListAdd.html";
+        })
 
-        function getList() {
-            ajax.get('project/dynamic/list', {}, function (res) {
+        $(document).on('click', '.del', function () {
+            var ms = confirm("您确定要删除该条动态么"),
+                id = $(this).parents('tr').attr('value');
+            if (ms == true) {
+
+                ajax.get('project/dynamic/delete', {
+                    'dynamic_id': id
+                }, function (res) {
+                    alert(res.msg);
+                    window.location.reload();
+                })
+            }
+
+        })
+    </script>
+    <script>
+        //分页
+        var last_page;
+        function getList(p) {
+            ajax.get('project/dynamic/list', {
+                'page': p
+            }, function (res) {
                 var model =
-                    ' <tr role="row" class="odd" value="{dynamic_id}"> <td class="center">{id}</td> <td class="center">{title}</td> <td class="center">{abstract}</td> <td class="center">{uploader}</td> <td class="center">{create_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="">预览</a> <a class="green edit_leibie" href="DynamicListModify.html?id={d_id}">编辑</a> <div class="red del_leibie del" style="cursor: pointer" >删除</div> </div> </td> </tr>',
-                    id = 1,
-                    page =
-                    '<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>',
+                    ' <tr role="row" class="odd" value="{dynamic_id}"> <td class="center">{id}</td> <td class="center">{title}</td> <td class="center" style="width:350px;">{abstract}</td> <td class="center">{uploader}</td> <td class="center">{create_time}</td> <td class="center">  <a class="blue">预览</a> <a class="green edit_leibie" href="DynamicListModify.html?id={d_id}">编辑</a> <a class="red del_leibie del">删除</a> </td> </tr>',
+                    id = 15 * (p - 1) + 1,
                     list = '';
                 $.each(res.data.data, function (k, v) {
                     list += model.replace('{dynamic_id}', v.dynamic_id).replace('{id}', id++).replace(
                         '{title}', v.title).replace('{uploader}', v.uploader).replace(
-                        '{create_time}', v.create_time).replace('{abstract}', v.abstract).replace('{d_id}',v.dynamic_id);
+                        '{create_time}', v.create_time).replace('{abstract}', v.abstract).replace(
+                        '{d_id}', v.dynamic_id);
                 })
                 $('#list').append(list);
-                for (var i = 1; i <= res.data.last_page; i++) {
+                last_page = res.data.last_page;
+                Paging(res);
+            })
+        }
+        function Paging(res) {
+            var page =
+                '<li class="paginate_button pageNum {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>';
+            var T = Math.floor(res.data.current_page / 10) * 10;
+            if (res.data.current_page > T || res.data.current_page == T) {
+                var i = T - 1;
+                if (res.data.last_page > i + 10) {
+                    var t = i + 11;
+                } else {
+                    var t = res.data.last_page;
+                }
+                for (i; i <= t; i++) {
+                    if (i == 0 || i < 0) {
+                        i = 1;
+                    }
                     var str = page.replace('{pageValue}', i).replace('{page}', i);
                     if (i == res.data.current_page) {
                         str = str.replace('{avtive}', 'active');
@@ -266,28 +314,31 @@
                     }
                     $('#next').before(str);
                 }
-            })
-        }
-    </script>
-    <script>
-    $('#addleibie').on('click',function(){
-        window.location.href="DynamicListAdd.html";
-    })
+            }
 
-    $(document).on('click','.del',function(){
-        var ms=confirm("您确定要删除该条动态么"),
-            id=$(this).parents('tr').attr('value');
-        if (ms==true)
-        {
-
-            ajax.get('project/dynamic/delete',{'dynamic_id':id},function(res){
-                alert(res.msg);
-                window.location.reload();
-            })
         }
 
-    })
-    </script>
+        //.首页点击事件
+        $('#prev').on('click', function (e) {
+            clickOper(e,1);
+        })
+        //尾页点击事件
+        $('#next').on('click', function (e) {
+            clickOper(e,last_page);
+        })
+        //分页点击事件
+        $('#pagination').on('click', '.pageNum', function (e) {
+            var p = $(this).children().html(); //当前点击页
+            clickOper(e,p);
+        })
+        //点击事件操作
+        function clickOper(e,p){
+            e.stopPropagation();
+            $('.pageNum').remove();
+            $('.odd').remove();
+            getList(p);
+        }
+   </script>
 </body>
 
 </html>

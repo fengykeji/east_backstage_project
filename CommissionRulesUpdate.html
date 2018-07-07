@@ -82,6 +82,11 @@
         /* #dynamic-table td {
             vertical-align: middle;
         } */
+
+        .paginate_button,
+        a {
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -116,7 +121,7 @@
                         <li>
                             <i class="ace-icon fa fa-home home-icon"></i>
                             <a href="CommissionRules.html">结佣规则</a>
-                            <a href="#">>判断规则</a>
+                            <a>>判断规则编辑</a>
                         </li>
                     </ul>
                     <div class="operate_proInfo">
@@ -219,21 +224,13 @@
                                                         <div class="row">
                                                             <div class="col-xs-12">
                                                                 <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
-                                                                    <ul class="pagination">
-                                                                        <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="prev1">
-                                                                            <a href="#">首页</a>
+                                                                    <ul class="pagination" id="paginationCom">
+                                                                        <li class="paginate_button previous" aria-controls="dynamic-table" tabindex="0" id="prev1">
+                                                                            <a>首页</a>
                                                                         </li>
-                                                                        <!-- <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">1</a>
-                                                                        </li>
-                                                                        <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">2</a>
-                                                                        </li>
-                                                                        <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">3</a>
-                                                                        </li> -->
+
                                                                         <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="next1">
-                                                                            <a href="#">尾页</a>
+                                                                            <a>尾页</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -278,21 +275,13 @@
                                                         <div class="row">
                                                             <div class="col-xs-12">
                                                                 <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
-                                                                    <ul class="pagination">
-                                                                        <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="prev2">
-                                                                            <a href="#">首页</a>
+                                                                    <ul class="pagination" id="paginationPer">
+                                                                        <li class="paginate_button previous" aria-controls="dynamic-table" tabindex="0" id="prev2">
+                                                                            <a>首页</a>
                                                                         </li>
-                                                                        <!-- <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">1</a>
-                                                                        </li>
-                                                                        <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">2</a>
-                                                                        </li>
-                                                                        <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">3</a>
-                                                                        </li> -->
+
                                                                         <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="next2">
-                                                                            <a href="#">尾页</a>
+                                                                            <a>尾页</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -385,90 +374,6 @@
             })
         }
 
-        function company_rule_list() {
-            ajax.get('project/ruleCompany/getList', {
-                'basic_rule_id': id
-            }, function (res) {
-                var model =
-                    '<tr role="row" class="odd" value="{a_id}"> <td class="center">{key}</td> <td class="center">{company_name}</td> <td class="center">{project_docker}</td> <td class="center">{project_docker_tel}</td> <td class="center">{compact_begin}</td> <td class="center">{compact_end}</td> <td class="center">{act_start}</td> <td class="center">{act_end}</td> <td class="center">{source}</td><td class="center">{state}</td> <td class="center">{end_state_name}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons">  ',
-                    id = 1,
-                    page =
-                    '<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>',
-                    str = '';
-
-                $.each(res.data.data, function (k, v) {
-
-
-                    var st = model;
-                    if (v.state == 2) {
-                        st +=
-                            '<a class="orange" href="CommissionRulesCompanyReview.html?id={b_id}&rule_id=' +
-                            $.getUrlVar('id') + '">审核</a>';
-                    } else {
-                        if (v.end_state_name != '已终止') {
-                            st +=
-                                '<a class="red del_leibie" value="{c_id}">终止</a> <a class="green edit_leibie" href="CommissionRulesCompanyUpdate.html?id={b_id}">查看</a> ';
-
-                        }
-                    }
-
-
-                    str += st.replace('{a_id}', v.rule_id).replace('{b_id}', v.rule_id).replace(
-                            '{c_id}', v.rule_id).replace('{key}', id++).replace('{company_name}', v.company_name)
-                        .replace('{project_docker}', v.project_docker).replace('{project_docker_tel}',
-                            v.project_docker_tel).replace('{compact_begin}', v.compact_begin).replace(
-                            '{compact_end}', v.compact_end).replace('{act_start}', v.act_start).replace(
-                            '{act_end}', v.act_end).replace('{state}', v.state_name).replace(
-                            '{end_state_name}', v.end_state_name).replace('{source}', v.source);
-                })
-                $('#company').append(str);
-                for (var i = 1; i <= res.data.last_page; i++) {
-                    var str = page.replace('{pageValue}', i).replace('{page}', i);
-                    if (i == res.data.current_page) {
-                        str = str.replace('{avtive}', 'active');
-                    } else {
-                        str = str.replace('{avtive}', '');
-                    }
-                    $('#next1').before(str);
-                }
-            })
-        }
-
-        function person_rule_list() {
-            ajax.get('project/rulePerson/getList', {
-                'basic_rule_id': id
-            }, function (res) {
-                var model =
-                    '<tr role="row" class="odd" value="{a_id}"> <td class="center">{key}</td> <td class="center">{rule_name}</td>  <td class="center">{plan_start}</td> <td class="center">{plan_end}</td> <td class="center">{act_start}</td> <td class="center">{act_end}</td> <td class="center">{state}</td> <td class="center"> <label> <input checked="checked" name="switch-field-1" class="ace ace-switch  ace-switch-5 switchCom" type="checkbox"> <span class="lbl"></span> </label> </td> <td class="center">  ',
-                    id = 1,
-                    page =
-                    '<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>',
-                    str = '';
-                $.each(res.data.data, function (k, v) {
-                    if (v.end_state_name != '已终止') {
-                        var st = model +
-                            '<div class="hidden-sm hidden-xs action-buttons"> <a class="green" href="CommissionRulesBrokerUpdate.html?id={b_id}">编辑</a><a class="red person_stop" value="{c_id}" >停用</a> </div> </td> </tr>';
-                    } else {
-                        st = model;
-                    }
-                    str += st.replace('{a_id}', v.rule_id).replace('{b_id}', v.rule_id).replace(
-                            '{c_id}', v.rule_id).replace('{key}', id++).replace('{rule_name}', v.rule_name)
-                        .replace('{plan_end}', v.plan_end).replace('{plan_start}', v.plan_start).replace(
-                            '{act_start}', v.act_start).replace('{act_end}', v.act_end).replace(
-                            '{state}', v.end_state_name).replace('{end_state_name}', v.end_state_name);
-                })
-                $('#person').append(str);
-                for (var i = 1; i <= res.data.last_page; i++) {
-                    var str = page.replace('{pageValue}', i).replace('{page}', i);
-                    if (i == res.data.current_page) {
-                        str = str.replace('{avtive}', 'active');
-                    } else {
-                        str = str.replace('{avtive}', '');
-                    }
-                    $('#next2').before(str);
-                }
-            })
-        }
 
         $(document).on('click', '.del_leibie', function () {
             var id = $(this).attr('value'),
@@ -525,23 +430,23 @@
         //     autoclose: true,
         //     todayHighlight: true
         // })
-        if (!ace.vars['old_ie']) $('.date-timepicker').datetimepicker({
-            //format: 'MM/DD/YYYY h:mm:ss A',//use this option to display seconds
-            format: 'YYYY-MM-DD HH:mm:ss',
-            icons: {
-                time: 'fa fa-clock-o',
-                date: 'fa fa-calendar',
-                up: 'fa fa-chevron-up',
-                down: 'fa fa-chevron-down',
-                previous: 'fa fa-chevron-left',
-                next: 'fa fa-chevron-right',
-                today: 'fa fa-arrows ',
-                clear: 'fa fa-trash',
-                close: 'fa fa-times'
-            }
-        }).next().on(ace.click_event, function () {
-            $(this).prev().focus();
-        });
+        // if (!ace.vars['old_ie']) $('.date-timepicker').datetimepicker({
+        //     //format: 'MM/DD/YYYY h:mm:ss A',//use this option to display seconds
+        //     format: 'YYYY-MM-DD HH:mm:ss',
+        //     icons: {
+        //         time: 'fa fa-clock-o',
+        //         date: 'fa fa-calendar',
+        //         up: 'fa fa-chevron-up',
+        //         down: 'fa fa-chevron-down',
+        //         previous: 'fa fa-chevron-left',
+        //         next: 'fa fa-chevron-right',
+        //         today: 'fa fa-arrows ',
+        //         clear: 'fa fa-trash',
+        //         close: 'fa fa-times'
+        //     }
+        // }).next().on(ace.click_event, function () {
+        //     $(this).prev().focus();
+        // });
     </script>
     <script>
         $(".addCompany").on('click', function () {
@@ -557,15 +462,179 @@
         $('#person').on('change', '.switchCom', function () {
             alert($(this).is(':checked'));
         })
-        //审核页面跳转
-        // $('.ReCompany').on('click',function(){
-        //     window.location.href='CommissionRulesCompanyReview.html';
-        //     return false;
-        // })
         //关闭按钮返回上一页
         $('#backLastPage').on('click', function () {
             history.back(-1);
         })
+    </script>
+    <script>
+        // 分页
+        var last_page_com;
+
+        function company_rule_list(p) {
+            ajax.get('project/ruleCompany/getList', {
+                'basic_rule_id': id,
+                'page': p
+            }, function (res) {
+                var model =
+                    '<tr role="row" class="odd trCom" value="{a_id}"> <td class="center">{key}</td> <td class="center">{company_name}</td> <td class="center">{project_docker}</td> <td class="center">{project_docker_tel}</td> <td class="center">{compact_begin}</td> <td class="center">{compact_end}</td> <td class="center">{act_start}</td> <td class="center">{act_end}</td> <td class="center">{source}</td><td class="center">{state}</td> <td class="center">{end_state_name}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons">  ',
+                    id = 15 * (p - 1) + 1,
+                    // page =
+                    // '<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>',
+                    str = '';
+                $.each(res.data.data, function (k, v) {
+                    var st = model;
+                    if (v.state == 2) {
+                        st +=
+                            '<a class="orange" href="CommissionRulesCompanyReview.html?id={b_id}&rule_id=' +
+                            $.getUrlVar('id') + '">审核</a>';
+                    } else {
+                        if (v.end_state_name != '已终止') {
+                            st +=
+                                '<a class="red del_leibie" value="{c_id}">终止</a> <a class="green edit_leibie" href="CommissionRulesCompanyUpdate.html?id={b_id}">查看</a> ';
+
+                        }
+                    }
+                    str += st.replace('{a_id}', v.rule_id).replace('{b_id}', v.rule_id).replace(
+                            '{c_id}', v.rule_id).replace('{key}', id++).replace('{company_name}', v.company_name)
+                        .replace('{project_docker}', v.project_docker).replace('{project_docker_tel}',
+                            v.project_docker_tel).replace('{compact_begin}', v.compact_begin).replace(
+                            '{compact_end}', v.compact_end).replace('{act_start}', v.act_start).replace(
+                            '{act_end}', v.act_end).replace('{state}', v.state_name).replace(
+                            '{end_state_name}', v.end_state_name).replace('{source}', v.source);
+                })
+                $('#company').append(str);
+                last_page_com = res.data.last_page;
+                PagingCom(res);
+            })
+        }
+
+        function PagingCom(res) {
+            var page =
+                '<li class="paginate_button pageNumCom {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>';
+            var T = Math.floor(res.data.current_page / 10) * 10;
+            if (res.data.current_page > T || res.data.current_page == T) {
+                var i = T - 1;
+                if (res.data.last_page > i + 10) {
+                    var t = i + 11;
+                } else {
+                    var t = res.data.last_page;
+                }
+                for (i; i <= t; i++) {
+                    if (i == 0 || i < 0) {
+                        i = 1;
+                    }
+                    var str = page.replace('{pageValue}', i).replace('{page}', i);
+                    if (i == res.data.current_page) {
+                        str = str.replace('{avtive}', 'active');
+                    } else {
+                        str = str.replace('{avtive}', '');
+                    }
+                    $('#next1').before(str);
+                }
+            }
+
+        }
+        //首页点击事件
+        $('#prev1').on('click', function (e) {
+            clickOperCom(e, 1);
+        })
+        //尾页点击事件
+        $('#next1').on('click', function (e) {
+            clickOperCom(e, last_page_com);
+        })
+        //分页点击事件
+        $('#paginationCom').on('click', '.pageNumCom', function (e) {
+            var p = $(this).children().html(); //当前点击页
+            clickOperCom(e, p);
+        })
+        //点击事件操作
+        function clickOperCom(e, p) {
+            e.stopPropagation();
+            $('.pageNumCom').remove();
+            $('.trCom').remove();
+            company_rule_list(p);
+        }
+    </script>
+    <script>
+        var last_page_per;
+
+        function person_rule_list(p) {
+            ajax.get('project/rulePerson/getList', {
+                'basic_rule_id': id,
+                'page': p
+            }, function (res) {
+                var model =
+                    '<tr role="row" class="odd trPer" value="{a_id}"> <td class="center">{key}</td> <td class="center">{rule_name}</td>  <td class="center">{plan_start}</td> <td class="center">{plan_end}</td> <td class="center">{act_start}</td> <td class="center">{act_end}</td> <td class="center">{state}</td> <td class="center"> <label> <input checked="checked" name="switch-field-1" class="ace ace-switch  ace-switch-5 switchCom" type="checkbox"> <span class="lbl"></span> </label> </td> <td class="center">  ',
+                    id = 15 * (p - 1) + 1,
+                    // page =
+                    // '<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>',
+                    str = '';
+                $.each(res.data.data, function (k, v) {
+                    if (v.end_state_name != '已终止') {
+                        var st = model +
+                            '<div class="hidden-sm hidden-xs action-buttons"> <a class="green" href="CommissionRulesBrokerUpdate.html?id={b_id}">编辑</a><a class="red person_stop" value="{c_id}" >停用</a> </div> </td> </tr>';
+                    } else {
+                        st = model;
+                    }
+                    str += st.replace('{a_id}', v.rule_id).replace('{b_id}', v.rule_id).replace(
+                            '{c_id}', v.rule_id).replace('{key}', id++).replace('{rule_name}', v.rule_name)
+                        .replace('{plan_end}', v.plan_end).replace('{plan_start}', v.plan_start).replace(
+                            '{act_start}', v.act_start).replace('{act_end}', v.act_end).replace(
+                            '{state}', v.end_state_name).replace('{end_state_name}', v.end_state_name);
+                })
+                $('#person').append(str);
+                last_page_per = res.data.last_page;
+                PagingPer(res);
+            })
+        }
+
+        function PagingPer(res) {
+            var page =
+                '<li class="paginate_button pageNumPer {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>';
+            var T = Math.floor(res.data.current_page / 10) * 10;
+            if (res.data.current_page > T || res.data.current_page == T) {
+                var i = T - 1;
+                if (res.data.last_page > i + 10) {
+                    var t = i + 11;
+                } else {
+                    var t = res.data.last_page;
+                }
+                for (i; i <= t; i++) {
+                    if (i == 0 || i < 0) {
+                        i = 1;
+                    }
+                    var str = page.replace('{pageValue}', i).replace('{page}', i);
+                    if (i == res.data.current_page) {
+                        str = str.replace('{avtive}', 'active');
+                    } else {
+                        str = str.replace('{avtive}', '');
+                    }
+                    $('#next2').before(str);
+                }
+            }
+
+        }
+        //首页点击事件
+        $('#prev2').on('click', function (e) {
+            clickOperPer(e, 1);
+        })
+        //尾页点击事件
+        $('#next2').on('click', function (e) {
+            clickOperPer(e, last_page_per);
+        })
+        //分页点击事件
+        $('#paginationPer').on('click', '.pageNumPer', function (e) {
+            var p = $(this).children().html(); //当前点击页
+            clickOperPer(e, p);
+        })
+        //点击事件操作
+        function clickOperPer(e, p) {
+            e.stopPropagation();
+            $('.pageNumPer').remove();
+            $('.trPer').remove();
+            person_rule_list(p);
+        }
     </script>
 </body>
 

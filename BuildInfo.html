@@ -95,6 +95,10 @@
             max-width: 180px;
             max-height: 180px;
         }
+
+        .paginate_button,a{
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -224,20 +228,11 @@
                                                         <div class="col-xs-12">
                                                             <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
                                                                 <ul class="pagination" id="pagination">
-                                                                    <li class="paginate_button previous disabled" id="prev" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_previous">
-                                                                        <a href="#">首页</a>
+                                                                    <li class="paginate_button previous" id="prev" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_previous">
+                                                                        <a>首页</a>
                                                                     </li>
-                                                                    <!-- <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
-                                                                        <a href="#">1</a>
-                                                                    </li>
-                                                                    <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                        <a href="#">2</a>
-                                                                    </li>
-                                                                    <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                        <a href="#">3</a>
-                                                                    </li> -->
                                                                     <li class="paginate_button next" id="next" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_next">
-                                                                        <a href="#">尾页</a>
+                                                                        <a>尾页</a>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -249,10 +244,7 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -375,7 +367,6 @@
                 path: "menu.html"
             });
             getImgInfo();
-            getList();
         }
     </script>
     <script>
@@ -390,52 +381,12 @@
         })
         //总平图设置
         $('#zongImg_up').on('click', function () {
-            // console.log("11111");
             $('.modal_upImg').css('display', 'block');
         });
         $('.closed').on('click', function () {
             $(this).parent().parent().parent().parent().css('display', 'none');
         })
-        //分页
-        var page = 1;
-
-        // function getList() {
-        //     ajax.get('project/build/list', {
-        //         'page': page
-        //     }, function (res) {
-
-        //         var dom = $('#build_list'),
-        //             id = 1,
-        //             model =
-        //             '<tr role="row" class="odd" value="{build_id}"> <td class="center">{id}</td> <td class="center">{name}</td> <td class="center">{sale_permit}</td> <td class="center">{permit_time}</td> <td class="center">{open_way}</td> <td class="center">{open_time}</td> <td class="center">{handing_room_time}</td> <td class="center">{unit_num}</td> <td class="center">{ladder_ratio}</td> <td class="center">{total_house_num}</td> <td class="center">{upper_floor_num}</td> <td class="center">{down_floor_num}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green edit_leibie" href="BuildInfoOperate.html?build_id={b_id}">编辑</a> <div class="red del_leibie del"  style="cursor: pointer">删除</div> </div> </td> </tr>',
-        //             page =
-        //             '<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>',
-        //             str = ''; 
-        //         $.each(res.data.data, function (k, v) {
-        //             str += model.replace('{build_id}', v.build_id).replace('{id}', id++).replace(
-        //                     '{name}', v.build_name).replace('{sale_permit}', v.sale_permit).replace(
-        //                     '{permit_time}', v.permit_time).replace('{open_way}', v.open_way).replace(
-        //                     '{open_time}', v.open_time).replace('{handing_room_time}', v.handing_room_time)
-        //                 .replace('{unit_num}', v.unit_num).replace('{ladder_ratio}', v.ladder_ratio).replace(
-        //                     '{total_house_num}', v.total_house_num).replace('{upper_floor_num}', v.upper_floor_num)
-        //                 .replace('{down_floor_num}', v.down_floor_num).replace('{b_id}', v.build_id);
-
-        //         })
-        //         dom.append(str);
-        //         //分页
-        //         for (var i = 1; i <= res.data.last_page; i++) {
-        //             var str = page.replace('{pageValue}', i).replace('{page}', i);
-        //             if (i == res.data.current_page) {
-        //                 str = str.replace('{avtive}', 'active');
-        //             } else {
-        //                 str = str.replace('{avtive}', '');
-        //             }
-        //             $('#next').before(str);
-        //         }
-        //     })
-        // }
     </script>
-
     <script>
         function getImgInfo() {
             ajax.get('project/project/getTotalFloatImg', {}, function (res) {
@@ -457,7 +408,6 @@
                     if (res.data.yunsuan_url == '' || res.data.yunsuan_id == 0) {
                         $('.ys').hide();
                     } else {
-                        // getList();
                         getBuildInfo(1);
 
                     }
@@ -465,44 +415,7 @@
             })
         }
 
-        function getBuildInfo(a) {
-            ajax.get('project/build/list', {
-                page:a
-            }, function (res) {
-                var model =
-                    '<tr role="row" class="odd" value="{build_id}"> <td class="center">{id}</td> <td class="center">{name}</td> <td class="center">{sale_permit}</td> <td class="center">{permit_time}</td> <td class="center">{open_way}</td> <td class="center">{open_time}</td> <td class="center">{handing_room_time}</td> <td class="center">{unit_num}</td> <td class="center">{ladder_ratio}</td> <td class="center">{total_house_num}</td> <td class="center">{upper_floor_num}</td> <td class="center">{down_floor_num}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green edit_leibie" href="BuildInfoOperate.html?build_id={b_id}">编辑</a> <div class="red del_leibie del"  style="cursor: pointer">删除</div> </div> </td> </tr>',
-                    page =
-                    '<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>',
-                    id = 1,
-                str = '',
-                    detail_model =
-                    '<li value="{id}" build="{yunsuan}"> <button type="button" class="btn btn-white btn-primary build_detail_look">{name}</button> </li>';
-                detail_str = '';
-                $.each(res.data.data, function (k, v) {
-                    str += model.replace('{build_id}', v.build_id).replace('{id}', id++).replace(
-                            '{name}', v.build_name).replace('{sale_permit}', v.sale_permit).replace(
-                            '{permit_time}', v.permit_time).replace('{open_way}', v.open_way).replace(
-                            '{open_time}', v.open_time).replace('{handing_room_time}', v.handing_room_time)
-                        .replace('{unit_num}', v.unit_num).replace('{ladder_ratio}', v.ladder_ratio).replace(
-                            '{total_house_num}', v.total_house_num).replace('{upper_floor_num}', v.upper_floor_num)
-                        .replace('{down_floor_num}', v.down_floor_num).replace('{b_id}', v.build_id);
-                    detail_str += detail_model.replace('{id}', v.build_id).replace('{name}', v.build_name)
-                        .replace('{yunsuan}', v.ys_build_id);
-                })
-                $('#build_list').append(str);
-                $('.build_detail').append(detail_str);
 
-                for (var i = 1; i <= res.data.last_page; i++) {
-                    var str = page.replace('{pageValue}', i).replace('{page}', i);
-                    if (i == res.data.current_page) {
-                        str = str.replace('{avtive}', 'active');
-                    } else {
-                        str = str.replace('{avtive}', '');
-                    }
-                    $('#next').before(str);
-                }
-            })
-        }
         $('#phoneUpload').on('change', function () {
             if ($(this)[0].files[0].size >= config.allowImgFileSize) {
                 alert(config.ImgSizeBeyondErrMes);
@@ -556,6 +469,91 @@
 
         })
     </script>
+
+    <script>
+        
+        // 分页
+        var last_page;
+        function getBuildInfo(p) {
+            ajax.get('project/build/list', {
+                'page': p
+            }, function (res) {
+                var model =
+                    '<tr role="row" class="odd" value="{build_id}"> <td class="center">{id}</td> <td class="center">{name}</td> <td class="center">{sale_permit}</td> <td class="center">{permit_time}</td> <td class="center">{open_way}</td> <td class="center">{open_time}</td> <td class="center">{handing_room_time}</td> <td class="center">{unit_num}</td> <td class="center">{ladder_ratio}</td> <td class="center">{total_house_num}</td> <td class="center">{upper_floor_num}</td> <td class="center">{down_floor_num}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green edit_leibie" href="BuildInfoOperate.html?build_id={b_id}">编辑</a> <div class="red del_leibie del"  style="cursor: pointer">删除</div> </div> </td> </tr>',
+                    id = 15 * (p - 1) + 1,
+                    str = '',
+                    detail_model =
+                    '<li class="buildBtn" value="{id}" build="{yunsuan}"> <button type="button" class="btn btn-white btn-primary build_detail_look">{name}</button> </li>';
+                detail_str = '';
+                $.each(res.data.data, function (k, v) {
+                    str += model.replace('{build_id}', v.build_id).replace('{id}', id++).replace(
+                            '{name}', v.build_name).replace('{sale_permit}', v.sale_permit).replace(
+                            '{permit_time}', v.permit_time).replace('{open_way}', v.open_way).replace(
+                            '{open_time}', v.open_time).replace('{handing_room_time}', v.handing_room_time)
+                        .replace('{unit_num}', v.unit_num).replace('{ladder_ratio}', v.ladder_ratio).replace(
+                            '{total_house_num}', v.total_house_num).replace('{upper_floor_num}', v.upper_floor_num)
+                        .replace('{down_floor_num}', v.down_floor_num).replace('{b_id}', v.build_id);
+                    detail_str += detail_model.replace('{id}', v.build_id).replace('{name}', v.build_name)
+                        .replace('{yunsuan}', v.ys_build_id);
+                })
+                $('#build_list').append(str);
+                $('.build_detail').append(detail_str);
+                last_page = res.data.last_page;
+                Paging(res);
+            })
+        }
+
+        function Paging(res) {
+            var page =
+                '<li class="paginate_button pageNum {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>';
+            var T = Math.floor(res.data.current_page / 10) * 10;
+            if (res.data.current_page > T || res.data.current_page == T) {
+                var i = T - 1;
+                if (res.data.last_page > i + 10) {
+                    var t = i + 11;
+                } else {
+                    var t = res.data.last_page;
+                }
+                for (i; i <= t; i++) {
+                    if (i == 0 || i < 0) {
+                        i = 1;
+                    }
+                    var str = page.replace('{pageValue}', i).replace('{page}', i);
+                    if (i == res.data.current_page) {
+                        str = str.replace('{avtive}', 'active');
+                    } else {
+                        str = str.replace('{avtive}', '');
+                    }
+                    $('#next').before(str);
+                }
+            }
+
+        }
+
+
+        //.首页点击事件
+        $('#prev').on('click', function (e) {
+            clickOper(e, 1);
+        })
+        //尾页点击事件
+        $('#next').on('click', function (e) {
+            clickOper(e, last_page);
+        })
+        //分页点击事件
+        $('#pagination').on('click', '.pageNum', function (e) {
+            var p = $(this).children().html(); //当前点击页
+            clickOper(e, p);
+        })
+        //点击事件操作
+        function clickOper(e, p) {
+            e.stopPropagation();
+            $('.pageNum').remove();
+            $('.odd').remove();
+            $('.buildBtn').remove();
+            getBuildInfo(p);
+        }
+    </script>
+
 </body>
 
 </html>
