@@ -476,20 +476,7 @@
 
                                     <tbody id="advicer">
 
-                                        <!--<tr role="row" class="odd">
-                                            <td class="center">
-                                                <label class="pos-rel">
-                                                    <input type="checkbox" class="ace">
-                                                    <span class="lbl"></span>
-                                                </label>
-                                            </td>
-
-                                            <td class="center">
-                                                2
-                                            </td>
-                                            <td class="center">张三</td>
-                                            <td class="center">12536985623</td>
-                                        </tr>-->
+                                       
                                     </tbody>
                                 </table>
                                 <div class="row">
@@ -655,6 +642,7 @@
         //置业顾问添加modal_addZhiYe
         $(".addZhiYe").on('click', function (event) {
             event.stopPropagation();
+            $('.modal_zhiYe').css('display', 'none');
             $('.modal_addZhiYe').css('display', 'block');
             return false;
         });
@@ -765,6 +753,9 @@
                 }
             })
         })
+    </script>
+    <script>
+    
     </script>
 </body>
 

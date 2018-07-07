@@ -78,14 +78,16 @@
         #dynamic-table td {
             vertical-align: middle;
         }
+
+        .paginate_button,
+        a {
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body class="no-skin">
     <div id="header"></div>
-
-
-
     <!-- /section:basics/navbar.layout -->
     <div class="main-container" id="main-container">
         <script type="text/javascript">
@@ -186,10 +188,10 @@
                                                         <div class="col-xs-12">
                                                             <div class="dataTables_paginate paging_simple_numbers" id="">
                                                                 <ul class="pagination">
-                                                                    <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="prev_all">
+                                                                    <li class="paginate_button previous" aria-controls="dynamic-table" tabindex="0" id="prev_all">
                                                                         <a>首页</a>
                                                                     </li>
-                                                                   
+
                                                                     <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="next_all">
                                                                         <a>尾页</a>
                                                                     </li>
@@ -230,8 +232,8 @@
                                                     <div class="row">
                                                         <div class="col-xs-12">
                                                             <div class="dataTables_paginate paging_simple_numbers" id="">
-                                                                <ul class="pagination">
-                                                                    <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="prev_tobeConfirm">
+                                                                <ul class="pagination" id="paginationTobeCon">
+                                                                    <li class="paginate_button previous" aria-controls="dynamic-table" tabindex="0" id="prev_tobeConfirm">
                                                                         <a>首页</a>
                                                                     </li>
                                                                     <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="next_tobeConfirm">
@@ -274,11 +276,11 @@
                                                     <div class="row">
                                                         <div class="col-xs-12">
                                                             <div class="dataTables_paginate paging_simple_numbers" id="">
-                                                                <ul class="pagination">
-                                                                    <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="prev_valid">
+                                                                <ul class="pagination" id="paginationValid">
+                                                                    <li class="paginate_button previous" aria-controls="dynamic-table" tabindex="0" id="prev_valid">
                                                                         <a>首页</a>
                                                                     </li>
-                                                                   
+
                                                                     <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="next_valid">
                                                                         <a>尾页</a>
                                                                     </li>
@@ -321,11 +323,11 @@
                                                     <div class="row">
                                                         <div class="col-xs-12">
                                                             <div class="dataTables_paginate paging_simple_numbers" id="">
-                                                                <ul class="pagination">
-                                                                    <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="prev_invalid">
+                                                                <ul class="pagination" id="paginationInvalid">
+                                                                    <li class="paginate_button previous" aria-controls="dynamic-table" tabindex="0" id="prev_invalid">
                                                                         <a>首页</a>
                                                                     </li>
-                                                                    
+
                                                                     <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="next_invalid">
                                                                         <a>尾页</a>
                                                                     </li>
@@ -369,11 +371,11 @@
                                                     <div class="row">
                                                         <div class="col-xs-12">
                                                             <div class="dataTables_paginate paging_simple_numbers" id="">
-                                                                <ul class="pagination">
-                                                                    <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="prev_success">
+                                                                <ul class="pagination" id="paginationDeal">
+                                                                    <li class="paginate_button previous" aria-controls="dynamic-table" tabindex="0" id="prev_success">
                                                                         <a>首页</a>
                                                                     </li>
-                                                                   
+
                                                                     <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="next_success">
                                                                         <a>尾页</a>
                                                                     </li>
@@ -393,35 +395,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     <!-- basic scripts -->
@@ -474,24 +447,69 @@
                 path: "menu.html"
             });
             checkYs();
-            getAllList();
-            wait_confirm();
-            value();
-            disabled();
-            deal();
+            getAllList(1);
+            wait_confirm(1);
+            value(1);
+            disabled(1);
+            deal(1);
         }
     </script>
     <script>
         var had_ys = 2;
-        //已成单
-        function deal() {
+        // 页数显示
+        function Paging(res, pn, D) {
+            var page =
+                '<li class="paginate_button ' + pn +
+                ' {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>';
+            var T = Math.floor(res.data.current_page / 10) * 10;
+            if (res.data.current_page > T || res.data.current_page == T) {
+                var i = T - 1;
+                if (res.data.last_page > i + 10) {
+                    var t = i + 11;
+                } else {
+                    var t = res.data.last_page;
+                }
+                for (i; i <= t; i++) {
+                    if (i == 0 || i < 0) {
+                        i = 1;
+                    }
+                    var str = page.replace('{pageValue}', i).replace('{page}', i);
+                    if (i == res.data.current_page) {
+                        str = str.replace('{avtive}', 'active');
+                    } else {
+                        str = str.replace('{avtive}', '');
+                    }
+                    $(D).before(str);
+                }
+            }
+
+        }
+
+
+        function checkYs() {
+            if (had_ys == 2) {
+                ajax.get('project/project/getProjectInfo', {}, function (res) {
+                    if (res.data.yunsuan_url == '' || res.data.yunsuan_id == 0) {
+                        had_ys = 0;
+                    } else {
+                        had_ys = 1;
+                    }
+                })
+            }
+        }
+    </script>
+    <script>
+        // 已成单分页
+        var last_page_deal;
+
+        function deal(p) {
             var model =
-                '<tr role="row" class="odd" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td></td> <td class="center">{house_info}</td> <td class="center">{total_money}</td>  <td class="center">{build_deal_money}</td><td class="center">{design_time}</td><td class="center">{broker_name}</td><td class="center">{broker_type}</td><td class="center">{company_name}</td> <td class="center">{advice_name}</td><td class="center">{broker_name}</td><td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="CusManageClinchLook.html">查看</a> </div> </td> </tr>',
-                page =
-                '<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>',
-                id = 1,
+                '<tr role="row" class="odd trDeal" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td></td> <td class="center">{house_info}</td> <td class="center">{total_money}</td>  <td class="center">{build_deal_money}</td><td class="center">{design_time}</td><td class="center">{broker_name}</td><td class="center">{broker_type}</td><td class="center">{company_name}</td> <td class="center">{advice_name}</td><td class="center">{broker_name}</td><td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="CusManageClinchLook.html">查看</a> </div> </td> </tr>',
+                id = 15 * (p - 1) + 1,
                 str = '';
-            ajax.get('project/client/deal', {}, function (res) {
+            ajax.get('project/client/deal', {
+                'page': p
+            }, function (res) {
                 $.each(res.data.data, function (k, v) {
                     var tr = model.replace('{c_id}', v.client_id).replace('{id}', id++).replace(
                             '{client_id}', v.client_id).replace('{name}', v.name).replace('{tel}', v.tel)
@@ -504,26 +522,51 @@
                 })
 
                 $('#deal').append(str);
-                for (var i = 1; i <= res.data.last_page; i++) {
-                    var str = page.replace('{pageValue}', i).replace('{page}', i);
-                    if (i == res.data.current_page) {
-                        str = str.replace('{avtive}', 'active');
-                    } else {
-                        str = str.replace('{avtive}', '');
-                    }
-                    $('#next_success').before(str);
-                }
+                last_page_deal = res.data.last_page;
+                var pn = 'pageNumDeal';
+                var D = "#next_success";
+                Paging(res, pn, D);
             })
         }
-        //无效
-        function disabled() {
+
+        //.首页点击事件
+        $('#prev_success').on('click', function (e) {
+            // alert('首页');
+            clickOperDeal(e, 1);
+        })
+        //尾页点击事件
+        $('#next_success').on('click', function (e) {
+            // alert('尾页');
+            // alert(last_page_deal);
+            clickOperDeal(e, last_page_deal);
+        })
+        //分页点击事件
+        $('#paginationDeal').on('click', '.pageNumDeal', function (e) {
+            var p = $(this).children().html(); //当前点击页
+            // alert('页数');
+            // alert(p);
+            clickOperDeal(e, p);
+        })
+        //点击事件操作
+        function clickOperDeal(e, p) {
+            e.stopPropagation();
+            $('.pageNumDeal').remove();
+            $('.trDeal').remove();
+            deal(p);
+        }
+    </script>
+    <script>
+        //无效分页
+        var last_page_invalid;
+
+        function disabled(p) {
             var model =
-                '<tr role="row" class="odd" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td></td> <td class="center">{current_state}</td> <td class="center">{broker_name}</td>  <td class="center">{company_name}</td><td class="center">{advice_name}</td><td class="center">无效</td><td class="center">{state_change_time}</td><td class="center">{disabled_state}</td> <td class="center">{disabled_reason}</td>  <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="CusManageInvalid.html">查看</a> </td> </tr>',
-                page =
-                '<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>',
-                id = 1,
+                '<tr role="row" class="odd trInvalid" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td></td> <td class="center">{current_state}</td> <td class="center">{broker_name}</td>  <td class="center">{company_name}</td><td class="center">{advice_name}</td><td class="center">无效</td><td class="center">{state_change_time}</td><td class="center">{disabled_state}</td> <td class="center">{disabled_reason}</td>  <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="CusManageInvalid.html">查看</a> </td> </tr>',
+                id = 15 * (p - 1) + 1,
                 str = '';
-            ajax.get('project/client/disabled', {}, function (res) {
+            ajax.get('project/client/disabled', {
+                'page': p
+            }, function (res) {
                 $.each(res.data.data, function (k, v) {
                     var tr = model.replace('{c_id}', v.client_id).replace('{id}', id++).replace(
                             '{client_id}', v.client_id).replace('{name}', v.name).replace('{tel}', v.tel)
@@ -535,26 +578,48 @@
                 })
 
                 $('#disableds').append(str);
-                for (var i = 1; i <= res.data.last_page; i++) {
-                    var str = page.replace('{pageValue}', i).replace('{page}', i);
-                    if (i == res.data.current_page) {
-                        str = str.replace('{avtive}', 'active');
-                    } else {
-                        str = str.replace('{avtive}', '');
-                    }
-                    $('#next_invalid').before(str);
-                }
-            })
+                last_page_invalid = res.data.last_page;
+                var pn = 'pageNumInv';
+                var D = "#next_invalid";
+                Paging(res, pn, D);
+            }) //
         }
-
-        // 全部
+        //.首页点击事件
+        $('#prev_invalid').on('click', function (e) {
+            alert('首页');
+            clickOperInvalid(e, 1);
+        })
+        //尾页点击事件
+        $('#next_invalid').on('click', function (e) {
+            alert('尾页');
+            alert(last_page_deal);
+            clickOperInvalid(e, last_page_invalid);
+        })
+        //分页点击事件
+        $('#paginationInvalid').on('click', '.pageNumInv', function (e) {
+            var p = $(this).children().html(); //当前点击页
+            alert('页数');
+            alert(p);
+            clickOperInvalid(e, p);
+        })
+        //点击事件操作
+        function clickOperInvalid(e, p) {
+            e.stopPropagation();
+            $('.pageNumInv').remove();
+            $('.trInvalid').remove();
+            disabled(p);
+        }
+    </script>
+    <script>
+        // 全部分页
+        var last_page_all;
         function getAllList() {
             var model =
                 ' <tr role="row" class="odd" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td> <td class="center">{state}</td> <td class="center">{broker}</td> <td class="center">{broker_type}</td> <td class="center">{company_name}</td> <td class="center">{create_time}</td>  <td class="center">{visit_time}</td> <td class="center">{state_change_time}</td> <td class="center">{end_time}</td> <td class="center">已确认</td> <td class="center">{butter_name}</td> <td class="center">{allot_time}</td><td class="center">{advice_name}</td> </tr>',
                 page =
                 '<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>',
                 str = '',
-                id = 1;
+                id = 15*(p-1)+1;
             ajax.get('project/client/all', {}, function (res) {
                 if (res.data.data.length != 0) {
                     $.each(res.data.data, function (k, v) {
@@ -577,27 +642,50 @@
                         str += tr;
                     })
                     $('#all').append(str);
-                    for (var i = 1; i <= res.data.last_page; i++) {
-                        var str = page.replace('{pageValue}', i).replace('{page}', i);
-                        if (i == res.data.current_page) {
-                            str = str.replace('{avtive}', 'active');
-                        } else {
-                            str = str.replace('{avtive}', '');
-                        }
-                        $('#next_all').before(str);
-                    }
+                    last_page_valid = res.data.last_page;
+                var pn = 'pageNumVal';
+                var D = "#next_valid";
+                Paging(res, pn, D);
                 }
             })
 
         }
+         //.首页点击事件
+         $('#prev_tobeConfirm').on('click', function (e) {
+            alert('首页');
+            clickOperConfirm(e, 1);
+        })
+        //尾页点击事件
+        $('#next_tobeConfirm').on('click', function (e) {
+            alert('尾页');
+            alert(last_page_confirm);
+            clickOperConfirm(e, last_page_confirm);
+        })
+        //分页点击事件
+        $('#paginationTobeCon').on('click', '.pageNumCon', function (e) {
+            var p = $(this).children().html(); //当前点击页
+            alert('页数');
+            alert(p);
+            clickOperConfirm(e, p);
+        })
+        //点击事件操作
+        function clickOperConfirm(e, p) {
+            e.stopPropagation();
+            $('.pageNumCon').remove();
+            $('.trTobeCom').remove();
+            wait_confirm(p);
+        }
+    </script>
+    <script>
+        // 有效分页
+        var last_page_valid;
 
-        // 有效
-        function value() {
+        function value(p) {
             var model =
                 '<tr role="row" class="odd" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td></td> <td class="center">{state}</td> <td class="center">{state_change_time}</td><td class="center">{broker}</td>  <td class="center">{company_name}</td><td class="center">{end_time}</td><td class="center">{advice_name}</td><td class="center">{allot_name}</td>   <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="CusManageValid.html">查看</a>{ys_check}</td> </tr>',
-                page =
-                '<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>',
-                id = 1,
+                // page =
+                // '<li class="paginate_button trValid {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>',
+                id = 15 * (p - 1) + 1,
                 str = '';
             if (had_ys == .0) {
                 model = model.replace('{ys_check}',
@@ -605,7 +693,9 @@
             } else {
                 model = model.replace('{ys_check}', '');
             }
-            ajax.get('project/client/value', {}, function (res) {
+            ajax.get('project/client/value', {
+                'page': p
+            }, function (res) {
                 $.each(res.data.data, function (k, v) {
                     var tr = model.replace('{c_id}', v.client_id).replace('{id}', id++).replace(
                             '{client_id}', v.client_id).replace('{name}', v.name).replace('{tel}', v.tel)
@@ -622,25 +712,47 @@
                     str += tr;
                 })
                 $('#value').append(str);
-                for (var i = 1; i <= res.data.last_page; i++) {
-                    var str = page.replace('{pageValue}', i).replace('{page}', i);
-                    if (i == res.data.current_page) {
-                        str = str.replace('{avtive}', 'active');
-                    } else {
-                        str = str.replace('{avtive}', '');
-                    }
-                    $('#next_valid').before(str);
-                }
+                last_page_valid = res.data.last_page;
+                var pn = 'pageNumVal';
+                var D = "#next_valid";
+                Paging(res, pn, D);
             })
         }
-
-        // 待确认
-        function wait_confirm() {
+        //.首页点击事件
+        $('#prev_valid').on('click', function (e) {
+            // alert('首页');
+            clickOperValid(e, 1);
+        })
+        //尾页点击事件
+        $('#next_valid').on('click', function (e) {
+            // alert('尾页');
+            // alert(last_page_valid);
+            clickOperValid(e, last_page_valid);
+        })
+        //分页点击事件
+        $('#paginationValid').on('click', '.pageNumVal', function (e) {
+            var p = $(this).children().html(); //当前点击页
+            // alert('页数');
+            // alert(p);
+            clickOperValid(e, p);
+        })
+        //点击事件操作
+        function clickOperValid(e, p) {
+            e.stopPropagation();
+            $('.pageNumVal').remove();
+            $('.trValid').remove();
+            value(p);
+        }
+    </script>
+    <script>
+        // 待确认分页
+        var last_page_confirm ;
+        function wait_confirm(p) {
             var model =
-                '<tr role="row" class="odd" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td>   <td class="center">{broker}</td> <td class="center">{broker_type}</td> <td class="center">{company_name}</td><td class="center">{create_time}</td> <td class="center">{butter_name}</td>  <td class="center">{visit_time}</td> <td class="center">{end_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="CusManageTobeConfirmLook.html?id={b_id}">查看</a>{ys_check}</td> </tr>',
-                page =
-                '<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>',
-                id = 1,
+                '<tr role="row" class="odd trTobeCom" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td>   <td class="center">{broker}</td> <td class="center">{broker_type}</td> <td class="center">{company_name}</td><td class="center">{create_time}</td> <td class="center">{butter_name}</td>  <td class="center">{visit_time}</td> <td class="center">{end_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="CusManageTobeConfirmLook.html?id={b_id}">查看</a>{ys_check}</td> </tr>',
+                // page =
+                // '<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>',
+                id = 15 * (p - 1) + 1,
                 str = '';
             if (had_ys == .0) {
                 model = model.replace('{ys_check}',
@@ -648,7 +760,9 @@
             } else {
                 model = model.replace('{ys_check}', '');
             }
-            ajax.get('project/client/waitConfirmed', {}, function (res) {
+            ajax.get('project/client/waitConfirmed', {
+                'page': p
+            }, function (res) {
                 $.each(res.data.data, function (k, v) {
                     var tr = model.replace('{c_id}', v.client_id).replace('{id}', id++).replace(
                             '{client_id}', v.client_id).replace('{name}', v.name).replace('{tel}', v.tel)
@@ -664,30 +778,37 @@
                     str += tr;
                 })
                 $('#wait_confrim').append(str);
-                for (var i = 1; i <= res.data.last_page; i++) {
-                    var str = page.replace('{pageValue}', i).replace('{page}', i);
-                    if (i == res.data.current_page) {
-                        str = str.replace('{avtive}', 'active');
-                    } else {
-                        str = str.replace('{avtive}', '');
-                    }
-                    $('#next_tobeConfirm').before(str);
-                }
+                last_page_confirm = res.data.last_page;
+                var pn = 'pageNumCon';
+                var D = "#next_tobeConfirm";
+                Paging(res, pn, D);
             })
 
         }
-
-
-        function checkYs() {
-            if (had_ys == 2) {
-                ajax.get('project/project/getProjectInfo', {}, function (res) {
-                    if (res.data.yunsuan_url == '' || res.data.yunsuan_id == 0) {
-                        had_ys = 0;
-                    } else {
-                        had_ys = 1;
-                    }
-                })
-            }
+        //.首页点击事件
+        $('#prev_tobeConfirm').on('click', function (e) {
+            alert('首页');
+            clickOperConfirm(e, 1);
+        })
+        //尾页点击事件
+        $('#next_tobeConfirm').on('click', function (e) {
+            alert('尾页');
+            alert(last_page_confirm);
+            clickOperConfirm(e, last_page_confirm);
+        })
+        //分页点击事件
+        $('#paginationTobeCon').on('click', '.pageNumCon', function (e) {
+            var p = $(this).children().html(); //当前点击页
+            alert('页数');
+            alert(p);
+            clickOperConfirm(e, p);
+        })
+        //点击事件操作
+        function clickOperConfirm(e, p) {
+            e.stopPropagation();
+            $('.pageNumCon').remove();
+            $('.trTobeCom').remove();
+            wait_confirm(p);
         }
     </script>
 </body>
