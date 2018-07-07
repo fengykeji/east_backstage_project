@@ -541,13 +541,13 @@
                             <div class="form-group" style="margin-bottom: 15px;overflow: hidden;">
                                 <div class="col-xs-12">
                                     <label class="control-label no-padding-right" for="form-field-1-1" style="width: 100px;">姓名：</label>
-                                    <input class="inpt_width">
+                                    <input class="inpt_width" name="advice_add_name">
                                 </div>
                             </div>
                             <div class="form-group" style="margin-bottom: 0;overflow: hidden;">
                                 <div class="col-xs-12">
                                     <label class="control-label no-padding-right" for="form-field-1-1" style="width: 100px;">电话号码：</label>
-                                    <input class="inpt_width">
+                                    <input class="inpt_width" name="advice_add_tel">
                                 </div>
                             </div>
                         </form>
@@ -660,7 +660,7 @@
                 $('.modal_zhiYe').css('display', 'block');
             }
 
-        //置业顾问添加
+        //置业顾问添加modal_addZhiYe
         $(".addZhiYe").on('click', function (event) {
             event.stopPropagation();
             $('.modal_addZhiYe').css('display', 'block');
@@ -737,6 +737,42 @@
                 }
             })
         }
+        $('#addAdvicer').click(function(){
+            var data={
+                'advicer_name':$('input[name=advice_add_name]').val(),
+                'advicer_tel':$('input[name=advice_add_tel]').val()
+            };
+            if(data.advicer_name==''){
+                alert('请输入置业顾问姓名');
+                return;
+            }
+            if(data.advicer_name.length>=5){
+                alert('请输入有效的置业顾问邢敏');
+                return;
+            }
+            if(data.advicer_tel==''){
+                alert('请输入置业顾问联系方式');
+                return;
+            }
+            if(data.advicer_tel==''){
+                alert('请输入置业顾问联系方式');
+                return;
+            }
+            if(!isPhoneNo(data.advicer_tel)){
+                alert('请输入有效的置业顾问联系方式');
+                return;
+            }
+
+            ajax.post('project/client/advicer/add',data,function(res){
+                alert(res.msg);
+                if(res.code==config.responseSuccess){
+                    getAdvicer();
+                    $('.modal_addZhiYe').css('display', 'none');
+                    $('input[name=advice_add_name]').val('');
+                    $('input[name=advice_add_tel]').val('');
+                }
+            })
+        })
     </script>
 </body>
 
