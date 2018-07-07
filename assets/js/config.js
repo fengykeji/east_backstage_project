@@ -33,7 +33,7 @@ var config={
         'APPEAL_TYPE':24,//申述类型
         'TOTAL_PRICE':25,//总价
         'AREA':26,//面积
-
+        'VALUE_CONFIRM_DISABLED_TYPE':29, //有效来访判断失效类型
     }
 }
 
