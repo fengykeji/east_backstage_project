@@ -83,4 +83,21 @@ Date.prototype.format = function (format) {
             format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? n : ("00" + n).substr(("" + n).length));
     }
     return format;
-};
+}
+
+// 验证中文名称
+function isChinaName(name) {
+    var pattern = /^[\u4E00-\u9FA5]{1,6}$/;
+    return pattern.test(name);
+}
+
+// 验证手机号
+function isPhoneNo(phone) {
+    var myreg=/^[1][3,4,5,7,8][0-9]{9}$/;
+    if (!myreg.test(phone)) {
+        return false;
+    } else {
+        return true;
+    }
+
+}
