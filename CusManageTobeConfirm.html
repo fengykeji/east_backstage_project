@@ -85,10 +85,12 @@
         .inpt_width {
             width: 70%;
             display: inline-block;
+            font-size: 14px;
         }
 
         .lab_width {
             width: 120px;
+
         }
 
         .cofimg_sty {
@@ -96,7 +98,9 @@
             height: 100px;
         }
 
-        .modal_judgment,.modal_zhiYe,.modal_addZhiYe {
+        .modal_judgment,
+        .modal_zhiYe,
+        .modal_addZhiYe {
             display: none;
             background-color: rgba(0, 0, 0, .5);
             position: fixed;
@@ -135,6 +139,9 @@
 
         #dynamic-table td {
             text-align: center;
+        }
+        .paginate_button,a{
+            cursor: pointer;
         }
     </style>
 </head>
@@ -258,7 +265,7 @@
                                                     <label class="lab_width">选择的置业顾问：</label>
                                                     <div class="inpt_width">
                                                         <input type="text" style="width: 200px;vertical-align: top;" name="advicer_name">
-                                                        <button class="btn btn-sm btn-info" id="asgAdv">选择</button>
+                                                        <div class="btn btn-sm btn-info" id="asgAdv">选择</div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -476,17 +483,17 @@
 
                                     <tbody id="advicer">
 
-                                       
+
                                     </tbody>
                                 </table>
                                 <div class="row">
                                     <div class="col-xs-12">
                                         <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
                                             <ul class="pagination" id="pagination">
-                                                <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="prev">
+                                                <li class="paginate_button previous" aria-controls="dynamic-table" tabindex="0" id="prev">
                                                     <a>首页</a>
                                                 </li>
-                                                
+
                                                 <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="next">
                                                     <a>尾页</a>
                                                 </li>
@@ -600,44 +607,29 @@
         }
     </script>
     <script>
+        var name = '';
         //置业顾问选择
         $("#asgAdv").on('click', function (event) {
             event.stopPropagation();
-            getAdvicer('');
-
+            getAdvicer(name, 1);
             return false;
         });
 
-        $('#selectAdvicer').click(function(){
-            var name=$('input[name=advicerSel]:checked').parents('tr').attr('value');
-            $('input[name=advicer_name]').val(name);
+        $('#selectAdvicer').click(function () {
+            var aname = $('input[name=advicerSel]:checked').parents('tr').attr('value');
+            $('input[name=advicer_name]').val(aname);
             $('.modal_zhiYe').css('display', 'none');
         })
-        $('#advicer_search').click(function(){
-            var name =$('input[name=advicer_name_search]').val();
-            if(name==''){
+
+        $('#advicer_search').click(function () {
+            name = $('input[name=advicer_name_search]').val();
+            if (name == '') {
                 return false;
             }
-            getAdvicer(name);
+            getAdvicer(name, 1);
         })
-        function getAdvicer(name){
-            var data={};
-            if(name!=''){
-                data.name=name;
-            }
-            ajax.get('project/client/getAdvicerList',data,function(res){
-                $('#advicer').children().remove();
-                var model='  <tr role="row" class="odd" value="{id}" > <td class="center" > <label class="pos-rel"> <input type="checkbox" class="ace " name="advicerSel"> <span class="lbl"></span> </label> </td> <td class="center"> {key}</td> <td class="center" id="advicer_name">{name}</td> <td class="center">{tel}</td> </tr>',
-                    id=1,
-                    str='';
-                    $.each(res.data.data,function(k,v){
-                        str+=model.replace('{id}',v.advicer_name).replace('{key}',id++).replace('{name}',v.advicer_name).replace('{tel}',v.advicer_tel);
 
-                     })
-                    $('#advicer').append(str);
-                })
-                $('.modal_zhiYe').css('display', 'block');
-            }
+
 
         //置业顾问添加modal_addZhiYe
         $(".addZhiYe").on('click', function (event) {
@@ -671,14 +663,14 @@
                 $('input[name=visit_num]').val(res.data.visit_num);
                 $('input[name=property_advicer_wish]').val(res.data.property_advicer_wish);
                 $('input[name=visit_time]').val(res.data.visit_time);
-                if(res.data.card_img_url!='' || res.data.card_img_url==null){
-                    $('#card_img_url').attr('src', config.address+res.data.card_img_url);
+                if (res.data.card_img_url != '' || res.data.card_img_url == null) {
+                    $('#card_img_url').attr('src', config.address + res.data.card_img_url);
                 }
-                if(res.data.verify_img_url!='' || res.data.verify_img_url==null){
-                    $('#verify_img_url').attr('src', config.address+res.data.verify_img_url);
+                if (res.data.verify_img_url != '' || res.data.verify_img_url == null) {
+                    $('#verify_img_url').attr('src', config.address + res.data.verify_img_url);
                 }
-                if(res.data.visit_img_url!='' || res.data.visit_img_url==null){
-                    $('#verify_img_url').attr('src', config.address+res.data.visit_img_url);
+                if (res.data.visit_img_url != '' || res.data.visit_img_url == null) {
+                    $('#verify_img_url').attr('src', config.address + res.data.visit_img_url);
                 }
                 $('input[name=butter_name]').val(res.data.butter_name);
                 $('input[name=butter_tel]').val(res.data.butter_tel);
@@ -707,7 +699,7 @@
             data = {
                 'client_id': id,
                 'advicer_name': $('input[name=advicer_name]').val(),
-                'signatory':  $('input[name=signatory]').val(),
+                'signatory': $('input[name=signatory]').val(),
                 'time': new Date().format("yyyy-MM-dd hh:mm:ss"),
             }
             ajax.get('user/yunsuan/state/value', data, function (res) {
@@ -717,36 +709,36 @@
                 }
             })
         }
-        $('#addAdvicer').click(function(){
-            var data={
-                'advicer_name':$('input[name=advice_add_name]').val(),
-                'advicer_tel':$('input[name=advice_add_tel]').val()
+        $('#addAdvicer').click(function () {
+            var data = {
+                'advicer_name': $('input[name=advice_add_name]').val(),
+                'advicer_tel': $('input[name=advice_add_tel]').val()
             };
-            if(data.advicer_name==''){
+            if (data.advicer_name == '') {
                 alert('请输入置业顾问姓名');
                 return;
             }
-            if(data.advicer_name.length>=5){
+            if (data.advicer_name.length >= 5) {
                 alert('请输入有效的置业顾问邢敏');
                 return;
             }
-            if(data.advicer_tel==''){
+            if (data.advicer_tel == '') {
                 alert('请输入置业顾问联系方式');
                 return;
             }
-            if(data.advicer_tel==''){
+            if (data.advicer_tel == '') {
                 alert('请输入置业顾问联系方式');
                 return;
             }
-            if(!isPhoneNo(data.advicer_tel)){
+            if (!isPhoneNo(data.advicer_tel)) {
                 alert('请输入有效的置业顾问联系方式');
                 return;
             }
 
-            ajax.post('project/client/advicer/add',data,function(res){
+            ajax.post('project/client/advicer/add', data, function (res) {
                 alert(res.msg);
-                if(res.code==config.responseSuccess){
-                    getAdvicer();
+                if (res.code == config.responseSuccess) {
+                    getAdvicer(name, 1);
                     $('.modal_addZhiYe').css('display', 'none');
                     $('input[name=advice_add_name]').val('');
                     $('input[name=advice_add_tel]').val('');
@@ -755,7 +747,87 @@
         })
     </script>
     <script>
-    
+        //分页
+        var last_page;
+
+        function getAdvicer(name, p) {
+            var data = {
+                'page': p
+            };
+            if (name != '') {
+                data.name = name;
+            }
+
+            ajax.get('project/client/getAdvicerList', data, function (res) {
+                $('#advicer').children().remove();
+                var model =
+                    '  <tr role="row" class="odd" value="{id}" > <td class="center" > <label class="pos-rel"> <input type="checkbox" class="ace " name="advicerSel"> <span class="lbl"></span> </label> </td> <td class="center"> {key}</td> <td class="center" id="advicer_name">{name}</td> <td class="center">{tel}</td> </tr>',
+                    id = 15 * (p - 1) + 1,
+                    str = '';
+                $.each(res.data.data, function (k, v) {
+                    str += model.replace('{id}', v.advicer_name).replace('{key}', id++).replace(
+                        '{name}', v.advicer_name).replace('{tel}', v.advicer_tel);
+                })
+                $('#advicer').append(str);
+                last_page = res.data.last_page;
+                Paging(res);
+            })
+            $('.modal_zhiYe').css('display', 'block');
+
+
+        }
+
+        function Paging(res) {
+            var page =
+                '<li class="paginate_button pageNum {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>';
+            var T = Math.floor(res.data.current_page / 10) * 10;
+            if (res.data.current_page > T || res.data.current_page == T) {
+                var i = T - 1;
+                if (res.data.last_page > i + 10) {
+                    var t = i + 11;
+                } else {
+                    var t = res.data.last_page;
+                }
+                for (i; i <= t; i++) {
+                    if (i == 0 || i < 0) {
+                        i = 1;
+                    }
+                    var str = page.replace('{pageValue}', i).replace('{page}', i);
+                    if (i == res.data.current_page) {
+                        str = str.replace('{avtive}', 'active');
+                    } else {
+                        str = str.replace('{avtive}', '');
+                    }
+                    $('#next').before(str);
+                }
+            }
+
+        }
+
+
+        //.首页点击事件
+        $('#prev').on('click', function (e) {
+            // alert(11);
+            clickOper(e, 1);
+        })
+        //尾页点击事件
+        $('#next').on('click', function (e) {
+            // alert(last_page)
+            clickOper(e, last_page);
+        })
+        //分页点击事件
+        $('#pagination').on('click', '.pageNum', function (e) {
+            var p = $(this).children().html(); //当前点击页
+            // alert(p)
+            clickOper(e, p);
+        })
+        //点击事件操作
+        function clickOper(e, p) {
+            e.stopPropagation();
+            $('.pageNum').remove();
+            $('.odd').remove();
+            getAdvicer(name, p);
+        }
     </script>
 </body>
 

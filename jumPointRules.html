@@ -160,7 +160,7 @@
                         </li>
                     </ul>
                     <div class="operate_proInfo">
-                        <button class="btn btn-primary" id="save">保存</button>
+                        <div class="btn btn-primary" id="save">保存</div>
                         <button class="btn btn-danger" id="backLastPage">关闭</button>
                     </div>
                 </div>
@@ -187,7 +187,7 @@
 
                                                 <div class="form-group">
                                                     <label class="lab_width ">*跳点：</label>
-                                                    <div class="inpt_width" style="display: inline-block;" id="jump">
+                                                    <div class="inpt_width" style="display: inline-block;" id="">
                                                         <div class="radio" style="display: inline-block;">
                                                             <label>
                                                                 <input value="1" type="radio" class="ace tiaodian_checked" name="td">
@@ -526,31 +526,17 @@
             })
             var val_radio=$('.tiaodian_checked').val();
             if (val_radio == '1') {
-                window.location.href='jumP';
+                window.location.href='jumPointRules.html';
             } 
         })
     </script>
    
     <script>
-     
         //关闭按钮返回上一页
         $('#backLastPage').on('click', function () {
             history.back(-1);
         })
     </script>
-
-    <script>
-        //是否跳点
-        // $('.tiaodian_checked').on('click', function () {
-        //     var val_radio = $(this).val();
-        //     if (val_radio == '1') {
-        //         $('#dynamic-box').css('display', 'block');
-        //     } else {
-        //         $('#dynamic-box').css('display', 'none');
-        //     }
-        // })
-    </script>
-
 
 
 </body>
