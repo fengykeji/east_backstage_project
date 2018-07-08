@@ -354,7 +354,7 @@
             });
             basic_rule();
             company_rule_list(1);
-            person_rule_list(1);
+            person_rule_list(1); 
         }
 
         function basic_rule() {
@@ -419,35 +419,7 @@
             })
         })
     </script>
-    <script src="components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
-    <script src="components/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
-    <script src="components/moment/moment.js"></script>
-    <script src="components/bootstrap-daterangepicker/daterangepicker.js"></script>
-    <script src="components/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js"></script>
-    <script>
-        //日历插件初始化
-        // $('.date-picker').datepicker({
-        //     autoclose: true,
-        //     todayHighlight: true
-        // })
-        // if (!ace.vars['old_ie']) $('.date-timepicker').datetimepicker({
-        //     //format: 'MM/DD/YYYY h:mm:ss A',//use this option to display seconds
-        //     format: 'YYYY-MM-DD HH:mm:ss',
-        //     icons: {
-        //         time: 'fa fa-clock-o',
-        //         date: 'fa fa-calendar',
-        //         up: 'fa fa-chevron-up',
-        //         down: 'fa fa-chevron-down',
-        //         previous: 'fa fa-chevron-left',
-        //         next: 'fa fa-chevron-right',
-        //         today: 'fa fa-arrows ',
-        //         clear: 'fa fa-trash',
-        //         close: 'fa fa-times'
-        //     }
-        // }).next().on(ace.click_event, function () {
-        //     $(this).prev().focus();
-        // });
-    </script>
+    
     <script>
         $(".addCompany").on('click', function () {
             window.location.href = "CommissionRulesCompanyAdd.html?id=" + id;
@@ -565,7 +537,7 @@
                 'page': p
             }, function (res) {
                 var model =
-                    '<tr role="row" class="odd trPer" value="{a_id}"> <td class="center">{key}</td> <td class="center">{rule_name}</td>  <td class="center">{plan_start}</td> <td class="center">{plan_end}</td> <td class="center">{act_start}</td> <td class="center">{act_end}</td> <td class="center">{state}</td> <td class="center"> <label> <input checked="checked" name="switch-field-1" class="ace ace-switch  ace-switch-5 switchCom" type="checkbox"> <span class="lbl"></span> </label> </td> <td class="center">  ',
+                    '<tr role="row" class="odd trPer" value="{a_id}"> <td class="center">{key}</td> <td class="center">{rule_name}</td>  <td class="center">{plan_start}</td> <td class="center">{plan_end}</td> <td class="center">{act_start}</td> <td class="center">{act_end}</td> <td class="center">{state}</td> <td class="center"> <label> <input checked="checked"  name="switch-field-1" class="ace ace-switch  ace-switch-5 switchCom" type="checkbox"> <span class="lbl"></span> </label> </td> <td class="center">  ',
                     id = 15 * (p - 1) + 1,
                     // page =
                     // '<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>',

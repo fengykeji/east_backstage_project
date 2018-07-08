@@ -5959,6 +5959,7 @@ button.close {
     width: 900px;
   }
 }
+
 .tooltip {
   position: absolute;
   z-index: 1070;
@@ -6724,3 +6725,47 @@ button.close {
     display: none !important;
   }
 }
+
+
+
+
+
+
+/* --------------------------------------------------项目公共css---------------------------------------------- */
+a{
+  cursor: pointer;
+}
+.bootbox-body {
+  font-size: 18px;
+  margin-top: 25px;
+  text-align: center;
+}
+.modal-content {
+  padding: 30px 50px;
+}
+.modal-footer {
+  margin-top: 20px;
+}
+.close {
+  font-size: 32px;
+}
+.modal-dialog {
+  margin: 150px auto;
+}
+@media (max-height: 770px) {
+  .modal-dialog {
+    margin: 15px auto!important;
+    height: 700px!important;
+    overflow-y: auto;
+  }
+  .modal-content {
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  }
+  .modal-sm {
+    width: 300px;
+  }
+}
+/* @media screen and (min-width:600px) and (max-width:900px){
+  body {background-color:#f5f5f5;}
+} */
