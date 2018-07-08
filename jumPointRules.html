@@ -164,7 +164,7 @@
                         </li>
                     </ul>
                     <div class="operate_proInfo">
-                        <div class="btn btn-primary" id="save">保存</div>
+
                         <button class="btn btn-danger" id="backLastPage">关闭</button>
                     </div>
                 </div>
@@ -197,20 +197,7 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody class="jumpPointShow">
-                                                                <tr>
-                                                                    <td class="center">1</td>
-                                                                    <td class="center">20</td>
-                                                                    <td class="center">30</td>
-                                                                    <td class="center">是</td>
-                                                                    <td class="center">100</td>
-                                                                    <td class="center">100</td>
-                                                                    <td class="center">
-                                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="green editJumP">编辑</a>
-                                                                            <a class="red" href="">删除</a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
+
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -242,14 +229,14 @@
                                 <label class="col-sm-4 control-label no-padding-right" for="form-field-1">起始数：</label>
 
                                 <div class="col-sm-8">
-                                    <input type="number" min="0" class="col-xs-12 col-sm-10 startNum">
+                                    <input type="number" min="0" class="col-xs-12 col-sm-10 startNum" name="add_start">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-4 control-label no-padding-right" for="form-field-1">截止数：</label>
 
                                 <div class="col-sm-8">
-                                    <input type="number" min="0" class="col-xs-12 col-sm-10 endNum">
+                                    <input type="number" min="0" class="col-xs-12 col-sm-10 endNum" name="add_end">
                                 </div>
                             </div>
                             <div class="form-group" style="text-align: left;">
@@ -257,23 +244,23 @@
 
                                 <div class="col-sm-8">
                                     <label>
-                                        <input name="switch-field-1" class="ace ace-switch ace-switch-5 includes" type="checkbox">
+                                        <input name="add_include" class="ace ace-switch ace-switch-5 includes" type="checkbox" >
                                         <span class="lbl"></span>
                                     </label>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-4 control-label no-padding-right" for="form-field-1">参数：</label>
+                                <label class="col-sm-4 control-label no-padding-right" for="form-field-1" >参数：</label>
 
                                 <div class="col-sm-8">
-                                    <input type="number" min="0" class="col-xs-12 col-sm-10 canShu">
+                                    <input type="number" min="0" class="col-xs-12 col-sm-10 canShu" name="add_param">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-4 control-label no-padding-right" for="form-field-1">奖励金额（元/套）：</label>
+                                <label class="col-sm-4 control-label no-padding-right" for="form-field-1" >奖励金额（元/套）：</label>
 
                                 <div class="col-sm-8">
-                                    <input type="number" min="0" class="col-xs-12 col-sm-10 jiangLi">
+                                    <input type="number" min="0" class="col-xs-12 col-sm-10 jiangLi" name="add_reward">
                                 </div>
                             </div>
                         </form>
@@ -281,7 +268,7 @@
                 </div>
                 <div class="modal-footer">
                     <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
-                    <button data-bb-handler="confirm" type="button" class="btn btn-primary jumpPointSub">确定</button>
+                    <button data-bb-handler="confirm" type="button" class="btn btn-primary jumpPointSub" id="addRule">确定</button>
                 </div>
             </div>
         </div>
@@ -293,6 +280,7 @@
                 <div class="modal-header">
                     <button type="button" class="bootbox-close-button close closed">×</button>
                     <h4 class="modal-title">跳点信息修改</h4>
+                    <input type="hidden" min="0" class="col-xs-12 col-sm-10 startNumX" name="jump_id">
                 </div>
                 <div class="modal-body">
                     <div class="bootbox-body" style="overflow: hidden;">
@@ -301,38 +289,37 @@
                                 <label class="col-sm-4 control-label no-padding-right reviseStartNum" for="form-field-1">起始数：</label>
 
                                 <div class="col-sm-8">
-                                    <input type="number" min="0" class="col-xs-12 col-sm-10 startNumX">
+                                    <input type="number" min="0" class="col-xs-12 col-sm-10 startNumX" name="start">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-4 control-label no-padding-right reviseEndNum" for="form-field-1">截止数：</label>
+                                <label class="col-sm-4 control-label no-padding-right reviseEndNum" for="form-field-1" >截止数：</label>
 
                                 <div class="col-sm-8">
-                                    <input type="number" min="0" class="col-xs-12 col-sm-10 endNumX">
+                                    <input type="number" min="0" class="col-xs-12 col-sm-10 endNumX" name="end">
                                 </div>
                             </div>
                             <div class="form-group" style="text-align: left;">
-                                <label class="col-sm-4 control-label no-padding-right reviseInclude" for="form-field-1">包含：</label>
-
+                                <label class="col-sm-4 control-label no-padding-right reviseInclude" for="form-field-1" >包含：</label>
                                 <div class="col-sm-8">
                                     <label>
-                                        <input name="switch-field-1" class="ace ace-switch ace-switch-5 includesX" type="checkbox">
+                                        <input  class="ace ace-switch ace-switch-5 includesX" type="checkbox" name="include">
                                         <span class="lbl"></span>
                                     </label>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-4 control-label no-padding-right" for="form-field-1">参数：</label>
+                                <label class="col-sm-4 control-label no-padding-right" for="form-field-1" >参数：</label>
 
                                 <div class="col-sm-8">
-                                    <input type="number" min="0" class="col-xs-12 col-sm-10 canShuX" name="paramx">
+                                    <input type="number" min="0" class="col-xs-12 col-sm-10 canShuX" name="param">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-4 control-label no-padding-right" for="form-field-1">奖励金额（元/套）：</label>
+                                <label class="col-sm-4 control-label no-padding-right" for="form-field-1" >奖励金额（元/套）：</label>
 
                                 <div class="col-sm-8">
-                                    <input type="number" min="0" class="col-xs-12 col-sm-10 jiangLiX">
+                                    <input type="number" min="0" class="col-xs-12 col-sm-10 jiangLiX" name="reward">
                                 </div>
                             </div>
                         </form>
@@ -340,7 +327,7 @@
                 </div>
                 <div class="modal-footer">
                     <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
-                    <button data-bb-handler="confirm" type="button" class="btn btn-primary jumpPointSubX">确定</button>
+                    <button data-bb-handler="confirm" type="button" class="btn btn-primary jumpPointSubX" id="updateRule">确定</button>
                 </div>
             </div>
         </div>
@@ -385,6 +372,7 @@
     <script src="assets/js/config.js"></script>
     <script src="assets/js/public.js"></script>
     <script>
+        var id = $.getUrlVar('id');
         window.onload = function () {
             $('#header').load('public/header.html');
             $('#sidebar').load('public/menu.html');
@@ -395,6 +383,7 @@
             $.cookie('menu_data', JSON.stringify(menu_data), {
                 path: "menu.html"
             });
+            getList();
         }
         //关闭按钮返回上一页
         $('#backLastPage').on('click', function () {
@@ -420,10 +409,94 @@
         // 修改
         $(document).on('click', '.editJumP', function () {
             $('.modal_JumPointXiuG').css('display', 'block');
+            $('input[name=jump_id]').val($(this).parents('tr').attr('value'));
+            $('input[name=start]').val($(this).parents('tr').children('.start').html());
+            $('input[name=end]').val($(this).parents('tr').children('.end').html());
+            $('input[name=param]').val($(this).parents('tr').children('.param').html());
+            $('input[name=reward]').val($(this).parents('tr').children('.reward').html());
+            if($(this).parents('tr').children('.include').html()=='是'){
+                console.log(1);
+                $('input[name=include]').attr('checked','checked');
+            }else{
+                $('input[name=include]').attr('checked','');
+            }
+
             return false;
         })
         $('.jumpPointSubX').on('click', function () {
 
+        })
+        function getList(){
+            ajax.get('project/ruleCompany/jumpRule/list',{'rule_id':id},function(res){
+                var model='<tr value="{id}"> <td class="center">{key}</td> <td class="center start">{start}</td> <td class="center end">{end}</td> <td class="center include">{include}</td> <td class="center param">{param}</td> <td class="center reward">{reward}</td><td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green editJumP">编辑</a> <a class="red del" >删除</a> </div> </td> </tr>',
+                    str='',
+                    id=1;
+
+                $.each(res.data,function(k,v){
+                    v.is_include=(v.is_include==1?'是':'否');
+                    str+=model.replace('{id}',v.jump_id).replace('{key}',id++).replace('{start}',v.start).replace('{end}',v.end).replace('{include}',v.is_include).replace('{param}',v.value).replace('{reward}',v.reward);
+                })
+                $('.jumpPointShow').append(str);
+            })
+        }
+
+        $(document).on('click','.del',function(){
+            var data={
+                'jump_id':id=$(this).parents('tr').attr('value'),
+            },
+                con=confirm('确定要删除这条跳点规则么？');
+            if(con==true){
+                ajax.get('project/ruleCompany/jumpRule/delete',data,function(res){
+                    alert(res.mag);
+                    if(res.code==config.responseSuccess){
+                        window.location.reload();
+                    }
+                })
+            }
+        })
+
+        $('#addRule').click(function() {
+            var data={
+                'rule_id':id,
+                'start':$('input[name=add_start]').val(),
+                'end':$('input[name=add_end]').val(),
+                'value':$('input[name=add_param]').val(),
+                'reward':$('input[name=add_reward]').val(),
+            };
+
+            if($('input[name=add_include]').is(':checked')){
+                data.is_include=1;
+            }else{
+                data.is_include=0;
+            }
+
+            if(data.start=='' || data.start==0){
+                alert('请输入正确的起始数');
+                return;
+            }
+            if(data.end=='' || data.end==0){
+                alert('请输入正确的截止数');
+                return;
+            }
+            if(data.start>=data.end){
+                alert('起始数不能大于或等于截止数');
+                return;
+            }
+            if(data.value=='' || data.value==0){
+                alert('调点参数不正确');
+                return;
+            }
+            if(data.value==''){
+                alert('请输入奖励金额');
+                return;
+            }
+
+            ajax.post('project/ruleCompany/jumpRule/set',data,function(res){
+                alert(res.msg);
+                if(res.code==config.responseSuccess){
+                    window.location.reload();
+                }
+            })
         })
     </script>
 
