@@ -33,7 +33,7 @@
 </div>
 <script>
     $('.user-info').on('click', function () {
-        var tuiChu = confirm('退出登录');
+        var tuiChu = confirm('是否退出登录？');
         if (tuiChu) {
             $.cookie('yqd_login_token', null);
             window.location.href = 'login.html';
