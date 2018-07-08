@@ -518,16 +518,13 @@
                 if (res.code == config.responseSuccess) {
                     if (data.is_jump == 1) {
                         insertId = res.data;
+                        window.location.href='jumPointRules.html?id='+insertId;
                     } else {
                         history.back(-1);
                     }
-
                 }
             })
-            var val_radio=$('.tiaodian_checked').val();
-            if (val_radio == '1') {
-                window.location.href='jumPointRules.html';
-            } 
+
         })
     </script>
    
@@ -540,15 +537,7 @@
     </script>
 
     <script>
-        //是否跳点
-        // $('.tiaodian_checked').on('click', function () {
-        //     var val_radio = $(this).val();
-        //     if (val_radio == '1') {
-        //         $('#dynamic-box').css('display', 'block');
-        //     } else {
-        //         $('#dynamic-box').css('display', 'none');
-        //     }
-        // })
+
     </script>
 
 
