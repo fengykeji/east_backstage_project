@@ -148,7 +148,7 @@
                         </li>
                     </ul>
                     <div class="operate_proInfo">
-                        <button class="btn btn-primary" id="save">保存</button>
+                        <!-- <button class="btn btn-primary" id="save">保存</button> -->
                         <button class="btn btn-danger" id="backLastPage">关闭</button>
                     </div>
                 </div>
@@ -249,7 +249,7 @@
                                     <div class="widget-header">
                                         <h4 class="smaller">附件</h4>
                                         <div style="position: absolute;right: 80px;top:0;z-index: 100;">
-                                            <button class="btn btn-danger addAnnex" style="padding: 3px 10px;">新增</button>
+                                            <!-- <button class="btn btn-danger addAnnex" style="padding: 3px 10px;">新增</button> -->
                                         </div>
                                     </div>
                                     <div class="widget-body">
@@ -265,7 +265,7 @@
                                                                     <th class="center"></th>
                                                                     <th class="center">上传人员</th>
                                                                     <th class="center">上传时间</th>
-                                                                    <th class="center">操作</th>
+                                                                    <!-- <th class="center">操作</th> -->
                                                                 </tr>
                                                             </thead>
                                                             <tbody id="file_list">
@@ -285,7 +285,7 @@
                                         <h4 style="display: inline-block;" class="smaller">成交佣金</h4>
                                         <p style="display: inline-block;">（推荐的客户在该项目购置房源后产生的佣金）</p>
                                         <div style="position: absolute;right: 80px;top:0;z-index: 100;">
-                                           <button class="btn btn-danger dealComAdd" style="padding: 3px 10px;">新增</button>
+                                           <!-- <button class="btn btn-danger dealComAdd" style="padding: 3px 10px;">新增</button> -->
                                         </div>
                                     </div>
                                     <div class="widget-body">
@@ -302,7 +302,7 @@
                                                                     <th class="center">提成公式</th>
                                                                     <th class="center">单位</th>
                                                                     <th class="center">奖励金额（元/套）</th>
-                                                                    <th class="center">操作</th>
+                                                                    <!-- <th class="center">操作</th> -->
                                                                 </tr>
                                                             </thead>
                                                             <tbody id="deal">
@@ -322,7 +322,7 @@
                                         <h4 style="display: inline-block;" class="smaller">到访佣金</h4>
                                         <p style="display: inline-block;">（客户到访后且售楼处确认后产生的佣金）</p>
                                         <div style="position: absolute;right: 80px;top:0;z-index: 100;">
-                                            <div class="btn btn-danger addCom" style="padding: 3px 10px;" value="2">新增</div>
+                                            <!-- <div class="btn btn-danger addCom" style="padding: 3px 10px;" value="2">新增</div> -->
                                         </div>
                                     </div>
                                     <div class="widget-body">
@@ -336,7 +336,7 @@
                                                                     <th class="center">序号</th>
                                                                     <th class="center">单位</th>
                                                                     <th class="center">奖励金额（元/套）</th>
-                                                                    <th class="center">操作</th>
+                                                                    <!-- <th class="center">操作</th> -->
                                                                 </tr>
                                                             </thead>
                                                             <tbody id="value">
@@ -355,7 +355,7 @@
                                         <h4 style="display: inline-block;" class="smaller">推荐佣金</h4>
                                         <p style="display: inline-block;">（经纪人将客户推荐给项目后的佣金）</p>
                                         <div style="position: absolute;right: 80px;top:0;z-index: 100;">
-                                            <div class="btn btn-danger addCom" style="padding: 3px 10px;" value="3">新增</div>
+                                            <!-- <div class="btn btn-danger addCom" style="padding: 3px 10px;" value="3">新增</div> -->
                                         </div>
                                     </div>
                                     <div class="widget-body">
@@ -369,7 +369,7 @@
                                                                     <th class="center">序号</th>
                                                                     <th class="center">单位</th>
                                                                     <th class="center">奖励金额（元/套）</th>
-                                                                    <th class="center">操作</th>
+                                                                    <!-- <th class="center">操作</th> -->
                                                                 </tr>
                                                             </thead>
                                                             <tbody id="recommend">
@@ -602,8 +602,9 @@
                 $('input[name=act_start]').val(res.data.basic.act_start);
                 $('input[name=act_end]').val(res.data.basic.act_end);
                 if (res.data.file != undefined) {
+                    // <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <div class="red delFile" style="cursor: pointer">删除</div> </div> </td>
                     var model =
-                        '<tr role="row" class="odd" value="{a_id}"><td class="center">{key}</td> <td class="center">{name}</td> <td class="center"><a target="_blank" href="{url}">查看附件</a> </td> <td class="center">{uploader}</td> <td class="center">{update_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <div class="red delFile" style="cursor: pointer">删除</div> </div> </td> </tr>',
+                        '<tr role="row" class="odd" value="{a_id}"><td class="center">{key}</td> <td class="center">{name}</td> <td class="center"><a target="_blank" href="{url}">查看附件</a> </td> <td class="center">{uploader}</td> <td class="center">{update_time}</td> </tr>',
                         id = 1,
                         str = '';
                     $.each(res.data.file, function (k, v) {
@@ -616,8 +617,9 @@
                 }
 
                 if (res.data.brokerRule != undefined) {
+                    // <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <div class="red del_broker" style="cursor: pointer" value="{b_id}">删除</div></div> </td>
                     model =
-                        '<tr role="row" class="odd" value="{a_id}"> <td class="center">{key}</td> <td class="center">{money_type}</td> <td class="center">{money}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <div class="red del_broker" style="cursor: pointer" value="{b_id}">删除</div></div> </td> </tr>'; //<a class="green edit_Com" href="#">编辑</a>
+                        '<tr role="row" class="odd" value="{a_id}"> <td class="center">{key}</td> <td class="center">{money_type}</td> <td class="center">{money}</td></tr>'; 
                     if (res.data.brokerRule[2] != undefined) {
                         id = 1;
                         str = '';
@@ -642,8 +644,9 @@
                     }
 
                     if (res.data.brokerRule[1] != undefined) {
+                        // <td class="center"> <div class="hidden-sm hidden-xs action-buttons">  <div class="red del_broker" style="cursor: pointer" value="{b_id}">删除</div> </div> </td>
                         var model =
-                            '<tr role="row" class="odd" value="{a_id}"> <td class="center">{key}</td> <td class="center">{property}</td> <td class="center">{jump}</td> <td class="center">{commission}</td> <td class="center">{money}</td> <td class="center">{param}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons">  <div class="red del_broker" style="cursor: pointer" value="{b_id}">删除</div> </div> </td> </tr>'
+                            '<tr role="row" class="odd" value="{a_id}"> <td class="center">{key}</td> <td class="center">{property}</td> <td class="center">{jump}</td> <td class="center">{commission}</td> <td class="center">{money}</td> <td class="center">{param}</td> </tr>'
                         id = 1;
                         str = '';
                         $.each(res.data.brokerRule[1], function (k, v) {

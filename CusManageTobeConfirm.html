@@ -439,7 +439,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed" id="disabledCancel">取消</button>
+                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
                     <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="disabled">确定</button>
                 </div>
             </div>
@@ -651,9 +651,9 @@
 
             }
         });
-        $('#disabledCancel').click(function(){
-            $(".InvalidVisit").attr("checked", false);
-        })
+        // $('#disabledCancel').click(function(){
+        //     $(".InvalidVisit").attr("checked", false);
+        // })
 
         $('#disabled').click(function(){
             var data={
@@ -669,6 +669,7 @@
             })
         })
         $('.closed').on('click', function () {
+            $(".InvalidVisit").attr("checked", false);
             $(this).parent().parent().parent().parent().css('display', 'none');
         })
         //关闭按钮返回上一页
