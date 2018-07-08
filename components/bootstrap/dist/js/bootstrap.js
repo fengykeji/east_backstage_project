@@ -2362,8 +2362,8 @@ if (typeof jQuery === 'undefined') {
 // ----------------------------------------------------------本项目公共js--------------------------------------------------------
 //关闭按钮返回上一页
 $('#backLastPage').on('click', function () {
-  history.back(-1);
-  location.reload(); 
+  // history.back(-1);
+  window.location.href=document.referrer;
   return false;
 })
 
