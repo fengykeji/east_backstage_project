@@ -325,6 +325,9 @@
                     'rule_id': id
                 }, function (res) {
                     alert(res.msg);
+                    if(res.code==config.responseSuccess){
+                        window.location.reload();
+                    }
                 })
             }
 

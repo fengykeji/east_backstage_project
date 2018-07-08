@@ -515,6 +515,7 @@
     <script src="assets/js/public.js"></script>
     <script>
         var id = $.getUrlVar('id');
+
         window.onload = function () {
             $('#header').load('public/header.html');
             $('#sidebar').load('public/menu.html');
@@ -671,7 +672,8 @@
         })
         //成交佣金操作
         $(".dealComAdd").on('click', function () {
-            window.location.href = "DealComRuleSetBroker.html?id=" + id;
+
+            window.location.href = "DealComRuleSetBroker.html?id=" +  $.getUrlVar('id');
             return false;
         })
         //佣金金额修改编辑
