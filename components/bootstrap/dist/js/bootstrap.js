@@ -2359,5 +2359,16 @@ if (typeof jQuery === 'undefined') {
       Plugin.call($spy, data)
     })
   })
+// ----------------------------------------------------------本项目公共js--------------------------------------------------------
+//关闭按钮返回上一页
+$('#backLastPage').on('click', function () {
+  history.back(-1);
+  location.reload(); 
+  return false;
+})
+
+
+
+
 
 }(jQuery);
