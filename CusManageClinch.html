@@ -885,7 +885,8 @@
             }
             var aj=false;
             ajax.async=true;
-            switch (payVal) {
+
+            switch ( $('.payWay').val()) {
                 case '银行按揭贷款':
 
                     break;
@@ -900,12 +901,14 @@
                     aj=deal_bank(res.data);
                     break;
                 case '一次性付款':
-                    aj==true;
+                    aj=true;
                     break;
             }
-            if(aj==true){
+
+            if(aj){
+
                 ajax.async=false;
-                ajax.get('user/yunsuan/state/subscribe', data, function (res) {
+                ajax.get('user/yunsuan/state/subscribe',data, function (res) {
                     alert(res.msg);
                     if (res.code == 200) {
                         window.location.href='CustomerManagement.html';
