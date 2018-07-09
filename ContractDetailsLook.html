@@ -185,8 +185,7 @@
                     </ul>
                     <div class="operate_proInfo">
                         <!-- <button class="btn btn-danger" id="deal">确定</button> -->
-                        <button class="btn btn-primary" id="backLastPage">关闭</button>
-                        <!--onclick="javascript:history.go(-1)"  -->
+                        <button class="btn btn-primary" onclick="javascript:history.go(-1)" id="backLastPage">关闭</button>
                     </div>
                 </div>
                 <!-- 内容开始 -->
@@ -226,10 +225,10 @@
                                                     <label class="lab_width">房号：</label>
                                                     <input class="inpt_width" disabled="disabled" type="text" value="" name="houseInfo">
                                                 </div>
-                                                <div class="form-group">
+                                                <!-- <div class="form-group">
                                                     <label class="lab_width">单价（￥）：</label>
                                                     <input class="inpt_width" disabled="disabled" type="number" min="0" value="" name="">
-                                                </div>
+                                                </div> -->
                                                 <div class="form-group">
                                                     <label class="lab_width">总价（￥）：</label>
                                                     <input class="inpt_width" disabled="disabled" type="number" min="0" value="" name="total_money">
@@ -270,10 +269,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">付款方式：</label>
-                                                    <!-- <select class="inpt_width payWay"  name="pay_way">
-
-                                                    </select> -->
-                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="">
+                                                    <input class="inpt_width payWay" disabled="disabled" type="text" value="综合贷款" name="">
                                                 </div>
                                             </div>
                                             <div class="col-xs-6" style="padding-left: 50px;">
@@ -628,51 +624,20 @@
         }
 
         function getConfig() {
-            ajax.get('config', {
-                'id': config.configList['PAY_WAY']
-            }, function (res) {
+            // ajax.get('config', {
+            //     'id': config.configList['PAY_WAY']
+            // }, function (res) {
 
-                var model = '<option value="{id}" nm="{nm}">{name}</option>',
-                    str = '';
+            //     var model = '<option value="{id}" nm="{nm}">{name}</option>',
+            //         str = '';
 
-                $.each(res.data[config.configList['PAY_WAY']].param, function (k, v) {
-                    str += model.replace('{id}', v.param).replace('{name}', v.param);
-                })
+            //     $.each(res.data[config.configList['PAY_WAY']].param, function (k, v) {
+            //         str += model.replace('{id}', v.param).replace('{name}', v.param);
+            //     })
 
-                $('.payWay').append(str);
-            })
-        }
-
-        function property() {
-            ajax.get('project/project/getProjectProperty', {}, function (res) {
-                var model = '<option value="{id}">{name}</option>',
-                    str = '';
-                $.each(res.data, function (k, v) {
-                    str += model.replace('{id}', v.property_name).replace('{name}', v.property_name);
-                })
-                $('select[name=property]').append(str);
-            })
-        }
-
-        function projectInfo() {
-            ajax.get('project/project/getProjectInfo', {}, function (res) {
-                $('input[name=project_name]').val(res.data.project_name);
-            })
-        }
-    </script>
-    <script>
-        $(".fenqiOper").on('click', function (event) {
-            event.stopPropagation();
-            $('.modal_fenqi').css('display', 'block');
-            return false;
-        });
-        $('.closed').on('click', function () {
-            $(this).parent().parent().parent().parent().css('display', 'none');
-        })
-
-        //付款方式
-        $('.payWay').on('change', function () {
-            var payVal = $(this).val();
+            //     $('.payWay').append(str);
+            // })
+            var payVal = $('.payWay').val();
 
             switch (payVal) {
                 case '银行按揭贷款':
@@ -707,7 +672,73 @@
                     break;
             }
 
+        }
+
+        function property() {
+            ajax.get('project/project/getProjectProperty', {}, function (res) {
+                var model = '<option value="{id}">{name}</option>',
+                    str = '';
+                $.each(res.data, function (k, v) {
+                    str += model.replace('{id}', v.property_name).replace('{name}', v.property_name);
+                })
+                $('select[name=property]').append(str);
+            })
+        }
+
+        function projectInfo() {
+            ajax.get('project/project/getProjectInfo', {}, function (res) {
+                $('input[name=project_name]').val(res.data.project_name);
+            })
+        }
+    </script>
+    <script>
+        $(".fenqiOper").on('click', function (event) {
+            event.stopPropagation();
+            $('.modal_fenqi').css('display', 'block');
+            return false;
+        });
+        $('.closed').on('click', function () {
+            $(this).parent().parent().parent().parent().css('display', 'none');
         })
+
+        //付款方式
+        // $('.payWay').on('change', function () {
+        //     var payVal = $(this).val();
+
+        //     switch (payVal) {
+        //         case '银行按揭贷款':
+        //             $('.pawn_yinHang').css('display', 'block');
+        //             $('.pawn_Provident').css('display', 'none');
+        //             $('.pawn_zuHe').css('display', 'none');
+        //             $('.pawn_fenQi').css('display', 'none');
+        //             break;
+        //         case '公积金贷款':
+        //             $('.pawn_yinHang').css('display', 'none');
+        //             $('.pawn_Provident').css('display', 'block');
+        //             $('.pawn_zuHe').css('display', 'none');
+        //             $('.pawn_fenQi').css('display', 'none');
+        //             break;
+        //         case '综合贷款':
+        //             $('.pawn_yinHang').css('display', 'none');
+        //             $('.pawn_Provident').css('display', 'none');
+        //             $('.pawn_zuHe').css('display', 'block');
+        //             $('.pawn_fenQi').css('display', 'none');
+        //             break;
+        //         case '分期付款':
+        //             $('.pawn_yinHang').css('display', 'none');
+        //             $('.pawn_Provident').css('display', 'none');
+        //             $('.pawn_zuHe').css('display', 'none');
+        //             $('.pawn_fenQi').css('display', 'block');
+        //             break;
+        //         case '一次性付款':
+        //             $('.pawn_yinHang').css('display', 'none');
+        //             $('.pawn_Provident').css('display', 'none');
+        //             $('.pawn_zuHe').css('display', 'none');
+        //             $('.pawn_fenQi').css('display', 'none');
+        //             break;
+        //     }
+
+        // })
 
         function deal() {
             var data = {
