@@ -727,6 +727,10 @@
                 'signatory': $('input[name=signatory]').val(),
                 'time': new Date().format("yyyy-MM-dd hh:mm:ss"),
             }
+            if (data.advicer_name == '') {
+                alert('请输入置业顾问姓名');
+                return;
+            }
             ajax.get('user/yunsuan/state/value', data, function (res) {
                 alert(res.msg);
                 if (res.code == config.responseSuccess) {
