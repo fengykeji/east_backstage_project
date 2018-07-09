@@ -319,18 +319,16 @@
                                             <div class="col-xs-6" style="padding-left: 100px;">
                                                 <div class="form-group">
                                                     <label class="lab_width">首付款（￥）：</label>
-                                                    <input class="inpt_width" type="text" value="">
+                                                    <input class="inpt_width" type="number" min="0" value="" name="bank_down_payment">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">首付分期：</label>
-                                                    <input class="inpt_width" type="text" value="">
+                                                    <input class="inpt_width" type="number" min="0" value="" name="bank_down_payment_repayment">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">按揭银行：</label>
-                                                    <select class="inpt_width">
-                                                        <option value="">中国银行</option>
-                                                        <option value="">XXXXX</option>
-                                                        <option value="">XXXXX</option>
+                                                    <select class="inpt_width backList" name="bank_bank_bank_id">
+
                                                     </select>
                                                 </div>
 
@@ -338,11 +336,11 @@
                                             <div class="col-xs-6" style="padding-left: 50px;">
                                                 <div class="form-group">
                                                     <label class="lab_width">贷款金额：</label>
-                                                    <input class="inpt_width" type="text" value="">
+                                                    <input class="inpt_width" type="number" min="0" value="" name="bank_loan_money">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">贷款年限（年）：</label>
-                                                    <input class="inpt_width" type="text" value="">
+                                                    <input class="inpt_width" type="number" min="0" value="bank_loan_limit">
                                                 </div>
                                             </div>
                                         </div>
@@ -356,19 +354,17 @@
                                         <div class="widget-main" style="overflow: hidden;">
                                             <div class="col-xs-6" style="padding-left: 100px;">
                                                 <div class="form-group">
-                                                    <label class="lab_width">公积金首付款（￥）：</label>
-                                                    <input class="inpt_width" type="text" value="">
+                                                    <label class="lab_width">公积金首付款（元）：</label>
+                                                    <input class="inpt_width" type="number" min="0" name="fund_down_payment">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">公积金首付分期：</label>
-                                                    <input class="inpt_width" type="text" value="">
+                                                    <input class="inpt_width" type="number" min="0" name="fund_down_payment_repayment">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">公积金按揭银行：</label>
-                                                    <select class="inpt_width">
-                                                        <option value="">中国银行</option>
-                                                        <option value="">XXXXX</option>
-                                                        <option value="">XXXXX</option>
+                                                    <select class="inpt_width bankList" name="fund_bank_id">
+
                                                     </select>
                                                 </div>
 
@@ -376,11 +372,11 @@
                                             <div class="col-xs-6" style="padding-left: 50px;">
                                                 <div class="form-group">
                                                     <label class="lab_width">公积金贷款金额：</label>
-                                                    <input class="inpt_width" type="text" value="">
+                                                    <input class="inpt_width" type="number" min="0" name="fund_loan_money">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">公积金贷款年限：</label>
-                                                    <input class="inpt_width" type="text" value="">
+                                                    <input class="inpt_width" type="number" min="0" name="fund_loan_limit">
                                                 </div>
                                             </div>
                                         </div>
@@ -395,46 +391,42 @@
                                             <div class="col-xs-6" style="padding-left: 100px;">
                                                 <div class="form-group">
                                                     <label class="lab_width">首付款（￥）：</label>
-                                                    <input class="inpt_width" type="text" value="">
+                                                    <input class="inpt_width" type="number" min="0" name="fund_bank_down_payment">
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="lab_width">按揭银行：</label>
-                                                    <select class="inpt_width">
-                                                        <option value="">中国银行</option>
-                                                        <option value="">XXXXX</option>
-                                                        <option value="">XXXXX</option>
+                                                    <select class="inpt_width bankList" name="fund_bank_bank_bank_id">
+
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">贷款金额：</label>
-                                                    <input class="inpt_width" type="text" value="">
+                                                    <input class="inpt_width" type="number" min="0" name="fund_bank_bank_loan_money">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">贷款年限（年）：</label>
-                                                    <input class="inpt_width" type="text" value="">
+                                                    <input class="inpt_width" type="number" min="0" value="" name="fund_bank_bank_loan_limit">
                                                 </div>
                                             </div>
                                             <div class="col-xs-6" style="padding-left: 50px;">
                                                 <div class="form-group">
                                                     <label class="lab_width">首付分期：</label>
-                                                    <input class="inpt_width" type="text" value="">
+                                                    <input class="inpt_width" type="number" min="0" value="" name="fund_bank_down_payment_repayment">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">公积金按揭银行：</label>
-                                                    <select class="inpt_width">
-                                                        <option value="">中国银行</option>
-                                                        <option value="">XXXXX</option>
-                                                        <option value="">XXXXX</option>
+                                                    <select class="inpt_width bankList" name="fund_bank_fund_bank_id">
+
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">公积金贷款金额：</label>
-                                                    <input class="inpt_width" type="text" value="">
+                                                    <input class="inpt_width" type="number" min="0" value="" name="fund_bank_fund_loan_money">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">公积金贷款年限：</label>
-                                                    <input class="inpt_width" type="text" value="">
+                                                    <input class="inpt_width" type="number" min="0" value="" name="fund_bank_fund_loan_limit">
                                                 </div>
                                             </div>
                                         </div>
@@ -645,6 +637,17 @@
 
                 $('.payWay').append(str);
             })
+
+            ajax.get('config',{'id':config.configList['BANK_TYPE']},function(res){
+                var model = '<option value="{id}" nm="{nm}">{name}</option>',
+                    str = '';
+
+                $.each(res.data[config.configList['BANK_TYPE']].param, function (k, v) {
+                    str += model.replace('{id}', v.param).replace('{name}', v.param);
+                })
+                $('.bankList').append(str);
+            })
+
         }
 
         function property() {
@@ -665,6 +668,7 @@
         }
     </script>
     <script>
+        var bankList='';
         //分期添加
         $(".fenqiOper").on('click', function (event) {
             event.stopPropagation();
@@ -789,6 +793,39 @@
                 $('input[name=build_deal_money]').val(($('input[name=total_money]').val()/$('input[name=build_area]').val()).toFixed(2));
             }
         })
+
+        $('#deal').click(function () {
+            deal();
+        })
+    </script>
+    <script src="components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+    <script src="components/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+    <script src="components/moment/moment.js"></script>
+    <script src="components/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="components/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js"></script>
+    <script>
+        //日历插件初始化
+        $('.date-picker').datepicker({
+            autoclose: true,
+            todayHighlight: true
+        })
+        if (!ace.vars['old_ie']) $('.date-timepicker').datetimepicker({
+            //format: 'MM/DD/YYYY h:mm:ss A',//use this option to display seconds
+            format: 'YYYY-MM-DD HH:mm:ss',
+            icons: {
+                time: 'fa fa-clock-o',
+                date: 'fa fa-calendar',
+                up: 'fa fa-chevron-up',
+                down: 'fa fa-chevron-down',
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right',
+                today: 'fa fa-arrows ',
+                clear: 'fa fa-trash',
+                close: 'fa fa-times'
+            }
+        }).next().on(ace.click_event, function () {
+            $(this).prev().focus();
+            });
         function deal() {
             var data = {
                 'client_id': id,
@@ -846,53 +883,162 @@
                 alert('已付金额不能为空');
                 return;
             }
-            ajax.get('user/yunsuan/state/subscribe', data, function (res) {
+            var aj=false;
+            ajax.async=true;
+            switch (payVal) {
+                case '银行按揭贷款':
+
+                    break;
+                case '公积金贷款':
+
+                    aj=deal_fund(res.data);
+                    break;
+                case '综合贷款':
+                    aj=fund_bank(res.data);
+                    break;
+                case '分期付款':
+                    aj=deal_bank(res.data);
+                    break;
+                case '一次性付款':
+                    aj==true;
+                    break;
+            }
+            if(aj==true){
+                ajax.async=false;
+                ajax.get('user/yunsuan/state/subscribe', data, function (res) {
+                    alert(res.msg);
+                    if (res.code == 200) {
+                        window.location.href='CustomerManagement.html';
+                    }
+                })
+            }
+
+        }
+
+        function deal_bank(){
+            var data={
+                    'down_payment':$('input[name=bank_down_payment]').val(),
+                    'down_payment_repayment':$('input[name=bank_down_payment_repayment]').val(),
+                    'bank_bank_id':$('select[name=bank_bank_bank_id]').val(),
+                    'loan_money':$('input[name=bank_loan_money]').val(),
+                    'loan_limit':$('input[name=bank_loan_limit]').val(),
+                    'deal_id':deal_id
+                },
+                sub=false;
+                if(data.down_payment=='' || data.down_payment==0){
+                    alert('请输入首付款');
+                    return false;
+                }
+                if(data.down_payment_repayment=='' || data.down_payment_repayment==0){
+                    alert('请输入首付分期');
+                    return false;
+                }
+                if(data.loan_money=='' || data.loan_money==0){
+                    alert('请输入贷款金额');
+                    return false;
+                }
+                if(data.loan_limit=='' || data.loan_limit==0){
+                    alert('请输入贷款年限');
+                    return false;
+                }
+                ajax.post('project/client/deal/fundBank',data,function(res){
+                    alert(res.msg);
+                    if (res.code == 200) {
+                        sub=true;
+                    }
+                })
+                if(sub){
+                    return true;
+                }
+        }
+        
+        function fund_bank(){
+            var data={
+                'down_payment':$('input[name=fund_bank_down_payment]').val(),
+                'bank_bank_id':$('select[name=fund_bank_bank_bank_id]').val(),
+                'bank_loan_money':$('input[name=fund_bank_bank_loan_money]').val(),
+                'bank_loan_limit':$('input[name=fund_bank_bank_loan_limit]').val(),
+                'down_payment_repayment':$('input[name=fund_bank_down_payment_repayment]').val(),
+                'fund_bank_id':$('select[name=fund_bank_fund_bank_id]').val(),
+                'fund_loan_money':$('input[name=fund_bank_fund_loan_money]').val(),
+                'fund_loan_limit':$('input[name=fund_bank_fund_loan_limit]').val(),
+                'deal_id':deal_id
+            },
+                 sub=false;
+            if(data.down_payment=='' || data.down_payment==0){
+                alert('请输入首付款');
+                return false;
+            }
+            if(data.bank_loan_money=='' || data.bank_loan_money==0){
+                alert('请输入贷款金额');
+                return false;
+            }
+            if(data.bank_loan_limit=='' || data.bank_loan_limit==0){
+                alert('请输入贷款年限');
+                return false;
+            }
+            if(data.down_payment_repayment=='' || data.down_payment_repayment==0){
+                alert('请输入首付分期');
+                return false;
+            }
+            if(data.fund_loan_money=='' || data.fund_loan_money==0){
+                alert('请输入公积金贷款金额');
+                return false;
+            }
+            if(data.fund_loan_limit=='' || data.fund_loan_limit==0){
+                alert('请输入公积金贷款年限');
+                return false;
+            }
+
+            ajax.post('project/client/deal/fundBank',data,function(res){
                 alert(res.msg);
                 if (res.code == 200) {
-                   window.location.href='CustomerManagement.html';
+                    sub=true;
                 }
             })
-        }
-        $('#deal').click(function () {
-            deal();
-        })
-    </script>
-    <script src="components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
-    <script src="components/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
-    <script src="components/moment/moment.js"></script>
-    <script src="components/bootstrap-daterangepicker/daterangepicker.js"></script>
-    <script src="components/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js"></script>
-    <script>
-        //日历插件初始化
-        $('.date-picker').datepicker({
-            autoclose: true,
-            todayHighlight: true
-        })
-        if (!ace.vars['old_ie']) $('.date-timepicker').datetimepicker({
-            //format: 'MM/DD/YYYY h:mm:ss A',//use this option to display seconds
-            format: 'YYYY-MM-DD HH:mm:ss',
-            icons: {
-                time: 'fa fa-clock-o',
-                date: 'fa fa-calendar',
-                up: 'fa fa-chevron-up',
-                down: 'fa fa-chevron-down',
-                previous: 'fa fa-chevron-left',
-                next: 'fa fa-chevron-right',
-                today: 'fa fa-arrows ',
-                clear: 'fa fa-trash',
-                close: 'fa fa-times'
+            if(sub){
+                return true;
             }
-        }).next().on(ace.click_event, function () {
-            $(this).prev().focus();
-            });
-        //关闭按钮返回上一页
-        // $('#backLastPage').on('click', function () {
-        //     history.back(-1);
-        // })
-        // $('.moreLook').on('click', function () {
-        //     window.location.href = 'ContractDetails.html';
-        //     return false;
-        // })
+        }
+
+
+        function deal_fund(deal_id){
+            var data={
+                'down_payment':$('input[name=fund_down_payment]').val(),
+                'down_payment_repayment':$('input[name=fund_down_payment_repayment]').val(),
+                'loan_money':$('input[name=fund_loan_money]').val(),
+                'loan_limit':$('input[name=fund_loan_limit]').val(),
+                'fund_bank_id':$('select[name=fund_bank_id]').val(),
+                'deal_id':deal_id
+            },
+                sub=false;
+            if(data.down_payment=='' || data.down_payment==0){
+                alert('请输入公积金首付款');
+                return false;
+            }
+            if(data.down_payment_repayment=='' || data.down_payment_repayment==0){
+                alert('请输入公积金贷款金额');
+                return false;
+            }
+            if(data.loan_money=='' || data.loan_money==0){
+                alert('请输入公积金首付分期期数');
+                return false;
+            }
+            if(data.loan_limit=='' || data.loan_limit==0){
+                alert('请输入公积金贷款年限');
+                return false;
+            }
+
+            ajax.post('project/client/deal/fund',data,function(res){
+                alert(res.msg);
+                if (res.code == 200) {
+                    sub=true;
+                }
+            })
+            if(sub){
+                return true;
+            }
+        }
     </script>
 </body>
 

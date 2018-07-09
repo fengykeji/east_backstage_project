@@ -676,7 +676,7 @@
 
         function value(p) {
             var model =
-                '<tr role="row" class="odd" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td></td> <td class="center">{state}</td> <td class="center">{state_change_time}</td><td class="center">{broker}</td>  <td class="center">{company_name}</td><td class="center">{end_time}</td><td class="center">{advice_name}</td><td class="center">{allot_name}</td>   <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="CusManageValid.html">查看</a>{ys_check}</td> </tr>',
+                '<tr role="row" class="odd" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td></td> <td class="center">{state}</td> <td class="center">{state_change_time}</td><td class="center">{broker}</td>  <td class="center">{company_name}</td><td class="center">{end_time}</td><td class="center">{advice_name}</td><td class="center">{allot_name}</td>   <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="CusManageValid.html?id={e_id}">查看</a>{ys_check}</td> </tr>',
                 // page =
                 // '<li class="paginate_button trValid {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>',
                 id = 15 * (p - 1) + 1,
@@ -697,7 +697,7 @@
                         .replace('{create_time}', v.create_time).replace('{visit_time}', v.visit_time).replace(
                             '{butter_name}', v.butter_name).replace('{state}', v.state_name).replace(
                             '{state_change_time}', v.state_change_time).replace('{advice_name}', v.advice_name)
-                        .replace('{allot_name}', v.allot_time).replace('{d_id}', v.client_id);
+                        .replace('{allot_name}', v.allot_time).replace('{d_id}', v.client_id).replace('{e_id}', v.client_id);
                     if (v.CountDown > 0) {
                         tr = tr.replace('{end_time}', formatSeconds(v.CountDown));
                     } else {
