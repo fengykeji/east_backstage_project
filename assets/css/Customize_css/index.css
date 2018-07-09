@@ -24,7 +24,7 @@
     z-index: 100;
 }
 
-.user-info {
+/* .user-info {
     max-width: 150px;
     display: inline-block;
     overflow: hidden;
@@ -35,7 +35,7 @@
     line-height: 15px;
     position: relative;
     top: 14px;
-}
+} */
 
 #label_Add {
     padding: 2px 5px;

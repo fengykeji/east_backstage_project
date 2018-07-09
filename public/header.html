@@ -13,17 +13,32 @@
         <div class="navbar-header pull-left">
             <a href="#" class="navbar-brand">
                 <small>
-                    云算系统后台
+                    <img style="height: 100%;" src="../assets/images/logo@2x.png" alt="#">
                 </small>
             </a>
         </div>
         <div class="navbar-buttons navbar-header pull-right" role="navigation">
             <ul class="nav ace-nav">
                 <li class="light-blue dropdown-modal">
-                    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                        <img class="nav-user-photo" src="../assets/avatars/user.jpg" alt="Jason's Photo">
+                    <a data-toggle="dropdown" class="dropdown-toggle">
                         <span class="user-info">
-                            Jason退出登录
+                            四川云算科技
+                        </span>
+                    </a>
+                </li>
+                <li class="light-blue dropdown-modal">
+                    <a data-toggle="dropdown"  class="dropdown-toggle">
+                        <span class="user-info">
+                            ID：Jason
+                        </span>
+                    </a>
+                </li>
+                <li class="light-blue dropdown-modal">
+                    <a data-toggle="dropdown"  class="dropdown-toggle">
+                        <!-- <img class="nav-user-photo" src="../assets/images/sel_login.png" alt="Jason's Photo"> -->
+                        <img src="../assets/images/sel_login.png" alt="#">
+                        <span class="user-info" id="user-info">
+                            退出
                         </span>
                     </a>
                 </li>
@@ -32,7 +47,7 @@
     </div>
 </div>
 <script>
-    $('.user-info').on('click', function () {
+    $('#user-info').on('click', function () {
         var tuiChu = confirm('是否退出登录？');
         if (tuiChu) {
             $.cookie('yqd_login_token', null);

@@ -69,7 +69,7 @@
             z-index: 100;
         }
 
-        .user-info {
+        /* .user-info {
             max-width: 150px;
             display: inline-block;
             overflow: hidden;
@@ -80,7 +80,7 @@
             line-height: 15px;
             position: relative;
             top: 14px;
-        }
+        } */
 
         .inpt_width {
             width: 70%;
@@ -786,7 +786,7 @@
             ajax.get('project/client/getAdvicerList', data, function (res) {
                 $('#advicer').children().remove();
                 var model =
-                    '  <tr role="row" class="odd" value="{id}" > <td class="center" > <label class="pos-rel"> <input type="checkbox" class="ace " name="advicerSel"> <span class="lbl"></span> </label> </td> <td class="center"> {key}</td> <td class="center" id="advicer_name">{name}</td> <td class="center">{tel}</td> </tr>',
+                    '  <tr role="row" class="odd" value="{id}" > <td class="center" > <label class="pos-rel"> <input type="radio" class="ace " name="advicerSel"> <span class="lbl"></span> </label> </td> <td class="center"> {key}</td> <td class="center" id="advicer_name">{name}</td> <td class="center">{tel}</td> </tr>',
                     id = 15 * (p - 1) + 1,
                     str = '';
                 $.each(res.data.data, function (k, v) {

@@ -6769,3 +6769,12 @@ a{
 /* @media screen and (min-width:600px) and (max-width:900px){
   body {background-color:#f5f5f5;}
 } */
+.user-info{
+  max-width: 150px!important;
+  background-color: rebeccapurple;
+ 
+}
+.ace-nav > li {
+  line-height: 67px!important;
+  height: 67px!important;
+}
