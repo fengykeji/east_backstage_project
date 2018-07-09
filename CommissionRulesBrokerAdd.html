@@ -312,10 +312,15 @@
                alert('请输出实际开始时间');
                return;
            }
+
+            if(data.act_start==''){
+                alert('请选择是否筛选经纪人');
+                return;
+            }
            ajax.post('project/rulePerson/create',data,function(res){
                alert(res.msg);
                if(res.code==config.responseSuccess){
-                   window.location.href='CommissionRulesBrokerUpdate.html?id='+res.data;
+                   window.location.href='CommissionRulesBrokerUpdate.html?id='+res.data+'&rule_id='+id;
                }
            })
         })

@@ -883,6 +883,10 @@
                 alert('已付金额不能为空');
                 return;
             }
+            if ( data.time == '') {
+                alert('请选择成交时间');
+                return;
+            }
             var aj=false;
             ajax.async=true;
 

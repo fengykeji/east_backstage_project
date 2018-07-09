@@ -156,9 +156,9 @@
                         </li>
                     </ul>
                     <div class="operate_proInfo">
-                        <button class="btn btn-primary" id="save">保存</button>
+                        <button class="btn btn-primary finish" >完成</button>
 
-                        <button class="btn btn-danger" onclick="javascript:history.go(-1)" id="backLastPage">关闭</button>
+                        <button class="btn btn-danger finish"  >关闭</button>
 
 
                     </div>
@@ -514,8 +514,10 @@
     <script src="assets/js/config.js"></script>
     <script src="assets/js/public.js"></script>
     <script>
-        var id = $.getUrlVar('id');
-
+        var id = $.getUrlVar('id'),rule_id= $.getUrlVar('rule_id');
+        $('.finish').click(function(){
+            window.location.href='CommissionRulesUpdate.html?id='+rule_id;
+        })
         window.onload = function () {
             $('#header').load('public/header.html');
             $('#sidebar').load('public/menu.html');
