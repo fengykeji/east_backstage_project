@@ -21,14 +21,14 @@
             <ul class="nav ace-nav">
                 <li class="light-blue dropdown-modal">
                     <a data-toggle="dropdown" class="dropdown-toggle">
-                        <span class="user-info">
+                        <span class="user-info" id="p_name">
                             四川云算科技
                         </span>
                     </a>
                 </li>
                 <li class="light-blue dropdown-modal">
                     <a data-toggle="dropdown"  class="dropdown-toggle">
-                        <span class="user-info">
+                        <span class="user-info" id="p_user">
                             Jason
                         </span>
                     </a>
@@ -55,4 +55,8 @@
             return;
         }
     })
+
+
+    $('#p_name').html($.cookie(config.cookiePrefix + 'p_name'));
+    $('#p_user').html($.cookie(config.cookiePrefix + 'p_user'))
 </script>

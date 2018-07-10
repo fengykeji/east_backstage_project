@@ -432,7 +432,20 @@
         })
         //开关的值
         $('#person').on('change', '.switchCom', function () {
-            alert($(this).is(':checked'));
+            var data={
+                'is_screen':1,
+            };
+            if($(this).is(':checked')){
+                data.is_screen=1;
+            }else{
+                data.is_screen=0;
+            }
+            ajax.post('project/rulePerson/update',data,function(){
+                alert(res.msg);
+                if (res.code == config.responseSuccess) {
+                    window.location.reload();
+                }
+            })
         })
         // //关闭按钮返回上一页
         // $('#backLastPage').on('click', function () {
@@ -556,7 +569,9 @@
                             '{act_start}', v.act_start).replace('{act_end}', v.act_end).replace(
                             '{state}', v.end_state_name).replace('{end_state_name}', v.end_state_name);
                     if(v.is_screen==1){
-                        str+=str.replace('{check}','checked="checked"');
+                        str=str.replace('{check}','checked="checked"');
+                    }else{
+                        str=str.replace('{check}','');
                     }
                 })
                 $('#person').append(str);

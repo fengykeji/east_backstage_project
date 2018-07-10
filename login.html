@@ -148,7 +148,9 @@
             alert(res.msg);
 
             if (res.code == config.responseSuccess) {
-                $.cookie(config.cookiePrefix + 'login_token', res.data.token)
+                $.cookie(config.cookiePrefix + 'login_token', res.data.token);
+                $.cookie(config.cookiePrefix + 'p_user', res.data.name)
+                $.cookie(config.cookiePrefix + 'p_name', res.data.project_name)
                 window.location.href = 'index.html';
             }
         }, 'POST');
