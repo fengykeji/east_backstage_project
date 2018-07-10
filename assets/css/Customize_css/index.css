@@ -55,6 +55,10 @@
     z-index: 1000;
 }
 
+/* .modal_preview {
+    display: block;
+} */
+
 .modal_map .modal-content {
     padding: 10px;
 }
@@ -144,10 +148,30 @@
     margin: 0 auto;
 }
 
+.scanShowAll {
+    background-color: #F0F0F0;
+    width: 254px;
+    height: 446px;
+    margin: 0 auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+   
+}
 
 .show_UpImg {
     width: auto;
     height: auto;
     max-width: 180px;
     max-height: 180px;
+}
+
+.scanShowDiv {
+    width: 100%;
+    background-color: white;
+    font-size: 12px;
+}
+
+.proName span:nth-of-type(2) {
+    float: right;
+    color: #2795EE;
 }
