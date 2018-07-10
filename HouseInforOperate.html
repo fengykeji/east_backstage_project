@@ -500,36 +500,41 @@
                     }
                 })
                 var model =
-                    '<tr role="row" class="odd" value="{id}"> <td class="center">1</td> <td class="center"> <img class="proLook_img" src="{url}" alt=""> </td> <td class="center">{comment}</td> <td class="center">{uploader}</td> <td class="center">{update_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green edit_leibie" href="">编辑</a> <div class="red del_leibie" style="cursor: pointer">删除</div> <div class="red up" style="cursor: pointer">上移</div> <div class="down blue"  style="cursor: pointer">下移</div> </div> </td> </tr>';
+                    '<tr role="row" class="odd" value="{id}"> <td class="center">{key}</td> <td class="center"> <img class="proLook_img" src="{url}" alt=""> </td> <td class="center">{comment}</td> <td class="center">{uploader}</td> <td class="center">{update_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons">  <div class="red del_leibie" style="cursor: pointer">删除</div> <div class="red up" style="cursor: pointer">上移</div> <div class="down blue"  style="cursor: pointer">下移</div> </div> </td> </tr>',//<a class="green edit_leibie" href="">编辑</a>
+                    key=1;
 
                 if (res.data.imgInfo[53].list.length > 0) {
                     var str = '';
+                    key=1;
                     $.each(res.data.imgInfo[53].list, function (k, v) {
                         str += model.replace('{id}', v.img_id).replace('{url}', config.address + v.img_url)
                             .replace('{comment}', v.img_describe).replace('{uploader}', v.uploader).replace(
-                                '{update_time}', v.update_time)
+                                '{update_time}', v.update_time).replace('{key}',key++)
+
                     })
                     $('#xg').append(str);
                     str = '';
                 }
                 if (res.data.imgInfo[55].list.length > 0) {
                     var str = '';
+                    key=1;
                     $.each(res.data.imgInfo[55].list, function (k, v) {
                         str += model.replace('{id}', v.img_id).replace('{url}', config.address + v.img_url)
                             .replace('{comment}', v.img_describe).replace('{uploader}', v.uploader).replace(
-                                '{update_time}', v.update_time)
+                                '{update_time}', v.update_time).replace('{key}',key++)
                     })
                     $('#sj').append(str);
                     str = '';
                 }
                 if (res.data.imgInfo[54].list.length > 0) {
-                    var str = '';
+                    var str = '',
                     model =
-                        '<tr role="row" class="odd" value="{id}" address="{address}"> <td class="center">1</td> <td class="center"> <img class="proLook_img" src="{url}" alt=""> </td> <td class="center">{comment}</td> <td class="center">{uploader}</td> <td class="center">{update_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green edit_leibie" href="">编辑</a> <div class="red del_leibie" style="cursor: pointer">删除</div> <div class="blue makeFm" style="cursor: pointer">设为封面</div> <div class="red up" style="cursor: pointer">上移</div> <div class="down blue"  style="cursor: pointer">下移</div> </div> </td> </tr>';
+                        '<tr role="row" class="odd" value="{id}" address="{address}"> <td class="center">{key}</td> <td class="center"> <img class="proLook_img" src="{url}" alt=""> </td> <td class="center">{comment}</td> <td class="center">{uploader}</td> <td class="center">{update_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons">  <div class="red del_leibie" style="cursor: pointer">删除</div> <div class="blue makeFm" style="cursor: pointer">设为封面</div> <div class="red up" style="cursor: pointer">上移</div> <div class="down blue"  style="cursor: pointer">下移</div> </div> </td> </tr>';//<a class="green edit_leibie" href="">编辑</a>
+                    key=1;
                     $.each(res.data.imgInfo[54].list, function (k, v) {
                         str += model.replace('{id}', v.img_id).replace('{url}', config.address + v.img_url).replace('{address}',v.img_url)
                             .replace('{comment}', v.img_describe).replace('{uploader}', v.uploader).replace(
-                                '{update_time}', v.update_time)
+                                '{update_time}', v.update_time).replace('{key}',key++)
                     })
                     $('#pm').append(str);
                     str = '';
@@ -537,12 +542,13 @@
                 if (res.data.imgInfo[52].list.length > 0) {
                     var str = '',
                         model =
-                        '<tr role="row" class="odd" value="{id}"> <td class="center">1</td> <td class="center"> <img class="proLook_img" src="{url}" alt=""> </td> <td class="center"> <img class="proLook_img" src="{url2}" alt=""> </td><td class="center">{comment}</td> <td class="center">{uploader}</td> <td class="center">{update_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="green edit_leibie" href="">编辑</a> <div class="red del_leibie" style="cursor: pointer">删除</div> <div class="red up" style="cursor: pointer">上移</div> <div class="down blue"  style="cursor: pointer">下移</div> </div> </td> </tr>';
+                        '<tr role="row" class="odd" value="{id}"> <td class="center">{key}</td> <td class="center"> <img class="proLook_img" src="{url}" alt=""> </td> <td class="center"> <img class="proLook_img" src="{url2}" alt=""> </td><td class="center">{comment}</td> <td class="center">{uploader}</td> <td class="center">{update_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons">  <div class="red del_leibie" style="cursor: pointer">删除</div> <div class="red up" style="cursor: pointer">上移</div> <div class="down blue"  style="cursor: pointer">下移</div> </div> </td> </tr>';//<a class="green edit_leibie" href="">编辑</a>
+                    key=1;
                     $.each(res.data.imgInfo[52].list, function (k, v) {
                         str += model.replace('{id}', v.img_id).replace('{url}', config.address + v.img_url)
                             .replace('{url2}', config.address + v.img_url_3d)
                             .replace('{comment}', v.img_describe).replace('{uploader}', v.uploader).replace(
-                                '{update_time}', v.update_time)
+                                '{update_time}', v.update_time).replace('{key}',key++)
                     })
                     $('#3d').append(str);
                     str = '';
