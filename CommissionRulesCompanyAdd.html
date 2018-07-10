@@ -614,7 +614,7 @@
 
         function companyList(res) {
             var model =
-                '<tr class="odd" value="{id}" nm="{nm}"> <td class="center"> <label class="pos-rel"> <input type="checkbox" class="ace companyCheck"> <span class="lbl"></span> </label> </td> <td class="center">{key}</td> <td class="center ">{name}</td> <td class="center">{address}</td> </tr>',
+                '<tr class="odd" value="{id}" nm="{nm}"> <td class="center"> <label class="pos-rel"> <input type="radio" class="ace companyCheck"> <span class="lbl"></span> </label> </td> <td class="center">{key}</td> <td class="center ">{name}</td> <td class="center">{address}</td> </tr>',
                 str = '',
                 id = 1;
             $.each(res.data.data, function (k, v) {

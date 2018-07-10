@@ -234,7 +234,7 @@
                                                     <div class="inpt_width" style="display: inline-block;">
                                                         <div class="radio" style="display: inline-block;">
                                                             <label>
-                                                                <input name="daoF" value="1" type="radio" class="ace">
+                                                                <input checked="checked" name="daoF" value="1" type="radio" class="ace ValidVisit">
                                                                 <span class="lbl">有效到访</span>
                                                             </label>
                                                         </div>
@@ -637,7 +637,7 @@
             return false;
         });
         $(".InvalidVisit").on('click', function () {
-            if ($(this).attr("checked", "true")) {
+            if ($(this).attr("checked", true)) {
                 ajax.get('config',{'id':config.configList['VALUE_CONFIRM_DISABLED_TYPE']},function(res){
                     var model='<option value="{id}">{name}</option>',
                         str='';
@@ -651,9 +651,7 @@
 
             }
         });
-        // $('#disabledCancel').click(function(){
-        //     $(".InvalidVisit").attr("checked", false);
-        // })
+       
 
         $('#disabled').click(function(){
             var data={
@@ -669,7 +667,7 @@
             })
         })
         $('.closed').on('click', function () {
-            $(".InvalidVisit").attr("checked", false);
+            $(".ValidVisit").prop("checked", true);
             $(this).parent().parent().parent().parent().css('display', 'none');
         })
         //关闭按钮返回上一页
