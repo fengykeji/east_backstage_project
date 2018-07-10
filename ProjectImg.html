@@ -276,7 +276,7 @@
             var a=confirm('确定删除该项？'),
                 id=$(this).parents('tr').attr('value');
             if(a==true){
-                ajax.post('project/img/delete',{'img_id':id},function(res) {
+                ajax.post('project/img/type/delete',{'type_id':id},function(res) {
                     alert(res.msg);
                     if(res.code==config.responseSuccess){
                         window.location.reload();
