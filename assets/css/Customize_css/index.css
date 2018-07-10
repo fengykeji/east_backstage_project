@@ -55,9 +55,6 @@
     z-index: 1000;
 }
 
-/* .modal_preview {
-    display: block;
-} */
 
 .modal_map .modal-content {
     padding: 10px;
@@ -140,6 +137,9 @@
 
 /* 预览显示 */
 
+/* .modal_preview {
+    display: block;
+} */
 .preBackImg {
     background: url("../../images/phone@3x.png") no-repeat;
     background-size: 100% 100%;
@@ -155,7 +155,6 @@
     margin: 0 auto;
     overflow-y: auto;
     overflow-x: hidden;
-   
 }
 
 .show_UpImg {
@@ -170,8 +169,54 @@
     background-color: white;
     font-size: 12px;
 }
-
+.scanShowDiv>div{
+    margin-bottom: 10px;
+}
+.scanShowDiv ul {
+    margin: 0;
+    padding: 0;
+}
+.scanShowDiv ul li{
+    list-style: none;
+    float: left;
+    margin-right: 5px;
+}
+.proName span:nth-of-type(1) {
+    max-width: 170px;
+    overflow: hidden;
+    display: inline-block;
+}
 .proName span:nth-of-type(2) {
     float: right;
     color: #2795EE;
+}
+
+.proTab {
+    overflow: hidden;
+}
+
+.proTab ul {
+    float: left;
+}
+
+.proTab div:nth-of-type(2) {
+    float: right;
+}
+
+.proTab ul li {
+    background-color: #D7F3FF;
+    color: #2795EE;
+    
+}
+
+.proTab img {
+    height: 12px;
+}
+
+.proTabT {
+    overflow: hidden;
+}
+
+.proTabT ul li {
+    border: 1px solid #999;
 }
