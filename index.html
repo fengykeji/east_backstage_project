@@ -152,7 +152,7 @@
                                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 项目状态：</label>
 
                                     <div class="col-sm-9">
-                                        <select class="form-control" style="width: 150px;" name="sale_state" >
+                                        <select class="form-control" style="width: 150px;" name="sale_state">
                                             <option value=""></option>
                                             <option value="1">待售</option>
                                             <option value="2">在售</option>
@@ -214,7 +214,7 @@
             </div>
         </div>
     </div>
-
+    <!-- 地图 -->
     <div class="modal_map">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -233,8 +233,55 @@
                     <button type="button" class="bootbox-close-button close closed">×</button>
                 </div>
                 <div class="modal-body">
-                    <div class="preBackImg">
-                        
+                    <div class="preBackImg" style="padding: 71px 0;">
+                        <div class="scanShowAll">
+                            <div class="scanShowDiv">
+                                <img src="assets/images/scan_header.png" alt="#" style="width: 100%;">
+                            </div>
+                            <div class="scanShowDiv">
+                                <div>
+                                    <img src="assets/images/email1.png" alt="#" style="width: 100%;">
+                                </div>
+                                <div class="proName">
+                                    <span>翡翠滨江</span>
+                                    <span>待售</span>
+                                </div>
+                                <div>
+                                    <div>
+                                        <ul>
+                                            <li>住宅</li>
+                                            <li>公寓</li>
+                                            <li>商铺</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <span>关注人数：8</span>
+                                        <img src="assets/images/Focus_selected.png" alt="#">
+                                    </div>
+                                </div>
+                                <div>
+                                    <ul>
+                                        <li>学区房</li>
+                                        <li>地铁房</li>
+                                        <li>度假村</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <p>开发商：三台县洪州房地产开发有限公司</p>
+                                    <p>均价：￥6000/㎡</p>
+                                </div>
+                                <div>
+                                    <a href="#" class="ace-icon fa fa-map-marker bigger-200 map_sty"></a>
+                                    <span>四川省绵阳市三台县磊滨路</span>
+                                    <span>查看更多>></span>
+                                </div>
+                                <!-- <div></div> -->
+                            </div>
+                            <div class="scanShowDiv">
+                                <p>楼栋信息</p>
+                                <img src="assets/images/email1.png" alt="#" style="width: 100%;">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -558,7 +605,7 @@
             oldData = {
                 'province': $('select[name="province"]').val(),
                 'city': $('select[name="city"]').val(),
-                'img_url':$('#img_url').attr('address'),
+                'img_url': $('#img_url').attr('address'),
                 'district': $('select[name="area"]').val(),
                 'absolute_address': $('#absolute_address').val(),
                 'latitude': $('input[name="latitude"]').val(),
@@ -658,7 +705,7 @@
             var data = {
                 'province': $('select[name="province"]').val(),
                 'city': $('select[name="city"]').val(),
-                'img_url':$('#img_url').attr('address'),
+                'img_url': $('#img_url').attr('address'),
                 'district': $('select[name="area"]').val(),
                 'absolute_address': $('#absolute_address').val(),
                 'latitude': $('input[name="latitude"]').val(),

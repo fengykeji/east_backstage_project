@@ -6750,7 +6750,7 @@ a{
   font-size: 32px;
 }
 .modal-dialog {
-  margin: 150px auto;
+  margin: 100px auto;
 }
 @media (max-height: 770px) {
   .modal-dialog {
@@ -6788,3 +6788,6 @@ a{
 .login_del a{
   cursor: pointer!important;
 }
+/* .navbar {
+  padding-top: 10px;
+} */
