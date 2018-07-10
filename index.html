@@ -243,20 +243,18 @@
                                     <img src="assets/images/email1.png" alt="#" style="width: 100%;">
                                 </div>
                                 <div class="proName">
-                                    <span>翡翠滨江翡翠滨江翡翠滨江翡翠滨江翡翠滨江</span>
+                                    <span>翡翠滨江</span>
                                     <span>待售</span>
                                 </div>
                                 <div class="proTab">
                                     <div>
                                         <ul>
-                                            <li>住宅</li>
-                                            <li>公寓</li>
-                                            <li>商铺</li>
+                                            <li class="proTabZ">住宅</li>
+                                            <li class="proTabG">公寓</li>
+                                            <li class="proTabS">商铺</li>
+                                            <li class="proTabX">写字楼</li>
+                                            <li class="proTabB">别墅</li>
                                         </ul>
-                                    </div>
-                                    <div>
-                                        <span>关注人数：8</span>
-                                        <img src="assets/images/Focus_selected.png" alt="#">
                                     </div>
                                 </div>
 
@@ -265,6 +263,7 @@
                                         <li>学区房</li>
                                         <li>地铁房</li>
                                         <li>度假村</li>
+
                                     </ul>
                                 </div>
                                 <div>
@@ -275,10 +274,9 @@
                                     <i class="ace-icon fa fa-map-marker bigger-100 map_sty"></i>
                                     <span>四川省绵阳市三台县磊滨路</span>
                                 </div>
-                                <!-- <div></div> -->
                             </div>
                             <div class="scanShowDiv">
-                                <p>楼栋信息</p>
+                                <p class="buildShow">楼栋信息</p>
                                 <img src="assets/images/email1.png" alt="#" style="width: 100%;">
                             </div>
                         </div>
@@ -338,11 +336,11 @@
         //添加项目标签
         $('#label_Add').on('click', function (event) {
             event.stopPropagation();
-            // $('.modal_all').css('display', 'block');
         })
         //预览
         $('.preViewBtn').on('click', function (event) {
             // event.stopPropagation();
+            
             // $('.modal_preview').css('display', 'block');
             // return false;
         })
