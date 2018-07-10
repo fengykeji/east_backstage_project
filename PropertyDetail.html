@@ -172,11 +172,11 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">规划户数（户）：</label>
-                                                    <input class="inpt_width" type="number" min="0" id="households_num">
+                                                    <input class="inpt_width" type="number" min="0" id="households_num" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">规划车位（个）：</label>
-                                                    <input class="inpt_width" type="number" min="0" id="parking_num">
+                                                    <input class="inpt_width" type="number" min="0" id="parking_num" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
                                                 </div>
                                             </div>
 
@@ -365,7 +365,8 @@
                 'property_cost': $('#property_cost').val(),
                 'heat_supply': $('#heat_supply').val(),
                 'power_supply': $('#power_supply').val(),
-                'water_supply': $('#water_supply').val()
+                'water_supply': $('#water_supply').val(),
+                'floor_space':$('#floor_space').val(),
             }
             if(data.sale_address.length>=100){
                 alert('售楼处地址过长,请控制在100字之内');

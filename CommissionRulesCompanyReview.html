@@ -774,11 +774,13 @@
                     if ($('#value').children().length >= 1) {
                         alert('已存在到访佣金规则，请删除当前到访佣金规则后再添加');
                     }
+                    return false;
                     break;
                 case 3:
                     if ($('#recommend').children().length >= 1) {
                         alert('已存在推荐佣金规则，请删除当前推荐佣金规则后再添加');
                     }
+                    return false;
                     break;
             }
             $('.modal_addCom').css('display', 'block');
