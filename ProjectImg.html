@@ -273,9 +273,15 @@
         })
         $('#dynamic-table').on('click', '.del_leibie', function () {
             // $('.modal_tishi').css('display', 'block');
-            var a=confirm('确定删除该项？');
-            if(a){
-                $('#type_id_del').val($(this).parents('tr').attr('value'));
+            var a=confirm('确定删除该项？'),
+                id=$(this).parents('tr').attr('value');
+            if(a==true){
+                ajax.post('project/img/delete',{'img_id':id},function(res) {
+                    alert(res.msg);
+                    if(res.code==config.responseSuccess){
+                        window.location.reload();
+                    }
+                })
             }
             
             // $(this).parent().parent().parent().remove();
