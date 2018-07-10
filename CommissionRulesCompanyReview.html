@@ -820,7 +820,8 @@
                 'sell_docker': $('input[name=sell_docker]').val(),
                 'sell_docker_tel': $('input[name=sell_docker_tel]').val(),
                 'act_start': $('input[name=act_start]').val(),
-            }
+            };
+
 
             if (data.project_name == '') {
                 alert('请输入项目名称');
@@ -858,25 +859,33 @@
                 alert('请输出实际开始时间');
                 return false;
             }
-            ajax.post('project/ruleCompany/update', data, function (res) {
-                alert(res.msg);
-                if (res.code == config.responseSuccess) {
-                   window.location.href='CommissionRulesUpdate.html?id='+$.getUrlVar('rule_id');
-                }
-            })
+            var conf=confirm('通过审核后规则信息不能再次修改，是否确定通过？');
+            if(conf==true){
+                ajax.post('project/ruleCompany/update', data, function (res) {
+                    alert(res.msg);
+                    if (res.code == config.responseSuccess) {
+                        window.location.href='CommissionRulesUpdate.html?id='+$.getUrlVar('rule_id');
+                    }
+                })
+            }
+
         })
 
         $('#no').click(function(){
             var data = {
                 'state': 0,
                 'rule_id': id,
+            },
+                conf=confirm('审核不通过将作废该条规则，是否确定不通过？');
+            if(conf==true){
+                ajax.post('project/ruleCompany/update', data, function (res) {
+                    alert(res.msg);
+                    if (res.code == config.responseSuccess) {
+                        window.location.href='CommissionRulesUpdate.html?id='+$.getUrlVar('rule_id');
+                    }
+                })
             }
-            ajax.post('project/ruleCompany/update', data, function (res) {
-                alert(res.msg);
-                if (res.code == config.responseSuccess) {
-                    window.location.href='CommissionRulesUpdate.html?id='+$.getUrlVar('rule_id');
-                }
-            })
+
         })
 
 

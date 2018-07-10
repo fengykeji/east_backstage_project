@@ -699,7 +699,7 @@
             ajax.post('project/ruleCompany/create', data, function (res) {
                 alert(res.msg);
                 if (res.code == config.responseSuccess) {
-                    window.location.href = 'CommissionRulesCompanyUpdate.html?id=' + res.data;
+                    window.location.href = 'CommissionRulesCompanyReview.html?id=' + res.data+'&rule_id='+id;
                 }
             })
         })
