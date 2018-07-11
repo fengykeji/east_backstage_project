@@ -240,44 +240,45 @@
                             </div>
                             <div class="scanShowDiv">
                                 <div>
-                                    <img src="assets/images/email1.png" alt="#" style="width: 100%;">
+                                    <img id="YL_img_url" src="assets/images/null.jpg" alt="#" style="width: 100%;max-height: 150px;">
                                 </div>
                                 <div class="proName">
-                                    <span>翡翠滨江</span>
-                                    <span>待售</span>
+                                    <span id="YL_project_name"></span>
+                                    <span id="YL_sale_state"></span>
                                 </div>
                                 <div class="proTab">
                                     <div>
                                         <ul>
-                                            <li class="proTabZ">住宅</li>
+                                            <!-- <li class="proTabZ">住宅</li>
                                             <li class="proTabG">公寓</li>
                                             <li class="proTabS">商铺</li>
                                             <li class="proTabX">写字楼</li>
-                                            <li class="proTabB">别墅</li>
+                                            <li class="proTabB">别墅</li> -->
                                         </ul>
                                     </div>
                                 </div>
 
                                 <div class="proTabT">
                                     <ul>
-                                        <li>学区房</li>
+                                        <!-- <li>学区房</li>
                                         <li>地铁房</li>
-                                        <li>度假村</li>
-
+                                        <li>度假村</li> -->
                                     </ul>
                                 </div>
                                 <div>
-                                    <p>开发商：三台县洪州房地产开发有限公司</p>
-                                    <p>均价：￥6000/㎡</p>
+                                    <p>开发商：
+                                        <span id="YL_developer_name"></span>
+                                    </p>
+                                    <p>均价：XXX</p>
                                 </div>
                                 <div>
                                     <i class="ace-icon fa fa-map-marker bigger-100 map_sty"></i>
-                                    <span>四川省绵阳市三台县磊滨路</span>
+                                    <span id="YL_absolute_address"></span>
                                 </div>
                             </div>
                             <div class="scanShowDiv">
                                 <p class="buildShow">楼栋信息</p>
-                                <img src="assets/images/email1.png" alt="#" style="width: 100%;">
+                                <img id="YL_list_img" src="assets/images/null.jpg" alt="#" style="width: 100%;max-height: 150px;">
                             </div>
                         </div>
                     </div>
@@ -340,10 +341,10 @@
         })
         //预览
         $('.preViewBtn').on('click', function (event) {
-            // event.stopPropagation();
-            
-            // $('.modal_preview').css('display', 'block');
-            // return false;
+            event.stopPropagation();
+
+            $('.modal_preview').css('display', 'block');
+            return false;
         })
         $('.closed').on('click', function () {
             $(this).parent().parent().parent().parent().css('display', 'none');
@@ -599,6 +600,86 @@
                         latitude: res.data.latitude,
                         longitude: res.data.longitude,
                     }
+
+
+
+
+                    //预览数据开始
+                    $('#YL_project_name').html(res.data.project_name);
+                    switch (res.data.sale_state) {
+                        case 1:
+                            $('#YL_sale_state').html('待售');
+                            break;
+                        case 2:
+                            $('#YL_sale_state').html('在售');
+                            break;
+                        default:
+                            $('#YL_sale_state').html('售罄');
+                            break;
+                    }
+                    if (res.data.img_url != '') {
+                        $('#YL_img_url').attr('src', config.address + res.data.img_url).attr(
+                            'address', res.data.total_float_url);
+                    }
+                    if (res.data.total_float_url != '') {
+                        $('#YL_list_img').attr('src', config.address + res.data.total_float_url).attr(
+                            'address', res.data.total_float_url);
+                    }
+                    $('#YL_developer_name').html(res.data.developer_name);
+                    $('#YL_absolute_address').html(res.data.absolute_address);
+
+                    if (res.data.project_tags != null) {
+                        var project_tags = res.data.project_tags.split(','),
+                            model = '<li value="{id}">{name}</li>';
+                        str = '';
+                        $.each(data.config[config.configList.PROJECT_TAGS_DEFAULT].param, function (k,
+                            v) {
+                            if ($.inArray(v.id.toString(), project_tags) != -1) {
+                                str += model.replace('{id}', v.id).replace('{name}', v.param);
+                            } else {
+                                extra_tags.push(v);
+                            }
+                        })
+                        $('.proTabT ul').append(str);
+                    }
+
+                    if (res.data.property.length != 0) {
+                        var dom = $('input[name=form-field-checkbox]');
+                        var str = ''
+                        dom.each(function () {
+                            if ($.inArray(parseInt($(this).val()), res.data.property) != -1) {
+                                var val = $(this).next().html();
+                                switch (val) {
+                                    case '住宅':
+                                        str += '<li class="proTabZ">住宅</li>'
+                                        break;
+                                    case '公寓':
+                                        str += '<li class="proTabG">公寓</li>'
+                                        break;
+                                    case '商铺':
+                                        str += '<li class="proTabS">商铺</li>'
+                                        break;
+                                    case '写字楼':
+                                        str += '<li class="proTabX">写字楼</li>'
+                                        break;
+                                    case '别墅':
+                                        str += '<li class="proTabB">别墅</li>'
+                                        break;
+                                    case '车位':
+                                        str += '<li class="proTabZ">车位</li>'
+                                        break;
+                                    case '微墅':
+                                        str += '<li class="proTabG">微墅</li>'
+                                        break;
+                                    case '商墅':
+                                        str += '<li class="proTabS">商墅</li>'
+                                        break;
+                                }
+                            }
+                        })
+                        $('.proTab ul').append(str);
+                    }
+                    //    预览数据结束
                 })
             }
             oldData = {

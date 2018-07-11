@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <style>
         .login_all {
-            background: url('assets/images/loginBg.png') no-repeat;
+            background: url('assets/images/loginBg.jpg') no-repeat;
             background-size: cover;
             position: fixed;
             top: 0;
@@ -89,7 +89,7 @@
             <img src="assets/images/login_logo.png" alt="">
         </div>
         <div class="login_con">
-           <!-- <div class="login_title">项目平台后台</div>-->
+            <!-- <div class="login_title">项目平台后台</div>-->
             <div>
                 <input type="text" placeholder="请输入账号" id="account">
             </div>
@@ -127,7 +127,11 @@
         window.onload = function () {
             checkLogin();
         }
-
+        $(document).keydown(function (event) {
+            if (event.keyCode == 13) {
+                $('#login').click();
+            }
+        });
         $('#login').on('click', function () {
             var data = {
                 'account': $('#account').val(),
