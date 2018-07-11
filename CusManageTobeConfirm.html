@@ -219,7 +219,7 @@
                                                     <label class="lab_width">到访人数：</label>
                                                     <input class="inpt_width" disabled="disabled" type="text" value="" name="visit_num">
                                                 </div>
-                                                <div class="form-group">
+                                                <div class="form-group" id="card">
                                                     <label class="lab_width">身份证照片：</label>
                                                     <img class="cofimg_sty" src="assets/images/null.jpg" alt="" id="card_img_url">
                                                 </div>
@@ -293,10 +293,7 @@
                                                     <label class="lab_width">联系电话1：</label>
                                                     <input class="inpt_width" disabled="disabled" type="text" value="" name="butter_tel">
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">联系电话2：</label>
-                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="butter_tel">
-                                                </div>
+
                                                 <div class="form-group">
                                                     <label class="lab_width"></label>
                                                     <input class="inpt_width" type="text" style="border-color:transparent;background-color: transparent; ">
@@ -308,24 +305,16 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">联系电话1：</label>
-                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="check_client_tel">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">联系电话2：</label>
-                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="check_client_tel">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">联系电话3：</label>
-                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="check_client_tel">
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="client_tel">
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="lab_width">证件类型：</label>
-                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="check_card_type">
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="card_type">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">证件号码：</label>
-                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="check_card_num">
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="card_num">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">通讯住址：</label>
@@ -354,10 +343,7 @@
                                                     <label class="lab_width">联系电话1：</label>
                                                     <input class="inpt_width" disabled="disabled" type="text" value="" name="broker_tel">
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">联系电话2：</label>
-                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="broker_tel">
-                                                </div>
+
                                                 <div class="form-group">
                                                     <label class="lab_width">所属公司：</label>
                                                     <input class="inpt_width" disabled="disabled" type="text" value="" name="company_name">
@@ -369,24 +355,24 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">联系电话1：</label>
-                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="tel">
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="check_client_tel1">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">联系电话2：</label>
-                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="check_client_tel">
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="check_client_tel2">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">联系电话3：</label>
-                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="check_client_tel">
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="check_client_tel3">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">证件类型：</label>
-                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="card_type">
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="check_card_type">
 
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">证件号码：</label>
-                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="card_id">
+                                                    <input class="inpt_width" disabled="disabled" type="text" value="" name="check_card_num">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">通讯住址：</label>
@@ -692,18 +678,35 @@
                 $('input[name=property_advicer_wish]').val(res.data.property_advicer_wish);
                 $('input[name=visit_time]').val(res.data.visit_time);
                 if (res.data.card_img_url != '' || res.data.card_img_url == null) {
-                    $('#card_img_url').attr('src', config.address + res.data.card_img_url);
+                    var arr = res.data.card_img_url.split(','),
+                        imgModel=' <img class="cofimg_sty" src="{url}" alt="" >',
+                        str='';
+                    $.each(arr,function(k,v){
+                            str+=imgModel.replace('{url}',config.address+v);
+                    })
+
+                    $('#card').children('img').remove();
+                    $('#card').append(str);
                 }
                 if (res.data.verify_img_url != '' || res.data.verify_img_url == null) {
                     $('#verify_img_url').attr('src', config.address + res.data.verify_img_url);
                 }
                 if (res.data.visit_img_url != '' || res.data.visit_img_url == null) {
-                    $('#verify_img_url').attr('src', config.address + res.data.visit_img_url);
+
+                    $('#visit_img_url').attr('src', config.address + res.data.visit_img_url);
                 }
                 $('input[name=butter_name]').val(res.data.butter_name);
                 $('input[name=butter_tel]').val(res.data.butter_tel);
+                $('input[name=client_tel]').val(res.data.tel);
+                if (res.data.check_info.client_tel != '' || res.data.check_info.client_tel == null) {
+                    var sor=1,telArr=res.data.check_info.client_tel.split(',');
+                    $.each(telArr,function(k,v){
+                        $('input[name=check_client_tel'+(sor++)+']').val(v);
+                    })
+
+                }
                 $('input[name=check_client_name]').val(res.data.check_info.client_name);
-                $('input[name=check_client_tel]').val(res.data.check_info.client_tel);
+
                 $('input[name=check_card_type]').val(res.data.check_info.card_type);
                 $('input[name=check_card_num]').val(res.data.check_info.card_num);
                 $('input[name=check_address]').val(res.data.check_info.address);

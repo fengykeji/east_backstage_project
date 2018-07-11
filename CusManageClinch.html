@@ -318,7 +318,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">按揭银行：</label>
-                                                    <select class="inpt_width backList" name="bank_bank_bank_id">
+                                                    <select class="inpt_width bankList" name="bank_bank_bank_id">
 
                                                     </select>
                                                 </div>
@@ -634,7 +634,7 @@
                     str = '';
 
                 $.each(res.data[config.configList['BANK_TYPE']].param, function (k, v) {
-                    str += model.replace('{id}', v.param).replace('{name}', v.param);
+                    str += model.replace('{id}', v.id).replace('{name}', v.param);
                 })
                 $('.bankList').append(str);
             })
@@ -708,20 +708,21 @@
 
         })
         $('input[name=total_money]').on('change',function(){
-            var value=$(this).val();
+            var value=parseFloat($(this).val());
             if($('input[name=build_area]').val()!=''){
                 $('input[name=build_deal_money]').val((value/$('input[name=build_area]').val()).toFixed(2));
             }
 
             if($('input[name=inner_area]').val()!=''){
-                $('input[name=inner_deal_money]').val((value/$('input[name=build_area]').val()).toFixed(2));
+                $('input[name=inner_deal_money]').val((value/$('input[name=inner_area]').val()).toFixed(2));
             }
             if($('input[name=unpaid_money]').val()!=''){
+
                 if(value<$('input[name=unpaid_money]').val()){
                     alert('请输入正确的数值');
                     $('input[name=total_money]').val('');
                 }else{
-                    $('input[name=already_pay_money]').val((value/$('input[name=build_area]').val()).toFixed(2));
+                    $('input[name=already_pay_money]').val((value-$('input[name=unpaid_money]').val()).toFixed(2));
                 }
             }
 
@@ -730,7 +731,7 @@
                     alert('请输入正确的数值');
                     $('input[name=total_money]').val('');
                 }else {
-                    $('input[name=unpaid_money]').val((value / $('input[name=build_area]').val()).toFixed(2));
+                    $('input[name=unpaid_money]').val((value - $('input[name=already_pay_money]').val()).toFixed(2));
                 }
             }
 
@@ -866,22 +867,19 @@
                 alert('请选择成交时间');
                 return;
             }
-            var aj=false;
-            ajax.async=true;
-
+            aj=false;
             switch ( $('.payWay').val()) {
                 case '银行按揭贷款':
-
+                    aj= deal_bank_check();
                     break;
                 case '公积金贷款':
-
-                    aj=deal_fund(res.data);
+                    aj=deal_fund_check();
                     break;
                 case '综合贷款':
-                    aj=fund_bank(res.data);
+                    aj=fund_bank_check();
                     break;
                 case '分期付款':
-                    aj=deal_bank(res.data);
+                    window.location.href='CustomerManagement.html';
                     break;
                 case '一次性付款':
                     aj=true;
@@ -889,68 +887,87 @@
             }
 
             if(aj){
-
-                ajax.async=false;
                 ajax.get('user/yunsuan/state/subscribe',data, function (res) {
                     alert(res.msg);
                     if (res.code == 200) {
-                        window.location.href='CustomerManagement.html';
+                        aj.deal_id=res.data;
+                        switch ( $('.payWay').val()) {
+                            case '银行按揭贷款':
+                                aj=deal_bank(aj);
+
+                                break;
+                            case '公积金贷款':
+                                aj=deal_fund(aj);
+                                break;
+                            case '综合贷款':
+                                aj=fund_bank(aj);
+                                break;
+                            case '分期付款':
+                                window.location.href='CustomerManagement.html';
+                                break;
+                            case '一次性付款':
+                                aj=true;
+                                break;
+                        }
                     }
                 })
             }
 
+
+
+
+        }
+        function deal_bank_check(){
+            var data={
+                'down_payment':$('input[name=bank_down_payment]').val(),
+                'down_payment_repayment':$('input[name=bank_down_payment_repayment]').val(),
+                'bank_bank_id':$('select[name=bank_bank_bank_id]').val(),
+                'loan_money':$('input[name=bank_loan_money]').val(),
+                'loan_limit':$('input[name=bank_loan_limit]').val(),
+            };
+
+            if(data.down_payment=='' || data.down_payment==0){
+                alert('请输入首付款');
+                return false;
+            }
+            if(data.down_payment_repayment=='' || data.down_payment_repayment==0){
+                alert('请输入首付分期');
+                return false;
+            }
+            if(data.loan_money=='' || data.loan_money==0){
+                alert('请输入贷款金额');
+                return false;
+            }
+            if(data.loan_limit=='' || data.loan_limit==0){
+                alert('请输入贷款年限');
+                return false;
+            }
+            ajax.post('project/client/deal/fundBank',data,function(res){
+                alert(res.msg);
+                if (res.code == 200) {
+                    window.location.href='CustomerManagement.html';
+                }
+            })
+
+            return data;
+        }
+        function deal_bank(data){
+
+
         }
 
-        function deal_bank(){
+        function fund_bank_check(){
             var data={
-                    'down_payment':$('input[name=bank_down_payment]').val(),
-                    'down_payment_repayment':$('input[name=bank_down_payment_repayment]').val(),
-                    'bank_bank_id':$('select[name=bank_bank_bank_id]').val(),
-                    'loan_money':$('input[name=bank_loan_money]').val(),
-                    'loan_limit':$('input[name=bank_loan_limit]').val(),
-                    'deal_id':deal_id
-                },
-                sub=false;
-                if(data.down_payment=='' || data.down_payment==0){
-                    alert('请输入首付款');
-                    return false;
-                }
-                if(data.down_payment_repayment=='' || data.down_payment_repayment==0){
-                    alert('请输入首付分期');
-                    return false;
-                }
-                if(data.loan_money=='' || data.loan_money==0){
-                    alert('请输入贷款金额');
-                    return false;
-                }
-                if(data.loan_limit=='' || data.loan_limit==0){
-                    alert('请输入贷款年限');
-                    return false;
-                }
-                ajax.post('project/client/deal/fundBank',data,function(res){
-                    alert(res.msg);
-                    if (res.code == 200) {
-                        sub=true;
-                    }
-                })
-                if(sub){
-                    return true;
-                }
-        }
-        
-        function fund_bank(){
-            var data={
-                'down_payment':$('input[name=fund_bank_down_payment]').val(),
-                'bank_bank_id':$('select[name=fund_bank_bank_bank_id]').val(),
-                'bank_loan_money':$('input[name=fund_bank_bank_loan_money]').val(),
-                'bank_loan_limit':$('input[name=fund_bank_bank_loan_limit]').val(),
-                'down_payment_repayment':$('input[name=fund_bank_down_payment_repayment]').val(),
-                'fund_bank_id':$('select[name=fund_bank_fund_bank_id]').val(),
-                'fund_loan_money':$('input[name=fund_bank_fund_loan_money]').val(),
-                'fund_loan_limit':$('input[name=fund_bank_fund_loan_limit]').val(),
-                'deal_id':deal_id
-            },
-                 sub=false;
+                    'down_payment':$('input[name=fund_bank_down_payment]').val(),
+                    'bank_bank_id':$('select[name=fund_bank_bank_bank_id]').val(),
+                    'bank_loan_money':$('input[name=fund_bank_bank_loan_money]').val(),
+                    'bank_loan_limit':$('input[name=fund_bank_bank_loan_limit]').val(),
+                    'down_payment_repayment':$('input[name=fund_bank_down_payment_repayment]').val(),
+                    'fund_bank_id':$('select[name=fund_bank_fund_bank_id]').val(),
+                    'fund_loan_money':$('input[name=fund_bank_fund_loan_money]').val(),
+                    'fund_loan_limit':$('input[name=fund_bank_fund_loan_limit]').val(),
+                };
+
             if(data.down_payment=='' || data.down_payment==0){
                 alert('请输入首付款');
                 return false;
@@ -975,11 +992,13 @@
                 alert('请输入公积金贷款年限');
                 return false;
             }
-
+            return data;
+        }
+        function fund_bank(data){
             ajax.post('project/client/deal/fundBank',data,function(res){
                 alert(res.msg);
                 if (res.code == 200) {
-                    sub=true;
+                    window.location.href='CustomerManagement.html';
                 }
             })
             if(sub){
@@ -988,16 +1007,15 @@
         }
 
 
-        function deal_fund(deal_id){
+        function deal_fund_check(){
             var data={
-                'down_payment':$('input[name=fund_down_payment]').val(),
-                'down_payment_repayment':$('input[name=fund_down_payment_repayment]').val(),
-                'loan_money':$('input[name=fund_loan_money]').val(),
-                'loan_limit':$('input[name=fund_loan_limit]').val(),
-                'fund_bank_id':$('select[name=fund_bank_id]').val(),
-                'deal_id':deal_id
-            },
-                sub=false;
+                    'down_payment':$('input[name=fund_down_payment]').val(),
+                    'down_payment_repayment':$('input[name=fund_down_payment_repayment]').val(),
+                    'loan_money':$('input[name=fund_loan_money]').val(),
+                    'loan_limit':$('input[name=fund_loan_limit]').val(),
+                    'fund_bank_id':$('select[name=fund_bank_id]').val(),
+                };
+
             if(data.down_payment=='' || data.down_payment==0){
                 alert('请输入公积金首付款');
                 return false;
@@ -1014,16 +1032,18 @@
                 alert('请输入公积金贷款年限');
                 return false;
             }
+            return data;
+        }
 
+        function deal_fund(data){
+            console.log(data);
             ajax.post('project/client/deal/fund',data,function(res){
-                alert(res.msg);
+
                 if (res.code == 200) {
-                    sub=true;
+                    window.location.href='CustomerManagement.html';
                 }
             })
-            if(sub){
-                return true;
-            }
+
         }
     </script>
 </body>

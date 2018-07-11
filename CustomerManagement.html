@@ -174,7 +174,7 @@
                                                                 <th class="center">状态改变时间</th>
                                                                 <th class="center">失效倒计时</th>
                                                                 <th class="center">是否确认</th>
-                                                                <th class="center">到访确认人</th>
+                                                               <!-- <th class="center">到访确认人</th>-->
                                                                 <th class="center">分配时间</th>
                                                                 <th class="center">置业顾问</th>
                                                                 <!-- <th class="center">操作</th> -->
@@ -607,7 +607,7 @@
         var last_page_all;
         function getAllList(p) {
             var model =
-                ' <tr role="row" class="odd trAll" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td> <td class="center">{state}</td> <td class="center">{broker}</td> <td class="center">{broker_type}</td> <td class="center">{company_name}</td> <td class="center">{create_time}</td>  <td class="center">{visit_time}</td> <td class="center">{state_change_time}</td> <td class="center">{end_time}</td> <td class="center">已确认</td> <td class="center">{butter_name}</td> <td class="center">{allot_time}</td><td class="center">{advice_name}</td> </tr>',
+                ' <tr role="row" class="odd trAll" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td> <td class="center">{state}</td> <td class="center">{broker}</td> <td class="center">{broker_type}</td> <td class="center">{company_name}</td> <td class="center">{create_time}</td>  <td class="center">{visit_time}</td> <td class="center">{state_change_time}</td> <td class="center">{end_time}</td> <td class="center">{confirm}</td>  <td class="center">{allot_time}</td><td class="center">{advice_name}</td> </tr>',//<td class="center">{butter_name}</td>
                 // page =
                 // '<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>',
                 str = '',
@@ -620,6 +620,11 @@
                         if (v.allot_time == null || v.allot_time == '0000-00-00 00:00:00') {
                             v.allot_time = '未分配';
                         }
+                        if(v.state_name=='推荐'){
+                            v.confirm='未确认';
+                        }else{
+                            v.confirm='已确认';
+                        }
                         var tr = model.replace('{c_id}', v.client_id).replace('{id}', id++).replace(
                                 '{client_id}', v.client_id).replace('{name}', v.name).replace('{tel}',
                                 v.tel).replace('{state}', v.state_name).replace('{broker}', v.broker_agent_name)
@@ -627,12 +632,18 @@
                             .replace('{create_time}', v.create_time).replace('{visit_time}', v.visit_time)
                             .replace('{state_change_time}', v.state_change_time).replace(
                                 '{butter_name}', v.butter_name).replace('{allot_time}', v.allot_time).replace(
-                                '{advice_name}', v.advice_name);
-                        if (v.CountDown > 0) {
-                            tr = tr.replace('{end_time}', formatSeconds(v.CountDown));
-                        } else {
-                            tr = tr.replace('{end_time}', '已失效');
+                                '{advice_name}', v.advice_name).replace(
+                                '{confirm}', v.confirm);
+                        if(typeof v.CountDown=='number'){
+                            if (v.CountDown > 0) {
+                                tr = tr.replace('{end_time}', formatSeconds(v.CountDown));
+                            } else {
+                                tr = tr.replace('{end_time}', '已失效');
+                            }
+                        }else{
+                            tr= tr.replace('{end_time}', v.CountDown);
                         }
+
                         str += tr;
                     })
                     $('#all').append(str);
