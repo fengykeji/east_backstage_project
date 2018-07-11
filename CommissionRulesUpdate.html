@@ -341,7 +341,7 @@
     <script src="assets/js/config.js"></script>
     <script src="assets/js/public.js"></script>
     <script>
-        var id = $.getUrlVar('id');
+        var id =rule_id= $.getUrlVar('id');
         window.onload = function () {
             $('#header').load('public/header.html');
             $('#sidebar').load('public/menu.html');
@@ -567,7 +567,7 @@
                             '{c_id}', v.rule_id).replace('{key}', id++).replace('{rule_name}', v.rule_name)
                         .replace('{plan_end}', v.plan_end).replace('{plan_start}', v.plan_start).replace(
                             '{act_start}', v.act_start).replace('{act_end}', v.act_end).replace(
-                            '{state}', v.end_state_name).replace('{end_state_name}', v.end_state_name).replace('{rule_id}', id);
+                            '{state}', v.end_state_name).replace('{end_state_name}', v.end_state_name).replace('{rule_id}', rule_id);
                     if(v.is_screen==1){
                         str=str.replace('{check}','checked="checked"');
                     }else{
