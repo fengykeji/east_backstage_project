@@ -750,9 +750,6 @@
             var data={
                 'house_type_name':$('input[name=house_type_name]').val(),
                 'house_type':$('select[name=house]').val(),
-                'property_area_min':$('input[name=property_area_min]').val(),
-                'property_area_max':$('input[name=property_area_max]').val(),
-                'sell_point':$('#sell_point').val()
             };
             if(data.house_type_name==''){
                 alert('户型名称不能为空');
@@ -762,10 +759,19 @@
                 alert('请选择户型');
                 return false;
             }
+            if($('input[name=property_area_min]').val()!=''){
+                data.property_area_min=$('input[name=property_area_min]').val()
+            }
+            if($('input[name=property_area_max]').val()!=''){
+                data.property_area_max=$('input[name=property_area_max]').val()
+            }
+            if($('input[name=sell_point]').val()!=''){
+                data.sell_point=$('input[name=sell_point]').val()
+            }
 
             ajax.post('project/houseType/add',data,function(res){
                 alert(res.msg);
-                if(res.code=config.responseSuccess){
+                if(res.code==config.responseSuccess){
                     window.location.href='HouseInforOperate.html?id='+res.data;
                 }
             })
