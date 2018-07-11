@@ -675,7 +675,7 @@
         //成交佣金操作
         $(".dealComAdd").on('click', function () {
 
-            window.location.href = "DealComRuleSetBroker.html?id=" +  $.getUrlVar('id');
+            window.location.href = "DealComRuleSetBroker.html?id=" +  $.getUrlVar('id')+'&rule_id='+rule_id;
             return false;
         })
         //佣金金额修改编辑

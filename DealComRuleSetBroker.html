@@ -260,7 +260,8 @@
     <script src="assets/js/public.js"></script>
     <script>
         var id = $.getUrlVar('id'),
-            yunsuan = 0;
+            yunsuan = 0,
+            rule_id = $.getUrlVar('rule_id');
         window.onload = function () {
             $('#header').load('public/header.html');
             $('#sidebar').load('public/menu.html');
@@ -357,7 +358,7 @@
             ajax.post('project/rulePerson/brokerRule/create', data, function (res) {
                 alert(res.msg);
                 if(res.code==config.responseSuccess){
-                    window.location.href='CommissionRulesBrokerUpdate.html?id='+id;
+                    window.location.href='CommissionRulesBrokerUpdate.html?id='+id+'&rule_id='+rule_id;
                 }
             })
         })

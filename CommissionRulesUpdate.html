@@ -558,7 +558,7 @@
                 $.each(res.data.data, function (k, v) {
                     if (v.end_state_name != '已终止') {
                         var st = model +
-                            '<div class="hidden-sm hidden-xs action-buttons"> <a class="green" href="CommissionRulesBrokerUpdate.html?id={b_id}">编辑</a><a class="red person_stop" value="{c_id}" >停用</a> </div> </td> </tr>';
+                            '<div class="hidden-sm hidden-xs action-buttons"> <a class="green" href="CommissionRulesBrokerUpdate.html?id={b_id}&rule_id={rule_id}">编辑</a><a class="red person_stop" value="{c_id}" >停用</a> </div> </td> </tr>';
                     } else {
                         st = model;
                     }
@@ -567,7 +567,7 @@
                             '{c_id}', v.rule_id).replace('{key}', id++).replace('{rule_name}', v.rule_name)
                         .replace('{plan_end}', v.plan_end).replace('{plan_start}', v.plan_start).replace(
                             '{act_start}', v.act_start).replace('{act_end}', v.act_end).replace(
-                            '{state}', v.end_state_name).replace('{end_state_name}', v.end_state_name);
+                            '{state}', v.end_state_name).replace('{end_state_name}', v.end_state_name).replace('{rule_id}', id);
                     if(v.is_screen==1){
                         str=str.replace('{check}','checked="checked"');
                     }else{
