@@ -80,8 +80,7 @@
             height: 100px;
         }
 
-        .modal_judgment,
-        .modal_zhiYe,
+        .modal_editZhiYe,
         .modal_addZhiYe {
             display: none;
             background-color: rgba(0, 0, 0, .5);
@@ -122,7 +121,9 @@
         #dynamic-table td {
             text-align: center;
         }
-        .paginate_button,a{
+
+        .paginate_button,
+        a {
             cursor: pointer;
         }
     </style>
@@ -165,7 +166,7 @@
                     </ul>
                     <div class="operate_proInfo">
                         <button class="btn btn-danger addZhiYe">新增</button>
-                        <button class="btn btn-primary" onclick="javascript:history.go(-1)" id="backLastPage">关闭</button>
+                        <!-- <button class="btn btn-primary" onclick="javascript:history.go(-1)" id="backLastPage">关闭</button> -->
                     </div>
                 </div>
                 <!-- 内容开始 -->
@@ -258,6 +259,40 @@
             </div>
         </div>
     </div>
+    <!-- 置业顾问修改 -->
+    <div class="modal_editZhiYe">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="bootbox-close-button close closed">×</button>
+                    <h4 class="modal-title">置业顾问修改</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="bootbox-body" style="overflow: hidden; font-size: 14px;">
+                        <form class="bootbox-form">
+
+                            <div class="form-group" style="margin-bottom: 15px;overflow: hidden;">
+                                <div class="col-xs-12">
+                                    <label class="control-label no-padding-right" for="form-field-1-1" style="width: 100px;">姓名：</label>
+                                    <input class="inpt_width" name="advice_eidt_name">
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 0;overflow: hidden;">
+                                <div class="col-xs-12">
+                                    <label class="control-label no-padding-right" for="form-field-1-1" style="width: 100px;">电话号码：</label>
+                                    <input class="inpt_width" name="advice_eidt_tel">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
+                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="editAdvicer">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- basic scripts -->
 
     <!--[if !IE]> -->
@@ -320,7 +355,7 @@
             $('.modal_addZhiYe').css('display', 'block');
             return false;
         });
-        $('#addAdvicer').on('click',function(){
+        $('#addAdvicer').on('click', function () {
             var data = {
                 'advicer_name': $('input[name=advice_add_name]').val(),
                 'advicer_tel': $('input[name=advice_add_tel]').val()
@@ -349,7 +384,7 @@
             ajax.post('project/client/advicer/add', data, function (res) {
                 alert(res.msg);
                 if (res.code == config.responseSuccess) {
-                    getAdvicer(name, 1);
+                    getAdvicer(1);
                     $('.modal_addZhiYe').css('display', 'none');
                     $('input[name=advice_add_name]').val('');
                     $('input[name=advice_add_tel]').val('');
@@ -357,15 +392,52 @@
             })
         })
         //删除置业顾问
-        $(document).on('click','.delZhiYe',function(){
-            var delZYe=confirm('确认删除该项吗？');
-            if(delZYe){
-                $(this).parent().parent().parent().remove();
+        $(document).on('click', '.delZhiYe', function () {
+            var keys = $(this).parents('tr').attr('value');
+            var delZYe = confirm('确认删除该项吗？');
+            if (delZYe) {
+                var data = {
+                    'advicer_id': keys
+                };
+                ajax.post('project/client/advicer/del', data, function (res) {
+                    console.log(res);
+                    if (res.code == 200) {
+                        $(this).parents('tr').remove();
+                        alert('删除成功！');
+                        getAdvicer(1);
+                    }
+
+                })
             }
         })
         //修改
-        $(document).on('click','.editZhiYe',function(){
-            
+        var keys = '';
+        var names = '';
+        var tels = '';
+        $(document).on('click', '.editZhiYe', function () {
+            event.stopPropagation();
+            $('.modal_editZhiYe').css('display', 'block');
+            keys = $(this).parents('tr').attr('value');
+            return false;
+        })
+        $('#editAdvicer').on('click', function () {
+            names = $('input[name=advice_eidt_name]').val();
+            tels = $('input[name=advice_eidt_tel]').val();
+            var data = {
+                'advicer_id': keys,
+                'advicer_name': names,
+                'advicer_tel': tels
+            };
+            console.log(data);
+            ajax.post('project/client/advicer/update', data, function (res) {
+                console.log(res);
+                if (res.code == 200) {
+                    alert('修改成功！');
+                    $('.modal_editZhiYe').css('display', 'none');
+                    getAdvicer(1);
+                }
+
+            })
         })
         $('.closed').on('click', function () {
             $(this).parent().parent().parent().parent().css('display', 'none');
@@ -378,18 +450,20 @@
     <script>
         // 分页
         var last_page;
+
         function getAdvicer(p) {
+            $('.pageNum').remove();
+            $('.odd').remove();
             var data = {
                 'page': p
             };
             ajax.get('project/client/getAdvicerList', data, function (res) {
-                $('#advicer').children().remove();
                 var model =
-                    '<tr role="row" class="odd" value="{id}"><td class="center"> {key}</td><td class="center" id="advicer_name">{name}</td><td class="center">{tel}</td><td class="center"><div class="hidden-xs action-buttons"><a class="green editZhiYe">编辑</a><a class="red delZhiYe">删除</a></div></td></tr>'
+                    '<tr role="row" class="odd" value="{id}"><td class="center" >{key}</td><td class="center" >{name}</td><td class="center tel">{tel}</td><td class="center"><div class="hidden-xs action-buttons"><a class="green editZhiYe">编辑</a><a class="red delZhiYe">删除</a></div></td></tr>'
                 id = 15 * (p - 1) + 1,
                     str = '';
                 $.each(res.data.data, function (k, v) {
-                    str += model.replace('{id}', v.advicer_name).replace('{key}', id++).replace(
+                    str += model.replace('{id}', v.advicer_id).replace('{key}', id++).replace(
                         '{name}', v.advicer_name).replace('{tel}', v.advicer_tel);
 
                 })
@@ -399,6 +473,7 @@
             })
             $('.modal_zhiYe').css('display', 'block');
         }
+
         function Paging(res) {
             var page =
                 '<li class="paginate_button pageNum {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>';
@@ -443,8 +518,6 @@
         //点击事件操作
         function clickOper(e, p) {
             e.stopPropagation();
-            $('.pageNum').remove();
-            $('.odd').remove();
             getAdvicer(p);
         }
     </script>

@@ -260,7 +260,7 @@
 
         function getList(){
             ajax.get('project/houseType/list',{},function(res){
-                var model='<tr role="row" class="odd" value="{house_id}"> <td class="center">{id}</td> <td class="center">{name}</td> <td class="center">{type}</td> <td class="center">{area_min}㎡--{area_max}㎡</td> <td class="center">{pm}</td> <td class="center">{3d}</td> <td class="center">{xg}</td> <td class="center">{sj}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="HouseInforOperate.html">预览</a> <a class="green edit_leibie" href="HouseInforOperate.html?id={h_id}">编辑</a> <div class="red del_leibie" style="cursor: pointer">删除</div> </div> </td> </tr>',
+                var model='<tr role="row" class="odd" value="{house_id}"> <td class="center">{id}</td> <td class="center">{name}</td> <td class="center">{type}</td> <td class="center">{area_min}㎡--{area_max}㎡</td> <td class="center">{pm}</td> <td class="center">{3d}</td> <td class="center">{xg}</td> <td class="center">{sj}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="HouseInforOperate.html">查看</a> <a class="green edit_leibie" href="HouseInforOperate.html?id={h_id}">编辑</a> <a class="red del_leibie" style="cursor: pointer">删除</a> </div> </td> </tr>',
                     dom=$('#list'),
                     id=1,
                     str='';
@@ -282,6 +282,7 @@
                     }
                 })
             }
+            return false;
         })
 
 
