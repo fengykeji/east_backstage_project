@@ -1,5 +1,5 @@
 var config={
-    address:'http://120.27.21.136:2798/',//'http://120.78.69.178:2902/'
+    address:'http://120.27.21.136:2798/',//http://120.78.69.178:2902/
     responseError:400,
     responseSuccess:200,
     cookiePrefix:'yqd_',

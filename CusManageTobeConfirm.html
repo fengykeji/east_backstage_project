@@ -140,7 +140,9 @@
         #dynamic-table td {
             text-align: center;
         }
-        .paginate_button,a{
+
+        .paginate_button,
+        a {
             cursor: pointer;
         }
     </style>
@@ -515,7 +517,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-
+                    <button type="button" class="bootbox-close-button close closed">×</button>
                     <h4 class="modal-title">置业顾问添加</h4>
                 </div>
                 <div class="modal-body">
@@ -538,7 +540,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed" >取消</button>
+                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
                     <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="addAdvicer">确定</button>
                 </div>
             </div>
@@ -638,11 +640,14 @@
         });
         $(".InvalidVisit").on('click', function () {
             if ($(this).attr("checked", true)) {
-                ajax.get('config',{'id':config.configList['VALUE_CONFIRM_DISABLED_TYPE']},function(res){
-                    var model='<option value="{id}">{name}</option>',
-                        str='';
-                    $.each(res.data[config.configList['VALUE_CONFIRM_DISABLED_TYPE']].param,function(k,v){
-                        str+=model.replace('{id}',v.id).replace('{name}',v.param);
+                ajax.get('config', {
+                    'id': config.configList['VALUE_CONFIRM_DISABLED_TYPE']
+                }, function (res) {
+                    var model = '<option value="{id}">{name}</option>',
+                        str = '';
+                    $.each(res.data[config.configList['VALUE_CONFIRM_DISABLED_TYPE']].param, function (
+                        k, v) {
+                        str += model.replace('{id}', v.id).replace('{name}', v.param);
                     })
                     console.log(str);
                     $('select[name=disabled]').append(str);
@@ -651,18 +656,18 @@
 
             }
         });
-       
 
-        $('#disabled').click(function(){
-            var data={
-                'client_id':id,
+
+        $('#disabled').click(function () {
+            var data = {
+                'client_id': id,
                 'disabled_state': $('select[name=disabled]').val(),
-                'disabled_reason':$('#disabled_reason').val(),
+                'disabled_reason': $('#disabled_reason').val(),
             }
-            ajax.post('project/client/invalid',data,function(res){
+            ajax.post('project/client/invalid', data, function (res) {
                 alert(res.msg);
-                if(res.code==config.responseSuccess){
-                    window.location.href='CustomerManagement.html';
+                if (res.code == config.responseSuccess) {
+                    window.location.href = 'CustomerManagement.html';
                 }
             })
         })
