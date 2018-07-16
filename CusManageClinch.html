@@ -331,7 +331,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">贷款年限（年）：</label>
-                                                    <input class="inpt_width" type="number" min="0" value="bank_loan_limit">
+                                                    <input class="inpt_width" type="number" min="0" name="bank_loan_limit">
                                                 </div>
                                             </div>
                                         </div>
@@ -441,24 +441,11 @@
                                                                     <th class="center">时间</th>
                                                                     <th class="center">金额</th>
                                                                     <th class="center">提醒时间</th>
-                                                                    <th class="center">备注</th>
                                                                     <th class="center">操作</th>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="center">1</td>
-                                                                    <td class="center">2017-12-12</td>
-                                                                    <td class="center">4</td>
-                                                                    <td class="center">2017-12-12</td>
-                                                                    <td class="center">2梯4户</td>
-                                                                    <td class="center">
-                                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                                            <a class="green fenqiOper" href="#">修改</a>
-                                                                            <a class="red" href="#">删除</a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
+                                                            <tbody id="deal_stages">
+
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -490,7 +477,7 @@
                                     <label class="" style="width: 100px;">交款日期：</label>
                                     <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
                                         <div class="input-group">
-                                            <input class="form-control date-picker" type="text" data-date-format="yyyy-mm-dd">
+                                            <input class="form-control date-picker deal_stages" type="text" data-date-format="yyyy-mm-dd" name="stages_pay_time_add">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-calendar bigger-110"></i>
                                             </span>
@@ -503,7 +490,7 @@
                                     <label class="" style="width: 100px;">提醒日期：</label>
                                     <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
                                         <div class="input-group">
-                                            <input class="form-control date-picker" type="text" data-date-format="yyyy-mm-dd">
+                                            <input class="form-control date-picker deal_stages" type="text" data-date-format="yyyy-mm-dd" name="stages_notice_time_add">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-calendar bigger-110"></i>
                                             </span>
@@ -513,8 +500,8 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-12">
-                                    <label class="control-label no-padding-right" for="form-field-1-1" style="width: 100px;">付款金额：</label>
-                                    <input class="inpt_width">
+                                    <label class="control-label no-padding-right " for="form-field-1-1" style="width: 100px;">付款金额：</label>
+                                    <input class="inpt_width deal_stages" name="stages_pay_money_add">
                                 </div>
                             </div>
                         </form>
@@ -522,7 +509,61 @@
                 </div>
                 <div class="modal-footer">
                     <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
-                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="add">确定</button>
+                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="addDealStages">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal_fenqi_update" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="bootbox-close-button close closed">×</button>
+                    <h4 class="modal-title">分期付款</h4>
+                    <input class="form-control date-picker deal_stages" type="hidden"  name="stages_id">
+                </div>
+                <div class="modal-body">
+                    <div class="bootbox-body" style="overflow: hidden;">
+                        <form class="bootbox-form">
+                            <div class="form-group" style="margin-bottom: 15px;overflow: hidden;">
+                                <div class="col-xs-12">
+                                    <label class="" style="width: 100px;">交款日期：</label>
+                                    <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
+                                        <div class="input-group">
+                                            <input class="form-control date-picker deal_stages" type="text" data-date-format="yyyy-mm-dd" name="stages_pay_time_edit">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-calendar bigger-110"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 15px;overflow: hidden;">
+                                <div class="col-xs-12">
+                                    <label class="" style="width: 100px;">提醒日期：</label>
+                                    <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
+                                        <div class="input-group">
+                                            <input class="form-control date-picker deal_stages" type="text" data-date-format="yyyy-mm-dd" name="stages_notice_time_edit">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-calendar bigger-110"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label class="control-label no-padding-right " for="form-field-1-1" style="width: 100px;">付款金额：</label>
+                                    <input class="inpt_width deal_stages" name="stages_pay_money_edit">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
+                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="editStages">确定</button>
                 </div>
             </div>
         </div>
@@ -587,6 +628,7 @@
         }
     </script>
     <script>
+        var deal_id;
         function getInfo() {
             ajax.get('project/client/clientDealInfo', {
                 'client_id': id
@@ -666,6 +708,14 @@
             $('.modal_fenqi').css('display', 'block');
             return false;
         });
+        $(document).on('click',".editStages",function (event) {
+            event.stopPropagation();
+            $('input[name=stages_id]').val($(this).parents('tr').attr('value'));
+
+            $('.modal_fenqi_update').css('display', 'block');
+            return false;
+        });
+
         $('.closed').on('click', function () {
             $(this).parent().parent().parent().parent().css('display', 'none');
         })
@@ -693,10 +743,7 @@
                     $('.pawn_fenQi').css('display', 'none');
                     break;
                 case '分期付款':
-                    $('.pawn_yinHang').css('display', 'none');
-                    $('.pawn_Provident').css('display', 'none');
-                    $('.pawn_zuHe').css('display', 'none');
-                    $('.pawn_fenQi').css('display', 'block');
+
                     break;
                 case '一次性付款':
                     $('.pawn_yinHang').css('display', 'none');
@@ -868,6 +915,7 @@
                 return;
             }
             aj=false;
+            var is_stages=false;
             switch ( $('.payWay').val()) {
                 case '银行按揭贷款':
                     aj= deal_bank_check();
@@ -879,22 +927,24 @@
                     aj=fund_bank_check();
                     break;
                 case '分期付款':
-                    window.location.href='CustomerManagement.html';
+                    aj=true;
+                    is_stages=true;
                     break;
                 case '一次性付款':
                     aj=true;
                     break;
             }
+            var conf=confirm('成交信息一旦提交就不能再进行修改，确定执行此操作么？');
 
-            if(aj){
+            if(aj && conf){
                 ajax.get('user/yunsuan/state/subscribe',data, function (res) {
                     alert(res.msg);
                     if (res.code == 200) {
+                        deal_id=res.data;
                         aj.deal_id=res.data;
                         switch ( $('.payWay').val()) {
                             case '银行按揭贷款':
                                 aj=deal_bank(aj);
-
                                 break;
                             case '公积金贷款':
                                 aj=deal_fund(aj);
@@ -903,7 +953,12 @@
                                 aj=fund_bank(aj);
                                 break;
                             case '分期付款':
-                                window.location.href='CustomerManagement.html';
+                                $('.pawn_yinHang').css('display', 'none');
+                                $('.pawn_Provident').css('display', 'none');
+                                $('.pawn_zuHe').css('display', 'none');
+                                $('.pawn_fenQi').css('display', 'block');
+                                $('input').not('.deal_stages').attr('disabled','disabled');
+                                $('select').attr('disabled','disabled');
                                 break;
                             case '一次性付款':
                                 aj=true;
@@ -912,11 +967,94 @@
                     }
                 })
             }
+        }
 
+        $(document).on('click','#addDealStages',function(){
+            var data={
+                'deal_id':deal_id,
+                'pay_time':$('input[name=stages_pay_time_add]').val(),
+                'notice_time':$('input[name=stages_notice_time_add]').val(),
+                'pay_money':$('input[name=stages_pay_money_add]').val(),
+            }
 
+            if(data.pay_time==''){
+                alert('请输入交款时间');
+                return false;
+            }
+            if(data.notice_time==''){
+                alert('请输入提醒时间');
+                return false;
+            }
+            if(data.notice_time==''){
+                alert('请输入付款金额');
+                return false;
+            }
+            ajax.post('project/client/deal/stages/add',data,function(res){
 
+                if (res.code == 200) {
+                    $('.modal_fenqi').css('display', 'none');
+                    flushStagesList();
+                }
+            })
+        })
+
+        function flushStagesList(){
+            ajax.get('project/client/deal/stages/list',{'deal_id':deal_id},function(res){
+                if (res.code == 200) {
+                    $('#deal_stages').children().remove();
+                    var model=' <tr role="row" class="odd" value="{id}"> <td class="center">{key}</td> <td class="center">{pay_time}</td> <td class="center">{pay_money}</td> <td class="center">{notice_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <div class="green fenqiOper editStages" style="cursor: pointer">修改</div> <div class="red stages_del" style="cursor: pointer">删除</div> </div> </td> </tr>',
+                        str='',
+                        id=1;
+                   $.each(res.data,function(k,v) {
+                        str+=model.replace('{id}',v.id).replace('{key}',id++).replace('{pay_time}',v.pay_time).replace('{pay_money}',v.pay_money).replace('{notice_time}',v.notice_time)
+                   })
+                    console.log(str);
+                    $('#deal_stages').append(str);
+                }
+            })
 
         }
+
+        $(document).on('click','.stages_del',function(){
+            var id=$(this).parents('tr').attr('value'),
+                conf=confirm('确定删除该条佣金记录么？');
+            if(conf){
+                ajax.post('project/client/deal/stages/delete',{'id':id},function(res){
+                    alert(res.msg);
+                    if (res.code == 200) {
+                        flushStagesList();
+                    }
+                })
+            }
+        })
+
+        $(document).on('click','#editStages',function(){
+            var data={
+                'id':$('input[name=stages_id]').val(),
+                'pay_time':$('input[name=stages_pay_time_edit]').val(),
+                'notice_time':$('input[name=stages_notice_time_edit]').val(),
+                'pay_money':$('input[name=stages_pay_money_edit]').val(),
+            };
+
+            if(data.pay_time==''){
+                alert('请输入付款时间');
+                return false;
+            }
+            if(data.notice_time==''){
+                alert('请输入提醒时间');
+                return false;
+            }
+            if(data.notice_time==''){
+                alert('请输入付款金额');
+                return false;
+            }
+            ajax.post('project/client/deal/stages/update',data,function(res){
+                alert(res.msg);
+                if (res.code == 200) {
+                    flushStagesList();
+                }
+            })
+        })
         function deal_bank_check(){
             var data={
                 'down_payment':$('input[name=bank_down_payment]').val(),
@@ -942,18 +1080,15 @@
                 alert('请输入贷款年限');
                 return false;
             }
-            ajax.post('project/client/deal/fundBank',data,function(res){
-                alert(res.msg);
+            return data;
+        }
+        function deal_bank(data){
+            ajax.post('project/client/deal/bank',data,function(res){
+
                 if (res.code == 200) {
                     window.location.href='CustomerManagement.html';
                 }
             })
-
-            return data;
-        }
-        function deal_bank(data){
-
-
         }
 
         function fund_bank_check(){
@@ -996,7 +1131,6 @@
         }
         function fund_bank(data){
             ajax.post('project/client/deal/fundBank',data,function(res){
-                alert(res.msg);
                 if (res.code == 200) {
                     window.location.href='CustomerManagement.html';
                 }
@@ -1036,9 +1170,7 @@
         }
 
         function deal_fund(data){
-            console.log(data);
             ajax.post('project/client/deal/fund',data,function(res){
-
                 if (res.code == 200) {
                     window.location.href='CustomerManagement.html';
                 }

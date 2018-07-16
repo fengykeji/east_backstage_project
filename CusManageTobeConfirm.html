@@ -648,9 +648,9 @@
             var data = {
                 'client_id': id,
                 'disabled_state': $('select[name=disabled]').val(),
-                'disabled_reason': $('#disabled_reason').val(),
+                'reason': $('#disabled_reason').val(),
             }
-            ajax.post('project/client/invalid', data, function (res) {
+            ajax.get('user/yunsuan/state/invalid', data, function (res) {
                 alert(res.msg);
                 if (res.code == config.responseSuccess) {
                     window.location.href = 'CustomerManagement.html';
