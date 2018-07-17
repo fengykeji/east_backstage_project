@@ -1,5 +1,5 @@
 var config={
-    address:'http://120.27.21.136:2798/',//http://120.78.69.178:2902/
+    address:'http://120.27.21.136:2798/',//'http://120.78.69.178:2902/'
     responseError:400,
     responseSuccess:200,
     cookiePrefix:'yqd_',
@@ -54,7 +54,7 @@ function checkLogin(){
     }
 }
 
-
+var sub=false;
 var ajax={
     submitting:false,
 
@@ -105,13 +105,15 @@ var ajax={
 
     //post方法
     post:function(url,data,func){
-        if(this.submitting==true){
+
+        if(sub==true){
             return ;
         }
         if(func!=undefined){
             ajax.success=func;
         }
-        this.submitting=true;
+        sub=true;
+
         $.ajax({
             url: config.address+url,
             type: "POST",

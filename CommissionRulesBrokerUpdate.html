@@ -564,7 +564,7 @@
                 if (res.data.brokerRule != undefined) {
                     if (res.data.brokerRule[2] != undefined) {
                         model =
-                            '<tr role="row" class="odd" value="{a_id}"> <td class="center">{key}</td> <td class="center">{money_type}</td> <td class="center">{money}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="red " href="#">删除</a> </div> </td> </tr>'; //<a class="green edit_Com" href="#">编辑</a>
+                            '<tr role="row" class="odd" value="{a_id}"> <td class="center">{key}</td> <td class="center">{money_type}</td> <td class="center">{money}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <div class="red " style="cursor: pointer">删除</div> </div> </td> </tr>'; //<a class="green edit_Com" href="#">编辑</a>
                         id = 1;
                         str = '';
 
@@ -577,7 +577,7 @@
                     }
                     if (res.data.brokerRule[3] != undefined) {
                         model =
-                            '<tr role="row" class="odd" value="{a_id}"> <td class="center">{key}</td> <td class="center">{money_type}</td> <td class="center">{money}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="red " href="#">删除</a> </div> </td> </tr>'; //<a class="green edit_Com" href="#">编辑</a>
+                            '<tr role="row" class="odd" value="{a_id}"> <td class="center">{key}</td> <td class="center">{money_type}</td> <td class="center">{money}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <div class="red del" style="cursor: pointer">删除</div> </div> </td> </tr>'; //<a class="green edit_Com" href="#">编辑</a>
                         id = 1;
                         str = '';
                         $.each(res.data.brokerRule[3], function (k, v) {
