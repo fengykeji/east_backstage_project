@@ -504,7 +504,7 @@
 
         function deal(p) {
             var model =
-                '<tr role="row" class="odd trDeal" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td></td> <td class="center">{house_info}</td> <td class="center">{total_money}</td>  <td class="center">{build_deal_money}</td><td class="center">{design_time}</td><td class="center">{broker_name}</td><td class="center">{broker_type}</td><td class="center">{company_name}</td> <td class="center">{advice_name}</td><td class="center">{broker_name}</td><td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="CusManageClinchLook.html">查看</a> </div> </td> </tr>',
+                '<tr role="row" class="odd trDeal" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td></td> <td class="center">{house_info}</td> <td class="center">{total_money}</td>  <td class="center">{build_deal_money}</td><td class="center">{design_time}</td><td class="center">{broker_name}</td><td class="center">{broker_type}</td><td class="center">{company_name}</td> <td class="center">{advice_name}</td><td class="center">{broker_name}</td><td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="CusManageClinchLook.html?id={d_id}">查看</a> </div> </td> </tr>',
                 id = 15 * (p - 1) + 1,
                 str = '';
             ajax.get('project/client/deal', {
@@ -517,7 +517,7 @@
                             '{build_deal_money}', v.build_deal_money).replace('{design_time}', v.design_time)
                         .replace('{broker_name}', v.broker_name).replace('{broker_type}', v.broker_type)
                         .replace('{company_name}', v.company_name).replace('{advice_name}', v.advice_name)
-                        .replace('{broker_name}', v.broker_name);
+                        .replace('{broker_name}', v.broker_name).replace('{d_id}', v.client_id);
                     str += tr;
                 })
 
@@ -558,7 +558,7 @@
 
         function disabled(p) {
             var model =
-                '<tr role="row" class="odd trInvalid" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td></td> <td class="center">{current_state}</td> <td class="center">{broker_name}</td>  <td class="center">{company_name}</td><td class="center">{advice_name}</td><td class="center">无效</td><td class="center">{state_change_time}</td><td class="center">{disabled_state}</td> <td class="center">{disabled_reason}</td>  <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="CusManageInvalid.html">查看</a> </td> </tr>',
+                '<tr role="row" class="odd trInvalid" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td></td> <td class="center">{current_state}</td> <td class="center">{broker_name}</td>  <td class="center">{company_name}</td><td class="center">{advice_name}</td><td class="center">无效</td><td class="center">{state_change_time}</td><td class="center">{disabled_state}</td> <td class="center">{disabled_reason}</td>  <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="CusManageInvalid.html?id={d_id}">查看</a> </td> </tr>',
                 id = 15 * (p - 1) + 1,
                 str = '';
             ajax.get('project/client/disabled', {
@@ -570,7 +570,7 @@
                         .replace('{current_state}', v.current_state).replace('{broker_name}', v.broker_name)
                         .replace('{company_name}', v.company_name).replace('{advice_name}', v.advice_name)
                         .replace('{state_change_time}', v.state_change_time).replace('{disabled_state}',
-                            v.disabled_state).replace('{disabled_reason}', v.disabled_reason);
+                            v.disabled_state).replace('{disabled_reason}', v.disabled_reason).replace('{d_id}', v.client_id);
                     str += tr;
                 })
 
