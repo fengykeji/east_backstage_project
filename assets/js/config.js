@@ -125,7 +125,7 @@ var ajax={
             },
             data: data,
             complete:function(){
-                ajax.submitting=false;
+                sub=false;
             },
             success: function (res) {
                 ajax.res=res;
@@ -155,7 +155,7 @@ var ajax={
             },
             data: data,
             complete:function(){
-                ajax.submitting=false;
+                sub=false;
             },
             success: function (res) {
                 ajax.res=res;
@@ -170,13 +170,13 @@ var ajax={
 
     //上传图片
     file:function(formData,type,func){
-        if(this.submitting==true){
+        if(sub==true){
             return ;
         }
         if(func!=undefined){
             ajax.success=func;
         }
-        this.submitting=true;
+        sub=true;
         $.ajax({
             url : config.address+'project/file/upload?file_name='+type,
             type : 'POST',
@@ -188,7 +188,7 @@ var ajax={
             processData : false,
             contentType : false,
             complete:function(){
-                ajax.submitting=false;
+                sub=false;
             },
             success : function(res) {
                 ajax.res=res;
