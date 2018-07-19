@@ -372,6 +372,11 @@
                 alert('售楼处地址过长,请控制在100字之内');
                 return false;
             }
+            if(data.sale_address.length==''){
+                alert('售楼处地址不能为空');
+                return false;
+            }
+
 
             var checkBoxClass = $('.build_type'),
                 list = '';
@@ -379,6 +384,10 @@
                 list += $(this).val() + ',';
             })
             data.build_type = list.slice(0, -1);
+            if(data.build_type==''){
+                alert('建筑类型不能为空');
+                return false;
+            }
             ajax.post('project/update', data, function (res) {
                 alert(res.msg);
                 if (res.code == config.responseSuccess) {
