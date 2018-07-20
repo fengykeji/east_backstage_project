@@ -8,13 +8,6 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
-    <!--[if !IE]> -->
-
-    <!-- <link rel="stylesheet" href="assets/css/pace.css" />
-		<script data-pace-options='{ "ajax": true, "document": true, "eventLag": false, "elements": false }' src="components/PACE/pace.js"></script> -->
-
-    <!-- <![endif]-->
-
     <!-- bootstrap & fontawesome -->
     <link rel="stylesheet" href="assets/css/bootstrap.css" />
     <link rel="stylesheet" href="components/font-awesome/css/font-awesome.css" />
@@ -25,25 +18,14 @@
     <!-- ace styles -->
     <link rel="stylesheet" href="assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
 
-    <!--[if lte IE 9]>
-    <link rel="stylesheet" href="assets/css/ace-part2.css" class="ace-main-stylesheet" />
-    <![endif]-->
+
     <link rel="stylesheet" href="assets/css/ace-skins.css" />
     <link rel="stylesheet" href="assets/css/ace-rtl.css" />
 
-    <!--[if lte IE 9]>
-    <link rel="stylesheet" href="assets/css/ace-ie.css" />
-    <![endif]-->
 
     <!-- ace settings handler -->
     <script src="assets/js/ace-extra.js"></script>
 
-    <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
-
-    <!--[if lte IE 8]>
-    <script src="components/html5shiv/dist/html5shiv.min.js"></script>
-    <script src="components/respond/dest/respond.min.js"></script>
-    <![endif]-->
     <style>
         .checkSty_projectInfo {
             float: left;
@@ -63,24 +45,27 @@
             outline: none;
         } */
 
+        .modal_preview {
+            display: none;
+            background-color: rgba(0, 0, 0, .5);
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+
+        .modal_map .modal-content {
+            padding: 10px;
+        }
+
         .operate_proInfo {
             position: absolute;
             right: 100px;
             z-index: 100;
         }
-
-        /* .user-info {
-            max-width: 150px;
-            display: inline-block;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            text-align: left;
-            vertical-align: top;
-            line-height: 15px;
-            position: relative;
-            top: 14px;
-        } */
 
         .inpt_width {
             width: 70%;
@@ -88,6 +73,58 @@
 
         .lab_width {
             width: 120px;
+        }
+
+        /* 预览 */
+
+        .preBackImg {
+            background: url("assets/images/phone@3x.png") no-repeat;
+            background-size: 100% 100%;
+            width: 310px;
+            height: 600px;
+            margin: 0 auto;
+        }
+
+        .scanShowAll {
+            background-color: #F0F0F0;
+            /* background-color: rebeccapurple; */
+            width: 254px;
+            height: 446px;
+            margin: 0 auto;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .showDiv {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            background-color: white;
+            margin-bottom: 10px;
+        }
+
+        .showDiv>div {
+            min-height: 40px;
+            line-height: 40px;
+        }
+
+        .showDiv span {
+            color: #737373;
+            margin-right: 10px;
+            font-size: 12px;
+            vertical-align: top;
+        }
+
+        .showDiv p {
+            color: #323232;
+            display: inline-block;
+            margin: 0;
+            font-size: 13px;
+            max-width: 130px;
+        }
+
+        .showDiv hr {
+            margin: 0;
         }
     </style>
 </head>
@@ -106,11 +143,7 @@
         </script>
 
         <!-- 菜单开始 -->
-        <div id="sidebar" class="sidebar responsive ace-save-state">
-
-
-
-        </div>
+        <div id="sidebar" class="sidebar responsive ace-save-state"></div>
 
         <!-- /section:basics/sidebar -->
         <div class="main-content">
@@ -128,7 +161,7 @@
                         </li>
                     </ul>
                     <div class="operate_proInfo">
-                        <button class="btn btn-primary">预览</button>
+                        <button class="btn btn-primary preViewBtn">预览</button>
                         <button class="btn btn-danger" id="save">保存</button>
                     </div>
                 </div>
@@ -156,7 +189,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">*均价（㎡）：</label>
-                                                    <input class="inpt_width" type="number" min="0" id="average_price" >
+                                                    <input class="inpt_width" type="number" min="0" id="average_price">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">*价格区间（万）：</label>
@@ -199,7 +232,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">装修标准：</label>
-                                                    <input class="inpt_width" type="text" id="decoration_standard"  maxlength="40">
+                                                    <input class="inpt_width" type="text" id="decoration_standard" maxlength="40">
                                                 </div>
                                             </div>
                                         </div>
@@ -247,7 +280,115 @@
             </div>
         </div>
     </div>
-
+    <!-- 预览 -->
+    <div class="modal_preview">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="bootbox-close-button close closed">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="preBackImg" style="padding: 71px 0;">
+                        <div class="scanShowAll">
+                            <div class="showDiv">
+                                <div>
+                                    <span>设计公司</span>
+                                    <p class="YL_decoration_company"></p>
+                                </div>
+                                <hr>
+                                <div>
+                                    <span>售楼处地址</span>
+                                    <p class="YL_sale_address"></p>
+                                </div>
+                            </div>
+                            <div class="showDiv">
+                                <div>
+                                    <span>建筑类型</span>
+                                    <p class="YL_build_type"></p>
+                                </div>
+                                <hr>
+                                <div>
+                                    <span>均价</span>
+                                    <p></p>
+                                </div>
+                                <hr>
+                                <div>
+                                    <span>价格区间</span>
+                                    <p></p>
+                                </div>
+                                <hr>
+                                <div>
+                                    <span>占地面颊</span>
+                                    <p></p>
+                                </div>
+                                <hr>
+                                <div>
+                                    <span>装修标准</span>
+                                    <p></p>
+                                </div>
+                                <hr>
+                                <div>
+                                    <span>建筑面积</span>
+                                    <p></p>
+                                </div>
+                                <hr>
+                                <div>
+                                    <span>容积率</span>
+                                    <p></p>
+                                </div>
+                                <hr>
+                                <div>
+                                    <span>绿化率</span>
+                                    <p></p>
+                                </div>
+                                <hr>
+                                <div>
+                                    <span>规划户数</span>
+                                    <p></p>
+                                </div>
+                                <hr>
+                                <div>
+                                    <span>规划车位</span>
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="showDiv">
+                                <div>
+                                    <span>物业类型</span>
+                                    <p></p>
+                                </div>
+                                <hr>
+                                <div>
+                                    <span>物业公司</span>
+                                    <p></p>
+                                </div>
+                                <hr>
+                                <div>
+                                    <span>物业费</span>
+                                    <p></p>
+                                </div>
+                                <hr>
+                                <div>
+                                    <span>供暖方式</span>
+                                    <p></p>
+                                </div>
+                                <hr>
+                                <div>
+                                    <span>供水类型</span>
+                                    <p></p>
+                                </div>
+                                <hr>
+                                <div>
+                                    <span>供电类型</span>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- basic scripts -->
 
@@ -289,8 +430,6 @@
     <script src="assets/js/public.js"></script>
 
     <!-- 本页js -->
-    <script src="assets/js/jquery.cookie.js"></script>
-
     <script>
         window.onload = function () {
             getConfig();
@@ -343,9 +482,15 @@
                 if (res.data.build_type.length > 0) {
                     $.each(res.data.build_type, function (k, v) {
                         $('.build_type' + v).attr('checked', true);
+                        console.log(res.data.build_type);
                     })
                 }
 
+
+                // 预览数据
+                $('.YL_sale_address').html(res.data.sale_address);
+                $('.YL_decoration_company').html(res.data.decoration_company);
+                $('.YL_build_type').html();
             })
         }
         $('#save').click(function () {
@@ -366,9 +511,9 @@
                 'heat_supply': $('#heat_supply').val(),
                 'power_supply': $('#power_supply').val(),
                 'water_supply': $('#water_supply').val(),
-                'floor_space':$('#floor_space').val(),
+                'floor_space': $('#floor_space').val(),
             }
-            if(data.sale_address.length>=100){
+            if (data.sale_address.length >= 100) {
                 alert('售楼处地址过长,请控制在100字之内');
                 return false;
             }
@@ -394,6 +539,18 @@
                     window.location.reload();
                 }
             })
+        })
+    </script>
+    <script>
+        //预览
+        $('.preViewBtn').on('click', function (event) {
+            event.stopPropagation();
+
+            $('.modal_preview').css('display', 'block');
+            return false;
+        })
+        $('.closed').on('click', function () {
+            $(this).parent().parent().parent().parent().css('display', 'none');
         })
     </script>
 </body>

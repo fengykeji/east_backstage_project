@@ -91,6 +91,18 @@
             max-width: 180px;
             max-height: 180px;
         }
+        .pic_close1,.pic_close2{
+            position: absolute;
+            top: -8px;
+            right:100px;
+            z-index:100;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+        .pic_close1:hover,.pic_close2:hover{
+            color: #ABBAC3;
+        }
     </style>
 </head>
 
@@ -370,9 +382,10 @@
                     <div class="bootbox-body" style="overflow: hidden;">
                         <form class="bootbox-form">
                             <div class="form-group">
-                                <div class="col-xs-12">
+                                <div class="col-xs-12" style="position: relative;">
+                                    <span class="pic_close1">×</span>
                                     <label class=" control-label no-padding-right" for="form-field-1-1" style="width: 100px;vertical-align: top;">添加平面图：</label>
-                                    <label class="ace-file-input ace-file-multiple fileUpLabel" style="display: inline-block;width: 300px;">
+                                    <label class="ace-file-input ace-file-multiple fileUpLabel" style="display: inline-block;width: 300px;position: relative;">
                                         <input multiple="" type="file" class="3d_file_1">
                                         <img class="show_UpImg img_url pic_flat2_1" src="assets/images/null.jpg" style="display: none;width: 100%" address="">
                                         <span class="ace-file-container pic_wait_up1" data-title="点击上传图片">
@@ -385,10 +398,12 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="col-xs-12">
+                            <div class="form-group" >
+                                <div class="col-xs-12" style="position: relative;">
+                                    <span class="pic_close2">×</span>
                                     <label class=" control-label no-padding-right" for="form-field-1-1" style="width: 100px;vertical-align: top;">添加3D图：</label>
-                                    <label class="ace-file-input ace-file-multiple fileUpLabel" style="display: inline-block;width: 300px;">
+                                    <label class="ace-file-input ace-file-multiple fileUpLabel" style="display: inline-block;width: 300px;position: relative;">
+
                                         <input multiple="" type="file" class="3d_file_2">
                                         <img class="show_UpImg img_url pic_flat2_2" src="assets/images/null.jpg" class="" style="display: none;width: 100%" address="">
                                         <span class="ace-file-container pic_wait_up2" data-title="点击上传图片">
@@ -470,6 +485,9 @@
             });
             getConfig();
             getBaseInfo();
+            aa();
+
+
         }
     </script>
     <script>
@@ -485,6 +503,37 @@
                 $('select[name=house]').append(str);
             })
         }
+        //3d图上传删除操作
+        function aa() {
+            var srcN=$('.pic_flat2_1').attr('src');
+            var srcN2=$('.pic_flat2_2').attr('src');
+            if(srcN=='assets/images/null.jpg'){
+                $('.pic_close1').css('display','none');
+            }
+            if(srcN2=='assets/images/null.jpg'){
+                $('.pic_close2').css('display','none');
+            }
+        }
+        $(document).on('click','.pic_close1',function () {
+            var xx=confirm('确定删除该项？');
+            if(xx) {
+                $('.pic_flat2_1').attr('address', '');
+                $('.pic_flat2_1').hide();
+                $(this).css('display', 'none');
+                $('.pic_wait_up1').show();
+            }
+        })
+        $(document).on('click','.pic_close2',function () {
+            var xx=confirm('确定删除该项？');
+            if(xx) {
+                $('.pic_flat2_2').attr('address', '');
+                $('.pic_flat2_2').hide();
+                $(this).css('display', 'none');
+                $('.pic_wait_up2').show();
+            }
+        })
+
+
 
         function getBaseInfo() {
             ajax.get('project/houseType/detail', {
@@ -500,7 +549,7 @@
                     }
                 })
                 var model =
-                    '<tr role="row" class="odd" value="{id}"> <td class="center">{key}</td> <td class="center"> <img class="proLook_img" src="{url}" alt=""> </td> <td class="center">{comment}</td> <td class="center">{uploader}</td> <td class="center">{update_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons">  <div class="red del_leibie" style="cursor: pointer">删除</div> <div class="red up" style="cursor: pointer">上移</div> <div class="down blue"  style="cursor: pointer">下移</div> </div> </td> </tr>',//<a class="green edit_leibie" href="">编辑</a>
+                    '<tr role="row" class="odd" value="{id}"> <td class="center">{key}</td> <td class="center"> <img class="proLook_img" src="{url}" alt="" style="max-height: 180px;"> </td> <td class="center">{comment}</td> <td class="center">{uploader}</td> <td class="center">{update_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons">  <div class="red del_leibie" style="cursor: pointer">删除</div> <div class="red up" style="cursor: pointer">上移</div> <div class="down blue"  style="cursor: pointer">下移</div> </div> </td> </tr>',//<a class="green edit_leibie" href="">编辑</a>
                     key=1;
 
                 if (res.data.imgInfo[53].list.length > 0) {
@@ -744,6 +793,7 @@
         })
 
         $('.3d_file_1').on('change', function () {
+            $('.pic_close1').css('display','block');
             if ($(this)[0].files == undefined) {
                 return false;
             }
@@ -760,6 +810,7 @@
         })
 
         $('.3d_file_2').on('change', function () {
+            $('.pic_close2').css('display','block');
             if ($(this)[0].files == undefined) {
                 return false;
             }

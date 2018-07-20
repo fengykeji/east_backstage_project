@@ -99,6 +99,23 @@
         .paginate_button,a{
             cursor: pointer;
         }
+        .pic_close1,.pic_close2{
+            position: absolute;
+            top: -8px;
+            z-index:100;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+        .pic_close1{
+            right:290px;
+        }
+        .pic_close2{
+            right:90px;
+        }
+        .pic_close1:hover,.pic_close2:hover{
+            color: #ABBAC3;
+        }
     </style>
 </head>
 
@@ -260,10 +277,11 @@
                 </div>
                 <div class="modal-body">
                     <div class="bootbox-body" style="overflow: hidden;">
-                        <div>
+                        <div style="position: relative;">
+                            <span class="pic_close1">×</span>
                             <label id="zongImg_up" class="ace-file-input ace-file-multiple col-sm-3 fileUpLabel" style="width: 200px;">
                                 <input multiple="" type="file" id="phoneUpload">
-                                <img class="show_UpImg img_url" src="assets/images/null.jpg" id="phone" style="display: none;width: 100%">
+                                <img class="show_UpImg img_url pic_flat2_1" src="assets/images/null.jpg" id="phone" style="display: none;width: 100%">
                                 <span class="ace-file-container" data-title="点击上传平面图" id="nophone">
                                     <span class="ace-file-name" data-title="No File ...">
                                         <i class=" ace-icon ace-icon fa fa-picture-o">
@@ -273,10 +291,11 @@
                                 </span>
                             </label>
                         </div>
-                        <div>
-                            <label id="zongImg_up" class="ace-file-input ace-file-multiple col-sm-3 fileUpLabel" style="width: 200px;">
+                        <div style="position: relative;">
+                            <span class="pic_close2">×</span>
+                            <label id="zongImg_up" class="ace-file-input ace-file-multiple col-sm-3 fileUpLabel" style="width: 200px;position: relative;">
                                 <input multiple="" type="file" id="panoramaUpload">
-                                <img class="show_UpImg img_url" src="assets/images/null.jpg" id="panorama" style="display: none;width: 100%">
+                                <img class="show_UpImg img_url pic_flat2_2" src="assets/images/null.jpg" id="panorama" style="display: none;width: 100%">
                                 <span class="ace-file-container" data-title="点击上传3D图" id="nopanorama">
                                     <span class="ace-file-name" data-title="No File ...">
                                         <i class=" ace-icon ace-icon fa fa-picture-o">
@@ -364,9 +383,20 @@
                 path: "menu.html"
             });
             getImgInfo();
+            aa();
         }
     </script>
     <script>
+        function aa() {
+            var srcN=$('.pic_flat2_1').attr('src');
+            var srcN2=$('.pic_flat2_2').attr('src');
+            if(srcN=='assets/images/null.jpg'){
+                $('.pic_close1').css('display','none');
+            }
+            if(srcN2=='assets/images/null.jpg'){
+                $('.pic_close2').css('display','none');
+            }
+        }
         //新增楼栋信息
         $('.build_add').on('click', function () {
             window.location.href = "BuildInfoAdd.html";
@@ -414,6 +444,7 @@
 
 
         $('#phoneUpload').on('change', function () {
+            $('.pic_close1').css('display','block');
             if ($(this)[0].files[0].size >= config.allowImgFileSize) {
                 alert(config.ImgSizeBeyondErrMes);
                 return false;
@@ -426,6 +457,7 @@
             })
         })
         $('#panoramaUpload').on('change', function () {
+            $('.pic_close2').css('display','block');
             if ($(this)[0].files[0].size >= config.allowImgFileSize) {
                 alert(config.ImgSizeBeyondErrMes);
                 return false;
@@ -439,23 +471,36 @@
         })
         $('#float_add').click(function () {
             var data = {};
-            if ($('#panorama').css('display') != 'none') {
                 data.total_float_url_panorama = $('#panorama').attr('address');
-            }
-            if ($('#phone').css('display') != 'none') {
                 data.total_float_url_phone = $('#phone').attr('address');
-            }
             ajax.post('project/project/updateTotalFloatImg', data, function (res) {
                 alert(res.msg);
                 window.location.reload();
             })
         })
-
+        //删除上传总平图
+        $(document).on('click','.pic_close1',function () {
+            var xx=confirm('确定删除该项？');
+            if(xx){
+                $('#phone').attr('address','');
+                $('#phone').hide();
+                $(this).css('display','none');
+                $('#nophone').show();
+            }
+        })
+        $(document).on('click','.pic_close2',function () {
+            var xx=confirm('确定删除该项？');
+            if(xx) {
+                $('#panorama').attr('address', '');
+                $('#panorama').hide();
+                $(this).css('display', 'none');
+                $('#nopanorama').show();
+            }
+        })
         $(document).on('click', '.del', function () {
             var ms = confirm("您确定要删除该条信息么"),
                 id = $(this).parents('tr').attr('value');
             if (ms == true) {
-
                 ajax.post('project/build/delete', {
                     'build_id': id
                 }, function (res) {
