@@ -765,9 +765,15 @@
             if($('input[name=property_area_max]').val()!=''){
                 data.property_area_max=$('input[name=property_area_max]').val()
             }
-            if($('input[name=sell_point]').val()!=''){
+            var sell_point=$('#sell_point').val();
+            if(sell_point!=''){
+                if(sell_point.length>=200){
+                    alert('户型卖点请控制在200字以内');
+                    return false;
+                }
                 data.sell_point=$('input[name=sell_point]').val()
             }
+
 
             ajax.post('project/houseType/add',data,function(res){
                 alert(res.msg);

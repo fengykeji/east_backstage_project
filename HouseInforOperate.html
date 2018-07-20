@@ -624,6 +624,10 @@
                 alert('请选择户型');
                 return false;
             }
+            if(data.sell_point.length>200){
+                alert('户型卖点请控制在200字以内');
+                return false;
+            }
             ajax.post('project/houseType/update', data, function (res) {
                 alert(res.msg);
                 if (res.code = config.responseSuccess) {
