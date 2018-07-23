@@ -750,8 +750,8 @@
             var data={
                 'house_type_name':$('input[name=house_type_name]').val(),
                 'house_type':$('select[name=house]').val(),
-                'sell_point':$('#sell_point').val()
             };
+
             if(data.house_type_name==''){
                 alert('户型名称不能为空');
                 return false;
@@ -772,7 +772,7 @@
                     alert('户型卖点请控制在200字以内');
                     return false;
                 }
-                data.sell_point=$('input[name=sell_point]').val()
+                data.sell_point=sell_point;
             }
 
 
