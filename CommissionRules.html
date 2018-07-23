@@ -348,6 +348,8 @@
             ajax.get('project/ruleBasic/list', {
                 'page':p
             }, function (res) {
+                console.log(res);
+
                 var model =
                     '<tr role="row" class="odd" value="{a_id}"><td class="center">{key}</td><td class="center">{begin_time}</td><td class="center">{end_time}</td><td class="center">{recommend}</td><td class="center">{value}</td><td class="center">{deal}</td><td class="center">{broker_recommend}</td><td class="center">{broker_value}</td><td class="center">{broker_deal}</td><td class="center">{state}</td><td class="center"><div class="hidden-sm hidden-xs action-buttons"><a class="blue" href="CommissionRulesUpdate.html?id={c_id}">编辑</a>',
                     id = 15 * (p - 1) + 1,
