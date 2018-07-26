@@ -607,7 +607,8 @@
         $('.modal_zhiYe').css('display', 'none');
     })
 
-    $('#advicer_search').click(function () {
+    $('#advicer_search').click(function (event) {
+        event.stopPropagation();
         name = $('input[name=advicer_name_search]').val();
         if (name == '') {
             return false;
@@ -786,6 +787,8 @@
     var last_page;
 
     function getAdvicer(name, p) {
+        $('.pageNum').remove();
+        $('.odd').remove();
         var data = {
             'page': p
         };
@@ -842,18 +845,15 @@
 
     //.首页点击事件
     $('#prev').on('click', function (e) {
-        // alert(11);
         clickOper(e, 1);
     })
     //尾页点击事件
     $('#next').on('click', function (e) {
-        // alert(last_page)
         clickOper(e, last_page);
     })
     //分页点击事件
     $('#pagination').on('click', '.pageNum', function (e) {
         var p = $(this).children().html(); //当前点击页
-        // alert(p)
         clickOper(e, p);
     })
     //点击事件操作
