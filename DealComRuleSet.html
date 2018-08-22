@@ -516,9 +516,10 @@
 
             ajax.post('project/ruleCompany/brokerRule/create', data, function (res) {
                 alert(res.msg);
-                console.log(res.company_rule_id[0]);
+                // console.log(res.company_rule_id[0]);
                 if (res.code == config.responseSuccess) {
                     if (data.is_jump == 1) {
+                        alert(222);
                         insertId = res.data;
                         window.location.href='jumPointRules.html?id='+insertId;
                     } else {
