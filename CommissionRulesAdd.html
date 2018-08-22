@@ -136,20 +136,20 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="lab_width">到访确认保护期(分钟)：</label>
-                                                    <input class="inpt_width" placeholder="." type="number" min="0" name="recommend">
+                                                    <label class="lab_width">*到访确认保护期(分钟)：</label>
+                                                    <input class="inpt_width" placeholder="."  type="number" value="2440" min="0" name="recommend">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="lab_width">有效来访保护期(天)：</label>
-                                                    <input class="inpt_width" placeholder="" type="number" min="0" name="value">
+                                                    <label class="lab_width">*有效来访保护期(天)：</label>
+                                                    <input class="inpt_width" placeholder="" type="number" value="7" min="0" name="value">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="lab_width">成交保护期(天)：</label>
-                                                    <input class="inpt_width" placeholder="" type="number" min="0" name="deal">
+                                                    <label class="lab_width">*成交保护期(天)：</label>
+                                                    <input class="inpt_width" placeholder="" type="number" value="30" min="0" name="deal">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">推荐佣金结款周期(工作日)：</label>
-                                                    <input class="inpt_width" placeholder="" type="number" min="0" name="broker_recommend">
+                                                    <input class="inpt_width" placeholder="" type="number"  min="0" name="broker_recommend">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">到访佣金结款周期(工作日)：</label>
@@ -268,7 +268,22 @@
             if (yunsuan == 1) {
                 data.standard = $('select[name=standard]').val()
             }
-
+            if(data.begin_time==''){
+                alert('请选择开始时间');
+                return false;
+            }
+            if(data.visit_confirm_time==''){
+                alert('请输入到访确认保护期');
+                return false;
+            }
+            if(data.valid_visit_time==''){
+                alert('请输入有效来访保护期');
+                return false;
+            }
+            if(data.make_bargain_time==''){
+                alert('请输入成交保护期');
+                return false;
+            }
             ajax.post('project/ruleBasic/create', data, function (res) {
                 alert(res.msg);
                 if (res.code == config.responseSuccess) {
