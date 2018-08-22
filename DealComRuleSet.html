@@ -238,7 +238,8 @@
 
                                                 <div class="form-group">
                                                     <label class="lab_width">参数：</label>
-                                                    <input class="inpt_width" type="number" step="0.01" name="param">
+                                                    <input class="inpt_width ComParameter" type="number" step="0.01" name="param" placeholder="请输入固定金额">
+                                                    <!--比例 单价-->
                                                 </div>
 
 
@@ -457,7 +458,7 @@
                 id: config.configList['COMMISSION_TYPE']
             }, function (res) {
                 var dom = $('select[name=commission]'),
-                    model = '<option value="{id}">{name}</option>',
+                    model = '<option class="comCpa" value="{id}">{name}</option>',
                     str = '';
                 $.each(res.data[config.configList['COMMISSION_TYPE']].param, function (k, v) {
                     str += model.replace('{id}', v.id).replace('{name}', v.param);
@@ -515,12 +516,14 @@
 
             ajax.post('project/ruleCompany/brokerRule/create', data, function (res) {
                 alert(res.msg);
+                console.log(res.company_rule_id[0]);
                 if (res.code == config.responseSuccess) {
                     if (data.is_jump == 1) {
                         insertId = res.data;
                         window.location.href='jumPointRules.html?id='+insertId;
                     } else {
-                        history.back(-1);
+                        // history.back(-1);
+                        window.location.href='CommissionRulesCompanyReview.html';
                     }
                 }
             })
@@ -534,6 +537,18 @@
         // $('#backLastPage').on('click', function () {
         //     history.back(-1);
         // })
+        $('select[name=commission]').on('change',function () {
+            var val=$(this).val();
+            if(val==18){
+                $('.ComParameter').attr('placeholder','请输入固定金额');
+            }else if(val==19){
+                $('.ComParameter').attr('placeholder','请输入比例');
+            }else if(val==20){
+                $('.ComParameter').attr('placeholder','请输入单价');
+            }
+        })
+
+
     </script>
 
     <script>
