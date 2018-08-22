@@ -516,13 +516,18 @@
 
             ajax.post('project/ruleCompany/brokerRule/create', data, function (res) {
                 alert(res.msg);
-                // console.log(res.company_rule_id[0]);
+                if(res.msg==undefined){
+                    if(res.company_rule_id[0]=='The company rule id field is required'){
+                        alert('公司规则id不能为空！');
+                        history.go(-1);
+                    }
+                }
                 if (res.code == config.responseSuccess) {
                     if (data.is_jump == 1){
                         insertId = res.data;
                         window.location.href='jumPointRules.html?id='+insertId;
                     } else {
-                        window.history.go(-1);
+                        history.go(-1);
                     }
                 }
             })
