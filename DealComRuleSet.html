@@ -518,14 +518,11 @@
                 alert(res.msg);
                 // console.log(res.company_rule_id[0]);
                 if (res.code == config.responseSuccess) {
-                    if (data.is_jump == 1) {
-                        alert(222);
+                    if (data.is_jump == 1){
                         insertId = res.data;
                         window.location.href='jumPointRules.html?id='+insertId;
                     } else {
-                        // history.back(-1);
-                        alert(111);
-                        window.location.href='CommissionRulesCompanyReview.html';
+                        history.go(-1);
                     }
                 }
             })
