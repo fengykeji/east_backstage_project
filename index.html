@@ -515,14 +515,15 @@
                             'address', res.data.total_float_url);
                     }
                     if (res.data.yunsuan_url != '') {
-                        ajax.get('project/build/getYsBuild', {
-                            'url': res.data.yunsuan_url
-                        }, function (response) {
-                            $.each(response.data[0].content[0].rows, function (k, v) {
-                                yunsuan_project_dom.append('<option value="' + v.XMID +
-                                    '">' + v.XMMC + '</option>')
-                            })
-                        })
+                        // ajax.get('project/build/getYsBuild', {
+                        //     'url': res.data.yunsuan_url
+                        // }, function (response) {
+                        //     $.each(response.data[0].content[0].rows, function (k, v) {
+                        //         yunsuan_project_dom.append('<option value="' + v.XMID +
+                        //             '">' + v.XMMC + '</option>')
+                        //     })
+                        // })
+                        yunsuanIP(res.data.yunsuan_url);
                     }
                     if (res.data.yunsuan_id != '') {
                         yunsuan_project_dom.find("option[value=" + res.data.yunsuan_id + "]").attr(
@@ -823,6 +824,27 @@
             })
 
         })
+        $('#yunsuan_url').blur(function () {
+            var ip=$(this).val();
+            var reg =  /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/
+
+            if(reg.test(ip)){
+                yunsuanIP(ip);
+            }else{
+                alert('请输入正确的ip地址！');
+            }
+        })
+        //IP请求云算项目
+            function yunsuanIP(URL) {
+                ajax.get('project/build/getYsBuild', {
+                    'url': URL
+                }, function (response) {
+                    $.each(response.data[0].content[0].rows, function (k, v) {
+                        yunsuan_project_dom.append('<option value="' + v.XMID +
+                            '">' + v.XMMC + '</option>')
+                    })
+                })
+            }
     </script>
 
 </body>
