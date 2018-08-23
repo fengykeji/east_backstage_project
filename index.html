@@ -836,6 +836,7 @@
         })
         //IP请求云算项目
             function yunsuanIP(URL) {
+            var yunsuan_project_dom=$("select[name='yunsuan_project']")
                 ajax.get('project/build/getYsBuild', {
                     'url': URL
                 }, function (response) {
