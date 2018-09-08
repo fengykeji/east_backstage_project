@@ -50,46 +50,11 @@
             z-index: 1000;
         }
 
-        /* .modal-dialog {
-            margin: 0 auto;
-        }
-
-        .bootbox-body {
-            font-size: 18px;
-            margin-top: 25px;
-            text-align: center;
-        }
-
-        .modal-content {
-            padding: 30px 50px;
-        }
-
-        .modal-footer {
-            margin-top: 20px;
-        }
-
-        .close {
-            font-size: 32px;
-        } */
-
         .operate_proInfo {
             position: absolute;
             right: 100px;
             z-index: 100;
         }
-
-        /* .user-info {
-            max-width: 150px;
-            display: inline-block;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            text-align: left;
-            vertical-align: top;
-            line-height: 15px;
-            position: relative;
-            top: 14px;
-        } */
 
         .inpt_width {
             width: 70%;
@@ -98,16 +63,22 @@
         .lab_width {
             width: 150px;
         }
-
-        /* #dynamic-table td {
-            vertical-align: middle;
-        } */
-
         .pro_coop_record {
             text-align: center;
             font-size: 15px;
             color: #999999;
             padding: 20px 0;
+        }
+        @media screen and (min-width: 1400px) {
+            .notes{
+                color: #aaaaaa;
+            }
+        }
+        @media screen and (max-width:1400px) {
+            .notes{
+                color: #aaaaaa;
+                display: block;
+            }
         }
     </style>
 </head>
@@ -227,7 +198,42 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">报备号码是否隐藏：</label>
+                                                    <div class="inpt_width" style="display: inline-block;">
+                                                        <div class="radio" style="display: inline-block;">
+                                                            <label>
+                                                                <input  type="radio" class="ace" value="0" name="numHide">
+                                                                <span class="lbl">是</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="radio" style="display: inline-block;">
+                                                            <label>
+                                                                <input  type="radio" class="ace InvalidVisit" value="1" name="numHide">
+                                                                <span class="lbl">否</span>
+                                                            </label>
+                                                        </div>
+                                                        <span class="notes">（开启后报备只需要报备电话号码前三后四位）</span>
+                                                    </div>
 
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">展示完整号码阶段：</label>
+                                                    <div class="inpt_width" style="display: inline-block;">
+                                                        <div class="radio" style="display: inline-block;">
+                                                            <label>
+                                                                <input  type="radio" class="ace" value="0" name="numShow">
+                                                                <span class="lbl">有效确认</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="radio" style="display: inline-block;">
+                                                            <label>
+                                                                <input  type="radio" class="ace InvalidVisit" value="1" name="numShow">
+                                                                <span class="lbl">认购</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div style="clear: both;"></div>
                                         </div>

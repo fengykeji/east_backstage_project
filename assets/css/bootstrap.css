@@ -5920,7 +5920,8 @@ button.close {
   padding: 15px;
 }
 .modal-footer {
-  padding: 15px;
+  /*padding: 15px;*/
+  padding: 12px;
   text-align: right;
   border-top: 1px solid #e5e5e5;
 }
@@ -5944,7 +5945,7 @@ button.close {
 @media (min-width: 768px) {
   .modal-dialog {
     width: 600px;
-    margin: 30px auto;
+    margin: 0 auto;
   }
   .modal-content {
     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
@@ -6737,26 +6738,40 @@ a{
 }
 .bootbox-body {
   font-size: 18px;
-  margin-top: 25px;
+  /*margin-top: 25px;*/
   text-align: center;
+  height: 100%;
 }
 .modal-content {
-  padding: 30px 50px;
+  padding: 10px 30px;
+  height: 94%;
+  margin-top: 3%;
+  /*overflow-y: auto;*/
+}
+.modal-body{
+  height: 80%;
+  width: 100%;
+  /*background-color: indianred;*/
+  overflow-y: auto;
 }
 .modal-footer {
-  margin-top: 20px;
+  /*margin-top: 20px;*/
 }
 .close {
   font-size: 32px;
 }
 .modal-dialog {
-  margin: 100px auto;
+  /*margin: 100px auto;*/
+  position: relative;
+  top: 0;
+  bottom: 0;
+  height: 100%;
 }
 @media (max-height: 770px) {
   .modal-dialog {
-    margin: 15px auto!important;
-    height: 700px!important;
-    overflow-y: auto;
+    /*margin: 15px auto!important;*/
+    /*height: 700px!important;*/
+    /*overflow-y: auto;*/
   }
   .modal-content {
     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
