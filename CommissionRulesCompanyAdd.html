@@ -2,37 +2,36 @@
 <html lang="en">
 
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta charset="utf-8"/>
     <title>结佣规则</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
 
 
     <!-- bootstrap & fontawesome -->
-    <link rel="stylesheet" href="assets/css/bootstrap.css" />
-    <link rel="stylesheet" href="components/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap.css"/>
+    <link rel="stylesheet" href="components/font-awesome/css/font-awesome.css"/>
 
     <!-- text fonts -->
-    <link rel="stylesheet" href="assets/css/ace-fonts.css" />
+    <link rel="stylesheet" href="assets/css/ace-fonts.css"/>
 
     <!-- ace styles -->
-    <link rel="stylesheet" href="assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <link rel="stylesheet" href="assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style"/>
 
 
-    <link rel="stylesheet" href="assets/css/ace-skins.css" />
-    <link rel="stylesheet" href="assets/css/ace-rtl.css" />
-
+    <link rel="stylesheet" href="assets/css/ace-skins.css"/>
+    <link rel="stylesheet" href="assets/css/ace-rtl.css"/>
 
 
     <!-- ace settings handler -->
     <script src="assets/js/ace-extra.js"></script>
 
     <!-- 本页css -->
-    <link rel="stylesheet" href="components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css" />
-    <link rel="stylesheet" href="components/bootstrap-timepicker/css/bootstrap-timepicker.css" />
-    <link rel="stylesheet" href="components/bootstrap-daterangepicker/daterangepicker.css" />
-    <link rel="stylesheet" href="components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" />
+    <link rel="stylesheet" href="components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css"/>
+    <link rel="stylesheet" href="components/bootstrap-timepicker/css/bootstrap-timepicker.css"/>
+    <link rel="stylesheet" href="components/bootstrap-daterangepicker/daterangepicker.css"/>
+    <link rel="stylesheet" href="components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css"/>
     <style>
         .checkSty_projectInfo {
             float: left;
@@ -50,6 +49,7 @@
             right: 0;
             z-index: 1000;
         }
+
         .operate_proInfo {
             position: absolute;
             right: 100px;
@@ -64,7 +64,6 @@
             width: 150px;
         }
 
-
         .pro_coop_record {
             text-align: center;
             font-size: 15px;
@@ -73,12 +72,13 @@
         }
 
         @media screen and (min-width: 1400px) {
-            .notes{
+            .notes {
                 color: #aaaaaa;
             }
         }
-        @media screen and (max-width:1400px) {
-            .notes{
+
+        @media screen and (max-width: 1400px) {
+            .notes {
                 color: #aaaaaa;
                 display: block;
             }
@@ -87,269 +87,289 @@
 </head>
 
 <body class="no-skin">
-    <div id="header"></div>
+<div id="header"></div>
 
 
+<!-- /section:basics/navbar.layout -->
+<div class="main-container" id="main-container">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('main-container', 'fixed')
+        } catch (e) {
+        }
+    </script>
 
-    <!-- /section:basics/navbar.layout -->
-    <div class="main-container" id="main-container">
-        <script type="text/javascript">
-            try {
-                ace.settings.check('main-container', 'fixed')
-            } catch (e) {}
-        </script>
+    <!-- 菜单开始 -->
+    <div id="sidebar" class="sidebar responsive ace-save-state">
 
-        <!-- 菜单开始 -->
-        <div id="sidebar" class="sidebar responsive ace-save-state">
+    </div>
 
-        </div>
-
-        <!-- /section:basics/sidebar -->
-        <div class="main-content">
-            <div class="main-content-inner">
-                <div class="breadcrumbs" id="breadcrumbs">
-                    <script type="text/javascript">
-                        try {
-                            ace.settings.check('breadcrumbs', 'fixed')
-                        } catch (e) {}
-                    </script>
-                    <ul class="breadcrumb">
-                        <li>
-                            <i class="ace-icon fa fa-home home-icon"></i>
-                            <a href="CommissionRules.html">结佣规则</a>
-                            <a href="#">>公司规则</a>
-                        </li>
-                    </ul>
-                    <div class="operate_proInfo">
-                        <button class="btn btn-primary" id="add">新增</button>
-                        <button class="btn btn-danger" onclick="javascript:history.go(-1)" id="backLastPage">关闭</button>
-                    </div>
+    <!-- /section:basics/sidebar -->
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs" id="breadcrumbs">
+                <script type="text/javascript">
+                    try {
+                        ace.settings.check('breadcrumbs', 'fixed')
+                    } catch (e) {
+                    }
+                </script>
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="ace-icon fa fa-home home-icon"></i>
+                        <a href="CommissionRules.html">结佣规则</a>
+                        <a href="#">>公司规则</a>
+                    </li>
+                </ul>
+                <div class="operate_proInfo">
+                    <button class="btn btn-primary" id="add">新增</button>
+                    <button class="btn btn-danger" onclick="javascript:history.go(-1)" id="backLastPage">关闭</button>
                 </div>
-                <!-- 内容开始 -->
-                <div class="page-content">
-                    <div class="row" style="margin-top: 50px;">
-                        <div class="col-xs-12">
-                            <form class="form-horizontal" role="form">
-                                <div class="widget-box">
-                                    <div class="widget-header" style="position: relative;">
-                                        <h4 class="smaller" style="display: inline-block;">合同信息</h4>
-                                        <span>（甲方为项目方，乙方为销售方）</span>
-                                    </div>
-                                    <div class="widget-body">
-                                        <div class="widget-main">
-                                            <div class="col-xs-6" style="padding-left: 100px;">
-                                                <div class="form-group">
-                                                    <label class="lab_width">甲方单位：</label>
-                                                    <input class="inpt_width" type="text" name="project_name">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">甲方对接人：</label>
-                                                    <input class="inpt_width" type="text" name="project_docker">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">甲方对接人电话：</label>
-                                                    <input class="inpt_width" type="text" name="project_docker_tel">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">*合同计划开始时间：</label>
-                                                    <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control date-timepicker" name="compact_begin">
-                                                            <span class="input-group-addon">
+            </div>
+            <!-- 内容开始 -->
+            <div class="page-content">
+                <div class="row" style="margin-top: 50px;">
+                    <div class="col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="widget-box">
+                                <div class="widget-header" style="position: relative;">
+                                    <h4 class="smaller" style="display: inline-block;">合同信息</h4>
+                                    <span>（甲方为项目方，乙方为销售方）</span>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="widget-main">
+                                        <div class="col-xs-6" style="padding-left: 100px;">
+                                            <div class="form-group">
+                                                <label class="lab_width">*甲方单位：</label>
+                                                <input class="inpt_width" type="text" name="project_name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">*甲方对接人：</label>
+                                                <input class="inpt_width" type="tel" name="project_docker">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">*甲方对接人电话：</label>
+                                                <input class="inpt_width" type="text" name="project_docker_tel">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">*合同计划开始时间：</label>
+                                                <div class="inpt_width"
+                                                     style="display: inline-block;vertical-align: middle;">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control date-timepicker"
+                                                               name="compact_begin">
+                                                        <span class="input-group-addon">
                                                                 <i class="fa fa-clock-o bigger-110"></i>
                                                             </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">*合同计划结束时间：</label>
-                                                    <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control date-timepicker" name="compact_end">
-                                                            <span class="input-group-addon">
-                                                                <i class="fa fa-clock-o bigger-110"></i>
-                                                            </span>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <div class="col-xs-6" style="padding-left: 50px;">
-                                                <div class="form-group">
-                                                    <label class="lab_width">乙方单位：</label>
-                                                    <div class="inpt_width" style="display: inline-block;">
-                                                        <input type="hidden" name="sell_id">
-                                                        <input type="text" name="sell_name" disabled>
-                                                        <div class="btn btn-sm btn-info companySel" id="companyList" style="vertical-align: top;">选择</div>
-                                                    </div>
-
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">乙方对接人：</label>
-                                                    <input class="inpt_width" type="text" name="sell_docker">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">乙方对接人电话：</label>
-                                                    <input class="inpt_width" type="text" name="sell_docker_tel">
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="lab_width">*实际开始时间：</label>
-                                                    <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control date-timepicker" name="act_start">
-                                                            <span class="input-group-addon">
+                                            <div class="form-group">
+                                                <label class="lab_width">*合同计划结束时间：</label>
+                                                <div class="inpt_width"
+                                                     style="display: inline-block;vertical-align: middle;">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control date-timepicker"
+                                                               name="compact_end">
+                                                        <span class="input-group-addon">
                                                                 <i class="fa fa-clock-o bigger-110"></i>
                                                             </span>
-                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">是否驻场：</label>
-                                                    <div class="inpt_width" style="display: inline-block;">
-                                                        <div class="radio" style="display: inline-block;">
-                                                            <label>
-                                                                <input  type="radio" class="ace" value="0" name="resident">
-                                                                <span class="lbl">是</span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="radio" style="display: inline-block;">
-                                                            <label>
-                                                                <input  type="radio" class="ace InvalidVisit" value="1" name="resident">
-                                                                <span class="lbl">否</span>
-                                                            </label>
-                                                        </div>
-                                                        <span class="notes">（开启后到访确认由乙方公司指定人员确认）</span>
-                                                    </div>
-
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">报备号码是否隐藏：</label>
-                                                    <div class="inpt_width" style="display: inline-block;">
-                                                        <div class="radio" style="display: inline-block;">
-                                                            <label>
-                                                                <input  type="radio" class="ace" value="0" name="numHide">
-                                                                <span class="lbl">是</span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="radio" style="display: inline-block;">
-                                                            <label>
-                                                                <input  type="radio" class="ace InvalidVisit" value="1" name="numHide">
-                                                                <span class="lbl">否</span>
-                                                            </label>
-                                                        </div>
-                                                        <span class="notes">（开启后报备只需要报备电话号码前三后四位）</span>
-                                                    </div>
-
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">展示完整号码阶段：</label>
-                                                    <div class="inpt_width" style="display: inline-block;">
-                                                        <div class="radio" style="display: inline-block;">
-                                                            <label>
-                                                                <input  type="radio" class="ace" value="0" name="numShow">
-                                                                <span class="lbl">有效确认</span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="radio" style="display: inline-block;">
-                                                            <label>
-                                                                <input  type="radio" class="ace InvalidVisit" value="1" name="numShow">
-                                                                <span class="lbl">认购</span>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
                                             </div>
-                                            <div style="clear: both;"></div>
+                                            <div class="form-group">
+                                                <label class="lab_width">规则类型：</label>
+                                                <select class="form-control inpt_width ruleType" style="display: inline-block;"
+                                                        name="">
+
+                                                </select>
+                                            </div>
                                         </div>
+
+                                        <div class="col-xs-6" style="padding-left: 50px;">
+                                            <div class="form-group">
+                                                <label class="lab_width">*乙方单位：</label>
+                                                <div class="inpt_width" style="display: inline-block;">
+                                                    <input type="hidden" name="sell_id">
+                                                    <input type="text" name="sell_name" disabled>
+                                                    <div class="btn btn-sm btn-info companySel" id="companyList"
+                                                         style="vertical-align: top;">选择
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">*乙方对接人：</label>
+                                                <input class="inpt_width" type="text" name="sell_docker">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">*乙方对接人电话：</label>
+                                                <input class="inpt_width" type="tel" name="sell_docker_tel">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="lab_width">*实际开始时间：</label>
+                                                <div class="inpt_width"
+                                                     style="display: inline-block;vertical-align: middle;">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control date-timepicker"
+                                                               name="act_start">
+                                                        <span class="input-group-addon">
+                                                                <i class="fa fa-clock-o bigger-110"></i>
+                                                            </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">是否驻场：</label>
+                                                <div class="inpt_width" style="display: inline-block;">
+                                                    <div class="radio" style="display: inline-block;">
+                                                        <label>
+                                                            <input type="radio" class="ace" value="1" name="resident"
+                                                                   checked="checked">
+                                                            <span class="lbl">是</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio" style="display: inline-block;">
+                                                        <label>
+                                                            <input type="radio" class="ace InvalidVisit" value="0"
+                                                                   name="resident">
+                                                            <span class="lbl">否</span>
+                                                        </label>
+                                                    </div>
+                                                    <span class="notes">（开启后到访确认由乙方公司指定人员确认）</span>
+                                                </div>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">报备号码是否隐藏：</label>
+                                                <div class="inpt_width" style="display: inline-block;">
+                                                    <div class="radio" style="display: inline-block;">
+                                                        <label>
+                                                            <input type="radio" class="ace numHide" value="0"
+                                                                   name="numHide">
+                                                            <span class="lbl">是</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio" style="display: inline-block;">
+                                                        <label>
+                                                            <input type="radio" class="ace InvalidVisit numHide"
+                                                                   value="1" name="numHide" checked="checked">
+                                                            <span class="lbl">否</span>
+                                                        </label>
+                                                    </div>
+                                                    <span class="notes">（开启后报备只需要报备电话号码前三后四位）</span>
+                                                </div>
+
+                                            </div>
+                                            <div class="form-group allTel">
+                                                <label class="lab_width">展示完整号码阶段：</label>
+                                                <div class="inpt_width" style="display: inline-block;">
+                                                    <div class="radio" style="display: inline-block;">
+                                                        <label>
+                                                            <input type="radio" class="ace" value="2" name="numShow" checked="checked">
+                                                            <span class="lbl">有效确认</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio" style="display: inline-block;">
+                                                        <label>
+                                                            <input type="radio" class="ace InvalidVisit" value="5"
+                                                                   name="numShow">
+                                                            <span class="lbl">认购</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div style="clear: both;"></div>
                                     </div>
                                 </div>
+                            </div>
 
-                                <!-- <div class="widget-box" style="margin-top: 20px;">
-                                    <div class="widget-header">
-                                        <h4 class="smaller">合作项目记录</h4>
-                                    </div>
-                                    <div class="widget-body">
-                                        <div class="widget-main" style="overflow: hidden;">
-                                            &lt;!&ndash; 以下两个div只存在一个 无数据就第一个 有数据就第二个 &ndash;&gt;
-                                            <div class="col-xs-12">
-                                                <p class="pro_coop_record">暂无合作项目记录！</p>
-                                            </div>
-                                            <div class="col-xs-12">
-                                                <div>
-                                                    <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
-                                                        <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
-                                                            <thead>
-                                                                <tr role="row">
-                                                                    <th class="center">序号</th>
-                                                                    <th class="center">项目名称</th>
-                                                                    <th class="center">公司名称</th>
-                                                                    <th class="center">开始时间</th>
-                                                                    <th class="center">截止时间</th>
-                                                                    <th class="center">区域</th>
-                                                                    <th class="center">推荐客户数量</th>
-                                                                    <th class="center">到访数量</th>
-                                                                    <th class="center">成交数量</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="center">1</td>
-                                                                    <td class="center">云算公馆A</td>
-                                                                    <td class="center">云算****公司</td>
-                                                                    <td class="center">2015-12-12</td>
-                                                                    <td class="center">2015-12-12</td>
-                                                                    <td class="center">成都-郫都区</td>
-                                                                    <td class="center">100</td>
-                                                                    <td class="center">100</td>
-                                                                    <td class="center">100</td>
-                                                                </tr>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="center">2</td>
-                                                                    <td class="center">云算公馆A</td>
-                                                                    <td class="center">云算****公司</td>
-                                                                    <td class="center">2015-12-12</td>
-                                                                    <td class="center">2015-12-12</td>
-                                                                    <td class="center">成都-郫都区</td>
-                                                                    <td class="center">100</td>
-                                                                    <td class="center">100</td>
-                                                                    <td class="center">100</td>
-                                                                </tr>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="center">3</td>
-                                                                    <td class="center">云算公馆A</td>
-                                                                    <td class="center">云算****公司</td>
-                                                                    <td class="center">2015-12-12</td>
-                                                                    <td class="center">2015-12-12</td>
-                                                                    <td class="center">成都-郫都区</td>
-                                                                    <td class="center">100</td>
-                                                                    <td class="center">100</td>
-                                                                    <td class="center">100</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                        <div class="row">
-                                                            <div class="col-xs-12">
-                                                                <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
-                                                                    <ul class="pagination">
-                                                                        <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_previous">
-                                                                            <a href="#">上一页</a>
-                                                                        </li>
-                                                                        <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">1</a>
-                                                                        </li>
-                                                                        <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">2</a>
-                                                                        </li>
-                                                                        <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
-                                                                            <a href="#">3</a>
-                                                                        </li>
-                                                                        <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_next">
-                                                                            <a href="#">下一页</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
+                            <!-- <div class="widget-box" style="margin-top: 20px;">
+                                <div class="widget-header">
+                                    <h4 class="smaller">合作项目记录</h4>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="widget-main" style="overflow: hidden;">
+                                        &lt;!&ndash; 以下两个div只存在一个 无数据就第一个 有数据就第二个 &ndash;&gt;
+                                        <div class="col-xs-12">
+                                            <p class="pro_coop_record">暂无合作项目记录！</p>
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <div>
+                                                <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
+                                                    <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+                                                        <thead>
+                                                            <tr role="row">
+                                                                <th class="center">序号</th>
+                                                                <th class="center">项目名称</th>
+                                                                <th class="center">公司名称</th>
+                                                                <th class="center">开始时间</th>
+                                                                <th class="center">截止时间</th>
+                                                                <th class="center">区域</th>
+                                                                <th class="center">推荐客户数量</th>
+                                                                <th class="center">到访数量</th>
+                                                                <th class="center">成交数量</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr role="row" class="odd">
+                                                                <td class="center">1</td>
+                                                                <td class="center">云算公馆A</td>
+                                                                <td class="center">云算****公司</td>
+                                                                <td class="center">2015-12-12</td>
+                                                                <td class="center">2015-12-12</td>
+                                                                <td class="center">成都-郫都区</td>
+                                                                <td class="center">100</td>
+                                                                <td class="center">100</td>
+                                                                <td class="center">100</td>
+                                                            </tr>
+                                                            <tr role="row" class="odd">
+                                                                <td class="center">2</td>
+                                                                <td class="center">云算公馆A</td>
+                                                                <td class="center">云算****公司</td>
+                                                                <td class="center">2015-12-12</td>
+                                                                <td class="center">2015-12-12</td>
+                                                                <td class="center">成都-郫都区</td>
+                                                                <td class="center">100</td>
+                                                                <td class="center">100</td>
+                                                                <td class="center">100</td>
+                                                            </tr>
+                                                            <tr role="row" class="odd">
+                                                                <td class="center">3</td>
+                                                                <td class="center">云算公馆A</td>
+                                                                <td class="center">云算****公司</td>
+                                                                <td class="center">2015-12-12</td>
+                                                                <td class="center">2015-12-12</td>
+                                                                <td class="center">成都-郫都区</td>
+                                                                <td class="center">100</td>
+                                                                <td class="center">100</td>
+                                                                <td class="center">100</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
+                                                                <ul class="pagination">
+                                                                    <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_previous">
+                                                                        <a href="#">上一页</a>
+                                                                    </li>
+                                                                    <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0">
+                                                                        <a href="#">1</a>
+                                                                    </li>
+                                                                    <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
+                                                                        <a href="#">2</a>
+                                                                    </li>
+                                                                    <li class="paginate_button " aria-controls="dynamic-table" tabindex="0">
+                                                                        <a href="#">3</a>
+                                                                    </li>
+                                                                    <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_next">
+                                                                        <a href="#">下一页</a>
+                                                                    </li>
+                                                                </ul>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -357,278 +377,330 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>-->
-                            </form>
+                                </div>
+                            </div>-->
+                        </form>
 
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- 乙方公司选择 -->
-    <div class="modal_checkCompany">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="bootbox-close-button close closed">×</button>
-                    <h4 class="modal-title">公司选择</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="bootbox-body" style="overflow: hidden;font-size: 14px;text-align: left;">
-                        <div class="col-xs-12" style="overflow: scroll;height: 100%;">
-                            <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer" style="width:900px;">
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <div id="dynamic-table_filter">
-                                            <input type="search" class="form-control input-sm" placeholder="请输入公司名称" style="vertical-align: top;width: 250px;" name="companySearch">
-                                            <button class="btn btn-xs btn-purple" style="vertical-align: top;" id="search">查询</button>
-                                        </div>
+<!-- 乙方公司选择 -->
+<div class="modal_checkCompany">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close closed">×</button>
+                <h4 class="modal-title">公司选择</h4>
+            </div>
+            <div class="modal-body">
+                <div class="bootbox-body" style="overflow: hidden;font-size: 14px;text-align: left;">
+                    <div class="col-xs-12" style="overflow: scroll;height: 100%;">
+                        <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer"
+                             style="width:900px;">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div id="dynamic-table_filter">
+                                        <input type="search" class="form-control input-sm" placeholder="请输入公司名称"
+                                               style="vertical-align: top;width: 250px;" name="companySearch">
+                                        <button class="btn btn-xs btn-purple" style="vertical-align: top;" id="search">
+                                            查询
+                                        </button>
                                     </div>
                                 </div>
-                                <table class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
-                                    <thead>
-                                        <tr role="row">
-                                            <th></th>
-                                            <th class="center">序号</th>
-                                            <th class="center">公司名称</th>
-                                            <th class="center">地址</th>
-                                        </tr>
-                                    </thead>
-
-                                    <tbody id="company_list">
-
-
-                                    </tbody>
-                                </table>
-
                             </div>
+                            <table class="table table-striped table-bordered table-hover dataTable no-footer"
+                                   role="grid" aria-describedby="dynamic-table_info">
+                                <thead>
+                                <tr role="row">
+                                    <th></th>
+                                    <th class="center">序号</th>
+                                    <th class="center">公司名称</th>
+                                    <th class="center">地址</th>
+                                </tr>
+                                </thead>
+
+                                <tbody id="company_list">
+
+
+                                </tbody>
+                            </table>
+
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button data-bb-handler="cancel" type="button" class="btn btn-sm btn-default closed">取消</button>
-                    <button data-bb-handler="confirm" type="button" class="btn btn-sm btn-primary" id="select">确定</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-bb-handler="cancel" type="button" class="btn btn-sm btn-default closed">取消</button>
+                <button data-bb-handler="confirm" type="button" class="btn btn-sm btn-primary" id="select">确定</button>
             </div>
         </div>
     </div>
+</div>
 
 
+<!-- basic scripts -->
 
-    <!-- basic scripts -->
+<!--[if !IE]> -->
+<script src="components/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+    if ('ontouchstart' in document.documentElement) document.write(
+        "<script src='components/_mod/jquery.mobile.custom/jquery.mobile.custom.js'>" + "<" + "/script>");
+</script>
+<script src="components/bootstrap/dist/js/bootstrap.js"></script>
 
-    <!--[if !IE]> -->
-    <script src="components/jquery/dist/jquery.js"></script>
-    <script type="text/javascript">
-        if ('ontouchstart' in document.documentElement) document.write(
-            "<script src='components/_mod/jquery.mobile.custom/jquery.mobile.custom.js'>" + "<" + "/script>");
-    </script>
-    <script src="components/bootstrap/dist/js/bootstrap.js"></script>
-
-    <!-- ace scripts -->
-    <script src="assets/js/src/elements.scroller.js"></script>
-    <script src="assets/js/src/elements.colorpicker.js"></script>
-    <script src="assets/js/src/elements.fileinput.js"></script>
-    <script src="assets/js/src/elements.typeahead.js"></script>
-    <script src="assets/js/src/elements.wysiwyg.js"></script>
-    <script src="assets/js/src/elements.spinner.js"></script>
-    <script src="assets/js/src/elements.treeview.js"></script>
-    <script src="assets/js/src/elements.wizard.js"></script>
-    <script src="assets/js/src/elements.aside.js"></script>
-    <script src="assets/js/src/ace.js"></script>
-    <script src="assets/js/src/ace.basics.js"></script>
-    <script src="assets/js/src/ace.scrolltop.js"></script>
-    <script src="assets/js/src/ace.ajax-content.js"></script>
-    <script src="assets/js/src/ace.touch-drag.js"></script>
-    <script src="assets/js/src/ace.sidebar.js"></script>
-    <script src="assets/js/src/ace.sidebar-scroll-1.js"></script>
-    <script src="assets/js/src/ace.submenu-hover.js"></script>
-    <script src="assets/js/src/ace.widget-box.js"></script>
-    <script src="assets/js/src/ace.settings.js"></script>
-    <script src="assets/js/src/ace.settings-rtl.js"></script>
-    <script src="assets/js/src/ace.settings-skin.js"></script>
-    <script src="assets/js/src/ace.widget-on-reload.js"></script>
-    <script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
-    <!-- 本页js -->
-    <script src="assets/js/jquery.cookie.js"></script>
-    <script>
-        window.onload = function () {
-            $('#header').load('public/header.html');
-            $('#sidebar').load('public/menu.html');
-            var menu_data = {
-                opening: '',
-                acting: '.jieyongguize'
-            }
-            $.cookie('menu_data', JSON.stringify(menu_data), {
-                path: "menu.html"
-            });
+<!-- ace scripts -->
+<script src="assets/js/src/elements.scroller.js"></script>
+<script src="assets/js/src/elements.colorpicker.js"></script>
+<script src="assets/js/src/elements.fileinput.js"></script>
+<script src="assets/js/src/elements.typeahead.js"></script>
+<script src="assets/js/src/elements.wysiwyg.js"></script>
+<script src="assets/js/src/elements.spinner.js"></script>
+<script src="assets/js/src/elements.treeview.js"></script>
+<script src="assets/js/src/elements.wizard.js"></script>
+<script src="assets/js/src/elements.aside.js"></script>
+<script src="assets/js/src/ace.js"></script>
+<script src="assets/js/src/ace.basics.js"></script>
+<script src="assets/js/src/ace.scrolltop.js"></script>
+<script src="assets/js/src/ace.ajax-content.js"></script>
+<script src="assets/js/src/ace.touch-drag.js"></script>
+<script src="assets/js/src/ace.sidebar.js"></script>
+<script src="assets/js/src/ace.sidebar-scroll-1.js"></script>
+<script src="assets/js/src/ace.submenu-hover.js"></script>
+<script src="assets/js/src/ace.widget-box.js"></script>
+<script src="assets/js/src/ace.settings.js"></script>
+<script src="assets/js/src/ace.settings-rtl.js"></script>
+<script src="assets/js/src/ace.settings-skin.js"></script>
+<script src="assets/js/src/ace.widget-on-reload.js"></script>
+<script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
+<!-- 本页js -->
+<script src="assets/js/jquery.cookie.js"></script>
+<script>
+    window.onload = function () {
+        $('#header').load('public/header.html');
+        $('#sidebar').load('public/menu.html');
+        var menu_data = {
+            opening: '',
+            acting: '.jieyongguize'
         }
-    </script>
-    <script src="components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
-    <script src="components/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
-    <script src="components/moment/moment.js"></script>
-    <script src="components/bootstrap-daterangepicker/daterangepicker.js"></script>
-    <script src="assets/js/config.js"></script>
-    <script src="assets/js/public.js"></script>
-    <script src="components/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js"></script>
-    <script>
-        //日历插件初始化
-        if (!ace.vars['old_ie']) $('.date-timepicker').datetimepicker({
-            //format: 'MM/DD/YYYY h:mm:ss A',//use this option to display seconds
-            format: 'YYYY-MM-DD HH:mm:ss',
-            icons: {
-                time: 'fa fa-clock-o',
-                date: 'fa fa-calendar',
-                up: 'fa fa-chevron-up',
-                down: 'fa fa-chevron-down',
-                previous: 'fa fa-chevron-left',
-                next: 'fa fa-chevron-right',
-                today: 'fa fa-arrows ',
-                clear: 'fa fa-trash',
-                close: 'fa fa-times'
-            }
-        }).next().on(ace.click_event, function () {
-            $(this).prev().focus();
+        $.cookie('menu_data', JSON.stringify(menu_data), {
+            path: "menu.html"
         });
-        //关闭按钮返回上一页
-        // $('#backLastPage').on('click', function () {
-        //     history.back(-1);
-        // })
-    </script>
-    <script>
-        var id = $.getUrlVar('id');
-        //添加附件
-        $(".addAnnex").on('click', function () {
-            $('.modal_addAnnex').css('display', 'block');
-            return false;
-        })
-        $('.closed').on('click', function () {
-            $(this).parent().parent().parent().parent().css('display', 'none');
-        })
-        //成交佣金操作
-        $(".dealComAdd").on('click', function () {
-            window.location.href = "DealComRuleSet.html";
-            return false;
-        })
-        //佣金金额修改编辑
-        $('.commissionEdit').on('click', '.edit_Com', function () {
-            $('.modal_editCom').css('display', 'block');
-            return false;
-        })
-        //乙方公司选择
-        $('#search').click(function () {
-            var value = $('input[name=companySearch]').val();
-            if (value == '') {
-                return false;
-            }
-            ajax.get('project/ruleCompany/sellList', {
-                'company_name': value
-            }, function (res) {
-                companyList(res);
-            })
-        })
-        $('#companyList').on('click', function () {
-            ajax.get('project/ruleCompany/sellList', {}, function (res) {
-                $('.modal_checkCompany').css('display', 'block');
-                var str = companyList(res);
-            })
-            return false;
-        })
+        //获取规则类型
+        $.ajax({
+            url: config.address +'config?id='+ config.configList.RULE_TYPE,
+            type: 'GET',
+            dataType: "json",
+            success: function (res) {
+                var data=res.data[37].param
+                var len=data.length;
+                var str='';
+                for(var i=0;i<len;i++){
+                    str='<option value="'+data[i].id+'">'+data[i].param+'</option>';
+                    $('.ruleType').append(str);
+                }
 
-        function companyList(res) {
-            var model =
-                '<tr class="odd" value="{id}" nm="{nm}"> <td class="center"> <label class="pos-rel"> <input type="radio" class="ace companyCheck" name="companyCh"> <span class="lbl"></span> </label> </td> <td class="center">{key}</td> <td class="center ">{name}</td> <td class="center">{address}</td> </tr>',
-                str = '',
-                id = 1;
-            $.each(res.data.data, function (k, v) {
-                str += model.replace('{id}', v.company_id).replace('{key}', id++).replace('{name}', v.company_name)
-                    .replace('{address}', v.absolute_address).replace('{nm}', v.company_name);
-            })
-            $('#company_list').children().remove();
-            $('#company_list').append(str);
+            },
+            error: function () {
+                ajax.error();
+            }
+        })
+    }
+</script>
+<script src="components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+<script src="components/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+<script src="components/moment/moment.js"></script>
+<script src="components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/public.js"></script>
+<script src="components/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js"></script>
+<script>
+    //日历插件初始化
+    if (!ace.vars['old_ie']) $('.date-timepicker').datetimepicker({
+        //format: 'MM/DD/YYYY h:mm:ss A',//use this option to display seconds
+        format: 'YYYY-MM-DD HH:mm:ss',
+        icons: {
+            time: 'fa fa-clock-o',
+            date: 'fa fa-calendar',
+            up: 'fa fa-chevron-up',
+            down: 'fa fa-chevron-down',
+            previous: 'fa fa-chevron-left',
+            next: 'fa fa-chevron-right',
+            today: 'fa fa-arrows ',
+            clear: 'fa fa-trash',
+            close: 'fa fa-times'
         }
-        $('#select').click(function () {
-            var count = 0,
-                dom;
-            $('.companyCheck').each(function () {
-                if (count >= 2) {
-                    return false;
-                }
-                if ($(this).is(":checked")) {
-                    count++;
-                    dom = $(this);
-                }
-            })
-            if (count == 0) {
-                alert('请选择公司');
-            }
-            if (count >= 2) {
-                alert('只能选择一个公司');
-            }
-            $('input[name=sell_id]').val(dom.parents('tr').attr('value'));
-            $('input[name=sell_name]').val(dom.parents('tr').attr('nm'));
-            $('.modal_checkCompany').fadeOut();
-        })
-        $('#add').click(function () {
-            var data = {
-                'project_name': $('input[name=project_name]').val(),
-                'project_docker': $('input[name=project_docker]').val(),
-                'project_docker_tel': $('input[name=project_docker_tel]').val(),
-                'compact_begin': $('input[name=compact_begin]').val(),
-                'compact_end': $('input[name=compact_end]').val(),
-                'sell_id': $('input[name=sell_id]').val(),
-                'sell_docker': $('input[name=sell_docker]').val(),
-                'sell_docker_tel': $('input[name=sell_docker_tel]').val(),
-                'act_start': $('input[name=act_start]').val(),
-                'basic_rule_id': id,
-            }
+    }).next().on(ace.click_event, function () {
+        $(this).prev().focus();
+    });
+    //关闭按钮返回上一页
+    // $('#backLastPage').on('click', function () {
+    //     history.back(-1);
+    // })
+</script>
+<script>
+    var id = $.getUrlVar('id');
+    //添加附件
+    $(".addAnnex").on('click', function () {
+        $('.modal_addAnnex').css('display', 'block');
+        return false;
+    })
+    $('.closed').on('click', function () {
+        $(this).parent().parent().parent().parent().css('display', 'none');
+    })
+    //成交佣金操作
+    $(".dealComAdd").on('click', function () {
+        window.location.href = "DealComRuleSet.html";
+        return false;
+    })
+    //佣金金额修改编辑
+    $('.commissionEdit').on('click', '.edit_Com', function () {
+        $('.modal_editCom').css('display', 'block');
+        return false;
+    })
+    //乙方公司选择筛选
+    $('#search').click(function () {
+        var value = $('input[name=companySearch]').val();
+        if (value == '') {
+            var data = {};
+            PartyB(data);
+            return false;
+        } else {
+            var data = {'company_name': value};
+            PartyB(data);
+            return false;
+        }
+    })
+    //初始化乙方公司列表
+    $('#companyList').on('click', function () {
+        var data = {};
+        PartyB(data);
+        return false;
+    })
 
-            if (data.project_name == '') {
-                alert('请输入项目名称');
-                return false;
-            }
-            if (data.project_docker == '') {
-                alert('请输入甲方项目对接人姓名');
-                return false;
-            }
-            if (data.project_docker_tel == '') {
-                alert('请输入甲方项目对接人电话');
-                return false;
-            }
-            if (data.compact_begin == '') {
-                alert('请输入合同开始时间');
-                return false;
-            }
-            if (data.compact_end == '') {
-                alert('请输入合同结束时间');
-                return false;
-            }
-            if (data.sell_id == '') {
-                alert('请选择分销公司');
-                return false;
-            }
-            if (data.sell_docker == '') {
-                alert('请输出乙方对接人姓名');
-                return false;
-            }
-            if (data.sell_docker_tel == '') {
-                alert('请输出乙方对接人姓名');
-                return false;
-            }
-            if (data.act_start == '') {
-                alert('请输出实际开始时间');
-                return false;
-            }
-            ajax.post('project/ruleCompany/create', data, function (res) {
-                alert(res.msg);
-                if (res.code == config.responseSuccess) {
-                    window.location.href = 'CommissionRulesCompanyReview.html?id=' + res.data+'&rule_id='+id;
-                }
-            })
+    //请求乙方公司列表
+    function PartyB(data) {
+        ajax.get('project/ruleCompany/sellList', data, function (res) {
+            $('.modal_checkCompany').css('display', 'block');
+            var str = companyList(res);
         })
-    </script>
+    }
+
+    function companyList(res) {
+        var model =
+                '<tr class="odd" value="{id}" nm="{nm}"> <td class="center"> <label class="pos-rel"> <input type="radio" class="ace companyCheck" name="companyCh"> <span class="lbl"></span> </label> </td> <td class="center">{key}</td> <td class="center ">{name}</td> <td class="center">{address}</td> </tr>',
+            str = '',
+            id = 1;
+        $.each(res.data.data, function (k, v) {
+            str += model.replace('{id}', v.company_id).replace('{key}', id++).replace('{name}', v.company_name)
+                .replace('{address}', v.absolute_address).replace('{nm}', v.company_name);
+        })
+        $('#company_list').children().remove();
+        $('#company_list').append(str);
+    }
+
+    $('#select').click(function () {
+        var count = 0,
+            dom;
+        $('.companyCheck').each(function () {
+            if (count >= 2) {
+                return false;
+            }
+            if ($(this).is(":checked")) {
+                count++;
+                dom = $(this);
+            }
+        })
+        if (count == 0) {
+            alert('请选择公司');
+        }
+        if (count >= 2) {
+            alert('只能选择一个公司');
+        }
+        $('input[name=sell_id]').val(dom.parents('tr').attr('value'));
+        $('input[name=sell_name]').val(dom.parents('tr').attr('nm'));
+        $('.modal_checkCompany').fadeOut();
+    })
+    //新增提交
+    $('#add').click(function () {
+        var n=$('input[name=numHide]:checked').val();
+        if(!(n==0)){
+            n=$('input[name=numShow]:checked').val();
+        }
+        var data = {
+            'project_name': $('input[name=project_name]').val(),
+            'project_docker': $('input[name=project_docker]').val(),
+            'project_docker_tel': $('input[name=project_docker_tel]').val(),
+            'compact_begin': $('input[name=compact_begin]').val(),
+            'compact_end': $('input[name=compact_end]').val(),
+            'sell_id': $('input[name=sell_id]').val(),
+            'sell_docker': $('input[name=sell_docker]').val(),
+            'sell_docker_tel': $('input[name=sell_docker_tel]').val(),
+            'act_start': $('input[name=act_start]').val(),
+            'basic_rule_id': id,
+
+            'rule_type':$('.ruleType').val(),
+            'scene_server':$('input[name=resident]:checked').val(),
+            'tel_complete_state':n,
+        }
+
+        if (data.project_name == '') {
+            alert('请填写甲方单位名称');
+            return false;
+        }
+        if (data.project_docker == '') {
+            alert('请填写甲方项目对接人姓名');
+            return false;
+        }
+        if (data.project_docker_tel == '') {
+            alert('请填写甲方项目对接人电话');
+            return false;
+        }
+        if (data.compact_begin == '') {
+            alert('请输入合同开始时间');
+            return false;
+        }
+        if (data.compact_end == '') {
+            alert('请输入合同结束时间');
+            return false;
+        }
+        if (data.sell_id == '') {
+            alert('请选择乙方公司');
+            return false;
+        }
+        if (data.sell_docker == '') {
+            alert('请输出乙方对接人姓名');
+            return false;
+        }
+        if (data.sell_docker_tel == '') {
+            alert('请输出乙方对接人电话');
+            return false;
+        }
+        if (data.act_start == '') {
+            alert('请输出实际开始时间');
+            return false;
+        }
+        ajax.post('project/ruleCompany/create', data, function (res) {
+            alert(res.msg);
+            if (res.code == config.responseSuccess) {
+                window.location.href = 'CommissionRulesCompanyReview.html?id=' + res.data + '&rule_id=' + id;
+            }
+        })
+    })
+    //  号码隐藏
+    $('.numHide').on('change', function () {
+        var val = $(this).val();
+        if (val == 0) {
+            $('.allTel').hide();
+        } else {
+            $('.allTel').show();
+        }
+    })
+
+</script>
 </body>
 
 </html>

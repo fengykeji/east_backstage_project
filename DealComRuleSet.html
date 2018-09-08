@@ -177,7 +177,7 @@
                                         <div class="widget-main" style="overflow: hidden;">
                                             <div class="col-xs-6" style="padding-left: 100px;">
                                                 <div class="form-group">
-                                                    <label class="lab_width">*物业类型：</label>
+                                                    <label class="lab_width">物业类型：</label>
                                                     <div class="inpt_width" style="display: inline-block;" id="property">
 
 
@@ -186,7 +186,7 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="lab_width ">*跳点：</label>
+                                                    <label class="lab_width ">跳点：</label>
                                                     <div class="inpt_width" style="display: inline-block;" id="jump">
                                                         <div class="radio" style="display: inline-block;">
                                                             <label>
@@ -204,7 +204,7 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="lab_width">*单位：</label>
+                                                    <label class="lab_width">单位：</label>
                                                     <select class="inpt_width" name="money">
 
                                                     </select>
@@ -213,7 +213,7 @@
 
                                             <div class="col-xs-6" style="padding-left: 50px;">
                                                 <div class="form-group">
-                                                    <label class="lab_width">*跳点提成累积：</label>
+                                                    <label class="lab_width">跳点提成累积：</label>
                                                     <div class="inpt_width" style="display: inline-block;">
                                                         <div class="radio" style="display: inline-block;">
                                                             <label>
@@ -230,14 +230,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="lab_width">*提成方式：</label>
+                                                    <label class="lab_width">提成方式：</label>
                                                     <select class="inpt_width com_method" name="commission">
 
                                                     </select>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="lab_width">参数：</label>
+                                                    <label class="lab_width">*参数：</label>
                                                     <input class="inpt_width ComParameter" type="number" step="0.01" name="param" placeholder="请输入固定金额">
                                                     <!--比例 单价-->
                                                 </div>
@@ -515,18 +515,25 @@
             data.property_type = list.slice(0, -1);
 
             ajax.post('project/ruleCompany/brokerRule/create', data, function (res) {
-                alert(res.msg);
                 if(res.msg==undefined){
-                    if(res.company_rule_id[0]=='The company rule id field is required'){
-                        alert('公司规则id不能为空！');
+                    if(res.param){
+                        alert('参数内容不能为空！');
+                    }else if(res.company_rule_id){
+                        alert('公司规则id缺失！');
                         history.go(-1);
                     }
+                }
+                if(res.code==config.responseError){
+                    alert(res.msg);
+                    history.go(-1);
                 }
                 if (res.code == config.responseSuccess) {
                     if (data.is_jump == 1){
                         insertId = res.data;
+                        alert('添加成功，前往编辑跳点');
                         window.location.href='jumPointRules.html?id='+insertId;
                     } else {
+                        alert('添加成功，返回公司规则！');
                         history.go(-1);
                     }
                 }

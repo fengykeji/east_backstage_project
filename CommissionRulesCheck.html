@@ -116,7 +116,7 @@
                         <li>
                             <i class="ace-icon fa fa-home home-icon"></i>
                             <a href="CommissionRules.html">结佣规则</a>
-                            <a href="#">>判断规则</a>
+                            <a href="#">>基本规则</a>
                         </li>
                     </ul>
                     <div class="operate_proInfo">
@@ -264,7 +264,7 @@
                                                                     <th class="center">实际开始日期</th>
                                                                     <th class="center">实际截止日期</th>
                                                                     <th class="center">状态</th>
-                                                                    <th class="center">筛选经纪人</th>
+                                                                    <!-- <th class="center">筛选经纪人</th> -->
                                                                     <th class="center">操作</th>
                                                                 </tr>
                                                             </thead>
@@ -387,7 +387,18 @@
                 'basic_rule_id': id
             }, function (res) {
                 var model =
-                    '<tr role="row" class="odd" value="{a_id}"> <td class="center">{key}</td> <td class="center">{company_name}</td> <td class="center">{project_docker}</td> <td class="center">{project_docker_tel}</td> <td class="center">{compact_begin}</td> <td class="center">{compact_end}</td> <td class="center">{act_start}</td> <td class="center">{act_end}</td> <td class="center">{state}</td> <td class="center">{end_state_name}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons">  ',
+                    '<tr role="row" class="odd" value="{a_id}"> ' +
+                    '<td class="center">{key}</td> ' +
+                    '<td class="center">{company_name}</td> ' +
+                    '<td class="center">{project_docker}</td> ' +
+                    '<td class="center">{project_docker_tel}</td> ' +
+                    '<td class="center">{compact_begin}</td> ' +
+                    '<td class="center">{compact_end}</td> ' +
+                    '<td class="center">{act_start}</td> ' +
+                    '<td class="center">{act_end}</td> ' +
+                    '<td class="center">{state}</td> ' +
+                    '<td class="center">{end_state_name}</td> ' +
+                    '<td class="center"> <div class="hidden-sm hidden-xs action-buttons">  ',
                     id = 1,
                     str = '';
 
@@ -410,18 +421,33 @@
                 'basic_rule_id': id
             }, function (res) {
                 var model =
-                        '<tr role="row" class="odd" value="{a_id}"> <td class="center">{key}</td> <td class="center">{rule_name}</td>  <td class="center">{plan_start}</td> <td class="center">{plan_end}</td> <td class="center">{act_start}</td> <td class="center">{act_end}</td> <td class="center">{state}</td> <td class="center"> <label> <input checked="checked" name="switch-field-1" class="ace ace-switch  ace-switch-5 switchCom" type="checkbox"> <span class="lbl"></span> </label> </td> <td class="center">  ',
+                        '<tr role="row" class="odd" value="{a_id}"> ' +
+                    '<td class="center">{key}</td> ' +
+                    '<td class="center">{rule_name}</td>  ' +
+                    '<td class="center">{plan_start}</td> ' +
+                    '<td class="center">{plan_end}</td> ' +
+                    '<td class="center">{act_start}</td> ' +
+                    '<td class="center">{act_end}</td> ' +
+                    '<td class="center">{state}</td> ' +
+                    // '<td class="center"> <label> <input checked="checked" name="switch-field-1" class="ace ace-switch  ace-switch-5 switchCom" type="checkbox"> <span class="lbl"></span> </label> </td> ' +
+                    '<td class="center"> </td> ',
                     id = 1,
                     str = '';
                 $.each(res.data.data, function (k, v) {
 
                         st=model;
 
-                    str += st.replace('{a_id}', v.rule_id).replace('{b_id}', v.rule_id).replace(
-                            '{c_id}', v.rule_id).replace('{key}', id++).replace('{rule_name}', v.rule_name)
-                        .replace('{plan_end}', v.plan_end).replace('{plan_start}', v.plan_start).replace(
-                            '{act_start}', v.act_start).replace('{act_end}', v.act_end).replace(
-                            '{state}', v.end_state_name).replace('{end_state_name}', v.end_state_name);
+                    str += st.replace('{a_id}', v.rule_id).
+                    replace('{b_id}', v.rule_id).
+                    replace('{c_id}', v.rule_id).
+                    replace('{key}', id++).
+                    replace('{rule_name}', v.rule_name).
+                    replace('{plan_end}', v.plan_end).
+                        replace('{plan_start}', v.plan_start).
+                        replace('{act_start}', v.act_start).
+                        replace('{act_end}', v.act_end).
+                        replace('{state}', v.end_state_name).
+                        replace('{end_state_name}', v.end_state_name);
                 })
                 $('#person').append(str);
 

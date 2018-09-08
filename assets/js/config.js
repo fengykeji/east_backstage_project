@@ -34,6 +34,7 @@ var config={
         'TOTAL_PRICE':25,//总价
         'AREA':26,//面积
         'VALUE_CONFIRM_DISABLED_TYPE':29, //有效来访判断失效类型
+        'RULE_TYPE':37,//规则类型
     }
 }
 

@@ -174,6 +174,13 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="form-group">
+                                                    <label class="lab_width">规则类型：</label>
+                                                    <select class="form-control inpt_width ruleType" style="display: inline-block;"
+                                                            name="">
+
+                                                    </select>
+                                                </div>
                                             </div>
 
                                             <div class="col-xs-6" style="padding-left: 50px;">
@@ -209,13 +216,15 @@
                                                     <div class="inpt_width" style="display: inline-block;">
                                                         <div class="radio" style="display: inline-block;">
                                                             <label>
-                                                                <input  type="radio" class="ace" value="0" name="resident">
+                                                                <input type="radio" class="ace" value="1" name="resident"
+                                                                       >
                                                                 <span class="lbl">是</span>
                                                             </label>
                                                         </div>
                                                         <div class="radio" style="display: inline-block;">
                                                             <label>
-                                                                <input  type="radio" class="ace InvalidVisit" value="1" name="resident">
+                                                                <input type="radio" class="ace InvalidVisit" value="0"
+                                                                       name="resident">
                                                                 <span class="lbl">否</span>
                                                             </label>
                                                         </div>
@@ -228,13 +237,15 @@
                                                     <div class="inpt_width" style="display: inline-block;">
                                                         <div class="radio" style="display: inline-block;">
                                                             <label>
-                                                                <input  type="radio" class="ace" value="0" name="numHide">
+                                                                <input type="radio" class="ace numHide yesNum" value="0"
+                                                                       name="numHide">
                                                                 <span class="lbl">是</span>
                                                             </label>
                                                         </div>
                                                         <div class="radio" style="display: inline-block;">
                                                             <label>
-                                                                <input  type="radio" class="ace InvalidVisit" value="1" name="numHide">
+                                                                <input type="radio" class="ace InvalidVisit numHide noNum"
+                                                                       value="1" name="numHide" >
                                                                 <span class="lbl">否</span>
                                                             </label>
                                                         </div>
@@ -242,18 +253,19 @@
                                                     </div>
 
                                                 </div>
-                                                <div class="form-group">
+                                                <div class="form-group allTel">
                                                     <label class="lab_width">展示完整号码阶段：</label>
                                                     <div class="inpt_width" style="display: inline-block;">
                                                         <div class="radio" style="display: inline-block;">
                                                             <label>
-                                                                <input  type="radio" class="ace" value="0" name="numShow">
+                                                                <input type="radio" class="ace youXNum" value="2" name="numShow " >
                                                                 <span class="lbl">有效确认</span>
                                                             </label>
                                                         </div>
                                                         <div class="radio" style="display: inline-block;">
                                                             <label>
-                                                                <input  type="radio" class="ace InvalidVisit" value="1" name="numShow">
+                                                                <input type="radio" class="ace InvalidVisit renGNum" value="5"
+                                                                       name="numShow ">
                                                                 <span class="lbl">认购</span>
                                                             </label>
                                                         </div>
@@ -455,8 +467,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
-                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="tags_add">确定</button>
+                    <button data-bb-handler="cancel" type="button" class="btn btn-sm btn-default closed">取消</button>
+                    <button data-bb-handler="confirm" type="button" class="btn btn-sm btn-primary" id="tags_add">确定</button>
                 </div>
             </div>
         </div>
@@ -492,8 +504,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
-                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="broker_edit">确定</button>
+                    <button data-bb-handler="cancel" type="button" class="btn btn-sm btn-default closed">取消</button>
+                    <button data-bb-handler="confirm" type="button" class="btn btn-sm btn-primary" id="broker_edit">确定</button>
                 </div>
             </div>
         </div>
@@ -529,8 +541,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
-                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="broker_add">确定</button>
+                    <button data-bb-handler="cancel" type="button" class="btn btn-sm btn-default closed">取消</button>
+                    <button data-bb-handler="confirm" type="button" class="btn btn-sm btn-primary" id="broker_add">确定</button>
                 </div>
             </div>
         </div>
@@ -590,6 +602,25 @@
             });
             ruleInfo();
             configList();
+            //获取规则类型
+            $.ajax({
+                url: config.address +'config?id='+ config.configList.RULE_TYPE,
+                type: 'GET',
+                dataType: "json",
+                success: function (res) {
+                    var data=res.data[37].param
+                    var len=data.length;
+                    var str='';
+                    for(var i=0;i<len;i++){
+                        str='<option value="'+data[i].id+'">'+data[i].param+'</option>';
+                        $('.ruleType').append(str);
+                    }
+
+                },
+                error: function () {
+                    ajax.error();
+                }
+            })
         }
 
         function configList() {
@@ -610,15 +641,43 @@
             ajax.get('project/ruleCompany/getDetail', {
                 'rule_id': id
             }, function (res) {
-                $('input[name=project_name]').val(res.data.basic.project_name);
-                $('input[name=project_docker]').val(res.data.basic.project_docker);
-                $('input[name=project_docker_tel]').val(res.data.basic.project_docker_tel);
-                $('input[name=compact_begin]').val(res.data.basic.compact_begin);
-                $('input[name=compact_end]').val(res.data.basic.compact_end);
-                $('input[name=sell_id]').val(res.data.basic.sell_id);
-                $('input[name=sell_docker]').val(res.data.basic.sell_docker);
-                $('input[name=sell_docker_tel]').val(res.data.basic.sell_docker_tel);
-                $('input[name=act_start]').val(res.data.basic.act_start);
+                var x=res.data.basic;
+                $('input[name=project_name]').val(x.project_name);
+                $('input[name=project_docker]').val(x.project_docker);
+                $('input[name=project_docker_tel]').val(x.project_docker_tel);
+                $('input[name=compact_begin]').val(x.compact_begin);
+                $('input[name=compact_end]').val(x.compact_end);
+                $('input[name=sell_id]').val(x.sell_id);
+                $('input[name=sell_docker]').val(x.sell_docker);
+                $('input[name=sell_docker_tel]').val(x.sell_docker_tel);
+                $('input[name=act_start]').val(x.act_start);
+
+
+                $('.ruleType option').each(function () {
+                    if($(this).val()==x.rule_type){
+                        $(this).selected=true
+                    }
+                })
+
+                $('input[name=resident]').each(function () {
+                    if($(this).val()==x.scene_server){
+                        $(this).attr('checked',true)
+                    }
+                })
+                switch (x.tel_complete_state) {
+                    case 0:
+                        $('.yesNum').attr('checked',true);
+                        $('.allTel').hide();
+                        break;
+                    case 2:
+                        $('.noNum').attr('checked',true);
+                        $('.youXNum').attr('checked',true);
+                        break;
+                    case 5:
+                        $('.noNum').attr('checked',true);
+                        $('.renGNum').attr('checked',true);
+                        break;
+                }
 
                 if (res.data.file != undefined) {
                     var model =
@@ -709,6 +768,7 @@
                 })
             }
         })
+
     </script>
     <script src="components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
     <script src="components/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
@@ -843,6 +903,10 @@
         });
 
         $('#yes').click(function () {
+            var n=$('input[name=numHide]:checked').val();
+            if(!(n==0)){
+                n=$('input[name=numShow]:checked').val();
+            }
             var data = {
                 'state': 1,
                 'rule_id': id,
@@ -854,6 +918,10 @@
                 'sell_docker': $('input[name=sell_docker]').val(),
                 'sell_docker_tel': $('input[name=sell_docker_tel]').val(),
                 'act_start': $('input[name=act_start]').val(),
+
+                'rule_type':$('.ruleType').val(),
+                'scene_server':$('input[name=resident]:checked').val(),
+                'tel_complete_state':n,
             };
 
 
@@ -922,7 +990,15 @@
 
         })
 
-
+        //  号码隐藏
+        $('.numHide').on('change', function () {
+            var val = $(this).val();
+            if (val == 0) {
+                $('.allTel').hide();
+            } else {
+                $('.allTel').show();
+            }
+        })
     </script>
 </body>
 

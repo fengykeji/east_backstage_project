@@ -49,46 +49,11 @@
             z-index: 1000;
         }
 
-        /* .modal-dialog {
-            margin: 0 auto;
-        }
-
-        .bootbox-body {
-            font-size: 18px;
-            margin-top: 25px;
-            text-align: center;
-        }
-
-        .modal-content {
-            padding: 30px 50px;
-        }
-
-        .modal-footer {
-            margin-top: 20px;
-        }
-
-        .close {
-            font-size: 32px;
-        } */
-
         .operate_proInfo {
             position: absolute;
             right: 100px;
             z-index: 100;
         }
-
-        /* .user-info {
-            max-width: 150px;
-            display: inline-block;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            text-align: left;
-            vertical-align: top;
-            line-height: 15px;
-            position: relative;
-            top: 14px;
-        } */
 
         .inpt_width {
             width: 70%;
@@ -155,12 +120,12 @@
                         <li>
                             <i class="ace-icon fa fa-home home-icon"></i>
                             <a href="CommissionRules.html">结佣规则</a>
-                            <a href="#">>公司规则>成交佣金</a>
+                            <a href="#">>个人规则>成交佣金</a>
                         </li>
                     </ul>
                     <div class="operate_proInfo">
                         <button class="btn btn-primary" id="save">保存</button>
-                        <button class="btn btn-danger">关闭</button>
+                        <button class="btn btn-danger" onclick="javascript:history.go(-1)">关闭</button>
                     </div>
                 </div>
                 <!-- 内容开始 -->
@@ -176,35 +141,31 @@
                                         <div class="widget-main" style="overflow: hidden;">
                                             <div class="col-xs-6" style="padding-left: 100px;">
                                                 <div class="form-group">
-                                                    <label class="lab_width">*物业类型：</label>
+                                                    <label class="lab_width">物业类型：</label>
                                                     <div class="inpt_width" style="display: inline-block;" id="property">
 
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="lab_width">*单位：</label>
+                                                    <label class="lab_width">单位：</label>
                                                     <select class="inpt_width" name="money">
 
                                                     </select>
                                                 </div>
-                                              <!--  <div class="form-group">
-                                                    <label class="lab_width">提成公式：</label>
-                                                    <input class="inpt_width" type="text" disabled="disabled">
-                                                </div>-->
 
                                             </div>
 
                                             <div class="col-xs-6" style="padding-left: 50px;">
 
                                                 <div class="form-group">
-                                                    <label class="lab_width">*提成方式：</label>
+                                                    <label class="lab_width">提成方式：</label>
                                                     <select class="inpt_width com_method" name="commission">
 
                                                     </select>
                                                 </div>
 
-                                                    <label>参数：</label>
+                                                    <label>*参数：</label>
                                                     <input type="text" name="param">
 
                                             </div>
@@ -356,8 +317,20 @@
             data.property_type= list.slice(0, -1);
 
             ajax.post('project/rulePerson/brokerRule/create', data, function (res) {
-                alert(res.msg);
+                if(res.msg==undefined){
+                    if(res.param){
+                        alert('参数内容不能为空！');
+                    }else if(res.person_rule_id){
+                        alert('个人规则缺失！');
+                        history.go(-1);
+                    }
+                }
+                if(res.code==config.responseError){
+                    alert(res.msg);
+                    history.go(-1);
+                }
                 if(res.code==config.responseSuccess){
+                    alert('添加成功，前往个人规则');
                     window.location.href='CommissionRulesBrokerUpdate.html?id='+id+'&rule_id='+rule_id;
                 }
             })

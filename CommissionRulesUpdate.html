@@ -2,42 +2,40 @@
 <html lang="en">
 
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta charset="utf-8"/>
     <title>结佣规则</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
 
 
     <!-- bootstrap & fontawesome -->
-    <link rel="stylesheet" href="assets/css/bootstrap.css" />
-    <link rel="stylesheet" href="components/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap.css"/>
+    <link rel="stylesheet" href="components/font-awesome/css/font-awesome.css"/>
 
     <!-- text fonts -->
-    <link rel="stylesheet" href="assets/css/ace-fonts.css" />
+    <link rel="stylesheet" href="assets/css/ace-fonts.css"/>
 
     <!-- ace styles -->
-    <link rel="stylesheet" href="assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <link rel="stylesheet" href="assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style"/>
 
 
-    <link rel="stylesheet" href="assets/css/ace-skins.css" />
-    <link rel="stylesheet" href="assets/css/ace-rtl.css" />
-
+    <link rel="stylesheet" href="assets/css/ace-skins.css"/>
+    <link rel="stylesheet" href="assets/css/ace-rtl.css"/>
 
 
     <!-- ace settings handler -->
     <script src="assets/js/ace-extra.js"></script>
 
     <!-- 本页css -->
-    <link rel="stylesheet" href="components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css" />
-    <link rel="stylesheet" href="components/bootstrap-timepicker/css/bootstrap-timepicker.css" />
-    <link rel="stylesheet" href="components/bootstrap-daterangepicker/daterangepicker.css" />
-    <link rel="stylesheet" href="components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" />
+    <link rel="stylesheet" href="components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css"/>
+    <link rel="stylesheet" href="components/bootstrap-timepicker/css/bootstrap-timepicker.css"/>
+    <link rel="stylesheet" href="components/bootstrap-daterangepicker/daterangepicker.css"/>
+    <link rel="stylesheet" href="components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css"/>
     <style>
         .checkSty_projectInfo {
             float: left;
         }
-
 
         .operate_proInfo {
             position: absolute;
@@ -61,178 +59,194 @@
 </head>
 
 <body class="no-skin">
-    <div id="header"></div>
+<div id="header"></div>
 
 
+<div class="main-container" id="main-container">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('main-container', 'fixed')
+        } catch (e) {
+        }
+    </script>
 
+    <!-- 菜单开始 -->
+    <div id="sidebar" class="sidebar responsive ace-save-state">
 
-    <div class="main-container" id="main-container">
-        <script type="text/javascript">
-            try {
-                ace.settings.check('main-container', 'fixed')
-            } catch (e) {}
-        </script>
+    </div>
 
-        <!-- 菜单开始 -->
-        <div id="sidebar" class="sidebar responsive ace-save-state">
-
-        </div>
-
-        <!-- /section:basics/sidebar -->
-        <div class="main-content">
-            <div class="main-content-inner">
-                <div class="breadcrumbs" id="breadcrumbs">
-                    <script type="text/javascript">
-                        try {
-                            ace.settings.check('breadcrumbs', 'fixed')
-                        } catch (e) {}
-                    </script>
-                    <ul class="breadcrumb">
-                        <li>
-                            <i class="ace-icon fa fa-home home-icon"></i>
-                            <a href="CommissionRules.html">结佣规则</a>
-                            <a>>判断规则编辑</a>
-                        </li>
-                    </ul>
-                    <div class="operate_proInfo">
-                        <button class="btn btn-primary" id="save">保存</button>
-                        <button class="btn btn-danger" onclick="javascript:history.go(-1)" id="backLastPage">关闭</button>
-                    </div>
+    <!-- /section:basics/sidebar -->
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs" id="breadcrumbs">
+                <script type="text/javascript">
+                    try {
+                        ace.settings.check('breadcrumbs', 'fixed')
+                    } catch (e) {
+                    }
+                </script>
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="ace-icon fa fa-home home-icon"></i>
+                        <a href="CommissionRules.html">结佣规则</a>
+                        <a>>基本规则编辑</a>
+                    </li>
+                </ul>
+                <div class="operate_proInfo">
+                    <button class="btn btn-primary" id="save">保存</button>
+                    <button class="btn btn-danger" onclick="javascript:history.go(-1)" id="backLastPage">关闭</button>
                 </div>
-                <!-- 内容开始 -->
-                <div class="page-content">
-                    <div class="row" style="margin-top: 50px;">
-                        <div class="col-xs-12">
-                            <form class="form-horizontal" role="form">
-                                <div class="widget-box">
-                                    <div class="widget-header" style="position: relative;">
-                                        <h4 class="smaller">基本规则</h4>
-                                    </div>
-                                    <div class="widget-body">
-                                        <div class="widget-main" style="overflow: hidden;">
-                                            <div class="col-xs-6" style="padding-left: 100px;">
+            </div>
+            <!-- 内容开始 -->
+            <div class="page-content">
+                <div class="row" style="margin-top: 50px;">
+                    <div class="col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="widget-box">
+                                <div class="widget-header" style="position: relative;">
+                                    <h4 class="smaller">基本规则</h4>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="widget-main" style="overflow: hidden;">
+                                        <div class="col-xs-6" style="padding-left: 100px;">
 
-                                                <div class="form-group">
-                                                    <label class="lab_width">到访确认保护期(分钟)：</label>
-                                                    <input class="inpt_width" placeholder="" type="number" name="recommend" disabled>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">有效来访保护期(天)：</label>
-                                                    <input class="inpt_width" placeholder="" type="text" name="value" disabled>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">成交保护期(天)：</label>
-                                                    <input class="inpt_width" placeholder="" type="text" name="deal" disabled>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">推荐佣金结款周期：</label>
-                                                    <input class="inpt_width" placeholder="" type="text" name="broker_recommend" disabled>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">到访佣金结款周期：</label>
-                                                    <input class="inpt_width" placeholder="" type="text" name="broker_value" disabled>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">成交佣金结款周期：</label>
-                                                    <input class="inpt_width" placeholder="" type="text" name="broker_deal" disabled>
-                                                </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">到访确认保护期(分钟)：</label>
+                                                <input class="inpt_width" placeholder="" type="number" name="recommend"
+                                                       disabled>
                                             </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">有效来访保护期(天)：</label>
+                                                <input class="inpt_width" placeholder="" type="text" name="value"
+                                                       disabled>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">成交保护期(天)：</label>
+                                                <input class="inpt_width" placeholder="" type="text" name="deal"
+                                                       disabled>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">推荐佣金结款周期：</label>
+                                                <input class="inpt_width" placeholder="" type="text"
+                                                       name="broker_recommend" disabled>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">到访佣金结款周期：</label>
+                                                <input class="inpt_width" placeholder="" type="text" name="broker_value"
+                                                       disabled>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">成交佣金结款周期：</label>
+                                                <input class="inpt_width" placeholder="" type="text" name="broker_deal"
+                                                       disabled>
+                                            </div>
+                                        </div>
 
-                                            <div class="col-xs-6" style="padding-left: 50px;">
+                                        <div class="col-xs-6" style="padding-left: 50px;">
 
-                                                <div class="form-group">
-                                                    <label class="lab_width">成交结款条件：</label>
-                                                    <input class="inpt_width" placeholder="" type="text" name="standard" disabled>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">备注：</label>
-                                                    <textarea class="inpt_width" rows="3" style="vertical-align: top;" id="comment"></textarea>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">规则描述：</label>
-                                                    <textarea class="inpt_width" rows="3" style="vertical-align: top;" id="describe"></textarea>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="lab_width">指定置业顾问情况：</label>
-                                                    <div class="inpt_width" style="display: inline-block;">
-                                                        <div class="radio" style="display: inline-block;">
-                                                            <label>
-                                                                <input  type="radio" class="ace" value="0" name="assign">
-                                                                <span class="lbl">不需要</span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="radio" style="display: inline-block;">
-                                                            <label>
-                                                                <input  type="radio" class="ace InvalidVisit" value="1" name="assign">
-                                                                <span class="lbl">可指定</span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="radio" style="display: inline-block;">
-                                                            <label>
-                                                                <input  type="radio" class="ace InvalidVisit" value="2" name="assign">
-                                                                <span class="lbl">必指定</span>
-                                                            </label>
-                                                        </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">成交结款条件：</label>
+                                                <input class="inpt_width" placeholder="" type="text" name="standard"
+                                                       disabled>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">备注：</label>
+                                                <textarea class="inpt_width" rows="3" style="vertical-align: top;"
+                                                          id="comment"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">规则描述：</label>
+                                                <textarea class="inpt_width" rows="3" style="vertical-align: top;"
+                                                          id="describe"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">指定置业顾问情况：</label>
+                                                <div class="inpt_width" style="display: inline-block;">
+                                                    <div class="radio" style="display: inline-block;">
+                                                        <label>
+                                                            <input type="radio" class="ace" value="0" name="assign">
+                                                            <span class="lbl">不需要</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio" style="display: inline-block;">
+                                                        <label>
+                                                            <input type="radio" class="ace InvalidVisit" value="2"
+                                                                   name="assign">
+                                                            <span class="lbl">可指定</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio" style="display: inline-block;">
+                                                        <label>
+                                                            <input type="radio" class="ace InvalidVisit" value="1"
+                                                                   name="assign">
+                                                            <span class="lbl">必指定</span>
+                                                        </label>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="widget-box" style="margin-top: 20px;">
-                                    <div class="widget-header">
-                                        <h4 class="smaller">公司规则</h4>
-                                        <div style="position: absolute;right: 80px;top:0;z-index: 100;">
-                                            <button class="btn btn-danger addCompany" style="padding: 3px 10px;">新增</button>
-                                            <!-- <button class="btn btn-warning ReCompany" style="padding: 3px 10px;">审核</button> -->
-                                        </div>
+                            </div>
+                            <div class="widget-box" style="margin-top: 20px;">
+                                <div class="widget-header">
+                                    <h4 class="smaller">公司规则</h4>
+                                    <div style="position: absolute;right: 80px;top:0;z-index: 100;">
+                                        <button class="btn btn-danger addCompany" style="padding: 3px 10px;">新增</button>
+                                        <!-- <button class="btn btn-warning ReCompany" style="padding: 3px 10px;">审核</button> -->
                                     </div>
-                                    <div class="widget-body">
-                                        <div class="widget-main" style="overflow: hidden;">
-                                            <div class="col-xs-12" style="overflow-x: scroll;">
-                                                <div style="width: 2300px;">
-                                                    <div  class="dataTables_wrapper form-inline no-footer">
-                                                        <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
-                                                            <thead>
-                                                                <tr role="row">
-                                                                    <th class="center">序号</th>
-                                                                    <th class="center">企业名称</th>
-                                                                    <th class="center">负责人</th>
-                                                                    <th class="center">联系方式</th>
-                                                                    <th class="center">计划开始日期</th>
-                                                                    <th class="center">计划截止日期</th>
-                                                                    <th class="center">实际开始日期</th>
-                                                                    <th class="center">实际截止日期</th>
-                                                                    <th class="center">规则来源</th>
-                                                                    <th class="center">申请状态</th>
-                                                                    <th class="center">执行状态</th>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="widget-main" style="overflow: hidden;">
+                                        <div class="col-xs-12" style="overflow-x: scroll;">
+                                            <div style="width: 2300px;">
+                                                <div class="dataTables_wrapper form-inline no-footer">
+                                                    <table id="dynamic-table"
+                                                           class="table table-striped table-bordered table-hover dataTable no-footer"
+                                                           role="grid" aria-describedby="dynamic-table_info">
+                                                        <thead>
+                                                        <tr role="row">
+                                                            <th class="center">序号</th>
+                                                            <th class="center">企业名称</th>
+                                                            <th class="center">负责人</th>
+                                                            <th class="center">联系方式</th>
+                                                            <th class="center">计划开始日期</th>
+                                                            <th class="center">计划截止日期</th>
+                                                            <th class="center">实际开始日期</th>
+                                                            <th class="center">实际截止日期</th>
+                                                            <th class="center">规则来源</th>
+                                                            <th class="center">申请状态</th>
+                                                            <th class="center">执行状态</th>
 
-                                                                    <th class="center">是否要求驻场</th>
-                                                                    <th class="center">是否需要报备完整电话号码</th>
-                                                                    <th class="center">补全电话号码阶段</th>
-
-
-                                                                    <th class="center">操作</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody id="company">
+                                                            <th class="center">是否要求驻场</th>
+                                                            <th class="center">是否需要报备完整电话号码</th>
+                                                            <th class="center buNums">补全电话号码阶段</th>
 
 
-                                                            </tbody>
-                                                        </table>
-                                                        <div class="row">
-                                                            <div class="col-xs-12">
-                                                                <div class="dataTables_paginate paging_simple_numbers" >
-                                                                    <ul class="pagination" id="paginationCom">
-                                                                        <li class="paginate_button previous" aria-controls="dynamic-table" tabindex="0" id="prev1">
-                                                                            <a>首页</a>
-                                                                        </li>
+                                                            <th class="center">操作</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody id="company">
 
-                                                                        <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="next1">
-                                                                            <a>尾页</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
+
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <div class="dataTables_paginate paging_simple_numbers">
+                                                                <ul class="pagination" id="paginationCom">
+                                                                    <li class="paginate_button previous"
+                                                                        aria-controls="dynamic-table" tabindex="0"
+                                                                        id="prev1">
+                                                                        <a>首页</a>
+                                                                    </li>
+
+                                                                    <li class="paginate_button next"
+                                                                        aria-controls="dynamic-table" tabindex="0"
+                                                                        id="next1">
+                                                                        <a>尾页</a>
+                                                                    </li>
+                                                                </ul>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -241,53 +255,59 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="widget-box" style="margin-top: 20px;">
-                                    <div class="widget-header">
-                                        <h4 class="smaller">个人规则</h4>
-                                        <div style="position: absolute;right: 80px;top:0;z-index: 100;">
-                                            <button class="btn btn-danger brokerRule" style="padding: 3px 10px;">新增</button>
-                                        </div>
+                            </div>
+                            <div class="widget-box" style="margin-top: 20px;">
+                                <div class="widget-header">
+                                    <h4 class="smaller">个人规则</h4>
+                                    <div style="position: absolute;right: 80px;top:0;z-index: 100;">
+                                        <button class="btn btn-danger brokerRule" style="padding: 3px 10px;">新增</button>
                                     </div>
-                                    <div class="widget-body">
-                                        <div class="widget-main" style="overflow: hidden;">
-                                            <div class="col-xs-12" style="overflow-x: scroll;">
-                                                <div style="width: 2000px;">
-                                                    <div class="dataTables_wrapper form-inline no-footer">
-                                                        <table id="person-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
-                                                            <thead>
-                                                                <tr role="row">
-                                                                    <th class="center">序号</th>
-                                                                    <th class="center">规则名称</th>
-                                                                    <th class="center">计划开始日期</th>
-                                                                    <th class="center">计划截止日期</th>
-                                                                    <th class="center">实际开始日期</th>
-                                                                    <th class="center">实际截止日期</th>
-                                                                    <th class="center">状态</th>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="widget-main" style="overflow: hidden;">
+                                        <div class="col-xs-12" style="overflow-x: scroll;">
+                                            <div style="width: 2000px;">
+                                                <div class="dataTables_wrapper form-inline no-footer">
+                                                    <table id="person-table"
+                                                           class="table table-striped table-bordered table-hover dataTable no-footer"
+                                                           role="grid" aria-describedby="dynamic-table_info">
+                                                        <thead>
+                                                        <tr role="row">
+                                                            <th class="center">序号</th>
+                                                            <th class="center">规则名称</th>
+                                                            <th class="center">计划开始日期</th>
+                                                            <th class="center">计划截止日期</th>
+                                                            <th class="center">实际开始日期</th>
+                                                            <th class="center">实际截止日期</th>
+                                                            <th class="center">状态</th>
 
-                                                                    <th class="center">是否需要报备完整电话号码</th>
-                                                                    <th class="center">补全电话号码阶段</th>
+                                                            <th class="center">是否需要报备完整电话号码</th>
+                                                            <th class="center personBu">补全电话号码阶段</th>
 
-                                                                    <th class="center">筛选经纪人</th>
-                                                                    <th class="center">操作</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody id="person">
+                                                            <!-- <th class="center">筛选经纪人</th> -->
+                                                            <th class="center">操作</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody id="person">
 
-                                                            </tbody>
-                                                        </table>
-                                                        <div class="row">
-                                                            <div class="col-xs-12">
-                                                                <div class="dataTables_paginate paging_simple_numbers" >
-                                                                    <ul class="pagination" id="paginationPer">
-                                                                        <li class="paginate_button previous" aria-controls="dynamic-table" tabindex="0" id="prev2">
-                                                                            <a>首页</a>
-                                                                        </li>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <div class="dataTables_paginate paging_simple_numbers">
+                                                                <ul class="pagination" id="paginationPer">
+                                                                    <li class="paginate_button previous"
+                                                                        aria-controls="dynamic-table" tabindex="0"
+                                                                        id="prev2">
+                                                                        <a>首页</a>
+                                                                    </li>
 
-                                                                        <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="next2">
-                                                                            <a>尾页</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
+                                                                    <li class="paginate_button next"
+                                                                        aria-controls="dynamic-table" tabindex="0"
+                                                                        id="next2">
+                                                                        <a>尾页</a>
+                                                                    </li>
+                                                                </ul>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -296,369 +316,480 @@
                                         </div>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 
-    <!-- basic scripts -->
+<!-- basic scripts -->
 
-    <!--[if !IE]> -->
-    <script src="components/jquery/dist/jquery.js"></script>
-    <script type="text/javascript">
-        if ('ontouchstart' in document.documentElement) document.write(
-            "<script src='components/_mod/jquery.mobile.custom/jquery.mobile.custom.js'>" + "<" + "/script>");
-    </script>
-    <script src="components/bootstrap/dist/js/bootstrap.js"></script>
+<!--[if !IE]> -->
+<script src="components/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+    if ('ontouchstart' in document.documentElement) document.write(
+        "<script src='components/_mod/jquery.mobile.custom/jquery.mobile.custom.js'>" + "<" + "/script>");
+</script>
+<script src="components/bootstrap/dist/js/bootstrap.js"></script>
 
-    <!-- ace scripts -->
-    <script src="assets/js/src/elements.scroller.js"></script>
-    <script src="assets/js/src/elements.colorpicker.js"></script>
-    <script src="assets/js/src/elements.fileinput.js"></script>
-    <script src="assets/js/src/elements.typeahead.js"></script>
-    <script src="assets/js/src/elements.wysiwyg.js"></script>
-    <script src="assets/js/src/elements.spinner.js"></script>
-    <script src="assets/js/src/elements.treeview.js"></script>
-    <script src="assets/js/src/elements.wizard.js"></script>
-    <script src="assets/js/src/elements.aside.js"></script>
-    <script src="assets/js/src/ace.js"></script>
-    <script src="assets/js/src/ace.basics.js"></script>
-    <script src="assets/js/src/ace.scrolltop.js"></script>
-    <script src="assets/js/src/ace.ajax-content.js"></script>
-    <script src="assets/js/src/ace.touch-drag.js"></script>
-    <script src="assets/js/src/ace.sidebar.js"></script>
-    <script src="assets/js/src/ace.sidebar-scroll-1.js"></script>
-    <script src="assets/js/src/ace.submenu-hover.js"></script>
-    <script src="assets/js/src/ace.widget-box.js"></script>
-    <script src="assets/js/src/ace.settings.js"></script>
-    <script src="assets/js/src/ace.settings-rtl.js"></script>
-    <script src="assets/js/src/ace.settings-skin.js"></script>
-    <script src="assets/js/src/ace.widget-on-reload.js"></script>
-    <script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
-    <!-- 本页js -->
-    <script src="assets/js/jquery.cookie.js"></script>
-    <script src="assets/js/config.js"></script>
-    <script src="assets/js/public.js"></script>
-    <script>
-        var id =rule_id= $.getUrlVar('id');
-        window.onload = function () {
-            $('#header').load('public/header.html');
-            $('#sidebar').load('public/menu.html');
-            var menu_data = {
-                opening: '',
-                acting: '.jieyongguize'
-            }
-            $.cookie('menu_data', JSON.stringify(menu_data), {
-                path: "menu.html"
-            });
-            basic_rule();
-            company_rule_list(1);
-            person_rule_list(1); 
+<!-- ace scripts -->
+<script src="assets/js/src/elements.scroller.js"></script>
+<script src="assets/js/src/elements.colorpicker.js"></script>
+<script src="assets/js/src/elements.fileinput.js"></script>
+<script src="assets/js/src/elements.typeahead.js"></script>
+<script src="assets/js/src/elements.wysiwyg.js"></script>
+<script src="assets/js/src/elements.spinner.js"></script>
+<script src="assets/js/src/elements.treeview.js"></script>
+<script src="assets/js/src/elements.wizard.js"></script>
+<script src="assets/js/src/elements.aside.js"></script>
+<script src="assets/js/src/ace.js"></script>
+<script src="assets/js/src/ace.basics.js"></script>
+<script src="assets/js/src/ace.scrolltop.js"></script>
+<script src="assets/js/src/ace.ajax-content.js"></script>
+<script src="assets/js/src/ace.touch-drag.js"></script>
+<script src="assets/js/src/ace.sidebar.js"></script>
+<script src="assets/js/src/ace.sidebar-scroll-1.js"></script>
+<script src="assets/js/src/ace.submenu-hover.js"></script>
+<script src="assets/js/src/ace.widget-box.js"></script>
+<script src="assets/js/src/ace.settings.js"></script>
+<script src="assets/js/src/ace.settings-rtl.js"></script>
+<script src="assets/js/src/ace.settings-skin.js"></script>
+<script src="assets/js/src/ace.widget-on-reload.js"></script>
+<script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
+<!-- 本页js -->
+<script src="assets/js/jquery.cookie.js"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/public.js"></script>
+<script>
+    var id = rule_id = $.getUrlVar('id');
+
+    window.onload = function () {
+        $('#header').load('public/header.html');
+        $('#sidebar').load('public/menu.html');
+        var menu_data = {
+            opening: '',
+            acting: '.jieyongguize'
         }
+        $.cookie('menu_data', JSON.stringify(menu_data), {
+            path: "menu.html"
+        });
+        basic_rule();
+        company_rule_list(1);
+        person_rule_list(1);
+    }
 
-        function basic_rule() {
-            ajax.get('project/ruleBasic/getById', {
+    function basic_rule() {
+        ajax.get('project/ruleBasic/getById', {
+            'rule_id': id
+        }, function (res) {
+            $('input[name=start_time]').val(res.data.begin_time),
+                $('input[name=recommend]').val(res.data.visit_confirm_time),
+                $('input[name=value]').val(res.data.valid_visit_time),
+                $('input[name=deal]').val(res.data.make_bargain_time),
+                $('input[name=broker_recommend]').val(res.data.confirm_settle_commission_time),
+                $('input[name=broker_value]').val(res.data.visit_settle_commission_time),
+                $('input[name=broker_deal]').val(res.data.region_settle_commission_time),
+                $('#comment').val(res.data.comment),
+                $('#describe').val(res.data.describe);
+            $('input[name=standard]').val(res.data.standard);
+            $('input[name=assign]').each(function () {
+                if($(this).val()==res.data.advicer_selected){
+                    $(this).attr('checked',true);
+                }
+            })
+        })
+    }
+
+
+    $(document).on('click', '.del_leibie', function () {
+        var id = $(this).attr('value'),
+            conf = confirm('确定停用该条规则么？');
+        if (conf == true) {
+            ajax.post('project/ruleCompany/stop', {
                 'rule_id': id
             }, function (res) {
-                $('input[name=start_time]').val(res.data.begin_time),
-                    $('input[name=recommend]').val(res.data.visit_confirm_time),
-                    $('input[name=value]').val(res.data.valid_visit_time),
-                    $('input[name=deal]').val(res.data.make_bargain_time),
-                    $('input[name=broker_recommend]').val(res.data.confirm_settle_commission_time),
-                    $('input[name=broker_value]').val(res.data.visit_settle_commission_time),
-                    $('input[name=broker_deal]').val(res.data.region_settle_commission_time),
-                    $('#comment').val(res.data.comment),
-                    $('#describe').val(res.data.describe);
-                $('input[name=standard]').val(res.data.standard);
-            })
-        }
-
-
-        $(document).on('click', '.del_leibie', function () {
-            var id = $(this).attr('value'),
-                conf = confirm('确定停用该条规则么？');
-            if (conf == true) {
-                ajax.post('project/ruleCompany/stop', {
-                    'rule_id': id
-                }, function (res) {
-                    alert(res.msg);
-                    if (res.code == config.responseSuccess) {
-                        window.location.reload();
-                    }
-                })
-            }
-
-        })
-        $(document).on('click', '.person_stop', function () {
-            var id = $(this).attr('value'),
-                conf = confirm('确定停用该条规则么？');
-            if (conf == true) {
-                ajax.post('project/rulePerson/stop', {
-                    'rule_id': id
-                }, function (res) {
-                    alert(res.msg);
-                    if (res.code == config.responseSuccess) {
-                        window.location.reload();
-                    }
-                })
-            }
-
-        })
-        $('#save').click(function () {
-            var data = {
-                'rule_id': id,
-                'describe': $('#describe').val(),
-                'comment': $('#comment').val(),
-            };
-            ajax.post('project/ruleBasic/update', data, function (res) {
                 alert(res.msg);
                 if (res.code == config.responseSuccess) {
                     window.location.reload();
                 }
             })
-        })
-    </script>
-    
-    <script>
-        $(".addCompany").on('click', function () {
-            window.location.href = "CommissionRulesCompanyAdd.html?id=" + id;
-            return false;
-        })
-        //个人规则
-        $(".brokerRule").on('click', function () {
-            window.location.href = "CommissionRulesBrokerAdd.html?id=" + id;
-            return false;
-        })
-        //开关的值
-        $('#person').on('change', '.switchCom', function () {
-            var data={
-                'is_screen':1,
-            };
-            if($(this).is(':checked')){
-                data.is_screen=1;
-            }else{
-                data.is_screen=0;
-            }
-            ajax.post('project/rulePerson/update',data,function(){
+        }
+
+    })
+    $(document).on('click', '.person_stop', function () {
+        var id = $(this).attr('value'),
+            conf = confirm('确定停用该条规则么？');
+        if (conf == true) {
+            ajax.post('project/rulePerson/stop', {
+                'rule_id': id
+            }, function (res) {
                 alert(res.msg);
                 if (res.code == config.responseSuccess) {
                     window.location.reload();
                 }
             })
-        })
-        // //关闭按钮返回上一页
-        // $('#backLastPage').on('click', function () {
-        //     history.back(-1);
-        // })
-    </script>
-    <script>
-        // 分页
-        var last_page_com;
-        //公司规则
-        function company_rule_list(p) {
-            ajax.get('project/ruleCompany/getList', {
-                'basic_rule_id': id,
-                'page': p
-            }, function (res) {
-                var model =
-                    '<tr role="row" class="odd trCom" value="{a_id}"> ' +
-                    '<td class="center">{key}</td> ' +
-                    '<td class="center">{company_name}</td> ' +
-                    '<td class="center">{project_docker}</td> ' +
-                    '<td class="center">{project_docker_tel}</td> ' +
-                    '<td class="center">{compact_begin}</td> ' +
-                    '<td class="center">{compact_end}</td> ' +
-                    '<td class="center">{act_start}</td> ' +
-                    '<td class="center">{act_end}</td> ' +
-                    '<td class="center">{source}</td>' +
-                    '<td class="center">{state}</td>' +
-                    '<td class="center">{end_state_name}</td> ' +
-
-                    '<td class="center">缺接口</td>' +
-                    '<td class="center">缺接口</td>' +
-                    '<td class="center">缺接口</td> ' +
-                    '<td class="center"><div class="hidden-sm hidden-xs action-buttons">',
-                    id = 15 * (p - 1) + 1,
-
-                    str = '';
-                $.each(res.data.data, function (k, v) {
-                    var st = model;
-                    if (v.state == 2) {
-                        st +=
-                            '<a class="orange" href="CommissionRulesCompanyReview.html?id={b_id}&rule_id=' +
-                            $.getUrlVar('id') + '">审核</a>';
-                    } else {
-                        if (v.end_state_name != '已终止') {
-                            st +=
-                                '<a class="red del_leibie" value="{c_id}">终止</a> <a class="green edit_leibie" href="CommissionRulesCompanyUpdate.html?id={b_id}">查看</a> ';
-
-                        }
-                    }
-                    str += st.replace('{a_id}', v.rule_id).replace('{b_id}', v.rule_id).replace(
-                            '{c_id}', v.rule_id).replace('{key}', id++).replace('{company_name}', v.company_name)
-                        .replace('{project_docker}', v.project_docker).replace('{project_docker_tel}',
-                            v.project_docker_tel).replace('{compact_begin}', v.compact_begin).replace(
-                            '{compact_end}', v.compact_end).replace('{act_start}', v.act_start).replace(
-                            '{act_end}', v.act_end).replace('{state}', v.state_name).replace(
-                            '{end_state_name}', v.end_state_name).replace('{source}', v.source);
-                })
-                $('#company').append(str);
-                last_page_com = res.data.last_page;
-                PagingCom(res);
-            })
         }
 
-        function PagingCom(res) {
-            var page =
-                '<li class="paginate_button pageNumCom {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>';
-            var T = Math.floor(res.data.current_page / 10) * 10;
-            if (res.data.current_page > T || res.data.current_page == T) {
-                var i = T - 1;
-                if (res.data.last_page > i + 10) {
-                    var t = i + 11;
-                } else {
-                    var t = res.data.last_page;
-                }
-                for (i; i <= t; i++) {
-                    if (i == 0 || i < 0) {
-                        i = 1;
-                    }
-                    var str = page.replace('{pageValue}', i).replace('{page}', i);
-                    if (i == res.data.current_page) {
-                        str = str.replace('{avtive}', 'active');
-                    } else {
-                        str = str.replace('{avtive}', '');
-                    }
-                    $('#next1').before(str);
-                }
+    })
+    $('#save').click(function () {
+        var data = {
+            'rule_id': id,
+            'describe': $('#describe').val(),
+            'comment': $('#comment').val(),
+            'advicer_selected': $('input[name=assign]:checked').val(),
+        };
+        ajax.post('project/ruleBasic/update', data, function (res) {
+            alert(res.msg);
+            if (res.code == config.responseSuccess) {
+                window.location.reload();
             }
+        })
+    })
+</script>
 
+<script>
+    $(".addCompany").on('click', function () {
+        window.location.href = "CommissionRulesCompanyAdd.html?id=" + id;
+        return false;
+    })
+    //个人规则
+    $(".brokerRule").on('click', function () {
+        window.location.href = "CommissionRulesBrokerAdd.html?id=" + id;
+        return false;
+    })
+    //开关的值
+    $('#person').on('change', '.switchCom', function () {
+        var data = {
+            'is_screen': 1,
+        };
+        if ($(this).is(':checked')) {
+            data.is_screen = 1;
+        } else {
+            data.is_screen = 0;
         }
-        //首页点击事件
-        $('#prev1').on('click', function (e) {
-            clickOperCom(e, 1);
+        ajax.post('project/rulePerson/update', data, function () {
+            alert(res.msg);
+            if (res.code == config.responseSuccess) {
+                window.location.reload();
+            }
         })
-        //尾页点击事件
-        $('#next1').on('click', function (e) {
-            clickOperCom(e, last_page_com);
-        })
-        //分页点击事件
-        $('#paginationCom').on('click', '.pageNumCom', function (e) {
-            var p = $(this).children().html(); //当前点击页
-            clickOperCom(e, p);
-        })
-        //点击事件操作
-        function clickOperCom(e, p) {
-            e.stopPropagation();
-            $('.pageNumCom').remove();
-            $('.trCom').remove();
-            company_rule_list(p);
-        }
-    </script>
-    <script>
-        var last_page_per;
-        //个人规则
-        function person_rule_list(p) {
-            ajax.get('project/rulePerson/getList', {
-                'basic_rule_id': id,
-                'page': p
-            }, function (res) {
-                var model =
-                    '<tr role="row" class="odd trPer" value="{a_id}"> ' +
-                    '<td class="center">{key}</td> ' +
-                    '<td class="center">{rule_name}</td>  ' +
-                    '<td class="center">{plan_start}</td> ' +
-                    '<td class="center">{plan_end}</td> ' +
-                    '<td class="center">{act_start}</td> ' +
-                    '<td class="center">{act_end}</td> ' +
-                    '<td class="center">{state}</td> ' +
+    })
+    // //关闭按钮返回上一页
+    // $('#backLastPage').on('click', function () {
+    //     history.back(-1);
+    // })
+</script>
+<script>
+    // 分页
+    var last_page_com;
 
-                    '<td class="center">缺接口</td>' +
-                    '<td class="center">缺接口</td>' +
+    //公司规则
+    function company_rule_list(p) {
+        ajax.get('project/ruleCompany/getList', {
+            'basic_rule_id': id,
+            'page': p
+        }, function (res) {
+            var modelShow =
+                '<tr role="row" class="odd trCom" value="{a_id}"> ' +
+                '<td class="center">{key}</td> ' +
+                '<td class="center">{company_name}</td> ' +
+                '<td class="center">{project_docker}</td> ' +
+                '<td class="center">{project_docker_tel}</td> ' +
+                '<td class="center">{compact_begin}</td> ' +
+                '<td class="center">{compact_end}</td> ' +
+                '<td class="center">{act_start}</td> ' +
+                '<td class="center">{act_end}</td> ' +
+                '<td class="center">{source}</td>' +
+                '<td class="center">{state}</td>' +
+                '<td class="center">{end_state_name}</td> ' +
 
-                    '<td class="center"> ' +
-                    '<label> <input {check} name="switch-field-1" class="ace ace-switch ace-switch-5 switchCom" type="checkbox"> ' +
-                    '<span class="lbl"></span> </label> </td> ' +
-                    '<td class="center">  ',
-                    id = 15 * (p - 1) + 1,
-                    str = '';
-                $.each(res.data.data, function (k, v) {
-                    if (v.end_state_name != '已终止') {
-                        var st = model +
-                            '<div class="hidden-sm hidden-xs action-buttons"> <a class="green" href="CommissionRulesBrokerUpdate.html?id={b_id}&rule_id={rule_id}">编辑</a><a class="red person_stop" value="{c_id}" >停用</a> </div> </td> </tr>';
-                    } else {
-                        st = model;
-                    }
+                '<td class="center">{scene_server}</td>' +
+                '<td class="center">{allNums}</td>' +
+                '<td class="center buNums">{buNums}</td> ' +
+                '<td class="center"><div class="hidden-sm hidden-xs action-buttons">';
+            var modelHide =
+                '<tr role="row" class="odd trCom" value="{a_id}"> ' +
+                '<td class="center">{key}</td> ' +
+                '<td class="center">{company_name}</td> ' +
+                '<td class="center">{project_docker}</td> ' +
+                '<td class="center">{project_docker_tel}</td> ' +
+                '<td class="center">{compact_begin}</td> ' +
+                '<td class="center">{compact_end}</td> ' +
+                '<td class="center">{act_start}</td> ' +
+                '<td class="center">{act_end}</td> ' +
+                '<td class="center">{source}</td>' +
+                '<td class="center">{state}</td>' +
+                '<td class="center">{end_state_name}</td> ' +
 
-                    str += st.replace('{a_id}', v.rule_id).replace('{b_id}', v.rule_id).replace(
-                            '{c_id}', v.rule_id).replace('{key}', id++).replace('{rule_name}', v.rule_name)
-                        .replace('{plan_end}', v.plan_end).replace('{plan_start}', v.plan_start).replace(
-                            '{act_start}', v.act_start).replace('{act_end}', v.act_end).replace(
-                            '{state}', v.end_state_name).replace('{end_state_name}', v.end_state_name).replace('{rule_id}', rule_id);
-                    if(v.is_screen==1){
-                        str=str.replace('{check}','checked="checked"');
+                '<td class="center">{scene_server}</td>' +
+                '<td class="center">{allNums}</td>' +
+                '<td class="center"><div class="hidden-sm hidden-xs action-buttons">';
+                id = 15 * (p - 1) + 1,
+
+                str = '';
+            $.each(res.data.data, function (k, v) {
+                var y='';
+                var z='';
+                var w='';
+                if(v.scene_server==0){
+                    y='否';
+                }else{
+                    y='是';
+                }
+                if(v.tel_complete_state==0){
+                    z='是';
+                    $('.buNums').hide();
+                    var st = modelHide;
+                }else{
+
+                    if(v.tel_complete_state==2){
+                        w='有效';
                     }else{
-                        str=str.replace('{check}','');
+                        w='认购';
                     }
-                })
-                $('#person').append(str);
-                last_page_per = res.data.last_page;
-                PagingPer(res);
-            })
-        }
+                    z='否';
+                    var st = modelShow;
+                }
 
-        function PagingPer(res) {
-            var page =
-                '<li class="paginate_button pageNumPer {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>';
-            var T = Math.floor(res.data.current_page / 10) * 10;
-            if (res.data.current_page > T || res.data.current_page == T) {
-                var i = T - 1;
-                if (res.data.last_page > i + 10) {
-                    var t = i + 11;
+                if (v.state == 2) {
+                    st +=
+                        '<a class="orange" href="CommissionRulesCompanyReview.html?id={b_id}&rule_id=' +
+                        $.getUrlVar('id') + '">审核</a>';
                 } else {
-                    var t = res.data.last_page;
-                }
-                for (i; i <= t; i++) {
-                    if (i == 0 || i < 0) {
-                        i = 1;
+                    if (v.end_state_name != '已终止') {
+                        st +=
+                            '<a class="red del_leibie" value="{c_id}">终止</a> <a class="green edit_leibie" href="CommissionRulesCompanyUpdate.html?id={b_id}">查看</a> ';
+
                     }
-                    var str = page.replace('{pageValue}', i).replace('{page}', i);
-                    if (i == res.data.current_page) {
-                        str = str.replace('{avtive}', 'active');
-                    } else {
-                        str = str.replace('{avtive}', '');
-                    }
-                    $('#next2').before(str);
                 }
+                str += st.replace('{a_id}', v.rule_id).
+                replace('{b_id}', v.rule_id).
+                replace('{c_id}', v.rule_id).
+                replace('{key}', id++).
+                replace('{company_name}', v.company_name).
+                replace('{project_docker}', v.project_docker).
+                replace('{project_docker_tel}', v.project_docker_tel).
+                replace('{compact_begin}', v.compact_begin).
+                replace('{compact_end}', v.compact_end).
+                replace('{act_start}', v.act_start).
+                replace('{act_end}', v.act_end).
+                replace('{state}', v.state_name).
+                replace('{end_state_name}', v.end_state_name).
+                replace('{source}', v.source).
+
+                replace('{scene_server}', y).
+                replace('{allNums}', z).
+                replace('{buNums}', w);
+            })
+            $('#company').append(str);
+            last_page_com = res.data.last_page;
+            PagingCom(res);
+        })
+    }
+
+    function PagingCom(res) {
+        var page =
+            '<li class="paginate_button pageNumCom {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>';
+        var T = Math.floor(res.data.current_page / 10) * 10;
+        if (res.data.current_page > T || res.data.current_page == T) {
+            var i = T - 1;
+            if (res.data.last_page > i + 10) {
+                var t = i + 11;
+            } else {
+                var t = res.data.last_page;
             }
-
-        }
-        //首页点击事件
-        $('#prev2').on('click', function (e) {
-            clickOperPer(e, 1);
-        })
-        //尾页点击事件
-        $('#next2').on('click', function (e) {
-            clickOperPer(e, last_page_per);
-        })
-        //分页点击事件
-        $('#paginationPer').on('click', '.pageNumPer', function (e) {
-            var p = $(this).children().html(); //当前点击页
-            clickOperPer(e, p);
-        })
-        //点击事件操作
-        function clickOperPer(e, p) {
-            e.stopPropagation();
-            $('.pageNumPer').remove();
-            $('.trPer').remove();
-            person_rule_list(p);
+            for (i; i <= t; i++) {
+                if (i == 0 || i < 0) {
+                    i = 1;
+                }
+                var str = page.replace('{pageValue}', i).replace('{page}', i);
+                if (i == res.data.current_page) {
+                    str = str.replace('{avtive}', 'active');
+                } else {
+                    str = str.replace('{avtive}', '');
+                }
+                $('#next1').before(str);
+            }
         }
 
-    </script>
+    }
+
+    //首页点击事件
+    $('#prev1').on('click', function (e) {
+        clickOperCom(e, 1);
+    })
+    //尾页点击事件
+    $('#next1').on('click', function (e) {
+        clickOperCom(e, last_page_com);
+    })
+    //分页点击事件
+    $('#paginationCom').on('click', '.pageNumCom', function (e) {
+        var p = $(this).children().html(); //当前点击页
+        clickOperCom(e, p);
+    })
+
+    //点击事件操作
+    function clickOperCom(e, p) {
+        e.stopPropagation();
+        $('.pageNumCom').remove();
+        $('.trCom').remove();
+        company_rule_list(p);
+    }
+</script>
+<script>
+    var last_page_per;
+    //个人规则personBu
+    function person_rule_list(p) {
+        ajax.get('project/rulePerson/getList', {
+            'basic_rule_id': rule_id,
+            'page': p
+        }, function (res) {
+            var modelShow =
+                '<tr role="row" class="odd trPer" value="{a_id}"> ' +
+                '<td class="center">{key}</td> ' +
+                '<td class="center">{rule_name}</td>  ' +
+                '<td class="center">{plan_start}</td> ' +
+                '<td class="center">{plan_end}</td> ' +
+                '<td class="center">{act_start}</td> ' +
+                '<td class="center">{act_end}</td> ' +
+                '<td class="center">{state}</td> ' +
+
+                '<td class="center">{allNums}</td>' +
+                '<td class="center personBu">{buNums}</td> ' +
+
+                // '<td class="center"> ' +
+                // '<label> <input {check} name="switch-field-1" class="ace ace-switch ace-switch-5 switchCom" type="checkbox"> ' +
+                // '<span class="lbl"></span> </label> </td> ' +
+                '<td class="center"> ';
+            var modelHide =
+                '<tr role="row" class="odd trPer" value="{a_id}"> ' +
+                '<td class="center">{key}</td> ' +
+                '<td class="center">{rule_name}</td>  ' +
+                '<td class="center">{plan_start}</td> ' +
+                '<td class="center">{plan_end}</td> ' +
+                '<td class="center">{act_start}</td> ' +
+                '<td class="center">{act_end}</td> ' +
+                '<td class="center">{state}</td> ' +
+
+                '<td class="center">{allNums}</td>' +
+                // '<td class="center personBu">{buNums}</td> ' +
+
+                // '<td class="center"> ' +
+                // '<label> <input {check} name="switch-field-1" class="ace ace-switch ace-switch-5 switchCom" type="checkbox"> ' +
+                // '<span class="lbl"></span> </label> </td> ' +
+                '<td class="center"> ';
+
+                id = 15 * (p - 1) + 1,
+                str = '';
+            $.each(res.data.data, function (k, v) {
+                var z='';
+                var w='';
+                if(v.tel_complete_state==0){
+                    z='是';
+                    $('.personBu').hide();
+                    var st = modelHide;
+                }else{
+
+                    if(v.tel_complete_state==2){
+                        w='有效';
+                    }else{
+                        w='认购';
+                    }
+                    z='否';
+                    var st = modelShow;
+                }
+
+                if (v.end_state_name != '已终止') {
+                    var st = modelShow +
+                        '<div class="hidden-sm hidden-xs action-buttons"> <a class="green" href="CommissionRulesBrokerUpdate.html?id={b_id}&rule_id={rule_id}">编辑</a><a class="red person_stop" value="{c_id}" >停用</a> </div> </td> </tr>';
+                } else {
+                    st = modelShow;
+                }
+
+                str += st.replace('{a_id}', v.rule_id).
+                replace('{b_id}', v.rule_id).
+                replace('{c_id}', v.rule_id).
+                replace('{key}', id++).
+                replace('{rule_name}', v.rule_name).
+                replace('{plan_end}', v.plan_end).
+                replace('{plan_start}', v.plan_start).
+                replace('{act_start}', v.act_start).
+                replace('{act_end}', v.act_end).
+                replace('{state}', v.end_state_name).
+                replace('{end_state_name}', v.end_state_name).
+                replace('{rule_id}', rule_id).
+
+                replace('{allNums}', z).
+                replace('{buNums}', w);
+
+
+
+                if (v.is_screen == 1) {
+                    str = str.replace('{check}', 'checked="checked"');
+                } else {
+                    str = str.replace('{check}', '');
+                }
+            })
+            $('#person').append(str);
+            last_page_per = res.data.last_page;
+            PagingPer(res);
+        })
+    }
+
+    function PagingPer(res) {
+        var page =
+            '<li class="paginate_button pageNumPer {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>';
+        var T = Math.floor(res.data.current_page / 10) * 10;
+        if (res.data.current_page > T || res.data.current_page == T) {
+            var i = T - 1;
+            if (res.data.last_page > i + 10) {
+                var t = i + 11;
+            } else {
+                var t = res.data.last_page;
+            }
+            for (i; i <= t; i++) {
+                if (i == 0 || i < 0) {
+                    i = 1;
+                }
+                var str = page.replace('{pageValue}', i).replace('{page}', i);
+                if (i == res.data.current_page) {
+                    str = str.replace('{avtive}', 'active');
+                } else {
+                    str = str.replace('{avtive}', '');
+                }
+                $('#next2').before(str);
+            }
+        }
+
+    }
+
+    //首页点击事件
+    $('#prev2').on('click', function (e) {
+        clickOperPer(e, 1);
+    })
+    //尾页点击事件
+    $('#next2').on('click', function (e) {
+        clickOperPer(e, last_page_per);
+    })
+    //分页点击事件
+    $('#paginationPer').on('click', '.pageNumPer', function (e) {
+        var p = $(this).children().html(); //当前点击页
+        clickOperPer(e, p);
+    })
+
+    //点击事件操作
+    function clickOperPer(e, p) {
+        e.stopPropagation();
+        $('.pageNumPer').remove();
+        $('.trPer').remove();
+        person_rule_list(p);
+    }
+
+</script>
 </body>
 
 </html>

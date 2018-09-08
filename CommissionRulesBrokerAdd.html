@@ -136,7 +136,7 @@
                                             
                                             <div class="col-xs-6" style="padding-left: 100px;">
                                                 <div class="form-group">
-                                                    <label class="lab_width">规则名称：</label>
+                                                    <label class="lab_width">*规则名称：</label>
                                                     <input class="inpt_width" type="text" name="rule_name">
                                                 </div>
                                                 <div class="form-group">
@@ -169,23 +169,23 @@
                                             </div>
 
                                             <div class="col-xs-6" style="padding-left: 50px;">
-                                                <div class="form-group">
-                                                    <label class="lab_width">是否筛选经纪人：</label>
-                                                    <div class="inpt_width" style="display: inline-block;">
-                                                        <div class="radio" style="display: inline-block;">
-                                                            <label>
-                                                                <input  type="radio" class="ace" value="1" name="screen">
-                                                                <span class="lbl">是</span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="radio" style="display: inline-block;">
-                                                            <label>
-                                                                <input  type="radio" class="ace InvalidVisit" value="0" name="screen">
-                                                                <span class="lbl">否</span>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <!--<div class="form-group">-->
+                                                    <!--<label class="lab_width">是否筛选经纪人：</label>-->
+                                                    <!--<div class="inpt_width" style="display: inline-block;">-->
+                                                        <!--<div class="radio" style="display: inline-block;">-->
+                                                            <!--<label>-->
+                                                                <!--<input  type="radio" class="ace" value="1" name="screen" checked="checked">-->
+                                                                <!--<span class="lbl">是</span>-->
+                                                            <!--</label>-->
+                                                        <!--</div>-->
+                                                        <!--<div class="radio" style="display: inline-block;">-->
+                                                            <!--<label>-->
+                                                                <!--<input  type="radio" class="ace InvalidVisit" value="0" name="screen">-->
+                                                                <!--<span class="lbl">否</span>-->
+                                                            <!--</label>-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
                                                 <div class="form-group">
                                                     <label class="lab_width">*实际开始日期：</label>
                                                     <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
@@ -198,18 +198,21 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <div class="form-group">
                                                     <label class="lab_width">报备号码是否隐藏：</label>
                                                     <div class="inpt_width" style="display: inline-block;">
                                                         <div class="radio" style="display: inline-block;">
                                                             <label>
-                                                                <input  type="radio" class="ace" value="0" name="numHide">
+                                                                <input type="radio" class="ace numHide" value="0"
+                                                                       name="numHide">
                                                                 <span class="lbl">是</span>
                                                             </label>
                                                         </div>
                                                         <div class="radio" style="display: inline-block;">
                                                             <label>
-                                                                <input  type="radio" class="ace InvalidVisit" value="1" name="numHide">
+                                                                <input type="radio" class="ace InvalidVisit numHide"
+                                                                       value="1" name="numHide" checked="checked">
                                                                 <span class="lbl">否</span>
                                                             </label>
                                                         </div>
@@ -217,18 +220,19 @@
                                                     </div>
 
                                                 </div>
-                                                <div class="form-group">
+                                                <div class="form-group allTel">
                                                     <label class="lab_width">展示完整号码阶段：</label>
                                                     <div class="inpt_width" style="display: inline-block;">
                                                         <div class="radio" style="display: inline-block;">
                                                             <label>
-                                                                <input  type="radio" class="ace" value="0" name="numShow">
+                                                                <input type="radio" class="ace" value="2" name="numShow" checked="checked">
                                                                 <span class="lbl">有效确认</span>
                                                             </label>
                                                         </div>
                                                         <div class="radio" style="display: inline-block;">
                                                             <label>
-                                                                <input  type="radio" class="ace InvalidVisit" value="1" name="numShow">
+                                                                <input type="radio" class="ace InvalidVisit" value="5"
+                                                                       name="numShow">
                                                                 <span class="lbl">认购</span>
                                                             </label>
                                                         </div>
@@ -301,6 +305,10 @@
 
         }
         $('#save').click(function(){
+            var n=$('input[name=numHide]:checked').val();
+            if(!(n==0)){
+                n=$('input[name=numShow]:checked').val();
+            }
             var data={
                 'basic_rule_id':id,
                 'rule_name':$('input[name=rule_name]').val(),
@@ -308,23 +316,41 @@
                 'plan_end':$('input[name=plan_end]').val(),
                 'commission_describe':$('#comment').val(),
                 'act_start':$('input[name=act_start]').val(),
-                'is_screen':$('input[name=screen]:checked').val(),
+                // 'is_screen':$('input[name=screen]:checked').val(),
+                'is_screen':0,
+                // 'rule_type':$('.ruleType').val(),
+                'scene_server':$('input[name=resident]:checked').val(),
+                'tel_complete_state':n,
             }
            if(data.rule_name==''){
-                alert('请输出项目名称');
+                alert('请填写规则名称');
                 return;
            }
-           if(data.act_start==''){
-               alert('请输出实际开始时间');
-               return;
-           }
-
-            if(data.act_start==''){
-                alert('请选择是否筛选经纪人');
+            if(data.plan_start==''){
+                alert('请填写合同开始时间');
                 return;
             }
+            if(data.plan_end==''){
+                alert('请填写合同结束时间');
+                return;
+            }
+           if(data.act_start==''){
+               alert('请填写实际开始时间');
+               return;
+           }
            ajax.post('project/rulePerson/create',data,function(res){
-               alert(res.msg);
+               if(res.msg==undefined){
+                   if(res.is_screen){
+                       alert('请选择是否筛选经纪人!');
+                   }else if(res.company_rule_id){
+                       alert('公司规则id缺失！');
+                       history.go(-1);
+                   }
+               }
+               if(res.code==config.responseError){
+                   alert(res.msg);
+                   history.go(-1);
+               }
                if(res.code==config.responseSuccess){
                    window.location.href='CommissionRulesBrokerUpdate.html?id='+res.data+'&rule_id='+id;
                }
@@ -373,6 +399,15 @@
         // $('#backLastPage').on('click',function(){
         //     history.back(-1);
         // })
+        //  号码隐藏
+        $('.numHide').on('change', function () {
+            var val = $(this).val();
+            if (val == 0) {
+                $('.allTel').hide();
+            } else {
+                $('.allTel').show();
+            }
+        })
     </script>
 </body>
 

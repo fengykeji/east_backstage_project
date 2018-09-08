@@ -132,7 +132,7 @@
                     <div class="operate_proInfo">
                         <button class="btn btn-primary finish" >完成</button>
 
-                        <button class="btn btn-danger finish"  >关闭</button>
+                        <button class="btn btn-danger finish" onclick="javascript:history.go(-1)" >关闭</button>
 
 
                     </div>
@@ -184,23 +184,23 @@
                                             </div>
 
                                             <div class="col-xs-6" style="padding-left: 50px;">
-                                                <div class="form-group">
-                                                    <label class="lab_width">是否筛选经纪人：</label>
-                                                    <div class="inpt_width" style="display: inline-block;">
-                                                        <div class="radio" style="display: inline-block;">
-                                                            <label>
-                                                                <input type="radio" class="ace y" name="screen" disabled>
-                                                                <span class="lbl">是</span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="radio" style="display: inline-block;">
-                                                            <label>
-                                                                <input type="radio" class="ace InvalidVisit n" dirname="screen" disabled>
-                                                                <span class="lbl">否</span>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <!--<div class="form-group">-->
+                                                    <!--<label class="lab_width">是否筛选经纪人：</label>-->
+                                                    <!--<div class="inpt_width" style="display: inline-block;">-->
+                                                        <!--<div class="radio" style="display: inline-block;">-->
+                                                            <!--<label>-->
+                                                                <!--<input type="radio" class="ace y" name="screen" disabled>-->
+                                                                <!--<span class="lbl">是</span>-->
+                                                            <!--</label>-->
+                                                        <!--</div>-->
+                                                        <!--<div class="radio" style="display: inline-block;">-->
+                                                            <!--<label>-->
+                                                                <!--<input type="radio" class="ace InvalidVisit n" dirname="screen" disabled>-->
+                                                                <!--<span class="lbl">否</span>-->
+                                                            <!--</label>-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
                                                 <div class="form-group">
                                                     <label class="lab_width">*实际开始日期：</label>
                                                     <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
@@ -438,8 +438,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
-                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="tags_add">确定</button>
+                    <button data-bb-handler="cancel" type="button" class="btn btn-sm btn-default closed">取消</button>
+                    <button data-bb-handler="confirm" type="button" class="btn btn-sm btn-primary" id="tags_add">确定</button>
                 </div>
             </div>
         </div>
@@ -475,8 +475,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
-                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="broker_add">确定</button>
+                    <button data-bb-handler="cancel" type="button" class="btn btn-sm btn-default closed">取消</button>
+                    <button data-bb-handler="confirm" type="button" class="btn btn-sm btn-primary" id="broker_add">确定</button>
                 </div>
             </div>
         </div>

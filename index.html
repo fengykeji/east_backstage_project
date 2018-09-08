@@ -2,35 +2,34 @@
 <html lang="en">
 
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta charset="utf-8"/>
     <title>项目信息</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
 
     <!-- bootstrap & fontawesome -->
-    <link rel="stylesheet" href="assets/css/bootstrap.css" />
-    <link rel="stylesheet" href="components/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap.css"/>
+    <link rel="stylesheet" href="components/font-awesome/css/font-awesome.css"/>
 
     <!-- text fonts -->
-    <link rel="stylesheet" href="assets/css/ace-fonts.css" />
+    <link rel="stylesheet" href="assets/css/ace-fonts.css"/>
 
     <!-- ace styles -->
-    <link rel="stylesheet" href="assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <link rel="stylesheet" href="assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style"/>
 
 
-    <link rel="stylesheet" href="assets/css/ace-skins.css" />
-    <link rel="stylesheet" href="assets/css/ace-rtl.css" />
-
+    <link rel="stylesheet" href="assets/css/ace-skins.css"/>
+    <link rel="stylesheet" href="assets/css/ace-rtl.css"/>
 
 
     <!-- ace settings handler -->
     <script src="assets/js/ace-extra.js"></script>
 
 
-
     <!-- 自定义css -->
-    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=sfcUullGnAp1PzdsvmVWB5CrrIw0Vb19"></script>
+    <script type="text/javascript"
+            src="http://api.map.baidu.com/api?v=2.0&ak=sfcUullGnAp1PzdsvmVWB5CrrIw0Vb19"></script>
 
     <link rel="stylesheet" href="assets/css/Customize_css/index.css">
     <link rel="stylesheet" href="assets/css/Customize_css/upLoadImg.css">
@@ -39,804 +38,805 @@
 </head>
 
 <body class="no-skin">
-    <div id="header">
+<div id="header">
+
+</div>
+<div class="main-content" id="main-container">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('main-container', 'fixed')
+        } catch (e) {
+        }
+    </script>
+    <!-- 菜单开始 -->
+    <div id="sidebar" class="sidebar responsive ace-save-state">
 
     </div>
-    <div class="main-content" id="main-container">
-        <script type="text/javascript">
-            try {
-                ace.settings.check('main-container', 'fixed')
-            } catch (e) {}
-        </script>
-        <!-- 菜单开始 -->
-        <div id="sidebar" class="sidebar responsive ace-save-state">
-
-        </div>
-        <div class="main-content">
-            <div class="main-content-inner">
-                <div class="breadcrumbs" id="breadcrumbs">
-                    <script type="text/javascript">
-                        try {
-                            ace.settings.check('breadcrumbs', 'fixed')
-                        } catch (e) {}
-                    </script>
-                    <ul class="breadcrumb">
-                        <li>
-                            <i class="ace-icon fa fa-home home-icon"></i>
-                            <a href="index.html">楼盘字典>项目信息</a>
-                        </li>
-                    </ul>
-                    <div class="operate_proInfo">
-                        <button class="btn btn-primary preViewBtn">预览</button>
-                        <button class="btn btn-danger" id="save">保存</button>
-                    </div>
-                </div>
-                <!-- 内容开始 -->
-                <div class="page-content">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <form class="form-horizontal" role="form">
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right" > 项目编号：</label>
-
-                                    <div class="col-sm-9">
-                                        <p class="col-xs-10 col-sm-5 inputP" id="project_id"></p>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right" > 项目名称：</label>
-
-                                    <div class="col-sm-9">
-                                        <p class="col-xs-10 col-sm-5 inputP" id="project_name"></p>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right" > 项目地址：</label>
-                                    <div class="col-sm-9">
-                                        <select name="province" class="pro_province" disabled></select>
-                                        <select name="city" class="pro_city" disabled></select>
-                                        <select name="area" class="pro_area" disabled></select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right" ></label>
-
-                                    <div class="col-sm-9">
-                                        <input type="text" class="col-xs-10 col-sm-5" id="absolute_address" disabled>
-                                        <!-- <a href="map.html" class="ace-icon fa fa-map-marker bigger-200 map_sty"></a> -->
-                                        <a href="#" class="ace-icon fa fa-map-marker bigger-200 map_sty"></a>
-                                        <!--<input type="hidden" name="latitude">
-                                        <input type="hidden" name="longitude">-->
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-xs-12">
-                                        <label class="col-sm-3 control-label no-padding-right" >项目主图：</label>
-                                        <label class="ace-file-input ace-file-multiple col-sm-3 fileUpLabel">
-
-                                            <img class="show_UpImg img_url" src="assets/images/null.jpg" id="img_url">
-
-                                            <input multiple="" type="file" accept="image/*" id="img_url_edit">
-                                        </label>
-
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right"> 物业类型：</label>
-
-                                    <div class="col-sm-9" id="property"></div>
-
-
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right " >项目标签：</label>
-                                    <div class="col-sm-9 tags pro_label" id="project_tag">
-
-
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right" ></label>
-                                    <div class="col-sm-9">
-
-                                        <span id="label_Add" class="btn btn-success ">添加标签</span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right" > 开发商：</label>
-                                    <div class="col-sm-9">
-                                        <p class="col-xs-10 col-sm-5 inputP" id="developer_name"></p>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right" > 项目状态：</label>
-
-                                    <div class="col-sm-9">
-                                        <select class="form-control" style="width: 150px;" name="sale_state" id="sale_state">
-                                            <option value=""></option>
-                                            <option value="1">待售</option>
-                                            <option value="2">在售</option>
-                                            <option value="3">售罄</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right" >云算地址：</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="col-xs-10 col-sm-5" id="yunsuan_url">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right" > 选择项目：</label>
-                                    <div class="col-sm-9">
-                                        <select class="form-control" style="width: 150px;" name="yunsuan_project">
-                                            <option value=""></option>
-
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-xs-12">
-                                        <label class="col-sm-3 control-label no-padding-right" > 楼栋信息主图：</label>
-                                        <label class="ace-file-input ace-file-multiple col-sm-3 fileUpLabel">
-                                            <img class="show_UpImg img_url" src="assets/images/null.jpg" id="list_img">
-                                            <input multiple="" type="file" accept="image/*" id="list_img_edit">
-                                        </label>
-
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs" id="breadcrumbs">
+                <script type="text/javascript">
+                    try {
+                        ace.settings.check('breadcrumbs', 'fixed')
+                    } catch (e) {
+                    }
+                </script>
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="ace-icon fa fa-home home-icon"></i>
+                        <a href="index.html">楼盘字典>项目信息</a>
+                    </li>
+                </ul>
+                <div class="operate_proInfo">
+                    <button class="btn btn-primary preViewBtn">预览</button>
+                    <button class="btn btn-danger" id="save">保存</button>
                 </div>
             </div>
-        </div>
-    </div>
+            <!-- 内容开始 -->
+            <div class="page-content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right"> 项目编号：</label>
 
-    <div class="modal_all modal_style">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="bootbox-close-button close closed">×</button>
-                    <h4 class="modal-title">添加项目标签</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="bootbox-body">
-                        <ul class="pro_lable_list" id="tag_list">
-
-                        </ul>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button data-bb-handler="cancel" type="button" class="btn btn-sm btn-default closed">取消</button>
-                    <button data-bb-handler="confirm" type="button" class="btn btn-sm btn-primary" id="tags_add">确定</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- 地图 -->
-    <div class="modal_map modal_style">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="bootbox-close-button close closed">×</button>
-                </div>
-                <div class="modal-body">
-                    <!--<button type="button" class="bootbox-close-button close closed">×</button>-->
-                    <div id="allmap"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- 预览 -->
-    <div class="modal_preview modal_style">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="bootbox-close-button close closed">×</button>
-                </div>
-                <div class="modal-body">
-                    <div class="preBackImg" style="padding: 71px 0;">
-                        <div class="scanShowAll">
-                            <div class="scanShowDiv">
-                                <img src="assets/images/scan_header.png" alt="#" style="width: 100%;">
+                                <div class="col-sm-9">
+                                    <p class="col-xs-10 col-sm-5 inputP" id="project_id"></p>
+                                </div>
                             </div>
-                            <div class="scanShowDiv">
-                                <div>
-                                    <img id="YL_img_url" src="assets/images/null.jpg" alt="#" style="width: 100%;max-height: 150px;">
-                                </div>
-                                <div class="proName">
-                                    <span id="YL_project_name"></span>
-                                    <span id="YL_sale_state"></span>
-                                </div>
-                                <div class="proTab">
-                                    <div>
-                                        <ul>
-                                            <!-- <li class="proTabZ">住宅</li>
-                                            <li class="proTabG">公寓</li>
-                                            <li class="proTabS">商铺</li>
-                                            <li class="proTabX">写字楼</li>
-                                            <li class="proTabB">别墅</li> -->
-                                        </ul>
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right"> 项目名称：</label>
 
-                                <div class="proTabT">
+                                <div class="col-sm-9">
+                                    <p class="col-xs-10 col-sm-5 inputP" id="project_name"></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right"> 项目地址：</label>
+                                <div class="col-sm-9">
+                                    <select name="province" class="pro_province" disabled></select>
+                                    <select name="city" class="pro_city" disabled></select>
+                                    <select name="area" class="pro_area" disabled></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right"></label>
+
+                                <div class="col-sm-9">
+                                    <input type="text" class="col-xs-10 col-sm-5" id="absolute_address" disabled>
+                                    <!-- <a href="map.html" class="ace-icon fa fa-map-marker bigger-200 map_sty"></a> -->
+                                    <a href="#" class="ace-icon fa fa-map-marker bigger-200 map_sty"></a>
+                                    <!--<input type="hidden" name="latitude">
+                                    <input type="hidden" name="longitude">-->
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label class="col-sm-3 control-label no-padding-right">项目主图：</label>
+                                    <label class="ace-file-input ace-file-multiple col-sm-3 fileUpLabel">
+
+                                        <img class="show_UpImg img_url" src="assets/images/null.jpg" id="img_url">
+
+                                        <input multiple="" type="file" accept="image/*" id="img_url_edit">
+                                    </label>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right"> 物业类型：</label>
+
+                                <div class="col-sm-9" id="property"></div>
+
+
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right ">项目标签：</label>
+                                <div class="col-sm-9 tags pro_label" id="project_tag">
+
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right"></label>
+                                <div class="col-sm-9">
+
+                                    <span id="label_Add" class="btn btn-success ">添加标签</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right"> 开发商：</label>
+                                <div class="col-sm-9">
+                                    <p class="col-xs-10 col-sm-5 inputP" id="developer_name"></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right"> 项目状态：</label>
+
+                                <div class="col-sm-9">
+                                    <select class="form-control" style="width: 150px;" name="sale_state"
+                                            id="sale_state">
+                                        <option value=""></option>
+                                        <option value="1">待售</option>
+                                        <option value="2">在售</option>
+                                        <option value="3">售罄</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">云算地址：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="col-xs-10 col-sm-5" id="yunsuan_url">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right"> 选择项目：</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control" style="width: 150px;" name="yunsuan_project">
+                                        <option value=""></option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label class="col-sm-3 control-label no-padding-right"> 楼栋信息主图：</label>
+                                    <label class="ace-file-input ace-file-multiple col-sm-3 fileUpLabel">
+                                        <img class="show_UpImg img_url" src="assets/images/null.jpg" id="list_img">
+                                        <input multiple="" type="file" accept="image/*" id="list_img_edit">
+                                    </label>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_all modal_style">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close closed">×</button>
+                <h4 class="modal-title">添加项目标签</h4>
+            </div>
+            <div class="modal-body">
+                <div class="bootbox-body">
+                    <ul class="pro_lable_list" id="tag_list">
+
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-bb-handler="cancel" type="button" class="btn btn-sm btn-default closed">取消</button>
+                <button data-bb-handler="confirm" type="button" class="btn btn-sm btn-primary" id="tags_add">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 地图 -->
+<div class="modal_map modal_style">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close closed">×</button>
+            </div>
+            <div class="modal-body">
+                <!--<button type="button" class="bootbox-close-button close closed">×</button>-->
+                <div id="allmap"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 预览 -->
+<div class="modal_preview modal_style">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close closed">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="preBackImg" style="padding: 71px 0;">
+                    <div class="scanShowAll">
+                        <div class="scanShowDiv">
+                            <img src="assets/images/scan_header.png" alt="#" style="width: 100%;">
+                        </div>
+                        <div class="scanShowDiv">
+                            <div>
+                                <img id="YL_img_url" src="assets/images/null.jpg" alt="#"
+                                     style="width: 100%;max-height: 150px;">
+                            </div>
+                            <div class="proName">
+                                <span id="YL_project_name"></span>
+                                <span id="YL_sale_state"></span>
+                            </div>
+                            <div class="proTab">
+                                <div>
                                     <ul>
-                                        <!-- <li>学区房</li>
-                                        <li>地铁房</li>
-                                        <li>度假村</li> -->
+                                        <!-- <li class="proTabZ">住宅</li>
+                                        <li class="proTabG">公寓</li>
+                                        <li class="proTabS">商铺</li>
+                                        <li class="proTabX">写字楼</li>
+                                        <li class="proTabB">别墅</li> -->
                                     </ul>
                                 </div>
-                                <div>
-                                    <p>开发商：
-                                        <span id="YL_developer_name"></span>
-                                    </p>
-                                    <p>均价：XXX</p>
-                                </div>
-                                <div>
-                                    <i class="ace-icon fa fa-map-marker bigger-100 map_sty"></i>
-                                    <span id="YL_absolute_address"></span>
-                                </div>
                             </div>
-                            <div class="scanShowDiv">
-                                <p class="buildShow">楼栋信息</p>
-                                <img id="YL_list_img" src="assets/images/null.jpg" alt="#" style="width: 100%;max-height: 150px;">
+
+                            <div class="proTabT">
+                                <ul>
+                                    <!-- <li>学区房</li>
+                                    <li>地铁房</li>
+                                    <li>度假村</li> -->
+                                </ul>
                             </div>
+                            <div>
+                                <p>开发商：
+                                    <span id="YL_developer_name"></span>
+                                </p>
+                                <p>均价：XXX</p>
+                            </div>
+                            <div>
+                                <i class="ace-icon fa fa-map-marker bigger-100 map_sty"></i>
+                                <span id="YL_absolute_address"></span>
+                            </div>
+                        </div>
+                        <div class="scanShowDiv">
+                            <p class="buildShow">楼栋信息</p>
+                            <img id="YL_list_img" src="assets/images/null.jpg" alt="#"
+                                 style="width: 100%;max-height: 150px;">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 
-    <!-- basic scripts -->
+<!-- basic scripts -->
 
-    <!--[if !IE]> -->
-    <script src="components/jquery/dist/jquery.js"></script>
+<!--[if !IE]> -->
+<script src="components/jquery/dist/jquery.js"></script>
 
-    <script type="text/javascript">
-        if ('ontouchstart' in document.documentElement) document.write(
-            "<script src='components/_mod/jquery.mobile.custom/jquery.mobile.custom.js'>" + "<" + "/script>");
-    </script>
-    <script src="components/bootstrap/dist/js/bootstrap.js"></script>
-    <!-- ace scripts -->
-    <script src="assets/js/src/elements.scroller.js"></script>
-    <script src="assets/js/src/elements.colorpicker.js"></script>
-    <script src="assets/js/src/elements.fileinput.js"></script>
-    <script src="assets/js/src/elements.typeahead.js"></script>
-    <script src="assets/js/src/elements.wysiwyg.js"></script>
-    <script src="assets/js/src/elements.spinner.js"></script>
-    <script src="assets/js/src/elements.treeview.js"></script>
-    <script src="assets/js/src/elements.wizard.js"></script>
-    <script src="assets/js/src/elements.aside.js"></script>
-    <script src="assets/js/src/ace.js"></script>
-    <script src="assets/js/src/ace.basics.js"></script>
-    <script src="assets/js/src/ace.scrolltop.js"></script>
-    <script src="assets/js/src/ace.ajax-content.js"></script>
-    <script src="assets/js/src/ace.touch-drag.js"></script>
-    <script src="assets/js/src/ace.sidebar.js"></script>
-    <script src="assets/js/src/ace.sidebar-scroll-1.js"></script>
-    <script src="assets/js/src/ace.submenu-hover.js"></script>
-    <script src="assets/js/src/ace.widget-box.js"></script>
-    <script src="assets/js/src/ace.settings.js"></script>
-    <script src="assets/js/src/ace.settings-rtl.js"></script>
-    <script src="assets/js/src/ace.settings-skin.js"></script>
-    <script src="assets/js/src/ace.widget-on-reload.js"></script>
-    <script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
-    <!-- 本页js -->
-    <script src="assets/js/Customize_js/upLoadImg.js"></script>
-    <script src="assets/js/jquery.cookie.js"></script>
-    <script src="assets/js/config.js"></script>
-    <script src="assets/js/public.js"></script>
-    <script>
-        //删除项目标签
-        $('.pro_label').on('click', '.closed', function (event) {
-            event.stopPropagation();
-            $(this).parent().remove();
+<script type="text/javascript">
+    if ('ontouchstart' in document.documentElement) document.write(
+        "<script src='components/_mod/jquery.mobile.custom/jquery.mobile.custom.js'>" + "<" + "/script>");
+</script>
+<script src="components/bootstrap/dist/js/bootstrap.js"></script>
+<!-- ace scripts -->
+<script src="assets/js/src/elements.scroller.js"></script>
+<script src="assets/js/src/elements.colorpicker.js"></script>
+<script src="assets/js/src/elements.fileinput.js"></script>
+<script src="assets/js/src/elements.typeahead.js"></script>
+<script src="assets/js/src/elements.wysiwyg.js"></script>
+<script src="assets/js/src/elements.spinner.js"></script>
+<script src="assets/js/src/elements.treeview.js"></script>
+<script src="assets/js/src/elements.wizard.js"></script>
+<script src="assets/js/src/elements.aside.js"></script>
+<script src="assets/js/src/ace.js"></script>
+<script src="assets/js/src/ace.basics.js"></script>
+<script src="assets/js/src/ace.scrolltop.js"></script>
+<script src="assets/js/src/ace.ajax-content.js"></script>
+<script src="assets/js/src/ace.touch-drag.js"></script>
+<script src="assets/js/src/ace.sidebar.js"></script>
+<script src="assets/js/src/ace.sidebar-scroll-1.js"></script>
+<script src="assets/js/src/ace.submenu-hover.js"></script>
+<script src="assets/js/src/ace.widget-box.js"></script>
+<script src="assets/js/src/ace.settings.js"></script>
+<script src="assets/js/src/ace.settings-rtl.js"></script>
+<script src="assets/js/src/ace.settings-skin.js"></script>
+<script src="assets/js/src/ace.widget-on-reload.js"></script>
+<script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
+<!-- 本页js -->
+<script src="assets/js/Customize_js/upLoadImg.js"></script>
+<script src="assets/js/jquery.cookie.js"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/public.js"></script>
+<script>
+    //删除项目标签
+    $('.pro_label').on('click', '.closed', function (event) {
+        event.stopPropagation();
+        $(this).parent().remove();
+    })
+
+    //添加项目标签
+    $('#label_Add').on('click', function (event) {
+        event.stopPropagation();
+        $('.modal_all').css('display', 'block');
+    })
+    //预览
+    $('.preViewBtn').on('click', function (event) {
+        event.stopPropagation();
+        //预览数据开始
+        $('#YL_project_name').html($('#project_name').text());
+
+        switch ($('#sale_state').val()) {
+            case '1':
+                $('#YL_sale_state').html('待售');
+                break;
+            case '2':
+                $('#YL_sale_state').html('在售');
+                break;
+            default:
+                $('#YL_sale_state').html('售罄');
+                break;
+        }
+
+        if ($('#img_url').attr('src') != '') {
+            $('#YL_img_url').attr('src', $('#img_url').attr('src'));
+        }
+        if ($('#list_img').attr('src') != '') {
+            $('#YL_list_img').attr('src', $('#list_img').attr('src'));
+        }
+
+        $('#YL_developer_name').html($('#developer_name').text());
+
+        $('#YL_absolute_address').html($('#absolute_address').val());
+
+        $('.proTabT ul').text('');
+        $('#project_tag>span').each(function () {
+            var val = $(this).children('.tag_name').text();
+            var str = '<li>' + val + '</li>';
+            $('.proTabT ul').append(str);
         })
-
-        //添加项目标签
-        $('#label_Add').on('click', function (event) {
-            event.stopPropagation();
-            $('.modal_all').css('display', 'block');
-        })
-        //预览
-        $('.preViewBtn').on('click', function (event) {
-            event.stopPropagation();
-            //预览数据开始
-            $('#YL_project_name').html($('#project_name').text());
-
-            switch ($('#sale_state').val()) {
-                case '1':
-                    $('#YL_sale_state').html('待售');
+        var dom = $('input[name=form-field-checkbox]:checked');
+        $('.proTab ul').text('');
+        var str = '';
+        dom.each(function () {
+            var val = $(this).val();
+            switch (val) {
+                case '59':
+                    str += '<li class="proTabZ">住宅</li>'
                     break;
-                case '2':
-                    $('#YL_sale_state').html('在售');
+                case '60':
+                    str += '<li class="proTabG">公寓</li>'
                     break;
-                default:
-                    $('#YL_sale_state').html('售罄');
+                case '62':
+                    str += '<li class="proTabS">商铺</li>'
+                    break;
+                case '63':
+                    str += '<li class="proTabX">写字楼</li>'
+                    break;
+                case '61':
+                    str += '<li class="proTabB">别墅</li>'
+                    break;
+                case '64':
+                    str += '<li class="proTabZ">车位</li>'
+                    break;
+                case '138':
+                    str += '<li class="proTabG">微墅</li>'
+                    break;
+                case '139':
+                    str += '<li class="proTabS">商墅</li>'
+                    break;
+                case '162':
+                    str += '<li class="proTabX">办公</li>'
                     break;
             }
+        });
+        $('.proTab ul').append(str);
 
-            if ($('#img_url').attr('src') != '') {
-                $('#YL_img_url').attr('src', $('#img_url').attr('src'));
-            }
-            if ($('#list_img').attr('src') != '') {
-                $('#YL_list_img').attr('src', $('#list_img').attr('src'));
-            }
+        // 预览数据结束
+        $('.modal_preview').css('display', 'block');
+        return false;
+    })
+    //关闭弹框
+    $('.closed').on('click', function () {
+        $(this).parent().parent().parent().parent().css('display', 'none');
+    })
+</script>
+<script>
+    //打开地图
+    $('.map_sty').on('click', function () {
+        event.stopPropagation();
+        $('.modal_map').css('display', 'block');
+        // 百度地图API功能
+        var map = new BMap.Map("allmap", {
+            minZoom: 1,
+            maxZoom: 18
+        });
+        // 创建Map实例
 
-            $('#YL_developer_name').html($('#developer_name').text());
+        if (map_data.longitude && map_data.latitude) {
+            var point = new BMap.Point(map_data.longitude, map_data.latitude);
+        } else {
+            var point = new BMap.Point(116.404, 39.915); //默认北京
+        }
 
-            $('#YL_absolute_address').html($('#absolute_address').val());
 
-            $('.proTabT ul').text('');
-            $('#project_tag>span').each(function () {
-                var val=$(this).children('.tag_name').text();
-                var str = '<li>'+val+'</li>';
-                $('.proTabT ul').append(str);
-            })
-            // if (res.data.property.length != 0) {
-                var dom = $('input[name="form-field-checkbox"]');
-                // dom.each(function () {
-                //     if($(this).attr('checked',true)){
-                //         console.log(1);
-                //     }
-                //
-                // });
+        map.centerAndZoom(point, 15);
+        //添加地图类型控件
+        map.addControl(new BMap.MapTypeControl({
+            mapTypes: [
+                BMAP_NORMAL_MAP,
+                BMAP_HYBRID_MAP
+            ]
+        }));
+        map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放
+        // 创建地址解析器实例
+        var myGeo = new BMap.Geocoder();
+        //将地址解析结果显示在地图上，并调整地图视野
 
-                // var str = ''
-                // dom.each(function () {
-                //     if ($.inArray(parseInt($(this).val()), res.data.property) != -1) {
-                //         var val = $(this).next().html();
-                //         switch (val) {
-                //             case '住宅':
-                //                 str += '<li class="proTabZ">住宅</li>'
-                //                 break;
-                //             case '公寓':
-                //                 str += '<li class="proTabG">公寓</li>'
-                //                 break;
-                //             case '商铺':
-                //                 str += '<li class="proTabS">商铺</li>'
-                //                 break;
-                //             case '写字楼':
-                //                 str += '<li class="proTabX">写字楼</li>'
-                //                 break;
-                //             case '别墅':
-                //                 str += '<li class="proTabB">别墅</li>'
-                //                 break;
-                //             case '车位':
-                //                 str += '<li class="proTabZ">车位</li>'
-                //                 break;
-                //             case '微墅':
-                //                 str += '<li class="proTabG">微墅</li>'
-                //                 break;
-                //             case '商墅':
-                //                 str += '<li class="proTabS">商墅</li>'
-                //                 break;
-                //         }
-                //     }
-                // })
-                // $('.proTab ul').append(str);
-            // }
-               // 预览数据结束
-            $('.modal_preview').css('display', 'block');
-            return false;
-        })
-        //关闭弹框
-        $('.closed').on('click', function () {
-            $(this).parent().parent().parent().parent().css('display', 'none');
-        })
-    </script>
-    <script>
-        //打开地图
-        $('.map_sty').on('click', function () {
-            event.stopPropagation();
-            $('.modal_map').css('display', 'block');
-            // 百度地图API功能
-            var map = new BMap.Map("allmap", {
-                minZoom: 1,
-                maxZoom: 18
+        if (map_data.addr) {
+            myGeo.getPoint(map_data.addr, function (point) {
+                if (point) {
+                    map.centerAndZoom(point, 16);
+                    map.addOverlay(new BMap.Marker(point));
+                }
             });
-            // 创建Map实例
+        } else {
+            map.setCurrentCity("北京");
+        }
+        //鼠标点击地图获取地址
+        var geoc = new BMap.Geocoder();
+        map.addEventListener("click", function (e) {
+            var pt = e.point;
+            geoc.getLocation(pt, function (rs) {
+                var addComp = rs.addressComponents;
+                map_backData = {
+                    province: addComp.province,
+                    city: addComp.city,
+                    district: addComp.district,
+                    street: addComp.street,
+                    streetNumber: addComp.streetNumber,
+                    longitude: pt.lng,
+                    latitude: pt.lat,
+                }
 
-            if (map_data.longitude && map_data.latitude) {
-                var point = new BMap.Point(map_data.longitude, map_data.latitude);
-            } else {
-                var point = new BMap.Point(116.404, 39.915); //默认北京
-            }
-
-
-            map.centerAndZoom(point, 15);
-            //添加地图类型控件
-            map.addControl(new BMap.MapTypeControl({
-                mapTypes: [
-                    BMAP_NORMAL_MAP,
-                    BMAP_HYBRID_MAP
-                ]
-            }));
-            map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放
-            // 创建地址解析器实例
-            var myGeo = new BMap.Geocoder();
-            //将地址解析结果显示在地图上，并调整地图视野
-
-            if (map_data.addr) {
-                myGeo.getPoint(map_data.addr, function (point) {
-                    if (point) {
-                        map.centerAndZoom(point, 16);
-                        map.addOverlay(new BMap.Marker(point));
-                    }
-                });
-            } else {
-                map.setCurrentCity("北京");
-            }
-            //鼠标点击地图获取地址
-            var geoc = new BMap.Geocoder();
-            map.addEventListener("click", function (e) {
-                var pt = e.point;
-                geoc.getLocation(pt, function (rs) {
-                    var addComp = rs.addressComponents;
-                    map_backData = {
-                        province: addComp.province,
-                        city: addComp.city,
-                        district: addComp.district,
-                        street: addComp.street,
-                        streetNumber: addComp.streetNumber,
-                        longitude: pt.lng,
-                        latitude: pt.lat,
-                    }
-
-                    $('input[name="latitude"]').val(pt.lat);
-                    $('input[name="longitude"]').val(pt.lng);
-                    $('#absolute_address').val(addComp.province + addComp.city + addComp.district +
-                        addComp.street);
-                    //$('.modal_map').css('display', 'none');
-                });
+                $('input[name="latitude"]').val(pt.lat);
+                $('input[name="longitude"]').val(pt.lng);
+                $('#absolute_address').val(addComp.province + addComp.city + addComp.district +
+                    addComp.street);
+                //$('.modal_map').css('display', 'none');
             });
-        })
-    </script>
-    <script>
-        var data = {
-                regionList: '',
-                config: '',
-                currentPointProvince: '',
-                currentPointCity: '',
+        });
+    })
+</script>
+<script>
+    var data = {
+            regionList: '',
+            config: '',
+            currentPointProvince: '',
+            currentPointCity: '',
+        },
+        map_data = {},
+        map_backData = {},
+        oldData;
+    window.onload = function () {
+        $('#header').load('public/header.html');
+        $('#sidebar').load('public/menu.html');
+        var menu_data = {
+            opening: '.loupanzidian',
+            acting: '.xiangmuxinxi'
+        }
+        $.cookie('menu_data', JSON.stringify(menu_data), {
+            path: "menu.html"
+        });
+
+
+        //获取地图地址
+        if ($.cookie('map_backData')) {
+            var map_backData = JSON.parse($.cookie('map_backData'));
+        } else {
+            var map_backData = '';
+        }
+        // console.log(map_backData);
+
+
+        //获取配置
+        $.ajax({
+            url: config.address + 'config',
+            type: 'GET',
+            dataType: "json",
+            success: function (res) {
+                getAddress();
+                data.config = res.data;
+                var property =
+                        ' <div class="checkbox checkSty_projectInfo"><label> <input name="form-field-checkbox" type="checkbox" class="ace" value="{id}" ><span class="lbl">{name}</span></label> </div>',
+                    str = '',
+                    property_dom = $('#property');
+                $.each(data.config[config.configList.PROPERTY_TYPE].param, function (k, v) {
+                    str += property.replace('{id}', v.id).replace('{name}', v.param);
+                })
+                property_dom.append(str);
             },
-            map_data = {},
-            map_backData = {},
-            oldData;
-        window.onload = function () {
-            $('#header').load('public/header.html');
-            $('#sidebar').load('public/menu.html');
-            var menu_data = {
-                opening: '.loupanzidian',
-                acting: '.xiangmuxinxi'
+            error: function () {
+                ajax.error();
             }
-            $.cookie('menu_data', JSON.stringify(menu_data), {
-                path: "menu.html"
-            });
+        })
 
-
-
-            //获取地图地址
-            if ($.cookie('map_backData')) {
-                var map_backData = JSON.parse($.cookie('map_backData'));
-            } else {
-                var map_backData = '';
-            }
-            // console.log(map_backData);
-
-
-            //获取配置
+        //获取所有地址
+        function getAddress() {
             $.ajax({
-                url: config.address + 'config',
+                url: config.address + 'getAll',
                 type: 'GET',
                 dataType: "json",
                 success: function (res) {
-                    getAddress();
-                    data.config = res.data;
-                    var property =
-                        ' <div class="checkbox checkSty_projectInfo"><label> <input name="form-field-checkbox" type="checkbox" class="ace" value="{id}" ><span class="lbl">{name}</span></label> </div>',
-                        str = '',
-                        property_dom = $('#property');
-                    $.each(data.config[config.configList.PROPERTY_TYPE].param, function (k, v) {
-                        str += property.replace('{id}', v.id).replace('{name}', v.param);
+                    data.regionList = res.data;
+                    var province = $("select[name='province']");
+                    $.each(data.regionList, function (k, v) {
+                        province.append('<option value="' + v.code + '">' + v.name +
+                            '</option>')
                     })
-                    property_dom.append(str);
+                    getProjectInfo();
                 },
                 error: function () {
                     ajax.error();
                 }
             })
-            //获取所有地址
-            function getAddress() {
-                $.ajax({
-                    url: config.address + 'getAll',
-                    type: 'GET',
-                    dataType: "json",
-                    success: function (res) {
-                        data.regionList = res.data;
-                        var province = $("select[name='province']");
-                        $.each(data.regionList, function (k, v) {
-                            province.append('<option value="' + v.code + '">' + v.name +
-                                '</option>')
-                        })
-                        getProjectInfo();
-                    },
-                    error: function () {
-                        ajax.error();
-                    }
-                })
-            }
-
-            //获取项目信息
-            function getProjectInfo() {
-                ajax.get('provide/project/getProjectInfo', {}, function (res) {
-
-                    var yunsuan_project_dom = $("select[name='yunsuan_project']"),
-                        tag_list = '',
-                        tag_list_model = '<li value="{id}">{name}</li>',
-                        extra_tags = [];
-                    $('#project_name').html(res.data.project_name);
-                    $('#absolute_address').val(res.data.absolute_address);
-                    $('#yunsuan_url').val(res.data.yunsuan_url);
-                    $('#developer_name').html(res.data.developer_name);
-                    $('#project_id').html(res.data.project_id);
-                    $("select[name='sale_state']").find("option[value=" + res.data.sale_state + "]").attr(
-                        'selected', 'selected');
-                    if (res.data.img_url != '') {
-                        $('#img_url').attr('src', config.address + res.data.img_url).attr(
-                            'address', res.data.total_float_url);
-                    }
-                    if (res.data.total_float_url != '') {
-                        $('#list_img').attr('src', config.address + res.data.total_float_url).attr(
-                            'address', res.data.total_float_url);
-                    }
-                    if (res.data.yunsuan_url != '') {
-                        // ajax.get('project/build/getYsBuild', {
-                        //     'url': res.data.yunsuan_url
-                        // }, function (response) {
-                        //     $.each(response.data[0].content[0].rows, function (k, v) {
-                        //         yunsuan_project_dom.append('<option value="' + v.XMID +
-                        //             '">' + v.XMMC + '</option>')
-                        //     })
-                        // })
-                        yunsuanIP(res.data.yunsuan_url);
-                    }
-                    if (res.data.yunsuan_id != '') {
-                        yunsuan_project_dom.find("option[value=" + res.data.yunsuan_id + "]").attr(
-                            'selected', 'selected');
-                    }
-                    if (res.data.province != '') {
-                        var city = $('select[name="city"]');
-                        $("select[name='province']").find("option[value=" + res.data.province + "]").attr(
-                            'selected', 'selected');
-                        $.each(data.regionList, function (k, v) {
-                            if (v.code == res.data.province) {
-                                data.currentPointProvince = v.city;
-                                $.each(v.city, function (k, v) {
-                                    city.append('<option value="' + v.code + '">' + v.name +
-                                        '</option>')
-                                })
-                            }
-                        })
-                    }
-                    if (res.data.city != '') {
-                        var area = $('select[name="area"]');
-                        $("select[name='city']").find("option[value=" + res.data.city + "]").attr(
-                            'selected', 'selected');
-                        $.each(data.currentPointProvince, function (k, v) {
-                            if (v.code == res.data.city) {
-                                data.currentPointCity = v.district;
-                                $.each(v.district, function (k, v) {
-                                    area.append('<option value="' + v.code + '">' + v.name +
-                                        '</option>')
-                                })
-                            }
-                        })
-                    }
-                    if (res.data.district != '') {
-                        $("select[name='area']").find("option[value=" + res.data.district + "]").attr(
-                            'selected', 'selected');
-                    }
-                    if (res.data.property.length != 0) {
-                        var dom = $('input[name=form-field-checkbox]');
-                        dom.each(function () {
-                            if ($.inArray(parseInt($(this).val()), res.data.property) != -1) {
-                                $(this).attr('checked', true);
-                            }
-                        })
-                    }
-
-                    if (res.data.project_tags != null) {
-                        var project_tags = res.data.project_tags.split(','),
-                            model =
-                            '<span class="tag" value="{id}"><span class="tag_name" > {name}</span> <button type="button" class="close closed" value="{id}">×</button> </span>'
-                        str = '';
-                        $.each(data.config[config.configList.PROJECT_TAGS_DEFAULT].param, function (k,
-                            v) {
-                            if ($.inArray(v.id.toString(), project_tags) != -1) {
-                                str += model.replace('{id}', v.id).replace('{name}', v.param);
-                            } else {
-                                extra_tags.push(v);
-                            }
-                        })
-                        $('#project_tag').append(str);
-                    }
-                    if (extra_tags.length == 0) {
-                        extra_tags = data.config[config.configList.PROJECT_TAGS_DEFAULT].param;
-                    }
-                    $.each(extra_tags, function (k, v) {
-                        tag_list += tag_list_model.replace('{id}', v.id).replace('{name}', v.param);
-                    })
-                    $('#tag_list').append(tag_list);
-                    //获取地址并传到map.html
-                    $('input[name="latitude"]').val(res.data.latitude);
-                    $('input[name="longitude"]').val(res.data.longitude);
-                    var addr = $('#absolute_address').val();
-                    map_data = {
-                        addr: addr,
-                        latitude: res.data.latitude,
-                        longitude: res.data.longitude,
-                    }
-
-                })
-            }
-            oldData = {
-                'province': $('select[name="province"]').val(),
-                'city': $('select[name="city"]').val(),
-                'img_url': $('#img_url').attr('address'),
-                'district': $('select[name="area"]').val(),
-                'absolute_address': $('#absolute_address').val(),
-                'latitude': $('input[name="latitude"]').val(),
-                'longitude': $('input[name="longitude"]').val(),
-                'sale_state': $('select[name="sale_state"]').val(),
-                'yunsuan_url': $('#yunsuan_url').val(),
-                'yunsuan_project': $('select[name="yunsuan_project"]').val(),
-                'total_float_url': $('#list_img').attr('address')
-            };
         }
 
-        $('#project_tag').on('click', '.close', function () {
-            var tag = '<li value="' + $(this).attr('value') + '">' + $(this).siblings('.tag_name').html() +
-                '</li>';
-            $('#tag_list').append(tag);
+        //获取项目信息
+        function getProjectInfo() {
+            ajax.get('provide/project/getProjectInfo', {}, function (res) {
 
-        })
+                var yunsuan_project_dom = $("select[name='yunsuan_project']"),
+                    tag_list = '',
+                    tag_list_model = '<li value="{id}">{name}</li>',
+                    extra_tags = [];
+                $('#project_name').html(res.data.project_name);
+                $('#absolute_address').val(res.data.absolute_address);
+                $('#yunsuan_url').val(res.data.yunsuan_url);
+                $('#developer_name').html(res.data.developer_name);
+                $('#project_id').html(res.data.project_id);
+                $("select[name='sale_state']").find("option[value=" + res.data.sale_state + "]").attr(
+                    'selected', 'selected');
+                if (res.data.img_url != '') {
+                    $('#img_url').attr('src', config.address + res.data.img_url).attr(
+                        'address', res.data.total_float_url);
+                }
+                if (res.data.total_float_url != '') {
+                    $('#list_img').attr('src', config.address + res.data.total_float_url).attr(
+                        'address', res.data.total_float_url);
+                }
+                if (res.data.yunsuan_url != '') {
+                    // ajax.get('project/build/getYsBuild', {
+                    //     'url': res.data.yunsuan_url
+                    // }, function (response) {
+                    //     $.each(response.data[0].content[0].rows, function (k, v) {
+                    //         yunsuan_project_dom.append('<option value="' + v.XMID +
+                    //             '">' + v.XMMC + '</option>')
+                    //     })
+                    // })
+                    yunsuanIP(res.data.yunsuan_url);
+                }
+                if (res.data.yunsuan_id != '') {
+                    yunsuan_project_dom.find("option[value=" + res.data.yunsuan_id + "]").attr(
+                        'selected', 'selected');
+                }
+                if (res.data.province != '') {
+                    var city = $('select[name="city"]');
+                    $("select[name='province']").find("option[value=" + res.data.province + "]").attr(
+                        'selected', 'selected');
+                    $.each(data.regionList, function (k, v) {
+                        if (v.code == res.data.province) {
+                            data.currentPointProvince = v.city;
+                            $.each(v.city, function (k, v) {
+                                city.append('<option value="' + v.code + '">' + v.name +
+                                    '</option>')
+                            })
+                        }
+                    })
+                }
+                if (res.data.city != '') {
+                    var area = $('select[name="area"]');
+                    $("select[name='city']").find("option[value=" + res.data.city + "]").attr(
+                        'selected', 'selected');
+                    $.each(data.currentPointProvince, function (k, v) {
+                        if (v.code == res.data.city) {
+                            data.currentPointCity = v.district;
+                            $.each(v.district, function (k, v) {
+                                area.append('<option value="' + v.code + '">' + v.name +
+                                    '</option>')
+                            })
+                        }
+                    })
+                }
+                if (res.data.district != '') {
+                    $("select[name='area']").find("option[value=" + res.data.district + "]").attr(
+                        'selected', 'selected');
+                }
+                if (res.data.property.length != 0) {
+                    var dom = $('input[name=form-field-checkbox]');
+                    dom.each(function () {
+                        if ($.inArray(parseInt($(this).val()), res.data.property) != -1) {
+                            $(this).attr('checked', true);
+                        }
+                    })
+                }
 
-        $('#tag_list').on('click', 'li', function () {
-            if ($(this).hasClass('point')) {
-                $(this).removeClass('point');
-            } else {
-                $(this).addClass('point');
-            }
-        })
+                if (res.data.project_tags != null) {
+                    var project_tags = res.data.project_tags.split(','),
+                        model =
+                            '<span class="tag" value="{id}"><span class="tag_name" > {name}</span> <button type="button" class="close closed" value="{id}">×</button> </span>'
+                    str = '';
+                    $.each(data.config[config.configList.PROJECT_TAGS_DEFAULT].param, function (k,
+                                                                                                v) {
+                        if ($.inArray(v.id.toString(), project_tags) != -1) {
+                            str += model.replace('{id}', v.id).replace('{name}', v.param);
+                        } else {
+                            extra_tags.push(v);
+                        }
+                    })
+                    $('#project_tag').append(str);
+                }
+                if (extra_tags.length == 0) {
+                    extra_tags = data.config[config.configList.PROJECT_TAGS_DEFAULT].param;
+                }
+                $.each(extra_tags, function (k, v) {
+                    tag_list += tag_list_model.replace('{id}', v.id).replace('{name}', v.param);
+                })
+                $('#tag_list').append(tag_list);
+                //获取地址并传到map.html
+                $('input[name="latitude"]').val(res.data.latitude);
+                $('input[name="longitude"]').val(res.data.longitude);
+                var addr = $('#absolute_address').val();
+                map_data = {
+                    addr: addr,
+                    latitude: res.data.latitude,
+                    longitude: res.data.longitude,
+                }
 
-        $('#tags_add').click(function () {
-            var model =
+            })
+        }
+
+        oldData = {
+            'province': $('select[name="province"]').val(),
+            'city': $('select[name="city"]').val(),
+            'img_url': $('#img_url').attr('address'),
+            'district': $('select[name="area"]').val(),
+            'absolute_address': $('#absolute_address').val(),
+            'latitude': $('input[name="latitude"]').val(),
+            'longitude': $('input[name="longitude"]').val(),
+            'sale_state': $('select[name="sale_state"]').val(),
+            'yunsuan_url': $('#yunsuan_url').val(),
+            'yunsuan_project': $('select[name="yunsuan_project"]').val(),
+            'total_float_url': $('#list_img').attr('address')
+        };
+    }
+
+    $('#project_tag').on('click', '.close', function () {
+        var tag = '<li value="' + $(this).attr('value') + '">' + $(this).siblings('.tag_name').html() +
+            '</li>';
+        $('#tag_list').append(tag);
+
+    })
+
+    $('#tag_list').on('click', 'li', function () {
+        if ($(this).hasClass('point')) {
+            $(this).removeClass('point');
+        } else {
+            $(this).addClass('point');
+        }
+    })
+
+    $('#tags_add').click(function () {
+        var model =
                 '<span class="tag" value="{valuea}"><span class="tag_name"> {name}</span> <button type="button" class="close closed" >×</button> </span>',
-                str = '';
-            $('.point').each(function () {
-                str += model.replace('{name}', $(this).html()).replace('{valuea}', $(this).attr(
-                    'value'));
-                $(this).remove();
-            })
-            $('#project_tag').append(str);
-            $('.modal_all').css('display', 'none');
+            str = '';
+        $('.point').each(function () {
+            str += model.replace('{name}', $(this).html()).replace('{valuea}', $(this).attr(
+                'value'));
+            $(this).remove();
         })
+        $('#project_tag').append(str);
+        $('.modal_all').css('display', 'none');
+    })
 
-        $('#list_img_edit').on('change', function () {
-            if ($(this)[0].files[0].size >= config.allowImgFileSize) {
-                alert(config.ImgSizeBeyondErrMes);
-                return false;
-            }
-            var formData = new FormData();
-            formData.append("img", $(this)[0].files[0]);
-            ajax.file(formData, 'img', function (res) {
-                $('#list_img_edit').siblings('.img_url').attr('src', config.address + res.data).attr(
-                    'address', res.data);
-            })
+    $('#list_img_edit').on('change', function () {
+        if ($(this)[0].files[0].size >= config.allowImgFileSize) {
+            alert(config.ImgSizeBeyondErrMes);
+            return false;
+        }
+        var formData = new FormData();
+        formData.append("img", $(this)[0].files[0]);
+        ajax.file(formData, 'img', function (res) {
+            $('#list_img_edit').siblings('.img_url').attr('src', config.address + res.data).attr(
+                'address', res.data);
         })
-        //改变省份
-        $(document).on('change', 'select[name="province"]', function () {
+    })
+    //改变省份
+    $(document).on('change', 'select[name="province"]', function () {
 
-            var value = $('select[name="province"]').val(),
-                city = $('select[name="city"]');
-            city.children().remove();
+        var value = $('select[name="province"]').val(),
+            city = $('select[name="city"]');
+        city.children().remove();
 
-            $.each(data.regionList, function (k, v) {
-                if (v.code == value) {
-                    data.currentPointProvince = v.city;
-                    $.each(v.city, function (k, v) {
-                        city.append('<option value="' + v.code + '">' + v.name +
-                            '</option>')
-                    })
-                }
-            })
-        })
-        //改变城市
-        $(document).on('change', 'select[name="city"]', function () {
-            var value = $('select[name="city"]').val(),
-                area = $('select[name="area"]');
-            area.children().remove();
-            $.each(data.currentPointProvince, function (k, v) {
-                if (v.code == value) {
-                    data.currentPointCity = v.district;
-                    $.each(v.district, function (k, v) {
-                        area.append('<option value="' + v.code + '">' + v.name +
-                            '</option>')
-                    })
-                }
-            })
-        })
-        //保存
-        $('#save').click(function () {
-            var data = {
-                'province': $('select[name="province"]').val(),
-                'city': $('select[name="city"]').val(),
-                'img_url': $('#img_url').attr('address'),
-                'district': $('select[name="area"]').val(),
-                'absolute_address': $('#absolute_address').val(),
-                'latitude': $('input[name="latitude"]').val(),
-                'longitude': $('input[name="longitude"]').val(),
-                'sale_state': $('select[name="sale_state"]').val(),
-                'yunsuan_url': $('#yunsuan_url').val(),
-                'yunsuan_id': $('select[name="yunsuan_project"]').val(),
-                'total_float_url': $('#list_img').attr('address')
-            };
-            data.property_type = '';
-            $('input[name=form-field-checkbox]:checked').each(function () {
-                if ($(this).val() != undefined) {
-                    data.property_type += $(this).val() + ',';
-                }
-
-            })
-            if (data.property_type != '') {
-                data.property_type = data.property_type.slice(0, -1);
-            }
-            data.project_tags = '';
-            $('#project_tag .tag').each(function () {
-                if ($(this).attr('value') != undefined) {
-                    data.project_tags += $(this).attr('value') + ',';
-                }
-            })
-            if (data.project_tags != '') {
-                data.project_tags = data.project_tags.slice(0, -1);
-            }
-            ajax.post('project/update', data, function (res) {
-                alert(res.msg);
-                if (res.code == config.responseSuccess) {
-                    window.location.reload();
-                }
-
-            })
-
-        })
-        //云算地址
-        $('#yunsuan_url').blur(function () {
-            var ip=$(this).val();
-            var reg =  /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/
-
-            if(reg.test(ip)){
-                yunsuanIP(ip);
-            }else{
-                alert('请输入正确的ip地址！');
-            }
-        })
-        //IP请求云算项目
-        function yunsuanIP(URL) {
-            var yunsuan_project_dom=$("select[name='yunsuan_project']")
-                ajax.get('project/build/getYsBuild', {
-                    'url': URL
-                }, function (response) {
-                    $.each(response.data[0].content[0].rows, function (k, v) {
-                        yunsuan_project_dom.append('<option value="' + v.XMID +
-                            '">' + v.XMMC + '</option>')
-                    })
+        $.each(data.regionList, function (k, v) {
+            if (v.code == value) {
+                data.currentPointProvince = v.city;
+                $.each(v.city, function (k, v) {
+                    city.append('<option value="' + v.code + '">' + v.name +
+                        '</option>')
                 })
             }
-    </script>
+        })
+    })
+    //改变城市
+    $(document).on('change', 'select[name="city"]', function () {
+        var value = $('select[name="city"]').val(),
+            area = $('select[name="area"]');
+        area.children().remove();
+        $.each(data.currentPointProvince, function (k, v) {
+            if (v.code == value) {
+                data.currentPointCity = v.district;
+                $.each(v.district, function (k, v) {
+                    area.append('<option value="' + v.code + '">' + v.name +
+                        '</option>')
+                })
+            }
+        })
+    })
+    //保存
+    $('#save').click(function () {
+        var data = {
+            'province': $('select[name="province"]').val(),
+            'city': $('select[name="city"]').val(),
+            'img_url': $('#img_url').attr('address'),
+            'district': $('select[name="area"]').val(),
+            'absolute_address': $('#absolute_address').val(),
+            'latitude': $('input[name="latitude"]').val(),
+            'longitude': $('input[name="longitude"]').val(),
+            'sale_state': $('select[name="sale_state"]').val(),
+            'yunsuan_url': $('#yunsuan_url').val(),
+            'yunsuan_id': $('select[name="yunsuan_project"]').val(),
+            'total_float_url': $('#list_img').attr('address')
+        };
+        data.property_type = '';
+        $('input[name=form-field-checkbox]:checked').each(function () {
+            if ($(this).val() != undefined) {
+                data.property_type += $(this).val() + ',';
+            }
+
+        })
+        if (data.property_type != '') {
+            data.property_type = data.property_type.slice(0, -1);
+        }
+        data.project_tags = '';
+        $('#project_tag .tag').each(function () {
+            if ($(this).attr('value') != undefined) {
+                data.project_tags += $(this).attr('value') + ',';
+            }
+        })
+        if (data.project_tags != '') {
+            data.project_tags = data.project_tags.slice(0, -1);
+        }
+        ajax.post('project/update', data, function (res) {
+            alert(res.msg);
+            if (res.code == config.responseSuccess) {
+                window.location.reload();
+            }
+
+        })
+
+    })
+    //云算地址
+    $('#yunsuan_url').blur(function () {
+        var ip = $(this).val();
+        var reg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/
+
+        if (reg.test(ip)) {
+            yunsuanIP(ip);
+        } else {
+            alert('请输入正确的ip地址！');
+        }
+    })
+
+    //IP请求云算项目
+    function yunsuanIP(URL) {
+        var yunsuan_project_dom = $("select[name='yunsuan_project']")
+        ajax.get('project/build/getYsBuild', {
+            'url': URL
+        }, function (response) {
+            $.each(response.data[0].content[0].rows, function (k, v) {
+                yunsuan_project_dom.append('<option value="' + v.XMID +
+                    '">' + v.XMMC + '</option>')
+            })
+        })
+    }
+</script>
 
 </body>
 

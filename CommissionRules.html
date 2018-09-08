@@ -34,19 +34,7 @@
             float: left;
         }
 
-        /* .tags {
-            display: inline-block;
-            padding: 4px 6px;
-            color: #777;
-            vertical-align: middle;
-            border: none;
-            width: auto;
-        }
 
-        .tag {
-            max-width: 200px;
-            outline: none;
-        } */
 
         .operate_proInfo {
             position: absolute;
@@ -54,26 +42,7 @@
             z-index: 100;
         }
 
-        /* .user-info {
-            max-width: 150px;
-            display: inline-block;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            text-align: left;
-            vertical-align: top;
-            line-height: 15px;
-            position: relative;
-            top: 14px;
-        }
 
-        .inpt_width {
-            width: 70%;
-        }
-
-        .lab_width {
-            width: 100px;
-        } */
 
         #dynamic-table td {
             vertical-align: middle;
@@ -90,27 +59,7 @@
             z-index: 1000;
         }
 
-        /* .modal-dialog {
-            margin: 0 auto;
-        }
 
-        .bootbox-body {
-            font-size: 18px;
-            margin-top: 25px;
-            text-align: center;
-        }
-
-        .modal-content {
-            padding: 30px 50px;
-        }
-
-        .modal-footer {
-            margin-top: 20px;
-        }
-
-        .close {
-            font-size: 32px;
-        } */
 
         .paginate_button,
         a {
@@ -161,7 +110,7 @@
                     <div class="row" style="margin-top: 50px;">
                         <div class="widget-box" style="margin-top: 20px;">
                             <div class="widget-header" style="position: relative;">
-                                <h4 class="smaller">判断规则</h4>
+                                <h4 class="smaller">基本规则</h4>
                             </div>
                             <div class="widget-body">
                                 <div class="widget-main" style="overflow: hidden;">
@@ -180,6 +129,7 @@
                                                             <th class="center">推荐佣金结佣周期（天）</th>
                                                             <th class="center">到访佣金结佣周期（天）</th>
                                                             <th class="center">成交佣金结佣周期（天）</th>
+                                                            <th class="center">指定置业顾问情况</th>
                                                             <th class="center">状态</th>
                                                             <th class="center">操作</th>
                                                         </tr>
@@ -248,8 +198,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button data-bb-handler="cancel" type="button" class="btn btn-default closed">取消</button>
-                    <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="tags_add">确定</button>
+                    <button data-bb-handler="cancel" type="button" class="btn btn-sm btn-default closed">取消</button>
+                    <button data-bb-handler="confirm" type="button" class="btn btn-sm btn-primary" id="tags_add">确定</button>
                 </div>
             </div>
         </div>
@@ -348,23 +298,47 @@
             ajax.get('project/ruleBasic/list', {
                 'page':p
             }, function (res) {
-                console.log(res);
-
                 var model =
-                    '<tr role="row" class="odd" value="{a_id}"><td class="center">{key}</td><td class="center">{begin_time}</td><td class="center">{end_time}</td><td class="center">{recommend}</td><td class="center">{value}</td><td class="center">{deal}</td><td class="center">{broker_recommend}</td><td class="center">{broker_value}</td><td class="center">{broker_deal}</td><td class="center">{state}</td><td class="center"><div class="hidden-sm hidden-xs action-buttons"><a class="blue" href="CommissionRulesUpdate.html?id={c_id}">编辑</a>',
+                    '<tr role="row" class="odd" value="{a_id}">' +
+                    '<td class="center">{key}</td>' +
+                    '<td class="center">{begin_time}</td>' +
+                    '<td class="center">{end_time}</td>' +
+                    '<td class="center">{recommend}</td>' +
+                    '<td class="center">{value}</td>' +
+                    '<td class="center">{deal}</td>' +
+                    '<td class="center">{broker_recommend}</td>' +
+                    '<td class="center">{broker_value}</td>' +
+                    '<td class="center">{broker_deal}</td>' +
+                    '<td class="center">{advicer_selected}</td>' +
+                    '<td class="center">{state}</td>' +
+                    '<td class="center"><div class="hidden-sm hidden-xs action-buttons"><a class="blue" href="CommissionRulesUpdate.html?id={c_id}">编辑</a></td>',
                     id = 15 * (p - 1) + 1,
                     // page =
                     // '<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>',
                     str = '';
                 if (res.data.data.length > 0) {
+                    var x='';
                     $.each(res.data.data, function (k, v) {
-                        str += model.replace('{a_id}', v.rule_id).replace('{b_id}', v.rule_id).replace(
-                                '{c_id}', v.rule_id).replace('{d_id}', v.rule_id).replace('{key}', id++)
-                            .replace('{begin_time}', v.begin_time).replace('{end_time}', v.end_time).replace(
-                                '{recommend}', v.visit_confirm_time).replace('{value}', v.valid_visit_time)
-                            .replace('{deal}', v.make_bargain_time).replace('{broker_recommend}', v.confirm_settle_commission_time)
-                            .replace('{broker_value}', v.visit_settle_commission_time).replace(
-                                '{broker_deal}', v.region_settle_commission_time).replace('{state}', v.state);
+                        switch (v.advicer_selected) {
+                            case 0:x='不需要'; break;
+                            case 1:x='必指定'; break;
+                            case 2:x='可指定'; break;
+                        }
+                        str += model.replace('{a_id}', v.rule_id).
+                        replace('{b_id}', v.rule_id).
+                        replace('{c_id}', v.rule_id).
+                        replace('{d_id}', v.rule_id).
+                        replace('{key}', id++).
+                        replace('{begin_time}', v.begin_time).
+                        replace('{end_time}', v.end_time).
+                        replace('{recommend}', v.visit_confirm_time).
+                        replace('{value}', v.valid_visit_time).
+                        replace('{deal}', v.make_bargain_time).
+                        replace('{broker_recommend}', v.confirm_settle_commission_time).
+                        replace('{broker_value}', v.visit_settle_commission_time).
+                        replace('{broker_deal}', v.region_settle_commission_time).
+                        replace('{advicer_selected}', x).
+                        replace('{state}', v.state);
                         if (v.state == '使用中') {
                             str += '<a class="red end_rule" value="' + v.rule_id +
                                 '">终止</a></div></td></tr>';

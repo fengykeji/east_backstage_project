@@ -277,7 +277,8 @@
                 'page': p
             }, function (res) {
                 var model =
-                    ' <tr role="row" class="odd" value="{dynamic_id}"> <td class="center">{id}</td> <td class="center">{title}</td> <td class="center" style="width:350px;">{abstract}</td> <td class="center">{uploader}</td> <td class="center">{create_time}</td> <td class="center">  <a class="blue">预览</a> <a class="green edit_leibie" href="DynamicListModify.html?id={d_id}">编辑</a> <a class="red del_leibie del">删除</a> </td> </tr>',
+                    // ' <tr role="row" class="odd" value="{dynamic_id}"> <td class="center">{id}</td> <td class="center">{title}</td> <td class="center" style="width:350px;">{abstract}</td> <td class="center">{uploader}</td> <td class="center">{create_time}</td> <td class="center">  <a class="blue">预览</a> <a class="green edit_leibie" href="DynamicListModify.html?id={d_id}">编辑</a> <a class="red del_leibie del">删除</a> </td> </tr>',
+                    ' <tr role="row" class="odd" value="{dynamic_id}"> <td class="center">{id}</td> <td class="center">{title}</td> <td class="center" style="width:350px;">{abstract}</td> <td class="center">{uploader}</td> <td class="center">{create_time}</td> <td class="center"> <a class="green edit_leibie" href="DynamicListModify.html?id={d_id}">编辑</a> <a class="red del_leibie del">删除</a> </td> </tr>',
                     id = 15 * (p - 1) + 1,
                     list = '';
                 $.each(res.data.data, function (k, v) {
