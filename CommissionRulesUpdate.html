@@ -493,7 +493,7 @@
             'basic_rule_id': rule_id,
             'page': p
         }, function (res) {
-            var modelShow =
+            var model =
                 '<tr role="row" class="odd trCom" value="{a_id}"> ' +
                 '<td class="center">{key}</td> ' +
                 '<td class="center">{company_name}</td> ' +
@@ -511,23 +511,7 @@
                 '<td class="center">{allNums}</td>' +
                 '<td class="center buNums">{buNums}</td> ' +
                 '<td class="center"><div class="hidden-sm hidden-xs action-buttons">';
-            var modelHide =
-                '<tr role="row" class="odd trCom" value="{a_id}"> ' +
-                '<td class="center">{key}</td> ' +
-                '<td class="center">{company_name}</td> ' +
-                '<td class="center">{project_docker}</td> ' +
-                '<td class="center">{project_docker_tel}</td> ' +
-                '<td class="center">{compact_begin}</td> ' +
-                '<td class="center">{compact_end}</td> ' +
-                '<td class="center">{act_start}</td> ' +
-                '<td class="center">{act_end}</td> ' +
-                '<td class="center">{source}</td>' +
-                '<td class="center">{state}</td>' +
-                '<td class="center">{end_state_name}</td> ' +
 
-                '<td class="center">{scene_server}</td>' +
-                '<td class="center">{allNums}</td>' +
-                '<td class="center"><div class="hidden-sm hidden-xs action-buttons">';
                 id = 15 * (p - 1) + 1,
 
                 str = '';
@@ -542,19 +526,16 @@
                 }
                 if(v.tel_complete_state==0){
                     z='否';
-                    $('.buNums').hide();
-                    var st = modelHide;
                 }else{
-
                     if(v.tel_complete_state==2){
                         w='有效';
                     }else{
                         w='认购';
                     }
                     z='是';
-                    var st = modelShow;
-                }
 
+                }
+                var st = model;
                 if (v.state == 2) {
                     st +=
                         '<a class="orange" href="CommissionRulesCompanyReview.html?id={b_id}&rule_id=' +
@@ -648,7 +629,7 @@
             'basic_rule_id': rule_id,
             'page': p
         }, function (res) {
-            var modelShow =
+            var model=
                 '<tr role="row" class="odd trPer" value="{a_id}"> ' +
                 '<td class="center">{key}</td> ' +
                 '<td class="center">{rule_name}</td>  ' +
@@ -665,23 +646,6 @@
                 // '<label> <input {check} name="switch-field-1" class="ace ace-switch ace-switch-5 switchCom" type="checkbox"> ' +
                 // '<span class="lbl"></span> </label> </td> ' +
                 '<td class="center"> ';
-            var modelHide =
-                '<tr role="row" class="odd trPer" value="{a_id}"> ' +
-                '<td class="center">{key}</td> ' +
-                '<td class="center">{rule_name}</td>  ' +
-                '<td class="center">{plan_start}</td> ' +
-                '<td class="center">{plan_end}</td> ' +
-                '<td class="center">{act_start}</td> ' +
-                '<td class="center">{act_end}</td> ' +
-                '<td class="center">{state}</td> ' +
-
-                '<td class="center">{allNums}</td>' +
-                // '<td class="center personBu">{buNums}</td> ' +
-
-                // '<td class="center"> ' +
-                // '<label> <input {check} name="switch-field-1" class="ace ace-switch ace-switch-5 switchCom" type="checkbox"> ' +
-                // '<span class="lbl"></span> </label> </td> ' +
-                '<td class="center"> ';
 
                 id = 15 * (p - 1) + 1,
                 str = '';
@@ -690,8 +654,6 @@
                 var w='';
                 if(v.tel_complete_state==0){
                     z='否';
-                    $('.personBu').hide();
-                    var st = modelHide;
                 }else{
 
                     if(v.tel_complete_state==2){
@@ -700,14 +662,14 @@
                         w='认购';
                     }
                     z='否';
-                    var st = modelShow;
-                }
 
+                }
+                var st = model;
                 if (v.end_state_name != '已终止') {
-                    var st = modelShow +
+                    var st = model +
                         '<div class="hidden-sm hidden-xs action-buttons"> <a class="green" href="CommissionRulesBrokerUpdate.html?id={b_id}&rule_id={rule_id}">编辑</a><a class="red person_stop" value="{c_id}" >停用</a> </div> </td> </tr>';
                 } else {
-                    st = modelShow;
+                    st = model;
                 }
 
                 str += st.replace('{a_id}', v.rule_id).
