@@ -365,7 +365,7 @@
 <script src="assets/js/config.js"></script>
 <script src="assets/js/public.js"></script>
 <script>
-    var id = rule_id = $.getUrlVar('id');
+    var rule_id = $.getUrlVar('id');
 
     window.onload = function () {
         $('#header').load('public/header.html');
@@ -384,7 +384,7 @@
 
     function basic_rule() {
         ajax.get('project/ruleBasic/getById', {
-            'rule_id': id
+            'rule_id': rule_id
         }, function (res) {
             $('input[name=start_time]').val(res.data.begin_time),
                 $('input[name=recommend]').val(res.data.visit_confirm_time),
@@ -437,7 +437,7 @@
     })
     $('#save').click(function () {
         var data = {
-            'rule_id': id,
+            'rule_id': rule_id,
             'describe': $('#describe').val(),
             'comment': $('#comment').val(),
             'advicer_selected': $('input[name=assign]:checked').val(),
@@ -490,7 +490,7 @@
     //公司规则
     function company_rule_list(p) {
         ajax.get('project/ruleCompany/getList', {
-            'basic_rule_id': id,
+            'basic_rule_id': rule_id,
             'page': p
         }, function (res) {
             var modelShow =
@@ -699,7 +699,7 @@
                     }else{
                         w='认购';
                     }
-                    z='是';
+                    z='否';
                     var st = modelShow;
                 }
 

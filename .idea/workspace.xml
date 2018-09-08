@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a9c4f3bc-05bf-4042-b4cc-c52dc098ced3" name="默认的" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommissionRulesCompanyAdd.html" beforeDir="false" afterPath="$PROJECT_DIR$/CommissionRulesCompanyAdd.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommissionRulesCompanyReview.html" beforeDir="false" afterPath="$PROJECT_DIR$/CommissionRulesCompanyReview.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommissionRulesUpdate.html" beforeDir="false" afterPath="$PROJECT_DIR$/CommissionRulesUpdate.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,8 +16,8 @@
       <file leaf-file-name="CommissionRulesUpdate.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CommissionRulesUpdate.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="583">
-              <caret line="553" column="26" lean-forward="true" selection-start-line="553" selection-start-column="26" selection-end-line="553" selection-end-column="26" />
+            <state relative-caret-position="191">
+              <caret line="688" column="25" lean-forward="true" selection-start-line="688" selection-start-column="25" selection-end-line="688" selection-end-column="25" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#3;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -34,9 +31,17 @@
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#2;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#script#29;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#script#30;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#script#32;n#body#0;n#html#0;n#!!top" />
-                <element signature="e#31225#35193#0" />
+                <element signature="n#script#31;n#body#0;n#html#0;n#!!top" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommissionRulesCompanyUpdate.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CommissionRulesCompanyUpdate.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="624" column="42" selection-start-line="624" selection-start-column="40" selection-end-line="624" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -45,7 +50,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>dynamic-table_paginate</find>
       <find>dynamic-table_wrapper</find>
       <find>id=&quot;&quot;</find>
       <find>.bootbox-body</find>
@@ -69,12 +73,13 @@
       <find>allTel</find>
       <find>screen</find>
       <find>rulePerson/getList</find>
-      <find>getD</find>
       <find>person</find>
       <find>checked=&quot;checked&quot;</find>
       <find>numShow</find>
       <find>numHide</find>
       <find>hide</find>
+      <find>for=&quot;form-field-1&quot;</find>
+      <find>getD</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -98,11 +103,11 @@
         <option value="$PROJECT_DIR$/CommissionRulesBrokerUpdate.html" />
         <option value="$PROJECT_DIR$/assets/js/config.js" />
         <option value="$PROJECT_DIR$/CommissionRulesBrokerAdd.html" />
-        <option value="$PROJECT_DIR$/CommissionRulesCompanyUpdate.html" />
         <option value="$PROJECT_DIR$/CommissionRulesCheck.html" />
         <option value="$PROJECT_DIR$/CommissionRulesCompanyAdd.html" />
         <option value="$PROJECT_DIR$/CommissionRulesCompanyReview.html" />
         <option value="$PROJECT_DIR$/CommissionRulesUpdate.html" />
+        <option value="$PROJECT_DIR$/CommissionRulesCompanyUpdate.html" />
       </list>
     </option>
   </component>
@@ -206,7 +211,7 @@
       <workItem from="1535419061178" duration="618000" />
       <workItem from="1535612343374" duration="379000" />
       <workItem from="1536310865421" duration="6239000" />
-      <workItem from="1536373610442" duration="31096000" />
+      <workItem from="1536373610442" duration="32899000" />
     </task>
     <task id="LOCAL-00001" summary="123">
       <created>1532082473392</created>
@@ -313,14 +318,28 @@
       <option name="project" value="LOCAL" />
       <updated>1536411520943</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="9084">
+      <created>1536413144556</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1536413144556</updated>
+    </task>
+    <task id="LOCAL-00017" summary="9085">
+      <created>1536414263595</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1536414263595</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66604000" />
+    <option name="totallyTimeSpent" value="68407000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <frame x="-8" y="-8" width="1696" height="1026" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17129071" />
@@ -366,7 +385,9 @@
     <MESSAGE value="9081" />
     <MESSAGE value="9082" />
     <MESSAGE value="9083" />
-    <option name="LAST_COMMIT_MESSAGE" value="9083" />
+    <MESSAGE value="9084" />
+    <MESSAGE value="9085" />
+    <option name="LAST_COMMIT_MESSAGE" value="9085" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/index.html">
@@ -808,17 +829,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CommissionRulesCompanyUpdate.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="37">
-          <caret line="486" column="20" selection-start-line="486" selection-start-column="20" selection-end-line="486" selection-end-column="20" />
-          <folding>
-            <element signature="e#32595#33609#0" />
-            <element signature="e#33665#36385#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CommissionRulesCheck.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="58">
@@ -895,10 +905,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/CommissionRulesCompanyUpdate.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="624" column="42" selection-start-line="624" selection-start-column="40" selection-end-line="624" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CommissionRulesUpdate.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="583">
-          <caret line="553" column="26" lean-forward="true" selection-start-line="553" selection-start-column="26" selection-end-line="553" selection-end-column="26" />
+        <state relative-caret-position="191">
+          <caret line="688" column="25" lean-forward="true" selection-start-line="688" selection-start-column="25" selection-end-line="688" selection-end-column="25" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#3;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -912,8 +929,7 @@
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#2;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#script#29;n#body#0;n#html#0;n#!!top" />
             <element signature="n#script#30;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#script#32;n#body#0;n#html#0;n#!!top" />
-            <element signature="e#31225#35193#0" />
+            <element signature="n#script#31;n#body#0;n#html#0;n#!!top" />
           </folding>
         </state>
       </provider>
