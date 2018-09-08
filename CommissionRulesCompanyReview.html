@@ -237,7 +237,7 @@
                                                     <div class="inpt_width" style="display: inline-block;">
                                                         <div class="radio" style="display: inline-block;">
                                                             <label>
-                                                                <input type="radio" class="ace numHide yesNum" value="0"
+                                                                <input type="radio" class="ace numHide yesNum" value="1"
                                                                        name="numHide">
                                                                 <span class="lbl">是</span>
                                                             </label>
@@ -245,7 +245,7 @@
                                                         <div class="radio" style="display: inline-block;">
                                                             <label>
                                                                 <input type="radio" class="ace InvalidVisit numHide noNum"
-                                                                       value="1" name="numHide" >
+                                                                       value="0" name="numHide" >
                                                                 <span class="lbl">否</span>
                                                             </label>
                                                         </div>
@@ -666,11 +666,11 @@
                 })
                 switch (x.tel_complete_state) {
                     case 0:
-                        $('.yesNum').attr('checked',true);
+                        $('.noNum').attr('checked',true);
                         $('.allTel').hide();
                         break;
                     case 2:
-                        $('.noNum').attr('checked',true);
+                        $('.yesNum').attr('checked',true);
                         $('.youXNum').attr('checked',true);
                         break;
                     case 5:

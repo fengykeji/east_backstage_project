@@ -246,15 +246,15 @@
                                                 <div class="inpt_width" style="display: inline-block;">
                                                     <div class="radio" style="display: inline-block;">
                                                         <label>
-                                                            <input type="radio" class="ace numHide" value="0"
-                                                                   name="numHide">
+                                                            <input type="radio" class="ace numHide" value="1"
+                                                                   name="numHide" checked="checked">
                                                             <span class="lbl">是</span>
                                                         </label>
                                                     </div>
                                                     <div class="radio" style="display: inline-block;">
                                                         <label>
                                                             <input type="radio" class="ace InvalidVisit numHide"
-                                                                   value="1" name="numHide" checked="checked">
+                                                                   value="0" name="numHide" >
                                                             <span class="lbl">否</span>
                                                         </label>
                                                     </div>
@@ -692,14 +692,13 @@
     })
     //  号码隐藏
     $('.numHide').on('change', function () {
-        var val = $(this).val();
-        if (val == 0) {
-            $('.allTel').hide();
-        } else {
-            $('.allTel').show();
-        }
-    })
-
+            var val = $(this).val();
+            if (val == 0) {
+                $('.allTel').hide();
+            } else {
+                $('.allTel').show();
+            }
+        })
 </script>
 </body>
 

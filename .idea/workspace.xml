@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="a9c4f3bc-05bf-4042-b4cc-c52dc098ced3" name="默认的" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CommissionRulesCompanyAdd.html" beforeDir="false" afterPath="$PROJECT_DIR$/CommissionRulesCompanyAdd.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CommissionRulesCompanyReview.html" beforeDir="false" afterPath="$PROJECT_DIR$/CommissionRulesCompanyReview.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CommissionRulesUpdate.html" beforeDir="false" afterPath="$PROJECT_DIR$/CommissionRulesUpdate.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,74 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CommissionRulesCompanyAdd.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CommissionRulesCompanyAdd.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="631" column="9" lean-forward="true" selection-start-line="628" selection-start-column="8" selection-end-line="631" selection-end-column="9" />
-              <folding>
-                <element signature="n#style#0;n#select#0;n#div#5;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#div#4;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#style#0;n#div#0;n#div#4;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#4;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#4;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#div#5;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#style#0;n#div#0;n#div#5;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#5;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#5;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#div#6;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#style#0;n#div#0;n#div#6;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#6;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#6;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#15576#23512#0" />
-                <element signature="n#div#2;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#script#35;n#body#0;n#html#0;n#!!top" />
-                <element signature="e#30314#30612#0" />
-                <element signature="e#30676#30750#0" />
-                <element signature="e#30794#30986#0" />
-                <element signature="e#31018#31746#0" />
-                <element signature="e#31783#32389#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommissionRulesBrokerAdd.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CommissionRulesBrokerAdd.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="597">
-              <caret line="343" column="40" lean-forward="true" selection-start-line="343" selection-start-column="35" selection-end-line="343" selection-end-column="40" />
-              <folding>
-                <element signature="n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#div#2;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#style#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#2;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommissionRulesCheck.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/CommissionRulesCheck.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="400" column="21" selection-start-line="400" selection-start-column="21" selection-end-line="400" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommissionRulesUpdate.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CommissionRulesUpdate.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CommissionRulesUpdate.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-343">
-              <caret line="661" column="43" selection-start-line="661" selection-start-column="43" selection-end-line="661" selection-end-column="43" />
+            <state relative-caret-position="583">
+              <caret line="553" column="26" lean-forward="true" selection-start-line="553" selection-start-column="26" selection-end-line="553" selection-end-column="26" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#3;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -94,58 +34,8 @@
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#2;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#script#29;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#script#30;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#script#31;n#body#0;n#html#0;n#!!top" />
-                <element signature="e#31821#32783#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommissionRulesCompanyUpdate.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CommissionRulesCompanyUpdate.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="37">
-              <caret line="486" column="20" selection-start-line="486" selection-start-column="20" selection-end-line="486" selection-end-column="20" />
-              <folding>
-                <element signature="e#32595#33609#0" />
-                <element signature="e#33665#36385#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommissionRulesCompanyReview.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CommissionRulesCompanyReview.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="182" column="54" lean-forward="true" selection-start-line="176" selection-start-column="48" selection-end-line="182" selection-end-column="54" />
-              <folding>
-                <element signature="n#style#0;n#select#0;n#div#5;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#4;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#4;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#4;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#5;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#5;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#5;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#6;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#6;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#6;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#div#1;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#2;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#3;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#4;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#2;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#3;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#4;n#body#0;n#html#0;n#!!top" />
-                <element signature="e#33640#34032#0" />
-                <element signature="e#34064#34569#0" />
-                <element signature="e#34599#39283#0" />
-                <element signature="e#39340#39821#0" />
-                <element signature="e#39883#40374#0" />
-                <element signature="e#42169#42829#0" />
-                <element signature="e#43569#44272#0" />
-                <element signature="e#44485#45027#0" />
-                <element signature="e#47474#48002#0" />
+                <element signature="n#script#32;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#31225#35193#0" />
               </folding>
             </state>
           </provider>
@@ -155,10 +45,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>preViewBtn</find>
-      <find>proTab</find>
-      <find>developer_name</find>
-      <find>absolute_address</find>
       <find>dynamic-table_paginate</find>
       <find>dynamic-table_wrapper</find>
       <find>id=&quot;&quot;</find>
@@ -182,9 +68,13 @@
       <find>res.data.basic</find>
       <find>allTel</find>
       <find>screen</find>
-      <find>person</find>
       <find>rulePerson/getList</find>
       <find>getD</find>
+      <find>person</find>
+      <find>checked=&quot;checked&quot;</find>
+      <find>numShow</find>
+      <find>numHide</find>
+      <find>hide</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -207,12 +97,12 @@
         <option value="$PROJECT_DIR$/CommissionRulesAdd.html" />
         <option value="$PROJECT_DIR$/CommissionRulesBrokerUpdate.html" />
         <option value="$PROJECT_DIR$/assets/js/config.js" />
-        <option value="$PROJECT_DIR$/CommissionRulesCompanyAdd.html" />
-        <option value="$PROJECT_DIR$/CommissionRulesCompanyReview.html" />
         <option value="$PROJECT_DIR$/CommissionRulesBrokerAdd.html" />
-        <option value="$PROJECT_DIR$/CommissionRulesUpdate.html" />
         <option value="$PROJECT_DIR$/CommissionRulesCompanyUpdate.html" />
         <option value="$PROJECT_DIR$/CommissionRulesCheck.html" />
+        <option value="$PROJECT_DIR$/CommissionRulesCompanyAdd.html" />
+        <option value="$PROJECT_DIR$/CommissionRulesCompanyReview.html" />
+        <option value="$PROJECT_DIR$/CommissionRulesUpdate.html" />
       </list>
     </option>
   </component>
@@ -316,7 +206,7 @@
       <workItem from="1535419061178" duration="618000" />
       <workItem from="1535612343374" duration="379000" />
       <workItem from="1536310865421" duration="6239000" />
-      <workItem from="1536373610442" duration="29555000" />
+      <workItem from="1536373610442" duration="31096000" />
     </task>
     <task id="LOCAL-00001" summary="123">
       <created>1532082473392</created>
@@ -416,17 +306,24 @@
       <option name="project" value="LOCAL" />
       <updated>1536411230318</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="9083">
+      <created>1536411520943</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1536411520943</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65063000" />
+    <option name="totallyTimeSpent" value="66604000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17129071" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17129071" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="调试" order="7" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
@@ -468,7 +365,8 @@
     <MESSAGE value="8232" />
     <MESSAGE value="9081" />
     <MESSAGE value="9082" />
-    <option name="LAST_COMMIT_MESSAGE" value="9082" />
+    <MESSAGE value="9083" />
+    <option name="LAST_COMMIT_MESSAGE" value="9083" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/index.html">
@@ -893,17 +791,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/CommissionRulesBrokerAdd.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="597">
+          <caret line="343" column="40" lean-forward="true" selection-start-line="343" selection-start-column="35" selection-end-line="343" selection-end-column="40" />
+          <folding>
+            <element signature="n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#2;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#2;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CommissionRulesCompanyUpdate.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="37">
+          <caret line="486" column="20" selection-start-line="486" selection-start-column="20" selection-end-line="486" selection-end-column="20" />
+          <folding>
+            <element signature="e#32595#33609#0" />
+            <element signature="e#33665#36385#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CommissionRulesCheck.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="58">
+          <caret line="398" column="56" lean-forward="true" selection-start-line="398" selection-start-column="56" selection-end-line="398" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CommissionRulesCompanyAdd.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="631" column="9" lean-forward="true" selection-start-line="628" selection-start-column="8" selection-end-line="631" selection-end-column="9" />
+        <state relative-caret-position="286">
+          <caret line="249" column="100" lean-forward="true" selection-start-line="249" selection-start-column="100" selection-end-line="249" selection-end-column="100" />
           <folding>
             <element signature="n#style#0;n#select#0;n#div#5;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#div#4;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
             <element signature="n#style#0;n#div#0;n#div#4;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#4;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#4;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#5;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
             <element signature="n#style#0;n#div#0;n#div#5;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#5;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#5;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -926,50 +858,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CommissionRulesBrokerAdd.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="597">
-          <caret line="343" column="40" lean-forward="true" selection-start-line="343" selection-start-column="35" selection-end-line="343" selection-end-column="40" />
-          <folding>
-            <element signature="n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#2;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#2;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CommissionRulesUpdate.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-343">
-          <caret line="661" column="43" selection-start-line="661" selection-start-column="43" selection-end-line="661" selection-end-column="43" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#3;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#3;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#3;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#2;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#2;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#script#29;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#script#30;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#script#31;n#body#0;n#html#0;n#!!top" />
-            <element signature="e#31821#32783#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CommissionRulesCompanyReview.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="182" column="54" lean-forward="true" selection-start-line="176" selection-start-column="48" selection-end-line="182" selection-end-column="54" />
+        <state relative-caret-position="282">
+          <caret line="670" column="30" lean-forward="true" selection-start-line="670" selection-start-column="30" selection-end-line="670" selection-end-column="30" />
           <folding>
             <element signature="n#style#0;n#select#0;n#div#5;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#4;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -990,7 +882,9 @@
             <element signature="n#div#4;n#body#0;n#html#0;n#!!top" />
             <element signature="e#33640#34032#0" />
             <element signature="e#34064#34569#0" />
-            <element signature="e#34599#39283#0" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
             <element signature="e#39340#39821#0" />
             <element signature="e#39883#40374#0" />
             <element signature="e#42169#42829#0" />
@@ -1001,21 +895,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CommissionRulesCompanyUpdate.html">
+    <entry file="file://$PROJECT_DIR$/CommissionRulesUpdate.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="37">
-          <caret line="486" column="20" selection-start-line="486" selection-start-column="20" selection-end-line="486" selection-end-column="20" />
+        <state relative-caret-position="583">
+          <caret line="553" column="26" lean-forward="true" selection-start-line="553" selection-start-column="26" selection-end-line="553" selection-end-column="26" />
           <folding>
-            <element signature="e#32595#33609#0" />
-            <element signature="e#33665#36385#0" />
+            <element signature="n#style#0;n#div#0;n#div#3;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#3;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#3;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#2;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#2;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#script#29;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#script#30;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#script#32;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#31225#35193#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CommissionRulesCheck.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="400" column="21" selection-start-line="400" selection-start-column="21" selection-end-line="400" selection-end-column="21" />
         </state>
       </provider>
     </entry>
