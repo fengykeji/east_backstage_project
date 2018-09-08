@@ -542,7 +542,7 @@
     // })
 </script>
 <script>
-    var id = $.getUrlVar('id');
+    var rules_id = $.getUrlVar('id');
     //添加附件
     $(".addAnnex").on('click', function () {
         $('.modal_addAnnex').css('display', 'block');
@@ -640,7 +640,7 @@
             'sell_docker': $('input[name=sell_docker]').val(),
             'sell_docker_tel': $('input[name=sell_docker_tel]').val(),
             'act_start': $('input[name=act_start]').val(),
-            'basic_rule_id': id,
+            'basic_rule_id': rules_id,
 
             'rule_type':$('.ruleType').val(),
             'scene_server':$('input[name=resident]:checked').val(),
