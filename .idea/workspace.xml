@@ -1,39 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a9c4f3bc-05bf-4042-b4cc-c52dc098ced3" name="默认的" comment="9082">
+    <list default="true" id="a9c4f3bc-05bf-4042-b4cc-c52dc098ced3" name="默认的" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BuildInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/BuildInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommissionRules.html" beforeDir="false" afterPath="$PROJECT_DIR$/CommissionRules.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommissionRulesAdd.html" beforeDir="false" afterPath="$PROJECT_DIR$/CommissionRulesAdd.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommissionRulesBrokerAdd.html" beforeDir="false" afterPath="$PROJECT_DIR$/CommissionRulesBrokerAdd.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommissionRulesBrokerUpdate.html" beforeDir="false" afterPath="$PROJECT_DIR$/CommissionRulesBrokerUpdate.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommissionRulesCheck.html" beforeDir="false" afterPath="$PROJECT_DIR$/CommissionRulesCheck.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommissionRulesCompanyAdd.html" beforeDir="false" afterPath="$PROJECT_DIR$/CommissionRulesCompanyAdd.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommissionRulesCompanyReview.html" beforeDir="false" afterPath="$PROJECT_DIR$/CommissionRulesCompanyReview.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommissionRulesCompanyUpdate.html" beforeDir="false" afterPath="$PROJECT_DIR$/CommissionRulesCompanyUpdate.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommissionRulesUpdate.html" beforeDir="false" afterPath="$PROJECT_DIR$/CommissionRulesUpdate.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ContractDetailsLook.html" beforeDir="false" afterPath="$PROJECT_DIR$/ContractDetailsLook.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CusManageClinch.html" beforeDir="false" afterPath="$PROJECT_DIR$/CusManageClinch.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CusManageTobeConfirm.html" beforeDir="false" afterPath="$PROJECT_DIR$/CusManageTobeConfirm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CusManageTobeConfirmLook.html" beforeDir="false" afterPath="$PROJECT_DIR$/CusManageTobeConfirmLook.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DealComRuleSet.html" beforeDir="false" afterPath="$PROJECT_DIR$/DealComRuleSet.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DealComRuleSetBroker.html" beforeDir="false" afterPath="$PROJECT_DIR$/DealComRuleSetBroker.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DynamicList.html" beforeDir="false" afterPath="$PROJECT_DIR$/DynamicList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DynamicListAdd.html" beforeDir="false" afterPath="$PROJECT_DIR$/DynamicListAdd.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DynamicListModify.html" beforeDir="false" afterPath="$PROJECT_DIR$/DynamicListModify.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HouseInfor.html" beforeDir="false" afterPath="$PROJECT_DIR$/HouseInfor.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HouseInforAdd.html" beforeDir="false" afterPath="$PROJECT_DIR$/HouseInforAdd.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HouseInforOperate.html" beforeDir="false" afterPath="$PROJECT_DIR$/HouseInforOperate.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectAnalysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectAnalysis.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectImg.html" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectImg.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectImg_look.html" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectImg_look.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PropertyDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/PropertyDetail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SandboxSecond.html" beforeDir="false" afterPath="$PROJECT_DIR$/SandboxSecond.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jumPointRules.html" beforeDir="false" afterPath="$PROJECT_DIR$/jumPointRules.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/propertyConsultant.html" beforeDir="false" afterPath="$PROJECT_DIR$/propertyConsultant.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -101,7 +70,7 @@
       <file leaf-file-name="CommissionRulesCheck.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CommissionRulesCheck.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
+            <state relative-caret-position="100">
               <caret line="400" column="21" selection-start-line="400" selection-start-column="21" selection-end-line="400" selection-end-column="21" />
             </state>
           </provider>
@@ -347,7 +316,7 @@
       <workItem from="1535419061178" duration="618000" />
       <workItem from="1535612343374" duration="379000" />
       <workItem from="1536310865421" duration="6239000" />
-      <workItem from="1536373610442" duration="29241000" />
+      <workItem from="1536373610442" duration="29555000" />
     </task>
     <task id="LOCAL-00001" summary="123">
       <created>1532082473392</created>
@@ -440,11 +409,18 @@
       <option name="project" value="LOCAL" />
       <updated>1536387319559</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="9082">
+      <created>1536411230318</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1536411230318</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64749000" />
+    <option name="totallyTimeSpent" value="65063000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
@@ -457,7 +433,7 @@
       <window_info id="Grunt " order="2" side_tool="true" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.3298611" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="消息" order="8" visible="true" weight="0.17824075" />
+      <window_info anchor="bottom" id="消息" order="8" weight="0.09837963" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32919955" />
       <window_info anchor="bottom" id="运行" order="7" />
@@ -1038,7 +1014,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CommissionRulesCheck.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
+        <state relative-caret-position="100">
           <caret line="400" column="21" selection-start-line="400" selection-start-column="21" selection-end-line="400" selection-end-column="21" />
         </state>
       </provider>
