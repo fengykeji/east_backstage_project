@@ -54,12 +54,15 @@
   var $ = root.$ || root.jQuery || root.Zepto
     , fleegix = root.fleegix
   // Declare constant list of days and months. Unfortunately this doesn't leave room for i18n due to the Olson data being in English itself
-    , DAYS = timezoneJS.Days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-    , MONTHS = timezoneJS.Months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    // , DAYS = timezoneJS.Days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    // , MONTHS = timezoneJS.Months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    , DAYS = timezoneJS.Days =["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
+    , MONTHS = timezoneJS.Months = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
     , SHORT_MONTHS = {}
     , SHORT_DAYS = {}
     , EXACT_DATE_TIME = {}
     , TZ_REGEXP = new RegExp('^[a-zA-Z]+/');
+
 
   //`{ "Jan": 0, "Feb": 1, "Mar": 2, "Apr": 3, "May": 4, "Jun": 5, "Jul": 6, "Aug": 7, "Sep": 8, "Oct": 9, "Nov": 10, "Dec": 11 }`
   for (var i = 0; i < MONTHS.length; i++) {

@@ -577,6 +577,7 @@
     <script src="assets/js/public.js"></script>
     <script>
         var id = $.getUrlVar('id');
+        var rule_types={};//规则类型
         window.onload = function () {
             $('#header').load('public/header.html');
             $('#sidebar').load('public/menu.html');
@@ -592,9 +593,8 @@
         }
 
         function configList() {
-            ajax.get('config', {
-                id: config.configList['MONEY_TYPE']
-            }, function (res) {
+            ajax.get('config', {}, function (res) {
+                //货币类型
                 var dom = $('.money'),
                     model = '<option value="{id}">{name}</option>',
                     str = '';
@@ -602,6 +602,8 @@
                     str += model.replace('{id}', v.id).replace('{name}', v.param);
                 })
                 dom.append(str);
+                // 规则类型
+                rule_types=res.data[config.configList['RULE_TYPE']];
             })
         }
 
@@ -621,11 +623,17 @@
                 $('input[name=act_end]').val(res.data.basic.act_end);
 
 
-                if(res.data.basic.rule_type==173){
-                    $('.ruleType').val('分销')
-                }else if(res.data.basic.rule_type==174){
-                    $('.ruleType').val('行销')
-                }
+                // if(res.data.basic.rule_type==173){
+                //     $('.ruleType').val('分销')
+                // }else if(res.data.basic.rule_type==174){
+                //     $('.ruleType').val('行销')
+                // }
+                $.each(rule_types.param,function (k,v) {
+                    console.log(v);
+                    if(res.data.basic.rule_type==v.id){
+                        $('.ruleType').val(v.param);
+                    }
+                })
                 if(res.data.basic.scene_server==0){
                     $('input[name=zhuchang]').val('否');
                 }else{

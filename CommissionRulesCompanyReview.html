@@ -604,7 +604,7 @@
             configList();
             //获取规则类型
             $.ajax({
-                url: config.address +'config?id='+ config.configList.RULE_TYPE,
+                url: config.address +'config?id='+ config.configList['RULE_TYPE'],
                 type: 'GET',
                 dataType: "json",
                 success: function (res) {

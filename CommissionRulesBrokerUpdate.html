@@ -126,13 +126,13 @@
                         <li>
                             <i class="ace-icon fa fa-home home-icon"></i>
                             <a href="CommissionRules.html">结佣规则</a>
-                            <a href="#">>经纪人规则</a>
+                            <a href="#">>个人规则编辑</a>
                         </li>
                     </ul>
                     <div class="operate_proInfo">
                         <button class="btn btn-primary finish" >完成</button>
 
-                        <button class="btn btn-danger finish" onclick="javascript:history.go(-1)" >关闭</button>
+                        <button class="btn btn-danger" onclick="javascript:history.go(-1)" >关闭</button>
 
 
                     </div>
@@ -227,39 +227,12 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="lab_width">报备号码是否隐藏：</label>
-                                                    <div class="inpt_width" style="display: inline-block;">
-                                                        <div class="radio" style="display: inline-block;">
-                                                            <label>
-                                                                <input  type="radio" class="ace" value="0" name="numHide">
-                                                                <span class="lbl">是</span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="radio" style="display: inline-block;">
-                                                            <label>
-                                                                <input  type="radio" class="ace InvalidVisit" value="1" name="numHide">
-                                                                <span class="lbl">否</span>
-                                                            </label>
-                                                        </div>
-                                                        <span class="notes">（开启后报备只需要报备电话号码前三后四位）</span>
-                                                    </div>
+                                                    <input class="inpt_width" type="text" name="yincang" disabled>
 
                                                 </div>
-                                                <div class="form-group">
+                                                <div class="form-group allTel">
                                                     <label class="lab_width">展示完整号码阶段：</label>
-                                                    <div class="inpt_width" style="display: inline-block;">
-                                                        <div class="radio" style="display: inline-block;">
-                                                            <label>
-                                                                <input  type="radio" class="ace" value="0" name="numShow">
-                                                                <span class="lbl">有效确认</span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="radio" style="display: inline-block;">
-                                                            <label>
-                                                                <input  type="radio" class="ace InvalidVisit" value="1" name="numShow">
-                                                                <span class="lbl">认购</span>
-                                                            </label>
-                                                        </div>
-                                                    </div>
+                                                    <input class="inpt_width" type="text" name="zhanshi"  disabled>
                                                 </div>
                                             </div>
                                             <div style="clear: both;"></div>
@@ -612,6 +585,18 @@
                     }
 
                 }
+
+            // 报备号码
+                if(res.data.basic.tel_complete_state==0){
+                    $('input[name=yincang]').val('否');
+                    $('.allTel').hide();
+                }else if(res.data.basic.tel_complete_state==2){
+                    $('input[name=yincang]').val('是');
+                    $('input[name=zhanshi]').val('有效');
+                }else{
+                    $('input[name=yincang]').val('是');
+                    $('input[name=zhanshi]').val('认购');
+                }
             })
         }
         $(document).on('click', '.del', function () {
@@ -684,7 +669,6 @@
         })
         //成交佣金操作
         $(".dealComAdd").on('click', function () {
-
             window.location.href = "DealComRuleSetBroker.html?id=" +  $.getUrlVar('id')+'&rule_id='+rule_id;
             return false;
         })
@@ -718,6 +702,15 @@
          //关闭按钮返回上一页
         //  $('#backLastPage').on('click', function () {
         //     history.back(-1);
+        // })
+        //  号码隐藏
+        // $('.numHide').on('change', function () {
+        //     var val = $(this).val();
+        //     if (val == 0) {
+        //         $('.allTel').hide();
+        //     } else {
+        //         $('.allTel').show();
+        //     }
         // })
     </script>
 </body>
