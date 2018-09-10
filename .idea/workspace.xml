@@ -3,13 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a9c4f3bc-05bf-4042-b4cc-c52dc098ced3" name="默认的" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommissionRulesBrokerUpdate.html" beforeDir="false" afterPath="$PROJECT_DIR$/CommissionRulesBrokerUpdate.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommissionRulesCompanyAdd.html" beforeDir="false" afterPath="$PROJECT_DIR$/CommissionRulesCompanyAdd.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommissionRulesCompanyReview.html" beforeDir="false" afterPath="$PROJECT_DIR$/CommissionRulesCompanyReview.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommissionRulesCompanyUpdate.html" beforeDir="false" afterPath="$PROJECT_DIR$/CommissionRulesCompanyUpdate.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineSet.html" beforeDir="false" afterPath="$PROJECT_DIR$/MachineSet.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Flot/examples/axes-time-zones/date.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Flot/examples/axes-time-zones/date.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/jquery-ui/ui/datepicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/jquery-ui/ui/datepicker.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,13 +13,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CommissionRulesBrokerUpdate.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CommissionRulesBrokerUpdate.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CommissionRulesBrokerUpdate.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="543" column="22" lean-forward="true" selection-start-line="543" selection-start-column="22" selection-end-line="543" selection-end-column="22" />
+            <state relative-caret-position="477">
+              <caret line="709" column="39" lean-forward="true" selection-start-line="709" selection-start-column="39" selection-end-line="709" selection-end-column="39" />
               <folding>
-                <element signature="n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#div#1;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#div#2;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
@@ -35,7 +27,6 @@
                 <element signature="n#div#3;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
                 <element signature="e#31722#32178#0" />
-                <element signature="e#32206#36024#0" />
                 <element signature="e#32715#32996#0" />
                 <element signature="e#33122#35999#0" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
@@ -46,6 +37,15 @@
                 <element signature="n#script#35;n#body#0;n#html#0;n#!!top" />
                 <element signature="e#39067#39761#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommissionRulesCompanyUpdate.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/CommissionRulesCompanyUpdate.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="229">
+              <caret line="245" column="20" selection-start-line="245" selection-start-column="20" selection-end-line="245" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -205,7 +205,7 @@
       <workItem from="1536310865421" duration="6239000" />
       <workItem from="1536373610442" duration="34689000" />
       <workItem from="1536542056673" duration="2582000" />
-      <workItem from="1536546640865" duration="4334000" />
+      <workItem from="1536546640865" duration="4583000" />
     </task>
     <task id="LOCAL-00001" summary="123">
       <created>1532082473392</created>
@@ -347,11 +347,18 @@
       <option name="project" value="LOCAL" />
       <updated>1536419488541</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="9101">
+      <created>1536561219544</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1536561219545</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77113000" />
+    <option name="totallyTimeSpent" value="77362000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
@@ -405,7 +412,8 @@
     <MESSAGE value="9086" />
     <MESSAGE value="9087" />
     <MESSAGE value="9088" />
-    <option name="LAST_COMMIT_MESSAGE" value="9088" />
+    <MESSAGE value="9101" />
+    <option name="LAST_COMMIT_MESSAGE" value="9101" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/index.html">
@@ -753,13 +761,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CommissionRulesCompanyUpdate.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8752">
-          <caret line="650" column="17" lean-forward="true" selection-start-line="636" selection-start-column="16" selection-end-line="650" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CommissionRulesUpdate.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1194">
@@ -784,10 +785,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CommissionRulesBrokerUpdate.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="543" column="22" lean-forward="true" selection-start-line="543" selection-start-column="22" selection-end-line="543" selection-end-column="22" />
+        <state relative-caret-position="477">
+          <caret line="709" column="39" lean-forward="true" selection-start-line="709" selection-start-column="39" selection-end-line="709" selection-end-column="39" />
           <folding>
-            <element signature="n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
             <element signature="n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
             <element signature="n#div#1;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
             <element signature="n#div#2;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
@@ -796,7 +796,6 @@
             <element signature="n#div#3;n#body#0;n#html#0;n#!!top" />
             <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
             <element signature="e#31722#32178#0" />
-            <element signature="e#32206#36024#0" />
             <element signature="e#32715#32996#0" />
             <element signature="e#33122#35999#0" />
             <element signature="n#style#0;n#div#0;n#div#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
@@ -807,6 +806,13 @@
             <element signature="n#script#35;n#body#0;n#html#0;n#!!top" />
             <element signature="e#39067#39761#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CommissionRulesCompanyUpdate.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="245" column="20" selection-start-line="245" selection-start-column="20" selection-end-line="245" selection-end-column="20" />
         </state>
       </provider>
     </entry>
