@@ -578,6 +578,7 @@
     <script>
         var id = $.getUrlVar('id');
         var rule_types={};//规则类型
+        var rulestype=0;
         window.onload = function () {
             $('#header').load('public/header.html');
             $('#sidebar').load('public/menu.html');
@@ -604,6 +605,11 @@
                 dom.append(str);
                 // 规则类型
                 rule_types=res.data[config.configList['RULE_TYPE']];
+                $.each(rule_types.param,function (k,v) {
+                    if(rulestype==v.id){
+                        $('.ruleType').val(v.param);
+                    }
+                })
             })
         }
 
@@ -628,9 +634,9 @@
                 // }else if(res.data.basic.rule_type==174){
                 //     $('.ruleType').val('行销')
                 // }
+                rulestype=res.data.basic.rule_type;
                 $.each(rule_types.param,function (k,v) {
-                    console.log(v);
-                    if(res.data.basic.rule_type==v.id){
+                    if(rulestype==v.id){
                         $('.ruleType').val(v.param);
                     }
                 })

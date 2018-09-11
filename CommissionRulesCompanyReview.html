@@ -590,6 +590,7 @@
     <script src="assets/js/public.js"></script>
     <script>
         var id = $.getUrlVar('id');
+        var ruleTypes=0;
         window.onload = function () {
             $('#header').load('public/header.html');
             $('#sidebar').load('public/menu.html');
@@ -608,14 +609,18 @@
                 type: 'GET',
                 dataType: "json",
                 success: function (res) {
-                    var data=res.data[37].param
+                    var data=res.data[37].param;
                     var len=data.length;
                     var str='';
                     for(var i=0;i<len;i++){
                         str='<option value="'+data[i].id+'">'+data[i].param+'</option>';
                         $('.ruleType').append(str);
                     }
-
+                    $('.ruleType option').each(function () {
+                        if($(this).val() == ruleTypes){
+                            $(this).attr("selected", "selected");
+                        }
+                    })
                 },
                 error: function () {
                     ajax.error();
@@ -651,11 +656,10 @@
                 $('input[name=sell_docker]').val(x.sell_docker);
                 $('input[name=sell_docker_tel]').val(x.sell_docker_tel);
                 $('input[name=act_start]').val(x.act_start);
-
-
+                ruleTypes=x.rule_type;
                 $('.ruleType option').each(function () {
-                    if($(this).val()==x.rule_type){
-                        $(this).selected=true
+                    if($(this).val() == ruleTypes){
+                        $(this).attr("selected", "selected");
                     }
                 })
 
