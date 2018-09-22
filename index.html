@@ -522,7 +522,6 @@
         } else {
             var map_backData = '';
         }
-        // console.log(map_backData);
 
 
         //获取配置
@@ -585,7 +584,7 @@
                     'selected', 'selected');
                 if (res.data.img_url != '') {
                     $('#img_url').attr('src', config.address + res.data.img_url).attr(
-                        'address', res.data.total_float_url);
+                        'address', res.data.img_url);
                 }
                 if (res.data.total_float_url != '') {
                     $('#list_img').attr('src', config.address + res.data.total_float_url).attr(
@@ -746,6 +745,7 @@
         var formData = new FormData();
         formData.append("img", $(this)[0].files[0]);
         ajax.file(formData, 'img', function (res) {
+            alert(res.data);
             $('#img_url_edit').siblings('#img_url').attr('src', config.address + res.data).attr(
                 'address', res.data);
         })
@@ -784,7 +784,7 @@
         })
     })
     //保存
-    $('#save').click(function () {
+    $('#save').click(function (){
         var data = {
             'province': $('select[name="province"]').val(),
             'city': $('select[name="city"]').val(),
@@ -819,9 +819,9 @@
         }
         ajax.post('project/update', data, function (res) {
             alert(res.msg);
-            if (res.code == config.responseSuccess) {
+          /*  if (res.code == config.responseSuccess) {
                 window.location.reload();
-            }
+            }*/
 
         })
 
@@ -829,12 +829,10 @@
     //云算地址
     $('#yunsuan_url').blur(function () {
         var ip = $(this).val();
-        var reg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/
-
-        if (reg.test(ip)) {
+        if(ip==''){
+            return false;
+        }else{
             yunsuanIP(ip);
-        } else {
-            alert('请输入正确的ip地址！');
         }
     })
 
