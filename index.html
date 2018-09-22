@@ -724,7 +724,7 @@
         $('#project_tag').append(str);
         $('.modal_all').css('display', 'none');
     })
-
+    //楼栋信息主图改变
     $('#list_img_edit').on('change', function () {
         if ($(this)[0].files[0].size >= config.allowImgFileSize) {
             alert(config.ImgSizeBeyondErrMes);
@@ -733,10 +733,24 @@
         var formData = new FormData();
         formData.append("img", $(this)[0].files[0]);
         ajax.file(formData, 'img', function (res) {
-            $('#list_img_edit').siblings('.img_url').attr('src', config.address + res.data).attr(
+            $('#list_img_edit').siblings('#list_img').attr('src', config.address + res.data).attr(
                 'address', res.data);
         })
     })
+    //项目主图改变
+    $('#img_url_edit').on('change', function () {
+        if ($(this)[0].files[0].size >= config.allowImgFileSize) {
+            alert(config.ImgSizeBeyondErrMes);
+            return false;
+        }
+        var formData = new FormData();
+        formData.append("img", $(this)[0].files[0]);
+        ajax.file(formData, 'img', function (res) {
+            $('#img_url_edit').siblings('#img_url').attr('src', config.address + res.data).attr(
+                'address', res.data);
+        })
+    })
+
     //改变省份
     $(document).on('change', 'select[name="province"]', function () {
 

@@ -4,14 +4,7 @@
     <list default="true" id="a9c4f3bc-05bf-4042-b4cc-c52dc098ced3" name="默认的" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BuildInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/BuildInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BuildInfoAdd.html" beforeDir="false" afterPath="$PROJECT_DIR$/BuildInfoAdd.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BuildInfoDetails.html" beforeDir="false" afterPath="$PROJECT_DIR$/BuildInfoDetails.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BuildInfoOperate.html" beforeDir="false" afterPath="$PROJECT_DIR$/BuildInfoOperate.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DynamicListAdd.html" beforeDir="false" afterPath="$PROJECT_DIR$/DynamicListAdd.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DynamicListModify.html" beforeDir="false" afterPath="$PROJECT_DIR$/DynamicListModify.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HouseInforOperate.html" beforeDir="false" afterPath="$PROJECT_DIR$/HouseInforOperate.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectAnalysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectAnalysis.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PropertyDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/PropertyDetail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -43,10 +36,45 @@
       <file leaf-file-name="BuildInfo.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/BuildInfo.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="421" column="32" lean-forward="true" selection-start-line="421" selection-start-column="32" selection-end-line="421" selection-end-column="32" />
+            <state relative-caret-position="189">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
               <folding>
+                <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
+                <element signature="n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#2;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#script#29;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#script#30;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#script#31;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#script#32;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#td#12;n#tr#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="254">
+              <caret line="739" column="12" lean-forward="true" selection-start-line="739" selection-start-column="12" selection-end-line="739" selection-end-column="12" />
+              <folding>
+                <element signature="n#div#2;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#3;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#4;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#15721#18187#0" />
+                <element signature="n#script#31;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#21341#22205#0" />
+                <element signature="e#22255#22925#0" />
+                <element signature="e#22978#28790#0" />
+                <element signature="e#30502#30950#0" />
+                <element signature="e#31015#31463#0" />
+                <element signature="e#31031#31519#0" />
+                <element signature="e#31596#32092#0" />
+                <element signature="e#32136#33728#0" />
+                <element signature="e#33780#34093#0" />
+                <element signature="e#34139#34537#0" />
               </folding>
             </state>
           </provider>
@@ -56,12 +84,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>basicRule</find>
-      <find>getById</find>
-      <find>config</find>
-      <find>yes</find>
-      <find>res.data.basic</find>
-      <find>screen</find>
       <find>rulePerson/getList</find>
       <find>checked=&quot;checked&quot;</find>
       <find>numShow</find>
@@ -86,6 +108,12 @@
       <find>删除</find>
       <find>submit</find>
       <find>.pic_close1</find>
+      <find>zongImg_up</find>
+      <find>modal_upImg</find>
+      <find>img_url</find>
+      <find>list_img_edit</find>
+      <find>list_img</find>
+      <find>img_url_edit</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -98,7 +126,6 @@
         <option value="$PROJECT_DIR$/assets/css/Customize_css/index.css" />
         <option value="$PROJECT_DIR$/assets/css/ace.css" />
         <option value="$PROJECT_DIR$/assets/css/bootstrap.css" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/DealComRuleSetBroker.html" />
         <option value="$PROJECT_DIR$/DealComRuleSet.html" />
         <option value="$PROJECT_DIR$/propertyConsultant.html" />
@@ -123,6 +150,7 @@
         <option value="$PROJECT_DIR$/BuildInfoAdd.html" />
         <option value="$PROJECT_DIR$/BuildInfoDetails.html" />
         <option value="$PROJECT_DIR$/PropertyDetail.html" />
+        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/BuildInfo.html" />
       </list>
     </option>
@@ -213,6 +241,7 @@
       <workItem from="1536802878592" duration="8716000" />
       <workItem from="1536887512534" duration="2418000" />
       <workItem from="1537019287078" duration="16000" />
+      <workItem from="1537611143070" duration="2374000" />
     </task>
     <task id="LOCAL-00001" summary="123">
       <created>1532082473392</created>
@@ -389,14 +418,22 @@
       <option name="project" value="LOCAL" />
       <updated>1536636576248</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="9221">
+      <created>1537611289117</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1537611289117</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94791000" />
+    <option name="totallyTimeSpent" value="97165000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14053077" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -405,6 +442,7 @@
       <window_info id="Grunt " order="2" side_tool="true" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.3298611" />
       <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="消息" order="8" visible="true" weight="0.07638889" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32919955" />
       <window_info anchor="bottom" id="运行" order="7" />
@@ -416,7 +454,6 @@
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="消息" order="8" weight="0.09837963" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
@@ -451,7 +488,8 @@
     <MESSAGE value="9103" />
     <MESSAGE value="9104" />
     <MESSAGE value="9111" />
-    <option name="LAST_COMMIT_MESSAGE" value="9111" />
+    <MESSAGE value="9221" />
+    <option name="LAST_COMMIT_MESSAGE" value="9221" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/HouseInforOperate.html">
@@ -758,13 +796,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="427" column="6" lean-forward="true" selection-start-line="424" selection-start-column="4" selection-end-line="427" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ProjectAnalysis.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="205">
@@ -807,11 +838,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="739" column="12" lean-forward="true" selection-start-line="739" selection-start-column="12" selection-end-line="739" selection-end-column="12" />
+          <folding>
+            <element signature="n#div#2;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#3;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#4;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#15721#18187#0" />
+            <element signature="n#script#31;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#21341#22205#0" />
+            <element signature="e#22255#22925#0" />
+            <element signature="e#22978#28790#0" />
+            <element signature="e#30502#30950#0" />
+            <element signature="e#31015#31463#0" />
+            <element signature="e#31031#31519#0" />
+            <element signature="e#31596#32092#0" />
+            <element signature="e#32136#33728#0" />
+            <element signature="e#33780#34093#0" />
+            <element signature="e#34139#34537#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/BuildInfo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="421" column="32" lean-forward="true" selection-start-line="421" selection-start-column="32" selection-end-line="421" selection-end-column="32" />
+        <state relative-caret-position="189">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
           <folding>
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
+            <element signature="n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#2;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#script#29;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#script#30;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#script#31;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#script#32;n#body#0;n#html#0;n#!!top" />
             <element signature="n#style#0;n#div#0;n#div#0;n#td#12;n#tr#0;n#!!top" expanded="true" />
           </folding>
         </state>
