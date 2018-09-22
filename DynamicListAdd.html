@@ -48,88 +48,7 @@
     <script type="text/javascript" charset="utf-8" src="assets/js/Customize_js/ueditor.all.min.js">
     </script>
     <script type="text/javascript" charset="utf-8" src="assets/js/Customize_js/zh-cn.js"></script>
-    <style>
-        /* .operate_proInfo {
-            position: absolute;
-            right: 100px;
-            z-index: 100;
-        } */
 
-        /* .user-info {
-            max-width: 150px;
-            display: inline-block;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            text-align: left;
-            vertical-align: top;
-            line-height: 15px;
-            position: relative;
-            top: 14px;
-        }
-
-        */
-
-        /* .lab_width {
-            width: 120px;
-        }
-
-        .inpt_width {
-            width: 500px;
-        } */
-
-        /* .build_add,
-        .build_add_3D {
-            position: absolute;
-            right: 80px;
-            top: 0;
-            z-index: 100;
-            padding: 3px 10px;
-        }
-
-        .proLook_img {
-            width: 150px;
-            height: auto;
-        }
-
-        .table.table-striped td {
-            vertical-align: middle;
-        }
-
-        .modal_add,
-        .modal_add_3D {
-            display: none;
-            background-color: rgba(0, 0, 0, .5);
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-        }
-
-        .modal-dialog {
-            margin: 150px auto;
-        }
-
-        .bootbox-body {
-            font-size: 18px;
-            margin-top: 25px;
-            text-align: center;
-        }
-
-        .modal-content {
-            padding: 30px 50px;
-        }
-
-        .modal-footer {
-            margin-top: 20px;
-        }
-
-        .close {
-            font-size: 32px;
-        } */
-    </style>
 </head>
 
 <body class="no-skin">
@@ -164,7 +83,7 @@
                     <ul class="breadcrumb">
                         <li>
                             <i class="ace-icon fa fa-home home-icon"></i>
-                            <a href="ProjectImg.html">楼盘字典>动态列表</a>
+                            <a href="ProjectImg.html">楼盘字典>动态列表新增</a>
                         </li>
                     </ul>
                 </div>
@@ -178,7 +97,7 @@
                                     <div style="position: absolute;right: 80px;top:0;z-index: 100;">
                                         <!-- <button class="btn btn-success" style="padding: 3px 10px;">预览</button> -->
                                         <button class="btn btn-danger" style="padding: 3px 10px;" onclick="submit()">确定</button>
-                                        <button class="btn btn-primary" style="padding: 3px 10px;"  onclick="javascript :history.back(-1)">取消</button>
+                                        <button class="btn btn-primary" style="padding: 3px 10px;"  onclick="javascript :history.go(-1)">关闭</button>
                                     </div>
                                 </div>
                                 <div class="widget-body">
@@ -315,12 +234,18 @@
                 'content': UE.getEditor('editor').getContent()
             }
             if(dynamic.title==''){
-                alert('标题不能为空');
+                alert('请填写标题');
+                return false;
+            }
+            if(dynamic.content==''){
+                alert('请填写内容');
                 return false;
             }
             ajax.post('project/dynamic/create',dynamic,function(res){
-                alert(res.msg)
-                window.location.href="DynamicList.html";
+                if(res.code==config.responseSuccess){
+                    alert(res.msg);
+                    window.location.href="DynamicList.html";
+                }
             })
 
         }

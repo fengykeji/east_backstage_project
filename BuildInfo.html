@@ -108,10 +108,10 @@
             cursor: pointer;
         }
         .pic_close1{
-            right:290px;
+            right:325px;
         }
         .pic_close2{
-            right:90px;
+            right:125px;
         }
         .pic_close1:hover,.pic_close2:hover{
             color: #ABBAC3;
@@ -391,10 +391,10 @@
             var srcN=$('.pic_flat2_1').attr('src');
             var srcN2=$('.pic_flat2_2').attr('src');
             if(srcN=='assets/images/null.jpg'){
-                $('.pic_close1').css('display','none');
+                $('.pic_close1').hide();
             }
             if(srcN2=='assets/images/null.jpg'){
-                $('.pic_close2').css('display','none');
+                $('.pic_close2').hide();
             }
         }
         //新增楼栋信息
@@ -408,10 +408,10 @@
         })
         //总平图设置
         $('#zongImg_up').on('click', function () {
-            $('.modal_upImg').css('display', 'block');
+            $('.modal_upImg').show();
         });
         $('.closed').on('click', function () {
-            $(this).parent().parent().parent().parent().css('display', 'none');
+            $(this).parent().parent().parent().parent().hide();
         })
     </script>
     <script>
@@ -432,12 +432,13 @@
                     }
                     $('#noFile').hide();
                     $('#img').attr('src', config.address + address).show();
-                    if (res.data.yunsuan_url == '' || res.data.yunsuan_id == 0) {
-                        $('.ys').hide();
-                    } else {
-                        getBuildInfo(1);
 
-                    }
+                }
+                if (res.data.yunsuan_url == '' || res.data.yunsuan_id == 0) {
+                    $('.ys').hide();
+                } else {
+                    getBuildInfo(1);
+
                 }
             })
         }

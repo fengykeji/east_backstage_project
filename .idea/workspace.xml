@@ -3,8 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="a9c4f3bc-05bf-4042-b4cc-c52dc098ced3" name="默认的" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommissionRulesCompanyReview.html" beforeDir="false" afterPath="$PROJECT_DIR$/CommissionRulesCompanyReview.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommissionRulesCompanyUpdate.html" beforeDir="false" afterPath="$PROJECT_DIR$/CommissionRulesCompanyUpdate.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/BuildInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildInfoAdd.html" beforeDir="false" afterPath="$PROJECT_DIR$/BuildInfoAdd.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildInfoDetails.html" beforeDir="false" afterPath="$PROJECT_DIR$/BuildInfoDetails.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildInfoOperate.html" beforeDir="false" afterPath="$PROJECT_DIR$/BuildInfoOperate.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DynamicListAdd.html" beforeDir="false" afterPath="$PROJECT_DIR$/DynamicListAdd.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DynamicListModify.html" beforeDir="false" afterPath="$PROJECT_DIR$/DynamicListModify.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HouseInforOperate.html" beforeDir="false" afterPath="$PROJECT_DIR$/HouseInforOperate.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectAnalysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectAnalysis.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PropertyDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/PropertyDetail.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,25 +22,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CommissionRulesCompanyUpdate.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CommissionRulesCompanyUpdate.html">
+      <file leaf-file-name="BuildInfoOperate.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BuildInfoOperate.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="723">
-              <caret line="638" column="40" selection-start-line="638" selection-start-column="40" selection-end-line="638" selection-end-column="40" />
+            <state relative-caret-position="2205">
+              <caret line="105" column="60" selection-start-line="105" selection-start-column="56" selection-end-line="105" selection-end-column="60" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommissionRulesCompanyReview.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/CommissionRulesCompanyReview.html">
+      <file leaf-file-name="PropertyDetail.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PropertyDetail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="397">
-              <caret line="622" column="50" lean-forward="true" selection-start-line="622" selection-start-column="50" selection-end-line="622" selection-end-column="50" />
+            <state relative-caret-position="3780">
+              <caret line="180" column="77" selection-start-line="180" selection-start-column="77" selection-end-line="180" selection-end-column="77" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BuildInfo.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/BuildInfo.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="421" column="32" lean-forward="true" selection-start-line="421" selection-start-column="32" selection-end-line="421" selection-end-column="32" />
               <folding>
-                <element signature="e#35635#36140#0" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#td#12;n#tr#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -43,8 +56,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>project_name</find>
-      <find>list</find>
       <find>basicRule</find>
       <find>getById</find>
       <find>config</find>
@@ -73,6 +84,8 @@
       <find>img_del</find>
       <find>modal_tishi</find>
       <find>删除</find>
+      <find>submit</find>
+      <find>.pic_close1</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -81,8 +94,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/BuildInfo.html" />
-        <option value="$PROJECT_DIR$/HouseInforOperate.html" />
         <option value="$PROJECT_DIR$/CusManageTobeConfirmLook.html" />
         <option value="$PROJECT_DIR$/assets/css/Customize_css/index.css" />
         <option value="$PROJECT_DIR$/assets/css/ace.css" />
@@ -104,6 +115,15 @@
         <option value="$PROJECT_DIR$/CommissionRulesBrokerAdd.html" />
         <option value="$PROJECT_DIR$/CommissionRulesCompanyUpdate.html" />
         <option value="$PROJECT_DIR$/CommissionRulesCompanyReview.html" />
+        <option value="$PROJECT_DIR$/DynamicListModify.html" />
+        <option value="$PROJECT_DIR$/DynamicListAdd.html" />
+        <option value="$PROJECT_DIR$/ProjectAnalysis.html" />
+        <option value="$PROJECT_DIR$/HouseInforOperate.html" />
+        <option value="$PROJECT_DIR$/BuildInfoOperate.html" />
+        <option value="$PROJECT_DIR$/BuildInfoAdd.html" />
+        <option value="$PROJECT_DIR$/BuildInfoDetails.html" />
+        <option value="$PROJECT_DIR$/PropertyDetail.html" />
+        <option value="$PROJECT_DIR$/BuildInfo.html" />
       </list>
     </option>
   </component>
@@ -126,7 +146,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -134,26 +153,16 @@
               <item name="WWW" type="b2602c69:ProjectViewProjectNode" />
               <item name="WWW" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="WWW" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WWW" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WWW" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WWW" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/micro-book" />
     <property name="node.js.detected.package.prettier" value="true" />
     <property name="node.js.path.for.package.prettier" value="project" />
     <property name="node.js.selected.package.prettier" value="" />
@@ -200,7 +209,10 @@
       <workItem from="1536546640865" duration="5221000" />
       <workItem from="1536561935550" duration="4499000" />
       <workItem from="1536578846101" duration="22000" />
-      <workItem from="1536636055054" duration="264000" />
+      <workItem from="1536636055054" duration="1120000" />
+      <workItem from="1536802878592" duration="8716000" />
+      <workItem from="1536887512534" duration="2418000" />
+      <workItem from="1537019287078" duration="16000" />
     </task>
     <task id="LOCAL-00001" summary="123">
       <created>1532082473392</created>
@@ -370,17 +382,23 @@
       <option name="project" value="LOCAL" />
       <updated>1536564247064</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="9111">
+      <created>1536636576248</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1536636576248</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82785000" />
+    <option name="totallyTimeSpent" value="94791000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17129071" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14053077" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="调试" order="7" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
@@ -432,44 +450,10 @@
     <MESSAGE value="9102" />
     <MESSAGE value="9103" />
     <MESSAGE value="9104" />
-    <option name="LAST_COMMIT_MESSAGE" value="9104" />
+    <MESSAGE value="9111" />
+    <option name="LAST_COMMIT_MESSAGE" value="9111" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/CusManageTobeConfirmLook.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7497">
-          <caret line="777" column="60" selection-start-line="777" selection-start-column="60" selection-end-line="777" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HouseInforOperate.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11088">
-          <caret line="802" column="13" selection-start-line="802" selection-start-column="13" selection-end-line="802" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BuildInfo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7308">
-          <caret line="486" column="46" selection-start-line="486" selection-start-column="46" selection-end-line="486" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2667">
-          <caret line="698" selection-start-line="429" selection-start-column="7" selection-end-line="698" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CusManageTobeConfirmLook.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7497">
-          <caret line="777" column="60" selection-start-line="777" selection-start-column="60" selection-end-line="777" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HouseInforOperate.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="16842">
@@ -603,25 +587,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BuildInfoOperate.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7019" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HouseInforOperate.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11088">
-          <caret line="802" column="13" selection-start-line="802" selection-start-column="13" selection-end-line="802" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BuildInfo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7308">
-          <caret line="486" column="46" selection-start-line="486" selection-start-column="46" selection-end-line="486" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CusManageTobeConfirmLook.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7497">
@@ -643,13 +608,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/Customize_css/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="100" column="17" lean-forward="true" selection-start-line="100" selection-start-column="17" selection-end-line="100" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/css/ace.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="310">
@@ -662,11 +620,6 @@
         <state relative-caret-position="131">
           <caret line="5923" column="15" selection-start-line="5923" selection-start-column="15" selection-end-line="5923" selection-end-column="15" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PropertyDetail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1827" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DealComRuleSetBroker.html">
@@ -715,6 +668,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="567">
           <caret line="36" column="18" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="18" />
+          <folding>
+            <element signature="n#!!block;n#checkLogin#0" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -729,13 +685,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="219">
           <caret line="601" column="39" selection-start-line="601" selection-start-column="39" selection-end-line="601" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="639">
-          <caret line="547" column="10" lean-forward="true" selection-start-line="527" selection-start-column="8" selection-end-line="547" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -776,20 +725,94 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CommissionRulesCompanyUpdate.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="723">
+        <state relative-caret-position="13398">
           <caret line="638" column="40" selection-start-line="638" selection-start-column="40" selection-end-line="638" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CommissionRulesCompanyReview.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="622" column="50" lean-forward="true" selection-start-line="622" selection-start-column="50" selection-end-line="622" selection-end-column="50" />
+        <state relative-caret-position="166">
+          <caret line="647" column="31" lean-forward="true" selection-start-line="647" selection-start-column="31" selection-end-line="647" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DynamicListModify.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="87" column="65" selection-start-line="87" selection-start-column="65" selection-end-line="87" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DynamicListAdd.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="247" column="17" selection-start-line="247" selection-start-column="17" selection-end-line="247" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/Customize_css/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="39" column="12" lean-forward="true" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="427" column="6" lean-forward="true" selection-start-line="424" selection-start-column="4" selection-end-line="427" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjectAnalysis.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HouseInforOperate.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="185" column="38" lean-forward="true" selection-start-line="185" selection-start-column="38" selection-end-line="185" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BuildInfoDetails.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="99" column="51" selection-start-line="99" selection-start-column="51" selection-end-line="99" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BuildInfoAdd.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="101" column="69" lean-forward="true" selection-start-line="101" selection-start-column="69" selection-end-line="101" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BuildInfoOperate.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2205">
+          <caret line="105" column="60" selection-start-line="105" selection-start-column="56" selection-end-line="105" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PropertyDetail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3780">
+          <caret line="180" column="77" selection-start-line="180" selection-start-column="77" selection-end-line="180" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BuildInfo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="421" column="32" lean-forward="true" selection-start-line="421" selection-start-column="32" selection-end-line="421" selection-end-column="32" />
           <folding>
-            <element signature="e#35635#36140#0" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#td#12;n#tr#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
