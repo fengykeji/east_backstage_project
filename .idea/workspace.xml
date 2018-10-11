@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a9c4f3bc-05bf-4042-b4cc-c52dc098ced3" name="默认的" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CustomerManagement.html" beforeDir="false" afterPath="$PROJECT_DIR$/CustomerManagement.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HouseInforAdd.html" beforeDir="false" afterPath="$PROJECT_DIR$/HouseInforAdd.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,8 +16,8 @@
       <file leaf-file-name="SuccessDetails.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SuccessDetails.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="559">
-              <caret line="505" column="67" selection-start-line="505" selection-start-column="67" selection-end-line="505" selection-end-column="67" />
+            <state relative-caret-position="538">
+              <caret line="478" lean-forward="true" selection-start-line="478" selection-end-line="478" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -213,7 +211,7 @@
       <workItem from="1537611143070" duration="5010000" />
       <workItem from="1539049146786" duration="23913000" />
       <workItem from="1539133653771" duration="23000000" />
-      <workItem from="1539220464312" duration="15641000" />
+      <workItem from="1539220464312" duration="15938000" />
     </task>
     <task id="LOCAL-00001" summary="123">
       <created>1532082473392</created>
@@ -411,11 +409,18 @@
       <option name="project" value="LOCAL" />
       <updated>1537616142242</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="10111">
+      <created>1539246482259</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1539246482259</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="162355000" />
+    <option name="totallyTimeSpent" value="162652000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
@@ -451,7 +456,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="1234" />
     <MESSAGE value="8221" />
     <MESSAGE value="8222" />
     <MESSAGE value="8223" />
@@ -476,7 +480,8 @@
     <MESSAGE value="9221" />
     <MESSAGE value="9222" />
     <MESSAGE value="9223" />
-    <option name="LAST_COMMIT_MESSAGE" value="9223" />
+    <MESSAGE value="10111" />
+    <option name="LAST_COMMIT_MESSAGE" value="10111" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -910,8 +915,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SuccessDetails.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="559">
-          <caret line="505" column="67" selection-start-line="505" selection-start-column="67" selection-end-line="505" selection-end-column="67" />
+        <state relative-caret-position="538">
+          <caret line="478" lean-forward="true" selection-start-line="478" selection-end-line="478" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />

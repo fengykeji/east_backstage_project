@@ -500,7 +500,7 @@
 </script>
 <script>
     function getInfo() {
-        ajax.get('project/client/valueClientDetail', {
+        ajax.get('project/client/getDealInfo', {
             'client_id': id
         }, function (res) {
             $('input[name=contract_num]').val(res.data.contract_num);
