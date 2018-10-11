@@ -2,27 +2,26 @@
 <html lang="en">
 
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta charset="utf-8"/>
     <title>客户管理</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
 
 
     <!-- bootstrap & fontawesome -->
-    <link rel="stylesheet" href="assets/css/bootstrap.css" />
-    <link rel="stylesheet" href="components/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap.css"/>
+    <link rel="stylesheet" href="components/font-awesome/css/font-awesome.css"/>
 
     <!-- text fonts -->
-    <link rel="stylesheet" href="assets/css/ace-fonts.css" />
+    <link rel="stylesheet" href="assets/css/ace-fonts.css"/>
 
     <!-- ace styles -->
-    <link rel="stylesheet" href="assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <link rel="stylesheet" href="assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style"/>
 
 
-    <link rel="stylesheet" href="assets/css/ace-skins.css" />
-    <link rel="stylesheet" href="assets/css/ace-rtl.css" />
-
+    <link rel="stylesheet" href="assets/css/ace-skins.css"/>
+    <link rel="stylesheet" href="assets/css/ace-rtl.css"/>
 
 
     <!-- ace settings handler -->
@@ -30,51 +29,6 @@
 
 
     <style>
-        .checkSty_projectInfo {
-            float: left;
-        }
-
-        /* .tags {
-            display: inline-block;
-            padding: 4px 6px;
-            color: #777;
-            vertical-align: middle;
-            border: none;
-            width: auto;
-        }
-
-        .tag {
-            max-width: 200px;
-            outline: none;
-        } */
-
-        .operate_proInfo {
-            position: absolute;
-            right: 100px;
-            z-index: 100;
-        }
-
-        /* .user-info {
-            max-width: 150px;
-            display: inline-block;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            text-align: left;
-            vertical-align: top;
-            line-height: 15px;
-            position: relative;
-            top: 14px;
-        }
-
-        .inpt_width {
-            width: 70%;
-        }
-
-        .lab_width {
-            width: 100px;
-        } */
-
         #dynamic-table td {
             vertical-align: middle;
         }
@@ -83,307 +37,86 @@
         a {
             cursor: pointer;
         }
+
+        .modal_today, .modal_fenxiao {
+            display: none;
+            background-color: rgba(0, 0, 0, .5);
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
     </style>
 </head>
 
 <body class="no-skin">
-    <div id="header"></div>
-    <!-- /section:basics/navbar.layout -->
-    <div class="main-container" id="main-container">
-        <script type="text/javascript">
-            try {
-                ace.settings.check('main-container', 'fixed')
-            } catch (e) {}
-        </script>
+<div id="header"></div>
+<!-- /section:basics/navbar.layout -->
+<div class="main-container" id="main-container">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('main-container', 'fixed')
+        } catch (e) {
+        }
+    </script>
 
-        <!-- 菜单开始 -->
-        <div id="sidebar" class="sidebar responsive ace-save-state">
+    <!-- 菜单开始 -->
+    <div id="sidebar" class="sidebar responsive ace-save-state">
 
-        </div>
+    </div>
 
-        <!-- /section:basics/sidebar -->
-        <div class="main-content">
-            <div class="main-content-inner">
-                <div class="breadcrumbs" id="breadcrumbs">
-                    <script type="text/javascript">
-                        try {
-                            ace.settings.check('breadcrumbs', 'fixed')
-                        } catch (e) {}
-                    </script>
-                    <ul class="breadcrumb">
-                        <li>
-                            <i class="ace-icon fa fa-home home-icon"></i>
-                            <a href="CustomerManagement.html">楼盘字典>客户管理</a>
-                        </li>
-                    </ul>
-                    <!-- <div class="operate_proInfo">
-                    <button class="btn btn-danger " id="rule_add">新增</button>
-                </div> -->
-                </div>
-                <!-- 内容开始 -->
-                <div class="page-content">
-                    <div class="row" style="margin-top: 50px;">
-                        <div class="col-xs-12">
-                            <div class="tabbable">
-                                <ul class="nav nav-tabs" id="myTab">
-                                    <li class="active all">
-                                        <a data-toggle="tab" href="#custom_all" aria-expanded="false">
-                                            全部
-                                        </a>
-                                    </li>
-
-                                    <li class="wait_confirm">
-                                        <a data-toggle="tab" href="#custom_tobeConfirm" aria-expanded="true">
-                                            待确认客户
-                                        </a>
-                                    </li>
-                                    <li class="value">
-                                        <a data-toggle="tab" href="#custom_valid" aria-expanded="true">
-                                            有效客户
-                                        </a>
-                                    </li>
-                                    <li class="disableds">
-                                        <a data-toggle="tab" href="#custom_invalid" aria-expanded="true">
-                                            无效客户
-                                        </a>
-                                    </li>
-                                    <li class="deal">
-                                        <a data-toggle="tab" href="#custom_success" aria-expanded="true">
-                                            已成单客户
-                                        </a>
-                                    </li>
-                                </ul>
-                                <div class="tab-content">
-                                    <div id="custom_all" class="tab-pane fade active in" style="overflow: hidden;">
-                                        <div class="col-xs-12" style="overflow-x: scroll;">
-                                            <div style="width: 2100px;">
-                                                <div id="" class="dataTables_wrapper form-inline no-footer">
-                                                    <table id="" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
-                                                        <thead>
-                                                            <tr role="row">
-                                                                <th class="center">序号</th>
-                                                                <th class="center">推荐编号</th>
-                                                                <th class="center">客户名称</th>
-                                                                <th class="center">联系电话</th>
-                                                                <th class="center">状态</th>
-                                                                <th class="center">推荐人</th>
-                                                                <th class="center">类型</th>
-                                                                <th class="center">公司名称</th>
-                                                                <th class="center">推荐时间</th>
-                                                                <th class="center">发起确认时间</th>
-                                                                <th class="center">状态改变时间</th>
-                                                                <th class="center">失效倒计时</th>
-                                                                <th class="center">是否确认</th>
-                                                               <!-- <th class="center">到访确认人</th>-->
-                                                                <th class="center">分配时间</th>
-                                                                <th class="center">置业顾问</th>
-                                                                <!-- <th class="center">操作</th> -->
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody id="all">
-
-                                                        </tbody>
-                                                    </table>
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <div class="dataTables_paginate paging_simple_numbers" id="">
-                                                                <ul class="pagination" id="paginationAll">
-                                                                    <li class="paginate_button previous" aria-controls="dynamic-table" tabindex="0" id="prev_all">
-                                                                        <a>首页</a>
-                                                                    </li>
-
-                                                                    <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="next_all">
-                                                                        <a>尾页</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+    <!-- /section:basics/sidebar -->
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs" id="breadcrumbs">
+                <script type="text/javascript">
+                    try {
+                        ace.settings.check('breadcrumbs', 'fixed')
+                    } catch (e) {
+                    }
+                </script>
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="ace-icon fa fa-home home-icon"></i>
+                        <a href="CustomerManagement.html">楼盘字典>客户管理</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- 内容开始 -->
+            <div class="page-content">
+                <div class="row" style="margin-top: 50px;">
+                    <div class="col-lg-6 col-xs-12">
+                        <div class="widget-box ys">
+                            <div class="widget-header" style="position: relative;">
+                                <h4 class="smaller" style="display: inline-block;">客户统计图</h4>
+                            </div>
+                            <div class="widget-body">
+                                <div class="widget-main" style="overflow: hidden;">
+                                    <div class="col-xs-6">
+                                        <div id="CusStatAll" style="width: 100%;height:400px;"></div>
                                     </div>
-                                    <div id="custom_tobeConfirm" class="tab-pane fade  " style="overflow: hidden;">
-                                        <div class="col-xs-12" style="overflow-x: scroll;">
-                                            <div style="width: 2100px;">
-                                                <div id="" class="dataTables_wrapper form-inline no-footer">
-                                                    <table id="" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
-                                                        <thead>
-                                                            <tr role="row">
-                                                                <th class="center">序号</th>
-                                                                <th class="center">推荐编号</th>
-                                                                <th class="center">客户名称</th>
-                                                                <th class="center">联系电话</th>
-                                                                <th class="center">推荐人</th>
-                                                                <th class="center">类型</th>
-                                                                <th class="center">公司名称</th>
-                                                                <th class="center">推荐时间</th>
-                                                                <th class="center">对接人</th>
-                                                                <th class="center">发起确认时间</th>
-                                                                <th class="center">失效倒计时</th>
-                                                                <th class="center">操作</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody id="wait_confrim">
-
-
-                                                        </tbody>
-                                                    </table>
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <div class="dataTables_paginate paging_simple_numbers" id="">
-                                                                <ul class="pagination" id="paginationTobeCon">
-                                                                    <li class="paginate_button previous" aria-controls="dynamic-table" tabindex="0" id="prev_tobeConfirm">
-                                                                        <a>首页</a>
-                                                                    </li>
-                                                                    <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="next_tobeConfirm">
-                                                                        <a>尾页</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="col-xs-6">
+                                        <div id="CusStatMon" style="width: 100%;height:400px;"></div>
                                     </div>
-                                    <div id="custom_valid" class="tab-pane fade  " style="overflow: hidden;">
-                                        <div class="col-xs-12" style="overflow-x: scroll;">
-                                            <div style="width: 2100px;">
-                                                <div id="" class="dataTables_wrapper form-inline no-footer">
-                                                    <table id="" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
-                                                        <thead>
-                                                            <tr role="row">
-                                                                <th class="center">序号</th>
-                                                                <th class="center">推荐编号</th>
-                                                                <th class="center">客户名称</th>
-                                                                <th class="center">联系电话</th>
-                                                                <th class="center">目前状态</th>
-                                                                <th class="center">状态改变时间</th>
-                                                                <th class="center">推荐人</th>
-                                                                <th class="center">公司名称</th>
-                                                                <th class="center">失效倒计时</th>
-                                                                <th class="center">置业顾问</th>
-                                                                <th class="center">确认时间</th>
-                                                                <th class="center">操作</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody id="value">
-
-
-                                                        </tbody>
-                                                    </table>
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <div class="dataTables_paginate paging_simple_numbers" id="">
-                                                                <ul class="pagination" id="paginationValid">
-                                                                    <li class="paginate_button previous" aria-controls="dynamic-table" tabindex="0" id="prev_valid">
-                                                                        <a>首页</a>
-                                                                    </li>
-
-                                                                    <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="next_valid">
-                                                                        <a>尾页</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="custom_invalid" class="tab-pane fade  " style="overflow: hidden;">
-
-                                        <div class="col-xs-12" style="overflow-x: scroll;">
-                                            <div style="width: 2100px;">
-                                                <div id="" class="dataTables_wrapper form-inline no-footer">
-                                                    <table id="" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
-                                                        <thead>
-                                                            <tr role="row">
-                                                                <th class="center">序号</th>
-                                                                <th class="center">推荐编号</th>
-                                                                <th class="center">客户名称</th>
-                                                                <th class="center">联系电话</th>
-                                                                <th class="center">无效前状态</th>
-                                                                <th class="center">推荐人</th>
-                                                                <th class="center">公司名称</th>
-                                                                <th class="center">置业顾问</th>
-                                                                <td class="center">目前状态</td>
-                                                                <th class="center">无效时间</th>
-                                                                <th class="center">无效类型</th>
-                                                                <th class="center">失效描述</th>
-                                                                <th class="center">操作</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody id="disableds">
-
-
-                                                        </tbody>
-                                                    </table>
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <div class="dataTables_paginate paging_simple_numbers" id="">
-                                                                <ul class="pagination" id="paginationInvalid">
-                                                                    <li class="paginate_button previous" aria-controls="dynamic-table" tabindex="0" id="prev_invalid">
-                                                                        <a>首页</a>
-                                                                    </li>
-
-                                                                    <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="next_invalid">
-                                                                        <a>尾页</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="custom_success" class="tab-pane fade  " style="overflow: hidden;">
-
-                                        <div class="col-xs-12" style="overflow-x: scroll;">
-                                            <div style="width: 2100px;">
-                                                <div id="" class="dataTables_wrapper form-inline no-footer">
-                                                    <table id="" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
-                                                        <thead>
-                                                            <tr role="row">
-                                                                <th class="center">序号</th>
-                                                                <th class="center">推荐编号</th>
-                                                                <th class="center">客户名称</th>
-                                                                <th class="center">联系电话</th>
-                                                                <th class="center">成交房源</th>
-
-                                                                <th class="center">总价（￥）</th>
-                                                                <th class="center">单价（元/㎡）</th>
-                                                                <th class="center">成交时间</th>
-                                                                <th class="center">推荐人</th>
-                                                                <th class="center">类型</th>
-                                                                <th class="center">公司名称</th>
-                                                                <th class="center">置业顾问</th>
-                                                                <th class="center">累计佣金（￥）</th>
-                                                                <th class="center">操作</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody id="deal">
-
-                                                        </tbody>
-                                                    </table>
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <div class="dataTables_paginate paging_simple_numbers" id="">
-                                                                <ul class="pagination" id="paginationDeal">
-                                                                    <li class="paginate_button previous" aria-controls="dynamic-table" tabindex="0" id="prev_success">
-                                                                        <a>首页</a>
-                                                                    </li>
-
-                                                                    <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="next_success">
-                                                                        <a>尾页</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xs-12" style="min-height: 200px;">
+                        <div class="widget-box ys">
+                            <div class="widget-header" style="position: relative;">
+                                <h4 class="smaller" style="display: inline-block;">今日推荐客户</h4>
+                                <a id="todayRem"
+                                   style="float: right;display: inline-block;height: 38px;line-height: 38px;margin-right: 15px;">查看更多</a>
+                            </div>
+                            <div class="widget-body">
+                                <div class="widget-main" style="overflow: hidden;">
+                                    <div class="col-xs-12">
+                                        <div>
+                                            <div id="dynamic-table_wrapper"
+                                                 class="dataTables_wrapper form-inline no-footer">
                                             </div>
                                         </div>
                                     </div>
@@ -392,430 +125,650 @@
                         </div>
                     </div>
                 </div>
+                <div class="row" style="margin-top: 50px;">
+                    <div class="col-lg-6 col-xs-12">
+                        <div class="widget-box ys">
+                            <div class="widget-header" style="position: relative;">
+                                <h4 class="smaller" style="display: inline-block;">渠道来源分析图</h4>
+                            </div>
+                            <div class="widget-body">
+                                <div class="widget-main" style="overflow: hidden;">
+                                    <div class="col-xs-12">
+                                        <div id="ChanAls" style="width: 100%;height:400px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xs-12" style="min-height: 200px;">
+                        <div class="widget-box ys">
+                            <div class="widget-header" style="position: relative;">
+                                <h4 class="smaller" style="display: inline-block;">分销公司排行榜</h4>
+                                <a id="fenxiao"
+                                   style="float: right;display: inline-block;height: 38px;line-height: 38px;margin-right: 15px;">查看更多</a>
+                            </div>
+                            <div class="widget-body">
+                                <div class="widget-main" style="overflow: hidden;">
+                                    <div class="col-xs-12">
+                                        <div>
+                                            <div id="dynamic-table_fenxiao"
+                                                 class="dataTables_wrapper form-inline no-footer">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 50px;">
+                    <div class="widget-box ys">
+                        <div class="widget-header" style="position: relative;">
+                            <h4 class="smaller" style="display: inline-block;">年度统计图</h4>
+                            <select name="years" id="years" style="margin-left: 10px;"></select>
+                        </div>
+                        <div class="widget-body">
+                            <div class="widget-main" style="overflow: hidden;min-height: 200px;">
+                                <div class="col-xs-12" id="yearDiv">
+                                    <div id="AnlStat" style="width: 100%;height:400px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</div>
+<div class="modal_today">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close closed">×</button>
+                <h4 class="modal-title">今日推荐客户</h4>
+            </div>
+            <div class="modal-body">
+                <div class="bootbox-body" style="overflow: hidden;font-size: 14px;text-align: left;">
+                    <div class="col-xs-12" style="overflow-y: scroll;height: 100%;">
+                        <div id="dynamic-table_todays" class="dataTables_wrapper form-inline no-footer">
 
+                            <table class="table table-striped table-bordered table-hover dataTable no-footer"
+                                   role="grid" aria-describedby="dynamic-table_info">
+                                <thead>
+                                    <tr role="row">
+                                        <th class="center">客户名称</th>
+                                        <th class="center">电话号码</th>
+                                        <th class="center">类型</th>
+                                        <th class="center">推荐人</th>
+                                        <th class="center">失效时间</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="today_list">
 
-    <!-- basic scripts -->
+                                </tbody>
+                            </table>
 
-    <!--[if !IE]> -->
-    <script src="components/jquery/dist/jquery.js"></script>
-    <script type="text/javascript">
-        if ('ontouchstart' in document.documentElement) document.write(
-            "<script src='components/_mod/jquery.mobile.custom/jquery.mobile.custom.js'>" + "<" + "/script>");
-    </script>
-    <script src="components/bootstrap/dist/js/bootstrap.js"></script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-bb-handler="confirm" type="button" class="btn btn-sm btn-primary closed">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal_fenxiao">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close closed">×</button>
+                <h4 class="modal-title">分销公司排行榜</h4>
+            </div>
+            <div class="modal-body">
+                <div class="bootbox-body" style="overflow: hidden;font-size: 14px;text-align: left;">
+                    <div class="col-xs-12" style="overflow-y: scroll;height: 100%;">
+                        <div id="dynamic-table_fenxiaos" class="dataTables_wrapper form-inline no-footer">
 
-    <!-- ace scripts -->
-    <script src="assets/js/src/elements.scroller.js"></script>
-    <script src="assets/js/src/elements.colorpicker.js"></script>
-    <script src="assets/js/src/elements.fileinput.js"></script>
-    <script src="assets/js/src/elements.typeahead.js"></script>
-    <script src="assets/js/src/elements.wysiwyg.js"></script>
-    <script src="assets/js/src/elements.spinner.js"></script>
-    <script src="assets/js/src/elements.treeview.js"></script>
-    <script src="assets/js/src/elements.wizard.js"></script>
-    <script src="assets/js/src/elements.aside.js"></script>
-    <script src="assets/js/src/ace.js"></script>
-    <script src="assets/js/src/ace.basics.js"></script>
-    <script src="assets/js/src/ace.scrolltop.js"></script>
-    <script src="assets/js/src/ace.ajax-content.js"></script>
-    <script src="assets/js/src/ace.touch-drag.js"></script>
-    <script src="assets/js/src/ace.sidebar.js"></script>
-    <script src="assets/js/src/ace.sidebar-scroll-1.js"></script>
-    <script src="assets/js/src/ace.submenu-hover.js"></script>
-    <script src="assets/js/src/ace.widget-box.js"></script>
-    <script src="assets/js/src/ace.settings.js"></script>
-    <script src="assets/js/src/ace.settings-rtl.js"></script>
-    <script src="assets/js/src/ace.settings-skin.js"></script>
-    <script src="assets/js/src/ace.widget-on-reload.js"></script>
-    <script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
-    <!-- 本页js -->
-    <script src="assets/js/jquery.cookie.js"></script>
-    <script src="assets/js/config.js"></script>
-    <script src="assets/js/public.js"></script>
-    <script>
-        window.onload = function () {
-            $('#header').load('public/header.html');
-            $('#sidebar').load('public/menu.html');
-            var menu_data = {
-                opening: '',
-                acting: '.kehuguanli'
-            }
-            $.cookie('menu_data', JSON.stringify(menu_data), {
-                path: "menu.html"
-            });
-            checkYs();
-            getAllList(1);
-            wait_confirm(1);
-            value(1);
-            disabled(1);
-            deal(1);
+                            <table id="" class="table table-striped table-bordered table-hover dataTable no-footer"
+                                   role="grid" aria-describedby="dynamic-table_info">
+                                <thead>
+                                <tr role="row">
+                                    <th class="center">公司名称</th>
+                                    <th class="center">推荐数量</th>
+                                </tr>
+                                </thead>
+                                <tbody id="fenxiao_list">
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-bb-handler="confirm" type="button" class="btn btn-sm btn-primary closed">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- basic scripts -->
+
+<!--[if !IE]> -->
+<script src="components/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+    if ('ontouchstart' in document.documentElement) document.write(
+        "<script src='components/_mod/jquery.mobile.custom/jquery.mobile.custom.js'>" + "<" + "/script>");
+</script>
+<script src="components/bootstrap/dist/js/bootstrap.js"></script>
+
+<!-- ace scripts -->
+<script src="assets/js/src/elements.scroller.js"></script>
+<script src="assets/js/src/elements.colorpicker.js"></script>
+<script src="assets/js/src/elements.fileinput.js"></script>
+<script src="assets/js/src/elements.typeahead.js"></script>
+<script src="assets/js/src/elements.wysiwyg.js"></script>
+<script src="assets/js/src/elements.spinner.js"></script>
+<script src="assets/js/src/elements.treeview.js"></script>
+<script src="assets/js/src/elements.wizard.js"></script>
+<script src="assets/js/src/elements.aside.js"></script>
+<script src="assets/js/src/ace.js"></script>
+<script src="assets/js/src/ace.basics.js"></script>
+<script src="assets/js/src/ace.scrolltop.js"></script>
+<script src="assets/js/src/ace.ajax-content.js"></script>
+<script src="assets/js/src/ace.touch-drag.js"></script>
+<script src="assets/js/src/ace.sidebar.js"></script>
+<script src="assets/js/src/ace.sidebar-scroll-1.js"></script>
+<script src="assets/js/src/ace.submenu-hover.js"></script>
+<script src="assets/js/src/ace.widget-box.js"></script>
+<script src="assets/js/src/ace.settings.js"></script>
+<script src="assets/js/src/ace.settings-rtl.js"></script>
+<script src="assets/js/src/ace.settings-skin.js"></script>
+<script src="assets/js/src/ace.widget-on-reload.js"></script>
+<script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
+<!-- 本页js -->
+<script src="assets/js/jquery.cookie.js"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/public.js"></script>
+<script src="assets/js/echarts.js"></script>
+<!--菜单初始化-->
+<script>
+    window.onload = function () {
+        $('#header').load('public/header.html');
+        $('#sidebar').load('public/menu.html');
+        var menu_data = {
+            opening: '',
+            acting: '.kehuguanli'
         }
-    </script>
-    <script>
-        var had_ys = 2;
-        // 页数显示
-        function Paging(res, pn, D) {
-            var page =
-                '<li class="paginate_button ' + pn +
-                ' {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>';
-            var T = Math.floor(res.data.current_page / 10) * 10;
-            if (res.data.current_page > T || res.data.current_page == T) {
-                var i = T - 1;
-                if (res.data.last_page > i + 10) {
-                    var t = i + 11;
-                } else {
-                    var t = res.data.last_page;
+        $.cookie('menu_data', JSON.stringify(menu_data), {
+            path: "menu.html"
+        });
+    }
+</script>
+<!--获取数据-->
+<script>
+    var date = new Date;
+    var year = date.getFullYear();
+
+    ajax.get('project/client/count', {year: year}, function (res) {
+        var Data = res.data;
+        fenxiao(Data.company);
+        today(Data.currentDay);
+        yearStat(Data.yearCount);
+        ChanAl(Data.source);
+        monthStat(Data.currentMonthCount);
+        allStat(Data.totalCount);
+    })
+
+
+    //
+    <!--分销公司排行榜-->
+    function fenxiao(arr) {
+        if (arr.length == 0) {
+            var notData = '<p style="text-align: center;font-size: 15px;">暂无数据</p>';
+            $('#dynamic-table_fenxiao').append(notData);
+            $('#fenxiao').hide();
+        }
+        else {
+            $('#fenxiao').show();
+            var str1 = '';
+            var str2 = '';
+            for (var i = 0; i < arr.length; i++) {
+                str1 += '<tr><td class="center">' + arr[i].name + '</td>' +
+                    '<td class="center">' + arr[i].recommendNum + '</td></tr>';
+            }
+            $('#fenxiao_list').append(str1);
+            var n = 5;
+            if (arr.length < n) {
+                n = arr.length;
+                $('#fenxiao').hide();
+            }
+            for (var i = 0; i < n; i++) {
+                str2 += '<tr><td class="center">' + arr[i].name + '</td>' +
+                    '<td class="center">' + arr[i].recommendNum + '</td></tr>';
+            }
+            var todayCus = '<table id="" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">' +
+                '<thead>' +
+                '<tr role="row">' +
+                '<th class="center">公司名称</th>' +
+                '<th class="center">推荐数量</th>' +
+                '</tr>' +
+                '</thead>' +
+                '<tbody id="build_list1">' + str2 + '</tbody>' +
+                '</table>';
+            $('#dynamic-table_fenxiao').append(todayCus);
+        }
+    }
+
+
+    //
+    <!--今日推荐客户-->
+    function today(arr) {
+        if (arr.length == 0) {
+            var notData = '<p style="text-align: center;font-size: 15px;">暂无数据</p>';
+            $('#dynamic-table_wrapper').append(notData);
+            $('#todayRem').hide();
+        } else {
+            $('#todayRem').show();
+            var str1 = '';
+            var str2 = '';
+            for (var i = 0; i < arr.length; i++) {
+                str1 += '<tr><td class="center">' + arr[i].name + '</td>' +
+                    '<td class="center">' + arr[i].tel + '</td>' +
+                    '<td class="center">' + arr[i].rule_type + '</td>' +
+                    '<td class="center">' + arr[i].broker_agent_name + '</td>' +
+                    '<td class="center">' + arr[i].end_time + '</td></tr>';
+            }
+            $('#today_list').append(str1);
+            var n = 5;
+            if (arr.length < n) {
+                n = arr.length;
+                $('#todayRem').hide();
+            }
+            for (var i = 0; i < n; i++) {
+                str2 += '<tr><td class="center">' + arr[i].name + '</td>' +
+                    '<td class="center">' + arr[i].tel + '</td>' +
+                    '<td class="center">' + arr[i].rule_type + '</td>' +
+                    '<td class="center">' + arr[i].broker_agent_name + '</td>' +
+                    '<td class="center">' + arr[i].end_time + '</td></tr>';
+            }
+            var todayCus = '<table id="" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">' +
+                '<thead>' +
+                '<tr role="row">' +
+                '<th class="center">客户名称</th>' +
+                '<th class="center">电话号码</th>' +
+                '<th class="center">类型</th>' +
+                '<th class="center">推荐人</th>' +
+                '<th class="center">失效时间</th>' +
+                '</tr>' +
+                '</thead>' +
+                '<tbody id="build_list2">' + str2 + '</tbody>' +
+                '</table>';
+            $('#dynamic-table_wrapper').append(todayCus);
+        }
+    }
+
+    //
+    <!--年度统计图-->
+    function yearStat(datas) {
+        var str = '';
+        var num = 0;
+        var months = [];
+        var recommends = [];//推荐
+        var visits = [];//到访
+        var deals = [];//成交
+        var notData = '<p style="text-align: center;font-size: 15px;">暂无数据</p>';
+        for (var i = 0; i < 10; i++) {
+            num = parseInt(datas.year - i);
+            str += '<option value="' + num + '">' + num + '年</option>'
+        }
+        $('#years').append(str);
+
+
+        if (datas.count.list.length == 0) {
+            $('#yearDiv').append(notData);
+            $('#AnlStat').hide();
+        } else {
+            $('#AnlStat').show();
+            for (var i = 0; i < datas.count.list.length; i++) {
+                months.push(datas.count.list[i].month + '月');
+                recommends.push(datas.count.list[i].count.recommend);
+                visits.push(datas.count.list[i].count.visit);
+                deals.push(datas.count.list[i].count.deal);
+            }
+        }
+
+
+        var dom = document.getElementById("AnlStat");
+        var myChart = echarts.init(dom);
+        option = null;
+        option = {
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ['推荐客户', '到访客户', '成交客户']
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: months
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    name: '推荐客户',
+                    type: 'line',
+                    // stack: '总量',
+                    data: recommends
+                },
+                {
+                    name: '到访客户',
+                    type: 'line',
+                    // stack: '总量',
+                    data: visits
+                },
+                {
+                    name: '成交客户',
+                    type: 'line',
+                    // stack: '总量',
+                    data: deals
                 }
-                for (i; i <= t; i++) {
-                    if (i == 0 || i < 0) {
-                        i = 1;
+            ]
+        };
+
+        myChart.setOption(option);
+    }
+
+    //
+    <!--渠道来源分析图-->
+    function ChanAl(datas) {
+        // console.log(datas)
+        var qudao = [];
+        var recommends = [];//推荐
+        var visits = [];//到访
+        var deals = [];//成交
+        for (var i = 0; i < datas.length; i++) {
+            qudao.push(datas[i].name);
+            recommends.push(datas[i].count.recommend);
+            visits.push(datas[i].count.visit);
+            deals.push(datas[i].count.deal);
+        }
+
+        var dom = document.getElementById("ChanAls");
+        var myChart = echarts.init(dom);
+        var app = {};
+        option = null;
+        app.config = {
+            rotate: 90,
+            align: 'left',
+            verticalAlign: 'middle',
+            position: 'insideBottom',
+            distance: 15,
+            onChange: function () {
+                var labelOption = {
+                    normal: {
+                        rotate: app.config.rotate,
+                        align: app.config.align,
+                        verticalAlign: app.config.verticalAlign,
+                        position: app.config.position,
+                        distance: app.config.distance
                     }
-                    var str = page.replace('{pageValue}', i).replace('{page}', i);
-                    if (i == res.data.current_page) {
-                        str = str.replace('{avtive}', 'active');
-                    } else {
-                        str = str.replace('{avtive}', '');
+                };
+                myChart.setOption({
+                    series: [{
+                        label: labelOption
+                    }, {
+                        label: labelOption
+                    }, {
+                        label: labelOption
+                    }, {
+                        label: labelOption
+                    }]
+                });
+            }
+        };
+
+
+        var labelOption = {
+            normal: {
+                show: false,
+                position: app.config.position,
+                distance: app.config.distance,
+                align: app.config.align,
+                verticalAlign: app.config.verticalAlign,
+                rotate: app.config.rotate,
+                formatter: '{c}  {name|{a}}',
+                fontSize: 16,
+                rich: {
+                    name: {
+                        textBorderColor: '#fff'
                     }
-                    $(D).before(str);
                 }
             }
+        };
 
-        }
+        option = {
+            color: ['#006699', '#4cabce', '#e5323e'],
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            legend: {
+                data: ['推荐客户', '到访客户', '成交客户']
+            },
+            toolbox: {
+                show: true,
+                orient: 'vertical',
+                left: 'right',
+                top: 'center'
+            },
+            calculable: true,
+            xAxis: [
+                {
+                    type: 'category',
+                    axisTick: {show: false},
+                    data: qudao
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value'
+                }
+            ],
+            series: [
+                {
+                    name: '推荐客户',
+                    type: 'bar',
+                    label: labelOption,
+                    data: recommends
+                },
+                {
+                    name: '到访客户',
+                    type: 'bar',
+                    label: labelOption,
+                    data: visits
+                },
+                {
+                    name: '成交客户',
+                    type: 'bar',
+                    label: labelOption,
+                    data: deals
+                }
+            ]
+        };
+        myChart.setOption(option);
+    }
+
+    //
+    <!--客户统计-->
+    function monthStat(datas) {//本月
+        var kehu = [
+            // {value: datas.total*10, name: '全部客户'+datas.total,href:'RemCus.html?CusType=1'},
+            {value: datas.recommend * 100, name: '推荐客户' + datas.recommend,href:'RemCus.html?CusType=3'},
+            {value: datas.visit * 100, name: '到访客户' + datas.visit,href:'RemCus.html?CusType=4'},
+            {value: datas.deal * 100, name: '成交客户' + datas.deal,href:'RemCus.html?CusType=5'}
+        ]
 
 
-        function checkYs() {
-            if (had_ys == 2) {
-                ajax.get('project/project/getProjectInfo', {}, function (res) {
-                    if (res.data.yunsuan_url == '' || res.data.yunsuan_id == 0) {
-                        had_ys = 0;
-                    } else {
-                        had_ys = 1;
-                    }
-                })
-            }
-        }
-    </script>
-    <script>
-        // 已成单分页
-        var last_page_deal;
-
-        function deal(p) {
-            var model =
-                '<tr role="row" class="odd trDeal" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td></td> <td class="center">{house_info}</td> <td class="center">{total_money}</td>  <td class="center">{build_deal_money}</td><td class="center">{design_time}</td><td class="center">{broker_name}</td><td class="center">{broker_type}</td><td class="center">{company_name}</td> <td class="center">{advice_name}</td><td class="center">{broker_name}</td><td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="CusManageClinchLook.html?id={d_id}">查看</a> </div> </td> </tr>',
-                id = 15 * (p - 1) + 1,
-                str = '';
-            ajax.get('project/client/deal', {
-                'page': p
-            }, function (res) {
-                $.each(res.data.data, function (k, v) {
-                    var tr = model.replace('{c_id}', v.client_id).replace('{id}', id++).replace(
-                            '{client_id}', v.client_id).replace('{name}', v.name).replace('{tel}', v.tel)
-                        .replace('{house_info}', v.house_info).replace('{total_money}', v.total_money).replace(
-                            '{build_deal_money}', v.build_deal_money).replace('{design_time}', v.design_time)
-                        .replace('{broker_name}', v.broker_name).replace('{broker_type}', v.broker_type)
-                        .replace('{company_name}', v.company_name).replace('{advice_name}', v.advice_name)
-                        .replace('{broker_name}', v.broker_name).replace('{d_id}', v.client_id);
-                    str += tr;
-                })
-
-                $('#deal').append(str);
-                last_page_deal = res.data.last_page;
-                var pn = 'pageNumDeal';
-                var D = "#next_success";
-                Paging(res, pn, D);
-            })
-        }
-
-        //.首页点击事件
-        $('#prev_success').on('click', function (e) {
-            clickOperDeal(e, 1);
-        })
-        //尾页点击事件
-        $('#next_success').on('click', function (e) {
-            clickOperDeal(e, last_page_deal);
-        })
-        //分页点击事件
-        $('#paginationDeal').on('click', '.pageNumDeal', function (e) {
-            var p = $(this).children().html(); //当前点击页
-            // alert('页数');
-            // alert(p);
-            clickOperDeal(e, p);
-        })
-        //点击事件操作
-        function clickOperDeal(e, p) {
-            e.stopPropagation();
-            $('.pageNumDeal').remove();
-            $('.trDeal').remove();
-            deal(p);
-        }
-    </script>
-    <script>
-        //无效分页
-        var last_page_invalid;
-
-        function disabled(p) {
-            var model =
-                '<tr role="row" class="odd trInvalid" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td></td> <td class="center">{current_state}</td> <td class="center">{broker_name}</td>  <td class="center">{company_name}</td><td class="center">{advice_name}</td><td class="center">无效</td><td class="center">{state_change_time}</td><td class="center">{disabled_state}</td> <td class="center">{disabled_reason}</td>  <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="CusManageInvalid.html?id={d_id}">查看</a> </td> </tr>',
-                id = 15 * (p - 1) + 1,
-                str = '';
-            ajax.get('project/client/disabled', {
-                'page': p
-            }, function (res) {
-                $.each(res.data.data, function (k, v) {
-                    var tr = model.replace('{c_id}', v.client_id).replace('{id}', id++).replace(
-                            '{client_id}', v.client_id).replace('{name}', v.name).replace('{tel}', v.tel)
-                        .replace('{current_state}', v.current_state).replace('{broker_name}', v.broker_name)
-                        .replace('{company_name}', v.company_name).replace('{advice_name}', v.advice_name)
-                        .replace('{state_change_time}', v.state_change_time).replace('{disabled_state}',
-                            v.disabled_state).replace('{disabled_reason}', v.disabled_reason).replace('{d_id}', v.client_id);
-                    str += tr;
-                })
-
-                $('#disableds').append(str);
-                last_page_invalid = res.data.last_page;
-                var pn = 'pageNumInv';
-                var D = "#next_invalid";
-                Paging(res, pn, D);
-            }) //
-        }
-        //.首页点击事件
-        $('#prev_invalid').on('click', function (e) {
-            clickOperInvalid(e, 1);
-        })
-        //尾页点击事件
-        $('#next_invalid').on('click', function (e) {
-            clickOperInvalid(e, last_page_invalid);
-        })
-        //分页点击事件
-        $('#paginationInvalid').on('click', '.pageNumInv', function (e) {
-            var p = $(this).children().html(); //当前点击页
-            clickOperInvalid(e, p);
-        })
-        //点击事件操作
-        function clickOperInvalid(e, p) {
-            e.stopPropagation();
-            $('.pageNumInv').remove();
-            $('.trInvalid').remove();
-            disabled(p);
-        }
-    </script>
-    <script>
-        // 全部分页
-        var last_page_all;
-        function getAllList(p) {
-            var model =
-                ' <tr role="row" class="odd trAll" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td> <td class="center">{state}</td> <td class="center">{broker}</td> <td class="center">{broker_type}</td> <td class="center">{company_name}</td> <td class="center">{create_time}</td>  <td class="center">{visit_time}</td> <td class="center">{state_change_time}</td> <td class="center">{end_time}</td> <td class="center">{confirm}</td>  <td class="center">{allot_time}</td><td class="center">{advice_name}</td> </tr>',//<td class="center">{butter_name}</td>
-                // page =
-                // '<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>',
-                str = '',
-                id = 15*(p-1)+1;
-            ajax.get('project/client/all', {
-                'page':p
-            }, function (res) {
-                if (res.data.data.length != 0) {
-                    $.each(res.data.data, function (k, v) {
-                        if (v.allot_time == null || v.allot_time == '0000-00-00 00:00:00') {
-                            v.allot_time = '未分配';
-                        }
-                        if(v.state_name=='推荐'){
-                            v.confirm='未确认';
-                        }else{
-                            v.confirm='已确认';
-                        }
-                        var tr = model.replace('{c_id}', v.client_id).replace('{id}', id++).replace(
-                                '{client_id}', v.client_id).replace('{name}', v.name).replace('{tel}',
-                                v.tel).replace('{state}', v.state_name).replace('{broker}', v.broker_agent_name)
-                            .replace('{broker_type}', v.broker_type).replace('{company_name}', v.company_name)
-                            .replace('{create_time}', v.create_time).replace('{visit_time}', v.visit_time)
-                            .replace('{state_change_time}', v.state_change_time).replace(
-                                '{butter_name}', v.butter_name).replace('{allot_time}', v.allot_time).replace(
-                                '{advice_name}', v.advice_name).replace(
-                                '{confirm}', v.confirm);
-                        if(typeof v.CountDown=='number'){
-                            if (v.CountDown > 0) {
-                                tr = tr.replace('{end_time}', formatSeconds(v.CountDown));
-                            } else {
-                                tr = tr.replace('{end_time}', '已失效');
+        var dom = document.getElementById("CusStatMon");
+        var myChart = echarts.init(dom);
+        option = null;
+        option = {
+            title: {
+                text: '本月客户',
+                subtext: ''
+            },
+            calculable: true,
+            series: [
+                {
+                    name: '漏斗图',
+                    type: 'funnel',
+                    left: '10%',
+                    top: 60,
+                    bottom: 60,
+                    width: '80%',
+                    min: 10,
+                    max: 100,
+                    minSize: '20%',
+                    maxSize: '100%',
+                    sort: 'descending',
+                    gap: 2,
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'inside'
+                        },
+                        emphasis: {
+                            textStyle: {
+                                fontSize: 18
                             }
-                        }else{
-                            tr= tr.replace('{end_time}', v.CountDown);
                         }
-
-                        str += tr;
-                    })
-                    $('#all').append(str);
-                    last_page_all = res.data.last_page;
-                var pn = 'pageNumAll';
-                var D = "#next_all";
-                Paging(res, pn, D);
+                    },
+                    labelLine: {
+                        normal: {
+                            length: 10,
+                            lineStyle: {
+                                width: 1,
+                                type: 'solid'
+                            }
+                        }
+                    },
+                    itemStyle: {
+                        normal: {
+                            borderColor: '#fff',
+                            borderWidth: 1
+                        }
+                    },
+                    data: kehu
                 }
-            })
+            ]
+        };
+        myChart.setOption(option);
+        myChart.on('click', function (params) {
+            window.location=params.data.href;
 
-        }
-         //.首页点击事件
-         $('#prev_all').on('click', function (e) {
-            // alert('首页');
-            clickOperAll(e, 1);
-        })
-        //尾页点击事件
-        $('#next_all').on('click', function (e) {
-            // alert('尾页');
-            // alert(last_page_all);
-            clickOperAll(e, last_page_all);
-        })
-        //分页点击事件
-        $('#paginationAll').on('click', '.pageNumAll', function (e) {
-            var p = $(this).children().html(); //当前点击页
-            // alert('页数');
-            // alert(p);
-            clickOperAll(e, p);
-        })
-        //点击事件操作
-        function clickOperAll(e, p) {
-            e.stopPropagation();
-            $('.pageNumAll').remove();
-            $('.trAll').remove();
-            getAllList(p);
-        }
-    </script>
-    <script>
-        // 有效分页
-        var last_page_valid;
+        });
+    }
 
-        function value(p) {
-            var model =
-                '<tr role="row" class="odd" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td></td> <td class="center">{state}</td> <td class="center">{state_change_time}</td><td class="center">{broker}</td>  <td class="center">{company_name}</td><td class="center">{end_time}</td><td class="center">{advice_name}</td><td class="center">{allot_name}</td>   <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="CusManageValid.html?id={e_id}">查看</a>{ys_check}</td> </tr>',
-                // page =
-                // '<li class="paginate_button trValid {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>',
-                id = 15 * (p - 1) + 1,
-                str = '';
-            if (had_ys == .0) {
-                model = model.replace('{ys_check}',
-                    '<a class="green" href="CusManageClinch.html?id={d_id}">成交</a></div>');
-            } else {
-                model = model.replace('{ys_check}', '');
-            }
-            ajax.get('project/client/value', {
-                'page': p
-            }, function (res) {
-                $.each(res.data.data, function (k, v) {
-                    var tr = model.replace('{c_id}', v.client_id).replace('{id}', id++).replace(
-                            '{client_id}', v.client_id).replace('{name}', v.name).replace('{tel}', v.tel)
-                        .replace('{broker}', v.broker_agent_name).replace('{company_name}', v.company_name)
-                        .replace('{create_time}', v.create_time).replace('{visit_time}', v.visit_time).replace(
-                            '{butter_name}', v.butter_name).replace('{state}', v.state_name).replace(
-                            '{state_change_time}', v.state_change_time).replace('{advice_name}', v.advice_name)
-                        .replace('{allot_name}', v.allot_time).replace('{d_id}', v.client_id).replace('{e_id}', v.client_id);
-                    if (v.CountDown > 0) {
-                        tr = tr.replace('{end_time}', formatSeconds(v.CountDown));
-                    } else {
-                        tr = tr.replace('{end_time}', '已失效');
-                    }
-                    str += tr;
-                })
-                $('#value').append(str);
-                last_page_valid = res.data.last_page;
-                var pn = 'pageNumVal';
-                var D = "#next_valid";
-                Paging(res, pn, D);
-            })
-        }
-        //.首页点击事件
-        $('#prev_valid').on('click', function (e) {
-            // alert('首页');
-            clickOperValid(e, 1);
-        })
-        //尾页点击事件
-        $('#next_valid').on('click', function (e) {
-            // alert('尾页');
-            // alert(last_page_valid);
-            clickOperValid(e, last_page_valid);
-        })
-        //分页点击事件
-        $('#paginationValid').on('click', '.pageNumVal', function (e) {
-            var p = $(this).children().html(); //当前点击页
-            // alert('页数');
-            // alert(p);
-            clickOperValid(e, p);
-        })
-        //点击事件操作
-        function clickOperValid(e, p) {
-            e.stopPropagation();
-            $('.pageNumVal').remove();
-            $('.trValid').remove();
-            value(p);
-        }
-    </script>
-    <script>
-        // 待确认分页
-        var last_page_confirm ;
-        function wait_confirm(p) {
-            var model =
-                '<tr role="row" class="odd trTobeCom" value="{c_id}"><td class="center">{id}</td> <td class="center">{client_id}</td> <td class="center">{name}</td> <td class="center">{tel}</td>   <td class="center">{broker}</td> <td class="center">{broker_type}</td> <td class="center">{company_name}</td><td class="center">{create_time}</td> <td class="center">{butter_name}</td>  <td class="center">{visit_time}</td> <td class="center">{end_time}</td> <td class="center"> <div class="hidden-sm hidden-xs action-buttons"> <a class="blue" href="CusManageTobeConfirmLook.html?id={b_id}">查看</a>{ys_check}</td> </tr>',
-                // page =
-                // '<li class="paginate_button {avtive}" aria-controls="dynamic-table" tabindex="0" ><a value="{pageValue}">{page}</a></li>',
-                id = 15 * (p - 1) + 1,
-                str = '';
-            if (had_ys == .0) {
-                model = model.replace('{ys_check}',
-                    '<a class="green" href="CusManageTobeConfirm.html?id={d_id}">确认</a></div>');
-            } else {
-                model = model.replace('{ys_check}', '');
-            }
-            ajax.get('project/client/waitConfirmed', {
-                'page': p
-            }, function (res) {
-                $.each(res.data.data, function (k, v) {
-                    var tr = model.replace('{c_id}', v.client_id).replace('{id}', id++).replace(
-                            '{client_id}', v.client_id).replace('{name}', v.name).replace('{tel}', v.tel)
-                        .replace('{broker}', v.broker_name).replace('{broker_type}', v.broker_type).replace(
-                            '{company_name}', v.company_name).replace('{create_time}', v.create_time).replace(
-                            '{visit_time}', v.state_change_time).replace('{butter_name}', v.butter_name)
-                        .replace('{b_id}', v.client_id).replace('{d_id}', v.client_id);;
-                    if (v.CountDown > 0) {
-                        tr = tr.replace('{end_time}', formatSeconds(v.CountDown));
-                    } else {
-                        tr = tr.replace('{end_time}', '已失效');
-                    }
-                    str += tr;
-                })
-                $('#wait_confrim').append(str);
-                last_page_confirm = res.data.last_page;
-                var pn = 'pageNumCon';
-                var D = "#next_tobeConfirm";
-                Paging(res, pn, D);
-            })
+    function allStat(datas) {//全部
+        var kehu = [
+            // {value: datas.total*10, name: '全部客户'+datas.total,href:'RemCus.html?CusType=1'},
+            {value: datas.recommend * 100, name: '推荐客户' + datas.recommend,href:'RemCus.html?CusType=3'},
+            {value: datas.visit * 100, name: '到访客户' + datas.visit,href:'RemCus.html?CusType=4'},
+            {value: datas.deal * 100, name: '成交客户' + datas.deal,href:'RemCus.html?CusType=5'}
+        ]
 
-        }
-        //.首页点击事件
-        $('#prev_tobeConfirm').on('click', function (e) {
-            // alert('首页');
-            clickOperConfirm(e, 1);
+        var dom = document.getElementById("CusStatAll");
+        var myChart = echarts.init(dom);
+        option = null;
+        option = {
+            title: {
+                text: '所有客户',
+                subtext: ''
+            },
+            calculable: true,
+            series: [
+                {
+                    name: '漏斗图',
+                    type: 'funnel',
+                    left: '10%',
+                    top: 60,
+                    bottom: 60,
+                    width: '80%',
+                    min: 10,
+                    max: 100,
+                    minSize: '10%',
+                    maxSize: '100%',
+                    sort: 'descending',
+                    gap: 2,
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'inside'
+                        },
+                        emphasis: {
+                            textStyle: {
+                                fontSize: 18
+                            }
+                        }
+                    },
+                    labelLine: {
+                        normal: {
+                            length: 10,
+                            lineStyle: {
+                                width: 1,
+                                type: 'solid'
+                            }
+                        }
+                    },
+                    itemStyle: {
+                        normal: {
+                            borderColor: '#fff',
+                            borderWidth: 1
+                        }
+                    },
+                    data: kehu
+                }
+            ]
+        };
+        myChart.setOption(option);
+        myChart.on('click', function (params) {
+            window.location=params.data.href;
+        });
+    }
+</script>
+<!--操作-->
+<script>
+    $('#todayRem').on('click', function () {
+        $('.modal_today').show();
+    })
+    $('#fenxiao').on('click', function () {
+        $('.modal_fenxiao').show();
+    })
+    $('#years').on('change', function () {
+        ajax.get('project/client/count', {year: $(this).val()}, function (res) {
+            var Data = res.data;
+            yearStat(Data.yearCount);
         })
-        //尾页点击事件
-        $('#next_tobeConfirm').on('click', function (e) {
-            // alert('尾页');
-            // alert(last_page_confirm);
-            clickOperConfirm(e, last_page_confirm);
-        })
-        //分页点击事件
-        $('#paginationTobeCon').on('click', '.pageNumCon', function (e) {
-            var p = $(this).children().html(); //当前点击页
-            // alert('页数');
-            // alert(p);
-            clickOperConfirm(e, p);
-        })
-        //点击事件操作
-        function clickOperConfirm(e, p) {
-            e.stopPropagation();
-            $('.pageNumCon').remove();
-            $('.trTobeCom').remove();
-            wait_confirm(p);
-        }
-    </script>
+    })
+    $('.closed').on('click', function () {
+        $(this).parent().parent().parent().parent().hide();
+    })
+</script>
+
+
 </body>
 
 </html>

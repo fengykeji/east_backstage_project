@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>客户管理</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="components/font-awesome/css/font-awesome.css" />
+
+    <!-- text fonts -->
+    <link rel="stylesheet" href="assets/css/ace-fonts.css" />
+
+    <!-- ace styles -->
+    <link rel="stylesheet" href="assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
+
+
+    <link rel="stylesheet" href="assets/css/ace-skins.css" />
+    <link rel="stylesheet" href="assets/css/ace-rtl.css" />
+
+
+    <!-- ace settings handler -->
+    <script src="assets/js/ace-extra.js"></script>
+
+    <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+
+
+    <style>
+        .checkSty_projectInfo {
+            float: left;
+        }
+
+        /* .tags {
+            display: inline-block;
+            padding: 4px 6px;
+            color: #777;
+            vertical-align: middle;
+            border: none;
+            width: auto;
+        }
+
+        .tag {
+            max-width: 200px;
+            outline: none;
+        } */
+
+        .operate_proInfo {
+            position: absolute;
+            right: 100px;
+            z-index: 100;
+        }
+
+        /* .user-info {
+            max-width: 150px;
+            display: inline-block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            text-align: left;
+            vertical-align: top;
+            line-height: 15px;
+            position: relative;
+            top: 14px;
+        } */
+
+        .inpt_width {
+            width: 70%;
+            display: inline-block;
+        }
+
+        .lab_width {
+            width: 120px;
+        }
+
+        .cofimg_sty {
+            width: 160px;
+            height: 100px;
+        }
+
+        /* .modal_judgment {
+            display: none;
+            background-color: rgba(0, 0, 0, .5);
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .modal-dialog {
+            margin: 150px auto;
+        }
+
+        .bootbox-body {
+            font-size: 18px;
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .modal-content {
+            padding: 30px 50px;
+        }
+
+        .modal-footer {
+            margin-top: 20px;
+        }
+
+        .close {
+            font-size: 32px;
+        } */
+
+        .label_ul {
+            list-style: none;
+            overflow: hidden;
+            margin: 0;
+            vertical-align: bottom;
+        }
+
+        .label_ul li {
+            float: left;
+            padding: 5px 10px;
+            margin-right: 5px;
+            background-color: #eeeeee;
+            color: #848484;
+        }
+    </style>
+</head>
+
+<body class="no-skin">
+<!-- #section:basics/navbar.layout -->
+<div id="header">
+
+</div>
+<!-- /section:basics/navbar.layout -->
+<div class="main-container" id="main-container">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('main-container', 'fixed')
+        } catch (e) {}
+    </script>
+
+    <!-- 菜单开始 -->
+    <div id="sidebar" class="sidebar responsive ace-save-state">
+
+
+
+    </div>
+
+    <!-- /section:basics/sidebar -->
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs" id="breadcrumbs">
+                <script type="text/javascript">
+                    try {
+                        ace.settings.check('breadcrumbs', 'fixed')
+                    } catch (e) {}
+                </script>
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="ace-icon fa fa-home home-icon"></i>
+                        <a href="CustomerManagement.html">客户管理</a>
+                        <a>>推荐客户查看</a>
+                    </li>
+                </ul>
+                <div class="operate_proInfo">
+                    <button class="btn btn-primary" onclick="javascript:history.go(-1)" id="backLastPage">关闭</button>
+                </div>
+            </div>
+            <!-- 内容开始 -->
+            <div class="page-content">
+                <div class="row" style="margin-top: 50px;">
+                    <div class="col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="widget-box" style="margin-top: 20px;">
+                                <div class="widget-header">
+                                    <h4 class="smaller">推荐信息</h4>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="widget-main" style="overflow: hidden;">
+                                        <div class="col-xs-6" style="padding-left: 100px;">
+                                            <div class="form-group">
+                                                <label class="lab_width">推荐人：</label>
+                                                <input class="inpt_width" type="text" disabled="disabled" value="" name="broker_name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">联系电话1：</label>
+                                                <input class="inpt_width" type="text" disabled="disabled" value="" name="broker_tel">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">联系电话2：</label>
+                                                <input class="inpt_width" type="text" disabled="disabled" value="" name="broker_tel">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">所属公司：</label>
+                                                <input class="inpt_width" type="text" disabled="disabled" value="" name="company_name">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6" style="padding-left: 100px;">
+                                            <div class="form-group">
+                                                <label class="lab_width">客户名称：</label>
+                                                <input class="inpt_width" type="text" disabled="disabled" value="" name="name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">联系电话1：</label>
+                                                <input class="inpt_width" type="text" disabled="disabled" value="" name="check_client_tel">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="lab_width">证件类型：</label>
+                                                <input class="inpt_width" type="text" disabled="disabled" value="" name="card_type">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">证件号码：</label>
+                                                <input class="inpt_width" type="text" disabled="disabled" value="" name="card_id">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">通讯住址：</label>
+                                                <input class="inpt_width" type="text" disabled="disabled" value="" name="address">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">推荐时间：</label>
+                                                <input class="inpt_width" type="text" disabled="disabled" value="" name="create_time">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- basic scripts -->
+
+<!--[if !IE]> -->
+<script src="components/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+    if ('ontouchstart' in document.documentElement) document.write(
+        "<script src='components/_mod/jquery.mobile.custom/jquery.mobile.custom.js'>" + "<" + "/script>");
+</script>
+<script src="components/bootstrap/dist/js/bootstrap.js"></script>
+
+<!-- ace scripts -->
+<script src="assets/js/src/elements.scroller.js"></script>
+<script src="assets/js/src/elements.colorpicker.js"></script>
+<script src="assets/js/src/elements.fileinput.js"></script>
+<script src="assets/js/src/elements.typeahead.js"></script>
+<script src="assets/js/src/elements.wysiwyg.js"></script>
+<script src="assets/js/src/elements.spinner.js"></script>
+<script src="assets/js/src/elements.treeview.js"></script>
+<script src="assets/js/src/elements.wizard.js"></script>
+<script src="assets/js/src/elements.aside.js"></script>
+<script src="assets/js/src/ace.js"></script>
+<script src="assets/js/src/ace.basics.js"></script>
+<script src="assets/js/src/ace.scrolltop.js"></script>
+<script src="assets/js/src/ace.ajax-content.js"></script>
+<script src="assets/js/src/ace.touch-drag.js"></script>
+<script src="assets/js/src/ace.sidebar.js"></script>
+<script src="assets/js/src/ace.sidebar-scroll-1.js"></script>
+<script src="assets/js/src/ace.submenu-hover.js"></script>
+<script src="assets/js/src/ace.widget-box.js"></script>
+<script src="assets/js/src/ace.settings.js"></script>
+<script src="assets/js/src/ace.settings-rtl.js"></script>
+<script src="assets/js/src/ace.settings-skin.js"></script>
+<script src="assets/js/src/ace.widget-on-reload.js"></script>
+<script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
+
+<script src="assets/js/jquery.cookie.js"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/public.js"></script>
+
+<!-- 本页js -->
+<!-- 本页js -->
+<script src="assets/js/jquery.cookie.js"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/public.js"></script>
+<script>
+    var id = $.getUrlVar('client_id');
+    window.onload = function () {
+        $('#header').load('public/header.html');
+        $('#sidebar').load('public/menu.html');
+        var menu_data = {
+            opening: '',
+            acting: '.kehuguanli'
+        }
+        $.cookie('menu_data', JSON.stringify(menu_data), {
+            path: "menu.html"
+        });
+        getInfo();
+    }
+
+    function getInfo() {
+        ajax.get('project/client/clientDisabledInfo',{'client_id':id},function(res) {
+            $('#client_id').html(res.data.client_id);
+            $('#state_name').html(res.data.state_name);
+            $('input[name=buy_purpose]').val(res.data.buy_purpose);
+            $('input[name=visit_num]').val(res.data.visit_num);
+            $('input[name=property_advicer_wish]').val(res.data.property_advicer_wish);
+            $('input[name=property_advicer_real]').val(res.data.property_advicer_real);
+            $('input[name=visit_time]').val(res.data.visit_time);
+            if(res.data.card_img_url!='' || res.data.card_img_url==null){
+                $('#card_img_url').attr('src', config.address+res.data.card_img_url);
+            }
+            if(res.data.verify_img_url!='' || res.data.verify_img_url==null){
+                $('#verify_img_url').attr('src', config.address+res.data.verify_img_url);
+            }
+            if(res.data.visit_img_url!='' || res.data.visit_img_url==null){
+                $('#verify_img_url').attr('src', config.address+res.data.visit_img_url);
+            }
+            $('input[name=butter_name]').val(res.data.butter_name);
+            $('input[name=butter_tel]').val(res.data.butter_tel);
+            $('input[name=check_client_name]').val(res.data.check_info.client_name);
+            $('input[name=check_client_tel]').val(res.data.check_info.client_tel);
+            $('input[name=check_card_type]').val(res.data.check_info.card_type);
+            $('input[name=check_card_num]').val(res.data.check_info.card_num);
+            $('input[name=check_address]').val(res.data.check_info.address);
+            $('input[name=check_create_time]').val(res.data.check_info.create_time);
+            $('input[name=broker_name]').val(res.data.broker_name);
+            $('input[name=broker_tel]').val(res.data.broker_tel);
+            $('input[name=company_name]').val(res.data.company_name);
+            $('input[name=name]').val(res.data.name);
+            $('input[name=card_type]').val(res.data.card_type);
+            $('input[name=card_id]').val(res.data.card_id);
+            $('input[name=address]').val(res.data.address);
+            $('input[name=create_time]').val(res.data.create_time);
+            $('#end_time').html(formatSeconds(res.data.CountDown));
+            $('#comment').val(res.data.comment);
+            $('input[name=signatory]').val(res.data.signatory);
+            $('input[name=disabled_state]').val(res.data.disabled_state);
+            $('input[name=state_change_time]').val(res.data.state_change_time);
+            $('#comment1').val(res.data.disabled_reason);
+
+        })
+    }
+    //关闭按钮返回上一页
+    // $('#backLastPage').on('click', function () {
+    //     history.back(-1);
+    // })
+</script>
+</body>
+
+</html>

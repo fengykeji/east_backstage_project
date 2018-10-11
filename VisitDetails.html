@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>客户管理</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <!--[if !IE]> -->
+
+    <!-- <link rel="stylesheet" href="assets/css/pace.css" />
+		<script data-pace-options='{ "ajax": true, "document": true, "eventLag": false, "elements": false }' src="components/PACE/pace.js"></script> -->
+
+    <!-- <![endif]-->
+
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="components/font-awesome/css/font-awesome.css" />
+
+    <!-- text fonts -->
+    <link rel="stylesheet" href="assets/css/ace-fonts.css" />
+
+    <!-- ace styles -->
+    <link rel="stylesheet" href="assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
+
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="assets/css/ace-part2.css" class="ace-main-stylesheet" />
+    <![endif]-->
+    <link rel="stylesheet" href="assets/css/ace-skins.css" />
+    <link rel="stylesheet" href="assets/css/ace-rtl.css" />
+
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="assets/css/ace-ie.css" />
+    <![endif]-->
+
+    <!-- ace settings handler -->
+    <script src="assets/js/ace-extra.js"></script>
+
+    <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+    <!-- 本页css -->
+    <link rel="stylesheet" href="components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css" />
+    <link rel="stylesheet" href="components/bootstrap-timepicker/css/bootstrap-timepicker.css" />
+    <link rel="stylesheet" href="components/bootstrap-daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" href="components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" />
+    <style>
+        .operate_proInfo {
+            position: absolute;
+            right: 100px;
+            z-index: 100;
+        }
+
+        .inpt_width {
+            width: 70%;
+            display: inline-block;
+        }
+
+        .lab_width {
+            width: 120px;
+        }
+
+        .cofimg_sty {
+            width: 160px;
+            height: 100px;
+        }
+        #dynamic-table th {
+            text-align: center;
+        }
+
+        #dynamic-table td {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body class="no-skin">
+<!-- #section:basics/navbar.layout -->
+<div id="header">
+
+</div>
+<!-- /section:basics/navbar.layout -->
+<div class="main-container" id="main-container">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('main-container', 'fixed')
+        } catch (e) {}
+    </script>
+
+    <!-- 菜单开始 -->
+    <div id="sidebar" class="sidebar responsive ace-save-state">
+
+
+
+    </div>
+
+    <!-- /section:basics/sidebar -->
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs" id="breadcrumbs">
+                <script type="text/javascript">
+                    try {
+                        ace.settings.check('breadcrumbs', 'fixed')
+                    } catch (e) {}
+                </script>
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="ace-icon fa fa-home home-icon"></i>
+                        <a href="CustomerManagement.html">楼盘字典>客户管理</a>
+                        <a>>到访客户查看</a>
+                    </li>
+                </ul>
+                <div class="operate_proInfo">
+                    <button class="btn btn-danger" onclick="javascript:history.go(-1)" id="backLastPage">关闭</button>
+                </div>
+            </div>
+            <!-- 内容开始 -->
+            <div class="page-content">
+                <div class="row" style="margin-top: 50px;">
+                    <div class="col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="widget-box">
+                                <div class="widget-header">
+                                    <h4 class="smaller">推荐编号：
+                                        <span id="client_id"></span>
+                                    </h4>
+                                    <div style="position: absolute;right: 80px;top:0;z-index: 100;height: 38px;line-height: 38px;">
+                                            <span>目前状态：
+                                                <span style="color: red;margin-right: 30px;" id="state_name"></span>
+                                            </span>
+                                        <span style="color: green;">失效倒计时：
+                                                <span id="end_time"></span>
+                                            </span>
+                                    </div>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="widget-main" style="overflow: hidden;">
+                                        <div class="col-xs-6" style="padding-left: 100px;">
+                                            <div class="form-group">
+                                                <label class="lab_width">置业目的：</label>
+                                                <input class="inpt_width" disabled="disabled" type="text" value="" name="buy_purpose">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">到访人数：</label>
+                                                <input class="inpt_width" disabled="disabled" type="text" value="" name="visit_num">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">身份证照片：</label>
+                                                <img class="cofimg_sty" src="assets/images/null.jpg" alt="" id="card_img_url">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">确认单图片：</label>
+                                                <img class="cofimg_sty" disabled="disabled" src="assets/images/null.jpg" alt="" id="verify_img_url">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">签字人：</label>
+                                                <input class="inpt_width" type="text" id="floor_space" placeholder="" name="signatory" disabled>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col-xs-6" style="padding-left: 50px;">
+                                            <div class="form-group">
+                                                <label class="lab_width">到访时间：</label>
+                                                <input class="inpt_width" type="text" disabled="disabled" name="visit_time">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">到访照片：</label>
+                                                <img class="cofimg_sty" src="assets/images/null.jpg" alt="" id="visit_img_url">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">置业顾问：</label>
+                                                <input class="inpt_width" disabled="disabled" type="text" value="" name="property_advicer_wish">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">分配置业顾问：</label>
+                                                <input class="inpt_width" disabled="disabled" type="text" value="" name="property_advicer_real">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">备注：</label>
+                                                <textarea class="inpt_width" disabled="disabled" rows="4" style="background-color: #eee;vertical-align: top;" id="comment"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="widget-box col-xs-12 col-sm-6" style="margin-top: 20px;">
+                                <div class="widget-header">
+                                    <h4 class="smaller">确认信息</h4>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="widget-main" style="overflow: hidden;">
+                                        <div class="col-xs-12" style="padding-left: 100px;">
+                                            <div class="form-group">
+                                                <label class="lab_width">对接人：</label>
+                                                <input class="inpt_width" disabled="disabled" type="text" value="" name="butter_name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">联系电话1：</label>
+                                                <input class="inpt_width" disabled="disabled" type="text" value="" name="butter_tel">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">联系电话2：</label>
+                                                <input class="inpt_width" disabled="disabled" type="text" value="" name="butter_tel">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width"></label>
+                                                <input class="inpt_width" type="text" style="border-color:transparent;background-color: transparent; ">
+                                            </div>
+                                            <hr style="border-color: #d5d5d5;width: 100%;">
+                                            <div class="form-group">
+                                                <label class="lab_width">客户名称：</label>
+                                                <input class="inpt_width" disabled="disabled" type="text" value="" name="check_client_name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">联系电话1：</label>
+                                                <input class="inpt_width" disabled="disabled" type="text" value="" name="check_client_tel">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">联系电话2：</label>
+                                                <input class="inpt_width" disabled="disabled" type="text" value="" name="check_client_tel">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">联系电话3：</label>
+                                                <input class="inpt_width" disabled="disabled" type="text" value="" name="check_client_tel">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="lab_width">证件类型：</label>
+                                                <input class="inpt_width" disabled="disabled" type="text" value="" name="check_card_type">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">证件号码：</label>
+                                                <input class="inpt_width" disabled="disabled" type="text" value="" name="check_card_num">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">通讯住址：</label>
+                                                <input class="inpt_width" disabled="disabled" type="text" value="" name="check_address">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">确认时间：</label>
+                                                <input class="inpt_width" disabled="disabled" type="text" value="" name="check_create_time">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="widget-box col-xs-12 col-sm-6" style="margin-top: 20px;">
+                                <div class="widget-header">
+                                    <h4 class="smaller">推荐信息</h4>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="widget-main" style="overflow: hidden;">
+                                        <div class="col-xs-12" style="padding-left: 100px;">
+                                            <div class="form-group">
+                                                <label class="lab_width">推荐人：</label>
+                                                <input class="inpt_width" disabled="disabled" type="text" value="" name="broker_name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">联系电话1：</label>
+                                                <input class="inpt_width" disabled="disabled" type="text" value="" name="broker_tel">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">联系电话2：</label>
+                                                <input class="inpt_width" disabled="disabled" type="text" value="" name="broker_tel">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">所属公司：</label>
+                                                <input class="inpt_width" disabled="disabled" type="text" value="" name="company_name">
+                                            </div>
+                                            <hr style="border-color: #d5d5d5;width: 100%;">
+                                            <div class="form-group">
+                                                <label class="lab_width">客户名称：</label>
+                                                <input class="inpt_width" disabled="disabled" type="text" value="" name="name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">联系电话1：</label>
+                                                <input class="inpt_width" disabled="disabled" type="text" value="" name="tel">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">联系电话2：</label>
+                                                <input class="inpt_width" disabled="disabled" type="text" value="" name="check_client_tel">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">联系电话3：</label>
+                                                <input class="inpt_width" disabled="disabled" type="text" value="" name="check_client_tel">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">证件类型：</label>
+                                                <input class="inpt_width" disabled="disabled" type="text" value="" name="card_type">
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">证件号码：</label>
+                                                <input class="inpt_width" disabled="disabled" type="text" value="" name="card_id">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">通讯住址：</label>
+                                                <input class="inpt_width" disabled="disabled" type="text" value="" name="address">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="lab_width">推荐时间：</label>
+                                                <input class="inpt_width" disabled="disabled" type="text" value="" name="create_time">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- basic scripts -->
+
+<!--[if !IE]> -->
+<script src="components/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+    if ('ontouchstart' in document.documentElement) document.write(
+        "<script src='components/_mod/jquery.mobile.custom/jquery.mobile.custom.js'>" + "<" + "/script>");
+</script>
+<script src="components/bootstrap/dist/js/bootstrap.js"></script>
+
+<!-- ace scripts -->
+<script src="assets/js/src/elements.scroller.js"></script>
+<script src="assets/js/src/elements.colorpicker.js"></script>
+<script src="assets/js/src/elements.fileinput.js"></script>
+<script src="assets/js/src/elements.typeahead.js"></script>
+<script src="assets/js/src/elements.wysiwyg.js"></script>
+<script src="assets/js/src/elements.spinner.js"></script>
+<script src="assets/js/src/elements.treeview.js"></script>
+<script src="assets/js/src/elements.wizard.js"></script>
+<script src="assets/js/src/elements.aside.js"></script>
+<script src="assets/js/src/ace.js"></script>
+<script src="assets/js/src/ace.basics.js"></script>
+<script src="assets/js/src/ace.scrolltop.js"></script>
+<script src="assets/js/src/ace.ajax-content.js"></script>
+<script src="assets/js/src/ace.touch-drag.js"></script>
+<script src="assets/js/src/ace.sidebar.js"></script>
+<script src="assets/js/src/ace.sidebar-scroll-1.js"></script>
+<script src="assets/js/src/ace.submenu-hover.js"></script>
+<script src="assets/js/src/ace.widget-box.js"></script>
+<script src="assets/js/src/ace.settings.js"></script>
+<script src="assets/js/src/ace.settings-rtl.js"></script>
+<script src="assets/js/src/ace.settings-skin.js"></script>
+<script src="assets/js/src/ace.widget-on-reload.js"></script>
+<script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
+
+
+<!-- 本页js -->
+<script src="assets/js/jquery.cookie.js"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/public.js"></script>
+<script src="components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+<script src="components/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+<script src="components/moment/moment.js"></script>
+<script src="components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script src="components/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js"></script>
+<script>
+    var id = $.getUrlVar('client_id');
+    window.onload = function () {
+        $('#header').load('public/header.html');
+        $('#sidebar').load('public/menu.html');
+        var menu_data = {
+            opening: '',
+            acting: '.kehuguanli'
+        }
+        $.cookie('menu_data', JSON.stringify(menu_data), {
+            path: "menu.html"
+        });
+        getInfo();
+    }
+    //关闭按钮返回上一页
+    // $('#backLastPage').on('click', function () {
+    //     history.back(-1);
+    // })
+</script>
+<script>
+    function getInfo() {
+        ajax.get('project/client/valueClientDetail', {
+            client_id: id
+        }, function (res) {
+            $('#client_id').html(res.data.client_id);
+            $('#state_name').html(res.data.state_name);
+            $('input[name=buy_purpose]').val(res.data.buy_purpose);
+            $('input[name=visit_num]').val(res.data.visit_num);
+            $('input[name=property_advicer_wish]').val(res.data.property_advicer_wish);
+            $('input[name=property_advicer_real]').val(res.data.property_advicer_real);
+            $('input[name=visit_time]').val(res.data.visit_time);
+            if(res.data.card_img_url!='' || res.data.card_img_url==null){
+                $('#card_img_url').attr('src', config.address+res.data.card_img_url);
+            }
+            if(res.data.verify_img_url!='' || res.data.verify_img_url==null){
+                $('#verify_img_url').attr('src', config.address+res.data.verify_img_url);
+            }
+            if(res.data.visit_img_url!='' || res.data.visit_img_url==null){
+                $('#verify_img_url').attr('src', config.address+res.data.visit_img_url);
+            }
+            $('input[name=butter_name]').val(res.data.butter_name);
+            $('input[name=butter_tel]').val(res.data.butter_tel);
+            $('input[name=check_client_name]').val(res.data.check_info.client_name);
+            $('input[name=check_client_tel]').val(res.data.check_info.client_tel);
+            $('input[name=check_card_type]').val(res.data.check_info.card_type);
+            $('input[name=check_card_num]').val(res.data.check_info.card_num);
+            $('input[name=check_address]').val(res.data.check_info.address);
+            $('input[name=check_create_time]').val(res.data.check_info.create_time);
+            $('input[name=broker_name]').val(res.data.broker_name);
+            $('input[name=broker_tel]').val(res.data.broker_tel);
+            $('input[name=company_name]').val(res.data.company_name);
+            $('input[name=name]').val(res.data.name);
+            $('input[name=card_type]').val(res.data.card_type);
+            $('input[name=card_id]').val(res.data.card_id);
+            $('input[name=address]').val(res.data.address);
+            $('input[name=create_time]').val(res.data.create_time);
+            $('#end_time').html(formatSeconds(res.data.CountDown));
+            $('#comment').val(res.data.comment);
+            $('input[name=signatory]').val(res.data.signatory);
+
+        })
+    }
+
+    function confirmed() {
+        data = {
+            'client_id': id,
+            'advicer_name': $('input[name=advicer_name]').val(),
+            'signatory':  $('input[name=signatory]').val(),
+            'time': new Date().format("yyyy-MM-dd hh:mm:ss"),
+        }
+        ajax.get('user/yunsuan/state/value', data, function (res) {
+            alert(res.msg);
+            if (res.code == config.responseSuccess) {
+                /*window.location.href = 'CustomerManagement.html';*/
+            }
+        })
+    }
+
+</script>
+</body>
+
+</html>

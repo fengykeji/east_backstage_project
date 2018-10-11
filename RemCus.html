@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta charset="utf-8"/>
+    <title>客户管理</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+
+
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="assets/css/bootstrap.css"/>
+    <link rel="stylesheet" href="components/font-awesome/css/font-awesome.css"/>
+
+    <!-- text fonts -->
+    <link rel="stylesheet" href="assets/css/ace-fonts.css"/>
+
+    <!-- ace styles -->
+    <link rel="stylesheet" href="assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style"/>
+
+
+    <link rel="stylesheet" href="assets/css/ace-skins.css"/>
+    <link rel="stylesheet" href="assets/css/ace-rtl.css"/>
+
+
+    <!-- ace settings handler -->
+    <script src="assets/js/ace-extra.js"></script>
+
+
+    <style>
+        #dynamic-table td {
+            vertical-align: middle;
+        }
+
+        .paginate_button,
+        a {
+            cursor: pointer;
+        }
+
+        .modal_tuijian, .modal_success, .modal_daofang {
+            display: none;
+            background-color: rgba(0, 0, 0, .5);
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .btn-xs, .btn-group-xs > .btn {
+            padding-top: 3px;
+            padding-bottom: 3px;
+            border-width: 3px;
+            margin-top: -3px;
+        }
+
+        .searchInp {
+            height: 30px;
+            width: 200px;
+        }
+
+        .inpt_width {
+            width: 70%;
+        }
+
+        .lab_width {
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body class="no-skin">
+<div id="header"></div>
+<!-- /section:basics/navbar.layout -->
+<div class="main-container" id="main-container">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('main-container', 'fixed')
+        } catch (e) {
+        }
+    </script>
+
+    <!-- 菜单开始 -->
+    <div id="sidebar" class="sidebar responsive ace-save-state">
+
+    </div>
+
+    <!-- /section:basics/sidebar -->
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs" id="breadcrumbs">
+                <script type="text/javascript">
+                    try {
+                        ace.settings.check('breadcrumbs', 'fixed')
+                    } catch (e) {
+                    }
+                </script>
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="ace-icon fa fa-home home-icon"></i>
+                        <a href="CustomerManagement.html">楼盘字典>客户管理</a>
+                        <a>>客户列表</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- 内容开始 -->
+            <div class="page-content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="tabbable">
+                            <ul class="nav nav-tabs" id="myTab">
+                                <li class="value">
+                                    <a data-toggle="tab" href="#custom_tuijian" aria-expanded="true">
+                                        推荐客户
+                                    </a>
+                                </li>
+                                <li class="disableds">
+                                    <a data-toggle="tab" href="#custom_daofang" aria-expanded="true">
+                                        到访客户
+                                    </a>
+                                </li>
+                                <li class="deal">
+                                    <a data-toggle="tab" href="#custom_success" aria-expanded="true">
+                                        成交客户
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <!--推荐客户-->
+                                <div id="custom_tuijian" class="tab-pane fade" style="overflow: hidden;">
+                                    <!--搜索框-->
+                                    <div style="margin-bottom: 15px;padding-left:13px;">
+                                        <button id="tuijianBtn" class="btn btn-xs btn-primary"
+                                                style="margin-right: 35px;">
+                                            <trans>条件查询</trans>
+                                            <i class="ace-icon fa fa-search icon-on-right"></i>
+                                        </button>
+                                        <input type="text" id="tuijianIpn" class="searchInp" placeholder="请输入客户名称/电话">
+                                        <button id="tuijianSearch" class="btn btn-xs">
+                                            <i class="ace-icon fa fa-search glyphicon-search"></i>
+                                        </button>
+                                    </div>
+                                    <div id="tuijianDiv" class="col-xs-12"
+                                         style="overflow-x: scroll;min-height: 200px;">
+
+                                    </div>
+                                </div>
+                                <!--到访客户-->
+                                <div id="custom_daofang" class="tab-pane fade" style="overflow: hidden;">
+                                    <!--搜索框-->
+                                    <div style="margin-bottom: 15px;padding-left:13px;">
+                                        <button id="daofangBtn" class="btn btn-xs btn-primary"
+                                                style="margin-right: 35px;">
+                                            <trans>条件查询</trans>
+                                            <i class="ace-icon fa fa-search icon-on-right"></i>
+                                        </button>
+                                        <input type="text" id="daofangIpn" class="searchInp" placeholder="请输入客户名称/电话">
+                                        <button id="daofangSearch" class="btn btn-xs">
+                                            <i class="ace-icon fa fa-search glyphicon-search"></i>
+                                        </button>
+                                    </div>
+                                    <div id="daofangDiv" class="col-xs-12"
+                                         style="overflow-x: scroll;min-height: 200px;">
+
+                                    </div>
+                                </div>
+                                <!--成交客户-->
+                                <div id="custom_success" class="tab-pane fade" style="overflow: hidden;">
+                                    <!--搜索框-->
+                                    <div style="margin-bottom: 15px;padding-left:13px;">
+                                        <button id="successBtn" class="btn btn-xs btn-primary"
+                                                style="margin-right: 35px;">
+                                            <trans>条件查询</trans>
+                                            <i class="ace-icon fa fa-search icon-on-right"></i>
+                                        </button>
+                                        <input type="text" id="successIpn" class="searchInp" placeholder="请输入客户名称/电话">
+                                        <button id="successSearch" class="btn btn-xs">
+                                            <i class="ace-icon fa fa-search glyphicon-search"></i>
+                                        </button>
+                                    </div>
+                                    <div id="successDiv" class="col-xs-12"
+                                         style="overflow-x: scroll;min-height: 200px;">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<!--推荐-->
+<div class="modal_tuijian">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close closed">×</button>
+                <h4 class="modal-title">条件查询</h4>
+            </div>
+            <div class="modal-body">
+                <div class="bootbox-body" style="overflow: hidden;font-size: 14px;text-align: left;">
+                    <div class="col-xs-12" style="padding-left: 40px;">
+                        <div class="form-group">
+                            <label class="lab_width">开始时间：</label>
+                            <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
+                                <div class="input-group">
+                                    <input id="tuijianStartTime" class="form-control date-picker" type="text"
+                                           data-date-format="yyyy-mm-dd">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar bigger-110"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="lab_width">结束时间：</label>
+                            <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
+                                <div class="input-group">
+                                    <input id="tuijianEndTime" class="form-control date-picker" type="text"
+                                           data-date-format="yyyy-mm-dd">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar bigger-110"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="lab_width">公司名称：</label>
+                            <select id="tuijianComName" class="form-control inpt_width" style="display: inline-block;">
+
+                            </select>
+                        </div>
+                        <!--<div class="form-group">-->
+                            <!--<label class="lab_width">置业顾问：</label>-->
+                            <!--<select id="tuijianGuWen" class="form-control inpt_width" style="display: inline-block;">-->
+
+                            <!--</select>-->
+                        <!--</div>-->
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-bb-handler="cancel" type="button" class="btn btn-sm btn-default closed">取消</button>
+                <button data-bb-handler="confirm" type="button" class="btn btn-sm btn-primary" id="tuijianSub">确定
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--到访-->
+<div class="modal_daofang">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close closed">×</button>
+                <h4 class="modal-title">条件查询</h4>
+            </div>
+            <div class="modal-body">
+                <div class="bootbox-body" style="overflow: hidden;font-size: 14px;text-align: left;">
+                    <div class="col-xs-12" style="padding-left: 40px;">
+                        <div class="form-group">
+                            <label class="lab_width">开始时间：</label>
+                            <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
+                                <div class="input-group">
+                                    <input id="daofangStartTime" class="form-control date-picker" type="text"
+                                           data-date-format="yyyy-mm-dd">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar bigger-110"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="lab_width">结束时间：</label>
+                            <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
+                                <div class="input-group">
+                                    <input id="daofangEndTime" class="form-control date-picker" type="text"
+                                           data-date-format="yyyy-mm-dd">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar bigger-110"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="lab_width">公司名称：</label>
+                            <select id="daofangComName" class="form-control inpt_width" style="display: inline-block;">
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="lab_width">置业顾问：</label>
+                            <select id="daofangGuWen" class="form-control inpt_width" style="display: inline-block;">
+
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-bb-handler="cancel" type="button" class="btn btn-sm btn-default closed">取消</button>
+                <button data-bb-handler="confirm" type="button" class="btn btn-sm btn-primary" id="daofangSub">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--成交-->
+<div class="modal_success">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close closed">×</button>
+                <h4 class="modal-title">条件查询</h4>
+            </div>
+            <div class="modal-body">
+                <div class="bootbox-body" style="overflow: hidden;font-size: 14px;text-align: left;">
+                    <div class="col-xs-12" style="padding-left: 40px;">
+                        <div class="form-group">
+                            <label class="lab_width">开始时间：</label>
+                            <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
+                                <div class="input-group">
+                                    <input id="successStartTime" class="form-control date-picker" type="text"
+                                           data-date-format="yyyy-mm-dd">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar bigger-110"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="lab_width">结束时间：</label>
+                            <div class="inpt_width" style="display: inline-block;vertical-align: middle;">
+                                <div class="input-group">
+                                    <input id="successEndTime" class="form-control date-picker" type="text"
+                                           data-date-format="yyyy-mm-dd">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar bigger-110"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="lab_width">公司名称：</label>
+                            <select id="successComName" class="form-control inpt_width" style="display: inline-block;">
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="lab_width">置业顾问：</label>
+                            <select id="successGuWen" class="form-control inpt_width" style="display: inline-block;">
+
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-bb-handler="cancel" type="button" class="btn btn-sm btn-default closed">取消</button>
+                <button data-bb-handler="confirm" type="button" class="btn btn-sm btn-primary" id="successSub">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- basic scripts -->
+
+<!--[if !IE]> -->
+<script src="components/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+    if ('ontouchstart' in document.documentElement) document.write(
+        "<script src='components/_mod/jquery.mobile.custom/jquery.mobile.custom.js'>" + "<" + "/script>");
+</script>
+<script src="components/bootstrap/dist/js/bootstrap.js"></script>
+
+<!-- ace scripts -->
+<script src="assets/js/src/elements.scroller.js"></script>
+<script src="assets/js/src/elements.colorpicker.js"></script>
+<script src="assets/js/src/elements.fileinput.js"></script>
+<script src="assets/js/src/elements.typeahead.js"></script>
+<script src="assets/js/src/elements.wysiwyg.js"></script>
+<script src="assets/js/src/elements.spinner.js"></script>
+<script src="assets/js/src/elements.treeview.js"></script>
+<script src="assets/js/src/elements.wizard.js"></script>
+<script src="assets/js/src/elements.aside.js"></script>
+<script src="assets/js/src/ace.js"></script>
+<script src="assets/js/src/ace.basics.js"></script>
+<script src="assets/js/src/ace.scrolltop.js"></script>
+<script src="assets/js/src/ace.ajax-content.js"></script>
+<script src="assets/js/src/ace.touch-drag.js"></script>
+<script src="assets/js/src/ace.sidebar.js"></script>
+<script src="assets/js/src/ace.sidebar-scroll-1.js"></script>
+<script src="assets/js/src/ace.submenu-hover.js"></script>
+<script src="assets/js/src/ace.widget-box.js"></script>
+<script src="assets/js/src/ace.settings.js"></script>
+<script src="assets/js/src/ace.settings-rtl.js"></script>
+<script src="assets/js/src/ace.settings-skin.js"></script>
+<script src="assets/js/src/ace.widget-on-reload.js"></script>
+<script src="assets/js/src/ace.searchbox-autocomplete.js"></script>
+<!-- 本页js -->
+<script src="assets/js/jquery.cookie.js"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/public.js"></script>
+<!--菜单初始化-->
+<script>
+    window.onload = function () {
+        $('#header').load('public/header.html');
+        $('#sidebar').load('public/menu.html');
+        var menu_data = {
+            opening: '',
+            acting: '.kehuguanli'
+        }
+        $.cookie('menu_data', JSON.stringify(menu_data), {
+            path: "menu.html"
+        });
+    }
+</script>
+<!--获取数据-->
+<script>
+    var CusType = $.getUrlVar('CusType');
+    switch (CusType) {
+        case '3':
+            $('li.value').addClass('active');
+            $('#custom_tuijian').addClass('active in');
+            break;
+        case '4':
+            $('li.disableds').addClass('active');
+            $('#custom_daofang').addClass('active in');
+            break;
+        case '5':
+            $('li.deal').addClass('active');
+            $('#custom_success').addClass('active in');
+            break;
+    }
+</script>
+<!--推荐客户-->
+<script>
+    var totalPage = 0;
+    tuijianPage(1);
+
+    function tuijianPage(p) {
+        ajax.get('project/client/waitConfirmed', {page: p}, function (res) {
+            var Data = res.data;
+            tuijian(Data);
+        })
+    }
+
+    function tuijian(arr) {
+        $('#tuijianDiv').html('');
+        totalPage = arr.last_page;
+        if (arr.data.length == 0) {
+            var notData = '<p style="text-align: center;font-size: 15px;padding: 30px;">暂无数据</p>';
+            $('tuijianDiv').append(notData);
+            $('#tuijian').hide();
+        }
+        else {
+            $('#tuijian').show();
+            var str = '';//表格内容
+            var pageStr = '';//页数
+            var num = 0;//序号
+            for (var j = 1; j < arr.last_page + 1; j++) {
+                if (j == arr.current_page) {
+                    pageStr += '<li class="paginate_button tuijianPageClick active" aria-controls="dynamic-table" tabindex="0"><a>' + j + '</a></li>'
+                } else {
+                    pageStr += '<li class="paginate_button tuijianPageClick" aria-controls="dynamic-table" tabindex="0"><a>' + j + '</a></li>'
+                }
+
+            }
+
+            for (var i = 0; i < arr.data.length; i++) {
+                num = i + 1;
+                str += '<tr>' +
+                    '<td class="center">' + num + '</td>' +
+                    '<td class="center">' + arr.data[i].client_id + '</td>' +
+                    '<td class="center">' + arr.data[i].name + '</td>' +
+                    '<td class="center">' + arr.data[i].tel + '</td>' +
+                    '<td class="center">' + arr.data[i].broker_name + '</td>' +
+                    '<td class="center">' + arr.data[i].rule_type + '</td>' +
+                    '<td class="center">' + arr.data[i].company_name + '</td>' +
+                    '<td class="center">' + arr.data[i].create_time + '</td>' +
+                    '<td class="center">' +
+                    '<div class="hidden-sm hidden-xs action-buttons">' +
+                    '<a class="blue" href="RemDetails.html?client_id='+arr.data[i].client_id+'">查看</a></div></td>' +
+                    '</tr>';
+            }
+            var todayCus = '<div id="tuijian" style="width: 1400px;">' +
+                '<div  class="dataTables_wrapper form-inline no-footer">' +
+                '<table  class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">' +
+                '<thead>' +
+                '<tr role="row">' +
+                '<th class="center">序号</th>' +
+                '<th class="center">推荐编号</th>' +
+                '<th class="center">客户名称</th>' +
+                '<th class="center">联系电话</th>' +
+                '<th class="center">推荐人</th>' +
+                '<th class="center">类型</th>' +
+                '<th class="center">公司名称</th>' +
+                '<th class="center">推荐时间</th>' +
+                '<th class="center">操作</th>' +
+                '</tr>' +
+                '</thead>' +
+                '<tbody id="tuijian_tb">' + str +
+                '</tbody>' +
+                '</table>' +
+                '<div class="row">' +
+                '<div class="col-xs-12">' +
+                '<div class="dataTables_paginate paging_simple_numbers" >' +
+                '<ul class="pagination">' +
+                '<li class="paginate_button previous" aria-controls="dynamic-table" tabindex="0" id="prev_tuijian">' +
+                '<a>首页</a></li>' + pageStr +
+                '<li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="next_tuijian"><a>尾页</a></li>' +
+                '</ul></div></div></div></div></div>';
+            $('#tuijianDiv').append(todayCus);
+        }
+    }
+
+    $(document).on('click', '.tuijianPageClick', function () {
+        tuijianPage($(this).text());
+        return false;
+    })
+    $(document).on('click', '#prev_tuijian', function () {
+        tuijianPage(1);
+        return false;
+    })
+    $(document).on('click', '#next_tuijian', function () {
+        tuijianPage(totalPage);
+        return false;
+    })
+</script>
+
+<!--到访客户-->
+<script>
+    var totalPage = 0;
+    daofangPage(1);
+
+    function daofangPage(p) {
+        ajax.get('project/client/value', {page: p}, function (res) {
+            var Data = res.data;
+            daofang(Data);
+        })
+    }
+
+    function daofang(arr) {
+        $('#daofangDiv').html('');
+        totalPage = arr.last_page;
+        if (arr.data.length == 0) {
+            var notData = '<p style="text-align: center;font-size: 15px;padding: 30px;">暂无数据</p>';
+            $('daofangDiv').append(notData);
+            $('#daofang').hide();
+        }
+        else {
+            $('#daofang').show();
+            var str = '';//表格内容
+            var pageStr = '';//页数
+            var num = 0;//序号
+            for (var j = 1; j < arr.last_page + 1; j++) {
+                if (j == arr.current_page) {
+                    pageStr += '<li class="paginate_button daofangPageClick active" aria-controls="dynamic-table" tabindex="0"><a>' + j + '</a></li>'
+                } else {
+                    pageStr += '<li class="paginate_button daofangPageClick" aria-controls="dynamic-table" tabindex="0"><a>' + j + '</a></li>'
+                }
+
+            }
+
+            for (var i = 0; i < arr.data.length; i++) {
+                num = i + 1;
+                str += '<tr>' +
+                    '<td class="center">' + num + '</td>' +
+                    '<td class="center">' + arr.data[i].name + '</td>' +
+                    '<td class="center">' + arr.data[i].tel + '</td>' +
+                    '<td class="center">' + arr.data[i].advice_name + '</td>' +
+                    '<td class="center">' + arr.data[i].visit_time + '</td>' +
+                    '<td class="center">' + arr.data[i].butter_name + '</td>' +
+                    '<td class="center">' + arr.data[i].broker_name + '</td>' +
+                    '<td class="center">' + arr.data[i].rule_type + '</td>' +
+                    '<td class="center">' + arr.data[i].company_name + '</td>' +
+                    '<td class="center">' + arr.data[i].CountDown + '</td>' +
+                    '<td class="center">' + arr.data[i].state_name + '</td>' +
+                    '<td class="center">' + arr.data[i].client_id + '</td>' +
+                    '<td class="center">' +
+                    '<div class="hidden-sm hidden-xs action-buttons">' +
+                    '<a class="blue" href="VisitDetails.html?client_id='+arr.data[i].client_id+'">查看</a></div></td>' +
+                    '</tr>';
+            }
+            var todayCus = '<div id="daofang" style="width: 1400px;">' +
+                '<div  class="dataTables_wrapper form-inline no-footer">' +
+                '<table  class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">' +
+                '<thead>' +
+                '<tr role="row">' +
+                '<th class="center">序号</th>' +
+                '<th class="center">客户名称</th>' +
+                '<th class="center">联系电话</th>' +
+                '<th class="center">置业顾问</th>' +
+                '<th class="center">到访时间</th>' +
+                '<th class="center">确认人员</th>' +
+                '<th class="center">推荐人</th>' +
+                '<th class="center">类型</th>' +
+                '<th class="center">公司名称</th>' +
+                '<th class="center">失效倒计时</th>' +
+                '<th class="center">目前状态</th>' +
+                '<th class="center">推荐编号</th>' +
+                '<th class="center">操作</th>' +
+                '</tr>' +
+                '</thead>' +
+                '<tbody id="daofang_tb">' + str +
+                '</tbody>' +
+                '</table>' +
+                '<div class="row">' +
+                '<div class="col-xs-12">' +
+                '<div class="dataTables_paginate paging_simple_numbers" >' +
+                '<ul class="pagination">' +
+                '<li class="paginate_button previous" aria-controls="dynamic-table" tabindex="0" id="prev_daofang">' +
+                '<a>首页</a></li>' + pageStr +
+                '<li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="next_daofang"><a>尾页</a></li>' +
+                '</ul></div></div></div></div></div>';
+            $('#daofangDiv').append(todayCus);
+        }
+    }
+
+    $(document).on('click', '.daofangPageClick', function () {
+        daofangPage($(this).text());
+        return false;
+    })
+    $(document).on('click', '#prev_daofang', function () {
+        daofangPage(1);
+        return false;
+    })
+    $(document).on('click', '#next_daofang', function () {
+        daofangPage(totalPage);
+        return false;
+    })
+</script>
+<!--成交客户-->
+<script>
+    var totalPage = 0;
+    successPage(1);
+
+    function successPage(p) {
+        ajax.get('project/client/deal', {page: p}, function (res) {
+            var Data = res.data;
+            success(Data);
+        })
+    }
+
+    function success(arr) {
+        $('#successDiv').html('');
+        totalPage = arr.last_page;
+        if (arr.data.length == 0) {
+            var notData = '<p style="text-align: center;font-size: 15px;padding: 30px;">暂无数据</p>';
+            $('successDiv').append(notData);
+            $('#success').hide();
+        }
+        else {
+            $('#success').show();
+            var str = '';//表格内容
+            var pageStr = '';//页数
+            var num = 0;//序号
+            for (var j = 1; j < arr.last_page + 1; j++) {
+                if (j == arr.current_page) {
+                    pageStr += '<li class="paginate_button successPageClick active" aria-controls="dynamic-table" tabindex="0"><a>' + j + '</a></li>'
+                } else {
+                    pageStr += '<li class="paginate_button successPageClick" aria-controls="dynamic-table" tabindex="0"><a>' + j + '</a></li>'
+                }
+
+            }
+
+            for (var i = 0; i < arr.data.length; i++) {
+                num = i + 1;
+                str += '<tr>' +
+                    '<td class="center">' + num + '</td>' +
+                    '<td class="center">' + arr.data[i].name + '</td>' +
+                    '<td class="center">' + arr.data[i].tel + '</td>' +
+                    '<td class="center">' + arr.data[i].house_info + '</td>' +
+                    '<td class="center">' + arr.data[i].total_money + '</td>' +
+                    '<td class="center">' + arr.data[i].build_area + '</td>' +
+                    '<td class="center">' + arr.data[i].state_change_time + '</td>' +
+                    '<td class="center">' + arr.data[i].advice_name + '</td>' +
+                    '<td class="center">' + arr.data[i].rule_type + '</td>' +
+                    '<td class="center">' + arr.data[i].company_name + '</td>' +
+                    '<td class="center">' + arr.data[i].broker_name + '</td>' +
+                    '<td class="center">' + arr.data[i].broker_num + '</td>' +
+                    '<td class="center">' + arr.data[i].client_id + '</td>' +
+                    '<td class="center">' +
+                    '<div class="hidden-sm hidden-xs action-buttons">' +
+                    '<a class="blue" href="SuccessDetails.html?client_id='+arr.data[i].client_id+'">查看</a></div></td>' +
+                    '</tr>';
+            }
+            var todayCus = '<div id="success" style="width: 1400px;">' +
+                '<div  class="dataTables_wrapper form-inline no-footer">' +
+                '<table  class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">' +
+                '<thead>' +
+                '<tr role="row">' +
+                '<th class="center">序号</th>' +
+                '<th class="center">客户名称</th>' +
+                '<th class="center">联系电话</th>' +
+                '<th class="center">房号</th>' +
+                '<th class="center">总价(￥)</th>' +
+                '<th class="center">面积(㎡)</th>' +
+                '<th class="center">成交时间</th>' +
+                '<th class="center">置业顾问</th>' +
+                '<th class="center">类型</th>' +
+                '<th class="center">公司名称</th>' +
+                '<th class="center">推荐人</th>' +
+                '<th class="center">累计佣金(￥)</th>' +
+                '<th class="center">推荐编号</th>' +
+                '<th class="center">操作</th>' +
+                '</tr>' +
+                '</thead>' +
+                '<tbody id="success_tb">' + str +
+                '</tbody>' +
+                '</table>' +
+                '<div class="row">' +
+                '<div class="col-xs-12">' +
+                '<div class="dataTables_paginate paging_simple_numbers" >' +
+                '<ul class="pagination">' +
+                '<li class="paginate_button previous" aria-controls="dynamic-table" tabindex="0" id="prev_success">' +
+                '<a>首页</a></li>' + pageStr +
+                '<li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="next_success"><a>尾页</a></li>' +
+                '</ul></div></div></div></div></div>';
+            $('#successDiv').append(todayCus);
+        }
+    }
+
+    $(document).on('click', '.successPageClick', function () {
+        successPage($(this).text());
+        return false;
+    })
+    $(document).on('click', '#prev_success', function () {
+        successPage(1);
+        return false;
+    })
+    $(document).on('click', '#next_success', function () {
+        successPage(totalPage);
+        return false;
+    })
+</script>
+<!--操作-->
+<script>
+    // 推荐条件查询
+    $('#tuijianBtn').on('click', function () {
+        PartyB($('#tuijianComName'));
+        zhiye($('#tuijianGuWen'));
+        $('.modal_tuijian').show();
+        return false;
+    })
+
+    $('#tuijianSub').on('click', function () {
+        var st = $('#tuijianStartTime').val();
+        var et = $('#tuijianEndTime').val();
+        var cn = $('#tuijianComName').val();
+        // var gw = $('#tuijianGuWen').val();
+        var data = {
+            start_time: st,
+            end_time: et,
+            company_id: cn,
+            // advice_name: gw,
+        }
+        ajax.get('project/client/waitConfirmed', data, function (res) {
+            var Data = res.data;
+            tuijian(Data);
+        })
+        $(this).parent().parent().parent().parent().hide();
+    })
+
+    $('#tuijianSearch').on('click', function () {
+        var s = $('#tuijianIpn').val();
+        ajax.get('project/client/waitConfirmed', {search: s}, function (res) {
+            var Data = res.data;
+            tuijian(Data);
+        })
+    })
+
+
+    //到访
+    $('#daofangBtn').on('click', function () {
+        PartyB($('#daofangComName'));
+        zhiye($('#daofangGuWen'));
+        $('.modal_daofang').show();
+        return false;
+    })
+
+    $('#daofangSub').on('click', function () {
+        var st = $('#daofangStartTime').val();
+        var et = $('#daofangEndTime').val();
+        var cn = $('#daofangComName').val();
+        var gw = $('#daofangGuWen').val();
+        var data = {
+            start_time: st,
+            end_time: et,
+            company_id: cn,
+            advice_name: gw,
+        }
+        console.log(data);
+        ajax.get('project/client/value', data, function (res) {
+            var Data = res.data;
+            daofang(Data);
+        })
+        $(this).parent().parent().parent().parent().hide();
+    })
+
+    $('#daofangSearch').on('click', function () {
+        var s = $('#daofangIpn').val();
+        ajax.get('project/client/value', {search: s}, function (res) {
+            var Data = res.data;
+            daofang(Data);
+        })
+    })
+
+
+
+
+
+
+
+
+
+
+
+    //成交
+    $('#successBtn').on('click', function () {
+        PartyB($('#successComName'));
+        zhiye($('#successGuWen'));
+        $('.modal_success').show();
+        return false;
+    })
+    $('#successSub').on('click', function () {
+        var st = $('#successStartTime').val();
+        var et = $('#successEndTime').val();
+        var cn = $('#successComName').val();
+        var gw = $('#successGuWen').val();
+        var data = {
+            start_time: st,
+            end_time: et,
+            company_id: cn,
+            advice_name: gw,
+        }
+        ajax.get('project/client/deal', data, function (res) {
+            var Data = res.data;
+            success(Data);
+        })
+        $(this).parent().parent().parent().parent().hide();
+    })
+
+    $('#successSearch').on('click', function () {
+        var s = $('#successIpn').val();
+        ajax.get('project/client/deal', {search: s}, function (res) {
+            var Data = res.data;
+            success(Data);
+        })
+    })
+
+    // 请求公司列表
+    function PartyB(dom) {
+        ajax.get('project/ruleCompany/sellList', {}, function (res) {
+            var str = ''
+            var data = res.data;
+            for (var i = 0; i < data.length; i++) {
+                str += '<option value="' + data[i].company_id + '">' + data[i].company_name + '</option>'
+            }
+            dom.append(str);
+        })
+    }
+
+    //请求置业顾问列表
+    function zhiye(dom) {
+        ajax.get('project/client/getAdvicerList', {}, function (res) {
+            var str = ''
+            var data = res.data.rows;
+            for (var i = 0; i < data.length; i++) {
+                str += '<option value="' + data[i].RYXM + '">' + data[i].GSMC + '/' + data[i].RYXM + '/' + data[i].RYDH + '</option>'
+            }
+            dom.append(str);
+        })
+    }
+
+    $('.closed').on('click', function () {
+        $(this).parent().parent().parent().parent().hide();
+    })
+</script>
+<!--日历插件-->
+<script src="components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+<script src="components/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+<script src="components/moment/moment.js"></script>
+<script src="components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script src="components/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js"></script>
+<script src="components/fuelux/js/spinbox.js"></script>
+<script>
+    //日历插件初始化
+    $('.date-picker').datepicker({
+        autoclose: true,
+        todayHighlight: true
+    })
+</script>
+
+</body>
+
+</html>
