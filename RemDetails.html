@@ -31,42 +31,12 @@
 
 
     <style>
-        .checkSty_projectInfo {
-            float: left;
-        }
-
-        /* .tags {
-            display: inline-block;
-            padding: 4px 6px;
-            color: #777;
-            vertical-align: middle;
-            border: none;
-            width: auto;
-        }
-
-        .tag {
-            max-width: 200px;
-            outline: none;
-        } */
 
         .operate_proInfo {
             position: absolute;
             right: 100px;
             z-index: 100;
         }
-
-        /* .user-info {
-            max-width: 150px;
-            display: inline-block;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            text-align: left;
-            vertical-align: top;
-            line-height: 15px;
-            position: relative;
-            top: 14px;
-        } */
 
         .inpt_width {
             width: 70%;
@@ -75,51 +45,6 @@
 
         .lab_width {
             width: 120px;
-        }
-
-        .cofimg_sty {
-            width: 160px;
-            height: 100px;
-        }
-
-        /* .modal_judgment {
-            display: none;
-            background-color: rgba(0, 0, 0, .5);
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-        }
-
-        .modal-dialog {
-            margin: 150px auto;
-        }
-
-        .bootbox-body {
-            font-size: 18px;
-            margin-top: 25px;
-            text-align: center;
-        }
-
-        .modal-content {
-            padding: 30px 50px;
-        }
-
-        .modal-footer {
-            margin-top: 20px;
-        }
-
-        .close {
-            font-size: 32px;
-        } */
-
-        .label_ul {
-            list-style: none;
-            overflow: hidden;
-            margin: 0;
-            vertical-align: bottom;
         }
 
         .label_ul li {
@@ -189,11 +114,7 @@
                                                 <input class="inpt_width" type="text" disabled="disabled" value="" name="broker_name">
                                             </div>
                                             <div class="form-group">
-                                                <label class="lab_width">联系电话1：</label>
-                                                <input class="inpt_width" type="text" disabled="disabled" value="" name="broker_tel">
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="lab_width">联系电话2：</label>
+                                                <label class="lab_width">联系电话：</label>
                                                 <input class="inpt_width" type="text" disabled="disabled" value="" name="broker_tel">
                                             </div>
                                             <div class="form-group">
@@ -207,7 +128,7 @@
                                                 <input class="inpt_width" type="text" disabled="disabled" value="" name="name">
                                             </div>
                                             <div class="form-group">
-                                                <label class="lab_width">联系电话1：</label>
+                                                <label class="lab_width">联系电话：</label>
                                                 <input class="inpt_width" type="text" disabled="disabled" value="" name="check_client_tel">
                                             </div>
 
@@ -303,45 +224,28 @@
     }
 
     function getInfo() {
-        ajax.get('project/client/clientDisabledInfo',{'client_id':id},function(res) {
-            $('#client_id').html(res.data.client_id);
-            $('#state_name').html(res.data.state_name);
-            $('input[name=buy_purpose]').val(res.data.buy_purpose);
-            $('input[name=visit_num]').val(res.data.visit_num);
-            $('input[name=property_advicer_wish]').val(res.data.property_advicer_wish);
-            $('input[name=property_advicer_real]').val(res.data.property_advicer_real);
-            $('input[name=visit_time]').val(res.data.visit_time);
-            if(res.data.card_img_url!='' || res.data.card_img_url==null){
-                $('#card_img_url').attr('src', config.address+res.data.card_img_url);
-            }
-            if(res.data.verify_img_url!='' || res.data.verify_img_url==null){
-                $('#verify_img_url').attr('src', config.address+res.data.verify_img_url);
-            }
-            if(res.data.visit_img_url!='' || res.data.visit_img_url==null){
-                $('#verify_img_url').attr('src', config.address+res.data.visit_img_url);
-            }
-            $('input[name=butter_name]').val(res.data.butter_name);
-            $('input[name=butter_tel]').val(res.data.butter_tel);
-            $('input[name=check_client_name]').val(res.data.check_info.client_name);
-            $('input[name=check_client_tel]').val(res.data.check_info.client_tel);
-            $('input[name=check_card_type]').val(res.data.check_info.card_type);
-            $('input[name=check_card_num]').val(res.data.check_info.card_num);
-            $('input[name=check_address]').val(res.data.check_info.address);
-            $('input[name=check_create_time]').val(res.data.check_info.create_time);
+        ajax.get('project/client/recommendDetail',{'client_id':id},function(res) {
+            // $('#client_id').html(res.data.client_id);
+
+
+
+
             $('input[name=broker_name]').val(res.data.broker_name);
             $('input[name=broker_tel]').val(res.data.broker_tel);
             $('input[name=company_name]').val(res.data.company_name);
+
+
             $('input[name=name]').val(res.data.name);
+            $('input[name=check_client_tel]').val(res.data.tel);
             $('input[name=card_type]').val(res.data.card_type);
             $('input[name=card_id]').val(res.data.card_id);
             $('input[name=address]').val(res.data.address);
             $('input[name=create_time]').val(res.data.create_time);
-            $('#end_time').html(formatSeconds(res.data.CountDown));
-            $('#comment').val(res.data.comment);
-            $('input[name=signatory]').val(res.data.signatory);
-            $('input[name=disabled_state]').val(res.data.disabled_state);
-            $('input[name=state_change_time]').val(res.data.state_change_time);
-            $('#comment1').val(res.data.disabled_reason);
+
+
+
+
+
 
         })
     }

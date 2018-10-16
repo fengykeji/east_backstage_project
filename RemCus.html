@@ -235,7 +235,7 @@
                         <div class="form-group">
                             <label class="lab_width">公司名称：</label>
                             <select id="tuijianComName" class="form-control inpt_width" style="display: inline-block;">
-
+                                <option value=""></option>
                             </select>
                         </div>
                         <!--<div class="form-group">-->
@@ -294,13 +294,13 @@
                         <div class="form-group">
                             <label class="lab_width">公司名称：</label>
                             <select id="daofangComName" class="form-control inpt_width" style="display: inline-block;">
-
+                                <option value=""></option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label class="lab_width">置业顾问：</label>
                             <select id="daofangGuWen" class="form-control inpt_width" style="display: inline-block;">
-
+                                <option value=""></option>
                             </select>
                         </div>
 
@@ -352,13 +352,13 @@
                         <div class="form-group">
                             <label class="lab_width">公司名称：</label>
                             <select id="successComName" class="form-control inpt_width" style="display: inline-block;">
-
+                                <option value=""></option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label class="lab_width">置业顾问：</label>
                             <select id="successGuWen" class="form-control inpt_width" style="display: inline-block;">
-
+                                <option value=""></option>
                             </select>
                         </div>
 
@@ -427,6 +427,7 @@
 <!--获取数据-->
 <script>
     var CusType = $.getUrlVar('CusType');
+    var Dates = $.getUrlVar('startTime');
     switch (CusType) {
         case '3':
             $('li.value').addClass('active');
@@ -448,7 +449,7 @@
     tuijianPage(1);
 
     function tuijianPage(p) {
-        ajax.get('project/client/waitConfirmed', {page: p}, function (res) {
+        ajax.get('project/client/waitConfirmed', {page: p,startTime:Dates}, function (res) {
             var Data = res.data;
             tuijian(Data);
         })
@@ -465,16 +466,16 @@
         else {
             $('#tuijian').show();
             var str = '';//表格内容
-            var pageStr = '';//页数
+            var x='tuijian';
+            var pageStr = pageFun(arr,x);//页数
             var num = 0;//序号
-            for (var j = 1; j < arr.last_page + 1; j++) {
-                if (j == arr.current_page) {
-                    pageStr += '<li class="paginate_button tuijianPageClick active" aria-controls="dynamic-table" tabindex="0"><a>' + j + '</a></li>'
-                } else {
-                    pageStr += '<li class="paginate_button tuijianPageClick" aria-controls="dynamic-table" tabindex="0"><a>' + j + '</a></li>'
-                }
 
-            }
+
+
+
+
+
+
 
             for (var i = 0; i < arr.data.length; i++) {
                 num = i + 1;
@@ -535,6 +536,8 @@
         tuijianPage(totalPage);
         return false;
     })
+
+
 </script>
 
 <!--到访客户-->
@@ -543,7 +546,7 @@
     daofangPage(1);
 
     function daofangPage(p) {
-        ajax.get('project/client/value', {page: p}, function (res) {
+        ajax.get('project/client/value', {page: p,startTime:Dates}, function (res) {
             var Data = res.data;
             daofang(Data);
         })
@@ -560,16 +563,10 @@
         else {
             $('#daofang').show();
             var str = '';//表格内容
-            var pageStr = '';//页数
+            var x='daofang';
+            var pageStr = pageFun(arr,x);//页数
             var num = 0;//序号
-            for (var j = 1; j < arr.last_page + 1; j++) {
-                if (j == arr.current_page) {
-                    pageStr += '<li class="paginate_button daofangPageClick active" aria-controls="dynamic-table" tabindex="0"><a>' + j + '</a></li>'
-                } else {
-                    pageStr += '<li class="paginate_button daofangPageClick" aria-controls="dynamic-table" tabindex="0"><a>' + j + '</a></li>'
-                }
 
-            }
 
             for (var i = 0; i < arr.data.length; i++) {
                 num = i + 1;
@@ -645,7 +642,7 @@
     successPage(1);
 
     function successPage(p) {
-        ajax.get('project/client/deal', {page: p}, function (res) {
+        ajax.get('project/client/deal', {page: p,startTime:Dates}, function (res) {
             var Data = res.data;
             success(Data);
         })
@@ -662,16 +659,10 @@
         else {
             $('#success').show();
             var str = '';//表格内容
-            var pageStr = '';//页数
+            var x='success';
+            var pageStr = pageFun(arr,x);//页数
             var num = 0;//序号
-            for (var j = 1; j < arr.last_page + 1; j++) {
-                if (j == arr.current_page) {
-                    pageStr += '<li class="paginate_button successPageClick active" aria-controls="dynamic-table" tabindex="0"><a>' + j + '</a></li>'
-                } else {
-                    pageStr += '<li class="paginate_button successPageClick" aria-controls="dynamic-table" tabindex="0"><a>' + j + '</a></li>'
-                }
 
-            }
 
             for (var i = 0; i < arr.data.length; i++) {
                 num = i + 1;
@@ -757,12 +748,15 @@
         var st = $('#tuijianStartTime').val();
         var et = $('#tuijianEndTime').val();
         var cn = $('#tuijianComName').val();
-        // var gw = $('#tuijianGuWen').val();
-        var data = {
-            start_time: st,
-            end_time: et,
-            company_id: cn,
-            // advice_name: gw,
+        var data = {};
+        if(st!=''){
+            data.start_time=st;
+        }
+        if(et!=''){
+            data.end_time=et;
+        }
+        if(cn!=''){
+            data.company_id=cn;
         }
         ajax.get('project/client/waitConfirmed', data, function (res) {
             var Data = res.data;
@@ -793,13 +787,19 @@
         var et = $('#daofangEndTime').val();
         var cn = $('#daofangComName').val();
         var gw = $('#daofangGuWen').val();
-        var data = {
-            start_time: st,
-            end_time: et,
-            company_id: cn,
-            advice_name: gw,
+        var data = {};
+        if(st!=''){
+            data.start_time=st;
         }
-        console.log(data);
+        if(et!=''){
+            data.end_time=et;
+        }
+        if(cn!=''){
+            data.company_id=cn;
+        }
+        if(gw!=''){
+            data.advice_name=gw;
+        }
         ajax.get('project/client/value', data, function (res) {
             var Data = res.data;
             daofang(Data);
@@ -819,12 +819,6 @@
 
 
 
-
-
-
-
-
-
     //成交
     $('#successBtn').on('click', function () {
         PartyB($('#successComName'));
@@ -837,11 +831,18 @@
         var et = $('#successEndTime').val();
         var cn = $('#successComName').val();
         var gw = $('#successGuWen').val();
-        var data = {
-            start_time: st,
-            end_time: et,
-            company_id: cn,
-            advice_name: gw,
+        var data = {};
+        if(st!=''){
+            data.start_time=st;
+        }
+        if(et!=''){
+            data.end_time=et;
+        }
+        if(cn!=''){
+            data.company_id=cn;
+        }
+        if(gw!=''){
+            data.advice_name=gw;
         }
         ajax.get('project/client/deal', data, function (res) {
             var Data = res.data;
@@ -885,6 +886,8 @@
     $('.closed').on('click', function () {
         $(this).parent().parent().parent().parent().hide();
     })
+
+
 </script>
 <!--日历插件-->
 <script src="components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>

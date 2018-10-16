@@ -203,6 +203,67 @@ var ajax={
 
 }
 
+//分页页数
+function pageFun(arr,x) {
+    var pageStr='';
+    if(arr.last_page>5){
+        if(arr.current_page<4){
+            for(var k=1;k<5;k++){
+                if (k == arr.current_page) {
+                    pageStr += '<li class="paginate_button '+x+'PageClick active" aria-controls="dynamic-table" tabindex="0"><a>' + k + '</a></li>'
+                } else {
+                    pageStr += '<li class="paginate_button '+x+'PageClick" aria-controls="dynamic-table" tabindex="0"><a>' + k + '</a></li>'
+                }
+            }
+            pageStr += '<li class="paginate_button '+x+'PageClick" aria-controls="dynamic-table" tabindex="0"><a>...</a></li>'
 
+        }
+        else if(arr.current_page<(arr.last_page-2)){
+            var n=parseInt(arr.current_page);
+            pageStr += '<li class="paginate_button '+x+'PageClick" aria-controls="dynamic-table" tabindex="0"><a>' + (n-2) + '</a></li>'
+            pageStr += '<li class="paginate_button '+x+'PageClick" aria-controls="dynamic-table" tabindex="0"><a>' + (n-1) + '</a></li>'
+            pageStr += '<li class="paginate_button '+x+'PageClick active" aria-controls="dynamic-table" tabindex="0"><a>' + n + '</a></li>'
+            pageStr += '<li class="paginate_button '+x+'PageClick" aria-controls="dynamic-table" tabindex="0"><a>' + (n+1) + '</a></li>'
+            pageStr += '<li class="paginate_button '+x+'PageClick" aria-controls="dynamic-table" tabindex="0"><a>' + (n+2) + '</a></li>'
+            pageStr += '<li class="paginate_button '+x+'PageClick" aria-controls="dynamic-table" tabindex="0"><a>...</a></li>'
+
+        }else if(arr.current_page<(arr.last_page-1)){
+            var n=parseInt(arr.current_page);
+            pageStr += '<li class="paginate_button '+x+'PageClick" aria-controls="dynamic-table" tabindex="0"><a>...</a></li>'
+            pageStr += '<li class="paginate_button '+x+'PageClick" aria-controls="dynamic-table" tabindex="0"><a>' + (n-2) + '</a></li>'
+            pageStr += '<li class="paginate_button '+x+'PageClick" aria-controls="dynamic-table" tabindex="0"><a>' + (n-1) + '</a></li>'
+            pageStr += '<li class="paginate_button '+x+'PageClick active" aria-controls="dynamic-table" tabindex="0"><a>' + n + '</a></li>'
+            pageStr += '<li class="paginate_button '+x+'PageClick" aria-controls="dynamic-table" tabindex="0"><a>' + (n+1) + '</a></li>'
+            pageStr += '<li class="paginate_button '+x+'PageClick" aria-controls="dynamic-table" tabindex="0"><a>' + (n+2) + '</a></li>'
+        }
+        else if(arr.current_page<arr.last_page){
+            var n=parseInt(arr.current_page);
+            pageStr += '<li class="paginate_button '+x+'PageClick" aria-controls="dynamic-table" tabindex="0"><a>...</a></li>'
+            pageStr += '<li class="paginate_button '+x+'PageClick" aria-controls="dynamic-table" tabindex="0"><a>' + (n-2) + '</a></li>'
+            pageStr += '<li class="paginate_button '+x+'PageClick" aria-controls="dynamic-table" tabindex="0"><a>' + (n-1) + '</a></li>'
+            pageStr += '<li class="paginate_button '+x+'PageClick active" aria-controls="dynamic-table" tabindex="0"><a>' + n + '</a></li>'
+            pageStr += '<li class="paginate_button '+x+'PageClick" aria-controls="dynamic-table" tabindex="0"><a>' + (n+1) + '</a></li>'
+        }else if(arr.current_page<(arr.last_page+1)){
+            var n=parseInt(arr.current_page);
+            pageStr += '<li class="paginate_button '+x+'PageClick" aria-controls="dynamic-table" tabindex="0"><a>...</a></li>'
+            pageStr += '<li class="paginate_button '+x+'PageClick" aria-controls="dynamic-table" tabindex="0"><a>' + (n-2) + '</a></li>'
+            pageStr += '<li class="paginate_button '+x+'PageClick" aria-controls="dynamic-table" tabindex="0"><a>' + (n-1) + '</a></li>'
+            pageStr += '<li class="paginate_button '+x+'PageClick active" aria-controls="dynamic-table" tabindex="0"><a>' + n + '</a></li>'
+
+        }
+
+
+    }else{
+        for (var j = 1; j < arr.last_page + 1; j++) {
+            if (j == arr.current_page) {
+                pageStr += '<li class="paginate_button '+x+'PageClick active" aria-controls="dynamic-table" tabindex="0"><a>' + j + '</a></li>'
+            } else {
+                pageStr += '<li class="paginate_button '+x+'PageClick" aria-controls="dynamic-table" tabindex="0"><a>' + j + '</a></li>'
+            }
+
+        }
+    }
+    return pageStr;
+}
 
 
