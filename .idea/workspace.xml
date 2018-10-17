@@ -3,13 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a9c4f3bc-05bf-4042-b4cc-c52dc098ced3" name="默认的" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CustomerManagement.html" beforeDir="false" afterPath="$PROJECT_DIR$/CustomerManagement.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RemCus.html" beforeDir="false" afterPath="$PROJECT_DIR$/RemCus.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RemDetails.html" beforeDir="false" afterPath="$PROJECT_DIR$/RemDetails.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SuccessDetails.html" beforeDir="false" afterPath="$PROJECT_DIR$/SuccessDetails.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VisitDetails.html" beforeDir="false" afterPath="$PROJECT_DIR$/VisitDetails.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/menu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComAccum.html" beforeDir="false" afterPath="$PROJECT_DIR$/ComAccum.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerAccum.html" beforeDir="false" afterPath="$PROJECT_DIR$/PerAccum.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comsionComList.html" beforeDir="false" afterPath="$PROJECT_DIR$/comsionComList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comsionPersonList.html" beforeDir="false" afterPath="$PROJECT_DIR$/comsionPersonList.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,18 +20,18 @@
       <file leaf-file-name="ComAccum.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ComAccum.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="299" column="74" selection-start-line="299" selection-start-column="74" selection-end-line="299" selection-end-column="74" />
+            <state relative-caret-position="313">
+              <caret line="400" column="14" lean-forward="true" selection-start-line="400" selection-start-column="14" selection-end-line="400" selection-end-column="14" />
               <folding>
                 <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="e#698#704#0" expanded="true" />
-                <element signature="e#704#710#0" expanded="true" />
-                <element signature="e#710#716#0" expanded="true" />
-                <element signature="e#716#722#0" expanded="true" />
-                <element signature="e#722#728#0" expanded="true" />
-                <element signature="e#728#734#0" expanded="true" />
+                <element signature="e#713#719#0" expanded="true" />
+                <element signature="e#719#725#0" expanded="true" />
+                <element signature="e#725#731#0" expanded="true" />
+                <element signature="e#731#737#0" expanded="true" />
+                <element signature="e#737#743#0" expanded="true" />
+                <element signature="e#743#749#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -44,7 +41,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>\n</find>
       <find>&lt;tr&gt;&lt;/tr&gt;</find>
       <find>hide</find>
       <find>spinner1</find>
@@ -74,6 +70,7 @@
       <find>alert</find>
       <find>project_name</find>
       <find>state_change_time</find>
+      <find>operate_proInfo</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -123,6 +120,7 @@
         <option value="$PROJECT_DIR$/RemDetails.html" />
         <option value="$PROJECT_DIR$/SuccessDetails.html" />
         <option value="$PROJECT_DIR$/RemCus.html" />
+        <option value="$PROJECT_DIR$/PerAccum.html" />
         <option value="$PROJECT_DIR$/comsionPersonList.html" />
         <option value="$PROJECT_DIR$/comsionComList.html" />
         <option value="$PROJECT_DIR$/ComAccum.html" />
@@ -148,6 +146,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -164,7 +163,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -227,7 +225,8 @@
       <workItem from="1539306926749" duration="8651000" />
       <workItem from="1539565340016" duration="16605000" />
       <workItem from="1539598131064" duration="30000" />
-      <workItem from="1539652963543" duration="7964000" />
+      <workItem from="1539652963543" duration="11461000" />
+      <workItem from="1539738480051" duration="617000" />
     </task>
     <task id="LOCAL-00001" summary="123">
       <created>1532082473392</created>
@@ -439,11 +438,18 @@
       <option name="project" value="LOCAL" />
       <updated>1539246620885</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="10161">
+      <created>1539672586675</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1539672586676</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="197623000" />
+    <option name="totallyTimeSpent" value="201737000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
@@ -479,7 +485,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="8221" />
     <MESSAGE value="8222" />
     <MESSAGE value="8223" />
     <MESSAGE value="8224" />
@@ -504,7 +509,8 @@
     <MESSAGE value="9222" />
     <MESSAGE value="9223" />
     <MESSAGE value="10111" />
-    <option name="LAST_COMMIT_MESSAGE" value="10111" />
+    <MESSAGE value="10161" />
+    <option name="LAST_COMMIT_MESSAGE" value="10161" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -764,13 +770,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VisitDetails.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="625">
-          <caret line="357" selection-start-line="357" selection-end-line="423" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/js/config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
@@ -793,95 +792,58 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="696">
           <caret line="653" column="14" lean-forward="true" selection-start-line="653" selection-start-column="14" selection-end-line="653" selection-end-column="14" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#1;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#2;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#2;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#3;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#4;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#5;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#1;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#span#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#1;n#div#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#textarea#0;n#div#4;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#form#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#form#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#form#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#hr#0;n#div#0;n#div#0;n#div#1;n#div#1;n#form#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#form#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#form#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#2;n#form#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#hr#0;n#div#0;n#div#0;n#div#1;n#div#2;n#form#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/comsionPersonList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="174" column="58" selection-start-line="174" selection-start-column="58" selection-end-line="174" selection-end-column="58" />
-          <folding>
-            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/RemCus.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="684" column="112" lean-forward="true" selection-start-line="683" selection-start-column="21" selection-end-line="684" selection-end-column="112" />
-          <folding>
-            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="-341">
+          <caret line="686" column="13" lean-forward="true" selection-start-line="666" selection-start-column="12" selection-end-line="686" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VisitDetails.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="51" column="9" lean-forward="true" selection-start-line="47" selection-start-column="8" selection-end-line="51" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/comsionComList.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="289" column="33" selection-start-line="289" selection-start-column="33" selection-end-line="289" selection-end-column="33" />
-          <folding>
-            <element signature="n#div#2;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="525">
+          <caret line="308" column="33" selection-start-line="308" selection-start-column="33" selection-end-line="308" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comsionPersonList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="302" column="33" selection-start-line="302" selection-start-column="33" selection-end-line="302" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PerAccum.html">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="245" column="41" selection-start-line="245" selection-start-column="3" selection-end-line="245" selection-end-column="41" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ComAccum.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="299" column="74" selection-start-line="299" selection-start-column="74" selection-end-line="299" selection-end-column="74" />
+        <state relative-caret-position="313">
+          <caret line="400" column="14" lean-forward="true" selection-start-line="400" selection-start-column="14" selection-end-line="400" selection-end-column="14" />
           <folding>
             <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#698#704#0" expanded="true" />
-            <element signature="e#704#710#0" expanded="true" />
-            <element signature="e#710#716#0" expanded="true" />
-            <element signature="e#716#722#0" expanded="true" />
-            <element signature="e#722#728#0" expanded="true" />
-            <element signature="e#728#734#0" expanded="true" />
+            <element signature="e#713#719#0" expanded="true" />
+            <element signature="e#719#725#0" expanded="true" />
+            <element signature="e#725#731#0" expanded="true" />
+            <element signature="e#731#737#0" expanded="true" />
+            <element signature="e#737#743#0" expanded="true" />
+            <element signature="e#743#749#0" expanded="true" />
           </folding>
         </state>
       </provider>

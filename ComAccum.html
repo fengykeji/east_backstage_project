@@ -68,6 +68,11 @@
         .lab_width {
             width: 100px;
         }
+        .operate_proInfo {
+            position: absolute;
+            right: 100px;
+            z-index: 100;
+        }
     </style>
 </head>
 
@@ -104,6 +109,9 @@
                         <a>>累计列表</a>
                     </li>
                 </ul>
+                <div class="operate_proInfo">
+                    <button class="btn btn-danger" onclick="javascript:history.go(-1)" id="backLastPage">关闭</button>
+                </div>
             </div>
             <!-- 内容开始 -->
             <div class="page-content">
@@ -235,6 +243,7 @@
 <script src="assets/js/public.js"></script>
 <!--菜单初始化-->
 <script>
+    var totalNum=$.getUrlVar('totalNum');
     window.onload = function () {
         $('#header').load('public/header.html');
         $('#sidebar').load('public/menu.html');
@@ -252,13 +261,13 @@
     daofangPage(1);
 
     function daofangPage(p) {
-        ajax.get('project/broker/company/list', {}, function (res) {
-            var Data = res;
-            daofang(Data,p);
+        ajax.get('project/broker/company/list', {page:p}, function (res) {
+            var Data = res.data;
+            daofang(Data);
         })
     }
 
-    function daofang(arr,p) {
+    function daofang(arr) {
         $('#daofangDiv').html('');
         if (arr.data.length == 0) {
             var notData = '<p style="text-align: center;font-size: 15px;padding: 30px;">暂无数据</p>';
@@ -271,61 +280,25 @@
             var num = 0;//序号
 
 
+            var x = 'daofang'
+            var pageStr = pageFun(arr, x);//页数
 
-            var a={};
-            totalPage=Math.ceil(arr.data.length/15);
-            a.last_page=Math.ceil(arr.data.length/15);
-            a.current_page=p;
-            var x='daofang'
-            var pageStr = pageFun(a,x);//页数
-
-
-
-
-
-            if(arr.data.length>p*15){
-                for (var i = p*15-15; i < p*15; i++) {
-                    num = i + 1;
-                    str += '<tr>' +
-                        '<td class="center">' + num + '</td>' +
-                        '<td class="center">' + arr.data[i].client_id + '</td>' +
-                        '<td class="center">' + arr.data[i].project_name + '</td>' +
-                        '<td class="center">' + arr.data[i].sell_company_name + '</td>' +
-                        '<td class="center">' + arr.data[i].name + '</td>' +
-                        '<td class="center">' + arr.data[i].tel + '</td>' +
-                        '<td class="center">' + arr.data[i].broker_type + '</td>' +
-                        '<td class="center">' + arr.data[i].create_time + '</td>' +
-                        '<td class="center">' + arr.data[i].broker_num + '</td>' +
-                        '<td class="center">' + arr.data[i].is_pay + '</td>' +
-                        '<td class="center">' + arr.data[i].pay_state_name + '</td>' +
-                        '</tr>';
-                }
-            }else{
-                for (var i = p*15-15; i < arr.data.length; i++) {
-                    num = i + 1;
-                    str += '<tr>' +
-                        '<td class="center">' + num + '</td>' +
-                        '<td class="center">' + arr.data[i].client_id + '</td>' +
-                        '<td class="center">' + arr.data[i].project_name + '</td>' +
-                        '<td class="center">' + arr.data[i].sell_company_name + '</td>' +
-                        '<td class="center">' + arr.data[i].name + '</td>' +
-                        '<td class="center">' + arr.data[i].tel + '</td>' +
-                        '<td class="center">' + arr.data[i].broker_type + '</td>' +
-                        '<td class="center">' + arr.data[i].create_time + '</td>' +
-                        '<td class="center">' + arr.data[i].broker_num + '</td>' +
-                        '<td class="center">' + arr.data[i].is_pay + '</td>' +
-                        '<td class="center">' + arr.data[i].pay_state_name + '</td>' +
-                        '</tr>';
-                }
+            for (var i = 0; i < arr.data.length; i++) {
+                num = i + 1;
+                str += '<tr>' +
+                    '<td class="center">' + num + '</td>' +
+                    '<td class="center">' + arr.data[i].client_id + '</td>' +
+                    '<td class="center">' + arr.data[i].project_name + '</td>' +
+                    '<td class="center">' + arr.data[i].house_info + '</td>' +
+                    '<td class="center">' + arr.data[i].name + '</td>' +
+                    '<td class="center">' + arr.data[i].tel + '</td>' +
+                    '<td class="center">' + arr.data[i].broker_type + '</td>' +
+                    '<td class="center">' + arr.data[i].create_time + '</td>' +
+                    '<td class="center">' + arr.data[i].broker_num + '</td>' +
+                    '<td class="center">' + arr.data[i].commission_way + '</td>' +
+                    '<td class="center">' + arr.data[i].pay_state_name + '</td>' +
+                    '</tr>';
             }
-
-
-
-
-
-
-
-
 
 
             var todayCus = '<div id="daofang" style="width: 1400px;">' +
@@ -350,17 +323,18 @@
                 '</tbody>' +
                 '</table>' +
                 '<div class="row">' +
-                    '<div class="col-xs-6" style="color: #6FAED9;font-weight: bolder;font-size: 15px;">累计金额：100 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;累计笔数：100</div>'+
+                '<div class="col-xs-6" style="color: #6FAED9;font-weight: bolder;font-size: 15px;">累计金额：'+totalNum+' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;累计笔数：'+arr.total+'</div>' +
                 '<div class="col-xs-6">' +
                 '<div class="dataTables_paginate paging_simple_numbers" >' +
                 '<ul class="pagination">' +
                 '<li class="paginate_button previous" aria-controls="dynamic-table" tabindex="0" id="prev_daofang">' +
-                '<a>首页</a></li>' +pageStr+
+                '<a>首页</a></li>' + pageStr +
                 '<li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="next_daofang"><a>尾页</a></li>' +
                 '</ul></div></div></div></div></div>';
             $('#daofangDiv').append(todayCus);
         }
     }
+
     $(document).on('click', '.daofangPageClick', function () {
         daofangPage($(this).text());
         return false;
